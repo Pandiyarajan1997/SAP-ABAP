@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>GET PCO INVOICE DETAILS</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_PCO_DETAILSTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_PCO_DETAILS</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_PCO_DETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get Invoice Details for PCO</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LV_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUDAT_LOW</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUDAT_HIGH</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>OUTPUT_PCO</PARAMETER>
+       <DBSTRUCT>ZGET_PCO_DETAILS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Organization</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUDAT_LOW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUDAT_HIGH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>OUTPUT_PCO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Get invoice details for PCO</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

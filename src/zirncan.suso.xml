@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZIRNCAN</OBJCT>
+    <FIEL1>ACTVT</FIEL1>
+    <OCLSS>ZIRN</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZIRNCAN</OBJECT>
+    <TTEXT>ZIRN AND EWAY CREATION</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>ZIRNCAN</OBJCT>
+   </TOBJVORFLG>
+   <TACTZ>
+    <TACTZ>
+     <BROBJ>ZIRNCAN</BROBJ>
+     <ACTVT>01</ACTVT>
+    </TACTZ>
+   </TACTZ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TABL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD02V>
+    <TABNAME>ZEMPOTH_UPDATE</TABNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <TABCLASS>TRANSP</TABCLASS>
+    <DDTEXT>Employee Cost centre, GreytHR Data, GreytHR Manager Update</DDTEXT>
+    <MASTERLANG>E</MASTERLANG>
+    <MAINFLAG>X</MAINFLAG>
+    <CONTFLAG>A</CONTFLAG>
+   </DD02V>
+   <DD09L>
+    <TABNAME>ZEMPOTH_UPDATE</TABNAME>
+    <AS4LOCAL>A</AS4LOCAL>
+    <TABKAT>0</TABKAT>
+    <TABART>APPL0</TABART>
+    <BUFALLOW>N</BUFALLOW>
+   </DD09L>
+   <DD03P_TABLE>
+    <DD03P>
+     <FIELDNAME>PERNR</FIELDNAME>
+     <KEYFLAG>X</KEYFLAG>
+     <ROLLNAME>PERNR_D</ROLLNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <NOTNULL>X</NOTNULL>
+     <COMPTYPE>E</COMPTYPE>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>KOSTL_UPD</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000002</INTLEN>
+     <DATATYPE>CHAR</DATATYPE>
+     <LENG>000001</LENG>
+     <MASK>  CHAR</MASK>
+     <DDTEXT>Cost Centre Upd.</DDTEXT>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>GREYT_DATA_UPD</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000002</INTLEN>
+     <DATATYPE>CHAR</DATATYPE>
+     <LENG>000001</LENG>
+     <MASK>  CHAR</MASK>
+     <DDTEXT>GreytHR Data Upd.</DDTEXT>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>GREYT_MANAGER_UPD</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000002</INTLEN>
+     <DATATYPE>CHAR</DATATYPE>
+     <LENG>000001</LENG>
+     <MASK>  CHAR</MASK>
+     <DDTEXT>GreytHR Manager Upd.</DDTEXT>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>VEND_CODE_UPD</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000002</INTLEN>
+     <DATATYPE>CHAR</DATATYPE>
+     <LENG>000001</LENG>
+     <MASK>  CHAR</MASK>
+     <DDTEXT>Vendor code Upd.</DDTEXT>
+    </DD03P>
+   </DD03P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

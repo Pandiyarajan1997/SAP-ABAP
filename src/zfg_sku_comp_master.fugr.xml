@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group For Company Master</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZFG_SKU_COMP_MASTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_COMP_MASTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Company Master Data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_COMP_CODE</PARAMETER>
+       <TYP>ZTT_CNF_SAL_ORG</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_DIST_CHAN</PARAMETER>
+       <TYP>ZTT_CNF_DIST_CHAN</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_REGION_MAS</PARAMETER>
+       <TYP>ZTT_CNF_REGION_MAS</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_PLANT_MAS</PARAMETER>
+       <TYP>ZTT_CNF_PLANT_MAS</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_BILL_TYPE</PARAMETER>
+       <TYP>ZTT_CNF_BILL_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_MOVE_TYPE</PARAMETER>
+       <TYP>ZTT_CNF_MOVE_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_SKU_MAS</PARAMETER>
+       <TYP>ZTT_CNF_SKU_MAS</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_SKU_MAPPING</PARAMETER>
+       <DBSTRUCT>ZSTR_CNF_SKU_MAPPING</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_PAYMENT_TERM_DESC</PARAMETER>
+       <DBSTRUCT>ZSTR_CNF_PAYMENT_TERM_DESC</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <TYP>ZTT_BAPIRET2</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for the Structure ZSTR_CNF_SAL_ORG</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_DIST_CHAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_CNF_DIST_CHAN</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_REGION_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table typr for the structure ZSTR_CNF_REGION_MAS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PLANT_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for the structure ZSTR_CNF_PLANT_MAS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_BILL_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_CNF_BILL_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MOVE_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the strucuture ZSTR_CNF_MOVE_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SKU_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_CNF_SKU_MAS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SKU_MAPPING</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for SKU mapping</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PAYMENT_TERM_DESC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Payment Term Description</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>table Type for Bapi return msg structure</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_COMP_MASTER_NEW</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Company Master Data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_COMP_CODE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_SKU_MAPPING</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_DIST_CHAN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_REGION_MAS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_BILL_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MOVE_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_PLANT_MAS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_PAYMENT_TERM_DESC</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_SKU_MAS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_TAX_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_COND_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_GL01</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_COMP_CODE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_SAL_ORG</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_DIST_CHAN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_DIST_CHAN</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_REGION_MAS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_REGION_MAS</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_PLANT_MAS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_PLANT_MAS</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_BILL_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_BILL_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_MOVE_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_MOVE_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_SKU_MAS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_SKU_MAS</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_SKU_MAPPING</PARAMETER>
+       <DBSTRUCT>ZSTR_CNF_SKU_MAPPING</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_PAYMENT_TERM_DESC</PARAMETER>
+       <DBSTRUCT>ZSTR_CNF_PAYMENT_TERM_DESC</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_TAX_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_COND_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_GL01</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_BAPIRET2</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_SKU_MAPPING</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_DIST_CHAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_REGION_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_BILL_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MOVE_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_PLANT_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_PAYMENT_TERM_DESC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_SKU_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for the Structure ZSTR_CNF_SAL_ORG</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_DIST_CHAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_CNF_DIST_CHAN</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_REGION_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table typr for the structure ZSTR_CNF_REGION_MAS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PLANT_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for the structure ZSTR_CNF_PLANT_MAS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_BILL_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_CNF_BILL_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MOVE_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the strucuture ZSTR_CNF_MOVE_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SKU_MAS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_CNF_SKU_MAS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SKU_MAPPING</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for SKU mapping</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PAYMENT_TERM_DESC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Payment Term Description</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_TAX_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_COND_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type ZSTR_CNF_GL01</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

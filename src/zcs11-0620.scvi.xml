@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZCS11-0620</SCVARIANT>
+     <PROGNAME>SAPLSKBH</PROGNAME>
+     <DYNPRO>0620</DYNPRO>
+     <VERSION>19</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZCS11-0620</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZCS11-0620</SCVARIANT>
+      <FIELDNAME>APP_WL_SING</FIELDNAME>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

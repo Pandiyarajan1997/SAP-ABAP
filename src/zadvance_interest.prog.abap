@@ -1,0 +1,325 @@
+*&---------------------------------------------------------------------*
+*& Report  ZADVANCE_INTEREST
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZADVANCE_INTEREST.
+
+DATA : YES_DATE TYPE SY-DATUM .
+
+TYPES : BEGIN OF GS_KNB1,
+                KUNNR TYPE KNB1-KUNNR,
+                BUKRS TYPE KNB1-BUKRS,
+                ERDAT TYPE KNB1-ERDAT,
+                ERNAM TYPE KNB1-ERNAM,
+                SPERR TYPE KNB1-SPERR,
+                LOEVM TYPE KNB1-LOEVM,
+ END OF GS_KNB1.
+
+TYPES : BEGIN OF GS_KNB3,
+         KUNNR TYPE KNB1-KUNNR,
+         BUKRS TYPE KNB1-BUKRS,
+         ERDAT TYPE KNB1-ERDAT,
+         ERNAM TYPE KNB1-ERNAM,
+         SPERR TYPE KNB1-SPERR,
+         LOEVM TYPE KNB1-LOEVM,
+         ROW_COUNT TYPE I,
+       END OF GS_KNB3.
+
+TYPES : BEGIN OF GS_KNB4,
+            KUNNR TYPE KNB1-KUNNR,
+            BUKRS TYPE KNB1-BUKRS,
+            ERDAT TYPE KNB1-ERDAT,
+            ERNAM TYPE KNB1-ERNAM,
+            SPERR TYPE KNB1-SPERR,
+            LOEVM TYPE KNB1-LOEVM,
+            ROW_COUNT TYPE I,
+          END OF GS_KNB4.
+
+DATA : IT_KNB1 TYPE TABLE OF GS_KNB1,
+       WA_KNB1 TYPE GS_KNB1.
+
+DATA : IT1_KNB1 TYPE TABLE OF GS_KNB1,
+       WA1_KNB1 TYPE GS_KNB1.
+
+DATA : IT_KNB3 TYPE TABLE OF GS_KNB3,
+       WA_KNB3 TYPE GS_KNB3.
+
+DATA : IT_KNB4 TYPE TABLE OF GS_KNB4,
+       WA_KNB4 TYPE GS_KNB4.
+
+DATA:   GS_BAPIRETURN TYPE BAPIRETURN,
+        GT_LINEITEMS  TYPE STANDARD TABLE OF BAPI3007_2,
+        GT_HITEMS  TYPE STANDARD TABLE OF BAPI3007_2,
+        WA_HITEMS TYPE BAPI3007_2,
+        GT_SITEMS  TYPE STANDARD TABLE OF BAPI3007_2,
+        WA_SITEMS TYPE BAPI3007_2,
+        GT_TITEMS TYPE STANDARD TABLE OF BAPI3007_2,
+        GS_TITEMS TYPE BAPI3007_2,
+        HTOTAL(15) TYPE P DECIMALS 2,
+        STOTAL LIKE HTOTAL.
+
+DATA: IT_RETURN	TYPE BAPIRETURN,
+IT_OPEN  TYPE STANDARD TABLE OF BAPI3007_2,
+WA_OPEN  LIKE LINE OF IT_OPEN.
+
+DATA : IT1_OPEN  TYPE STANDARD TABLE OF BAPI3007_2,
+WA1_OPEN  LIKE LINE OF IT_OPEN.
+
+TYPES : BEGIN OF GS_FINAL,
+       MANDT TYPE ZADV_INT_PAY-MANDT,
+       BUKRS TYPE ZADV_INT_PAY-BUKRS,
+       KUNNR TYPE ZADV_INT_PAY-KUNNR,
+       INT_DATE TYPE ZADV_INT_PAY-INT_DATE,
+       BELNR TYPE ZADV_INT_PAY-BELNR,
+       GJAHR TYPE ZADV_INT_PAY-GJAHR,
+       DMBTR TYPE ZADV_INT_PAY-DMBTR,
+       INT_PER TYPE ZADV_INT_PAY-INT_PER,
+       INT_AMT TYPE ZADV_INT_PAY-INT_AMT,
+       CNDOC TYPE ZADV_INT_PAY-CNDOC,
+       CNDATE TYPE ZADV_INT_PAY-CNDATE,
+       CNAMT TYPE ZADV_INT_PAY-CNAMT,
+    END OF GS_FINAL.
+
+DATA : IT_FINAL TYPE TABLE OF GS_FINAL,
+  WA_FINAL TYPE GS_FINAL.
+
+DATA : LV_INT TYPE ZADV_INT_PAY-INT_AMT.
+
+DATA : PS_BAPIRETURN LIKE GS_BAPIRETURN.
+
+DATA : N TYPE I VALUE 1.
+
+START-OF-SELECTION.
+
+  SELECT         KUNNR
+                 BUKRS
+                 ERDAT
+                 ERNAM
+                 SPERR
+                 LOEVM
+  FROM KNB1 INTO TABLE IT_KNB1 WHERE   BUKRS = '1000' AND SPERR NE 'X' AND LOEVM NE 'X' ." OR BUKRS = '2000' OR BUKRS = '4000' OR BUKRS = '1700' ) . " and ( kunnr = '100002' or kunnr = '100006' or kunnr = 'IC1712' )." AND KUNNR = '100111' . " AND
+  "CREDIT_TYPE = 'DEFAULT' .
+*if it_knb1 is initial.
+*  CALL FUNCTION 'RP_CALC_DATE_IN_INTERVAL'
+*    EXPORTING
+*      DATE      = SY-DATUM
+*      DAYS      = 01
+*      MONTHS    = 00
+*      SIGNUM    = '-'
+*      YEARS     = 00
+*    IMPORTING
+*      CALC_DATE = YES_DATE.
+*
+*
+*  SELECT         KUNNR
+*                 BUKRS
+*                 ERDAT
+*                 ERNAM
+*                 SPERR
+*                 LOEVM
+*  FROM KNB1 INTO TABLE IT1_KNB1 WHERE ERDAT > YES_DATE  .
+*endif.
+
+*****************************************added by jestop *********************************************************************
+
+  DATA : LV_KUNNR TYPE KUNNR . " VALUE '100002',
+*         LV1_KUNNR TYPE KUNNR.
+*
+*  CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+*    EXPORTING
+*      INPUT  = LV_KUNNR
+*    IMPORTING
+*      OUTPUT = LV1_KUNNR.
+*
+*
+*  SELECT         KUNNR
+*                   BUKRS
+*                   ERDAT
+*                   ERNAM
+*                   SPERR
+*                   LOEVM
+*    FROM KNB1 INTO TABLE IT1_KNB1 . "WHERE kunnr = lv1_kunnr.
+
+IF IT_KNB1 IS NOT INITIAL.
+
+  LOOP AT IT_KNB1 INTO WA_KNB1.
+    MOVE-CORRESPONDING WA_KNB1 TO WA_KNB3.
+    WA_KNB3-ROW_COUNT = 1.
+    APPEND WA_KNB3 TO IT_KNB3.
+    CLEAR : WA_KNB3,WA_KNB1.
+  ENDLOOP.
+
+  LOOP AT IT1_KNB1 INTO WA1_KNB1.
+    MOVE-CORRESPONDING WA1_KNB1 TO WA_KNB4.
+    WA_KNB4-ROW_COUNT = 2.
+    APPEND WA_KNB4 TO IT_KNB4.
+    CLEAR : WA_KNB4 , WA1_KNB1.
+  ENDLOOP.
+
+  APPEND LINES OF IT_KNB4 TO IT_KNB3.
+
+  DATA: LV_YEAR(4) TYPE N,
+        EX_DATE TYPE SY-DATUM,
+        LV_DATE  TYPE  DATUM,
+        DAYS TYPE I,
+        DATE TYPE SY-DATUM.
+
+  DATE = SY-DATUM.
+
+  LV_YEAR = SY-DATUM(4).
+
+  CONCATENATE LV_YEAR '0101' INTO LV_DATE.
+
+  CONCATENATE LV_YEAR '1231' INTO EX_DATE.
+
+  CALL FUNCTION 'HR_SGPBS_YRS_MTHS_DAYS'
+    EXPORTING
+      BEG_DA              =  LV_DATE
+      END_DA              =  EX_DATE
+    IMPORTING
+*    NO_DAY              =
+*   NO_MONTH            =
+*   NO_YEAR             =
+     NO_CAL_DAY          =  DAYS
+* EXCEPTIONS
+*   DATEINT_ERROR       = 1
+*   OTHERS              = 2
+            .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+
+ " DELETE IT_KNB3 WHERE KUNNR NE '0010013155' .
+SORT IT_KNB3 BY BUKRS KUNNR.
+DELETE ADJACENT DUPLICATES FROM IT_KNB3 COMPARING BUKRS KUNNR.
+ IF IT_KNB3 IS NOT INITIAL.
+  LOOP AT IT_KNB3 INTO WA_KNB3.
+
+    CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+      EXPORTING
+        INPUT  = WA_KNB3-KUNNR
+      IMPORTING
+        OUTPUT = LV_KUNNR.
+    CALL FUNCTION 'BAPI_AR_ACC_GETOPENITEMS'  "#EC CI_USAGE_OK[2628704]
+      EXPORTING
+        COMPANYCODE = WA_KNB3-BUKRS
+        CUSTOMER    = LV_KUNNR
+        KEYDATE     = SY-DATUM
+*       NOTEDITEMS  = ' '
+*       SECINDEX    = ' '
+      IMPORTING
+        RETURN      = PS_BAPIRETURN
+      TABLES
+        LINEITEMS   = IT_OPEN.
+
+    DELETE IT_OPEN WHERE SP_GL_IND EQ 'H' .
+
+
+
+        IF IT_OPEN IS NOT INITIAL.
+          SORT IT_OPEN ASCENDING BY COMP_CODE CUSTOMER PSTNG_DATE .
+          APPEND LINES OF IT_OPEN TO IT1_OPEN.
+          DELETE ADJACENT DUPLICATES FROM IT1_OPEN COMPARING COMP_CODE CUSTOMER.
+          SORT IT_OPEN ASCENDING BY COMP_CODE CUSTOMER PSTNG_DATE .
+          IF IT1_OPEN IS NOT INITIAL.
+            LOOP AT IT1_OPEN INTO WA1_OPEN  .
+              LOOP AT IT_OPEN INTO WA_OPEN WHERE COMP_CODE = WA1_OPEN-COMP_CODE AND CUSTOMER = WA1_OPEN-CUSTOMER . "AND GJAHR = WA1_OPEN-GJAHR AND BELNR = WA1_OPEN-BELNR .
+                IF WA_OPEN-DB_CR_IND = 'H'.
+                  MOVE-CORRESPONDING WA_OPEN TO WA_HITEMS.
+                  APPEND WA_HITEMS TO GT_HITEMS.
+                  HTOTAL = HTOTAL + WA_HITEMS-LC_AMOUNT.
+                ENDIF.
+                IF WA_OPEN-DB_CR_IND = 'S'.
+                  MOVE-CORRESPONDING WA_OPEN TO WA_SITEMS.
+                  APPEND WA_SITEMS TO GT_SITEMS.
+                  STOTAL = STOTAL + WA_SITEMS-LC_AMOUNT.
+                ENDIF.
+                CLEAR : WA_OPEN, WA_HITEMS , WA_SITEMS.
+              ENDLOOP.
+              IF GT_SITEMS IS NOT INITIAL AND HTOTAL <> '0' AND STOTAL <> 0.
+                IF HTOTAL >= STOTAL.
+                  DO.
+                    READ TABLE GT_HITEMS INTO WA_HITEMS INDEX N.
+                    IF SY-SUBRC = 0.
+                      IF STOTAL > 0.
+                        STOTAL = STOTAL - WA_HITEMS-LC_AMOUNT.
+                        IF STOTAL > 0.
+                          DELETE GT_HITEMS WHERE DOC_NO =  WA_HITEMS-DOC_NO.
+                         IF STOTAL > 0 AND GT_HITEMS IS NOT INITIAL.
+                           EXIT.
+                          ENDIF.
+                        ELSE.
+                          STOTAL = STOTAL * ( -1 ).
+                          WA_HITEMS-LC_AMOUNT = STOTAL.
+                          MODIFY GT_HITEMS FROM WA_HITEMS INDEX N TRANSPORTING LC_AMOUNT.
+                          EXIT.
+                        ENDIF.
+                      ENDIF.
+                    ENDIF.
+                    CLEAR WA_HITEMS.
+                  ENDDO.
+
+                ELSE.
+                  REFRESH : GT_HITEMS[] .
+                  CLEAR :GT_HITEMS .
+                  REFRESH : GT_HITEMS .
+                ENDIF.
+
+              ENDIF.
+            ENDLOOP.
+          ENDIF.
+          DELETE GT_HITEMS WHERE ENTRY_DATE EQ SY-DATUM .
+
+
+
+          IF GT_HITEMS IS NOT INITIAL.
+            LOOP AT GT_HITEMS INTO WA_HITEMS .
+              WA_FINAL-BUKRS = WA_HITEMS-COMP_CODE.
+              WA_FINAL-KUNNR = WA_HITEMS-CUSTOMER.
+              WA_FINAL-INT_DATE = SY-DATUM. "'20200909' .
+              WA_FINAL-BELNR = WA_HITEMS-DOC_NO.
+              WA_FINAL-GJAHR = WA_HITEMS-FISC_YEAR .
+              WA_FINAL-DMBTR = WA_HITEMS-LC_AMOUNT .  "#EC CI_FLDEXT_OK[2610650]
+              WA_FINAL-INT_PER = '10.00'.  "#EC CI_FLDEXT_OK[2610650]
+              LV_INT = ( WA_FINAL-DMBTR / 100 ) * 10 .  "#EC CI_FLDEXT_OK[2610650]
+              WA_FINAL-INT_AMT =  LV_INT / DAYS .
+*           " wa_final-INT_AMT = '20' .
+              WA_FINAL-CNDOC = ' ' .
+              WA_FINAL-CNDATE = ' ' .                       " 20200813.
+              WA_FINAL-CNAMT = ' ' .
+*
+              APPEND WA_FINAL TO IT_FINAL.
+*          MODIFY ZADV_INT_PAY FROM WA_FINAL IN BUKRS = WA_FINAL-BUKRS AND KUNNR = WA_FINAL-KUNNR AND GJAHR = WA_FINAL-GJAHR AND BELNR = WA_FINAL-BELNR.
+              "COMMIT WORK.
+              CLEAR : WA_FINAL,WA_HITEMS..
+              CLEAR : WA_OPEN,LV_INT.
+
+            ENDLOOP.
+
+          ENDIF.
+
+
+
+          MODIFY ZADV_INT_PAY FROM TABLE IT_FINAL .
+          COMMIT WORK.
+          CLEAR : IT_OPEN , HTOTAL, STOTAL.
+          CLEAR : WA_KNB3, WA_KNB4.
+          REFRESH : GT_HITEMS ,GT_SITEMS .
+        ENDIF.
+      ENDLOOP.
+    ENDIF.
+*sort it_final by BUKRS GJAHR KUNNR BELNR.
+*DELETE ADJACENT DUPLICATES FROM IT_FINAL COMPARING BUKRS KUNNR GJAHR BELNR.
+
+    CLEAR WA_FINAL.
+
+
+    "COMMIT work.
+  ENDIF.
+
+  "COMMIT WORK.

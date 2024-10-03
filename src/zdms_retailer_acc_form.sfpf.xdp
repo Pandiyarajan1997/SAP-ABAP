@@ -1,0 +1,1799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xfa generator="AdobeLiveCycleDesigner_V11.0.1.20140218.1.907162_SAP" APIVersion="3.6.13324.0"?><xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2024-08-16T06:35:01Z" uuid="0c40142e-23a1-4a04-b957-01dd6afb2500">
+<template xmlns:xliff="urn:oasis:names:tc:xliff:document:1.1" xmlns="http://www.xfa.org/schema/xfa-template/3.3/">
+   <?formServer defaultPDFRenderFormat acrobat10.0dynamic?>
+   <subform layout="tb" locale="en_IN" name="data" restoreState="auto">
+      <pageSet>
+         <pageArea id="Page1" name="Masterpage1">
+            <contentArea h="406mm" name="Contentarea" w="283mm" x="7mm" y="7mm"/>
+            <medium long="420mm" short="297mm" stock="custom"/>
+            <field access="readOnly" h="7.5mm" id="floatingField000041" name="CurrentSheet" presence="hidden" w="55mm" x="105.794mm" y="206.35mm">
+               <ui>
+                  <numericEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </numericEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="20mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="424462BF-E94C-498A-BDF0-759FD79B8829">Text Field</text>
+                  </value>
+               </caption>
+               <calculate override="error"/>
+               <event activity="ready" name="event__layout_ready" ref="$layout">
+                  <script contentType="application/x-javascript">this.rawValue = xfa.layout.page(this);
+</script>
+               </event>
+               <?templateDesigner floatingFieldPlaceholder #?>
+               <bind match="none"/>
+            </field>
+            <field access="readOnly" h="7.5mm" id="floatingField018467" name="SheetCount" presence="hidden" w="55mm" x="105.794mm" y="206.35mm">
+               <ui>
+                  <numericEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </numericEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="20mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="6CAF1DC3-B7A8-48EA-BC49-B5D4ACE2457B">Text Field</text>
+                  </value>
+               </caption>
+               <calculate override="error"/>
+               <event activity="ready" name="event__layout_ready" ref="$layout">
+                  <script contentType="application/x-javascript">this.rawValue = xfa.layout.pageCount();
+</script>
+               </event>
+               <?templateDesigner floatingFieldPlaceholder ##?>
+               <bind match="none"/>
+            </field>
+            <draw name="Sheets" x="266.7mm" y="414mm">
+               <ui>
+                  <textEdit>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <value>
+                  <exData contentType="text/html" maxLength="0" xliff:rid="1A78F214-83F6-407F-A574-0EB19776F3FF">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in">Page<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField000041" xfa:embedMode="raw" xfa:embedType="uri"/> of<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField018467" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                  </exData>
+               </value>
+               <font typeface="Arial"/>
+               <margin bottomInset="0mm" leftInset="0mm" rightInset="0mm" topInset="0mm"/>
+               <para vAlign="middle"/>
+            </draw>
+            <?templateDesigner expand 1?></pageArea>
+         <?templateDesigner expand 1?></pageSet>
+      <subform layout="tb" name="Page1" w="28.3cm">
+         <subform h="55mm" name="Header" w="283mm">
+            <bind match="none"/>
+            <draw h="6.644mm" hAlign="center" name="Text1" w="69.85mm" x="107mm" y="0.001mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <value>
+                  <text xliff:rid="FA679B7D-30B6-42DF-8899-BE1FA5A0196F">Retailer Account Statement</text>
+               </value>
+               <font baselineShift="0pt" size="16pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+               <?renderCache.bounds 195166 15999 0 0 1417 1417 0 0?>
+               <?renderCache.textRun 26 Retailer Account Statement 0 1617 14050 0 0 0 "Arial" 0 0 16000 ISO-8859-1?></draw>
+            <subform columnWidths="141.4999mm 141.4999mm" hAlign="center" layout="table" name="Cust_SKU_Details" y="15.049mm">
+               <border>
+                  <edge thickness="0.4mm">
+                     <color value="128,128,128"/>
+                  </edge>
+                  <corner thickness="0.4mm">
+                     <color value="128,128,128"/>
+                  </corner>
+               </border>
+               <subform layout="row" name="Row1" y="0mm">
+                  <assist role="TR"/>
+                  <field access="readOnly" h="8mm" name="LV_FRDT" w="40mm" x="0mm">
+                     <ui>
+                        <dateTimeEdit>
+                           <border presence="hidden"/>
+                           <margin/>
+                        </dateTimeEdit>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para vAlign="middle"/>
+                     <value>
+                        <date/>
+                     </value>
+                     <caption reserve="11mm">
+                        <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <value>
+                           <text xliff:rid="596D1F00-36D0-488A-AF62-C46CAF92376E">From :</text>
+                        </value>
+                        <font baselineShift="0pt" typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                     </caption>
+                     <bind match="dataRef" ref="$.LV_FRDT">
+                        <picture>date{YYYY-MM-DD}</picture>
+                     </bind>
+                     <border>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <format>
+                        <picture>date{D MMMM YYYY}</picture>
+                     </format>
+                     <validate nullTest="error"/>
+                     <desc>
+                        <text name="Schema Annotation">ABAP system field: Current date of application server</text>
+                     </desc>
+                  </field>
+                  <field access="readOnly" h="8mm" name="DateField2" w="40mm" x="0mm">
+                     <ui>
+                        <dateTimeEdit>
+                           <border presence="hidden"/>
+                           <margin/>
+                        </dateTimeEdit>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="1mm" leftInset="0.5mm" rightInset="1mm" topInset="1mm"/>
+                     <para vAlign="middle"/>
+                     <value>
+                        <date/>
+                     </value>
+                     <caption reserve="6.1672mm">
+                        <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <value>
+                           <text xliff:rid="C9E64ECC-4D21-4562-9942-8A08B3C00E6F">To :</text>
+                        </value>
+                        <font baselineShift="0pt" typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                     </caption>
+                     <bind match="dataRef" ref="$.LV_TODT">
+                        <picture>date{YYYY-MM-DD}</picture>
+                     </bind>
+                     <border>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <fill>
+                           <color value="245,245,245"/>
+                        </fill>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <format>
+                        <picture>date{D MMMM YYYY}</picture>
+                     </format>
+                     <validate nullTest="error"/>
+                  </field>
+                  <border>
+                     <edge presence="hidden"/>
+                     <corner/>
+                     <corner/>
+                     <corner/>
+                     <corner presence="hidden"/>
+                     <fill>
+                        <color value="245,245,245"/>
+                     </fill>
+                  </border>
+                  <bind match="none"/>
+                  <?templateDesigner expand 0?></subform>
+               <subform layout="row" name="Row2" y="0mm">
+                  <assist role="TR"/>
+                  <draw h="0.313042in" name="Text2a" w="29.2864mm" x="0mm">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="1B786E19-5AAA-41B7-854F-BD80FB8B8754">SKU ADDRESS :</text>
+                     </value>
+                     <font baselineShift="0pt" typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                  </draw>
+                  <draw h="8mm" name="Text2b" w="3.704722in" x="0mm">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="33C9C1E9-099C-45A3-B964-F2E1BC4692EE">CUSTOMER ADDRESS : </text>
+                     </value>
+                     <font baselineShift="0pt" typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                  </draw>
+                  <border>
+                     <edge presence="hidden"/>
+                     <fill/>
+                  </border>
+                  <bind match="none"/>
+                  <?templateDesigner expand 0?></subform>
+               <bind match="none"/>
+               <?templateDesigner rowpattern first:1, next:1, firstcolor:f0f0f0, nextcolor:ffffff, apply:0?>
+               <subform layout="row" name="Row3" y="0mm">
+                  <assist role="TR"/>
+                  <field access="readOnly" h="8mm" name="Text3a" w="94.1mm" x="0mm">
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <para vAlign="middle"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <fill>
+                           <color value="245,245,245"/>
+                        </fill>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <bind match="dataRef" ref="$.LV_DIST.NAME"/>
+                     <ui>
+                        <textEdit>
+                           <border presence="hidden"/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text maxChars="100"/>
+                     </value>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                  </field>
+                  <field access="readOnly" h="8mm" name="Text3b" w="3.704722in" x="0mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para vAlign="middle"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <fill>
+                           <color value="245,245,245"/>
+                        </fill>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <bind match="dataRef" ref="$.LV_DEALR.NAME"/>
+                     <value>
+                        <text maxChars="100"/>
+                     </value>
+                  </field>
+                  <bind match="none"/>
+                  <?templateDesigner expand 0?></subform>
+               <subform layout="row" name="Row4" y="0mm">
+                  <assist role="TR"/>
+                  <field access="readOnly" h="0.313042in" name="Text4a" w="29.2864mm" x="0mm">
+                     <ui>
+                        <textEdit multiLine="1"/>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para lineHeight="9pt" spaceAbove="2pt" spaceBelow="4pt" vAlign="middle"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <fill/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <bind match="none"/>
+                     <event activity="initialize" name="event__initialize">
+                        <script contentType="application/x-javascript">var lv_first = xfa.resolveNode("$record.LV_DIST.STREET").value;
+var lv_second = xfa.resolveNode("$record.LV_DIST.CITY").value;
+var lv_pincode = xfa.resolveNode("$record.LV_DIST.POSTAL").value;
+this.rawValue = lv_first + "," + " " + lv_second + " " + "-" + " "+ lv_pincode;
+</script>
+                     </event>
+                     <calculate override="error"/>
+                     <value>
+                        <text maxChars="255"/>
+                     </value>
+                  </field>
+                  <field access="readOnly" h="8mm" name="Text4b" w="3.704722in" x="0mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para lineHeight="9pt" spaceAbove="2pt" spaceBelow="3pt" vAlign="middle"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <fill/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge presence="hidden"/>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <bind match="none"/>
+                     <event activity="initialize" name="event__initialize">
+                        <script contentType="application/x-javascript">var lv_first = xfa.resolveNode("$record.LV_DEALR.STREET").value;
+var lv_second = xfa.resolveNode("$record.LV_DEALR.CITY").value;
+var lv_postal = xfa.resolveNode("$record.LV_DEALR.POSTAL").value;
+this.rawValue = lv_first + "," + " " + lv_second + " " + "-" + " " + lv_postal;
+
+</script>
+                     </event>
+                  </field>
+                  <bind match="none"/>
+                  <?templateDesigner expand 1?></subform>
+               <subform layout="row" name="Row5" y="0mm">
+                  <assist role="TR"/>
+                  <field access="readOnly" h="8mm" name="Text5a" w="29.2864mm" x="0mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para vAlign="middle"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <fill>
+                           <color value="245,245,245"/>
+                        </fill>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <bind match="dataRef" ref="$.LV_DIST.PHONE"/>
+                  </field>
+                  <field access="readOnly" h="8mm" name="Text5b" w="3.704722in" x="0mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <font typeface="Arial">
+                        <fill>
+                           <color value="63,63,63"/>
+                        </fill>
+                     </font>
+                     <margin bottomInset="0.5mm" leftInset="1.4mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para vAlign="middle"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden" thickness="0.1778mm"/>
+                        <fill>
+                           <color value="245,245,245"/>
+                        </fill>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <edge thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </edge>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                        <corner thickness="0.3mm">
+                           <color value="128,128,128"/>
+                        </corner>
+                     </border>
+                     <bind match="dataRef" ref="$.LV_DEALR.PHONE"/>
+                  </field>
+                  <bind match="none"/>
+                  <?templateDesigner expand 1?></subform>
+               <keep intact="contentArea"/>
+               <?templateDesigner expand 0?></subform>
+            <?templateDesigner expand 0?></subform>
+         <subform layout="lr-tb" name="Body" w="282.999mm">
+            <bind match="none"/>
+            <draw h="6.733mm" name="Text2" w="282.999mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <?renderCache.bounds 799368 16252 0 0 1417 1417 0 0?></draw>
+            <subform columnWidths="25mm 0.893625in 22.62mm 30mm 100mm 1.023625in 26mm 30.69mm" layout="table" name="GT_BSID">
+               <subform id="overflowLeader_ID" layout="row" name="Header" x="0.01mm" y="0mm">
+                  <draw h="10.123mm" name="Cell1">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="93FD198F-F463-42C3-BB13-0F4AEF393B69">Doc. Date</text>
+                     </value>
+                     <font baselineShift="0pt" size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10.123mm" name="Cell2">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="F68E6D6D-10B4-4AE4-944D-72AA50C2242E">Doc. Type</text>
+                     </value>
+                     <font baselineShift="0pt" size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" lineHeight="12pt" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10.123mm" name="Cell3">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="1C45DB4D-87E6-49D2-A7EB-0BCB20D47544">DocumentNo</text>
+                     </value>
+                     <font baselineShift="0pt" size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" lineHeight="12pt" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10.123mm" name="Cell4">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="5DC2BED0-5208-43B5-83DC-B46D2638F678">Reference</text>
+                     </value>
+                     <font size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10.123mm" name="Cell5" w="8.696mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="CBCE7723-B9C8-4DBD-8154-242AE855C3A9">Remarks	</text>
+                     </value>
+                     <font size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw minH="10.123mm" name="Cell6" w="0.669292in">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="8F7B1AD6-A7F0-478E-ACA2-B64888A85D9A">Debit</text>
+                     </value>
+                     <font size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10.123mm" name="Cell7">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="D64A6F6A-14D3-4D5E-8ED4-C28DF93D8472">Credit</text>
+                     </value>
+                     <font size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10.123mm" name="Cell8">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="9AC698D1-6727-4E4B-9932-4558796C6049">Balance</text>
+                     </value>
+                     <font size="12pt" typeface="Arial">
+                        <fill>
+                           <color value="255,255,255"/>
+                        </fill>
+                     </font>
+                     <para hAlign="center" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge>
+                           <color value="153,153,153"/>
+                        </edge>
+                        <corner>
+                           <color value="153,153,153"/>
+                        </corner>
+                     </border>
+                     <keep intact="none"/>
+                  </draw>
+                  <assist role="TH"/>
+                  <occur max="-1"/>
+                  <bind match="none"/>
+                  <border>
+                     <edge presence="hidden"/>
+                     <fill>
+                        <color value="124,220,101"/>
+                     </fill>
+                  </border>
+                  <keep intact="none"/>
+                  <?templateDesigner expand 0?></subform>
+               <subformSet name="Group1">
+                  <subform layout="row" name="DATA" y="0mm">
+                     <field access="readOnly" h="8mm" name="BLDAT" w="62mm" x="124.003mm" y="9mm">
+                        <ui>
+                           <dateTimeEdit>
+                              <margin/>
+                           </dateTimeEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" spaceBelow="0pt" vAlign="middle"/>
+                        <value>
+                           <date/>
+                        </value>
+                        <bind match="dataRef" ref="$.BLDAT">
+                           <picture>date{YYYY-MM-DD}</picture>
+                        </bind>
+                        <desc>
+                           <text name="Schema Annotation">Document Date in Document</text>
+                        </desc>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <caption>
+                           <value>
+                              <text xliff:rid="FB4FC827-CFFC-4F40-949D-A022F4E4D362"/>
+                           </value>
+                           <para hAlign="center" spaceBelow="0pt" vAlign="middle"/>
+                        </caption>
+                        <format>
+                           <picture>date{DD-MMM-YY}</picture>
+                        </format>
+                     </field>
+                     <field h="8mm" name="BLART" w="62mm" x="62mm" y="27mm">
+                        <ui>
+                           <textEdit multiLine="1">
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="center" lineHeight="10pt" spaceBelow="0pt" vAlign="middle"/>
+                        <bind match="dataRef" ref="$.T_TTTEXT"/>
+                        <desc>
+                           <text name="Schema Annotation">Document Type</text>
+                        </desc>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                     </field>
+                     <field h="8mm" name="BELNR" w="62mm" x="124mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="center" lineHeight="10pt" spaceBelow="0pt" vAlign="middle"/>
+                        <value>
+                           <text maxChars="10"/>
+                        </value>
+                        <bind match="dataRef" ref="$.BELNR"/>
+                        <desc>
+                           <text name="Schema Annotation">Accounting Document Number</text>
+                        </desc>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                     </field>
+                     <field h="8mm" name="XBLNR" w="62mm" x="62mm" y="9mm">
+                        <ui>
+                           <textEdit>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="center" spaceBelow="0pt" vAlign="middle"/>
+                        <value>
+                           <text maxChars="16"/>
+                        </value>
+                        <bind match="dataRef" ref="$.XBLNR"/>
+                        <desc>
+                           <text name="Schema Annotation">Reference Document Number</text>
+                        </desc>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                     </field>
+                     <field access="readOnly" h="8mm" name="SGTXT" w="8.696mm" y="0mm">
+                        <ui>
+                           <textEdit multiLine="1">
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="center" lineHeight="10pt" spaceBelow="0pt" vAlign="middle"/>
+                        <bind match="dataRef" ref="$.SGTXT"/>
+                        <desc>
+                           <text name="Schema Annotation">Item Text</text>
+                        </desc>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                     </field>
+                     <field access="readOnly" h="8mm" name="DR_AMT" w="62mm" y="0mm">
+                        <ui>
+                           <numericEdit>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" spaceBelow="0pt" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <event activity="ready" name="event__form_ready" ref="$form">
+                           <script contentType="application/x-javascript">//var ws_debit =  xfa.resolveNode("ITT_FINAL.Footer1.Group1.DATA[*].DR_AMT[*]");
+
+</script>
+                        </event>
+                        <bind match="dataRef" ref="$.DR_AMT"/>
+                        <desc>
+                           <text name="Schema Annotation">Amount in local currency</text>
+                        </desc>
+                        <format>
+                           <picture>null{}|zero{}|num{zz,zzz,zz9.99}</picture>
+                        </format>
+                     </field>
+                     <field access="readOnly" h="8mm" name="CR_AMT" w="62mm" y="18mm">
+                        <ui>
+                           <numericEdit>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" spaceBelow="0pt" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <bind match="dataRef" ref="$.CR_AMT"/>
+                        <desc>
+                           <text name="Schema Annotation">Amount in local currency</text>
+                        </desc>
+                        <format>
+                           <picture>null{}|zero{}|num{zz,zzz,zz9.99}</picture>
+                        </format>
+                     </field>
+                     <field access="readOnly" h="8mm" name="BAL_AMT" w="62mm" y="0mm">
+                        <ui>
+                           <numericEdit>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" spaceBelow="0pt" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <bind match="dataRef" ref="$record.GT_BAL.DATA[*].BAL_AMT">
+                           <picture>num{z,zz,zz9.zz}</picture>
+                        </bind>
+                        <desc>
+                           <text name="Schema Annotation">Amount in local currency</text>
+                        </desc>
+                        <format>
+                           <picture>num{zz,zzz,zz9.99}</picture>
+                        </format>
+                        <calculate>
+                           <script contentType="application/x-javascript" runAt="both">//var DR_AMT = xfa.resolveNode("GT_BSID.Group1.DATA.DR_AMT");
+//var CR_AMT = xfa.resolveNode("GT_BSID.Group1.DATA.CR_AMT");
+//var lv_opn = xfa.resolveNode("GT_BSID.Open_balance.lv_opn");
+//var len ;
+//var bal_amnt ;
+
+//len = len + 1 ;
+if( len == 1 ){
+//bal_amnt = bal_amnt + lv_opn + xfa.resolveNode("GT_BSID.DATA.DR_AMT") - xfa.resolveNode("GT_BSID.DATA.CR_AMT");
+//}
+//else if( i &gt; 1 ){
+//bal_amnt = bal_amnt +  DR_AMT.rawValue + CR_AMT.rawValue ;
+//} 
+//xfa.host.messageBox("bal_amnt");
+//this.rawValue = bal_amnt;
+</script>
+                        </calculate>
+                        <event activity="initialize" name="event__initialize">
+                           <script contentType="application/x-javascript">//var balance = xfa.resolveNode("$record.GT_BAL.DATA[*].BAL_AMT");
+//this.rawValue = balance;
+</script>
+                        </event>
+                     </field>
+                     <assist role="TR"/>
+                     <occur max="-1"/>
+                     <bind match="dataRef" ref="$.DATA[*]"/>
+                     <keep intact="none"/>
+                     <?templateDesigner expand 0?></subform>
+                  <subform layout="row" name="Footer1" y="0mm">
+                     <draw colSpan="5" h="7.156mm" name="BLDAT" w="193.25mm" x="124mm" y="9mm">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html" xliff:rid="EB5759E4-75B3-4202-8F31-D951AF3C9EDA">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in"><span style="xfa-spacerun:yes">                                                                                                                                     </span><span style="font-size:8pt">TOTAL :<span style="xfa-spacerun:yes"> </span></span></p></body>
+                           </exData>
+                        </value>
+                        <font baselineShift="0pt" typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <desc>
+                           <text name="Schema Annotation">Document Date in Document</text>
+                        </desc>
+                     </draw>
+                     <field access="readOnly" h="7.156mm" name="Total_DR" w="52.653mm">
+                        <ui>
+                           <numericEdit>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <calculate>
+                           <script contentType="application/x-javascript">var fields = xfa.resolveNodes("GT_BSID.Group1.DATA[*].DR_AMT[*]"); 
+//var DR_Bal = xfa.resolveNode("GT_BSID.Group1.Open_balance.DR_BAL");
+var total = 0; 
+for (var i=0; i &lt;= fields.length-1; i++) { 
+total = total + fields.item(i).rawValue; 
+} 
+this.rawValue = total;
+//this.rawValue = total + DR_Bal.rawValue ;
+</script>
+                        </calculate>
+                        <bind match="none"/>
+                        <desc>
+                           <text name="Schema Annotation">Amount in local currency</text>
+                        </desc>
+                        <format>
+                           <picture>num{zz,zzz,zz9.99}</picture>
+                        </format>
+                        <event activity="ready" name="event__form_ready" ref="$form">
+                           <script contentType="application/x-javascript">//this.format.picture = "zz,zzz,zz9.99";
+</script>
+                        </event>
+                     </field>
+                     <field access="readOnly" h="7.156mm" name="Total_CR" w="27.253mm" y="18mm">
+                        <ui>
+                           <numericEdit>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <calculate>
+                           <script contentType="application/x-javascript">var field2 = xfa.resolveNodes("GT_BSID.Group1.DATA[*].CR_AMT[*]"); 
+//var CR_Bal =  xfa.resolveNode("GT_BSID.Group1.Open_balance.CR_BAL");
+var Total2 = 0;
+for( var i=0; i &lt;= field2.length-1; i++){
+Total2 = Total2 + field2.item(i).rawValue;
+}
+this.rawValue = Total2 ;
+//this.rawValue = Total2 + CR_Bal.rawValue ;
+
+
+
+</script>
+                        </calculate>
+                        <bind match="none"/>
+                        <desc>
+                           <text name="Schema Annotation">Amount in local currency</text>
+                        </desc>
+                        <format>
+                           <picture>num{zz,zzz,zz9.99}</picture>
+                        </format>
+                        <event activity="ready" name="event__form_ready" ref="$form">
+                           <script contentType="application/x-javascript">//this.format.picture = "zz,zzz,zz9.99";
+
+</script>
+                        </event>
+                     </field>
+                     <field access="readOnly" h="7.156mm" name="Balance_Tot" w="33.041mm" x="124mm" y="18mm">
+                        <ui>
+                           <numericEdit>
+                              <border presence="hidden"/>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <calculate>
+                           <script contentType="application/x-javascript">//var field3 = xfa.resolveNodes("GT_BSID.Group1.DATA[*].BAL_AMT[*]");
+//var Total3 = 0;
+//for( var i=0; i &lt;= field3.length-1; i++){
+//Total3 = Total3 + field3.item(i).rawValue;
+//}
+//this.rawValue = Total3;
+
+</script>
+                        </calculate>
+                        <event activity="click" name="event__click">
+                           <submit format="xml" target="mailto:" textEncoding="UTF-8"/>
+                        </event>
+                        <bind match="none"/>
+                        <desc>
+                           <text name="Schema Annotation">Posting Date in the Document</text>
+                        </desc>
+                        <event activity="ready" name="event__form_ready" ref="$form">
+                           <script contentType="application/x-javascript">//this.format.picture = "zz,zzz,zz9.99";
+
+</script>
+                        </event>
+                        <format>
+                           <picture>num{zz,zzz,zz9.99}</picture>
+                        </format>
+                     </field>
+                     <assist role="TR"/>
+                     <occur max="-1"/>
+                     <bind match="dataRef" ref="$.DATA[*]"/>
+                     <border>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden"/>
+                        <edge presence="hidden"/>
+                        <edge/>
+                        <edge presence="hidden"/>
+                        <corner presence="hidden"/>
+                        <corner/>
+                        <corner presence="hidden"/>
+                     </border>
+                     <?templateDesigner expand 0?></subform>
+                  <subform layout="row" name="Footer2" y="0mm">
+                     <draw colSpan="5" h="7.156mm" name="BLDAT" w="143mm" x="4.881889in" y="0.354333in">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="B94919F0-F078-4217-A2F4-202610158121">Closing Balance :</text>
+                        </value>
+                        <font baselineShift="0pt" typeface="Arial">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <edge>
+                              <color value="192,192,192"/>
+                           </edge>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                           <corner>
+                              <color value="192,192,192"/>
+                           </corner>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <desc>
+                           <text name="Schema Annotation">Document Date in Document</text>
+                        </desc>
+                     </draw>
+                     <field access="readOnly" colSpan="3" h="7.156mm" name="ClosingBal" w="88mm">
+                        <ui>
+                           <numericEdit>
+                              <margin/>
+                           </numericEdit>
+                        </ui>
+                        <font typeface="Arial" weight="bold">
+                           <fill>
+                              <color value="63,63,63"/>
+                           </fill>
+                        </font>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <border>
+                           <edge>
+                              <color value="192,192,192"/>
+                           </edge>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <edge>
+                              <color value="153,153,153"/>
+                           </edge>
+                           <corner>
+                              <color value="192,192,192"/>
+                           </corner>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                           <corner>
+                              <color value="153,153,153"/>
+                           </corner>
+                        </border>
+                        <bind match="none"/>
+                        <desc>
+                           <text name="Schema Annotation">Amount in local currency</text>
+                        </desc>
+                        <format>
+                           <picture>num{zz,zzz,zz9.99}</picture>
+                        </format>
+                        <event activity="ready" name="event__form_ready" ref="$form">
+                           <script contentType="application/x-javascript">//this.format.picture = "zz,zzz,zz9.99";
+var Debit = xfa.resolveNode("GT_BSID.Group1.Footer1.Total_DR");
+var Credit = xfa.resolveNode("GT_BSID.Group1.Footer1.Total_CR");
+var Close_Bal;
+
+Close_Bal = Debit.rawValue - Credit.rawValue ;
+this.rawValue = Close_Bal ;
+</script>
+                        </event>
+                     </field>
+                     <assist role="TR"/>
+                     <occur max="-1"/>
+                     <bind match="dataRef" ref="$.DATA[*]"/>
+                     <event activity="ready" name="event__form_ready" ref="$form">
+                        <script contentType="application/x-javascript">if( xfa.resolveNode("GT_BSID.Footer2.ClosingBal") != null ){
+var rowFillColor = "167,190,167";
+xfa.resolveNode("GT_BSID.Footer2").border.fill.color.value = rowFillColor ;
+//xfa.resolveNode("GT_BSID.Footer2").presence = "hidden";
+}
+</script>
+                     </event>
+                     <?templateDesigner expand 0?></subform>
+                  <?templateDesigner expand 1?></subformSet>
+               <occur min="0"/>
+               <bind match="dataRef" ref="$.GT_BSID"/>
+               <desc>
+                  <text name="Schema Annotation">table type for bsid total</text>
+               </desc>
+               <border>
+                  <edge>
+                     <color value="51,51,51"/>
+                  </edge>
+                  <corner>
+                     <color value="51,51,51"/>
+                  </corner>
+                  <fill/>
+               </border>
+               <overflow leader="Header"/>
+               <event activity="ready" name="event__form_ready" ref="$form">
+                  <script contentType="application/x-javascript">//var edgecolor = "255,102,102";
+//var edgeweight = "0.03cm";
+	//xfa.resolveNode("ITT_FINAL").border.edge.thickness = edgeweight;
+	//xfa.resolveNode("ITT_FINAL").border.edge[2].color.value =  edgecolor;	
+//xfa.resolveNode("ITT_FINAL").border.fill.color.value =  edgecolor;	
+</script>
+               </event>
+               <?templateDesigner expand 1?></subform>
+            <?templateDesigner expand 0?></subform>
+         <bind match="none"/>
+         <subform layout="tb" name="Footer" w="282.999mm">
+            <bind match="none"/>
+            <field access="readOnly" h="9mm" id="floatingField015724" name="l_total_amt" presence="hidden" w="62mm">
+               <ui>
+                  <numericEdit>
+                     <border presence="hidden"/>
+                     <margin/>
+                  </numericEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <format>
+                  <picture>num{zz,zzz,zz9.99}</picture>
+               </format>
+               <bind match="dataRef" ref="$.L_TOTAL_AMT"/>
+            </field>
+            <draw h="6.733mm" name="Text2" w="282.999mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <?renderCache.bounds 799368 16252 0 0 1417 1417 0 0?></draw>
+            <draw h="9.956mm" name="CR_bal_note" w="282.999mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="12pt" typeface="Arial">
+                  <fill>
+                     <color value="63,63,63"/>
+                  </fill>
+               </font>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="15A2C2D1-FC1B-4DE7-BB50-0BF748FE7639">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes">   </span>Available Credit Balance For Auto CN Calculation :<span style="xfa-spacerun:yes">   </span><span style="font-weight:bold"><span xfa:embed="#floatingField015724" xfa:embedMode="raw" xfa:embedType="uri"/></span></p></body>
+                  </exData>
+               </value>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <border>
+                  <edge presence="hidden"/>
+                  <fill>
+                     <color value="245,245,245"/>
+                  </fill>
+               </border>
+            </draw>
+            <draw h="9.956mm" name="DR_bal_note" w="282.999mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="12pt" typeface="Arial">
+                  <fill>
+                     <color value="63,63,63"/>
+                  </fill>
+               </font>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="49FBC8BB-B606-43FD-8498-F251A8B0BFCE">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in"><span style="xfa-spacerun:yes">   </span>Existing Unadjusted Debit Balance :<span style="xfa-spacerun:yes">                           </span><span style="font-weight:bold"><span xfa:embed="#floatingField006334" xfa:embedMode="raw" xfa:embedType="uri"/></span></p></body>
+                  </exData>
+               </value>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <border>
+                  <edge presence="hidden"/>
+                  <fill>
+                     <color value="245,245,245"/>
+                  </fill>
+               </border>
+            </draw>
+            <draw h="6.733mm" name="Text2" w="282.999mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <?renderCache.bounds 799368 16252 0 0 1417 1417 0 0?></draw>
+            <draw h="15.786mm" name="Text4" w="282.999mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <value>
+                  <exData contentType="text/html" xliff:rid="2CEF05EF-1945-4E5C-AC74-C419D297114E">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="font-size:12pt;letter-spacing:0in"><span style="xfa-spacerun:yes">   </span>Note: FIFO Payment Adjustment Only.<span style="xfa-spacerun:yes">     </span></p></body>
+                  </exData>
+               </value>
+               <font baselineShift="0pt" posture="italic" typeface="Arial" weight="bold">
+                  <fill>
+                     <color value="63,63,63"/>
+                  </fill>
+               </font>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <border>
+                  <edge>
+                     <color value="128,128,128"/>
+                  </edge>
+                  <corner thickness="0.176mm">
+                     <color value="128,128,128"/>
+                  </corner>
+               </border>
+            </draw>
+            <field access="readOnly" h="9mm" id="floatingField006334" name="l_debit_amt" presence="hidden" w="62mm">
+               <ui>
+                  <numericEdit>
+                     <border presence="hidden"/>
+                     <margin/>
+                  </numericEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <format>
+                  <picture>num{zz,zzz,zz9.99}</picture>
+               </format>
+               <bind match="dataRef" ref="$.L_DEBIT_TOTAL"/>
+            </field>
+            <?templateDesigner expand 1?></subform>
+         <?templateDesigner expand 1?></subform>
+      <proto>
+         <?templateDesigner expand 1?></proto>
+      <desc>
+         <text name="version">11.0.1.20140218.1.907162.903801</text>
+      </desc>
+      <?templateDesigner expand 1?>
+      <?renderCache.subset "Arial" 0 0 ISO-8859-1 4 168 42 000300060011001D002400250026002700280029002E002F00300031003200330035003600370038004400450046004700480049004A004C004D004E004F005000510052005300550056005700580059005B005C #.:ABCDEFKLMNOPRSTUabcdefgijklmnoprstuvxy?>
+      <?renderCache.subset "Arial" 1 0 ISO-8859-1 4 48 12 00420044004500470048004C004F005000520057005E0060_abdeilmot{}?>
+      <?renderCache.subset "Arial" 1 1 ISO-8859-1 4 136 34 000300090011001D002400260029002C00310032003300350036003700440046004700480049004C004D004F00500051005200550056005700580059005B005C005E0060 &.:ACFINOPRSTacdefijlmnorstuvxy{}?></subform>
+   <?templateDesigner DefaultPreviewDynamic 1?>
+   <?templateDesigner DefaultRunAt client?>
+   <?templateDesigner WidowOrphanControl 0?>
+   <?templateDesigner DefaultCaptionFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultValueFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultLanguage JavaScript?>
+   <?acrobat JavaScript strictScoping?>
+   <?templateDesigner Grid show:1, snap:1, units:1, color:ff8080, origin:(0,0), interval:(79375,79375), objsnap:0, guidesnap:0, pagecentersnap:0?>
+   <?templateDesigner SaveTaggedPDF 1?>
+   <?templateDesigner SavePDFWithEmbeddedFonts 1?>
+   <?templateDesigner FormTargetVersion 33?>
+   <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
+   <?templateDesigner Zoom 75?></template>
+<config xmlns="http://www.xfa.org/schema/xci/3.0/">
+   <agent name="designer">
+      <!--  [0..n]  -->
+      <destination>pdf</destination>
+      <pdf>
+         <!--  [0..n]  -->
+         <fontInfo/>
+      </pdf>
+      <common>
+         <template>
+            <base>http://DEVQASAPP.sheenlac.com:8011/sap/bc/fp/form/layout/</base>
+         </template>
+      </common>
+   </agent>
+   <present>
+      <!--  [0..n]  -->
+      <pdf>
+         <!--  [0..n]  -->
+         <version>1.7</version>
+         <adobeExtensionLevel>8</adobeExtensionLevel>
+      </pdf>
+      <common>
+         <data>
+            <xsl>
+               <uri/>
+            </xsl>
+            <outputXSL>
+               <uri/>
+            </outputXSL>
+         </data>
+      </common>
+      <xdp>
+         <packets>*</packets>
+      </xdp>
+   </present>
+</config>
+<connectionSet xmlns="http://www.xfa.org/schema/xfa-connection-set/2.8/">
+   <xsdConnection dataDescription="data" name="ZDMS_RETAILER_ACC_FORM">
+      <uri/>
+      <rootElement>data</rootElement>
+   </xsdConnection>
+</connectionSet>
+<xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
+   <xfa:data xfa:dataNode="dataGroup"/>
+   <dd:dataDescription xmlns:dd="http://ns.adobe.com/data-description/" dd:name="data">
+      <data>
+         <BAL_DATE/>
+         <LV_FRDT/>
+         <LV_TODT/>
+         <LV_OPN/>
+         <LV_BUK/>
+         <DISTRIBUTOR/>
+         <GT_KNA1 dd:minOccur="0">
+            <DATA dd:maxOccur="-1">
+               <KUNNR/>
+               <NAME1/>
+               <ADRNR/>
+               <LIFNR/>
+            </DATA>
+         </GT_KNA1>
+         <GT_BSID dd:minOccur="0">
+            <DATA dd:maxOccur="-1">
+               <KUNNR/>
+               <UMSKZ/>
+               <BELNR/>
+               <VBELN/>
+               <XBLNR/>
+               <BLDAT/>
+               <CR_AMT/>
+               <DR_AMT/>
+               <BUDAT/>
+               <NAME1/>
+               <BLART/>
+               <BSCHL/>
+               <SGTXT/>
+               <GSBER/>
+               <SHKZG/>
+               <BAL_AMT/>
+               <LTEXT/>
+               <BUKRS/>
+               <GJAHR/>
+               <SKNTO/>
+               <LV_COUNT/>
+               <STA/>
+               <T_TTTEXT/>
+            </DATA>
+         </GT_BSID>
+         <ITT_FINAL dd:minOccur="0">
+            <DATA dd:maxOccur="-1">
+               <KUNNR/>
+               <UMSKZ/>
+               <BELNR/>
+               <VBELN/>
+               <XBLNR/>
+               <BLDAT/>
+               <CR_AMT/>
+               <DR_AMT/>
+               <BUDAT/>
+               <NAME1/>
+               <BLART/>
+               <BSCHL/>
+               <SGTXT/>
+               <GSBER/>
+               <SHKZG/>
+               <BAL_AMT/>
+               <LTEXT/>
+               <BUKRS/>
+               <GJAHR/>
+               <SKNTO/>
+               <LV_COUNT/>
+               <STA/>
+               <T_TTTEXT/>
+            </DATA>
+         </ITT_FINAL>
+         <LV_DEALR>
+            <NAME/>
+            <STREET/>
+            <CITY/>
+            <PHONE/>
+            <POSTAL/>
+         </LV_DEALR>
+         <LV_DIST>
+            <NAME/>
+            <STREET/>
+            <CITY/>
+            <PHONE/>
+            <POSTAL/>
+         </LV_DIST>
+         <GT_BAL dd:minOccur="0">
+            <DATA dd:maxOccur="-1">
+               <BAL_AMT/>
+            </DATA>
+         </GT_BAL>
+         <L_TOTAL_AMT/>
+         <L_DEBIT_TOTAL/>
+         <L_FINAL_BAL/>
+      </data>
+   </dd:dataDescription>
+</xfa:datasets>
+<localeSet xmlns="http://www.xfa.org/schema/xfa-locale-set/2.7/">
+   <locale desc="English (India)" name="en_IN">
+      <calendarSymbols name="gregorian">
+         <monthNames>
+            <month>January</month>
+            <month>February</month>
+            <month>March</month>
+            <month>April</month>
+            <month>May</month>
+            <month>June</month>
+            <month>July</month>
+            <month>August</month>
+            <month>September</month>
+            <month>October</month>
+            <month>November</month>
+            <month>December</month>
+         </monthNames>
+         <monthNames abbr="1">
+            <month>Jan</month>
+            <month>Feb</month>
+            <month>Mar</month>
+            <month>Apr</month>
+            <month>May</month>
+            <month>Jun</month>
+            <month>Jul</month>
+            <month>Aug</month>
+            <month>Sep</month>
+            <month>Oct</month>
+            <month>Nov</month>
+            <month>Dec</month>
+         </monthNames>
+         <dayNames>
+            <day>Sunday</day>
+            <day>Monday</day>
+            <day>Tuesday</day>
+            <day>Wednesday</day>
+            <day>Thursday</day>
+            <day>Friday</day>
+            <day>Saturday</day>
+         </dayNames>
+         <dayNames abbr="1">
+            <day>Sun</day>
+            <day>Mon</day>
+            <day>Tue</day>
+            <day>Wed</day>
+            <day>Thu</day>
+            <day>Fri</day>
+            <day>Sat</day>
+         </dayNames>
+         <meridiemNames>
+            <meridiem>AM</meridiem>
+            <meridiem>PM</meridiem>
+         </meridiemNames>
+         <eraNames>
+            <era>BC</era>
+            <era>AD</era>
+         </eraNames>
+      </calendarSymbols>
+      <datePatterns>
+         <datePattern name="full">EEEE D MMMM YYYY</datePattern>
+         <datePattern name="long">D MMMM YYYY</datePattern>
+         <datePattern name="med">DD-MMM-YY</datePattern>
+         <datePattern name="short">DD/MM/YY</datePattern>
+      </datePatterns>
+      <timePatterns>
+         <timePattern name="full">h:MM:SS A Z</timePattern>
+         <timePattern name="long">h:MM:SS A Z</timePattern>
+         <timePattern name="med">h:MM:SS A</timePattern>
+         <timePattern name="short">h:MM A</timePattern>
+      </timePatterns>
+      <dateTimeSymbols>GyMdkHmsSEDFwWahKzZ</dateTimeSymbols>
+      <numberPatterns>
+         <numberPattern name="numeric">z,zz,zz9.zzz</numberPattern>
+         <numberPattern name="currency">$ z,zz,zz9.99</numberPattern>
+         <numberPattern name="percent">z,zz,zz9%</numberPattern>
+      </numberPatterns>
+      <numberSymbols>
+         <numberSymbol name="decimal">.</numberSymbol>
+         <numberSymbol name="grouping">,</numberSymbol>
+         <numberSymbol name="percent">%</numberSymbol>
+         <numberSymbol name="minus">-</numberSymbol>
+         <numberSymbol name="zero">0</numberSymbol>
+      </numberSymbols>
+      <currencySymbols>
+         <currencySymbol name="symbol">Rs.</currencySymbol>
+         <currencySymbol name="isoname">INR</currencySymbol>
+         <currencySymbol name="decimal">.</currencySymbol>
+      </currencySymbols>
+      <typefaces>
+         <typeface name="Myriad Pro"/>
+         <typeface name="Minion Pro"/>
+         <typeface name="Courier Std"/>
+         <typeface name="Adobe Pi Std"/>
+         <typeface name="Adobe Hebrew"/>
+         <typeface name="Adobe Arabic"/>
+         <typeface name="Adobe Thai"/>
+         <typeface name="Kozuka Gothic Pro-VI M"/>
+         <typeface name="Kozuka Mincho Pro-VI R"/>
+         <typeface name="Adobe Ming Std L"/>
+         <typeface name="Adobe Song Std L"/>
+         <typeface name="Adobe Myungjo Std M"/>
+         <typeface name="Adobe Devanagari"/>
+      </typefaces>
+   </locale>
+</localeSet>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.4-c005 78.150055, 2013/08/07-22:58:47        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:pdf="http://ns.adobe.com/pdf/1.3/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:desc="http://ns.adobe.com/xfa/promoted-desc/" rdf:about="">
+         <xmp:MetadataDate>2024-08-16T06:35:01Z</xmp:MetadataDate>
+         <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
+         <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
+         <xmpMM:DocumentID>uuid:0c40142e-23a1-4a04-b957-01dd6afb2500</xmpMM:DocumentID>
+         <desc:version rdf:parseType="Resource">
+            <rdf:value>11.0.1.20140218.1.907162.903801</rdf:value>
+            <desc:ref>/template/subform[1]</desc:ref>
+         </desc:version>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta></xdp:xdp>

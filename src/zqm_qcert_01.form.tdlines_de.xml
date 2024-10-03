@@ -1,0 +1,1781 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<abapGit version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TDLINES>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>ADDRESS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; EQ &apos;1 &apos;.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;TVKO-TXNAM_ADR&amp; OBJECT TEXT ID ADRS LANGUAGE &amp;VBDKL-SPRAS_VST&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ADDRESS DELIVERY PARAGRAPH AS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  TITLE    &amp;VBDKL-ANRED&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  NAME     &amp;VBDKL-NAME1&amp;, &amp;VBDKL-NAME2&amp;, &amp;VBDKL-NAME3&amp;, &amp;VBDKL-NAME4&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  STREET   &amp;VBDKL-STRAS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  POBOX    &amp;VBDKL-PFACH&amp; CODE &amp;VBDKL-PSTL2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  POSTCODE &amp;VBDKL-PSTLZ&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  CITY     &amp;VBDKL-ORT01&amp;, &amp;VBDKL-ORT02&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  REGION   &amp;VBDKL-REGIO&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  COUNTRY  &amp;VBDKL-LAND1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  FROMCOUNTRY &amp;VBDKL-SLAND&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDADDRESS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>FOOTER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;TVKO-TXNAM_FUS&amp; OBJECT TEXT ID ADRS LANGUAGE &amp;VBDKL-VST_SPRAS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;TVKO-TXNAM_KOP&amp; OBJECT TEXT ID ADRS LANGUAGE &amp;VBDKL-SPRAS_VST&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>INFO</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION WINDOW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;-0.5&apos; CH YORIGIN &apos;-0.25&apos; LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>SIZE WIDTH +0.4 CH HEIGHT +1 LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX FRAME 10 TW</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX HEIGHT &apos;1.7&apos; LN INTENSITY 20</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>TI</TDFORMAT>
+     <TDLINE>Qualitätsprüfzeugnis</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&lt;S&gt;Datum&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;DATE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&lt;S&gt;Bestellposition/Datum&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;VBDKL-BSTNK&amp;&amp;&apos; &apos;*VBDPL-POSEX&amp;&amp;&apos; / &apos;VBDKL-BSTDK&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&lt;S&gt;Lieferposition/Datum&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;VBDKL-VBELN&amp;&amp;&apos; &apos;*VBDPL-POSNR&amp;&amp;&apos; / &apos;VBDKL-LFDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&lt;S&gt;Auftragsposition/Datum&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;*VBDPL-VBELN_VAUF&amp;&amp;&apos; &apos;*VBDPL-POSNR_VAUF&amp;&amp;&apos; / &apos;*VBDPL-AUDAT_VAUF&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&lt;S&gt;Kundennummer&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;VBCO3-KUNDE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;S&gt;Herkunfts-/Ursprungs-/Bestimmungsland&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;VBDKL-ALAND&amp;&amp;&apos;/&apos;VBDKL-HERKL&amp;&amp;&apos;/&apos;VBDKL-LLAND&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>INFO2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&lt;S&gt;Lieferposition/Datum&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;VBDKL-VBELN&amp;&amp;&apos; &apos;*VBDPL-POSNR&amp;&amp;&apos;/&apos;VBDKL-LFDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>MAIN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Beispielformular für ein Qualitätszeugnis</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Die Textelemente und Fenster werden vom Programm RQCAAP00 aus</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>angesprochen.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Bei den einzelnen Textelementen ist jeweils vermerkt, welche Workareas</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>zur Verfügung stehen.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Für die Daten der Merkmale können Textelemente verwendet werden,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>die CHAR_xxxx lauten. Das Suffix xxxx dient dabei der Zuordnung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>zu Merkmalen in der Zeugnisvorlage.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Beispiel: Ein Merkmal in einer Zeugnisvorlage wird dem Textelement</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>0001 zugeordnet. Im Formular wird für dieses Merkmal das Textelement</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>CHAR_0001 prozessiert.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Die Folgezeile wird als beschreibender Kommentar für das Textelement</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>interpretiert und kann in der Zeugnisvorlage auf Merkmalsebene angezeigt</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>werden.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Einige Kennzeichen müssen im Formular abgefragt werden, wenn sie</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Bedeutung erlangen sollen:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Kennzeichen: Merkmalsausgabeformat (QCVM-KZAUSGFMT), falls es auf</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;05&apos; sitzt, d.h. &apos;Text zur Merkmalsbewertung&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             und ein individueller Text ausgegeben werden soll</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             Beispiel: Include-Text QM_QCERT_OUTPUT_FORMAT_TEXT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Kennzeichen: Zusatztext bei Ergebnis außerhalb der Vorgaben</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             (QCVM-KZOFFSPTX) mit den Möglichkeiten</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;&lt;&apos;  Wenn kleiner untere Grenze</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;&gt;&apos;  Wenn größer obere Grenze</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;1&apos;  Wenn außerhalb der Spezifikation</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;0&apos;  Kein Text</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             Beispiel: Include-Text QM_QCERT_OFF_SPEC_TEXT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Kennzeichen: Prüfmethode ausgeben (QCVM-KZMETHODE)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             mit den Möglichkeiten</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;01&apos; Kurztext</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos;02&apos; Langtext</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             &apos; &apos;  Nein</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>             Beispiel: Include-Text QM_QCERT_INSPECTION_METHOD</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>***************************</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>* Beginn der Textelemente *</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>***************************</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&lt;K&gt;Material: Unsere / Ihre Bezeichnung&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;*VBDPL-MATNR&amp; &amp;MAKT-MAKTX&amp; / &amp;*VBDPL-IDNKD&amp; &amp;KNMT-POSTX&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>WEIGHTS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;K&gt;Gewichte (Brutto/Netto) - Volumen&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>IF &amp;BATCH_SPLIT_ITEMS&amp; = &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Menge           &apos;*VBDPL-LFIMG&apos; &amp;*VBDPL-VRKME&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Bruttogewicht &apos;*VBDPL-BRGEW&apos; &amp;*VBDPL-GEWEI&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Nettogewicht  &apos;*VBDPL-NTGEW&apos; &amp;*VBDPL-GEWEI&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Volumen       &apos;*VBDPL-VOLUM&apos; &amp;*VBDPL-VOLEH&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Gesamtmenge   &apos;*VBDPL-KCMENG&apos; &amp;*VBDPL-MEINS&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Bruttogewicht &apos;*VBDPL-KCBRGEW&apos; &amp;*VBDPL-KCGEWEI&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Nettogewicht  &apos;*VBDPL-KCNTGEW&apos; &amp;*VBDPL-KCGEWEI&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&lt;PR&gt;&amp;&apos;Volumen       &apos;*VBDPL-KCVOLUM&apos; &amp;*VBDPL-KCVOLEH&amp;&apos;&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>HEADER_TEXT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Allgemeiner Text auf Kopfebene</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Folgende Workareas stehen hier zur Verfügung:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ITCPO (Druckparameter)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>KNMT  (Absprache aus Vertrieb mit Kunden-Material-Bezug)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>MAKT  (sprachabh. Materialkurztext)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>MARA  (Material)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>NAST  (Nachrichtensatz)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QCVK  (Zeugnisvorlage Kopf)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QVDM  (Steuerungsdaten QM im Vertrieb mit Kunden-Material-Bezug)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>SADR  (Adreßdaten Absender)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>TVKO  (Verkaufsorganisation)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>VBDKL (Lieferscheinview Kopf)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>*VBDPL (Lieferscheinview Position, ggf. für die übergeordnete Position)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Folgende Langtextschlüssel stehen zur Verfügung:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;KNMT_KEY&amp; für Langtext der Absprache (Kunden-Material-Bezug)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;QVDM_KEY&amp; für Langtext der Steuerung QM im SD (Kunden-Material-Bezug)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;QCVK_KEY&amp; für Langtext der verwendeten Zeugnisvorlage</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Beispiele:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Allgemeiner Standardtext.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &apos;QM_QCERT_GENERAL_TEXT&apos; OBJECT TEXT ID ST PARAGRAPH HT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Materialspezifischer Text, zum Beispiel Prüftext:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;MARA-MATNR(K)&amp; OBJECT MATERIAL ID PRUE PARAGRAPH HT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Text aus Absprachen (Kunden-Material-Ebene):</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;KNMT_KEY&amp; OBJECT KNMT ID 0001 PARAGRAPH HT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;QVDM_KEY&amp; OBJECT QVDM_MAT01 ID QVDM PARAGRAPH HT LANGUAGE &amp;QVDM-SPRAS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Lieferscheintext:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>INCLUDE &amp;VBDKL-TDNAME&amp; OBJECT VBBK ID 0001 PARAGRAPH HT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Langtext aus Zeugnisvorlage:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>INCLUDE &amp;QCVK_KEY&amp; OBJECT QCVK ID LTXT PARAGRAPH HT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>BATCH_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Überschrift für alle Chargen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei HEADER_TEXT.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>BATCH</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Daten der einzelnen Chargen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Folgende Workareas stehen hier zur Verfügung:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ITCPO (Druckparameter)                      (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>KNMT  (Absprache mit Kunden-Material-Bezug) (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>MAKT  (sprachabh. Materialkurztext)         (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>MARA  (Material)                            (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>MCHAR (Chargenstammsatz)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>NAST  (Nachrichtensatz)                     (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QCVK  (Zeugnisvorlage Kopf)                 (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QVDM  (Steuerungsdaten QM im Vertrieb mit Kunden-Material-Bezug)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>                                            (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>SADR  (Adreßdaten Absender)                 (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>TVKO  (Verkaufsorganisation)                (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>VBDKL (Lieferscheinview Kopf)               (wie bei HEADER_TEXT)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>VBDPL (Lieferscheinview Position, ggf. für einzelne Splitposition)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>PROTECT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&amp;&apos;&lt;K&gt;Charge &lt;/&gt;&apos;VBDPL-CHARG&amp; &amp;&apos;/ &lt;K&gt;Verfallsdatum &lt;/&gt;&apos;MCHAR-VFDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;&apos; / &lt;K&gt;Menge &lt;/&gt;&apos;VBDPL-LFIMG(C)&apos; &amp;VBDPL-VRKME&amp;&apos;&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>LOT_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Überschrift über Prüflos / Teillos</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei BATCH</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>LOT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Einzeldaten pro Prüflos / Teillos</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei BATCH</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>und zusätzlich:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QALS  (Prüflos)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QALT  (Teillos)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QAVE  (Verwendungsentscheid)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QMS_TS_MSOBJECT (Object der multiplen Spezifikation)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&amp;&apos;&lt;K&gt;Prüflos&lt;/&gt; &apos;QALS-PRUEFLOS(Z)&amp; &amp;&apos;&lt;K&gt;vom&lt;/&gt; &apos;QALS-ERSTELDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;&apos; / &lt;K&gt;Teillos&lt;/&gt; &apos;QALT-TEILLOS(Z)&amp; &amp;&apos;&lt;K&gt;vom&lt;/&gt; &apos;QALT-ERSTELDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QMS_TS_MSOBJECT-OBJECTNO&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&amp;QMS_TS_MSOBJECT-TYPTEXT&amp; : &amp;QMS_TS_MSOBJECT-OBJECTTEXT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>(&amp;QMS_TS_MSOBJECT-OBJECTNO&amp;)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARACT_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Überschrift über alle Merkmale</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei LOT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>UL</TDFORMAT>
+     <TDLINE>&amp;ULINE(71)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&lt;K&gt;    ,,,,       ,,    ,,Untere,,Obere</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>Merkmal,,,,Einheit,,Wert,,Grenze,,Grenze&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>UL</TDFORMAT>
+     <TDLINE>&amp;ULINE(71)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARACTCOL_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Überschrift über alle Merkmale bei spaltenweiser Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>CHARACT_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>UL</TDFORMAT>
+     <TDLINE>&amp;ULINE(71)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&lt;K&gt;Merkmal,,,,Grenzen,,Werte&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>UL</TDFORMAT>
+     <TDLINE>&amp;ULINE(71)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARACTCOL_NEWLINE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zeilenumbruch und Positionierung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Detaildaten zu den einzelnen Merkmalen (Textelemente CHARACT_FIRST,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>alle Textelemente CHAR_xxxx und Textelement CHARACT_LAST)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei LOT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>und zusätzlich:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QCSPEC  (Vorgabedaten)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QCRES   (Ergebnisdaten)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>QCTEXT  (Merkmalstext)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>sowie die Textsymbole für die Maßeinheit:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>UNIT_CHARACT für die sechstellige Maßeinheit</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>UNIT_CHARACT_10 für den zehnstelligen Kurztext</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>UNIT_CHARACT_30 für den dreißigstelligen Langtext</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>und der Langtextschlüssel TEXT_METHOD für die Prüfmethode</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARACT_FIRST</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Daten, die bei jedem Merkmal als erstes ausgegeben werden sollen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Definition eines lokalen Textsymbols für den Mittelwert eines Merkmals</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;MVALUE&amp; = &quot;&amp;QCRES-MVALUE&amp;&quot;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Überschreibe eventuell MVALUE (bei Text zur Merkmalsbewertung)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &apos;QM_QCERT_OUTPUT_FORMAT_TEXT&apos; OBJECT TEXT ID ST</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;G_NO_OF_VALUES&amp; GT &apos;         1&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;SINGLE_UNIT&amp; = &quot;&amp;QCRES-SERIALNR&amp;&quot;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>DEFINE &amp;SINGLE_UNIT&amp; = &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Beispiel:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>(Nur, falls Sie die elektronische</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zeugnisübertragung einsetzen)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wie berücksichtige ich ein Feld,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>das nicht auf Papier ausgegeben werden soll,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>für die elektronische Zeugnisübertragung?</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>IF &apos;1&apos; EQ &apos;2&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;&apos;Anzahl Fehler: &apos;&amp;QCRES-ANZFEHLER&amp;&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHAR_0001</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wert und zwei Grenzen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(18)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zeilenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,&amp;UNIT_CHARACT&amp;,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste externe Prüflingsnummer der Ergebniserfassung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;SINGLE_UNIT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste Prüfpunktbezeichnung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QAPPUSR-SWORT&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QAPPUSR-SWORT&amp; ,,&amp;QCRES-PPSORTKEY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Grenzen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QCSPEC-TOLERANZUN&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCSPEC-TOLERANZOB&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;QCSPEC-TOLERANZOB&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARCOL_0001</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wert und zwei Grenzen: Spaltenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCVME-VALUESORTNR&amp; LT &apos;0002&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erster Wert</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(9)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;QCSPEC-TOLERANZUN&amp; &amp;&apos;... &apos;QCSPEC-TOLERANZOB&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;UNIT_CHARACT&amp;,,,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Nur Wert (in gleicher Zeile)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHAR_0002</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Code-Kurztext</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(18)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,   - ,,&amp;QCRES-CODEKTXT1&amp;,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste externe Prüflingsnummer der Ergebniserfassung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCRES-SERIALNR&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;SINGLE_UNIT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste Prüfpunktbezeichnung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;QAPPUSR-SWORT&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QAPPUSR-SWORT&amp; ,,&amp;QCRES-PPSORTKEY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Keine Grenzen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>   - ,,   -</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARCOL_0002</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Code-Kurztext: Spaltenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCVME-VALUESORTNR&amp; LT &apos;0002&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erster Wert</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(9)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,   - ,,,,&amp;QCRES-CODEKTXT1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;QCRES-CODEKTXT1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHAR_0003</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wert und untere Grenze</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(18)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,&amp;UNIT_CHARACT&amp;,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste externe Prüflingsnummer der Ergebniserfassung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;SINGLE_UNIT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste Prüfpunktbezeichnung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QAPPUSR-SWORT&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QAPPUSR-SWORT&amp; ,,&amp;QCRES-PPSORTKEY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Grenzen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCSPEC-TOLERANZUN&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QCSPEC-TOLERANZUN&amp;,,   -</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARCOL_0003</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wert und untere Grenze: Spaltenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCVME-VALUESORTNR&amp; LT &apos;0002&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erster Wert</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(9)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;QCSPEC-TOLERANZUN&apos; ...&apos;&amp; &amp;UNIT_CHARACT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHAR_0004</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wert und obere Grenze</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(18)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,&amp;UNIT_CHARACT&amp;,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste externe Prüflingsnummer der Ergebniserfassung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;SINGLE_UNIT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste Prüfpunktbezeichnung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QAPPUSR-SWORT&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QAPPUSR-SWORT&amp; ,,&amp;QCRES-PPSORTKEY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Grenzen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCSPEC-TOLERANZOB&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>   -,,&amp;QCSPEC-TOLERANZOB&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARCOL_0004</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Wert und obere Grenze: Spaltenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCVME-VALUESORTNR&amp; LT &apos;0002&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erster Wert</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(9)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;&apos;... &apos;QCSPEC-TOLERANZOB&amp; &amp;UNIT_CHARACT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;MVALUE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHAR_0005</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Angenommen oder rückgewiesen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(18)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,   - ,,&amp;QCRES-MBEWTEXT&amp;,,   - ,,   -</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste externe Prüflingsnummer der Ergebniserfassung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCRES-SERIALNR&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;SINGLE_UNIT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erste Prüfpunktbezeichnung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;QAPPUSR-SWORT&amp; NE &amp;SPACE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;QAPPUSR-SWORT&amp; ,,&amp;QCRES-PPSORTKEY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>   - ,,   -</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARCOL_0005</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Angenommen oder rückgewiesen: Spaltenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCVME-VALUESORTNR&amp; LT &apos;0002&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erster Wert</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(9)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,   - ,,,,&amp;QCRES-MBEWTEXT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;QCRES-MBEWTEXT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHAR_0006</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Textbewertung allgemeines Merkmal</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(18)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,   - ,,&amp;QCRES-ATWTB&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARCOL_0006</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Textbewertung allgemeines Merkmal: Spaltenweise Darstellung</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;QCVME-VALUESORTNR&amp; LT &apos;0002&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Erster Wert</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>&amp;QCTEXT-SHORT_TEXT(9)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,   - ,,,,&amp;QCRES-ATWTB&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;QCRES-ATWTB&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>INSP_POINT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Weitere Prüfpunkte</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>T1</TDFORMAT>
+     <TDLINE>,,,,,,,,&amp;QAPPUSR-SWORT&amp;,,&amp;QCRES-PPSORTKEY&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARACT_LAST</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Daten, die bei jedem Merkmal als letztes ausgegeben werden sollen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zusatztext, falls Wert außerhalb der Toleranz</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &apos;QM_QCERT_OFF_SPEC_TEXT&apos; OBJECT TEXT ID ST PARAGRAPH IT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Prüfmethode</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &apos;QM_QCERT_INSPECTION_METHOD&apos; OBJECT TEXT ID ST PARAGRAPH IT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Langtext drucken?</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;METHOD_LONGTEXT&amp; = &apos;X&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;TEXT_METHOD&amp; OBJECT QPMETHODE ID QMTT LANGUAGE &amp;NAST-SPRAS&amp; PARAGRAPH IT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>CHARACT_SUM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zusammenfassung für alle Merkmale</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei CHARACT_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>UL</TDFORMAT>
+     <TDLINE>&amp;ULINE(71)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>LOT_SUM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zusammenfassung für Prüflos / Teillos</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei LOT_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDPROTECT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>BATCH_SUM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Zusammenfassung für alle Chargen</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei BATCH_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>END_OF_DOCUMENT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Ende des Dokuments</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Hier stehen die gleichen Workareas zur Verfügung wie bei BATCH_HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>CN</TDFORMAT>
+     <TDLINE>*** Ende ***</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PAGE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>&lt;S&gt;Seite&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;PAGE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Sie können die Seitenzahl auch als &quot;x von y&quot; ausgeben:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;PAGE&amp; / &amp;SAPSCRIPT-FORMPAGES&amp;</TDLINE>
+    </TLINE>
+   </TDLINES>
+  </asx:values>
+ </asx:abap>
+</abapGit>

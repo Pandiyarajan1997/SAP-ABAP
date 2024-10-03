@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZMM_MAT</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Message class for material master Safety Stock</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>DATA FOUND</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>NO DATA FOUND</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Data Updated Successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Fill Any One Of The Input Field</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Give Valid Input or Use F4</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>No Changes</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Enter Only Numeric and Positive Values</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Enter Valid Input</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Select File Path</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_MAT</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Excel File Not uploaded</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

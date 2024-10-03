@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TOBJ" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJH>
+    <OBJECTNAME>ZSM_PRD</OBJECTNAME>
+    <OBJECTTYPE>S</OBJECTTYPE>
+    <CLIDEP>X</CLIDEP>
+    <OBJCATEG>APPL</OBJCATEG>
+    <IMPORTABLE>3</IMPORTABLE>
+   </OBJH>
+   <OBJT>
+    <LANGUAGE>E</LANGUAGE>
+    <OBJECTNAME>ZSM_PRD</OBJECTNAME>
+    <OBJECTTYPE>S</OBJECTTYPE>
+    <DDTEXT>SM Market Share Upadation</DDTEXT>
+   </OBJT>
+   <OBJS>
+    <OBJS>
+     <OBJECTNAME>ZSM_PRD</OBJECTNAME>
+     <OBJECTTYPE>S</OBJECTTYPE>
+     <TABNAME>ZSM_PRD</TABNAME>
+     <DDIC>X</DDIC>
+     <PRIM_TABLE>X</PRIM_TABLE>
+    </OBJS>
+   </OBJS>
+   <TOBJ>
+    <TDDAT>
+     <TABNAME>ZSM_PRD</TABNAME>
+     <CCLASS>&amp;NC&amp;</CCLASS>
+    </TDDAT>
+    <TVDIR>
+     <TABNAME>ZSM_PRD</TABNAME>
+     <AREA>ZSM_PRD</AREA>
+     <TYPE>1</TYPE>
+     <LISTE>1212</LISTE>
+     <BASTAB>X</BASTAB>
+     <FLAG>X</FLAG>
+    </TVDIR>
+    <TVIMF>
+     <TVIMF>
+      <TABNAME>ZSM_PRD</TABNAME>
+      <EVENT>01</EVENT>
+      <FORMNAME>ZCHECK</FORMNAME>
+     </TVIMF>
+     <TVIMF>
+      <TABNAME>ZSM_PRD</TABNAME>
+      <EVENT>05</EVENT>
+      <FORMNAME>ZCREATE</FORMNAME>
+     </TVIMF>
+    </TVIMF>
+   </TOBJ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

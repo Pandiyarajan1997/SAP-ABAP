@@ -1,0 +1,3 @@
+FUNCTION-POOL ZPP_PROCORD_BATCHCOST.        "MESSAGE-ID ..
+
+* INCLUDE LZPP_PROCORD_BATCHCOSTD...         " Local class definition

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SICF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <URL>/sap/ZAPI_SERVICE/ZRF_CALLB_PYMNT/</URL>
+   <ICFSERVICE>
+    <ICF_NAME>ZRF_CALLB_PYMNT</ICF_NAME>
+    <ALIASLOGIN>X</ALIASLOGIN>
+    <HTTPCDE500>2</HTTPCDE500>
+    <HTTPCDE401>2</HTTPCDE401>
+    <HTTPCDELPAG>2</HTTPCDELPAG>
+    <HTTPCDENFPAG>2</HTTPCDENFPAG>
+    <ORIG_NAME>ZRF_CALLB_PYMNT</ORIG_NAME>
+   </ICFSERVICE>
+   <ICFDOCU>
+    <ICF_NAME>ZRF_CALLB_PYMNT</ICF_NAME>
+    <ICF_LANGU>E</ICF_LANGU>
+    <ICF_DOCU>RUPIFI CAllback Payment API                                           RUPIFI CAllback Payment                                               RUPIFI CAllback Payment</ICF_DOCU>
+   </ICFDOCU>
+   <ICFHANDLER_TABLE>
+    <ICFHANDLER>
+     <ICF_NAME>ZRF_CALLB_PYMNT</ICF_NAME>
+     <ICFORDER>01</ICFORDER>
+     <ICFTYP>A</ICFTYP>
+     <ICFHANDLER>ZCL_RF_CALLBACK_PAYMENT_API</ICFHANDLER>
+    </ICFHANDLER>
+   </ICFHANDLER_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

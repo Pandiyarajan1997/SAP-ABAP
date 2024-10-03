@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZMEINS</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>MEINS</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>25</HEADLEN>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>scheme unit</DDTEXT>
+    <REPTEXT>Scheme UOM</REPTEXT>
+    <SCRTEXT_M>Scheme Unit</SCRTEXT_M>
+    <SCRTEXT_L>Scheme Unit</SCRTEXT_L>
+    <APPLCLASS>MG</APPLCLASS>
+    <DTELMASTER>E</DTELMASTER>
+    <DEFFDNAME>BASE_UOM</DEFFDNAME>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Basismengeneinheit</DDTEXT>
+     <REPTEXT>BME</REPTEXT>
+     <SCRTEXT_M>Basis-ME</SCRTEXT_M>
+     <SCRTEXT_L>Basismengeneinheit</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

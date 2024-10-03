@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZDEL_HIDE_ME22N</SCVARIANT>
+     <PROGNAME>SAPLMEGUI</PROGNAME>
+     <DYNPRO>1211</DYNPRO>
+     <VERSION>1</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZDEL_HIDE_ME22N</SCVARIANT>
+      <SCVTEXT>ZDEL_HIDE_ME22N_FOR ALL</SCVTEXT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZDEL_HIDE_ME22N</SCVARIANT>
+      <FIELDNAME>DELETE</FIELDNAME>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

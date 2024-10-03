@@ -1,0 +1,748 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZRBDMATCC_R</NAME>
+    <SUBC>1</SUBC>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <DYNPROS>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0301</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier Materials</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0301</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER0</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_301.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pai_301.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0501</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier Plants</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0501</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER1</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_501.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pai_501.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0502</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier Storage Locations</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0502</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER2</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_502.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pai_502.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0503</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier SD Data</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0503</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER3</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pbo_503.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pai_503.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0504</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier Warehouse Numbers</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0504</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER4</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pbo_504.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pai_504.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0505</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier Storage Types</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0505</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER5</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pbo_505.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pai_505.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZRBDMATCC_R</PROGRAM>
+      <SCREEN>0506</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Material Master Copier Valuation Data</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0506</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>ALV_CONTAINER6</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>013</C_LINE_MIN>
+       <C_COLN_MIN>060</C_COLN_MIN>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pbo_506.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE pai_506.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+   </DYNPROS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Materials</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>Plants</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>003</KEY>
+     <ENTRY>Storage Locations</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>004</KEY>
+     <ENTRY>SD Data</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>005</KEY>
+     <ENTRY>Warehouse Numbers</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>006</KEY>
+     <ENTRY>Storage Types</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>007</KEY>
+     <ENTRY>Valuation Areas</ENTRY>
+     <LENGTH>30</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>008</KEY>
+     <ENTRY>Plant</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>009</KEY>
+     <ENTRY>Storage Location</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>010</KEY>
+     <ENTRY>Sales Organization</ENTRY>
+     <LENGTH>40</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>011</KEY>
+     <ENTRY>Distribution Channel</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>012</KEY>
+     <ENTRY>Warehouse number</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>013</KEY>
+     <ENTRY>Storage Type</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>014</KEY>
+     <ENTRY>Valuation Area</ENTRY>
+     <LENGTH>30</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>015</KEY>
+     <ENTRY>Material Number</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>016</KEY>
+     <ENTRY>Short Text</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>017</KEY>
+     <ENTRY>Source Plant</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>018</KEY>
+     <ENTRY>Target Plant</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>019</KEY>
+     <ENTRY>Source Storage Location</ENTRY>
+     <LENGTH>26</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>020</KEY>
+     <ENTRY>Target Storage Location</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>021</KEY>
+     <ENTRY>Source Sales Organization</ENTRY>
+     <LENGTH>30</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>022</KEY>
+     <ENTRY>Source Distribution Channel</ENTRY>
+     <LENGTH>34</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>023</KEY>
+     <ENTRY>Target Sales Organization</ENTRY>
+     <LENGTH>48</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>024</KEY>
+     <ENTRY>Target Distribution Channel</ENTRY>
+     <LENGTH>32</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>025</KEY>
+     <ENTRY>Source Warehouse Number</ENTRY>
+     <LENGTH>32</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>026</KEY>
+     <ENTRY>Target Warehouse Number</ENTRY>
+     <LENGTH>30</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>027</KEY>
+     <ENTRY>Source Storage Type</ENTRY>
+     <LENGTH>26</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>028</KEY>
+     <ENTRY>Target Storage Type</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>029</KEY>
+     <ENTRY>Source Valuation Area</ENTRY>
+     <LENGTH>40</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>030</KEY>
+     <ENTRY>Target Valuation Area</ENTRY>
+     <LENGTH>38</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>090</KEY>
+     <ENTRY>Data to Be Copied</ENTRY>
+     <LENGTH>42</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>094</KEY>
+     <ENTRY>Filter Settings</ENTRY>
+     <LENGTH>38</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>096</KEY>
+     <ENTRY>(&amp; of &amp;) Material Is Posted</ENTRY>
+     <LENGTH>68</LENGTH>
+    </item>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Copy Material</ENTRY>
+     <LENGTH>70</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MARA1</KEY>
+     <ENTRY>Basic Data</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MARC1</KEY>
+     <ENTRY>Plant Data</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MARD1</KEY>
+     <ENTRY>Storage Location Data</ENTRY>
+     <LENGTH>29</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MATNR</KEY>
+     <ENTRY>Reference Material</ENTRY>
+     <LENGTH>26</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MBEW1</KEY>
+     <ENTRY>Valuation data</ENTRY>
+     <LENGTH>23</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MLGN1</KEY>
+     <ENTRY>Warehouse Number Data</ENTRY>
+     <LENGTH>29</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MLGT1</KEY>
+     <ENTRY>Storage Type Data</ENTRY>
+     <LENGTH>25</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MVKE1</KEY>
+     <ENTRY>SD Data</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_NOCHAN</KEY>
+     <ENTRY>Do Not Change Existing Data</ENTRY>
+     <LENGTH>37</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_NUMMAT</KEY>
+     <ENTRY>Number of New Materials</ENTRY>
+     <LENGTH>31</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_TABLE</KEY>
+     <ENTRY>Apply User Setting</ENTRY>
+     <LENGTH>38</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_TEST</KEY>
+     <ENTRY>Test Run</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_BWKEY</KEY>
+     <ENTRY>Valuation Area</ENTRY>
+     <LENGTH>23</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_LGNUM</KEY>
+     <ENTRY>Warehouse number</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_LGORT</KEY>
+     <ENTRY>Storage Location</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_LGTYP</KEY>
+     <ENTRY>Storage Type</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_VKORG</KEY>
+     <ENTRY>Sales Organization</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_VTWEG</KEY>
+     <ENTRY>Distribution Channel</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_WERKS</KEY>
+     <ENTRY>Plant</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+   </TPOOL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

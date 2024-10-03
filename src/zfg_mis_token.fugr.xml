@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for MIS Token</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_MIS_TOKENTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_MIS_TOKEN</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_BEARER_TOKEN_MIS</FUNCNAME>
+     <SHORT_TEXT>Function Module to get MIS Bearer Token</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>USERNAME</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>SYST_UNAME</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PASSWORD</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR50</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>BEARER_TOKEN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>MSG</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>MAINTAIN_URL_LINK</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>INPUT_ERROR</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>USERNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Personnel Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PASSWORD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Comment</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BEARER_TOKEN</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MAINTAIN_URL_LINK</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Maintain api url in TVARVC table</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INPUT_ERROR</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Check input</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

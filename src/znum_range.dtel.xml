@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZNUM_RANGE</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>NUM6</DOMNAME>
+    <HEADLEN>09</HEADLEN>
+    <SCRLEN1>09</SCRLEN1>
+    <SCRLEN2>09</SCRLEN2>
+    <SCRLEN3>09</SCRLEN3>
+    <DDTEXT>distributor number range</DDTEXT>
+    <REPTEXT>Num Range</REPTEXT>
+    <SCRTEXT_S>Num Range</SCRTEXT_S>
+    <SCRTEXT_M>Num Range</SCRTEXT_M>
+    <SCRTEXT_L>Num Range</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

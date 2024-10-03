@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SHLP" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD30V>
+    <SHLPNAME>ZSH_ZTRIP_REP_TRN</SHLPNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DDTEXT>Search help for Trip sheet numbers</DDTEXT>
+    <ISSIMPLE>X</ISSIMPLE>
+    <SELMETHOD>ZFREIGHT_HEADER</SELMETHOD>
+    <SELMTYPE>T</SELMTYPE>
+    <DIALOGTYPE>D</DIALOGTYPE>
+   </DD30V>
+   <DD32P_TABLE>
+    <DD32P>
+     <SHLPNAME>ZSH_ZTRIP_REP_TRN</SHLPNAME>
+     <FIELDNAME>TRIP_NO</FIELDNAME>
+     <FLPOSITION>0001</FLPOSITION>
+     <ROLLNAME>ZTRIP</ROLLNAME>
+     <SHLPINPUT>X</SHLPINPUT>
+     <SHLPOUTPUT>X</SHLPOUTPUT>
+     <SHLPSELPOS>01</SHLPSELPOS>
+     <SHLPLISPOS>01</SHLPLISPOS>
+    </DD32P>
+   </DD32P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZMM_POERROR</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Error Message for Custom Purchase Order Creation</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>Incorrect Plant &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Incorrect Material Number &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Material &amp; is not Extended in Plant &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Incorrect Supplying Plant &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Incorrect Vendor Number &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Only I or E is Allowed</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Supplying Plant is Mandatory</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Vendor Code is Not Allowed for Identification &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Vendor Code is Mandatory</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Supplying Plant is Not Allowed for Identification &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMM_POERROR</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Deletion is Not Allowed for this table</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

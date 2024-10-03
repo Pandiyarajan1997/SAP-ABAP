@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Request Body for Einvoice Json Format</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZJSON_DMSF01</SOBJ_NAME>
+    <SOBJ_NAME>LZJSON_DMSF02</SOBJ_NAME>
+    <SOBJ_NAME>LZJSON_DMSF03</SOBJ_NAME>
+    <SOBJ_NAME>LZJSON_DMSTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZJSON_DMS</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZSD_FM_IRN_CREATE_DMS</FUNCNAME>
+     <SHORT_TEXT>IRN Creation</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_VBELN</PARAMETER>
+       <TYP>VBELN_VF</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EINV_OUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZST_IRN_OUT</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EWAY_OUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IG_EWAYBILL</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>ERROR_MSG</PARAMETER>
+       <TYP>BAPIRET2_T</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_VBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Billing Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EINV_OUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Output Structure of IRN Creation Einvoice &amp; Eway BillNo</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EWAY_OUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Link E-Way Bill to Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ERROR_MSG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return parameter table</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZSD_IRN_JSON_PAYLOAD_DMS</FUNCNAME>
+     <SHORT_TEXT>Request Body Conv. for JSON E-Invoice IRN Creation</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>EI_IN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZST_IRN_HDR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>IV_PAYLOAD</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>RESPONSE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EINV_OUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZST_IRN_OUT</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EWAY_OUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IG_EWAYBILL</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>GV_MSG</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>C</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>TT_ITEMDTLS</PARAMETER>
+       <TYP>ZST_LT_IRN_ITEM_JSON</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>EI_IN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure IRN Json details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_PAYLOAD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Payload Json</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RESPONSE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Response Json</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EINV_OUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Output Structure of IRN Creation Einvoice &amp; Eway BillNo</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EWAY_OUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Link E-Way Bill to Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GV_MSG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TT_ITEMDTLS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Line Type for Item details Einvoice Json IRN</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

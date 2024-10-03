@@ -1,0 +1,3 @@
+FUNCTION-POOL ZGET_DATA_ORDER_INVOCE.       "MESSAGE-ID ..
+
+* INCLUDE LZGET_DATA_ORDER_INVOCED...        " Local class definition

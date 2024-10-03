@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group For Sales Pro C.N</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZBAPI_SKU_CN_FC_SPRO</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_CN_RETURN_SPRO</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>SAP CN data return to SPRO</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>ZCN_RETURNWORK-BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_GJAHR</PARAMETER>
+       <TYP>ZCN_RETURNWORK-GJAHR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VERTN</PARAMETER>
+       <TYP>ZCN_RETURNWORK-VERTN</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_FINAL</PARAMETER>
+       <TYP>ZCN_TABLE</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_GJAHR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VERTN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Contract Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_FINAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>cn return</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

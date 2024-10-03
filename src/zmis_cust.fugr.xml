@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for MIS BAPI</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZMIS_CUSTTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZMIS_CUST</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZMIS_CUST_STATUS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>customer status for MIS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KUNNR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MIS</PARAMETER>
+       <DBSTRUCT>ZSTRUC_MIS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MIS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for MIS cust status</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

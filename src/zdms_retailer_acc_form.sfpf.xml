@@ -1,0 +1,1853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SFPF" serializer_version="v1.0.0">
+ <asx:abap version="1.0" xmlns:asx="http://www.sap.com/abapxml">
+  <asx:values>
+   <VERSION>1</VERSION>
+   <TYPE/>
+   <INTERFACE>ZICUST_BAL_LEDGER</INTERFACE>
+   <OFFLINEHANDLER/>
+   <DATAPROVIDER/>
+   <FRTYPE/>
+   <CNTSET/>
+   <CONTEXT href="#o2"/>
+   <CONTEXTT>
+    <FPCONTEXTT>
+     <NAME/>
+     <STATE/>
+     <LANGUAGE>E</LANGUAGE>
+     <ID/>
+     <TEXT>DMS Retailer Account Statement Form</TEXT>
+    </FPCONTEXTT>
+   </CONTEXTT>
+   <LAYOUT href="#o1"/>
+   <LAYOUTT>
+    <FPLAYOUTT>
+     <NAME/>
+     <STATE/>
+     <LANGUAGE>E</LANGUAGE>
+     <ID/>
+     <DIRTY/>
+     <LAYOUT/>
+     <LAYOUTM/>
+    </FPLAYOUTT>
+   </LAYOUTT>
+  </asx:values>
+  <asx:heap xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:abap="http://www.sap.com/abapxml/types/built-in" xmlns:cls="http://www.sap.com/abapxml/classes/global" xmlns:dic="http://www.sap.com/abapxml/types/dictionary">
+   <cls:CL_FP_LAYOUT id="o1">
+    <CL_FP_LAYOUT classVersion="1">
+     <TRANSLATION_TYPE/>
+     <CACHE_INFO/>
+     <LAYOUT_TYPE>S</LAYOUT_TYPE>
+     <FORM_TECH/>
+    </CL_FP_LAYOUT>
+   </cls:CL_FP_LAYOUT>
+   <cls:CL_FP_CONTEXT id="o2">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6A9342F035EB0</ID>
+     <NAME>CONTEXT</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION/>
+     <PARENT/>
+     <SUCCESSOR/>
+     <CHILD href="#o3"/>
+    </CL_FP_NODE>
+    <CL_FP_CONTEXT classVersion="1"/>
+   </cls:CL_FP_CONTEXT>
+   <cls:CL_FP_DATA id="o3">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6AAE3CCE63EC4</ID>
+     <NAME>BAL_DATE</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o166"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o4"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>BAL_DATE</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o4">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED89BF12</ID>
+     <NAME>LV_FRDT</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o165"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o5"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_FRDT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o5">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8A1F12</ID>
+     <NAME>LV_TODT</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o164"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o6"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_TODT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o6">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8A7F12</ID>
+     <NAME>LV_OPN</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o163"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o7"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_OPN</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o7">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8ADF12</ID>
+     <NAME>LV_BUK</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o162"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o8"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_BUK</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o8">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8B3F12</ID>
+     <NAME>DISTRIBUTOR</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o161"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o9"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>DISTRIBUTOR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_LOOP id="o9">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8B9F12</ID>
+     <NAME>GT_KNA1</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o160"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o21"/>
+     <CHILD href="#o11"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP classVersion="1">
+     <TABLE_NAME>GT_KNA1</TABLE_NAME>
+     <LOOP_INTO>X</LOOP_INTO>
+     <WORK_AREA>GT_KNA1</WORK_AREA>
+     <FIRST_LINE>0000000000</FIRST_LINE>
+     <LAST_LINE>0000000000</LAST_LINE>
+     <WHERE_CONDITION href="#o10"/>
+     <SORTED/>
+     <CONTROL_LEVEL/>
+    </CL_FP_LOOP>
+   </cls:CL_FP_LOOP>
+   <cls:CL_FP_CONDITION id="o10">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o9"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP_DATA id="o11">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8BBF12</ID>
+     <NAME>DATA</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o20"/>
+     <PARENT href="#o9"/>
+     <SUCCESSOR/>
+     <CHILD href="#o12"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP_DATA classVersion="1"/>
+   </cls:CL_FP_LOOP_DATA>
+   <cls:CL_FP_DATA id="o12">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8BDF12</ID>
+     <NAME>KUNNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o19"/>
+     <PARENT href="#o11"/>
+     <SUCCESSOR href="#o13"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_KNA1-KUNNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o13">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8BFF12</ID>
+     <NAME>NAME1</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o18"/>
+     <PARENT href="#o11"/>
+     <SUCCESSOR href="#o14"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_KNA1-NAME1</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o14">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8C1F12</ID>
+     <NAME>ADRNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o17"/>
+     <PARENT href="#o11"/>
+     <SUCCESSOR href="#o15"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_KNA1-ADRNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o15">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8C3F12</ID>
+     <NAME>LIFNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o16"/>
+     <PARENT href="#o11"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_KNA1-LIFNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o16">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o15"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o17">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o14"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o18">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o13"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o19">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o12"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o20">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o11"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP id="o21">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8C9F12</ID>
+     <NAME>GT_BSID</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o159"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o71"/>
+     <CHILD href="#o23"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP classVersion="1">
+     <TABLE_NAME>GT_BSID</TABLE_NAME>
+     <LOOP_INTO>X</LOOP_INTO>
+     <WORK_AREA>GT_BSID</WORK_AREA>
+     <FIRST_LINE>0000000000</FIRST_LINE>
+     <LAST_LINE>0000000000</LAST_LINE>
+     <WHERE_CONDITION href="#o22"/>
+     <SORTED/>
+     <CONTROL_LEVEL/>
+    </CL_FP_LOOP>
+   </cls:CL_FP_LOOP>
+   <cls:CL_FP_CONDITION id="o22">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o21"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP_DATA id="o23">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8CBF12</ID>
+     <NAME>DATA</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o70"/>
+     <PARENT href="#o21"/>
+     <SUCCESSOR/>
+     <CHILD href="#o24"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP_DATA classVersion="1"/>
+   </cls:CL_FP_LOOP_DATA>
+   <cls:CL_FP_DATA id="o24">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8CDF12</ID>
+     <NAME>KUNNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o69"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o25"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-KUNNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o25">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8CFF12</ID>
+     <NAME>UMSKZ</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o68"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o26"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-UMSKZ</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o26">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8D1F12</ID>
+     <NAME>BELNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o67"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o27"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BELNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o27">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8D3F12</ID>
+     <NAME>VBELN</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o66"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o28"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-VBELN</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o28">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8D5F12</ID>
+     <NAME>XBLNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o65"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o29"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-XBLNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o29">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8D7F12</ID>
+     <NAME>BLDAT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o64"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o30"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BLDAT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o30">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8D9F12</ID>
+     <NAME>CR_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o63"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o31"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-CR_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o31">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8DBF12</ID>
+     <NAME>DR_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o62"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o32"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-DR_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o32">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8DDF12</ID>
+     <NAME>BUDAT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o61"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o33"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BUDAT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o33">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8DFF12</ID>
+     <NAME>NAME1</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o60"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o34"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-NAME1</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o34">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8E1F12</ID>
+     <NAME>BLART</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o59"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o35"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BLART</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o35">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8E3F12</ID>
+     <NAME>BSCHL</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o58"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o36"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BSCHL</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o36">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8E5F12</ID>
+     <NAME>SGTXT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o57"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o37"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-SGTXT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o37">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8E7F12</ID>
+     <NAME>GSBER</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o56"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o38"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-GSBER</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o38">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8E9F12</ID>
+     <NAME>SHKZG</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o55"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o39"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-SHKZG</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o39">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8EBF12</ID>
+     <NAME>BAL_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o54"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o40"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BAL_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o40">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8EDF12</ID>
+     <NAME>LTEXT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o53"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o41"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-LTEXT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o41">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8EFF12</ID>
+     <NAME>BUKRS</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o52"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o42"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-BUKRS</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o42">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8F1F12</ID>
+     <NAME>GJAHR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o51"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o43"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-GJAHR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o43">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8F3F12</ID>
+     <NAME>SKNTO</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o50"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o44"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-SKNTO</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o44">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8F5F12</ID>
+     <NAME>LV_COUNT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o49"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o45"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-LV_COUNT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o45">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8F7F12</ID>
+     <NAME>STA</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o48"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR href="#o46"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-STA</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o46">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8F9F12</ID>
+     <NAME>T_TTTEXT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o47"/>
+     <PARENT href="#o23"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BSID-T_TTTEXT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o47">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o46"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o48">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o45"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o49">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o44"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o50">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o43"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o51">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o42"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o52">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o41"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o53">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o40"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o54">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o39"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o55">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o38"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o56">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o37"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o57">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o36"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o58">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o35"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o59">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o34"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o60">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o33"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o61">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o32"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o62">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o31"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o63">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o30"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o64">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o29"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o65">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o28"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o66">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o27"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o67">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o26"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o68">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o25"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o69">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o24"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o70">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o23"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP id="o71">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED8FFF12</ID>
+     <NAME>ITT_FINAL</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o158"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o121"/>
+     <CHILD href="#o73"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP classVersion="1">
+     <TABLE_NAME>ITT_FINAL</TABLE_NAME>
+     <LOOP_INTO>X</LOOP_INTO>
+     <WORK_AREA>ITT_FINAL</WORK_AREA>
+     <FIRST_LINE>0000000000</FIRST_LINE>
+     <LAST_LINE>0000000000</LAST_LINE>
+     <WHERE_CONDITION href="#o72"/>
+     <SORTED/>
+     <CONTROL_LEVEL/>
+    </CL_FP_LOOP>
+   </cls:CL_FP_LOOP>
+   <cls:CL_FP_CONDITION id="o72">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o71"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP_DATA id="o73">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED901F12</ID>
+     <NAME>DATA</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o120"/>
+     <PARENT href="#o71"/>
+     <SUCCESSOR/>
+     <CHILD href="#o74"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP_DATA classVersion="1"/>
+   </cls:CL_FP_LOOP_DATA>
+   <cls:CL_FP_DATA id="o74">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED903F12</ID>
+     <NAME>KUNNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o119"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o75"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-KUNNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o75">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED905F12</ID>
+     <NAME>UMSKZ</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o118"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o76"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-UMSKZ</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o76">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED907F12</ID>
+     <NAME>BELNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o117"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o77"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BELNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o77">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED909F12</ID>
+     <NAME>VBELN</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o116"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o78"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-VBELN</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o78">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED90BF12</ID>
+     <NAME>XBLNR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o115"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o79"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-XBLNR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o79">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED90DF12</ID>
+     <NAME>BLDAT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o114"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o80"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BLDAT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o80">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED90FF12</ID>
+     <NAME>CR_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o113"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o81"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-CR_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o81">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED911F12</ID>
+     <NAME>DR_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o112"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o82"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-DR_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o82">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED913F12</ID>
+     <NAME>BUDAT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o111"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o83"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BUDAT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o83">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED915F12</ID>
+     <NAME>NAME1</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o110"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o84"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-NAME1</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o84">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED917F12</ID>
+     <NAME>BLART</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o109"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o85"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BLART</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o85">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED919F12</ID>
+     <NAME>BSCHL</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o108"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o86"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BSCHL</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o86">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED91BF12</ID>
+     <NAME>SGTXT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o107"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o87"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-SGTXT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o87">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED91DF12</ID>
+     <NAME>GSBER</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o106"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o88"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-GSBER</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o88">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED91FF12</ID>
+     <NAME>SHKZG</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o105"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o89"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-SHKZG</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o89">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED921F12</ID>
+     <NAME>BAL_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o104"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o90"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BAL_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o90">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED923F12</ID>
+     <NAME>LTEXT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o103"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o91"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-LTEXT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o91">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED925F12</ID>
+     <NAME>BUKRS</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o102"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o92"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-BUKRS</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o92">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED927F12</ID>
+     <NAME>GJAHR</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o101"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o93"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-GJAHR</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o93">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED929F12</ID>
+     <NAME>SKNTO</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o100"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o94"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-SKNTO</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o94">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED92BF12</ID>
+     <NAME>LV_COUNT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o99"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o95"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-LV_COUNT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o95">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED92DF12</ID>
+     <NAME>STA</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o98"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR href="#o96"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-STA</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o96">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF81D6B386ED92FF12</ID>
+     <NAME>T_TTTEXT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o97"/>
+     <PARENT href="#o73"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>ITT_FINAL-T_TTTEXT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o97">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o96"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o98">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o95"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o99">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o94"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o100">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o93"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o101">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o92"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o102">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o91"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o103">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o90"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o104">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o89"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o105">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o88"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o106">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o87"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o107">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o86"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o108">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o85"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o109">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o84"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o110">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o83"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o111">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o82"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o112">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o81"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o113">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o80"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o114">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o79"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o115">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o78"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o116">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o77"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o117">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o76"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o118">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o75"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o119">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o74"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o120">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o73"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_STRUCTURE id="o121">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE265C6E66DFD</ID>
+     <NAME>LV_DEALR</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o157"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o132"/>
+     <CHILD href="#o122"/>
+    </CL_FP_NODE>
+    <CL_FP_STRUCTURE classVersion="1">
+     <FIELD>LV_DEALR</FIELD>
+    </CL_FP_STRUCTURE>
+   </cls:CL_FP_STRUCTURE>
+   <cls:CL_FP_DATA id="o122">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE265C6E68DFD</ID>
+     <NAME>NAME</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o131"/>
+     <PARENT href="#o121"/>
+     <SUCCESSOR href="#o123"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DEALR-NAME</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o123">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE265C6E6ADFD</ID>
+     <NAME>STREET</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o130"/>
+     <PARENT href="#o121"/>
+     <SUCCESSOR href="#o124"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DEALR-STREET</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o124">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE265C6E6CDFD</ID>
+     <NAME>CITY</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o129"/>
+     <PARENT href="#o121"/>
+     <SUCCESSOR href="#o125"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DEALR-CITY</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o125">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE265C6E6EDFD</ID>
+     <NAME>PHONE</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o128"/>
+     <PARENT href="#o121"/>
+     <SUCCESSOR href="#o126"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DEALR-PHONE</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o126">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF82EEA231A6D2E806</ID>
+     <NAME>POSTAL</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o127"/>
+     <PARENT href="#o121"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DEALR-POSTAL</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o127">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o126"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o128">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o125"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o129">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o124"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o130">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o123"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o131">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o122"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_STRUCTURE id="o132">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE1FBBA2A2DFD</ID>
+     <NAME>LV_DIST</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o156"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o143"/>
+     <CHILD href="#o133"/>
+    </CL_FP_NODE>
+    <CL_FP_STRUCTURE classVersion="1">
+     <FIELD>LV_DIST</FIELD>
+    </CL_FP_STRUCTURE>
+   </cls:CL_FP_STRUCTURE>
+   <cls:CL_FP_DATA id="o133">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE1FBBA2A4DFD</ID>
+     <NAME>NAME</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o142"/>
+     <PARENT href="#o132"/>
+     <SUCCESSOR href="#o134"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DIST-NAME</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o134">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE1FBBA2A6DFD</ID>
+     <NAME>STREET</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o141"/>
+     <PARENT href="#o132"/>
+     <SUCCESSOR href="#o135"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DIST-STREET</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o135">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE1FBBA2A8DFD</ID>
+     <NAME>CITY</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o140"/>
+     <PARENT href="#o132"/>
+     <SUCCESSOR href="#o136"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DIST-CITY</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o136">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF828AE1FBBA2AADFD</ID>
+     <NAME>PHONE</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o139"/>
+     <PARENT href="#o132"/>
+     <SUCCESSOR href="#o137"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DIST-PHONE</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o137">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF82EE508F14FB8415</ID>
+     <NAME>POSTAL</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o138"/>
+     <PARENT href="#o132"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>LV_DIST-POSTAL</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o138">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o137"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o139">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o136"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o140">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o135"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o141">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o134"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o142">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o133"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP id="o143">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF87B3C8DE47643D3D</ID>
+     <NAME>GT_BAL</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o155"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o149"/>
+     <CHILD href="#o145"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP classVersion="1">
+     <TABLE_NAME>GT_BAL</TABLE_NAME>
+     <LOOP_INTO>X</LOOP_INTO>
+     <WORK_AREA>GT_BAL</WORK_AREA>
+     <FIRST_LINE>0000000000</FIRST_LINE>
+     <LAST_LINE>0000000000</LAST_LINE>
+     <WHERE_CONDITION href="#o144"/>
+     <SORTED/>
+     <CONTROL_LEVEL/>
+    </CL_FP_LOOP>
+   </cls:CL_FP_LOOP>
+   <cls:CL_FP_CONDITION id="o144">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o143"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_LOOP_DATA id="o145">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF87B3C8DE47645D3D</ID>
+     <NAME>DATA</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o148"/>
+     <PARENT href="#o143"/>
+     <SUCCESSOR/>
+     <CHILD href="#o146"/>
+    </CL_FP_NODE>
+    <CL_FP_LOOP_DATA classVersion="1"/>
+   </cls:CL_FP_LOOP_DATA>
+   <cls:CL_FP_DATA id="o146">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF87B3C8DE47647D3D</ID>
+     <NAME>BAL_AMT</NAME>
+     <GENERATED>X</GENERATED>
+     <STATE>A</STATE>
+     <CONDITION href="#o147"/>
+     <PARENT href="#o145"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>GT_BAL-BAL_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o147">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o146"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o148">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o145"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_DATA id="o149">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EEF8BF8378849F6EAC6</ID>
+     <NAME>L_TOTAL_AMT</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o154"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o150"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>L_TOTAL_AMT</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o150">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EDF8CBC162251D6BB33</ID>
+     <NAME>L_DEBIT_TOTAL</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o153"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR href="#o151"/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>L_DEBIT_TOTAL</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_DATA id="o151">
+    <CL_FP_NODE classVersion="1">
+     <ID>E763BDC288151EDF8CBC4CA71594FDCD</ID>
+     <NAME>L_FINAL_BAL</NAME>
+     <GENERATED/>
+     <STATE>A</STATE>
+     <CONDITION href="#o152"/>
+     <PARENT href="#o2"/>
+     <SUCCESSOR/>
+     <CHILD/>
+    </CL_FP_NODE>
+    <CL_FP_DATA classVersion="1">
+     <FIELD>L_FINAL_BAL</FIELD>
+     <FIELD_LABEL/>
+    </CL_FP_DATA>
+   </cls:CL_FP_DATA>
+   <cls:CL_FP_CONDITION id="o152">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o151"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o153">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o150"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o154">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o149"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o155">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o143"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o156">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o132"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o157">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o121"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o158">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o71"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o159">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o21"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o160">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o9"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o161">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o8"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o162">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o7"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o163">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o6"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o164">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o5"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o165">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o4"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+   <cls:CL_FP_CONDITION id="o166">
+    <CL_FP_CONDITION classVersion="1">
+     <NODE href="#o3"/>
+     <CONDITIONS/>
+    </CL_FP_CONDITION>
+   </cls:CL_FP_CONDITION>
+  </asx:heap>
+ </asx:abap>
+</abapGit>

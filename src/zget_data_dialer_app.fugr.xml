@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Dialer Intergration App</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_DATA_DIALER_APPTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_DATA_DIALER_APP</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_DATA_FOR_DIALER</FUNCNAME>
+     <SHORT_TEXT>DIALER APP Integration</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <TYP>AEDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <TYP>AEDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_DIALER</PARAMETER>
+       <DBSTRUCT>ZSTR_DIALER_APP</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>FR_DATE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TO_DATE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_DIALER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>DIALER APP</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

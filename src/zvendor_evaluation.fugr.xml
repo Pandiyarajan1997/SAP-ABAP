@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Vendor Evaluation</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZVENDOR_EVALUATION</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZVENDOR_EVALUATION</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module Vendor Evaluation</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>S_LIFNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>LIFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FRM_DATE</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_VEND_EVA_OUT</PARAMETER>
+       <DBSTRUCT>ZSTR_VENDOR_EVA_OUT</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>S_LIFNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Account Number of Vendor or Creditor</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FRM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_VEND_EVA_OUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Vendor Evaluation Output</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_API_DMS_ERROR_LOG_ENTRIES</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Class to store the error API Logs in Table - DMS</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>DEALER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Customer Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>DISTRIBUTOR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Customer Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>DMS_ORDERID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>dms order id or INV</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>MATERIAL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Material Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>MSG</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>status of the dms sales order to eway bill</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>PLANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Plant</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>STATUS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>error or cleared</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_ENTRY_STORE</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>type of process</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

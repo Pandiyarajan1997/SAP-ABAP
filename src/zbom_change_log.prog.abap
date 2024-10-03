@@ -1,0 +1,741 @@
+*&---------------------------------------------------------------------*
+*& Report  ZPRODUCT_VARIANCE
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZBOM_CHANGE_LOG.
+
+TABLES : MAST,MAKT,CDPOS,CDHDR,STPO,STKO,USER_ADDR,DD03M.
+
+TYPES:BEGIN OF TY_USER_ADDR,
+      BNAME TYPE USER_ADDR-BNAME,
+      NAME_TEXTC TYPE USER_ADDR-NAME_TEXTC,
+  END OF TY_USER_ADDR.
+
+DATA:IT_USER_ADDR TYPE TABLE OF TY_USER_ADDR,
+      WA_USER_ADDR TYPE TY_USER_ADDR.
+
+TYPES:BEGIN OF TY_MAST,
+    MATNR TYPE MAST-MATNR,  "Material NO
+    WERKS TYPE MAST-WERKS,  "plant
+    STLNR TYPE MAST-STLNR,  "BOM
+    END OF TY_MAST.
+
+DATA:IT_MAST TYPE TABLE OF TY_MAST,
+      WA_MAST TYPE TY_MAST.
+
+DATA:IT1_MAST TYPE TABLE OF TY_MAST,
+      WA1_MAST TYPE TY_MAST.
+
+TYPES:BEGIN OF TY_MAKT,
+   MATNR TYPE MAKT-MATNR, "Material NO
+   SPRAS TYPE MAKT-SPRAS,  "Language
+   MAKTX TYPE MAKT-MAKTX, "Description
+  END OF TY_MAKT.
+
+DATA:IT_MAKT TYPE TABLE OF TY_MAKT,
+      WA_MAKT TYPE TY_MAKT.
+
+DATA:IT1_MAKT TYPE TABLE OF TY_MAKT,
+      WA1_MAKT TYPE TY_MAKT.
+
+DATA:IT2_MAKT TYPE TABLE OF TY_MAKT,
+      WA2_MAKT TYPE TY_MAKT.
+
+TYPES: BEGIN OF TY_CDHDR,
+  OBJECTCLAS TYPE CDHDR-OBJECTCLAS, "Change doc. object
+  OBJECTID TYPE CDHDR-OBJECTID,     " Object value
+  CHANGENR TYPE CDHDR-CHANGENR,     "Document number
+  USERNAME TYPE CDHDR-USERNAME,     "User
+  UDATE TYPE CDHDR-UDATE,           "Date
+  UTIME TYPE CDHDR-UTIME,           " Time
+  TCODE TYPE CDHDR-TCODE,           "TCODE
+
+  END OF TY_CDHDR.
+
+DATA:IT_CDHDR TYPE TABLE OF TY_CDHDR,
+      WA_CDHDR TYPE TY_CDHDR.
+
+TYPES: BEGIN OF TY_CDPOS,
+        OBJECTCLAS TYPE CDPOS-OBJECTCLAS,
+        OBJECTID TYPE CDPOS-OBJECTID,
+        CHANGENR TYPE CDPOS-CHANGENR,
+        TABNAME TYPE CDPOS-TABNAME,
+        TABKEY TYPE CDPOS-TABKEY,
+        FNAME TYPE CDPOS-FNAME,
+        CHNGIND TYPE CDPOS-CHNGIND,
+        UNIT_OLD TYPE CDPOS-UNIT_OLD,
+        UNIT_NEW TYPE CDPOS-UNIT_NEW,
+        VALUE_NEW TYPE CDPOS-VALUE_NEW,
+        VALUE_OLD TYPE CDPOS-VALUE_OLD,
+      END OF TY_CDPOS.
+
+DATA:IT_CDPOS TYPE TABLE OF TY_CDPOS,
+      WA_CDPOS TYPE TY_CDPOS.
+
+DATA:IT_CDPOS1 TYPE TABLE OF TY_CDPOS,
+      WA_CDPOS1 TYPE TY_CDPOS.
+
+TYPES: BEGIN OF TY_STKO,
+        STLNR TYPE STKO-STLNR,    "BOM
+        STLAL TYPE STKO-STLAL,   "Alternative
+        STKOZ TYPE STKO-STKOZ,   "Counter
+
+      END OF TY_STKO.
+
+DATA:IT_STKO TYPE  TABLE OF TY_STKO,
+      WA_STKO TYPE TY_STKO.
+
+
+TYPES: BEGIN OF TY_STPO,
+        STLNR TYPE STPO-STLNR,  "BOM
+        STLKN TYPE STPO-STLKN,  "Item node
+        STPOZ TYPE STPO-STPOZ,  "Counter
+        IDNRK TYPE STPO-IDNRK,  "Component
+
+      END OF TY_STPO.
+
+DATA:IT_STPO TYPE TABLE OF TY_STPO,
+      WA_STPO TYPE TY_STPO.
+
+***TYPES : BEGIN OF TY_DD04T,
+***        ROLLNAME TYPE DD04T-ROLLNAME,      "Data element
+***        DDLANGUAGE TYPE DD04T-DDLANGUAGE,  "Lang.
+***        DDTEXT TYPE DD04T-DDTEXT,          "Short Description
+***        END OF TY_DD04T.
+***
+***DATA:IT_DD04T TYPE TABLE OF TY_DD04T,
+***      WA_DD04T TYPE TY_DD04T.
+
+TYPES:BEGIN OF TY_DD03M,
+     TABNAME TYPE DD03M-TABNAME, "Table Name
+     FIELDNAME TYPE DD03M-FIELDNAME, "Field Name
+     DDLANGUAGE TYPE DD03M-DDLANGUAGE, "Lang.
+     DDTEXT TYPE DD03M-DDTEXT, "short Description
+  END OF TY_DD03M.
+
+DATA:IT_DD03M TYPE TABLE OF TY_DD03M,
+      WA_DD03M TYPE TY_DD03M.
+
+
+TYPES: BEGIN OF TY_FINAL,
+
+           MATNR TYPE MAST-MATNR,  "Material NO
+           MAST_WERKS TYPE MAST-WERKS,  "plant
+           MAST_STLNR TYPE MAST-STLNR,  "BOM
+
+           MAKT_MATNR TYPE MAKT-MATNR, "Material NO
+           SPRAS TYPE MAKT-SPRAS,  "Language
+           MAKT_MAKTX TYPE MAKT-MAKTX, "Description
+
+           OBJECTCLAS TYPE CDHDR-OBJECTCLAS, "Change doc. object
+           OBJECTID TYPE CDHDR-OBJECTID,     " Object value
+           CHANGENR TYPE CDHDR-CHANGENR,     "Document number
+           USERNAME TYPE CDHDR-USERNAME,     "User
+           UDATE TYPE CDHDR-UDATE,           "Date
+           UTIME TYPE CDHDR-UTIME,           " Time
+           TCODE TYPE CDHDR-TCODE,           "TCODE
+
+           CDPOS_OBJECTCLAS TYPE CDPOS-OBJECTCLAS,
+           CDPOS_OBJECTID TYPE CDPOS-OBJECTID,
+           CDPOS_CHANGENR TYPE CDPOS-CHANGENR,
+           TABNAME TYPE CDPOS-TABNAME,
+           TABKEY TYPE CDPOS-TABKEY,
+           FNAME TYPE CDPOS-FNAME,
+           CHNGIND TYPE CDPOS-CHNGIND,
+           TEXT_CASE TYPE CDPOS-TEXT_CASE,
+           UNIT_OLD TYPE CDPOS-UNIT_OLD,
+           UNIT_NEW TYPE CDPOS-UNIT_NEW,
+**           CUKY_OLD TYPE CDPOS-CUKY_OLD,
+**           CUKY_NEW TYPE CDPOS-CUKY_NEW,
+           VALUE_NEW TYPE CDPOS-VALUE_NEW,
+           VALUE_OLD TYPE CDPOS-VALUE_OLD,
+
+           STKO_STLNR TYPE STKO-STLNR,    "BOM
+           STKO_STLAL TYPE STKO-STLAL,   "Alternative
+           STKO_STKOZ TYPE STKO-STKOZ,   "Counter
+
+           STPO_STLNR TYPE STPO-STLNR,  "BOM
+           STPO_STLKN TYPE STPO-STLKN,  "Item node
+           STPO_STPOZ TYPE STPO-STPOZ,  "Counter
+           STPO_IDNRK TYPE STPO-IDNRK,  "Component
+
+***           ROLLNAME TYPE DD04T-ROLLNAME,      "Data element
+***           DDLANGUAGE TYPE DD04T-DDLANGUAGE,  "Lang.
+***           DDTEXT TYPE DD04T-DDTEXT,          "Short Description
+
+           TABNAME_DD03M TYPE DD03M-TABNAME, "Table Name
+           FIELDNAME TYPE DD03M-FIELDNAME, "Field Name
+           DDLANGUAGE TYPE DD03M-DDLANGUAGE, "Lang.
+           DDTEXT TYPE DD03M-DDTEXT, "short description
+
+
+           BNAME TYPE USER_ADDR-BNAME,
+           NAME_TEXTC TYPE USER_ADDR-NAME_TEXTC,
+
+           BOM_1 TYPE CHAR8,
+           BOM_2(8) TYPE N ,
+           BOM_3(8) TYPE N,
+           ALT_BOM  TYPE CHAR5,
+           COMP_DEC TYPE MAKT-MAKTX,
+           OLD_VALUE TYPE STRING,
+           NEW_VALUE TYPE STRING,
+           CHANG_STAT TYPE CHAR20,
+
+            LV_COUNT1 TYPE I,
+            LV_COUNT2 TYPE I,
+          END OF TY_FINAL.
+
+DATA:IT_FINAL TYPE TABLE OF TY_FINAL,
+      WA_FINAL TYPE TY_FINAL.
+
+
+
+*BREAK-POINT.
+SELECTION-SCREEN BEGIN OF BLOCK A1 WITH FRAME TITLE TEXT-001.
+
+
+SELECT-OPTIONS:S_UDATE FOR CDHDR-UDATE OBLIGATORY.
+
+PARAMETERS:S_WERKS TYPE MAST-WERKS OBLIGATORY.
+SELECT-OPTIONS:S_MATNR FOR MAST-MATNR .
+
+SELECTION-SCREEN END OF BLOCK A1.
+
+*BREAK-POINT.
+
+START-OF-SELECTION.
+  PERFORM GET_DATA.
+  PERFORM READ_DATA.
+
+
+END-OF-SELECTION.
+
+**  DATA:IT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV ,
+**        WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV,
+**        WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+**        IT_REPID TYPE SY-REPID VALUE SY-REPID.
+
+  DATA:IT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV,
+       WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV,
+       WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+       IT_REPID TYPE SY-REPID VALUE SY-REPID .
+
+  PERFORM FIELDCAT.
+  PERFORM LAYOUT.
+  PERFORM DISPLAY.
+
+
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM GET_DATA .
+
+  SELECT  OBJECTCLAS OBJECTID CHANGENR USERNAME UDATE UTIME TCODE FROM  CDHDR
+    INTO TABLE IT_CDHDR
+    WHERE OBJECTCLAS = 'STUE'
+   AND UDATE IN S_UDATE
+  AND ( TCODE = 'CS02' OR  TCODE = 'CS05' ).
+
+
+  SELECT BNAME NAME_TEXTC FROM USER_ADDR
+      INTO TABLE IT_USER_ADDR
+    FOR ALL ENTRIES IN IT_CDHDR
+    WHERE BNAME = IT_CDHDR-USERNAME .
+
+
+*       STLNR_INPUT = IT_CDHDR-OBJECTID+4(8).
+
+  SELECT  OBJECTCLAS  OBJECTID CHANGENR TABNAME TABKEY FNAME CHNGIND UNIT_OLD UNIT_NEW VALUE_NEW VALUE_OLD FROM CDPOS
+    INTO TABLE IT_CDPOS
+    FOR ALL ENTRIES IN IT_CDHDR
+    WHERE OBJECTCLAS = IT_CDHDR-OBJECTCLAS
+    AND   OBJECTID   = IT_CDHDR-OBJECTID
+    AND   CHANGENR  = IT_CDHDR-CHANGENR
+    AND  ( TABNAME   = 'STKO' OR  TABNAME = 'STPO').
+
+  SELECT MATNR WERKS STLNR FROM MAST
+    INTO TABLE IT_MAST
+    FOR ALL ENTRIES IN IT_CDHDR
+    WHERE STLNR = IT_CDHDR-OBJECTID+4(8)"STLNR_INPUT
+    AND MATNR IN S_MATNR
+    AND  WERKS = S_WERKS.
+
+**  SELECT MATNR WERKS STLNR FROM MAST
+**      INTO TABLE IT1_MAST
+**      FOR ALL ENTRIES IN IT_CDPOS
+**      WHERE STLNR = IT_CDPOS-OBJECTID+4(8)"STLNR_INPUT
+**      AND MATNR IN S_MATNR
+**      AND  WERKS = S_WERKS.
+
+  SELECT MATNR SPRAS MAKTX FROM MAKT
+    INTO TABLE IT_MAKT
+    FOR ALL ENTRIES IN IT_MAST
+    WHERE MATNR = IT_MAST-MATNR
+    AND   SPRAS = 'EN'.
+
+  SELECT TABNAME FIELDNAME DDLANGUAGE DDTEXT FROM DD03M
+    INTO  TABLE IT_DD03M
+    FOR ALL ENTRIES IN IT_CDPOS
+    WHERE ( TABNAME   = 'STKO' OR  TABNAME = 'STPO')
+    AND   FIELDNAME = IT_CDPOS-FNAME
+    AND   DDLANGUAGE = 'EN'.
+
+**  SELECT MATNR SPRAS MAKTX FROM MAKT
+**INTO TABLE IT2_MAKT
+**FOR ALL ENTRIES IN IT1_MAST
+**WHERE MATNR = IT1_MAST-MATNR
+**AND   SPRAS = 'EN'.
+
+***  SELECT ROLLNAME DDLANGUAGE DDTEXT FROM DD04T
+***    INTO TABLE IT_DD04T
+***    FOR ALL ENTRIES IN IT_CDPOS
+***    WHERE ROLLNAME = IT_CDPOS-FNAME
+***      AND DDLANGUAGE = 'EN'.
+
+
+***  SELECT STLNR STLAL STKOZ FROM STKO
+***    INTO TABLE IT_STKO
+***    FOR ALL ENTRIES IN IT_CDPOS
+***    WHERE STLNR = IT_CDPOS-TABKEY+4(8)
+***    AND STLAL = IT_CDPOS-TABKEY+12(2).
+****    AND STKOZ = IT_CDPOS-TABKEY+14(8).
+
+  SELECT STLNR STLKN STPOZ IDNRK   FROM STPO
+    INTO TABLE IT_STPO
+     FOR ALL ENTRIES IN IT_CDPOS
+     WHERE STLNR = IT_CDPOS-TABKEY+4(8).
+**     AND STLKN = IT_CDPOS-TABKEY+12(8).
+**  AND STKOZ = IT_CDPOS-TABKEY+14(8).
+
+  SELECT MATNR SPRAS MAKTX FROM MAKT
+         INTO TABLE IT1_MAKT
+          FOR ALL ENTRIES IN IT_STPO
+          WHERE MATNR = IT_STPO-IDNRK
+          AND   SPRAS = 'EN'.
+
+
+
+ENDFORM.                    " GET_DATA
+*&---------------------------------------------------------------------*
+*&      Form  READ_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM READ_DATA .
+
+  LOOP AT IT_CDHDR INTO WA_CDHDR  WHERE  TCODE = 'CS02' OR TCODE = 'CS05'
+                                      AND  OBJECTCLAS = 'STUE'
+                                      AND   UDATE = S_UDATE.
+
+    IF  SY-SUBRC = 0.
+*      IF WA_CDHDR-USERNAME NE ''.
+      WA_FINAL-OBJECTCLAS = WA_CDHDR-OBJECTCLAS.
+      WA_FINAL-OBJECTID   = WA_CDHDR-OBJECTID.
+      WA_FINAL-CHANGENR   = WA_CDHDR-CHANGENR.
+      WA_FINAL-USERNAME   = WA_CDHDR-USERNAME.
+      WA_FINAL-UDATE      = WA_CDHDR-UDATE.
+      WA_FINAL-UTIME      = WA_CDHDR-UTIME.
+      WA_FINAL-TCODE      = WA_CDHDR-TCODE.
+*      ENDIF.
+    ENDIF.
+
+
+
+    READ TABLE IT_CDPOS INTO WA_CDPOS WITH KEY OBJECTCLAS = WA_CDHDR-OBJECTCLAS
+                                     OBJECTID   = WA_CDHDR-OBJECTID
+                                      CHANGENR  = WA_CDHDR-CHANGENR.
+
+    IF  SY-SUBRC = 0.
+      IF WA_CDPOS-TABNAME = 'STKO' OR WA_CDPOS-TABNAME = 'STPO'.
+
+        WA_FINAL-CDPOS_OBJECTCLAS  = WA_CDPOS-OBJECTCLAS.
+        WA_FINAL-CDPOS_OBJECTID    = WA_CDPOS-OBJECTID.
+        WA_FINAL-CDPOS_CHANGENR    = WA_CDPOS-CHANGENR.
+        WA_FINAL-TABNAME           = WA_CDPOS-TABNAME.
+        WA_FINAL-TABKEY            = WA_CDPOS-TABKEY.
+        WA_FINAL-FNAME             = WA_CDPOS-FNAME.
+        WA_FINAL-CHNGIND           = WA_CDPOS-CHNGIND.
+        WA_FINAL-UNIT_OLD          = WA_CDPOS-UNIT_OLD.
+        WA_FINAL-UNIT_NEW          = WA_CDPOS-UNIT_NEW.
+        WA_FINAL-VALUE_NEW         = WA_CDPOS-VALUE_NEW.
+        WA_FINAL-VALUE_OLD         = WA_CDPOS-VALUE_OLD.
+
+***        IF WA_FINAL-CHNGIND ='U'.
+***          WA_FINAL-CHANG_STAT = 'Update'.
+***
+***        ELSEIF WA_FINAL-CHNGIND ='I'.
+***          WA_FINAL-CHANG_STAT = 'Insert'.
+***
+***        ELSEIF WA_FINAL-CHNGIND ='E'.
+***          WA_FINAL-CHANG_STAT = 'Delete Single'.
+***
+***        ELSEIF WA_FINAL-CHNGIND ='D'.
+***          WA_FINAL-CHANG_STAT = 'Delete'.
+***
+***        ELSEIF WA_FINAL-CHNGIND ='J'.
+***          WA_FINAL-CHANG_STAT = 'Insert Single'.
+***
+***        ENDIF.
+
+        IF WA_FINAL-TABNAME ='STKO'.
+          WA_FINAL-ALT_BOM =  WA_CDPOS-TABKEY+12(2).
+
+        ELSEIF WA_FINAL-TABNAME = 'STPO'.
+
+          WA_FINAL-BOM_1 = WA_CDPOS-TABKEY+4(8).
+          WA_FINAL-BOM_2 = WA_CDPOS-TABKEY+12(8).
+          WA_FINAL-BOM_3 = WA_CDPOS-TABKEY+20(8).
+
+        ENDIF.
+
+*        IF WA_FINAL-FNAME = 'MENGE'.
+        CONCATENATE  WA_FINAL-VALUE_OLD  WA_FINAL-UNIT_OLD INTO WA_FINAL-OLD_VALUE SEPARATED BY ''.
+        CONCATENATE  WA_FINAL-VALUE_NEW  WA_FINAL-UNIT_NEW INTO WA_FINAL-NEW_VALUE SEPARATED BY ''.
+*        ENDIF.
+        SHIFT WA_FINAL-OLD_VALUE LEFT DELETING LEADING '0'.
+        SHIFT WA_FINAL-NEW_VALUE LEFT DELETING LEADING '0'.
+
+      ENDIF.
+
+    ENDIF.
+
+    READ TABLE IT_STPO INTO WA_STPO WITH KEY STLNR = WA_FINAL-BOM_1
+                                             STLKN = WA_FINAL-BOM_2
+                                             STPOZ = WA_FINAL-BOM_3.
+    IF SY-SUBRC = 0.
+      WA_FINAL-STPO_IDNRK = WA_STPO-IDNRK.
+
+    ENDIF.
+
+
+    READ TABLE IT1_MAKT INTO WA1_MAKT WITH KEY MATNR = WA_FINAL-STPO_IDNRK
+                                               SPRAS = 'EN'.
+
+    IF  SY-SUBRC = 0.
+      WA_FINAL-COMP_DEC = WA1_MAKT-MAKTX.
+    ENDIF.
+
+    SHIFT WA_FINAL-STPO_IDNRK LEFT DELETING LEADING '0'.
+
+**    READ TABLE IT_DD04T INTO WA_DD04T WITH KEY ROLLNAME = WA_CDPOS-FNAME
+**                                               DDLANGUAGE = 'EN'.
+**
+**    IF  SY-SUBRC = 0.
+**
+**      IF WA_CDPOS-FNAME NE 'KEY'.
+**
+**        WA_FINAL-DDTEXT = WA_DD04T-DDTEXT.
+**      ENDIF.
+**
+**    ENDIF.
+
+    READ TABLE IT_DD03M INTO WA_DD03M WITH KEY FIELDNAME = WA_CDPOS-FNAME
+                                               DDLANGUAGE = 'EN'.
+
+    IF SY-SUBRC = 0.
+      IF WA_CDPOS-FNAME NE 'KEY'.
+        WA_FINAL-DDTEXT = WA_DD03M-DDTEXT.
+      ENDIF.
+
+    ENDIF.
+
+    READ TABLE IT_MAST INTO WA_MAST WITH KEY STLNR = WA_FINAL-CDPOS_OBJECTID+4(8)
+                                              WERKS = S_WERKS.
+*                                                MATNR = S_MATNR.
+
+    IF SY-SUBRC = 0.
+
+      WA_FINAL-MATNR = WA_MAST-MATNR.
+      WA_FINAL-MAST_WERKS = WA_MAST-WERKS.
+
+    ENDIF.
+
+    READ TABLE IT_MAKT INTO WA_MAKT WITH KEY MATNR = WA_FINAL-MATNR
+                                             SPRAS = 'EN'.
+
+    IF  SY-SUBRC = 0.
+      WA_FINAL-MAKT_MAKTX = WA_MAKT-MAKTX.
+    ENDIF.
+
+    READ TABLE IT_USER_ADDR INTO WA_USER_ADDR WITH KEY BNAME = WA_FINAL-USERNAME.
+
+    IF  SY-SUBRC = 0.
+
+      WA_FINAL-NAME_TEXTC = WA_USER_ADDR-NAME_TEXTC.
+
+    ENDIF.
+
+    APPEND WA_FINAL TO IT_FINAL.
+    CLEAR WA_FINAL.
+
+  ENDLOOP.
+
+
+**  DELETE IT_FINAL WHERE ALT_BOM = '' AND MATNR = ''.
+*  DELETE IT_FINAL WHERE  MATNR = ''.
+**  DELETE IT_FINAL WHERE STPO_IDNRK = '' AND DDTEXT = ''." AND OLD_VALUE = '' AND NEW_VALUE = '' AND COMP_DEC = ''.
+  DELETE IT_FINAL WHERE CHNGIND = 'D' OR CHNGIND = 'I'.
+  DELETE IT_FINAL WHERE MAST_WERKS = ' ' .
+
+**  IF WA_FINAL-LV_COUNT2 = 1 .
+**
+**    DELETE IT_FINAL WHERE LV_COUNT1 = 1 and MATNR = '0'.
+**
+**  ENDIF.
+
+
+
+ENDFORM.                    " READ_DATA
+*&---------------------------------------------------------------------*
+*&      Form  FIELDCAT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FIELDCAT .
+
+  WA_FIELDCAT-FIELDNAME ='MATNR'. " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Header Material'.
+  WA_FIELDCAT-SELTEXT_L ='Header Material'.
+  WA_FIELDCAT-COL_POS   = 1.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='MAKT_MAKTX'. " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Material Description'.
+  WA_FIELDCAT-SELTEXT_L ='Material Description'.
+  WA_FIELDCAT-COL_POS   = 2.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='MAST_WERKS'. " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Plant'.
+  WA_FIELDCAT-SELTEXT_L ='Plant'.
+  WA_FIELDCAT-COL_POS   = 3.
+  WA_FIELDCAT-OUTPUTLEN = '4'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='ALT_BOM'. "
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Alternate Bom'.
+  WA_FIELDCAT-SELTEXT_L ='Alternate Bom'.
+  WA_FIELDCAT-COL_POS   = 4.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='USERNAME'. " CDHDR-USERNAME
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Changed By'.
+  WA_FIELDCAT-SELTEXT_L ='Changed By'.
+  WA_FIELDCAT-COL_POS   = 5.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='NAME_TEXTC'.  "user_addr-NAME_TEXTC
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Name'.
+  WA_FIELDCAT-SELTEXT_L ='Name'.
+  WA_FIELDCAT-COL_POS   = 6.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='UDATE'. " CDHDR-UDATE
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Date'.
+  WA_FIELDCAT-SELTEXT_L ='Date'.
+  WA_FIELDCAT-COL_POS   = 7.
+  WA_FIELDCAT-OUTPUTLEN = '10'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='UTIME'. " CDHDR-UTIME
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Time'.
+  WA_FIELDCAT-SELTEXT_L ='Time'.
+  WA_FIELDCAT-COL_POS   = 8.
+  WA_FIELDCAT-OUTPUTLEN = '10'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='DDTEXT'. " DD04t-DDTEXT
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Changes On'.
+  WA_FIELDCAT-SELTEXT_L ='Changes On'.
+  WA_FIELDCAT-COL_POS   = 9.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='STPO_IDNRK'. " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME   ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Component '.
+  WA_FIELDCAT-SELTEXT_L ='Component '.
+  WA_FIELDCAT-COL_POS   = 10.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='COMP_DEC'. " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Description'.
+  WA_FIELDCAT-SELTEXT_L ='Description'.
+  WA_FIELDCAT-COL_POS   = 11.
+  WA_FIELDCAT-OUTPUTLEN = '25'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+**  WA_FIELDCAT-FIELDNAME ='CHANG_STAT'. " MAKT_MAKTX
+**  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+**  WA_FIELDCAT-SELTEXT_S ='Changes Status'.
+**  WA_FIELDCAT-SELTEXT_L ='Changes Status'.
+**  WA_FIELDCAT-COL_POS   = 12.
+**  WA_FIELDCAT-OUTPUTLEN = '10'.
+**
+**  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+**  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='OLD_VALUE'. " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Before Change'.
+  WA_FIELDCAT-SELTEXT_L ='Before Change'.
+  WA_FIELDCAT-COL_POS   = 12.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='NEW_VALUE' . " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='After Change'.
+  WA_FIELDCAT-SELTEXT_L ='After Change'.
+  WA_FIELDCAT-COL_POS   = 13.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME ='TCODE' . " MAKT_MAKTX
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Tcode'.
+  WA_FIELDCAT-SELTEXT_L ='Tcode'.
+  WA_FIELDCAT-COL_POS   = 14.
+  WA_FIELDCAT-OUTPUTLEN = '5'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR WA_FIELDCAT.
+
+
+ENDFORM.                    " FIELDCAT
+*&---------------------------------------------------------------------*
+*&      Form  LAYOUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM LAYOUT .
+
+  WA_LAYOUT-ZEBRA = 'X'.
+
+ENDFORM.                    " LAYOUT
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM DISPLAY .
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+   EXPORTING
+*   I_INTERFACE_CHECK                 = ' '
+*   I_BYPASSING_BUFFER                = ' '
+*   I_BUFFER_ACTIVE                   = ' '
+     I_CALLBACK_PROGRAM                = IT_REPID
+*   I_CALLBACK_PF_STATUS_SET          = ' '
+*   I_CALLBACK_USER_COMMAND           = ' '
+*   I_CALLBACK_TOP_OF_PAGE            = ' '
+*   I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*   I_CALLBACK_HTML_END_OF_LIST       = ' '
+*   I_STRUCTURE_NAME                  =
+*   I_BACKGROUND_ID                   = ' '
+*   I_GRID_TITLE                      =
+*   I_GRID_SETTINGS                   =
+     IS_LAYOUT                         = WA_LAYOUT
+     IT_FIELDCAT                       = IT_FIELDCAT
+*   IT_EXCLUDING                      =
+*   IT_SPECIAL_GROUPS                 =
+*   IT_SORT                           =
+*   IT_FILTER                         =
+*   IS_SEL_HIDE                       =
+*   I_DEFAULT                         = 'X'
+*   I_SAVE                            = ' '
+*   IS_VARIANT                        =
+*   IT_EVENTS                         =
+*   IT_EVENT_EXIT                     =
+*   IS_PRINT                          =
+*   IS_REPREP_ID                      =
+*   I_SCREEN_START_COLUMN             = 0
+*   I_SCREEN_START_LINE               = 0
+*   I_SCREEN_END_COLUMN               = 0
+*   I_SCREEN_END_LINE                 = 0
+*   I_HTML_HEIGHT_TOP                 = 0
+*   I_HTML_HEIGHT_END                 = 0
+*   IT_ALV_GRAPHICS                   =
+*   IT_HYPERLINK                      =
+*   IT_ADD_FIELDCAT                   =
+*   IT_EXCEPT_QINFO                   =
+*   IR_SALV_FULLSCREEN_ADAPTER        =
+* IMPORTING
+*   E_EXIT_CAUSED_BY_CALLER           =
+*   ES_EXIT_CAUSED_BY_USER            =
+    TABLES
+      T_OUTTAB                          = IT_FINAL
+* EXCEPTIONS
+*   PROGRAM_ERROR                     = 1
+*   OTHERS                            = 2
+            .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+
+
+ENDFORM.                    " DISPLAY

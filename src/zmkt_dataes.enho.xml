@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>Marketing Data</SHORTTEXT>
+   <SPOT_NAME>CUSTOMER_ADD_DATA</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>CUSTOMER_ADD_DATA</SPOT_NAME>
+     <BADI_NAME>CUSTOMER_ADD_DATA</BADI_NAME>
+     <IMPL_NAME>ZMKT_DATAES</IMPL_NAME>
+     <IMPL_CLASS>Z_CL_MKT_DATAES</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>Implementation: Zusätzliche Daten bei den Debitoren</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>FA74F82EE5111EDB8EA6D17DFFCC091B</IMPL_SHORTTEXT_ID>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>FA74F82EE5111EDB8EA6C963C193891F</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>FA74F82EE5111EDB8EA6C963C193891F</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>024</LENGTH>
+       <TEXT>Marketing Data</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+    <item>
+     <HEADER>
+      <CONCEPT>FA74F82EE5111EDB8EA6D17DFFCC091B</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>FA74F82EE5111EDB8EA6D17DFFCC091B</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>077</LENGTH>
+       <TEXT>Implementation: Zusätzliche Daten bei den Debitoren</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZMKT_DATAES</OBJ_NAME>
+     <CONCEPT>FA74F82EE5111EDB8EA6C963C193891F</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZMKT_DATAES</OBJ_NAME>
+     <CONCEPT>FA74F82EE5111EDB8EA6D17DFFCC091B</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

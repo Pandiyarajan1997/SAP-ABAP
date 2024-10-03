@@ -1,0 +1,3 @@
+FUNCTION-POOL ZMIS_CUST                 . "MESSAGE-ID ...
+
+* INCLUDE LZMIS_CUSTD...                     " Local class definition

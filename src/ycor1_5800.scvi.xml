@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>YCOR1_5800</SCVARIANT>
+     <PROGNAME>SAPLCOKO</PROGNAME>
+     <DYNPRO>5800</DYNPRO>
+     <VERSION>17</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>YCOR1_5800</SCVARIANT>
+      <SCVTEXT>SCREEN</SCVTEXT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

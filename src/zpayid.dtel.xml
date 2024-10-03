@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZPAYID</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZPAYID</DOMNAME>
+    <HEADLEN>29</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>17</SCRLEN2>
+    <SCRLEN3>29</SCRLEN3>
+    <DDTEXT>Payment Method Identification</DDTEXT>
+    <REPTEXT>Payment Method Identification</REPTEXT>
+    <SCRTEXT_S>Paymt meth</SCRTEXT_S>
+    <SCRTEXT_M>Payment Meth Idty</SCRTEXT_M>
+    <SCRTEXT_L>Payment Method Identification</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

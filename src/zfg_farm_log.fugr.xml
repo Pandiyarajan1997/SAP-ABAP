@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>farm log entry</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_FARM_LOGTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_FARM_LOG</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_FARM_LOGS</FUNCNAME>
+     <SHORT_TEXT>bapi for get farm logs</SHORT_TEXT>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

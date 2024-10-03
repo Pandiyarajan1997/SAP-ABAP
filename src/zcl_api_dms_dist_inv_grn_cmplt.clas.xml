@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_API_DMS_DIST_INV_GRN_CMPLT</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>get the GRN completed invoice details</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>get the completed grn invoice details</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>CUST_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table Type for KUNNR (KUNNR_STY)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>GRN_BEGDA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Start Date</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>GRN_ENDDA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>End Date</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>INV_BEGDA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Start Date</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>INV_ENDDA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>End Date</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>IT_BTNO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Structure for Batch no for Line items - add</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>IT_CUSTOMER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Structure for KUNNR</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>IT_VBRK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Structure for customer billing details</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS</CMPNAME>
+     <SCONAME>IT_VBRP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Structure for customer billing  item</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

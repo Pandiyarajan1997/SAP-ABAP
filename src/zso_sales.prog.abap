@@ -1,0 +1,897 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSO_SALES
+*&
+*&---------------------------------------------------------------------*
+*&  Functional                   : Mr.Nagarajan        *
+*&  Developer                   : Mr.Ramachandaran                      *
+*& Company                     : Sheenlac Paints Pvt Ltd               *
+*& Verified By                 :                                       *
+*& Title                       : SO Wise Sales Report data        *
+*& Report Name                 : ZSO_SALES                          *
+*& Development Id              : kpabap                                *
+*& Related Information         : SO Wise Sales Report data         *
+*&---------------------------------------------------------------------*
+
+REPORT ZSO_SALES.
+
+TABLES : KNVP , KNVV .
+
+TYPES : BEGIN OF GS_KNVP,
+          KUNNR TYPE  KNVP-KUNNR,
+          VKORG TYPE  KNVP-VKORG,
+          VTWEG	TYPE KNVP-VTWEG,
+          SPART TYPE KNVP-SPART,
+          PARVW	TYPE KNVP-PARVW,
+          PERNR	TYPE KNVP-PERNR,
+  END OF GS_KNVP.
+DATA : GT_KNVP TYPE TABLE OF GS_KNVP,
+       WA_KNVP TYPE GS_KNVP.
+TYPES: BEGIN OF GS_PA0001,
+       PERNR TYPE PA0001-PERNR,
+       WERKS TYPE PA0001-WERKS,
+       ENAME TYPE PA0001-ENAME,
+     END OF GS_PA0001.
+
+DATA : GT_PA0001 TYPE TABLE OF GS_PA0001,
+       WA_PA0001 TYPE GS_PA0001.
+
+TYPES : BEGIN OF GS_KNA1,
+        KUNNR TYPE KNA1-KUNNR,
+        NAME1 TYPE KNA1-NAME1,
+        WERKS TYPE KNA1-WERKS,
+         END OF GS_KNA1.
+
+DATA : GT_KNA1 TYPE TABLE OF GS_KNA1,
+       WA_KNA1 TYPE GS_KNA1.
+
+
+TYPES : BEGIN OF GS_KNB1,
+        KUNNR TYPE KNB1-KUNNR,
+        BUKRS TYPE KNB1-BUKRS,
+         END OF GS_KNB1.
+
+DATA : GT_KNB1 TYPE TABLE OF GS_KNB1,
+       WA_KNB1 TYPE GS_KNB1.
+
+TYPES : BEGIN OF GS_VBRK,
+        VBELN TYPE VBRK-VBELN,
+        VKORG TYPE VBRK-VKORG,
+        KUNAG TYPE VBRK-KUNAG,
+        SPART TYPE VBRK-SPART,
+        FKDAT TYPE VBRK-FKDAT,
+        BUKRS TYPE VBRK-BUKRS,
+        NETWR TYPE VBRK-NETWR,
+        FKSTO TYPE VBRK-FKSTO,
+         END OF GS_VBRK.
+
+DATA : GT_VBRK TYPE TABLE OF GS_VBRK,
+       WA_VBRK TYPE GS_VBRK.
+
+DATA : GT1_VBRK TYPE TABLE OF GS_VBRK,
+       WA1_VBRK TYPE GS_VBRK.
+
+TYPES : BEGIN OF GS_VBRP,
+         VBELN TYPE VBRP-VBELN,
+         WERKS TYPE VBRP-WERKS,
+       END OF GS_VBRP.
+
+DATA : GT_VBRP TYPE TABLE OF GS_VBRP,
+       WA_VBRP TYPE GS_VBRP.
+
+TYPES : BEGIN OF GS_BSID,
+
+        BUKRS TYPE BSID-BUKRS,
+       KUNNR TYPE BSID-KUNNR,
+       XBLNR TYPE BSID-XBLNR,
+       BLART TYPE BSID-BLART,
+       SHKZG TYPE BSID-SHKZG,
+       DMBTR TYPE BSID-DMBTR,
+         END OF GS_BSID.
+
+DATA : GT_BSID TYPE TABLE OF GS_BSID,
+       WA_BSID TYPE GS_BSID.
+
+DATA : GT1_BSID TYPE TABLE OF GS_BSID,
+       WA1_BSID TYPE GS_BSID.
+
+TYPES : BEGIN OF GS_BSAD,
+
+        BUKRS TYPE BSAD-BUKRS,
+       KUNNR TYPE BSAD-KUNNR,
+       XBLNR TYPE BSAD-XBLNR,
+       BLART TYPE BSAD-BLART,
+       SHKZG TYPE BSAD-SHKZG,
+       DMBTR TYPE BSAD-DMBTR,
+         END OF GS_BSAD.
+
+DATA : GT_BSAD TYPE TABLE OF GS_BSAD,
+       WA_BSAD TYPE GS_BSAD.
+
+*DATA : GT1_BSID TYPE TABLE OF GS_BSID,
+*       WA1_BSID TYPE GS_BSID.
+
+TYPES :  BEGIN OF GS_TSPAT,
+    SPART TYPE TSPAT-SPART,
+    VTEXT TYPE TSPAT-VTEXT,
+    END OF GS_TSPAT.
+
+DATA : GT_TSPAT TYPE TABLE OF GS_TSPAT,
+       WA_TSPAT TYPE GS_TSPAT.
+
+DATA : LAYOUT TYPE SLIS_LAYOUT_ALV.
+
+TYPES: BEGIN OF STR_KNVV,
+        KUNNR TYPE KNVV-KUNNR,
+        VKORG TYPE KNVV-VKORG,
+        SPART TYPE KNVV-SPART,
+        VKBUR TYPE KNVV-VKBUR,
+      END OF STR_KNVV.
+
+DATA:WA_KNVV TYPE STR_KNVV,
+      IT_KNVV TYPE TABLE OF STR_KNVV.
+
+TYPES : BEGIN OF GS_FINAL,
+       KUNNR TYPE  KNVP-KUNNR,
+       VKORG TYPE  KNVP-VKORG,
+       VTWEG  TYPE KNVP-VTWEG,
+       SPART TYPE  KNVP-SPART,
+       VTEXT TYPE TSPAT-VTEXT,
+       PARVW  TYPE KNVP-PARVW,
+       NAME1 TYPE KNA1-NAME1,
+       BUKRS TYPE KNB1-BUKRS,
+       PERNR  TYPE KNVP-PERNR,
+       ENAME TYPE PA0001-ENAME,
+       VKBUR TYPE KNVV-VKBUR,
+       NETWR TYPE VBRK-NETWR,
+       BLART TYPE BSID-BLART,
+       DMBTR TYPE BSAD-DMBTR,
+    "   DMBTR1 TYPE BSAD-DMBTR,
+       NETWR1 TYPE VBRK-NETWR,
+       NETWR2 TYPE VBRK-NETWR,
+       NETWR3 TYPE VBRK-NETWR,
+       DMBTR1 TYPE BSAD-DMBTR,
+       DMBTR2 TYPE BSAD-DMBTR,
+       DMBTR3 TYPE BSAD-DMBTR,
+       DMBTR7 TYPE BSAD-DMBTR,
+       DMBTR8 TYPE BSAD-DMBTR,
+       XBLNR TYPE BSAD-XBLNR ,
+       SPART1 TYPE  KNVP-SPART,
+       FLAG(1) TYPE C,
+END OF  GS_FINAL.
+
+DATA :       GT_FINAL TYPE TABLE OF GS_FINAL,
+             WA_FINAL TYPE GS_FINAL,
+             GT_FIELDCAT TYPE TABLE OF SLIS_FIELDCAT_ALV,
+             WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV.
+
+DATA : LV_VKORG TYPE KNVP-VKORG,
+       LV_VKBUR   TYPE VBRP-WERKS,
+       LV_SPART    TYPE KNVP-SPART,
+       LV_KUNNR TYPE KNVP-KUNNR,
+       LV_PARVW TYPE KNVP-PARVW,
+       LV_FKDAT TYPE VBRK-FKDAT .
+
+SELECTION-SCREEN : BEGIN OF BLOCK B1 WITH FRAME .
+SELECT-OPTIONS : SO_VKORG FOR LV_VKORG OBLIGATORY,
+                 S_VKBUR FOR LV_VKBUR,
+              "   SO_SPART FOR LV_SPART,
+                 SO_KUNNR FOR LV_KUNNR,
+              "   SO_PARVW FOR LV_PARVW,
+                 SO_BEDAT FOR LV_FKDAT OBLIGATORY.
+
+SELECTION-SCREEN : END OF BLOCK B1.
+
+CLASS SALEOFF DEFINITION.
+
+  PUBLIC SECTION .
+
+    METHODS : GET_DATA,
+              AUTH_CHECK,
+              BUILD_FIELDCATALOG,
+              DISPLAY_DATA.
+ENDCLASS.
+
+
+*&---------------------------------------------------------------------*
+*&       Class (Implementation)  SALEOFF
+*&---------------------------------------------------------------------*
+*        Text
+*----------------------------------------------------------------------*
+CLASS SALEOFF IMPLEMENTATION.
+    METHOD GET_DATA.
+    PERFORM GET_DATA.
+  ENDMETHOD.                    "GET_DATA
+
+   METHOD   AUTH_CHECK.
+    PERFORM AUTH_CHECK.
+  ENDMETHOD.                    "AUTHCHECK
+
+  METHOD BUILD_FIELDCATALOG.
+    PERFORM BUILD_FIELDCATALOG.
+  ENDMETHOD.                    "BUILD_FIELDCATALOG
+
+  METHOD  DISPLAY_DATA.
+    PERFORM  DISPLAY_DATA.
+  ENDMETHOD.                    "DISPLAY_DATA
+
+ENDCLASS.               "SALEOFF
+
+START-OF-SELECTION.
+  DATA : SALEOFF TYPE REF TO SALEOFF  .
+
+  CREATE OBJECT SALEOFF.
+
+  CALL METHOD SALEOFF->GET_DATA.
+  CALL METHOD SALEOFF->BUILD_FIELDCATALOG.
+  CALL METHOD SALEOFF->DISPLAY_DATA.
+
+*&---------------------------------------------------------------------*
+*&      Form  AUTH_CHECK
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM AUTH_CHECK .
+
+  LOOP AT GT_FINAL INTO WA_FINAL.
+    AUTHORITY-CHECK OBJECT 'ZINVOICE'
+    ID 'ZVKBUR' FIELD WA_FINAL-VKBUR
+   " ID 'ZSPART' FIELD WA_FINAL-SPART
+   " ID 'ZSPART' DUMMY
+    ID 'ACTVT' FIELD '03'.
+    IF SY-SUBRC NE 0.
+      WA_FINAL-FLAG = 'x' .
+      MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING FLAG.
+      MESSAGE 'NO AUTHORIZATION FOR CERTAIN RECORDS' TYPE 'S'.
+    ENDIF.
+     CLEAR: WA_FINAL.
+    ENDLOOP.
+
+     DELETE GT_FINAL WHERE FLAG = 'X' .
+ENDFORM.                    " AUTH_CHECK
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_FIELDCATALOG
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM BUILD_FIELDCATALOG .
+
+  LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+  LAYOUT-ZEBRA = 'X'.
+
+  WA_FIELDCAT-FIELDNAME   = 'BUKRS'.
+  WA_FIELDCAT-SELTEXT_M   = 'COMPANY CODE'.
+  WA_FIELDCAT-COL_POS     = 1.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'VKORG'.
+*  WA_FIELDCAT-SELTEXT_M   = 'SALES ORGANIZATION'.
+*  WA_FIELDCAT-COL_POS     = 2.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'VKBUR'.                                  " added by mani on 28.12.2015
+*  WA_FIELDCAT-SELTEXT_M   = 'SALES OFFICE'.
+*  WA_FIELDCAT-COL_POS     = 3.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'SPART'.
+*  WA_FIELDCAT-SELTEXT_M   = 'DIVISION'.
+*  WA_FIELDCAT-COL_POS     = 4.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'VTEXT'.
+*  WA_FIELDCAT-SELTEXT_M   = 'DIVISION DESCRIPTION'.
+*  WA_FIELDCAT-COL_POS     = 5.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'KUNNR'.
+*  WA_FIELDCAT-SELTEXT_M   = 'CUSTOMER CODE'.
+*  WA_FIELDCAT-COL_POS     = 12.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'NAME1'.
+  WA_FIELDCAT-SELTEXT_M   = 'CUSTOMER NAME'.
+  WA_FIELDCAT-COL_POS     = 3.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'PARVW'.
+*  WA_FIELDCAT-SELTEXT_M   = 'PARTNER FUNCTION'.
+*  WA_FIELDCAT-COL_POS     = 8.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+*  WA_FIELDCAT-FIELDNAME   = 'PERNR'.
+*  WA_FIELDCAT-SELTEXT_M   = 'PERSONAL NUMBER'.
+*  WA_FIELDCAT-COL_POS     = 9.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'ENAME'.
+  WA_FIELDCAT-SELTEXT_M   = 'EMPLOYEE NAME'.
+  WA_FIELDCAT-COL_POS     = 2.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'NETWR1'.
+  WA_FIELDCAT-SELTEXT_M   = 'SPL Sales'.
+  WA_FIELDCAT-COL_POS     = 4.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'NETWR2'.
+  WA_FIELDCAT-SELTEXT_M   = 'SNC Sales'.
+  WA_FIELDCAT-COL_POS     = 5.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'NETWR3'.
+  WA_FIELDCAT-SELTEXT_M   = 'JNPL Sales'.
+  WA_FIELDCAT-COL_POS     = 6.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'DMBTR1'.
+  WA_FIELDCAT-SELTEXT_M   = 'SPL Outstanding'.
+  WA_FIELDCAT-COL_POS     = 7.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'DMBTR2'.
+  WA_FIELDCAT-SELTEXT_M   = 'SNC Outstanding'.
+  WA_FIELDCAT-COL_POS     = 8.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'DMBTR3'.
+  WA_FIELDCAT-SELTEXT_M   = 'JNPL Outstanding'.
+  WA_FIELDCAT-COL_POS     = 9.
+  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'XBLNR'.
+*  WA_FIELDCAT-SELTEXT_M   = 'Referance no'.
+*  WA_FIELDCAT-COL_POS     = 10.
+*  APPEND WA_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+ENDFORM.                    " BUILD_FIELDCATALOG
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM DISPLAY_DATA .
+
+   CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+   EXPORTING
+*   I_INTERFACE_CHECK                 = ' '
+*   I_BYPASSING_BUFFER                = ' '
+*   I_BUFFER_ACTIVE                   = ' '
+      I_CALLBACK_PROGRAM                = SY-REPID
+*   I_CALLBACK_PF_STATUS_SET          = ' '
+*   I_CALLBACK_USER_COMMAND           = ' '
+   I_CALLBACK_TOP_OF_PAGE            = 'TOP_OF_PAGE'
+*   I_CALLBACK_HTML_TOP_OF_PAGE       = 'TOP_OF_PAGE'
+*   I_CALLBACK_HTML_END_OF_LIST       = ' '
+*   I_STRUCTURE_NAME                  =
+*   I_BACKGROUND_ID                   = ' '
+*   I_GRID_TITLE                      =
+*   I_GRID_SETTINGS                   =
+   IS_LAYOUT                         = LAYOUT
+     IT_FIELDCAT                       = GT_FIELDCAT
+*   IT_SPECIAL_GROUPS                 =
+*   IT_SORT                           =
+*   IT_FILTER                         =
+*   IS_SEL_HIDE                       =
+*   I_DEFAULT                         = 'X'
+*   I_SAVE                            = 'X'
+*   IS_VARIANT                        =
+*   IT_EVENTS                         =
+*   IT_EVENT_EXIT                     =
+*   IS_PRINT                          =
+*   IS_REPREP_ID                      =
+*   I_SCREEN_START_COLUMN             = 0
+*   I_SCREEN_START_LINE               = 0
+*   I_SCREEN_END_COLUMN               = 0
+*   I_SCREEN_END_LINE                 = 0
+*   I_HTML_HEIGHT_TOP                 = 0
+*   I_HTML_HEIGHT_END                 = 0
+*   IT_ALV_GRAPHICS                   =
+*   IT_HYPERLINK                      =
+*   IT_ADD_FIELDCAT                   =
+*   IT_EXCEPT_QINFO                   =
+*   IR_SALV_FULLSCREEN_ADAPTER        =
+* IMPORTING
+*   E_EXIT_CAUSED_BY_CALLER           =
+*   ES_EXIT_CAUSED_BY_USER            =
+    TABLES
+      T_OUTTAB                          = GT_FINAL[]
+   EXCEPTIONS
+     PROGRAM_ERROR                     = 1
+     OTHERS                            = 2
+            .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+ENDFORM.                    " DISPLAY_DATA
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM GET_DATA .
+
+ " IF S_VKBUR IS INITIAL .
+    SELECT
+      KUNNR
+      VKORG
+      VTWEG
+      SPART
+      PARVW
+      PERNR
+    FROM KNVP INTO CORRESPONDING FIELDS OF TABLE GT_KNVP WHERE  KUNNR IN SO_KUNNR " PARVW IN SO_PARVW AND
+      AND VKORG IN SO_VKORG AND PARVW = 'L5' AND VKORG <> ' 6000' .
+
+SORT GT_KNVP BY VKORG KUNNR PARVW PERNR SPART . " Added by <IT-CAR Tool> during Code Remediation
+   DELETE ADJACENT DUPLICATES FROM GT_KNVP COMPARING VKORG KUNNR PARVW PERNR SPART .
+
+        SELECT KUNNR
+           VKORG
+           SPART
+           VKBUR FROM KNVV
+           INTO TABLE IT_KNVV
+           FOR ALL ENTRIES IN GT_KNVP
+           WHERE KUNNR = GT_KNVP-KUNNR AND VKBUR IN S_VKBUR .
+
+    "  IF GT_KNVP IS NOT INITIAL .
+      SELECT  PERNR
+              WERKS
+              ENAME FROM PA0001 INTO TABLE GT_PA0001 FOR ALL ENTRIES IN GT_KNVP WHERE PERNR = GT_KNVP-PERNR . " AND WERKS IN S_VKBUR .
+   " ENDIF.
+
+    SELECT KUNNR
+           NAME1
+           WERKS FROM KNA1 INTO TABLE GT_KNA1 FOR ALL ENTRIES IN GT_KNVP WHERE KUNNR  = GT_KNVP-KUNNR . " AND BUKRS IN SO_VKORG.
+
+   SELECT KUNNR
+          BUKRS FROM KNB1 INTO TABLE GT_KNB1 FOR ALL ENTRIES IN GT_KNVP WHERE KUNNR  = GT_KNVP-KUNNR AND BUKRS IN SO_VKORG .
+
+   SELECT "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+        VBELN
+        VKORG
+        KUNRG
+        SPART
+        FKDAT
+        BUKRS
+        NETWR
+        FKSTO
+            FROM VBRK INTO TABLE GT_VBRK FOR ALL ENTRIES IN GT_KNVP WHERE KUNRG = GT_KNVP-KUNNR AND VKORG = GT_KNVP-VKORG AND FKDAT IN SO_BEDAT
+     AND FKART = 'YBBR'  .
+
+   SELECT
+     VBELN
+     WERKS
+       FROM VBRP INTO TABLE GT_VBRP FOR ALL ENTRIES IN GT_VBRK WHERE VBELN = GT_VBRK-VBELN AND WERKS IN S_VKBUR .
+
+* SELECT
+*       BUKRS
+*       KUNNR
+*       XBLNR
+*       BLART
+*       SHKZG
+*       DMBTR
+*       FROM
+*       BSID INTO TABLE GT_BSAD  FOR ALL ENTRIES IN GT_KNVP
+*           WHERE KUNNR = GT_KNVP-KUNNR AND BUKRS = GT_KNVP-VKORG AND ( BLART = 'RV' OR BLART = 'VG' ).
+
+    SELECT "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+        VBELN
+        VKORG
+        KUNRG
+        SPART
+        FKDAT
+        BUKRS
+        NETWR
+        FKSTO
+            FROM VBRK INTO TABLE GT1_VBRK FOR ALL ENTRIES IN GT_BSAD WHERE KUNRG = GT_BSAD-KUNNR AND BUKRS = GT_BSAD-BUKRS
+      AND  FKDAT IN SO_BEDAT AND XBLNR = GT_BSAD-XBLNR AND FKART = 'YBBR'.
+
+    SELECT
+       BUKRS
+       KUNNR
+       XBLNR
+       BLART
+       SHKZG
+       DMBTR
+       FROM
+       BSID INTO TABLE GT_BSID  FOR ALL ENTRIES IN GT_KNVP
+           WHERE KUNNR = GT_KNVP-KUNNR AND BUKRS = GT_KNVP-VKORG .
+
+ LOOP AT IT_KNVV INTO WA_KNVV ." where vkbur = S_VKBUR.
+      MOVE-CORRESPONDING WA_KNVV TO WA_FINAL.
+
+ READ TABLE GT_KNA1 INTO WA_KNA1 WITH KEY KUNNR = WA_KNVV-KUNNR.
+      IF SY-SUBRC = 0.
+        WA_FINAL-NAME1 = WA_KNA1-NAME1.
+ ENDIF.
+
+      READ TABLE GT_KNB1 INTO WA_KNB1 WITH KEY KUNNR = WA_KNVV-KUNNR.
+      IF SY-SUBRC = 0.
+         WA_FINAL-BUKRS = WA_KNB1-BUKRS.
+      ENDIF.
+
+
+
+  LOOP AT GT_VBRK INTO WA_VBRK WHERE KUNAG = WA_KNVV-KUNNR AND VKORG = WA_KNVV-VKORG. "BUKRS = WA_KNB1-BUKRS . "  AND SPART = WA_KNVP-SPART .  "AND SPART = WA_KNVP-SPART .
+           IF SY-SUBRC = 0 .
+               IF WA_VBRK-FKSTO <> 'X' .
+             WA_FINAL-NETWR = WA_FINAL-NETWR + WA_VBRK-NETWR.
+             ENDIF.
+              IF WA_VBRK-FKSTO = 'X' .
+                WA_FINAL-NETWR = WA_FINAL-NETWR - WA_VBRK-NETWR .
+                        ENDIF.
+                        ENDIF.
+      ENDLOOP.
+
+
+
+
+      LOOP AT GT_BSID INTO WA_BSID WHERE KUNNR = WA_KNVV-KUNNR AND BUKRS = WA_KNB1-BUKRS . "AND XBLNR = WA_VBRK-VBELN .
+                   IF WA_BSID-SHKZG = 'H' AND WA_BSID-BLART <> 'UE' .
+              WA_FINAL-DMBTR8 = WA_FINAL-DMBTR8 - WA_BSID-DMBTR.
+          ENDIF.
+
+            IF WA_BSID-SHKZG = 'S' .
+                      WA_FINAL-DMBTR7 = WA_FINAL-DMBTR7 + WA_BSID-DMBTR.
+            ENDIF.
+
+      ENDLOOP.
+             WA_FINAL-DMBTR = WA_FINAL-DMBTR7 -  ( - WA_FINAL-DMBTR8 ) .
+
+    LOOP AT GT_KNVP INTO WA_KNVP WHERE KUNNR = WA_KNVV-KUNNR  .
+        WA_FINAL-PERNR = WA_KNVP-PERNR .
+ENDLOOP.
+
+      READ TABLE GT_PA0001 INTO WA_PA0001 WITH KEY PERNR = WA_KNVP-PERNR.
+      IF SY-SUBRC = 0.
+        WA_FINAL-ENAME = WA_PA0001-ENAME.
+      ENDIF.
+
+      APPEND WA_FINAL TO GT_FINAL.
+      CLEAR WA_FINAL.
+    ENDLOOP.
+
+
+SORT GT_FINAL BY VKORG KUNNR . " Added by <IT-CAR Tool> during Code Remediation
+ DELETE ADJACENT DUPLICATES FROM GT_FINAL COMPARING VKORG KUNNR . "PERNR .
+
+*LOOP AT GT_FINAL INTO WA_FINAL .
+*
+*  LOOP AT GT_VBRK INTO WA_VBRK WHERE
+*
+*
+*ENDLOOP.
+
+
+*
+*
+*  LOOP AT GT_KNVP INTO WA_KNVP ." where vkbur = S_VKBUR.
+*      MOVE-CORRESPONDING WA_KNVP TO WA_FINAL.
+*
+* READ TABLE GT_KNA1 INTO WA_KNA1 WITH KEY KUNNR = WA_KNVP-KUNNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-NAME1 = WA_KNA1-NAME1.
+* ENDIF.
+*
+*      READ TABLE GT_KNB1 INTO WA_KNB1 WITH KEY KUNNR = WA_KNVP-KUNNR.
+*      IF SY-SUBRC = 0.
+*         WA_FINAL-BUKRS = WA_KNB1-BUKRS.
+*      ENDIF.
+*
+*  LOOP AT GT_VBRK INTO WA_VBRK WHERE KUNAG = WA_KNVP-KUNNR AND BUKRS = WA_KNB1-BUKRS . "  AND SPART = WA_KNVP-SPART .  "AND SPART = WA_KNVP-SPART .
+*
+*  "       LOOP AT GT_VBRP INTO WA_VBRP WHERE VBELN = WA_VBRK-VBELN . " AND BUKRS = WA_KNB1-BUKRS .
+*
+*            IF SY-SUBRC = 0.
+*             WA_FINAL-NETWR = WA_FINAL-NETWR + WA_VBRK-NETWR.
+*          ENDIF.
+*   "    ENDLOOP.
+**          IF SY-SUBRC = 0.
+**             WA_FINAL-NETWR = WA_FINAL-NETWR + WA_VBRK-NETWR.
+**          ENDIF.
+*      ENDLOOP.
+*
+*      LOOP AT GT_BSID INTO WA_BSID WHERE KUNNR = WA_KNVP-KUNNR AND BUKRS = WA_KNB1-BUKRS . "AND XBLNR = WA_VBRK-VBELN .
+*       "   WA_FINAL-XBLNR = WA_BSID-XBLNR .
+*       "   IF SY-SUBRC = 0.
+*            IF WA_BSID-SHKZG = 'H' AND WA_BSID-BLART <> 'UE' .
+*              WA_FINAL-DMBTR8 = WA_FINAL-DMBTR8 - WA_BSID-DMBTR.
+*          ENDIF.
+*        "  ENDIF.
+*
+*
+*            IF WA_BSID-SHKZG = 'S' .
+*          "    WA_FINAL-DMBTR =  WA_BSID-DMBTR  .
+*         "     ENDIF.
+*            WA_FINAL-DMBTR7 = WA_FINAL-DMBTR7 + WA_BSID-DMBTR.
+*            ENDIF.
+*
+*      ENDLOOP.
+*             WA_FINAL-DMBTR = WA_FINAL-DMBTR7 -  ( - WA_FINAL-DMBTR8 ) .
+**      LOOP AT GT_BSAD INTO WA_BSAD WHERE KUNNR = WA_KNVP-KUNNR AND BUKRS = WA_KNB1-BUKRS AND XBLNR = WA_VBRK-VBELN .
+**          WA_FINAL-XBLNR = WA_BSAD-XBLNR .
+**          IF SY-SUBRC = 0.
+**            IF WA_BSAD-SHKZG = 'H' .
+**              WA_BSAD-DMBTR = - ( WA_BSAD-DMBTR ) .
+**              ENDIF.
+**             WA_FINAL-DMBTR = WA_FINAL-DMBTR + WA_BSAD-DMBTR.
+**          ENDIF.
+**      ENDLOOP.
+*
+*
+**  LOOP AT GT1_VBRK INTO WA1_VBRK WHERE KUNAG = WA_BSID-KUNNR AND BUKRS = WA_BSID-BUKRS AND VBELN = WA_BSID-XBLNR .
+**          IF SY-SUBRC = 0.
+**             WA_FINAL-SPART1 =  WA1_VBRK-SPART.
+**          ENDIF.
+**      ENDLOOP.
+*
+*     READ TABLE GT_KNA1 INTO WA_KNA1 WITH KEY KUNNR = WA_KNB1-KUNNR .
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-NAME1 = WA_KNA1-NAME1.
+*      ENDIF.
+*
+*      READ TABLE GT_PA0001 INTO WA_PA0001 WITH KEY PERNR = WA_KNVP-PERNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-ENAME = WA_PA0001-ENAME.
+*      ENDIF.
+*
+**      READ TABLE IT_KNVV INTO WA_KNVV
+**      WITH KEY KUNNR = WA_KNVP-KUNNR .
+*      LOOP AT IT_KNVV INTO WA_KNVV WHERE KUNNR = WA_KNVP-KUNNR AND VKBUR IN S_VKBUR .
+*
+*    "  IF SY-SUBRC = 0.
+*        WA_FINAL-VKBUR = WA_KNVV-VKBUR .
+*     " ENDIF .
+*ENDLOOP.
+**      READ TABLE GT_TSPAT INTO WA_TSPAT WITH KEY SPART = WA_KNVP-SPART.
+**      IF SY-SUBRC = 0.
+**        WA_FINAL-VTEXT = WA_TSPAT-VTEXT.
+**      ENDIF.
+*      APPEND WA_FINAL TO GT_FINAL.
+*      CLEAR WA_FINAL.
+*    ENDLOOP.
+
+
+
+*    LOOP AT GT_KNVP INTO WA_KNVP ." where vkbur = S_VKBUR.
+*      MOVE-CORRESPONDING WA_KNVP TO WA_FINAL.
+*      READ TABLE GT_PA0001 INTO WA_PA0001 WITH KEY PERNR = WA_KNVP-PERNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-ENAME = WA_PA0001-ENAME.
+*      ENDIF.
+*
+*      READ TABLE GT_KNA1 INTO WA_KNA1 WITH KEY KUNNR = WA_KNVP-KUNNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-NAME1 = WA_KNA1-NAME1.
+*      ENDIF.
+*
+*      READ TABLE GT_KNB1 INTO WA_KNB1 WITH KEY KUNNR = WA_KNVP-KUNNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-BUKRS = WA_KNB1-BUKRS.
+*
+*              LOOP AT GT_VBRK INTO WA_VBRK WHERE KUNAG = WA_KNVP-KUNNR  AND BUKRS = WA_KNB1-BUKRS .
+*          IF SY-SUBRC = 0.
+*             WA_FINAL-NETWR = WA_FINAL-NETWR + WA_VBRK-NETWR.
+*          ENDIF.
+*      ENDLOOP.
+*
+*      ENDIF.
+*
+*      READ TABLE IT_KNVV INTO WA_KNVV
+*      WITH KEY KUNNR = WA_KNVP-KUNNR .
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-VKBUR = WA_KNVV-VKBUR .
+*      ENDIF .
+*
+*      READ TABLE GT_TSPAT INTO WA_TSPAT WITH KEY SPART = WA_KNVP-SPART.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-VTEXT = WA_TSPAT-VTEXT.
+*      ENDIF.
+*      APPEND WA_FINAL TO GT_FINAL.
+*      CLEAR WA_FINAL.
+*    ENDLOOP.
+
+
+
+    LOOP AT GT_FINAL INTO WA_FINAL .
+      IF WA_FINAL-PARVW = 'L5'.
+        WA_FINAL-PARVW = 'SO'.
+      ENDIF.
+      IF WA_FINAL-PARVW = 'L3' .
+        WA_FINAL-PARVW = 'ASM' .
+      ENDIF.
+      IF WA_FINAL-PARVW = 'BR' .
+        WA_FINAL-PARVW = 'ADMIN' .
+      ENDIF.
+
+      MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING PARVW.
+      CLEAR WA_FINAL.
+    ENDLOOP.
+*  ELSE.
+*    SELECT
+*      KUNNR
+*      VKORG
+*      VTWEG
+*      SPART
+*      PARVW
+*      PERNR
+*    FROM KNVP INTO CORRESPONDING FIELDS OF TABLE GT_KNVP WHERE KUNNR IN SO_KUNNR AND VKORG IN SO_VKORG . " PARVW IN SO_PARVW
+*
+*    IF GT_KNVP IS NOT INITIAL .
+*      SELECT  PERNR
+*              ENAME FROM PA0001 INTO TABLE GT_PA0001 FOR ALL ENTRIES IN GT_KNVP WHERE PERNR = GT_KNVP-PERNR.
+*    ENDIF.
+*
+*    SELECT KUNNR
+*           NAME1
+*           WERKS FROM KNA1 INTO TABLE GT_KNA1 FOR ALL ENTRIES IN GT_KNVP WHERE KUNNR  = GT_KNVP-KUNNR  .
+*
+**    SELECT SPART
+**              VTEXT
+**              FROM TSPAT INTO TABLE GT_TSPAT
+**              FOR ALL ENTRIES IN GT_KNVP
+**              WHERE SPART = GT_KNVP-SPART
+**              AND SPRAS = 'EN'.
+*
+*    SELECT KUNNR
+*           VKORG
+*           SPART
+*           VKBUR FROM KNVV
+*           INTO TABLE IT_KNVV
+*           FOR ALL ENTRIES IN GT_KNVP
+*           WHERE KUNNR = GT_KNVP-KUNNR AND VKBUR IN S_VKBUR  .
+*
+*    LOOP AT GT_KNVP INTO WA_KNVP ." where vkbur = S_VKBUR.
+*      MOVE-CORRESPONDING WA_KNVP TO WA_FINAL.
+*      READ TABLE GT_PA0001 INTO WA_PA0001 WITH KEY PERNR = WA_KNVP-PERNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-ENAME = WA_PA0001-ENAME.
+*      ENDIF.
+*
+*      READ TABLE GT_KNA1 INTO WA_KNA1 WITH KEY KUNNR = WA_KNVP-KUNNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-NAME1 = WA_KNA1-NAME1.
+*      ENDIF.
+*
+*      READ TABLE GT_KNB1 INTO WA_KNB1 WITH KEY KUNNR = WA_KNA1-KUNNR.
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-BUKRS = WA_KNB1-BUKRS.
+*      ENDIF.
+*
+*      READ TABLE IT_KNVV INTO WA_KNVV
+*      WITH KEY KUNNR = WA_KNVP-KUNNR .
+*      IF SY-SUBRC = 0.
+*        WA_FINAL-VKBUR = WA_KNVV-VKBUR .
+*      ENDIF .
+*
+**      READ TABLE GT_TSPAT INTO WA_TSPAT WITH KEY SPART = WA_KNVP-SPART.
+**      IF SY-SUBRC = 0.
+**        WA_FINAL-VTEXT = WA_TSPAT-VTEXT.
+**      ENDIF.
+*
+*      IF WA_FINAL-VKBUR IS NOT INITIAL .
+*        APPEND WA_FINAL TO GT_FINAL.
+*        CLEAR WA_FINAL.
+*      ENDIF.
+*    ENDLOOP.
+*
+*    LOOP AT  GT_FINAL INTO WA_FINAL .
+*      IF WA_FINAL-PARVW = 'L5'.
+*        WA_FINAL-PARVW = 'SO'.
+*      ENDIF.
+*      IF WA_FINAL-PARVW = 'L3' .
+*        WA_FINAL-PARVW = 'ASM' .
+*      ENDIF.
+*      IF WA_FINAL-PARVW = 'BR' .
+*        WA_FINAL-PARVW = 'ADMIN' .
+*      ENDIF.
+*
+*      MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING PARVW.
+*      CLEAR WA_FINAL.
+*    ENDLOOP.
+*
+*  ENDIF.
+*"BREAK-POINT .
+*
+
+
+DELETE GT_FINAL WHERE NETWR = '0.00' AND DMBTR = '0.00' . " AND DMBTR1 = '0' AND DMBTR3 = '0' . " AND NETWR2 = '0' AND NETWR3 = '0'
+
+  LOOP AT GT_FINAL INTO WA_FINAL .
+   " IF WA_FINAL-BUKRS = '1000' .
+     IF WA_FINAL-VKORG = '1000' .
+      WA_FINAL-NETWR1 = WA_FINAL-NETWR .
+      WA_FINAL-DMBTR1 = WA_FINAL-DMBTR .
+    "  ELSEIF WA_FINAL-BUKRS = '2000' .
+        ELSEIF WA_FINAL-VKORG = '2000' .
+        WA_FINAL-NETWR2 = WA_FINAL-NETWR .
+        WA_FINAL-DMBTR2 = WA_FINAL-DMBTR .
+        " ELSEIF WA_FINAL-BUKRS = '4000' .
+           ELSEIF WA_FINAL-VKORG = '4000' .
+          WA_FINAL-NETWR3 = WA_FINAL-NETWR .
+          WA_FINAL-DMBTR3 = WA_FINAL-DMBTR .
+          ENDIF.
+           MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING NETWR1 NETWR2 NETWR3 DMBTR1 DMBTR2 DMBTR3.
+      CLEAR WA_FINAL.
+          ENDLOOP .
+
+
+LOOP AT GT_FINAL INTO WA_FINAL.
+
+  DELETE GT_FINAL WHERE NETWR1 = '0.00' AND NETWR2 = '0.00' AND NETWR3 = '0.00' AND DMBTR1 = '0.00' AND DMBTR2 = '0.00' AND DMBTR3 = '0.00' .
+
+  MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING NETWR1 NETWR2 NETWR3 DMBTR1 DMBTR2 DMBTR3 .
+
+ENDLOOP.
+
+
+
+ENDFORM.                    " GET_DATA
+
+
+*&---------------------------------------------------------------------*
+*&      Form  TOP_OF_PAGE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM TOP_OF_PAGE .
+
+  DATA:WA_LISTHEADER TYPE SLIS_LISTHEADER,
+        IT_LISTHEADER TYPE SLIS_T_LISTHEADER.
+
+  WA_LISTHEADER-TYP = 'H'.
+  WA_LISTHEADER-INFO = 'SO Wise Sales Report'.
+  APPEND WA_LISTHEADER TO IT_LISTHEADER .
+  CLEAR WA_LISTHEADER .
+
+  WA_LISTHEADER-TYP = 'S'.
+  CONCATENATE 'Report Run Date : '
+
+           SY-DATUM+6(2) '-'
+           SY-DATUM+4(2) '-'
+           SY-DATUM+0(4) INTO WA_LISTHEADER-INFO .
+  APPEND WA_LISTHEADER TO IT_LISTHEADER .
+  CLEAR WA_LISTHEADER .
+
+
+
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = IT_LISTHEADER
+      I_LOGO             = 'ZLOGO'
+*     I_END_OF_LIST_GRID =
+*     I_ALV_FORM         =
+    .
+
+
+
+
+ENDFORM .                    "TOP_OF_PAGE
+*&---------------------------------------------------------------------*

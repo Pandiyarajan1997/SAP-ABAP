@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZVEHICLE</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZVEHICLE</DOMNAME>
+    <HEADLEN>14</HEADLEN>
+    <SCRLEN1>14</SCRLEN1>
+    <SCRLEN2>14</SCRLEN2>
+    <SCRLEN3>14</SCRLEN3>
+    <DDTEXT>Vechicle Nos</DDTEXT>
+    <REPTEXT>Vehicle/Truck</REPTEXT>
+    <SCRTEXT_S>Vehicle/Tr</SCRTEXT_S>
+    <SCRTEXT_M>Vehicle/Truck</SCRTEXT_M>
+    <SCRTEXT_L>Vehicle/Truck</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

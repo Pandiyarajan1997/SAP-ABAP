@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SHLP" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD30V>
+    <SHLPNAME>ZSH_TRIP_REP_VEND</SHLPNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DDTEXT>Trip sheet Vendor Filteration</DDTEXT>
+    <ISSIMPLE>X</ISSIMPLE>
+    <SELMETHOD>ZFREIGHT_HEADER</SELMETHOD>
+    <SELMTYPE>T</SELMTYPE>
+    <SELMEXIT>ZDUPLICATE_VEN_SHELP</SELMEXIT>
+    <DIALOGTYPE>D</DIALOGTYPE>
+   </DD30V>
+   <DD32P_TABLE>
+    <DD32P>
+     <SHLPNAME>ZSH_TRIP_REP_VEND</SHLPNAME>
+     <FIELDNAME>VENDOR_CODE</FIELDNAME>
+     <FLPOSITION>0001</FLPOSITION>
+     <ROLLNAME>YLIFNR</ROLLNAME>
+     <SHLPINPUT>X</SHLPINPUT>
+     <SHLPOUTPUT>X</SHLPOUTPUT>
+     <SHLPSELPOS>01</SHLPSELPOS>
+     <SHLPSELDIS>X</SHLPSELDIS>
+     <SHLPLISPOS>01</SHLPLISPOS>
+    </DD32P>
+   </DD32P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

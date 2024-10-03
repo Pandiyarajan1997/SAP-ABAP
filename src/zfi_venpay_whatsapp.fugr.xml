@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Vendor Pay Whatsapp Integration</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFI_VENPAY_WHATSAPPTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFI_VENPAY_WHATSAPP</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFI_VEN_PAY_WHATSAPP</FUNCNAME>
+     <SHORT_TEXT>Vendor Payment approval whatsapp integration</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>ZTYPE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZSEN_TYPE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TOTAMT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>DMBTR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>USER</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>SY-UNAME</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PRSLID</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZCA_DE_BELNR1</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>RF_CUST_INV</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZSD_SF_CUST_INV</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LS_CUST_COMM</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZCUS_CF_CUMM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ZOUTPUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR20</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>ZTYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sender/Receiver Type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TOTAMT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Amount in local currency</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>USER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ABAP System Field: Name of Current User</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PRSLID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Park document number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RF_CUST_INV</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LS_CUST_COMM</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ZOUTPUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Char 20</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

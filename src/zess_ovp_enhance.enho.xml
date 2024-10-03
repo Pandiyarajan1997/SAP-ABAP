@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>WDYCONF</TOOL>
+   <ORIGINAL_OBJECT>
+    <CONFIG_ID>HRESS_CC_PER_OVR_PERSDATA_XX</CONFIG_ID>
+   </ORIGINAL_OBJECT>
+   <ENHANCEMENT_DATA>
+    <Component Name="" ConfId="" ConfType="00" ConfVar="">
+     <Node Name="CONFIGURATION_CONTEXT" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <Node Name="LIST" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="COLUMN" Sequence="_CFG_COLUMN_37
+_GENP_FA74F82EE5111EE5BC8555FD3336D303
+_CFG_COLUMN_24
+_GENP_78183B4CD25A8E70E10000000A42878C
+_CFG_COLUMN_38
+_CFG_COLUMN_39
+_GENP_03FBBE4C7C8A2A4CE10000000A42878C" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">_GENP_FA74F82EE5111EE5BC8555FD3336D303</ELEMENT_ID>
+           <NAME>ZBGRUP</NAME>
+           <DISPLAY_TYPE>TV</DISPLAY_TYPE>
+           <INDEX>2 </INDEX>
+           <HEADER Transl="true"></HEADER>
+           <SPECIAL_PROPERTIES></SPECIAL_PROPERTIES>
+           <WIDTH></WIDTH>
+           <TAG_ACTIVE></TAG_ACTIVE>
+           <TAG></TAG>
+           <TOOLTIP Transl="true">1</TOOLTIP>
+           <VISIBILITY></VISIBILITY>
+           <TOOLTIP_HEADER Transl="true"></TOOLTIP_HEADER>
+           <CTXT_MENU_ID></CTXT_MENU_ID>
+           <Node Name="COLUMN_ACTION" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true" Changed="true">
+           <INDEX>3 </INDEX>
+           <ELEMENT_ID Final="5 ">_CFG_COLUMN_24</ELEMENT_ID>
+          </Item>
+          <Item Index="000003" SimpleFormat="true" Changed="true">
+           <INDEX>4 </INDEX>
+           <ELEMENT_ID>_GENP_78183B4CD25A8E70E10000000A42878C</ELEMENT_ID>
+          </Item>
+          <Item Index="000004" SimpleFormat="true" Changed="true">
+           <INDEX>5 </INDEX>
+           <ELEMENT_ID Final="5 ">_CFG_COLUMN_38</ELEMENT_ID>
+          </Item>
+          <Item Index="000005" SimpleFormat="true" Changed="true">
+           <INDEX>6 </INDEX>
+           <ELEMENT_ID Final="5 ">_CFG_COLUMN_39</ELEMENT_ID>
+          </Item>
+          <Item Index="000006" SimpleFormat="true" Changed="true">
+           <INDEX>7 </INDEX>
+           <ELEMENT_ID Final="5 ">_GENP_03FBBE4C7C8A2A4CE10000000A42878C</ELEMENT_ID>
+          </Item>
+          <Item Index="000007" Deleted="true" SimpleFormat="true">
+           <ELEMENT_ID>_CFG_COLUMN_40</ELEMENT_ID>
+          </Item>
+          <Item Index="000008" Deleted="true" SimpleFormat="true">
+           <ELEMENT_ID>_CFG_COLUMN_41</ELEMENT_ID>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+      </Item>
+     </Node>
+    </Component>
+   </ENHANCEMENT_DATA>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>FA74F82EE5111EE5BC829FF1E87E0F06</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>FA74F82EE5111EE5BC829FF1E87E0F06</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>048</LENGTH>
+       <TEXT>ESS personal data OVP enhancemet</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZESS_OVP_ENHANCE</OBJ_NAME>
+     <CONCEPT>FA74F82EE5111EE5BC829FF1E87E0F06</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

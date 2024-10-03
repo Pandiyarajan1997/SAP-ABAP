@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SFPI" serializer_version="v1.0.0">
+ <asx:abap version="1.0" xmlns:asx="http://www.sap.com/abapxml">
+  <asx:values>
+   <VERSION>1</VERSION>
+   <TYPE/>
+   <INTERFACE href="#o1"/>
+   <INTERFACET>
+    <FPINTERFACET>
+     <NAME/>
+     <STATE/>
+     <LANGUAGE>E</LANGUAGE>
+     <ID/>
+     <TEXT>Interface for Invoice</TEXT>
+    </FPINTERFACET>
+   </INTERFACET>
+  </asx:values>
+  <asx:heap xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:abap="http://www.sap.com/abapxml/types/built-in" xmlns:cls="http://www.sap.com/abapxml/classes/global" xmlns:dic="http://www.sap.com/abapxml/types/dictionary">
+   <cls:CL_FP_INTERFACE_DATA id="o1">
+    <CL_FP_INTERFACE_DATA classVersion="1">
+     <CODING href="#o5"/>
+     <PARAMETERS href="#o4"/>
+     <GLOBAL_DEFINITIONS href="#o3"/>
+     <REFERENCE_FIELDS href="#o2"/>
+     <XSD_DEFINITIONS/>
+    </CL_FP_INTERFACE_DATA>
+   </cls:CL_FP_INTERFACE_DATA>
+   <cls:CL_FP_REFERENCE_FIELDS id="o2">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_REFERENCE_FIELDS classVersion="1">
+     <REFERENCE_FIELDS/>
+    </CL_FP_REFERENCE_FIELDS>
+   </cls:CL_FP_REFERENCE_FIELDS>
+   <cls:CL_FP_GLOBAL_DEFINITIONS id="o3">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_GLOBAL_DEFINITIONS classVersion="1">
+     <GLOBAL_DATA>
+      <SFPGDATA>
+       <NAME>GS_BILL_TO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_BILL_TO</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_SH_TO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_BILL_TO</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GT_ITEM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZIRN_ITEM_TT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LS_ITEM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ITEM</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOT_STR</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR1024</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_TOTAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_TOTAL</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_ADRC_HEAD</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_ADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_PLANT_GSTIN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1BBRANCH-GSTIN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_CUST_GSTIN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNA1-STCD3</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_DISC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KBETR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_HEADING</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BIL_NUM_HEADING</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BIL_ADDR_TITLE1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BIL_ADDR_TITLE2</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOT_INV</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>MAXBT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TTOT_QTY</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>FKIMG</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_BADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_KNA1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_KNA1</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_SADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_SADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GT_HSN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZIRN_ITEM_TT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TCSPRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_ROUND_OFF</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KWERT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_QRCODE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_IRN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IG_IRN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_EWBNO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_EWBDAT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IG_EGENDAT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_EWB_EXPDATE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IG_EGENDAT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_TRANSDTLS</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_EWAY_TRDTLS</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_HEADERTXT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_FOR_TEXT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_REG_ADD1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_REG_ADD2</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_REG_ADD3</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_BILL_DATE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>DATS</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOTAL_WEIGHT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+     </GLOBAL_DATA>
+     <TYPES>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_SOLD_TO_PARTY,</FPCLINE>
+      <FPCLINE>          GSTIN(20)      TYPE C,</FPCLINE>
+      <FPCLINE>          NAME(80)       TYPE C,</FPCLINE>
+      <FPCLINE>          STREET(60)     TYPE C,</FPCLINE>
+      <FPCLINE>          CITY1(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          POST_CODE1(10) TYPE C,</FPCLINE>
+      <FPCLINE>          STATE_DESC(20)  TYPE C,</FPCLINE>
+      <FPCLINE>          CNTRY_DESC(20) TYPE C,</FPCLINE>
+      <FPCLINE>          SERIAL_NUM     TYPE VBRK-XBLNR,</FPCLINE>
+      <FPCLINE>          DATE           TYPE DATUM,</FPCLINE>
+      <FPCLINE>        END OF TY_SOLD_TO_PARTY.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_BILL_TO,</FPCLINE>
+      <FPCLINE>          NAME1(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          NAME2(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          STREET(60)     TYPE C,</FPCLINE>
+      <FPCLINE>          CITY1(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          POST_CODE1(10) TYPE C,</FPCLINE>
+      <FPCLINE>          REGION(3)      TYPE C,</FPCLINE>
+      <FPCLINE>          COUNTRY(20)    TYPE C,</FPCLINE>
+      <FPCLINE>          STATE          TYPE BEZEI,</FPCLINE>
+      <FPCLINE>          STATE_CODE(20) TYPE C,</FPCLINE>
+      <FPCLINE>          STATE_DESC(20) TYPE C,</FPCLINE>
+      <FPCLINE>          GSTIN          TYPE KNA1-STCD3,</FPCLINE>
+      <FPCLINE>        END OF TY_BILL_TO.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_MARA,</FPCLINE>
+      <FPCLINE>         MATNR TYPE MARA-MATNR,</FPCLINE>
+      <FPCLINE>         MTART TYPE MARA-MTART,</FPCLINE>
+      <FPCLINE>         MATKL TYPE MARA-MATKL,</FPCLINE>
+      <FPCLINE>         MEINS TYPE MARA-MEINS,</FPCLINE>
+      <FPCLINE>       END OF TY_MARA.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_ITEM,</FPCLINE>
+      <FPCLINE>           POSNR  TYPE  POSNR,</FPCLINE>
+      <FPCLINE>           INCLUDE type ZIRN_ITEM_ST,</FPCLINE>
+      <FPCLINE>*           MATNR  TYPE MATNR,</FPCLINE>
+      <FPCLINE>*          DESC     TYPE text150,</FPCLINE>
+      <FPCLINE>*          HSN       TYPE  J_1IG_HSN_SAC,</FPCLINE>
+      <FPCLINE>*          FKIMG  TYPE  FKIMG,</FPCLINE>
+      <FPCLINE>*          UNIT      TYPE VRKME,&quot;kmein,</FPCLINE>
+      <FPCLINE>*          VBELN  TYPE VBELN_VL,</FPCLINE>
+      <FPCLINE>*          CHARG  TYPE CHAR50,</FPCLINE>
+      <FPCLINE>*          COUNT  TYPE I,</FPCLINE>
+      <FPCLINE>*          VRKME(3)  TYPE C,</FPCLINE>
+      <FPCLINE>*          TOT_QUAN TYPE FKIMG,</FPCLINE>
+      <FPCLINE>*          VOLUM1 TYPE VBRP-VOLUM,</FPCLINE>
+      <FPCLINE>*          AMOUNT TYPE KBETR,</FPCLINE>
+      <FPCLINE>*          RATE      TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          TOTAL     TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          DISCOUNT  TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          TAX_VAL   TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          CGST_RATE TYPE P,</FPCLINE>
+      <FPCLINE>*          CGST_VAL  TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          SGST_RATE TYPE P,</FPCLINE>
+      <FPCLINE>*          SGST_VAL  TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          IGST_RATE TYPE P,</FPCLINE>
+      <FPCLINE>*          IGST_VAL  TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          TCS_RATE TYPE P DECIMALS 3,        &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>*          TCS_VAL  TYPE KWERT,    &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>*          R1 TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          R2 TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          R3 TYPE KWERT,</FPCLINE>
+      <FPCLINE>*          R4 TYPE KWERT, &quot;Coded By Prabhu</FPCLINE>
+      <FPCLINE>*          F TYPE C,</FPCLINE>
+      <FPCLINE>        END OF TY_ITEM.</FPCLINE>
+      <FPCLINE>TYPES: TT_ITEM TYPE STANDARD TABLE OF TY_ITEM.</FPCLINE>
+      <FPCLINE>TYPES : BEGIN OF TY_TOTAL,</FPCLINE>
+      <FPCLINE>          TAX_VAL TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TOTAL TYPE KWERT,</FPCLINE>
+      <FPCLINE>          CGST  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          SGST  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          IGST  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TCSV  TYPE KWERT,         &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>          FKIMG  TYPE  FKIMG,</FPCLINE>
+      <FPCLINE>           DISCOUNT  TYPE KWERT,</FPCLINE>
+      <FPCLINE>           R1 TYPE KWERT,</FPCLINE>
+      <FPCLINE>          R2 TYPE KWERT,</FPCLINE>
+      <FPCLINE>         R4 TYPE KWERT, &quot;&quot;Coded By Prabhu</FPCLINE>
+      <FPCLINE>           VOLUM1 TYPE VBRP-VOLUM,</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*          tax_val   TYPE p,</FPCLINE>
+      <FPCLINE>        END OF TY_TOTAL.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_KSCHL,</FPCLINE>
+      <FPCLINE>          KSCHL TYPE KSCHL,</FPCLINE>
+      <FPCLINE>        END OF TY_KSCHL.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_CHARG,</FPCLINE>
+      <FPCLINE>          BIL_NUMBER TYPE VBELN,</FPCLINE>
+      <FPCLINE>          ITM_NUMBER TYPE POSNR,</FPCLINE>
+      <FPCLINE>          POSPA TYPE POSPA,</FPCLINE>
+      <FPCLINE>          BATCH TYPE CHARG_D,</FPCLINE>
+      <FPCLINE>          MATERIAL TYPE MATNR,</FPCLINE>
+      <FPCLINE>        END OF TY_CHARG.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*types:begin of str_vol,</FPCLINE>
+      <FPCLINE>*      vbeln type vbrp-vbeln,</FPCLINE>
+      <FPCLINE>*      POSNR type vbrp-POSNR,</FPCLINE>
+      <FPCLINE>*      volum type vbrp-volum,</FPCLINE>
+      <FPCLINE>*  end of str_vol.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>* Added on 11 Aug 2017</FPCLINE>
+      <FPCLINE>TYPES: BEGIN OF TY_MARM,</FPCLINE>
+      <FPCLINE>        MATNR TYPE MARM-MATNR,</FPCLINE>
+      <FPCLINE>        MEINH TYPE MARM-MEINH,</FPCLINE>
+      <FPCLINE>        UMREZ TYPE MARM-UMREZ,</FPCLINE>
+      <FPCLINE>        UMREN TYPE MARM-UMREN,</FPCLINE>
+      <FPCLINE>      END OF TY_MARM.</FPCLINE>
+      <FPCLINE>TYPES: TT_MARM TYPE STANDARD TABLE OF TY_MARM.</FPCLINE>
+      <FPCLINE>TYPES: BEGIN OF TY_VBPA,</FPCLINE>
+      <FPCLINE>        VBELN TYPE VBPA-VBELN,</FPCLINE>
+      <FPCLINE>        PARVW TYPE VBPA-PARVW,</FPCLINE>
+      <FPCLINE>        KUNNR TYPE VBPA-KUNNR,</FPCLINE>
+      <FPCLINE>        ADRNR TYPE VBPA-ADRNR,</FPCLINE>
+      <FPCLINE>      END OF TY_VBPA.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_ADRC,</FPCLINE>
+      <FPCLINE>        ADDRNUMBER TYPE ADRC-ADDRNUMBER,</FPCLINE>
+      <FPCLINE>        NAME1 TYPE ADRC-NAME1,</FPCLINE>
+      <FPCLINE>        CITY1 TYPE ADRC-CITY1,</FPCLINE>
+      <FPCLINE>        CITY2 TYPE ADRC-CITY2,</FPCLINE>
+      <FPCLINE>        POST_CODE1 TYPE ADRC-POST_CODE1,</FPCLINE>
+      <FPCLINE>        STREET TYPE ADRC-STREET,</FPCLINE>
+      <FPCLINE>        HOUSE_NUM1 TYPE ADRC-HOUSE_NUM1,</FPCLINE>
+      <FPCLINE>        STR_SUPPL1 TYPE ADRC-STR_SUPPL1,</FPCLINE>
+      <FPCLINE>        COUNTRY TYPE ADRC-COUNTRY,</FPCLINE>
+      <FPCLINE>        REGION TYPE ADRC-REGION,</FPCLINE>
+      <FPCLINE>        TEL_NUMBER TYPE ADRC-TEL_NUMBER,</FPCLINE>
+      <FPCLINE>        state  TYPE adrc-extension1,</FPCLINE>
+      <FPCLINE>      END OF TY_ADRC.</FPCLINE>
+      <FPCLINE>TYPES: TT_ADRC TYPE STANDARD TABLE OF TY_ADRC.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_LIKP,</FPCLINE>
+      <FPCLINE>        VBELN TYPE LIKP-VBELN,</FPCLINE>
+      <FPCLINE>        KUNNR TYPE LIKP-KUNNR,</FPCLINE>
+      <FPCLINE>      END OF TY_LIKP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_KNA1,</FPCLINE>
+      <FPCLINE>        KUNNR TYPE KNA1-KUNNR,</FPCLINE>
+      <FPCLINE>        NAME1 TYPE KNA1-NAME1,</FPCLINE>
+      <FPCLINE>        ORT01 TYPE KNA1-ORT01,</FPCLINE>
+      <FPCLINE>        PSTLZ TYPE KNA1-PSTLZ,</FPCLINE>
+      <FPCLINE>        REGIO TYPE KNA1-REGIO,</FPCLINE>
+      <FPCLINE>        STRAS TYPE KNA1-STRAS,</FPCLINE>
+      <FPCLINE>        TELF1 TYPE KNA1-TELF1,</FPCLINE>
+      <FPCLINE>        ORT02 TYPE KNA1-ORT02,</FPCLINE>
+      <FPCLINE>        STCD3 TYPE KNA1-STCD3,</FPCLINE>
+      <FPCLINE>        LAND1 TYPE KNA1-LAND1,</FPCLINE>
+      <FPCLINE>      END OF TY_KNA1.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_SADRC,</FPCLINE>
+      <FPCLINE>        ADDRNUMBER TYPE ADRC-ADDRNUMBER,</FPCLINE>
+      <FPCLINE>        NAME1 TYPE ADRC-NAME1,</FPCLINE>
+      <FPCLINE>        POST_CODE1 TYPE ADRC-POST_CODE1,</FPCLINE>
+      <FPCLINE>        STREET TYPE ADRC-STREET,</FPCLINE>
+      <FPCLINE>        HOUSE_NUM1 TYPE ADRC-HOUSE_NUM1,</FPCLINE>
+      <FPCLINE>        STR_SUPPL1 TYPE ADRC-STR_SUPPL1,&quot;created on 09.09.2020 by prabhu</FPCLINE>
+      <FPCLINE>        REGION TYPE ADRC-REGION,</FPCLINE>
+      <FPCLINE>        TEL_NUMBER TYPE ADRC-TEL_NUMBER,</FPCLINE>
+      <FPCLINE>        MC_CITY1 TYPE ADRC-MC_CITY1,</FPCLINE>
+      <FPCLINE>        state  TYPE adrc-extension1,</FPCLINE>
+      <FPCLINE>      END OF TY_SADRC,</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      BEGIN OF TY_HSN,</FPCLINE>
+      <FPCLINE>      RNO TYPE I,</FPCLINE>
+      <FPCLINE>      HSN(4),</FPCLINE>
+      <FPCLINE>      QTY  TYPE  FKIMG,</FPCLINE>
+      <FPCLINE>      UNIT TYPE VRKME,&quot;kmein,</FPCLINE>
+      <FPCLINE>      TAX_VAL TYPE KWERT,</FPCLINE>
+      <FPCLINE>      PER TYPE P,</FPCLINE>
+      <FPCLINE>      RATE TYPE KWERT,</FPCLINE>
+      <FPCLINE>      MATNR TYPE MATNR,</FPCLINE>
+      <FPCLINE>      TCS_RATE TYPE P DECIMALS 3,        &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>      TCS_VAL  TYPE KWERT,    &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>     END OF TY_HSN.</FPCLINE>
+      <FPCLINE>     TYPES: TT_HSN TYPE STANDARD TABLE OF TY_HSN.</FPCLINE>
+     </TYPES>
+     <FIELDSYMBOLS/>
+    </CL_FP_GLOBAL_DEFINITIONS>
+   </cls:CL_FP_GLOBAL_DEFINITIONS>
+   <cls:CL_FP_PARAMETERS id="o4">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_PARAMETERS classVersion="1">
+     <IMPORT_PARAMETERS>
+      <SFPIOPAR>
+       <NAME>IT_MSEG</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_TT_MSEG</TYPENAME>
+       <OPTIONAL>X</OPTIONAL>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>IT_MKPF</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_TT_MKPF</TYPENAME>
+       <OPTIONAL>X</OPTIONAL>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>IT_VBRP</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_TT_VBRP</TYPENAME>
+       <OPTIONAL>X</OPTIONAL>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>IT_VBRK</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_TT_VBRK</TYPENAME>
+       <OPTIONAL>X</OPTIONAL>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+     </IMPORT_PARAMETERS>
+     <EXPORT_PARAMETERS/>
+     <TABLE_PARAMETERS/>
+     <EXCEPTIONS/>
+    </CL_FP_PARAMETERS>
+   </cls:CL_FP_PARAMETERS>
+   <cls:CL_FP_CODING id="o5">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_CODING classVersion="1">
+     <INPUT_PARAMETERS/>
+     <OUTPUT_PARAMETERS/>
+     <INITIALIZATION>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*SELECT SINGLE adrnr FROM t001 INTO @DATA(l_adrnr) WHERE bukrs = &apos;1000&apos;.</FPCLINE>
+      <FPCLINE>*IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>*  SELECT SINGLE addrnumber</FPCLINE>
+      <FPCLINE>*                name1</FPCLINE>
+      <FPCLINE>*                city1</FPCLINE>
+      <FPCLINE>*                city2</FPCLINE>
+      <FPCLINE>*                post_code1</FPCLINE>
+      <FPCLINE>*                street</FPCLINE>
+      <FPCLINE>*                house_num1</FPCLINE>
+      <FPCLINE>*                str_suppl1</FPCLINE>
+      <FPCLINE>*                country</FPCLINE>
+      <FPCLINE>*                region</FPCLINE>
+      <FPCLINE>*                tel_number</FPCLINE>
+      <FPCLINE>*                extension1 as state</FPCLINE>
+      <FPCLINE>*                FROM adrc</FPCLINE>
+      <FPCLINE>*                INTO gs_badrc</FPCLINE>
+      <FPCLINE>*                WHERE addrnumber EQ l_adrnr.</FPCLINE>
+      <FPCLINE>*  SELECT SINGLE bezei FROM t005u</FPCLINE>
+      <FPCLINE>*    INTO @DATA(state_reg)</FPCLINE>
+      <FPCLINE>*            WHERE bland = @gs_badrc-region AND</FPCLINE>
+      <FPCLINE>*                  land1 = @gs_badrc-country .</FPCLINE>
+      <FPCLINE>*  gs_badrc-state = state_reg.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*ENDIF.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>******************</FPCLINE>
+      <FPCLINE>**--Total in words</FPCLINE>
+      <FPCLINE>******************</FPCLINE>
+      <FPCLINE>*gv_tot_inv = is_bil_invoice-valdtls-totinvval.</FPCLINE>
+      <FPCLINE>*CALL FUNCTION &apos;J_1IG_AMT_IN_WORDS&apos;</FPCLINE>
+      <FPCLINE>*  EXPORTING</FPCLINE>
+      <FPCLINE>*    amt_in_num         = gv_tot_inv</FPCLINE>
+      <FPCLINE>*  IMPORTING</FPCLINE>
+      <FPCLINE>*    amt_in_words       = gv_tot_str</FPCLINE>
+      <FPCLINE>*  EXCEPTIONS</FPCLINE>
+      <FPCLINE>*    data_type_mismatch = 1</FPCLINE>
+      <FPCLINE>*    OTHERS             = 2.</FPCLINE>
+      <FPCLINE>*IF sy-subrc &lt;&gt; 0.</FPCLINE>
+      <FPCLINE>** Implement suitable error handling here</FPCLINE>
+      <FPCLINE>*ENDIF.</FPCLINE>
+      <FPCLINE>*  gv_for_text = |For { is_bil_invoice-sellerdtls-lglnm }|.</FPCLINE>
+      <FPCLINE>*  LOOP AT is_bil_invoice-itemlist INTO DATA(lw_item).</FPCLINE>
+      <FPCLINE>**      gs_hsn = gs_item = lw_item.</FPCLINE>
+      <FPCLINE>*      APPEND lw_item TO gt_item.</FPCLINE>
+      <FPCLINE>*      READ TABLE gt_hsn ASSIGNING FIELD-SYMBOL(&lt;fs1&gt;) WITH KEY hsncd = lw_item-hsncd.</FPCLINE>
+      <FPCLINE>*      IF sy-subrc = 0.</FPCLINE>
+      <FPCLINE>*        &lt;fs1&gt;-assamt = &lt;fs1&gt;-assamt + lw_item-assamt.</FPCLINE>
+      <FPCLINE>*        &lt;fs1&gt;-qty = &lt;fs1&gt;-qty + lw_item-qty.</FPCLINE>
+      <FPCLINE>*      ELSE.</FPCLINE>
+      <FPCLINE>*        APPEND lw_item TO gt_hsn.</FPCLINE>
+      <FPCLINE>*      ENDIF.</FPCLINE>
+      <FPCLINE>*  ENDLOOP.</FPCLINE>
+      <FPCLINE>*  LOOP AT gt_item ASSIGNING &lt;fs1&gt;.</FPCLINE>
+      <FPCLINE>*    &lt;fs1&gt;-slno = sy-tabix.</FPCLINE>
+      <FPCLINE>*  ENDLOOP.</FPCLINE>
+      <FPCLINE>*  LOOP AT gt_hsn ASSIGNING &lt;fs1&gt;.</FPCLINE>
+      <FPCLINE>*    &lt;fs1&gt;-slno = sy-tabix.</FPCLINE>
+      <FPCLINE>*  ENDLOOP.</FPCLINE>
+      <FPCLINE>*  DATA(lv_exp_date) = CONV j_1ig_vdtodate( 0 ).</FPCLINE>
+      <FPCLINE>*  SELECT SINGLE ebillno egen_dat vdtodate</FPCLINE>
+      <FPCLINE>*    FROM ZDMS_INVOICE_EWB</FPCLINE>
+      <FPCLINE>*  INTO (gv_ewbno, gv_ewbdat, gv_ewb_expdate ) &quot;lv_qrcode</FPCLINE>
+      <FPCLINE>*                        WHERE docno     = inv_no.</FPCLINE>
+      <FPCLINE>**  IF lv_exp_date IS NOT INITIAL.</FPCLINE>
+      <FPCLINE>**    WRITE lv_exp_date TO gv_ewb_expdate DD/MM/YYYY.</FPCLINE>
+      <FPCLINE>**  ENDIF.</FPCLINE>
+      <FPCLINE>*  gs_total-tax_val = gs_total-total - ( gs_total-r1 + gs_total-r2 + gs_total-r4 ).</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*  gv_qrcode = signed_qrcode.</FPCLINE>
+     </INITIALIZATION>
+     <FORMS/>
+    </CL_FP_CODING>
+   </cls:CL_FP_CODING>
+  </asx:heap>
+ </asx:abap>
+</abapGit>

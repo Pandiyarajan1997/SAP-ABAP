@@ -1,0 +1,103 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZXCOFU06
+*&---------------------------------------------------------------------*
+
+DATA : LV_AUFNR TYPE AFRU-AUFNR,
+       LV_VORNR TYPE AFRU-VORNR.
+
+IF SY-TCODE = 'COR6N'.
+
+  LV_AUFNR = CAUFVD_IMP-AUFNR.
+
+  IF  AFVGD_IMP-VORNR = '0011'.
+    IF SY-SUBRC <> 0.
+      .
+    ENDIF.
+  ENDIF.
+ENDIF.
+
+IF SY-TCODE = 'COR6N'.
+  LV_AUFNR = CAUFVD_IMP-AUFNR.
+
+  IF  AFVGD_IMP-VORNR = '0021'.
+    IF SY-SUBRC = 0.
+      SELECT SINGLE VORNR FROM AFRU  INTO LV_VORNR WHERE AUFNR = LV_AUFNR AND VORNR = '0011' AND STOKZ <> 'X' AND STZHL LT 1.
+    ENDIF.
+
+*IF  AFVGD_IMP-VORNR = '021'.
+    IF    LV_VORNR IS INITIAL.
+      MESSAGE '0011 Operation Missing' TYPE 'E'.
+    ENDIF.
+
+  ENDIF.
+ENDIF.
+
+IF SY-TCODE = 'COR6N'.
+  LV_AUFNR = CAUFVD_IMP-AUFNR.
+
+  IF  AFVGD_IMP-VORNR = '0031'.
+    IF SY-SUBRC = 0.
+      SELECT SINGLE VORNR FROM AFRU  INTO LV_VORNR WHERE AUFNR = LV_AUFNR AND VORNR = '0021' AND STOKZ <> 'X' AND STZHL LT 1.
+    ENDIF.
+
+*IF  AFVGD_IMP-VORNR = '021'.
+    IF    LV_VORNR IS INITIAL.
+      MESSAGE '0021 Operation Missing' TYPE 'E'.
+    ENDIF.
+
+  ENDIF.
+ENDIF.
+
+IF SY-TCODE = 'COR6N'.
+  LV_AUFNR = CAUFVD_IMP-AUFNR.
+
+  IF  AFVGD_IMP-VORNR = '0041'.
+    IF SY-SUBRC = 0.
+      SELECT SINGLE VORNR FROM AFRU  INTO LV_VORNR WHERE AUFNR = LV_AUFNR AND VORNR = '0021' AND STOKZ <> 'X' AND STZHL LT 1.
+    ENDIF.
+
+*IF  AFVGD_IMP-VORNR = '021'.
+    IF    LV_VORNR IS INITIAL.
+      MESSAGE '0031 Operation Missing' TYPE 'E'.
+    ENDIF.
+
+  ENDIF.
+ENDIF.
+
+IF SY-TCODE = 'COR6N'.
+  LV_AUFNR = CAUFVD_IMP-AUFNR.
+
+  IF  AFVGD_IMP-VORNR = '0051'.
+    IF SY-SUBRC = 0.
+      SELECT SINGLE VORNR FROM AFRU  INTO LV_VORNR WHERE AUFNR = LV_AUFNR AND VORNR = '0021' AND STOKZ <> 'X' AND STZHL LT 1.
+    ENDIF.
+
+*IF  AFVGD_IMP-VORNR = '021'.
+    IF    LV_VORNR IS INITIAL.
+      MESSAGE '0041 Operation Missing' TYPE 'E'.
+    ENDIF.
+
+  ENDIF.
+ENDIF.
+*"------------------------------------------------------------------------------------
+*
+*DATA : LV_GMEIN TYPE AFRU-GMEIN,
+*       LV_ISM01 TYPE AFRU-ISM01,
+*       LV_ISM02 TYPE AFRU-ISM02,
+*       LV_ISM03 TYPE AFRU-ISM03.
+*
+*IF SY-TCODE = 'COR6N'.
+*
+*IF LV_GMEIN = 'L' OR LV_GMEIN = 'KG'.
+*IF LV_ISM01 IS INITIAL AND LV_ISM02 IS INITIAL  AND LV_ISM03 IS INITIAL.
+*  MESSAGE 'Enter all activity value ' TYPE 'E'.
+*ENDIF.
+*ENDIF.
+*
+*
+*IF LV_GMEIN = 'EA'.
+*IF LV_ISM02 IS INITIAL.
+*MESSAGE 'Enter labour activity value' TYPE 'E'.
+*ENDIF.
+*ENDIF.
+*ENDIF.

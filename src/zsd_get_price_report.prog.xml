@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZSD_GET_PRICE_REPORT</NAME>
+    <SUBC>1</SUBC>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Input Field</ENTRY>
+     <LENGTH>21</LENGTH>
+    </item>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Report for Read Price based on the Input date &amp; material</ENTRY>
+     <LENGTH>56</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_DATE</KEY>
+     <ENTRY>.</ENTRY>
+     <LENGTH>12</LENGTH>
+     <SPLIT>D</SPLIT>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_TYPE</KEY>
+     <ENTRY>Condition Type</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SO_MATNR</KEY>
+     <ENTRY>.</ENTRY>
+     <LENGTH>16</LENGTH>
+     <SPLIT>D</SPLIT>
+    </item>
+   </TPOOL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

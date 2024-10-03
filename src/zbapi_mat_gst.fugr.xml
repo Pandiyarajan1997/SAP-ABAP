@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Material GST data</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_MAT_GSTTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_MAT_GST</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_MAT_GST</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi for GST and HSN Code for material</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>RANGE_T_MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>WKREG</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>WKREG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>REGIO</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>REGIO</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_OUTPUT</PARAMETER>
+       <DBSTRUCT>ZBAPI_MAT_TAX</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Line of Range Table for Data Element MATNR</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>WKREG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Region in which plant is located</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>REGIO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Region (State, Province, County)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_OUTPUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Tax Percentage information</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

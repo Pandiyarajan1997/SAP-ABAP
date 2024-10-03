@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for BAPI for Production Order</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_PRODORDTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_PRODORD</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_PRODORD_QUAN_LITRES</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi for Production Order Quantity in litres</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PRODUCTION_PLANT</PARAMETER>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_PRODORD</PARAMETER>
+       <DBSTRUCT>ZSTR_PRODORD_QUAN</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PRODUCTION_PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_PRODORD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for production order Delibered Quantity</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

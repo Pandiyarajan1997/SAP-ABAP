@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group For Disc&amp;CN Master Data</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZFG_SKU_DISC_CN_MASTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_DISCOUNT_CN_NEW</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Discount Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_DISC_MASTER</PARAMETER>
+       <DBSTRUCT>ZSTR_CNF_DISC_MASTER</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_DISC_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>table type for the structure ZSTR_CNF_DISC_A005</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_DISC_CN_MASTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Discount Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_DISC_MASTER</PARAMETER>
+       <DBSTRUCT>ZSTR_CNF_DISC_MASTER</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_DISC_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>table type for the structure ZSTR_CNF_DISC_A005</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

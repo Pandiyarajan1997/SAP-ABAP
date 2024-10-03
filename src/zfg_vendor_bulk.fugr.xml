@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>for bulk clearing auto debit</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_VENDOR_BULKTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_VENDOR_BULK</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZAUTO_CLEARING_FOR_VENDOR_BULK</FUNCNAME>
+     <SHORT_TEXT>Auto Document Clearing for Vendors bulk Invoices</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VENDOR</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>LIFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>ORG_INV_NO</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BELNR_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>AMOUNT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>WRBTR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>INV_REFNO</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>XBLNR1</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PAYMENT_REFERENCE</PARAMETER>
+       <TYP>ZPAY_REF</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>ASSIGNMENT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR25</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DOC_DATE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BLDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>POSTING_DATE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>GLACCOUNT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>SAKNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DOC_TYPE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BLART</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>CLEARDOCUMENT_NO</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BELNR_D</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>MSG_TYP</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR01</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>MESSAGE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR50</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>ACTUAL_DOCUMENT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZFI_DOC_TT</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>INT_POSTDOC_NO</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BELNR_D</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>ENTER_COMPCODE</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_VENDOR</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_INV_DOCNO</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_AMOUNT</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_INVREFNO</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_PAYMENTREF</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_ASSIGNMENT</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_INTEREST</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_INVREFNO</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_PDATE</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>ENTER_DDATE</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DOCUMENT_ALREADY_CLEARED</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DOCUMENT_NOT_FOUND</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>GL_MISSING</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VENDOR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Account Number of Vendor or Creditor</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ORG_INV_NO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>AMOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Amount in document currency</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INV_REFNO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Reference Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PAYMENT_REFERENCE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Payment Reference</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ASSIGNMENT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>User field for cluster PC (national)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOC_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date in Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>POSTING_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GLACCOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>G/L Account Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOC_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CLEARDOCUMENT_NO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG_TYP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Character Field of Length 1</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MESSAGE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Char 60</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ACTUAL_DOCUMENT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INT_POSTDOC_NO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_COMPCODE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Comp Code is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_VENDOR</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Vendor is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_INV_DOCNO</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Invoice Document Number is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_AMOUNT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Amount is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_INVREFNO</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Invoice Reference is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_PAYMENTREF</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Payment Reference is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_ASSIGNMENT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Assignment is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_INTEREST</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Interest Amount is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_INVREFNO</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Invoice refno already exsits</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_PDATE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Enter Posting Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_DDATE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Enter Document date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOCUMENT_ALREADY_CLEARED</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Document Already Cleared</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOCUMENT_NOT_FOUND</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Document Not Found</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GL_MISSING</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>G/L Account Number Missing</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

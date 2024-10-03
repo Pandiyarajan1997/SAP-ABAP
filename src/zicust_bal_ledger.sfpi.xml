@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SFPI" serializer_version="v1.0.0">
+ <asx:abap version="1.0" xmlns:asx="http://www.sap.com/abapxml">
+  <asx:values>
+   <VERSION>1</VERSION>
+   <TYPE/>
+   <INTERFACE href="#o1"/>
+   <INTERFACET>
+    <FPINTERFACET>
+     <NAME/>
+     <STATE/>
+     <LANGUAGE>E</LANGUAGE>
+     <ID/>
+     <TEXT>Customer Balance Ledger Int.</TEXT>
+    </FPINTERFACET>
+   </INTERFACET>
+  </asx:values>
+  <asx:heap xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:abap="http://www.sap.com/abapxml/types/built-in" xmlns:cls="http://www.sap.com/abapxml/classes/global" xmlns:dic="http://www.sap.com/abapxml/types/dictionary">
+   <cls:CL_FP_INTERFACE_DATA id="o1">
+    <CL_FP_INTERFACE_DATA classVersion="1">
+     <CODING href="#o5"/>
+     <PARAMETERS href="#o4"/>
+     <GLOBAL_DEFINITIONS href="#o3"/>
+     <REFERENCE_FIELDS href="#o2"/>
+     <XSD_DEFINITIONS/>
+    </CL_FP_INTERFACE_DATA>
+   </cls:CL_FP_INTERFACE_DATA>
+   <cls:CL_FP_REFERENCE_FIELDS id="o2">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_REFERENCE_FIELDS classVersion="1">
+     <REFERENCE_FIELDS>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>WA_BSID-CR_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>WA_BSID-DR_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>T_CRAMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>T_DRAMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>T_BALAMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>OP_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>BAL_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>WA_BSID1-DMBTR</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>WA_KNC1-UMSAV</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>DBT_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>GT_BSID-BAL_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>GT_BSID-SKNTO</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>ITT_FINAL-CR_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>ITT_FINAL-DR_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>ITT_FINAL-BAL_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>ITT_FINAL-SKNTO</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>GT_BSID-CR_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+      <SFPREF>
+       <ACTIVE/>
+       <STANDARD/>
+       <DATATYPE>CURR</DATATYPE>
+       <VALUE>GT_BSID-DR_AMT</VALUE>
+       <UNIT>WAERS</UNIT>
+      </SFPREF>
+     </REFERENCE_FIELDS>
+    </CL_FP_REFERENCE_FIELDS>
+   </cls:CL_FP_REFERENCE_FIELDS>
+   <cls:CL_FP_GLOBAL_DEFINITIONS id="o3">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_GLOBAL_DEFINITIONS classVersion="1">
+     <GLOBAL_DATA>
+      <SFPGDATA>
+       <NAME>WA_KNA1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_STRUC_KNA1</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_BSID</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_STRUC_BSID</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_BSID1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_STRUC_BSID1</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>SLNO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>I</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WAERS</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>T001-WAERS</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_PAGE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>I</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>T_CRAMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>T_DRAMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>T_BALAMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_MSG</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR10</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>SENO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>I</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>OBL_AMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_J_1IMOCUST</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IMOCUST</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_ADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TAX</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNA1-STCD3</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>BAL_AMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>OP_AMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>OPN_BAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DATE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>SY-DATUM</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DAT1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>SY-UZEIT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DAT_TYP</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR2</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>CON_DAT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR15</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DAT2</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR8</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DAY_NAM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR10</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>W_CRAMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>W_WORD</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WI</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSAD-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>AMT_IN_NUM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>PC207-BETRG</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>AMT_IN_WORDS</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR100</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>V_LOGO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TDOBNAME</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_KNC1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNC1</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TTTEXT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR20</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_T0011</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_T001</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_ADRC1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TEL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADR2-TEL_NUMBER</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_CUSTEL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADR2-TEL_NUMBER</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>FLAG1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>C</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_CUSADD</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_NOADD</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BELNR</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-BELNR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BLART</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-BLART</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>D_TOT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>C_TOT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>D_NUM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>I</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>C_NUM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>I</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>CREDITLIMIT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNKK-KLIMK</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DAT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>SY-DATUM</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>IT_CN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_CN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_CN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_CN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>COLLECTION</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>CREDITNOTE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DEBITNOTE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>INVOICE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>REGIO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>T005U-BEZEI</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>REG</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNA1-REGIO</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>SALESOFFICE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNVV-VKBUR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>SO_NAM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TVKBT-BEZEI</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>DBT_AMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-DMBTR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WAT_FINAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSTRUC_BSID_TOT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_BKPF</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_BKPF</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>IT_BKPF</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_BKPF</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_ADDR</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADRNR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_DIST</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_DIST</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_DEALR</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_DEALER</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_FINAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_STRUC_BSID</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GT_BAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TT_BAL</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+     </GLOBAL_DATA>
+     <TYPES>
+      <FPCLINE>TYPES: OR_MSG(6) TYPE C.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>types: begin of ty_t001,</FPCLINE>
+      <FPCLINE>  BUKRS type BUKRS,</FPCLINE>
+      <FPCLINE>  ADRNR type ADRNR,</FPCLINE>
+      <FPCLINE>  end of ty_t001.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE> types:begin of ty_adrc,</FPCLINE>
+      <FPCLINE>   ADDRNUMBER type AD_ADDRNUM,</FPCLINE>
+      <FPCLINE>   NAME1 type AD_NAME1,</FPCLINE>
+      <FPCLINE>   NAME2 type AD_NAME2,</FPCLINE>
+      <FPCLINE>   CITY1 type AD_CITY1,</FPCLINE>
+      <FPCLINE>   HOUSE_NUM1 type AD_HSNM1,</FPCLINE>
+      <FPCLINE>   STREET type AD_STREET,</FPCLINE>
+      <FPCLINE>   POST_CODE1 type AD_PSTCD1,</FPCLINE>
+      <FPCLINE>   STR_SUPPL2 type AD_STRSPP2,</FPCLINE>
+      <FPCLINE>   STR_SUPPL3 type AD_STRSPP3,</FPCLINE>
+      <FPCLINE>   LOCATION type AD_LCTN,</FPCLINE>
+      <FPCLINE>   end of ty_adrc.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>   types:begin of ty_cn,</FPCLINE>
+      <FPCLINE>     budat type bsad-budat,</FPCLINE>
+      <FPCLINE>         end of ty_cn.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_BKPF,</FPCLINE>
+      <FPCLINE>             BELNR     TYPE BKPF-BELNR,</FPCLINE>
+      <FPCLINE>             BUKRS     TYPE BKPF-BUKRS,</FPCLINE>
+      <FPCLINE>             GJAHR     TYPE BKPF-GJAHR,</FPCLINE>
+      <FPCLINE>             XREVERSAL TYPE BKPF-XREVERSAL,</FPCLINE>
+      <FPCLINE>       END OF TY_BKPF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES:BEGIN OF ty_dist,</FPCLINE>
+      <FPCLINE>      Name type string,</FPCLINE>
+      <FPCLINE>      street TYPE adrc-street,</FPCLINE>
+      <FPCLINE>      city type adrc-city1,</FPCLINE>
+      <FPCLINE>      phone TYPE adrc-tel_number,</FPCLINE>
+      <FPCLINE>      Postal TYPE adrc-post_code1,</FPCLINE>
+      <FPCLINE>      END OF ty_dist,</FPCLINE>
+      <FPCLINE>      BEGIN OF ty_dealer,</FPCLINE>
+      <FPCLINE>      Name type string,</FPCLINE>
+      <FPCLINE>      street TYPE adrc-street,</FPCLINE>
+      <FPCLINE>      city type adrc-city1,</FPCLINE>
+      <FPCLINE>      phone TYPE adrc-tel_number,</FPCLINE>
+      <FPCLINE>      Postal TYPE adrc-post_code1,</FPCLINE>
+      <FPCLINE>      END OF ty_dealer.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF ty_bal,</FPCLINE>
+      <FPCLINE>       Bal_amt type netwr,</FPCLINE>
+      <FPCLINE>       END OF ty_bal,</FPCLINE>
+      <FPCLINE>       tt_bal type TABLE oF ty_bal.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+     </TYPES>
+     <FIELDSYMBOLS/>
+    </CL_FP_GLOBAL_DEFINITIONS>
+   </cls:CL_FP_GLOBAL_DEFINITIONS>
+   <cls:CL_FP_PARAMETERS id="o4">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_PARAMETERS classVersion="1">
+     <IMPORT_PARAMETERS>
+      <SFPIOPAR>
+       <NAME>BAL_DATE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>SY-DATUM</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>LV_FRDT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>SY-DATUM</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>LV_TODT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>SY-DATUM</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>LV_OPN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>DMBTR</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>LV_BUK</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BSID-BUKRS</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>DISTRIBUTOR</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KUNNR</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>GT_KNA1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_TABLETYPE_KNA1</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>GT_BSID</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_TABLETYPE_BSID_CPY</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>ITT_FINAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZCUS_TABLETYPE_BSID_CPY</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>L_TOTAL_AMT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BAPIDMBTR</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>L_DEBIT_TOTAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BAPIDMBTR</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+      <SFPIOPAR>
+       <NAME>L_FINAL_BAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BAPIDMBTR</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+     </IMPORT_PARAMETERS>
+     <EXPORT_PARAMETERS/>
+     <TABLE_PARAMETERS/>
+     <EXCEPTIONS/>
+    </CL_FP_PARAMETERS>
+   </cls:CL_FP_PARAMETERS>
+   <cls:CL_FP_CODING id="o5">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_CODING classVersion="1">
+     <INPUT_PARAMETERS/>
+     <OUTPUT_PARAMETERS/>
+     <INITIALIZATION>
+      <FPCLINE>SELECT SINGLE ADRNR FROM kna1</FPCLINE>
+      <FPCLINE>                    INTO lv_addr</FPCLINE>
+      <FPCLINE>                    WHERE kunnr = DISTRIBUTOR.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*BREAK cnabap.</FPCLINE>
+      <FPCLINE>**********************************************************************Distributor Address</FPCLINE>
+      <FPCLINE>select single from kna1</FPCLINE>
+      <FPCLINE>fields adrnr</FPCLINE>
+      <FPCLINE>WHERE kunnr = @DISTRIBUTOR</FPCLINE>
+      <FPCLINE>INTO @data(dist_adrnr).</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>Select SINGLE from adrc</FPCLINE>
+      <FPCLINE>fields name1,street,city1,tel_number,post_code1</FPCLINE>
+      <FPCLINE>WHERE addrnumber = @dist_adrnr</FPCLINE>
+      <FPCLINE>INTO @lv_dist.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>lv_dist-name = |{ lv_dist-name } ({ DISTRIBUTOR })|.</FPCLINE>
+      <FPCLINE>*lv_dist-city = |{ lv_dist-street } { lv_dist-city }|.</FPCLINE>
+      <FPCLINE>**********************************************************************Customer Address</FPCLINE>
+      <FPCLINE>data(lv_Cust) = gt_kna1[ 1 ].</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>Select SINGLE from adrc</FPCLINE>
+      <FPCLINE>fields name1,street,city1,tel_number,post_code1</FPCLINE>
+      <FPCLINE>WHERE addrnumber = @lv_Cust-adrnr</FPCLINE>
+      <FPCLINE>INTO @lv_dealr.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>lv_dealr-name = |{ lv_dealr-name } ({ lv_Cust-kunnr })|.</FPCLINE>
+      <FPCLINE>*lv_dealr-city = |{ lv_dealr-street } { lv_dealr-city }|.</FPCLINE>
+      <FPCLINE>data: lv_bal type ty_bal.</FPCLINE>
+      <FPCLINE>clear lv_bal.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>LOOP at GT_BSID into gs_final.</FPCLINE>
+      <FPCLINE>  if sy-tabix = 1.</FPCLINE>
+      <FPCLINE> if gs_final-cr_amt is NOT INITIAL.</FPCLINE>
+      <FPCLINE>    lv_bal-Bal_amt = lv_opn * -1.</FPCLINE>
+      <FPCLINE>    else.</FPCLINE>
+      <FPCLINE>      lv_bal-Bal_amt = lv_opn .</FPCLINE>
+      <FPCLINE> endif.</FPCLINE>
+      <FPCLINE>  ELSEIF sy-tabix = 2.</FPCLINE>
+      <FPCLINE>  lv_bal-Bal_amt = lv_bal-Bal_amt  + gs_final-dr_amt - gs_final-cr_amt.</FPCLINE>
+      <FPCLINE>  ELSEIF sy-tabix &gt; 2.</FPCLINE>
+      <FPCLINE>   lv_bal-Bal_amt = lv_bal-Bal_amt + gs_final-dr_amt - gs_final-cr_amt.</FPCLINE>
+      <FPCLINE>    endif.</FPCLINE>
+      <FPCLINE>  APPEND lv_bal to gt_bal.</FPCLINE>
+      <FPCLINE>  ENDLOOP.</FPCLINE>
+     </INITIALIZATION>
+     <FORMS/>
+    </CL_FP_CODING>
+   </cls:CL_FP_CODING>
+  </asx:heap>
+ </asx:abap>
+</abapGit>

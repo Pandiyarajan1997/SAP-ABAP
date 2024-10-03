@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Bapi ZBAPI_SUPPLY_QUAN_PLANTWISE</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_SUPPLYTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_SUPPLY</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SUPPLY_QUAN_PLANTWISE</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Suplply Quantity based on Plant</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>RANGE_S_WERKS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_SUPPLY_QUAN</PARAMETER>
+       <DBSTRUCT>ZSTR_SUPPLY_QUAN</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_PLANT</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Line for Range Table for Data Element WERKS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_SUPPLY_QUAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Supply Quantity from marc</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_PLANT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Plant is incorrect</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TOBJ" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJH>
+    <OBJECTNAME>ZCV_APLN_DATA</OBJECTNAME>
+    <OBJECTTYPE>C</OBJECTTYPE>
+    <CLIDEP>X</CLIDEP>
+    <OBJCATEG>APPL</OBJCATEG>
+    <IMPORTABLE>3</IMPORTABLE>
+   </OBJH>
+   <OBJT>
+    <LANGUAGE>E</LANGUAGE>
+    <OBJECTNAME>ZCV_APLN_DATA</OBJECTNAME>
+    <OBJECTTYPE>C</OBJECTTYPE>
+    <DDTEXT>ALPN Masters</DDTEXT>
+   </OBJT>
+   <OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_APLN_DATA</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZVALPN_CATEG</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_APLN_DATA</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZVALPN_MATERIAL</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_APLN_DATA</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZVALPN_SUBCATEG</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+   </OBJS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

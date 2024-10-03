@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZML81N</SCVARIANT>
+     <PROGNAME>SAPLMLSP</PROGNAME>
+     <DYNPRO>0400</DYNPRO>
+     <VERSION>2</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZML81N</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZML81N</SCVARIANT>
+      <FIELDNAME>ESLL-MENGE</FIELDNAME>
+      <STEPL>1</STEPL>
+      <ACTIVE>X</ACTIVE>
+      <ITYPE>P</ITYPE>
+      <FTYPE>T</FTYPE>
+      <CONTAINER>TC_VIEW</CONTAINER>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZML81N</SCVARIANT>
+      <FIELDNAME>ESLL-MWSKZ</FIELDNAME>
+      <STEPL>1</STEPL>
+      <FIELDVALUE>I8</FIELDVALUE>
+      <ACTIVE>X</ACTIVE>
+      <ITYPE>C</ITYPE>
+      <FTYPE>T</FTYPE>
+      <CONTAINER>TC_VIEW</CONTAINER>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZML81N</SCVARIANT>
+      <FIELDNAME>TC_VIEW</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <FTYPE>E</FTYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

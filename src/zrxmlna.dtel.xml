@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZRXMLNA</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZXMLNA</DOMNAME>
+    <HEADLEN>35</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>18</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>RE-Exact File Name</DDTEXT>
+    <REPTEXT>RE-Exact File Name</REPTEXT>
+    <SCRTEXT_S>RE-Ex File</SCRTEXT_S>
+    <SCRTEXT_M>RE-Exact File Name</SCRTEXT_M>
+    <SCRTEXT_L>RE-Exact File Name</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Name 3 Creation</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZNAME1TOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZNAME1</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZSAMPLE_INTERFACE_00001320</FUNCNAME>
+     <SHORT_TEXT>Schnittstellenbeschreibung zum Event 00001320</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_KUNNR</PARAMETER>
+       <DBFIELD>KNA1-KUNNR</DBFIELD>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_BUKRS</PARAMETER>
+       <DBFIELD>KNB1-BUKRS</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_VKORG</PARAMETER>
+       <DBFIELD>KNVV-VKORG</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_VTWEG</PARAMETER>
+       <DBFIELD>KNVV-VTWEG</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_SPART</PARAMETER>
+       <DBFIELD>KNVV-SPART</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_XVBUP</PARAMETER>
+       <DBFIELD>OFIWA-XVBUP</DBFIELD>
+       <DEFAULT>&apos;X&apos;</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_AKTYP</PARAMETER>
+       <DBFIELD>OFIWA-AKTYP</DBFIELD>
+       <DEFAULT>&apos;V&apos;</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Debitornummer</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Buchungskreis</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_VKORG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_VTWEG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_SPART</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_XVBUP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Kennzeichen: Verbuchung in update task</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_AKTYP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>A = Anzeige, V = Ändern, H = Anlegen</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+   <LONGTEXTS_ZSAMPLE_INTERFACE_00001320>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZSAMPLE_INTERFACE_00001320</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0014</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00019</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZSAMPLE_INTERFACE_00001320</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00014</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Stammsatz Debitor, Sichern&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001320&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;INTERFACE&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>EVENT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Zeitpunkt wird beim Anlegen und ändern eines Debitors durchlaufen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>und zwar nach dem Verbucher CUSTOMER_UPDATE BZW. CUSTOMER_INSERT.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>SCHNITTSTELLE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>An die Zusatzkomponente werden die Schlüsseldaten des Debitors auf</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Buchungskreisebene sowie der Aktivitätstyp übergeben. Das Kennzeichen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>I_XVBUP dient als reine Information, daß der SAP-Standard asynchron</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>verbucht.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>HU</TDFORMAT>
+       <TDLINE>Damit darf in der Zusatzkomponente keine schreibende Datenbankaktion</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>ausgeführt werden !!</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Die Verbuchung (auch der Add-On-spezifischen Tabellen) wird durch den</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>COMMIT WORK des Standardablaufes ausgeführt. Falls Ihr</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Funktionsbaustein nicht über RFC gerufen wird, veranlassen Sie stets</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>asynchrone Verbuchung mit dem Zusatz</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>PE</TDFORMAT>
+       <TDLINE>IN UPDATE TASK.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZSAMPLE_INTERFACE_00001320</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0014</VERSION>
+      <TXTLINES>00020</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZSAMPLE_INTERFACE_00001320</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00014</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Customer master record, save&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001320&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;INTERFACE&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>EVENT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This Event is reached when creating and changing a customer master</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>record, following the update function module CUSTOMER_UPDATE or</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>CUSTOMER_INSERT.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>INTERFACE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The key data of the customer at company code level and the activity</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>type are transferred to the additional component. The indicator I_XVBUP</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>exists solely to show that the SAP standard system posts</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>asynchronously.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>HU</TDFORMAT>
+       <TDLINE>It follows that no database activities involving the writing of data</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>may be carried out in the additional component.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The update (including the Add-on-specific tables) is carried out by the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>COMMIT WORK of the standard process. If your function module is not</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>called up via RFC, you should always initiate asynchronous updating</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>using the ABAP statement</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>PE</TDFORMAT>
+       <TDLINE>IN UPDATE TASK.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_ZSAMPLE_INTERFACE_00001320>
+  </asx:values>
+ </asx:abap>
+</abapGit>

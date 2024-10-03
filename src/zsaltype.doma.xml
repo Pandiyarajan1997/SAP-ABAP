@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZSALTYPE</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>NUMC</DATATYPE>
+    <LENG>000002</LENG>
+    <OUTPUTLEN>000002</OUTPUTLEN>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>Salestype</DDTEXT>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>10</DOMVALUE_L>
+     <DDTEXT>General Industries</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>11</DOMVALUE_L>
+     <DDTEXT>Wood Industries</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>12</DOMVALUE_L>
+     <DDTEXT>B &amp; S</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>13</DOMVALUE_L>
+     <DDTEXT>Retail</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>14</DOMVALUE_L>
+     <DDTEXT>SPC</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0006</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>15</DOMVALUE_L>
+     <DDTEXT>Wood FWG</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0007</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>16</DOMVALUE_L>
+     <DDTEXT>Deco FWG</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0008</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>17</DOMVALUE_L>
+     <DDTEXT>Auto FWG</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0009</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>18</DOMVALUE_L>
+     <DDTEXT>Infrastructure</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0010</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>19</DOMVALUE_L>
+     <DDTEXT>CCC Agent</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0011</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>20</DOMVALUE_L>
+     <DDTEXT>Allied Products</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0012</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>21</DOMVALUE_L>
+     <DDTEXT>Floor Coat</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0013</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>22</DOMVALUE_L>
+     <DDTEXT>Pilot Team</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0014</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>23</DOMVALUE_L>
+     <DDTEXT>Sales Associate</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0015</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>24</DOMVALUE_L>
+     <DDTEXT>Platinum - Cluster</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0016</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>25</DOMVALUE_L>
+     <DDTEXT>Gold - Cluster</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0017</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>26</DOMVALUE_L>
+     <DDTEXT>Silver - Cluster</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0018</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>27</DOMVALUE_L>
+     <DDTEXT>Copper - Cluster</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0019</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>28</DOMVALUE_L>
+     <DDTEXT>Bronze - Cluster</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0020</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>29</DOMVALUE_L>
+     <DDTEXT>Distribution</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0021</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>99</DOMVALUE_L>
+     <DDTEXT>Non-Sales</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

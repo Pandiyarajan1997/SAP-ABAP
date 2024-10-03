@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZRIGHTS</OBJCT>
+    <FIEL1>ZVKBUR</FIEL1>
+    <FIEL2>ZSPART</FIEL2>
+    <FIEL3>ZFKART</FIEL3>
+    <FIEL4>ZMTART</FIEL4>
+    <FIEL5>ACTVT</FIEL5>
+    <OCLSS>ZAUT</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZRIGHTS</OBJECT>
+    <TTEXT>Autherizations</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>ZRIGHTS</OBJCT>
+   </TOBJVORFLG>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZYRVKRED02</NAME>
+    <CLAS>VKMA</CLAS>
+    <SUBC>1</SUBC>
+    <APPL>V</APPL>
+    <RSTAT>T</RSTAT>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>F01</KEY>
+     <ENTRY>Cred. info</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>S02</KEY>
+     <ENTRY>Execute</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Blocked SD Documents</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>CMNGV</KEY>
+     <ENTRY>Next shipping date</ENTRY>
+     <LENGTH>29</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>CTLPC</KEY>
+     <ENTRY>Risk category</ENTRY>
+     <LENGTH>21</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>DAYS</KEY>
+     <ENTRY>Within days</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>GRUPP</KEY>
+     <ENTRY>Customer credit group</ENTRY>
+     <LENGTH>29</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>KKBER</KEY>
+     <ENTRY>Credit control area</ENTRY>
+     <LENGTH>29</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>KNKLI</KEY>
+     <ENTRY>Credit account</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_VARI</KEY>
+     <ENTRY>Display variant</ENTRY>
+     <LENGTH>23</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>REGIO</KEY>
+     <ENTRY>Region</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>SBGRP</KEY>
+     <ENTRY>Credit representative group</ENTRY>
+     <LENGTH>35</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>STATUS</KEY>
+     <ENTRY>Status</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>UNAME</KEY>
+     <ENTRY>User</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>VBELN</KEY>
+     <ENTRY>Sales Document</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+   </TPOOL>
+   <I18N_TPOOL>
+    <item>
+     <LANGUAGE>D</LANGUAGE>
+     <TEXTPOOL>
+      <item>
+       <ID>I</ID>
+       <KEY>F01</KEY>
+       <ENTRY>Kreditinfo</ENTRY>
+       <LENGTH>10</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>S02</KEY>
+       <ENTRY>Ausführen</ENTRY>
+       <LENGTH>9</LENGTH>
+      </item>
+      <item>
+       <ID>R</ID>
+       <ENTRY>Gesperrte Vertriebsbelege</ENTRY>
+       <LENGTH>25</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>CMNGV</KEY>
+       <ENTRY>Nächstes Versanddatum</ENTRY>
+       <LENGTH>29</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>CTLPC</KEY>
+       <ENTRY>Risikoklasse</ENTRY>
+       <LENGTH>20</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>GRUPP</KEY>
+       <ENTRY>Kundenkreditgruppe</ENTRY>
+       <LENGTH>26</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>KKBER</KEY>
+       <ENTRY>Kreditkontrollbereich</ENTRY>
+       <LENGTH>29</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>KNKLI</KEY>
+       <ENTRY>Kreditkonto</ENTRY>
+       <LENGTH>19</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>P_VARI</KEY>
+       <ENTRY>Anzeigevariante</ENTRY>
+       <LENGTH>23</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>SBGRP</KEY>
+       <ENTRY>Bearbeitergruppe</ENTRY>
+       <LENGTH>24</LENGTH>
+      </item>
+      <item>
+       <ID>S</ID>
+       <KEY>STATUS</KEY>
+       <ENTRY>Stat</ENTRY>
+       <LENGTH>12</LENGTH>
+      </item>
+     </TEXTPOOL>
+    </item>
+   </I18N_TPOOL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

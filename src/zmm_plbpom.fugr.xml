@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Material Management</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZMM_PLBPOMTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZMM_PLBPOM</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_MAT_MASTREC_DTLS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Master recipe Details for Material</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MASTREC_DTLS</PARAMETER>
+       <DBSTRUCT>ZPP_MAT_MASTREC_DTLS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/SAPAPO/MATNR_RTAB</TYP>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_PLANT</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MASTREC_DTLS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Material Master Recipe details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table of Material Numbers</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_PLANT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Plant is Mandatory</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_GET_MATNR_BOM</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>get stock based on Material, BOM, and Sale Quantity</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>WRBA_MATNR_TABLE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>MARC-WERKS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <DBSTRUCT>ZPP_ST_BOM</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>BOM Items (Extended for List Displays)</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_GET_OPEN_PROCESS_ORD</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Open Process Order details with Instructions</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARC-WERKS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>ORDERNO</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>AUFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MATNR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_HEADER</PARAMETER>
+       <DBSTRUCT>ZPP_ST_ORDER_DETAILS_INS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <DBSTRUCT>ZPP_ST_ORDER_ITEM_INS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INVALID_PLANT</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ORDERNO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order header data</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order Components</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INVALID_PLANT</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_GET_OPEN_PROCORD_DETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Open Process Order without teco</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_PROCORDDTLS</PARAMETER>
+       <DBSTRUCT>ZPP_OPN_PROCORD_DTLS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IM_AUFNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FAGL_RANGE_T_AUFNR</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PROCORDDTLS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Open Process Order Details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IM_AUFNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order Number</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_GET_PROCESS_ORD_DETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>get stock based on Material, BOM, and Sale Quantity</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>MARC-WERKS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_FROM</PARAMETER>
+       <TYP>SY-DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <TYP>SY-DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>ORDER_NO</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>AUFNR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_HEADER</PARAMETER>
+       <DBSTRUCT>ZPP_ST_ORDER_DETAILS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <DBSTRUCT>ZPP_ST_ORDER_ITEM</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INVALID_PLANT</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DIVIDE_BY_ZERO</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_FROM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ABAP system field: Current date of application server</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ABAP system field: Current date of application server</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ORDER_NO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order header data</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order Components</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INVALID_PLANT</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DIVIDE_BY_ZERO</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_GET_STOCK_PLANT_BOM</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>get stock based on Material, BOM, and Sale Quantity</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>MATNR</PARAMETER>
+       <TYP>MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>MARC-WERKS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FKIMG</PARAMETER>
+       <TYP>FKIMG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VRKME</PARAMETER>
+       <TYP>VRKME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>AVAILABLE</PARAMETER>
+       <TYP>CHAR1</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <DBSTRUCT>ZSSTPOX</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>MATERIAL_INCORRECT</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>MATERIAL_NOT_IN_PLANT</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_UOM</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>SALE_QUANTITY_MISSING</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>NO_BOM_FOUND</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>OTHER_ERROR</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FKIMG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Actual billed quantity</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VRKME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales unit</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>AVAILABLE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Single-Character Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>BOM Items (Extended for List Displays)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MATERIAL_INCORRECT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Incorrect Material No</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MATERIAL_NOT_IN_PLANT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Material not part of the plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_UOM</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Incorrect UOM</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>SALE_QUANTITY_MISSING</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Sale Quantity is Mandatory</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_BOM_FOUND</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>No Suitable BOM Found</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>OTHER_ERROR</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>All other exceptions</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

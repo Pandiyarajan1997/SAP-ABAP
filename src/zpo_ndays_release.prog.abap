@@ -1,0 +1,200 @@
+*&---------------------------------------------------------------------*
+*& Report  ZPO_NDAYS_RELEASE
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZPO_NDAYS_RELEASE.
+TABLES: MARA,T001W,SSCRFIELDS,ZPLANT_MAT_AGE,ZPUR_ORD_MAT_REL,MARC.
+DATA: Z_MATNR TYPE MARA-MATNR.
+
+
+
+TYPES : BEGIN OF GS_ZPLANT_MAT_AGE,
+      PLANT TYPE ZPLANT_MAT_AGE-PLANT,
+      MATERIAL TYPE MARA-MATNR,
+      QUANTITY TYPE ZPLANT_MAT_AGE-QUANTITY,
+      FLAG TYPE ZPLANT_MAT_AGE-FLAG,
+      END OF GS_ZPLANT_MAT_AGE.
+
+DATA: IT_ZPLANT_MAT_AGE TYPE TABLE OF GS_ZPLANT_MAT_AGE,
+      WA_ZPLANT_MAT_AGE TYPE GS_ZPLANT_MAT_AGE,
+      IT_ZPLANT_MAT_AGE1 TYPE TABLE OF GS_ZPLANT_MAT_AGE,
+      WA_ZPLANT_MAT_AGE1 TYPE GS_ZPLANT_MAT_AGE.
+
+TYPES: BEGIN OF GS_ZPUR_ORD_MAT_REL,
+  PLANT TYPE ZPUR_ORD_MAT_REL-PLANT,
+  MATERIAL TYPE ZPUR_ORD_MAT_REL-MATERIAL,
+  CREATED_ON TYPE ZPUR_ORD_MAT_REL-CREATED_ON,
+  CREATED_BY TYPE ZPUR_ORD_MAT_REL-CREATED_BY,
+  END OF GS_ZPUR_ORD_MAT_REL.
+
+DATA: IT_ZPUR_ORD_MAT_REL TYPE TABLE OF GS_ZPUR_ORD_MAT_REL,
+      WA_ZPUR_ORD_MAT_REL TYPE GS_ZPUR_ORD_MAT_REL.
+
+DATA:IT_ZPUR_ORD_MAT_REL1 TYPE TABLE OF ZPUR_ORD_MAT_REL,
+      WA_ZPUR_ORD_MAT_REL1 TYPE ZPUR_ORD_MAT_REL.
+
+DATA: I TYPE I VALUE 0.
+DATA: J TYPE I VALUE 0.
+DATA: K TYPE I VALUE 0.
+DATA: MSG TYPE CHAR50.
+
+DATA: MSG_I TYPE C,
+      MSG_J TYPE C.
+
+DATA: UPDAT(50) TYPE C,
+      INSER(50) TYPE C.
+
+SELECTION-SCREEN:BEGIN OF BLOCK VR WITH FRAME TITLE TEXT-001.
+  SELECT-OPTIONS: S_WERKS FOR MARC-WERKS DEFAULT '1000' to '1179'.
+"SELECT-OPTIONS: S_WERKS FOR ZPLANT_MAT_AGE-PLANT DEFAULT '1000' TO '1179',
+SELECT-OPTIONS: S_MATNR FOR ZPLANT_MAT_AGE-MATERIAL NO INTERVALS.
+SELECTION-SCREEN: END OF BLOCK VR.
+
+
+
+DATA: WA_MATNR LIKE LINE OF S_MATNR,
+      WA_PLANT LIKE LINE OF S_WERKS.
+DATA: W_MATNR LIKE LINE OF S_MATNR,
+      W_PLANT LIKE LINE OF S_WERKS.
+
+AT SELECTION-SCREEN OUTPUT.
+  SET PF-STATUS 'ZRELEASE'.
+
+AT SELECTION-SCREEN.
+  CASE SSCRFIELDS-UCOMM .
+    WHEN 'RELEASE'.
+      IF S_WERKS IS NOT INITIAL AND S_MATNR IS NOT INITIAL.
+        SELECT
+        PLANT
+        MATERIAL
+        QUANTITY
+        FLAG FROM
+        ZPLANT_MAT_AGE INTO TABLE IT_ZPLANT_MAT_AGE WHERE PLANT IN S_WERKS AND MATERIAL IN S_MATNR.
+
+      ELSEIF S_WERKS IS NOT INITIAL.
+        SELECT
+         PLANT
+         MATERIAL
+         QUANTITY
+         FLAG FROM
+         ZPLANT_MAT_AGE INTO TABLE IT_ZPLANT_MAT_AGE WHERE PLANT IN S_WERKS[].
+      ELSE.
+        MESSAGE 'Please Enter Valid Inout And Click Release Button' TYPE 'I' DISPLAY LIKE 'I'.
+      ENDIF.
+
+      APPEND LINES OF IT_ZPLANT_MAT_AGE TO IT_ZPLANT_MAT_AGE1.
+
+
+      IF IT_ZPLANT_MAT_AGE IS NOT INITIAL.
+        CLEAR: I , J , K.
+
+        LOOP AT IT_ZPLANT_MAT_AGE INTO WA_ZPLANT_MAT_AGE.
+          LOOP AT IT_ZPLANT_MAT_AGE1 INTO WA_ZPLANT_MAT_AGE1 WHERE PLANT EQ WA_ZPLANT_MAT_AGE-PLANT AND MATERIAL EQ WA_ZPLANT_MAT_AGE-MATERIAL.
+            IF WA_ZPLANT_MAT_AGE1 IS NOT INITIAL.
+              UPDATE ZPLANT_MAT_AGE SET FLAG = 'Y' WHERE MATERIAL = WA_ZPLANT_MAT_AGE1-MATERIAL AND PLANT = WA_ZPLANT_MAT_AGE1-PLANT .
+              COMMIT WORK.
+              WA_ZPUR_ORD_MAT_REL1-PLANT = WA_ZPLANT_MAT_AGE1-PLANT.
+              WA_ZPUR_ORD_MAT_REL1-MATERIAL = WA_ZPLANT_MAT_AGE1-MATERIAL.
+              WA_ZPUR_ORD_MAT_REL1-CREATED_BY = SY-UNAME.
+              WA_ZPUR_ORD_MAT_REL1-CREATED_ON = SY-DATUM.
+
+              INSERT INTO ZPUR_ORD_MAT_REL VALUES WA_ZPUR_ORD_MAT_REL1.
+              COMMIT WORK.
+              I = I + 1.
+            ELSE.
+              J = J + 1 .
+            ENDIF.
+            CLEAR: WA_ZPLANT_MAT_AGE,WA_ZPLANT_MAT_AGE1.
+
+            K = K + 1.
+          ENDLOOP.
+
+        ENDLOOP.
+
+        MSG_I = I .
+        MSG_J = J .
+
+        IF K = 1.
+          IF I = 1 .
+*            Z_MATNR = S_MATNR."Commented by SPLABAP during code remediation
+            Z_MATNR = CONV MATNR( S_MATNR ). "Added by SPLABAP during code remediation
+            SHIFT Z_MATNR LEFT DELETING LEADING '0'.
+            CONCATENATE Z_MATNR 'Released PO' INTO MSG  SEPARATED BY SPACE  ."#EC CI_FLDEXT_OK[2215424] "Added by SPLABAP during code remediation
+            MESSAGE MSG TYPE 'I' DISPLAY LIKE 'I' .
+            CLEAR: S_MATNR ,S_WERKS .
+            REFRESH S_MATNR.
+            REFRESH S_WERKS.
+          ENDIF.
+          IF J = 1.
+*            Z_MATNR = S_MATNR. "Commented by SPLABAP during code remediation
+            Z_MATNR = CONV MATNR( S_MATNR )."Added by SPLABAP during code remediation
+            SHIFT Z_MATNR LEFT DELETING LEADING '0'.
+            CONCATENATE Z_MATNR 'Not Released PO ' INTO MSG SEPARATED BY SPACE."#EC CI_FLDEXT_OK[2215424] "Added by SPLABAP during code remediation
+            MESSAGE MSG TYPE 'I' DISPLAY LIKE 'I' .
+            CLEAR: S_MATNR ,S_WERKS .
+            REFRESH S_MATNR.
+            REFRESH S_WERKS.
+          ENDIF.
+        ELSE.
+          IF I > 1.
+            CONCATENATE 'Number of' MSG_I 'Released for PO'  INTO UPDAT SEPARATED BY SPACE.
+          ELSE.
+            CONCATENATE 'Number of' MSG_I 'Released for PO'  INTO UPDAT SEPARATED BY SPACE.
+          ENDIF.
+
+          IF J > 1.
+            CONCATENATE 'Number of' MSG_J 'Not Released for PO'  INTO INSER SEPARATED BY SPACE.
+            REFRESH S_MATNR.
+            REFRESH S_WERKS.
+          ELSE.
+            CONCATENATE 'Number of' MSG_J 'Not Released for PO'  INTO INSER SEPARATED BY SPACE.
+            REFRESH S_MATNR.
+            REFRESH S_WERKS.
+          ENDIF.
+
+          IF I >= 1 AND J >= 1.
+            CALL FUNCTION 'POPUP_TO_DISPLAY_TEXT'
+              EXPORTING
+                TITEL        = 'Information'
+                TEXTLINE1    = UPDAT
+                TEXTLINE2    = INSER
+                START_COLUMN = 25
+                START_ROW    = 6.
+          ENDIF.
+          IF I >= 1 AND J = 0.
+            CALL FUNCTION 'POPUP_TO_DISPLAY_TEXT'
+              EXPORTING
+                TITEL        = 'Information'
+                TEXTLINE1    = UPDAT
+*               TEXTLINE2    = INSER
+                START_COLUMN = 25
+                START_ROW    = 6.
+          ENDIF.
+          IF I = 0 AND J >= 1.
+            CALL FUNCTION 'POPUP_TO_DISPLAY_TEXT'
+              EXPORTING
+                TITEL        = 'Information'
+*               TEXTLINE1    = UPDAT
+                TEXTLINE1    = INSER
+                START_COLUMN = 25
+                START_ROW    = 6.
+          ENDIF.
+        ENDIF.
+
+
+
+      ELSE.
+        MESSAGE 'NO DATA EXIT' TYPE 'I' DISPLAY LIKE 'I'.
+        REFRESH S_MATNR.
+        REFRESH S_WERKS.
+      ENDIF.
+    WHEN '%001'.
+    WHEN 'BACK'.
+      LEAVE TO SCREEN 1000 .
+    WHEN OTHERS.
+      MESSAGE 'Please Click Release Button' TYPE 'I' DISPLAY LIKE 'I'.
+  ENDCASE.

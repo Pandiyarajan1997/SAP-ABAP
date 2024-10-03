@@ -1,0 +1,3 @@
+FUNCTION-POOL ZCUSTOMER_OPEN_ITEMS.         "MESSAGE-ID ..
+
+* INCLUDE LZCUSTOMER_OPEN_ITEMSD...          " Local class definition

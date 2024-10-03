@@ -1,0 +1,27 @@
+managed implementation in class zbp_mm_mat_stock_cds unique;
+
+define behavior for zmm_mat_stock_cds //alias <alias_name>
+persistent table zmm_mat_stock
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  mapping for zmm_mat_stock
+  {
+    material = material;
+    plant = plant;
+    stloc = stloc;
+    batch = batch;
+    SafetyStock = safety_stock;
+    Stock = stock;
+    Stkvalue = stkvalue;
+    Cdate = cdate;
+
+
+
+  }
+}

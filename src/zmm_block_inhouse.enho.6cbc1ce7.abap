@@ -1,0 +1,7 @@
+"Name: \PR:SAPFMMEX\FO:MT06E_MTART\SE:END\EI
+ENHANCEMENT 0 ZMM_BLOCK_INHOUSE.
+*          IF MTA_MT06E-BESKZ NE 'F'.
+*            MESSAGE W092 WITH MTA_MTCOM-MATNR into gl_dummy.
+*            mmpur_message 'E' 'ME' '092' MTA_MTCOM-MATNR '' '' ''.
+*          ENDIF.
+ENDENHANCEMENT.

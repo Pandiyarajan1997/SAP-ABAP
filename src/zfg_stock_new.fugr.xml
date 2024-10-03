@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for function module for stock</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_STOCK_NEWTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_STOCK_NEW</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_BATCHWISE_STOCK_MIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Batchwise stock for MIS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/TT_APP_R_MATNR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_BATCHWISE</PARAMETER>
+       <DBSTRUCT>ZSTR_BATCH_STOCK</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_BATCHWISE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure For Safety Stock</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SAFETY_STOCK_MIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>FM for Safety Stock and Unrestricted Stock for MIS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_STOCK</PARAMETER>
+       <DBSTRUCT>ZSTR_SAFETY_STOCK</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_MATNR</PARAMETER>
+       <DBSTRUCT>MAT_RANGE</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_PLANT</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_STOCK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Material Stock</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>for only certain materials</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_PLANT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Plant is not maintained</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_TOTSTOCK</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>plant wise stock</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>PLANT</PARAMETER>
+       <DBSTRUCT>WERKS_RAN</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>GT_OUTPUT</PARAMETER>
+       <DBSTRUCT>ZST_DIST_STOCK_DMS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range table for the plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_OUTPUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Distributor stock details - dms</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZGET_FARM_WORKCENT_DETLS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>bapi for farms and workcenters</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>FARM_DETLS</PARAMETER>
+       <TYP>ZZFARM_WORK_CENTRE</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FARM_DETLS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>bapi for farm work centre</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG Material Master Bapi</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_MATERIAL_MASTERTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_MATERIAL_MASTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZMATERIAL_CREATE_MASTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Material code creation master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>OBJID</PARAMETER>
+       <TYP>TABNAME16</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_OUTPUT_MM</PARAMETER>
+       <DBSTRUCT>ZSTR_MAT_MASTER</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>OBJID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table name, 16 characters</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_OUTPUT_MM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for material code creation mmaster</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_MATERIAL_MASTER_DATA</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI For Material Master data to MIS</SHORT_TEXT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MATERIAL</PARAMETER>
+       <DBSTRUCT>ZSTR_MATERIAL_MASTER</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_MATNR</PARAMETER>
+       <DBSTRUCT>RANGE_S_MATNR</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_MATERIAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Material Data</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Line of Range Table for Data Element MATNR</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

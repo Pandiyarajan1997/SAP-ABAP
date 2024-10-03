@@ -1,0 +1,2177 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHR_PAYREG
+*&
+*&----------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&Functional                   : Mr.Krishna & Mr.Govindarajan M        *
+*& Developer                   : Mr.Govindarajan M                     *
+*& Created On                  :                                       *
+*& Company                     : Sheenlac Paints Pvt Ltd               *
+*& Verified By                 :                                       *
+*& Title                       : Employees' Provident Fund Register    *
+*& Report Name                 : ZHR_PF_PAY                           *
+*& Development Id              : kpabap                                *
+*& Related Information         : Employees' Provident Fund Register    *
+*&---------------------------------------------------------------------*
+
+REPORT  ZHR_PAYREG
+        NO STANDARD PAGE HEADING LINE-SIZE 255.
+
+TYPE-POOLS : SLIS.
+
+TABLES : PERNR,
+         T528T,
+         PA0000,
+         PA0001,
+         PA0002,
+         PA0021,
+         PA0416,
+         PA2001,
+         PA2002,
+         PA0008,
+         PA0009,
+         PA0588.
+
+INFOTYPES : 0000,
+            0001,
+            0002,
+            0007,
+            0021,
+            0009,
+            2001 MODE N,
+            2002 MODE N.
+
+TYPES : BEGIN OF TY_PA0009,
+        PERNR LIKE PA0009-PERNR,
+        BANKL LIKE PA0009-BANKL,
+        BANKN LIKE PA0009-BANKN,
+        END OF TY_PA0009.
+
+TYPES : BEGIN OF TY_PA0588,
+        PERNR TYPE PA0588-PERNR,
+        SUBTY TYPE PA0588-SUBTY,
+        ENDDA TYPE PA0588-ENDDA,
+        TICNM LIKE PA0588-TICNM,
+        ESINM TYPE PA0588-ESINM,
+     END OF TY_PA0588.
+
+DATA : IT_PA0009 TYPE TABLE OF TY_PA0009,
+       WA_PA0009 TYPE TY_PA0009.
+
+DATA : IT_P0000 TYPE TABLE OF PA0000,
+       WA_P0000 TYPE PA0000.
+
+DATA : V_BANKA LIKE BNKA-BANKA.
+
+DATA : IT_RT TYPE PC207 OCCURS 0,
+       WA_RT LIKE LINE OF IT_RT.
+
+DATA : IT_PT TYPE PC207 OCCURS 0,
+       WA_PT LIKE LINE OF IT_PT.
+
+DATA : IT_RT1 TYPE PC207 OCCURS 0,
+       WA_RT1 LIKE LINE OF IT_RT.
+
+DATA: IT_PA0588 TYPE TABLE OF TY_PA0588,
+      WA_PA0588 TYPE TY_PA0588.
+
+DATA : BEGIN OF IT_FINAL OCCURS 0,
+       PERNR LIKE PA0002-PERNR,       " PERNR
+       ORGEH LIKE PA0001-ORGEH,       " ORG UNIT
+       NAME  TYPE CHAR50 ,            " Employee NAME
+       FNAME TYPE CHAR50 ,            " Father's NAME
+       TOTAL  TYPE ABBETR,
+       PSUB(15) TYPE C,
+       PLSTX TYPE PLSTX,
+       PLANS TYPE PLANS,
+       BTRTL TYPE BTRTL,
+       BANKL LIKE PA0009-BANKL,
+       BANKN LIKE PA0009-BANKN,
+       BANKA LIKE BNKA-BANKA,
+       W_R9996 TYPE BETRG,
+       W_1000 TYPE BETRG,
+       W_1001 TYPE BETRG,
+       W_1002 TYPE BETRG,
+       W_1003 TYPE BETRG,
+       W_1004 TYPE BETRG,
+       W_1005 TYPE BETRG,
+       W_1006 TYPE BETRG,
+       W_1007 TYPE BETRG,
+       W_1008 TYPE BETRG,
+
+       W_1100	 TYPE BETRG,        " Notice Pay Recovery
+       W_1101  TYPE BETRG,        "   Staff loan Repayment
+       W_1102  TYPE BETRG,        " Vehicle Loan Repayment
+       W_1103	 TYPE BETRG,        " Other Deductions
+       W_1104  TYPE BETRG,        " Gratuity
+       W_3P1   TYPE BETRG,        " Prof Tax - split period
+       W_460   TYPE BETRG,        " Income Tax
+
+
+
+       PAREA(35) TYPE C,
+
+*********************** Added By Govind On 11/12/2014
+       W_GBDAT TYPE PA0002-GBDAT,
+       W_PF   TYPE BETRG,
+       W_3FA   TYPE BETRG,
+       W_3FB   TYPE BETRG,
+       W_3F1   TYPE BETRG,
+       W_3F2   TYPE BETRG,
+       W_3F5   TYPE BETRG,
+       W_3F4   TYPE BETRG,
+       W_3F3   TYPE BETRG,
+       W_3F7   TYPE BETRG, " Added by Siva Kumar on 23.12.2015"
+       W_3F8   TYPE BETRG, " Added by Siva Kumar on 23.12.2015"
+       W_3F9   TYPE BETRG, " added by siva kumar on 31-10-2015"
+       W_3FBN   TYPE BETRG,
+       W_TOT TYPE BETRG,
+       W_TICNM TYPE PA0588-TICNM,
+       W_EEPFM TYPE PA0587-EEPFM,
+       PERNR1(7) TYPE N,
+       W_PFA TYPE P DECIMALS 2,
+       W_EDLI TYPE P DECIMALS 2,
+       W_EDL TYPE P DECIMALS 2,
+       W_EPSF(100)  TYPE C,
+       W_AGE TYPE P DECIMALS 2,
+       W_AHG TYPE T009B-POPER,
+       W_ATH TYPE PA0002-GBDAT,
+       W_IWC(5) TYPE C,
+       W_GEN TYPE PA0002-GESCH,
+       W_GEND(5) TYPE C,
+       F_NAME TYPE PA0002-FAMST,
+       W_FNAME(50) TYPE C,
+       W_LNAME(50) TYPE C,
+       W_DOJEPF TYPE PA0000-BEGDA,
+       W_DOJEPS TYPE PA0000-BEGDA,
+       W_DOEEPF TYPE PA0000-BEGDA,
+       W_DOEEPS TYPE PA0000-BEGDA,
+       W_DOEECR TYPE PA0000-BEGDA,
+     "  W_SYSDA TYPE PA0000-BEGDA,   " ADDED BY RAM ON 31/01/2015
+       W_RELN(5) TYPE C ,
+*****************
+       W_3002 TYPE BETRG,
+       W_3005 TYPE BETRG,
+       W_PTAX TYPE BETRG,
+       W_INCDED TYPE BETRG,
+*       W_1103     TYPE BETRG,
+       W_TDS    TYPE BETRG,
+       W_1106 TYPE BETRG,
+
+
+
+       W_LID 	 TYPE BETRG, " INTEREST DUE
+       W_ZF5 	 TYPE BETRG, " CF PF
+       W_ZP2   TYPE BETRG,
+       W_ZE1   TYPE BETRG,
+
+
+       W_TOT_DED TYPE BETRG,
+       W_NETPAY TYPE BETRG,
+       W_TOT_EARN TYPE BETRG,
+       TRFGR   TYPE TRFGR,
+       TRFST   TYPE TRFST,
+       APZNR   TYPE PC205,
+       KDIVI   TYPE KDIVI,
+*       ADIVI   TYPE ADIVI,
+       ADIVI   TYPE I,
+*       CALEN_DAYS TYPE ADIVI,
+       CALEN_DAYS TYPE I,
+*       WORKED_DAYS TYPE ADIVI,
+       WORKED_DAYS TYPE I,
+       WORKING_DAYS TYPE I,
+*       WORKING_DAYS TYPE ADIVI,
+       LTD     TYPE P2002-ABWTG,
+       TD      TYPE P2002-ABWTG,
+       LD      TYPE P2002-ABWTG,
+       AD      TYPE ANZHL,
+       W_LOP   TYPE ABRTG,
+*       W_460   TYPE BETRG,
+       HD      TYPE BETRG,
+
+       ANZHL   LIKE PC207-ANZHL,
+       NUMBR   LIKE PA0416-NUMBR,
+       W_9TDS  TYPE BETRG,
+       BTEXT(30)   TYPE C,
+       ESGROUP(20) TYPE C,
+       EGROUP(20) TYPE C,
+       ROWCOLOR(4) TYPE C,
+
+
+
+
+*        BANK_KEY TYPE PA0009-BANKL,
+        W_1200 TYPE BETRG,          " Bonus
+        W_1109 TYPE BETRG,          " Incentive Deduction
+        W_LXE  TYPE BETRG,          " Loan Complete Repayment
+        W_1111 TYPE BETRG,          " Actual Loan Deduction with Interest
+        W_LEP  TYPE BETRG,          " Special Payment of Loan
+        W_1300 TYPE BETRG,          " Sheenlac LIC Premium
+        W_560  TYPE BETRG,          " Salaries Payable
+        W_3P3  TYPE BETRG,          " Employee P Tax
+        W_3W1  TYPE BETRG,          " Employee LWF
+        W_1011 TYPE BETRG,
+        W_1012 TYPE BETRG,
+        W_1013 TYPE BETRG,
+        W_3FS TYPE BETRG,          "NPS - National Pension Scheme
+        PAYMENT_METH TYPE T042Z-TEXT1,
+        PAYMENT TYPE PA0009-ZLSCH,
+
+        BUKRS TYPE PA0001-BUKRS,
+        WERKS TYPE PA0001-WERKS,
+        KOSTL TYPE PA0001-KOSTL,
+        BTRTL1 TYPE PA0001-BTRTL,
+        PERSG TYPE PA0001-PERSG,
+        PERSK TYPE PA0001-PERSK,
+        ABKRS TYPE PA0001-ABKRS,
+        ANSVH TYPE PA0001-ANSVH,
+        PLANS1 TYPE PA0001-PLANS,
+        ORGEH1 TYPE PA0001-ORGEH,
+
+        WERKS_T TYPE T500P-NAME1,
+        BTRTL_T TYPE T001P-BTEXT,
+        PERSG_T TYPE T501T-PTEXT,
+        PERSK_T TYPE T503T-PTEXT,
+        ABKRS_T TYPE T549T-ATEXT,
+        PLANS_T TYPE T528T-PLSTX,
+        ORGEH_T TYPE T527X-ORGTX,
+        HIR_DATE TYPE PA0041-DAT01,
+
+        EMP_STAT TYPE T529U-TEXT1,
+        UNAME TYPE PA0008-UNAME,
+        STATUS TYPE PA0000-STAT2,
+        ACTION TYPE T529T-MNTXT,
+*        TOTALDAYS TYPE ADIVI,
+        TOTALDAYS TYPE I,
+        BANK_KEY TYPE PA0009-BANKL,
+        BANK_ACC TYPE PA0009-BANKN,
+        BANK_NAME TYPE BNKA-BANKA,
+        INACTIVE TYPE I,
+*        INACTIVE TYPE bseg-KURSR,
+        ZONE TYPE T542T-ATX,
+        PURPOSE TYPE PA0009-ZWECK,
+        MAIL    TYPE PA0105-USRID_LONG,
+        PHONE   TYPE PA0105-USRID_LONG,
+        CELL    TYPE PA0105-USRID,
+        GROSS   TYPE BETRG,
+       END OF IT_FINAL.
+
+DATA : DAY1 TYPE I,
+       DAY2 TYPE I,
+       DAY3 TYPE I,
+       DAY4 TYPE I,
+       DAY5 TYPE I,
+       LV_PAYMENT(2) TYPE C,
+       WA_PAYMENT TYPE T042Z,
+*       LV_INACTIVE TYPE ADIVI,
+       LV_INACTIVE TYPE I,
+       LV_CHECK TYPE I,
+       LV_CHECK1 TYPE I,
+       LV_START TYPE PA0000-BEGDA,
+       LV_END TYPE PA0000-ENDDA,
+       DATE1 TYPE PA0000-ENDDA,
+       DATE2 TYPE PA0000-ENDDA,
+       DATE3 TYPE PA0000-ENDDA.
+*DATA : DAY1 TYPE ADIVI,
+*       DAY2 TYPE ADIVI,
+*       DAY3 TYPE ADIVI,
+*       DAY4 TYPE ADIVI,
+*       DAY5 TYPE ADIVI,
+*       LV_PAYMENT(2) TYPE C,
+*       WA_PAYMENT TYPE T042Z,
+**       LV_INACTIVE TYPE ADIVI,
+*       LV_INACTIVE TYPE bseg-KURSR,
+*       LV_CHECK TYPE ADIVI,
+*       LV_CHECK1 TYPE ADIVI,
+*       LV_START TYPE PA0000-BEGDA,
+*       LV_END TYPE PA0000-ENDDA.
+
+DATA : WA_FINAL LIKE LINE OF IT_FINAL.
+
+DATA : LV_LINES TYPE I.
+
+DATA : N_MTH TYPE T009B-POPER.
+*INTERNAL TABLE DECLARTION
+
+DATA : L_LAYOUT TYPE SLIS_LAYOUT_ALV,
+       X_EVENTS TYPE SLIS_ALV_EVENT,
+       IT_EVENTS TYPE SLIS_T_EVENT.
+
+
+DATA :  GT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV.
+*        wa_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV.
+
+
+
+DATA:WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV,
+     IT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV,
+     WA_SORT     TYPE SLIS_SORTINFO_ALV,
+*     IT_SORT     TYPE SLIS_T_SORTINFO_ALV,
+*     IT_EVENTS   TYPE SLIS_T_EVENT,
+     IT_TOP_OF_PAGE TYPE SLIS_T_LISTHEADER,
+     WA_ALV_EVENT    TYPE SLIS_ALV_EVENT.
+
+DATA:WA_LISTHEADER TYPE SLIS_LISTHEADER,
+     IT_LISTHEADER TYPE SLIS_T_LISTHEADER,
+     WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+     WK_VARIANT LIKE DISVARIANT,
+     WK_VARIANT_SAVE(1) TYPE C,
+     WK_EXIT(1) TYPE C,
+     WX_VARIANT LIKE DISVARIANT,
+     WK_LAYOUT TYPE SLIS_LAYOUT_ALV,
+     WK_REPID LIKE SY-REPID.
+
+DATA: W_SYSDA TYPE SY-DATUM.
+
+*--------------------------------------------------------------------*
+* Declaration for Constants
+*--------------------------------------------------------------------*
+CONSTANTS: C_FORMNAME_TOP_OF_PAGE TYPE SLIS_FORMNAME
+                          VALUE 'F_TOP_OF_PAGE'.
+
+
+DATA :  GV_YEAR TYPE PABRJ,
+        GV_MONTH1 TYPE PABRP.
+
+TYPES: BEGIN OF TY_T549Q,
+         PERMO TYPE PERMO,             " Period Parameter
+         BEGDA TYPE BEGDA,             " Start Date
+         ENDDA TYPE ENDDA,             " End Date
+       END OF TY_T549Q.
+
+TYPES : BEGIN OF TY_WAGE,
+       LGART TYPE PA0008-LGA01,
+       END OF TY_WAGE.
+
+DATA : IT_WAGE TYPE TABLE OF TY_WAGE,
+       WA_WAGE TYPE TY_WAGE.
+
+DATA : PAR_MONTH  LIKE  T009B-BUMON,
+       PAR_YEAR LIKE  T009B-BDATJ,
+       PAR_DAYS LIKE  T009B-BUTAG,
+       GV_ABKRS     TYPE ABKRS,             " Payroll Area
+       GV_PERMO     TYPE PERMO.             " Period  Parameter
+
+DATA : GW_T549Q     TYPE TY_T549Q,
+       GT_T549Q     TYPE STANDARD TABLE OF TY_T549Q INITIAL SIZE 0.
+
+DATA: IT_AB TYPE HRPAY99_AB.
+DATA: WA_AB LIKE LINE OF IT_AB.
+
+DATA: BEGIN OF IT_T500P OCCURS 0,
+      PERSA TYPE T500P-PERSA,
+      NAME1 TYPE T500P-NAME1,
+  END OF IT_T500P.
+DATA: WA_T500P LIKE LINE OF IT_T500P.
+
+DATA : BEGIN OF ITAB6 OCCURS 0.
+        INCLUDE STRUCTURE ISCAL_DAY.
+DATA : END OF ITAB6.
+DATA : WA_ITAB6 LIKE LINE OF ITAB6.
+
+DATA : N_LIN1(1) TYPE N.
+DATA : W_WERKS TYPE WERKS.
+DATA : W_CAL(2)   TYPE C.
+
+
+
+DATA : STR_RGDIR TYPE STANDARD TABLE OF PC261 ,
+       IT_OUT_RGDIR TYPE STANDARD TABLE OF PC261 ,
+       WA_OUT_RGDIR TYPE PC261 ,
+       I_RESULT TYPE PAYIN_RESULT ,
+       WA_HEADER TYPE LINE OF HRPAY99_RT .
+
+DATA : LSX_RESULT_WPBP TYPE HRPAY99_WPBP.
+DATA : LSX_WPBP TYPE LINE OF HRPAY99_WPBP.
+DATA : W_WPBP   TYPE PC205.
+DATA : IT_WPBP  TYPE HRPAY99_WPBP.
+
+DATA :  WA_P0009 TYPE PA0009.
+DATA :  WA_T001P TYPE T001P,
+        WA_T501T TYPE T501T,
+        WA_T503T TYPE T503T,
+        WA_T549T TYPE T549T,
+        WA_PA0000 TYPE PA0000,
+        LV_MASSN TYPE PA0000-MASSN.
+
+DATA : IT_PA0041 TYPE TABLE OF PA0041,
+       WA_PA0041 TYPE PA0041.
+
+DATA : IT_PA0105 TYPE TABLE OF PA0105,
+       WA_PA0105 TYPE PA0105.
+
+DATA : LV_STATUS TYPE PA0000-STAT2.
+
+DATA: LV_DATE TYPE SY-DATUM.
+
+SELECTION-SCREEN BEGIN OF BLOCK C1.
+
+*  SELECT-OPTIONS : S_WAGES FOR PA0008-LGA01.
+SELECT-OPTIONS : S_PAY FOR PA0009-ZLSCH NO-EXTENSION NO INTERVALS NO-DISPLAY.
+*  SELECT-OPTIONS : S_STATUS FOR PA0000-STAT2 NO-EXTENSION NO INTERVALS.
+SELECTION-SCREEN END OF BLOCK C1.
+
+SELECTION-SCREEN BEGIN OF BLOCK C2 WITH FRAME.
+PARAMETERS : P_ADD AS CHECKBOX,
+             P_DEL AS CHECKBOX.
+SELECTION-SCREEN END OF BLOCK C2.
+
+
+*_Company Code Mandatory
+AT SELECTION-SCREEN OUTPUT.
+  LOOP AT SCREEN.
+    IF SCREEN-NAME = 'PNPBUKRS-LOW'.
+      SCREEN-REQUIRED = 1.
+      MODIFY SCREEN.
+    ENDIF.
+  ENDLOOP.
+*
+*LOOP AT SCREEN.
+*    IF SCREEN-NAME = 'PNPWERKS-LOW'.
+*      SCREEN-REQUIRED = 1.
+*      MODIFY SCREEN.
+*    ENDIF.
+*ENDLOOP.
+
+
+
+*&--> exclude employee with employment status NE 0.
+*RP-SEL-EIN-AUS-INIT.
+INITIALIZATION.
+  PNPSTAT2-LOW = '3'.
+  PNPSTAT2-HIGH = SPACE.
+  PNPSTAT2-OPTION = 'EQ'.
+  PNPSTAT2-SIGN = 'I'.
+  APPEND PNPSTAT2.
+  CLEAR  PNPSTAT2.
+
+
+
+*&--> START-OF-SELECTION
+START-OF-SELECTION.
+
+
+*&--> GET PERNR
+GET PERNR.
+
+*&-->
+  INCLUDE: MPZDAT02, "?Work tables for daily work
+           RPPPXD00, "?R/3 data definition for PCL1 & pcl2 buffer
+           RPPPXD10, "?Data definition for PCL1, pcl2
+           PC2RXID0, "?Data definition, cluster IS file pcl2
+           RPCLST00,
+           RPC2B200,
+           RPTSIM00.
+
+  DATA : WA_SALDO LIKE LINE OF SALDO.
+
+
+*&--> Employee Name
+  RP-PROVIDE-FROM-LAST P0001 SPACE PN-BEGDA PN-ENDDA .
+  IF PNP-SW-FOUND EQ 1.
+
+    WA_FINAL-PERNR = P0001-PERNR.
+
+    CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT'
+      EXPORTING
+        INPUT  = WA_FINAL-PERNR
+      IMPORTING
+        OUTPUT = WA_FINAL-PERNR.
+
+    WA_FINAL-NAME  = P0001-ENAME.
+    WA_FINAL-PAREA  = P0001-WERKS.
+  ENDIF.
+
+  WA_FINAL-BUKRS = P0001-BUKRS.
+  WA_FINAL-WERKS = P0001-WERKS.
+  WA_FINAL-KOSTL = P0001-KOSTL.
+  WA_FINAL-BTRTL1 = P0001-BTRTL.
+  WA_FINAL-PERSG = P0001-PERSG.
+  WA_FINAL-PERSK = P0001-PERSK.
+  WA_FINAL-ABKRS = P0001-ABKRS.
+  WA_FINAL-ANSVH = P0001-ANSVH.
+  WA_FINAL-PLANS1 = P0001-PLANS.
+  WA_FINAL-ORGEH1 = P0001-ORGEH.
+
+  TRANSLATE WA_FINAL-KOSTL TO UPPER CASE .
+
+  SELECT SINGLE ATX FROM T542T
+    INTO WA_FINAL-ZONE
+    WHERE SPRAS = 'EN'
+    AND   MOLGA = '40'
+    AND   ANSVH = P0001-ANSVH.
+
+  TRANSLATE WA_FINAL-ZONE TO UPPER CASE.
+
+  SELECT SINGLE BTEXT FROM T001P
+    INTO WA_FINAL-BTRTL_T
+    WHERE WERKS = WA_FINAL-WERKS
+    AND   BTRTL = WA_FINAL-BTRTL1.
+
+  TRANSLATE WA_FINAL-BTRTL_T TO UPPER CASE.
+
+  SELECT SINGLE PTEXT FROM T501T
+    INTO WA_FINAL-PERSG_T
+    WHERE SPRSL = 'EN'
+    AND   PERSG = WA_FINAL-PERSG.
+  TRANSLATE WA_FINAL-PERSG_T TO UPPER CASE.
+
+  SELECT SINGLE PTEXT FROM T503T
+    INTO WA_FINAL-PERSK_T
+    WHERE SPRSL = 'EN'
+    AND   PERSK = WA_FINAL-PERSK.
+  TRANSLATE WA_FINAL-PERSK_T TO UPPER CASE.
+
+  SELECT SINGLE ATEXT FROM T549T
+    INTO WA_FINAL-ABKRS_T
+    WHERE SPRSL = 'EN'
+    AND   ABKRS = WA_FINAL-ABKRS.
+  TRANSLATE WA_FINAL-ABKRS_T TO UPPER CASE.
+
+  SELECT SINGLE PLSTX FROM T528T
+    INTO WA_FINAL-PLANS_T
+    WHERE SPRSL = 'EN'
+    AND   PLANS = WA_FINAL-PLANS1.
+  TRANSLATE WA_FINAL-PLANS_T TO UPPER CASE.
+
+  SELECT SINGLE ORGTX FROM T527X
+    INTO WA_FINAL-ORGEH_T
+    WHERE SPRSL = 'EN'
+    AND   ORGEH = WA_FINAL-ORGEH1.
+  TRANSLATE WA_FINAL-ORGEH_T TO UPPER CASE.
+
+  SELECT SINGLE NAME1 FROM T500P
+    INTO WA_FINAL-WERKS_T
+    WHERE PERSA = WA_FINAL-WERKS
+    AND   BUKRS = WA_FINAL-BUKRS.
+
+  TRANSLATE WA_FINAL-WERKS_T TO UPPER CASE.
+
+
+*   if  WA_FINAL-PAREA NE PNPWERKS-LOW.
+*     reject.
+*     endif.
+*BREAK-POINT.
+
+
+
+*&--> Position Text
+  SELECT
+         PLSTX
+         UP TO 1 ROWS FROM
+         T528T
+         INTO WA_FINAL-PLSTX
+         WHERE SPRSL = 'EN'
+         AND   OTYPE = 'S'
+         AND   PLANS = P0001-PLANS ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  WA_FINAL-PSUB = WA_FINAL-BTRTL.
+
+  SELECT BTEXT
+           UP TO 1 ROWS FROM T001P
+           INTO WA_FINAL-BTEXT
+           WHERE BTRTL = WA_FINAL-BTRTL ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+
+
+  SELECT PERSA NAME1 FROM T500P INTO TABLE IT_T500P." where PERSA = WA_FINAL-PAREA.
+
+
+  IF SY-SUBRC = 0.
+    READ TABLE IT_T500P WITH KEY PERSA = PERNR-WERKS   .
+  ENDIF.
+
+  SELECT SINGLE
+         PTEXT
+         FROM T501T
+         INTO WA_FINAL-EGROUP
+         WHERE SPRSL = SY-LANGU
+         AND   PERSG = P0001-PERSG.
+
+  SELECT SINGLE PTEXT
+             FROM T503T
+             INTO WA_FINAL-ESGROUP
+             WHERE SPRSL = SY-LANGU
+             AND  PERSK = P0001-PERSK.
+
+*_LTD
+  RP-READ-ALL-TIME-ITY PNPBEGDA PNPENDDA.
+  LOOP AT P2002 WHERE SUBTY = 'OD'.
+    WA_FINAL-LTD = P2002-ABWTG.
+    CLEAR P2002-ABWTG.
+  ENDLOOP.
+
+*_TD
+  LOOP AT P2002 WHERE SUBTY = 'OO'.
+    WA_FINAL-TD =  P2002-ABWTG.
+    CLEAR P2002-ABWTG.
+  ENDLOOP.
+
+*&-->Get Period Parameter for the given Payrol Area.
+  CLEAR: GV_ABKRS, GV_PERMO.
+  SELECT SINGLE ABKRS PERMO
+                FROM T549A                  " Table for Payroll Areas
+                INTO (GV_ABKRS , GV_PERMO)
+                WHERE ABKRS EQ P0001-ABKRS.
+
+
+  CALL FUNCTION 'HRAR_GET_PAYROLL_PERIOD'
+    EXPORTING
+      PERMO = GV_PERMO       "v_mm1
+      DATE  = PNPBEGDA
+    IMPORTING
+*     BEGDA =
+*     ENDDA =
+      PABRJ = GV_YEAR
+      PABRP = GV_MONTH1.
+
+*&-->Pseudo code and Macros in Time Cluster:
+  B2-KEY-PABRJ = GV_YEAR.       "?Year
+  B2-KEY-PABRP = GV_MONTH1.     "?Month
+  B2-KEY-CLTYP = '1'.           "?Cluster Type
+  B2-KEY-PERNR = PERNR-PERNR.   "?Personnel No
+  RP-INIT-BUFFER.
+
+  IMPORT ZES    FROM DATABASE PCL2(B2) ID B2-KEY. " Time Balances per Day
+  IMPORT SALDO  FROM DATABASE PCL2(B2) ID B2-KEY. " Time Balances per Period
+  IMPORT FEHLER FROM DATABASE PCL2(B2) ID B2-KEY. " Messages
+  IMPORT ANWES  FROM DATABASE PCL2(B2) ID B2-KEY.  " Attendances
+  IMPORT PT     FROM DATABASE PCL2(B2) ID B2-KEY.  " Attendances
+  IMPORT ABWKONTI FROM DATABASE PCL2(B2) ID B2-KEY.  " Attendances
+
+
+
+  LOOP AT P2001 WHERE SUBTY = 'LOP'.
+
+    WA_FINAL-AD    = P2001-ABWTG.
+
+    CLEAR P2001-ABWTG.
+  ENDLOOP.
+
+*_LD
+  LOOP AT P2001 WHERE SUBTY = 'SL' OR
+                      SUBTY = 'PL' OR
+                      SUBTY = 'CL' .
+    WA_FINAL-LD = P2001-ABWTG.
+    CLEAR P2001-ABWTG.
+  ENDLOOP.
+
+  CALL FUNCTION 'CU_READ_RGDIR'
+    EXPORTING
+      PERSNR                   = PERNR-PERNR
+*   BUFFER                   =
+*   NO_AUTHORITY_CHECK       = ' '
+* IMPORTING
+*   MOLGA                    =
+    TABLES
+      IN_RGDIR                 = STR_RGDIR
+   EXCEPTIONS
+     NO_RECORD_FOUND          = 1
+     OTHERS                   = 2
+            .
+  IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  IF STR_RGDIR[] IS NOT INITIAL.
+
+    CALL FUNCTION 'CD_SELECT_DATE_RANGE'
+      EXPORTING
+        FPPER_BEGDA = PN-BEGDA
+        FPPER_ENDDA = PN-ENDDA
+      TABLES
+        IN_RGDIR    = STR_RGDIR
+        OUT_RGDIR   = IT_OUT_RGDIR.
+
+  ENDIF.
+
+*********** Temp Certificate No.
+  SELECT
+ TICNM
+      UP TO 1 ROWS FROM PA0588 INTO WA_FINAL-W_TICNM
+ WHERE PERNR = PERNR-PERNR
+   AND ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+********* Member PF NO.
+  SELECT
+    EEPFM
+         UP TO 1 ROWS FROM PA0587
+    INTO WA_FINAL-W_EEPFM
+    WHERE PERNR = PERNR-PERNR ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+
+******** Gender
+  SELECT GESCH UP TO 1 ROWS FROM PA0002 INTO WA_FINAL-W_GEN
+    WHERE PERNR = PERNR-PERNR
+    AND ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+****** Father Name
+  SELECT FAMST UP TO 1 ROWS FROM PA0002 INTO WA_FINAL-F_NAME
+    WHERE PERNR = PERNR-PERNR
+    AND ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  SELECT
+GBDAT
+     UP TO 1 ROWS FROM PA0002
+INTO WA_FINAL-W_GBDAT
+WHERE PERNR = PERNR-PERNR
+AND ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  SELECT * UP TO 1 ROWS FROM PA0009
+    INTO WA_P0009
+    WHERE PERNR = PERNR-PERNR
+    AND   ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  LV_PAYMENT = WA_P0009-ZLSCH.
+  WA_FINAL-BANK_KEY = WA_P0009-BANKL.
+  WA_FINAL-BANK_ACC = WA_P0009-BANKN.
+  WA_FINAL-PURPOSE = WA_P0009-ZWECK.
+
+  SELECT SINGLE BANKA FROM BNKA
+    INTO WA_FINAL-BANK_NAME
+    WHERE BANKS = 'IN'
+    AND   BANKL = WA_P0009-BANKL.
+
+  TRANSLATE WA_FINAL-BANK_NAME TO UPPER CASE.
+  CLEAR : WA_P0009.
+
+
+  SELECT * UP TO 1 ROWS FROM PA0000
+     INTO WA_PA0000
+     WHERE PERNR = PERNR-PERNR
+     AND   ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  WA_FINAL-STATUS = WA_PA0000-STAT2.
+  LV_MASSN = WA_PA0000-MASSN.
+
+  SELECT SINGLE MNTXT FROM T529T
+    INTO WA_FINAL-ACTION
+    WHERE SPRSL = 'EN'
+    AND   MASSN = LV_MASSN.
+
+  TRANSLATE WA_FINAL-ACTION TO UPPER CASE.
+
+  SELECT SINGLE TEXT1 FROM T529U
+    INTO WA_FINAL-EMP_STAT
+    WHERE SPRSL = 'EN'
+    AND   STATN = '2'
+    AND   STATV = WA_FINAL-STATUS.
+
+  TRANSLATE WA_FINAL-EMP_STAT TO UPPER CASE.
+
+  SELECT * FROM PA0105
+    INTO TABLE IT_PA0105
+    WHERE PERNR = PERNR-PERNR
+    AND   ENDDA = '99991231'.
+
+  READ TABLE IT_PA0105 INTO WA_PA0105 WITH KEY SUBTY = '0010'.
+  IF SY-SUBRC = 0.
+    WA_FINAL-MAIL = WA_PA0105-USRID_LONG.
+  ENDIF.
+
+  READ TABLE IT_PA0105 INTO WA_PA0105 WITH KEY SUBTY = '0020'.
+  IF SY-SUBRC = 0.
+    WA_FINAL-PHONE = WA_PA0105-USRID_LONG.
+  ENDIF.
+
+  READ TABLE IT_PA0105 INTO WA_PA0105 WITH KEY SUBTY = 'CELL'.
+  IF SY-SUBRC = 0.
+    WA_FINAL-CELL = WA_PA0105-USRID.
+  ENDIF.
+
+  SELECT * FROM PA0041
+    INTO TABLE IT_PA0041
+    WHERE PERNR = PERNR-PERNR
+    AND   ENDDA = '99991231'.
+
+
+
+
+
+
+
+
+
+  LOOP AT  IT_PA0041 INTO WA_PA0041.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR01 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT01.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR02 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT02.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR03 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT03.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR04 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT04.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR05 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT05.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR06 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT06.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR07 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT07.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR08 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT08.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR09 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT09.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR10 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT10.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR11 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT11.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR12 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT12.
+    ENDIF.
+
+  ENDLOOP.
+
+
+
+  SELECT SINGLE * FROM T042Z
+    INTO WA_PAYMENT
+    WHERE LAND1 = 'IN'
+    AND   ZLSCH = LV_PAYMENT.
+
+  WA_FINAL-PAYMENT_METH = WA_PAYMENT-TEXT1.
+
+  IF WA_FINAL-PAYMENT_METH IS INITIAL AND LV_PAYMENT IS INITIAL.
+
+    WA_FINAL-PAYMENT_METH = 'CASH PAYMENT'.
+
+  ENDIF.
+
+  TRANSLATE WA_FINAL-PAYMENT_METH TO UPPER CASE.
+  WA_FINAL-PAYMENT = LV_PAYMENT.
+*if it_out_rgdir[] is not initial.
+  LOOP AT IT_OUT_RGDIR INTO WA_OUT_RGDIR  WHERE SRTZA EQ 'A'
+                                          AND   PAYTY EQ ' '.
+
+    CLEAR I_RESULT.
+
+    CALL FUNCTION 'PYXX_READ_PAYROLL_RESULT'
+      EXPORTING
+        CLUSTERID                          = 'IN'
+        EMPLOYEENUMBER                     = PERNR-PERNR
+        SEQUENCENUMBER                     = WA_OUT_RGDIR-SEQNR
+*   READ_ONLY_BUFFER                   = ' '
+*   READ_ONLY_INTERNATIONAL            = ' '
+*   ARC_GROUP                          = ' '
+*   CHECK_READ_AUTHORITY               = 'X'
+*   FILTER_CUMULATIONS                 = 'X'
+*   CLIENT                             =
+* IMPORTING
+*   VERSION_NUMBER_PAYVN               =
+*   VERSION_NUMBER_PCL2                =
+      CHANGING
+        PAYROLL_RESULT                     = I_RESULT
+     EXCEPTIONS
+       ILLEGAL_ISOCODE_OR_CLUSTERID       = 1
+       ERROR_GENERATING_IMPORT            = 2
+       IMPORT_MISMATCH_ERROR              = 3
+       SUBPOOL_DIR_FULL                   = 4
+       NO_READ_AUTHORITY                  = 5
+       NO_RECORD_FOUND                    = 6
+       VERSIONS_DO_NOT_MATCH              = 7
+       ERROR_READING_ARCHIVE              = 8
+       ERROR_READING_RELID                = 9
+       OTHERS                             = 10
+              .
+    IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+*DATA : UNAME1 TYPE PA0000-UNAME.
+    MOVE I_RESULT-INTER-RT TO IT_RT.
+    MOVE I_RESULT-INTER-WPBP TO IT_WPBP.
+    MOVE I_RESULT-INTER-AB TO IT_AB.
+    MOVE I_RESULT-INTER-VERSION-UNAME TO WA_FINAL-UNAME.
+*_ LOP
+*    LOOP AT IT_AB INTO WA_AB.
+*      WA_FINAL-W_LOP = WA_AB-ABRTG.
+*      CLEAR WA_AB-ABRTG.
+*    ENDLOOP.
+READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1105' .      " Absence Days
+    IF SY-SUBRC = 0.
+       WA_FINAL-W_LOP = WA_RT-ANZHL.
+      CLEAR WA_RT.
+      else.
+        WA_FINAL-W_LOP = 0.
+      CLEAR WA_RT.
+    ENDIF.
+
+
+    SORT IT_RT BY LGART.
+
+* READ TABLE IT_WPBP INTO W_WPBP WITH KEY btrtl = P_SAREA.
+    LOOP AT IT_WPBP INTO W_WPBP.
+      WA_FINAL-BTRTL = W_WPBP-BTRTL.
+      WA_FINAL-TRFGR = W_WPBP-TRFGR.
+      WA_FINAL-TRFST = W_WPBP-TRFST.
+      WA_FINAL-KDIVI = W_WPBP-KDIVI.
+      WA_FINAL-ADIVI = W_WPBP-ADIVI.
+      CLEAR : W_WPBP-BTRTL,
+              W_WPBP-TRFGR,
+              W_WPBP-TRFST,
+              W_WPBP-ADIVI,
+              W_WPBP-KDIVI.
+    ENDLOOP.
+
+
+
+****************Earnings
+    DATA :  DAYS  TYPE I.
+
+    DATA : W_BEGDA TYPE I,
+           W_SYDT TYPE I,
+           AGE(6) TYPE P DECIMALS 5,
+           E_MONTH(6) TYPE P DECIMALS 5.
+
+    DATA :  LFD_MEM1               TYPE CHAR40,
+        LFD_MEM2               TYPE CHAR40.
+    DATA : WEEKS TYPE I,
+           MONTHS TYPE I,
+           YEARS  TYPE I,
+           D_MONTHS TYPE I,
+           TAB TYPE P99SG_MONTH_TAB.
+
+    DATA : LV_TICNM TYPE PA0588-TICNM.
+
+    CONCATENATE PN-BEGDA+6(2) PN-BEGDA+4(2) PN-BEGDA+0(4) INTO DATE1.
+    CONCATENATE PN-ENDDA+6(2) PN-ENDDA+4(2) PN-ENDDA+0(4) INTO DATE2.
+
+    CALL FUNCTION 'HR_99S_INTERVAL_BETWEEN_DATES'
+      EXPORTING
+        BEGDA     = PN-BEGDA
+        ENDDA     = PN-ENDDA
+*       TAB_MODE  = ' '
+      IMPORTING
+        DAYS      = DAYS
+        C_WEEKS   = WEEKS
+        C_MONTHS  = MONTHS
+        C_YEARS   = YEARS
+*       WEEKS     =
+*       MONTHS    =
+*       YEARS     =
+        D_MONTHS  = D_MONTHS
+        MONTH_TAB = TAB.
+
+    WA_FINAL-CALEN_DAYS   = DAYS.
+    WA_FINAL-WORKING_DAYS = WA_FINAL-ADIVI.
+
+    CLEAR : WA_RT.
+
+    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/845'.
+
+    IF SY-SUBRC = 0.
+
+      DAY1 = WA_RT-ANZHL.
+      CLEAR : WA_RT.
+    ENDIF.
+
+    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/846'.
+
+    IF SY-SUBRC = 0.
+
+      DAY2 = WA_RT-ANZHL.
+      CLEAR : WA_RT.
+    ENDIF.
+
+    IF DAY1 IS NOT INITIAL.
+
+      DAY3 = DAY1 / 8.
+
+    ENDIF.
+
+    IF DAY2 IS NOT INITIAL.
+
+      DAY4 = DAY2 / 8.
+
+    ENDIF.
+
+    DAY5 = DAY3 + DAY4.
+
+    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1105' .      " Absence Days
+    IF SY-SUBRC = 0.
+      WA_FINAL-TOTALDAYS = WA_RT-ANZHL.
+      CLEAR WA_RT.
+    ENDIF.
+
+
+    WA_FINAL-WORKED_DAYS = WA_FINAL-CALEN_DAYS - WA_FINAL-TOTALDAYS.
+
+
+    SELECT * FROM PA0000
+      INTO TABLE IT_P0000
+      WHERE PERNR = PERNR-PERNR.
+
+
+
+    CLEAR : WA_P0000 , LV_CHECK , LV_CHECK1.
+    LOOP AT  IT_P0000 INTO WA_P0000.
+
+
+
+
+
+      IF WA_P0000-STAT2 = '1'.
+
+        IF WA_P0000-BEGDA BETWEEN PN-BEGDA AND PN-ENDDA OR WA_P0000-ENDDA BETWEEN PN-BEGDA AND PN-ENDDA.
+
+          DATE1 = WA_P0000-BEGDA+4(2).
+          DATE2 = WA_P0000-ENDDA+4(2).
+          DATE3 = PN-BEGDA+4(2).
+
+          IF DATE1 = DATE2.
+
+            LV_INACTIVE = WA_P0000-ENDDA - WA_P0000-BEGDA.
+
+            IF LV_INACTIVE = '0'.
+
+              CONTINUE.
+
+            ELSE.
+
+              IF LV_INACTIVE < 0.
+                LV_INACTIVE = LV_INACTIVE * -1.
+              ENDIF.
+              LV_INACTIVE = LV_INACTIVE + 1.
+
+            ENDIF.
+
+          ELSEIF DATE1 < DATE3.
+
+            LV_INACTIVE = WA_P0000-ENDDA - PN-BEGDA.
+            IF LV_INACTIVE < 0.
+              LV_INACTIVE = LV_INACTIVE * -1.
+            ENDIF.
+            LV_INACTIVE = LV_INACTIVE + 1.
+
+          ELSEIF DATE2 > DATE3.
+
+            LV_INACTIVE = PN-ENDDA - WA_P0000-BEGDA.
+            IF LV_INACTIVE < 0.
+              LV_INACTIVE = LV_INACTIVE * -1.
+            ENDIF.
+            LV_INACTIVE = LV_INACTIVE + 1.
+
+          ENDIF.
+
+          WA_FINAL-TOTALDAYS = WA_FINAL-TOTALDAYS + LV_INACTIVE.
+
+        ENDIF.
+        CLEAR : LV_INACTIVE.
+      ENDIF.
+
+
+      W_BEGDA = PN-BEGDA+04(02).
+      W_SYDT  = SY-DATUM+04(02).
+
+      WA_FINAL-W_IWC = 'No'.
+
+
+****** Date of Hiring
+      CALL FUNCTION 'FIMA_DECIMAL_MONTHS_AND_YEARS'
+        EXPORTING
+          I_DATE_FROM = WA_FINAL-W_GBDAT
+          I_DATE_TO   = WA_P0000-BEGDA
+*         I_FLG_360   = ' '
+        IMPORTING
+          E_MONTHS    = E_MONTH
+          E_YEARS     = AGE.
+
+
+      WA_FINAL-W_AGE = ( 58  - AGE ).
+      IF WA_P0000-MASSN = '01'  OR WA_P0000-MASSN = '18'.
+        WA_FINAL-W_ATH = WA_P0000-BEGDA.
+      ENDIF.
+
+
+      IF WA_P0000-MASSN = '01' OR  WA_P0000-MASSN = '18'.
+
+        WA_FINAL-W_DOJEPF = WA_P0000-BEGDA.
+        WA_FINAL-W_DOJEPS = WA_P0000-BEGDA.
+      ENDIF.
+      " BREAK-POINT.
+      IF WA_P0000-MASSN = '16' OR WA_P0000-MASSN = '14'.
+
+        CALL FUNCTION 'OIL_LAST_DAY_OF_MONTH'
+          EXPORTING
+            I_DATE     = WA_P0000-BEGDA
+          IMPORTING
+            E_LAST_DAY = WA_FINAL-W_DOEEPF.
+
+        CALL FUNCTION 'OIL_LAST_DAY_OF_MONTH'
+          EXPORTING
+            I_DATE     = WA_P0000-BEGDA
+          IMPORTING
+            E_LAST_DAY = WA_FINAL-W_DOEEPS.
+
+        CALL FUNCTION 'OIL_LAST_DAY_OF_MONTH' " Added By Govind On 02-Feb-2015 requiremnet  Last Date for Date of Exit
+          EXPORTING
+            I_DATE           = WA_P0000-BEGDA
+         IMPORTING
+           E_LAST_DAY       = WA_FINAL-W_DOEECR.
+
+*        WA_FINAL-W_DOEEPF = WA_P0000-BEGDA + 1. " Added By Govind On 13-01-2015  requiremnet  Date Exit Emloyee + 1
+*        WA_FINAL-W_DOEEPS = WA_P0000-BEGDA + 1.
+*        WA_FINAL-W_DOEECR = WA_P0000-BEGDA + 1.
+
+      ENDIF.
+      CALL FUNCTION 'DATE_TO_PERIOD_CONVERT'
+        EXPORTING
+          I_DATE               = WA_P0000-BEGDA
+*   I_MONMIT             = 00
+          I_PERIV              = 'K4'
+       IMPORTING
+         E_BUPER              = N_MTH
+*   E_GJAHR              =
+* EXCEPTIONS
+*   INPUT_FALSE          = 1
+*   T009_NOTFOUND        = 2
+*   T009B_NOTFOUND       = 3
+*   OTHERS               = 4
+                .
+      IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+      ENDIF.
+      WA_FINAL-W_AHG = N_MTH  .
+
+
+    ENDLOOP.
+    CLEAR : LV_INACTIVE.
+
+    IF WA_FINAL-TOTALDAYS IS NOT INITIAL .
+
+      WA_FINAL-WORKED_DAYS = WA_FINAL-CALEN_DAYS - WA_FINAL-TOTALDAYS.
+
+    ENDIF.
+
+
+    DESCRIBE TABLE IT_RT LINES LV_LINES.
+
+    LOOP AT IT_RT INTO WA_RT.
+
+      CASE WA_RT-LGART.
+
+        WHEN '/3FA'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_PF.
+
+        WHEN '/3FB'.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3FB.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3FBN.
+
+        WHEN '/3F1' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F1.
+        WHEN '/3F2' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F2.
+        WHEN '/3F3' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F3.
+        WHEN '/3F4' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F4.
+        WHEN '/3F5' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F5.
+
+        WHEN '/3F7' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F7.          " Added by Siva Kumar" 23.12.2015
+
+        WHEN '/3F8' .
+          ADD WA_RT-BETRG To WA_FINAL-W_3F8.             " Added by Siva Kumar" 23.12.2015  "Changes did by Siva Kumar on 30.12.2015"
+
+        WHEN '/3F9' .
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F9. " Added by Siva Kumar" 31.10.2015   "Changes Did by Siva Kumar on 30.12.2015"
+
+
+*
+      ENDCASE.
+
+
+
+
+    ENDLOOP.
+
+
+****** EPF Wages
+ IF WA_FINAL-W_3F5 < 1800 or  WA_FINAL-W_3F5 = 1800. "Added by Siva Kumar 12.11.2015"
+
+   WA_FINAL-W_3FB = WA_FINAL-W_3F5 * 100 / 12 . "Added by Siva Kumar 12.11.2015"
+   Else.                                        "Added by Siva Kumar 12.11.2015"
+  WA_FINAL-W_3FB  = 15000.                    "Added by Siva Kumar 12.11.2015"
+
+   ENDIF.      "Added by Siva Kumar 31.10.2015"
+  IF WA_FINAL-W_3F5 < 1800 or  WA_FINAL-W_3F5 = 1800."Added by Siva Kumar 12.11.2015"
+
+  WA_FINAL-W_3FBN  = WA_FINAL-W_3F5 * 100 / 12 . "Added by Siva Kumar 12.11.2015"
+  Else.                                   "Added by Siva Kumar 12.11.2015"
+  WA_FINAL-W_3FBN  = 15000. "Added by Siva Kumar 12.11.2015"
+
+  ENDIF.          "Added by Siva Kumar 12.11.2015"
+
+*    WA_FINAL-W_PFA = WA_FINAL-W_3FB * ( 110 / 100 ) / 100. Coommend By Govind On 14-Feb-2015
+*    WA_FINAL-W_EDLI = WA_FINAL-W_3FB * ( 50 / 100 ) / 100. "Commented by Siva kumar" 23.12.2015
+*    WA_FINAL-W_EDL = WA_FINAL-W_3FB * ( 1 / 100 ) / 100.   "Commented by Siva Kumar" 23.12.2015
+
+*    WA_FINAL-W_TOT = WA_FINAL-W_3F3 + WA_FINAL-W_3F4 +
+*     WA_FINAL-W_3F5 + WA_FINAL-W_PFA + WA_FINAL-W_EDLI +
+*      WA_FINAL-W_EDL.
+
+     WA_FINAL-W_TOT = WA_FINAL-W_3F3 + WA_FINAL-W_3F4 +             "Added by Siva Kumar 31.10.2015"
+     WA_FINAL-W_3F5 + WA_FINAL-W_3F9 + WA_FINAL-W_3F7 +            "Added by Siva Kumar 31.10.2015"
+     WA_FINAL-W_3F8.                                               "Added by Siva Kumar 31.10.2015"
+
+
+
+
+
+*    IF WA_FINAL-W_3F5 < 1800.
+*      WA_FINAL-W_PF = WA_FINAL-W_PF.
+*    ELSE.
+      WA_FINAL-W_PF = WA_FINAL-W_3F5 * 100 / 12 .   " Commented by Siva kumar: For Slab 2 PF Wages calucation did the changes  on 12-11.2014"
+*    ENDIF.
+****** Pf Admin Charges
+*    WA_FINAL-W_PFA = WA_FINAL-W_PF * ( 110 / 100 ) / 100. Commended By Govind On 23-04-2015 For Changes Pf addmin Charges 1.10 Into 0.85
+    WA_FINAL-W_PFA = WA_FINAL-W_PF * ( 85 / 100 ) / 100.
+********** Gender
+    IF WA_FINAL-W_GEN = 1.
+      WA_FINAL-W_GEND = 'M'.
+    ELSE.
+      WA_FINAL-W_GEND = 'F'.
+    ENDIF.
+
+********* Father's/Husband Name
+    IF WA_FINAL-F_NAME = 0 AND WA_FINAL-W_GEN = 1.
+      SELECT  FAVOR UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_FNAME
+        WHERE  PERNR = PERNR-PERNR AND SUBTY = '11' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      SELECT  FANAM UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_LNAME
+         WHERE  PERNR = PERNR-PERNR AND SUBTY = '11' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      CONCATENATE WA_FINAL-W_FNAME WA_FINAL-W_LNAME INTO WA_FINAL-FNAME SEPARATED BY SPACE.
+    ELSEIF WA_FINAL-F_NAME = 1 AND WA_FINAL-W_GEN = 2.
+      SELECT  FAVOR UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_FNAME
+          WHERE  PERNR = PERNR-PERNR AND SUBTY = '1' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      SELECT  FANAM UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_LNAME
+        WHERE  PERNR = PERNR-PERNR AND SUBTY = '1' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      CONCATENATE WA_FINAL-W_FNAME WA_FINAL-W_LNAME INTO WA_FINAL-FNAME SEPARATED BY SPACE.
+    ELSEIF WA_FINAL-F_NAME = 0 AND WA_FINAL-W_GEN = 2.
+      SELECT  FAVOR UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_FNAME
+     WHERE  PERNR = PERNR-PERNR AND SUBTY = '1' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      SELECT  FANAM UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_LNAME
+   WHERE  PERNR = PERNR-PERNR AND SUBTY = '1' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      CONCATENATE WA_FINAL-W_FNAME WA_FINAL-W_LNAME INTO WA_FINAL-FNAME SEPARATED BY SPACE.
+    ENDIF.
+******Relationship with member
+    IF  WA_FINAL-F_NAME = 0  OR WA_FINAL-F_NAME = 1 AND WA_FINAL-W_GEN = 1.
+      SELECT  FAVOR UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_FNAME
+        WHERE  PERNR = PERNR-PERNR AND SUBTY = '11' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      SELECT  FANAM UP TO 1 ROWS FROM PA0021 INTO WA_FINAL-W_LNAME
+      WHERE  PERNR = PERNR-PERNR AND SUBTY = '11' ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      CONCATENATE WA_FINAL-W_FNAME WA_FINAL-W_LNAME INTO WA_FINAL-FNAME SEPARATED BY SPACE.
+      IF SY-SUBRC = 0.
+        WA_FINAL-W_RELN = 'F'.
+      ENDIF.
+    ELSE.
+      WA_FINAL-W_RELN = 'H'.
+    ENDIF.
+
+****EPS Flag Type
+    IF WA_FINAL-W_ATH BETWEEN PN-BEGDA AND PN-ENDDA .
+      WA_FINAL-W_EPSF = 'Fresher'.
+    ELSE.
+      WA_FINAL-W_EPSF = 'Existing Member for EPF'.
+    ENDIF.
+
+******Split Member Id
+    SPLIT WA_FINAL-W_EEPFM AT '/' INTO LFD_MEM1 LFD_MEM2.
+    CLEAR LFD_MEM1.
+    SPLIT LFD_MEM2 AT '/' INTO LFD_MEM1 LFD_MEM2.
+    CLEAR: LFD_MEM1.
+    IF LFD_MEM2 CA '/'.
+      SPLIT LFD_MEM2 AT '/' INTO LFD_MEM1 LFD_MEM2.
+      MOVE LFD_MEM2 TO WA_FINAL-PERNR1.
+    ELSE.
+      MOVE LFD_MEM2 TO WA_FINAL-PERNR1.
+    ENDIF.
+
+  ENDLOOP.
+
+  IF P_ADD <> 'X' AND P_DEL <> 'X'.
+    APPEND WA_FINAL TO IT_FINAL.
+    CLEAR  : WA_FINAL , DAYS , DAY1  , DAY2 , DAY3 , DAY4 , DAY5.
+    CLEAR : WA_RT.
+  ENDIF.
+
+  IF P_ADD = 'X'.
+    IF WA_FINAL-W_ATH BETWEEN PN-BEGDA AND PN-ENDDA .
+      APPEND WA_FINAL TO IT_FINAL.
+      CLEAR  : WA_FINAL , DAYS , DAY1  , DAY2 , DAY3 , DAY4 , DAY5.
+      CLEAR : WA_RT.
+    ENDIF.
+  ENDIF.
+
+  IF P_DEL = 'X'.
+*    IF WA_FINAL-W_DOEEPF IS  NOT INITIAL.  "Hidded by Savariar as on 04/02/2015
+
+    IF WA_FINAL-W_DOEEPF BETWEEN PN-BEGDA AND PN-ENDDA . " Added by savariar s as on 04/02/2015.
+      APPEND WA_FINAL TO IT_FINAL.
+      CLEAR  : WA_FINAL , DAYS , DAY1  , DAY2 , DAY3 , DAY4 , DAY5.
+      CLEAR : WA_RT.
+    ENDIF.
+  ENDIF.
+
+
+
+  DELETE IT_FINAL WHERE NAME IS INITIAL.
+
+
+END-OF-SELECTION.
+
+
+  PERFORM CREATE_FIELDCAT.
+  DATA: SORT TYPE SLIS_SORTINFO_ALV,
+        IT_SORT TYPE  SLIS_T_SORTINFO_ALV.
+
+  L_LAYOUT-TOTALS_TEXT = 'TOTAL'.
+*l_layout-SUBTOTALS_TEXT = 'SUBTOTAL'.
+
+  PERFORM F029_EVENTTAB_BUILD USING IT_EVENTS[].
+  PERFORM F029_COMMENT_BUILD  USING IT_TOP_OF_PAGE[].
+  WA_LAYOUT-ZEBRA = 'X'.
+  WA_LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+
+  IF P_DEL <>  'X' AND P_ADD <> 'X'.
+    CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+      EXPORTING
+        I_BACKGROUND_ID    = 'ALV_BACKGROUND'
+        I_CALLBACK_PROGRAM = SY-REPID
+*       i_callback_program = sy-cprog
+        I_GRID_TITLE       = 'Employee Provident Fund Register'
+        IS_LAYOUT          = L_LAYOUT
+        IT_FIELDCAT        = GT_FIELDCAT[]
+        IT_EVENTS          = IT_EVENTS
+        IT_SORT            = IT_SORT
+        I_SAVE             = 'X'
+        I_DEFAULT          = 'X'
+        IS_VARIANT         = WK_VARIANT
+      TABLES
+        T_OUTTAB           = IT_FINAL
+      EXCEPTIONS
+        PROGRAM_ERROR      = 1
+        OTHERS             = 2.
+    IF SY-SUBRC <> 0.
+      MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+               WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+  ENDIF.
+
+  IF P_DEL = 'X'.
+
+    CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+      EXPORTING
+        I_BACKGROUND_ID    = 'ALV_BACKGROUND'
+        I_CALLBACK_PROGRAM = SY-REPID
+*       i_callback_program = sy-cprog
+        I_GRID_TITLE       = 'Employee Provident Fund Deletion Register'
+        IS_LAYOUT          = L_LAYOUT
+        IT_FIELDCAT        = GT_FIELDCAT[]
+        IT_EVENTS          = IT_EVENTS
+        IT_SORT            = IT_SORT
+        I_SAVE             = 'X'
+        I_DEFAULT          = 'X'
+        IS_VARIANT         = WK_VARIANT
+      TABLES
+        T_OUTTAB           = IT_FINAL
+      EXCEPTIONS
+        PROGRAM_ERROR      = 1
+        OTHERS             = 2.
+    IF SY-SUBRC <> 0.
+      MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+               WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+  ENDIF.
+
+
+  IF P_ADD = 'X'.
+
+    CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+      EXPORTING
+        I_BACKGROUND_ID    = 'ALV_BACKGROUND'
+        I_CALLBACK_PROGRAM = SY-REPID
+*       i_callback_program = sy-cprog
+        I_GRID_TITLE       = 'Employee Provident Fund Addition Register'
+        IS_LAYOUT          = L_LAYOUT
+        IT_FIELDCAT        = GT_FIELDCAT[]
+        IT_EVENTS          = IT_EVENTS
+        IT_SORT            = IT_SORT
+        I_SAVE             = 'X'
+        I_DEFAULT          = 'X'
+        IS_VARIANT         = WK_VARIANT
+      TABLES
+        T_OUTTAB           = IT_FINAL
+      EXCEPTIONS
+        PROGRAM_ERROR      = 1
+        OTHERS             = 2.
+    IF SY-SUBRC <> 0.
+      MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+               WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+  ENDIF.
+* To Set the Columns for the ALV Grid Display
+
+FORM ALV  USING VALUE(P_0994) VALUE(P_0995) VALUE(P_0996)
+VALUE(P_0997)
+VALUE(P_0998) VALUE(P_0999).
+  CLEAR WA_FIELDCAT.
+  WA_FIELDCAT-COL_POS       =  P_0994.
+  WA_FIELDCAT-FIELDNAME     =  P_0995.
+  WA_FIELDCAT-TABNAME       =  P_0996.
+  WA_FIELDCAT-REPTEXT_DDIC  =  P_0997.
+  WA_FIELDCAT-OUTPUTLEN     =  P_0998.
+  WA_FIELDCAT-DO_SUM        =  P_0999.
+  APPEND WA_FIELDCAT TO  GT_FIELDCAT.
+ENDFORM.                    "ALV
+
+* To Set the Title for the ALV Grid Display
+FORM TEST.
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = IT_TOP_OF_PAGE[]
+      I_LOGO             = 'BRITANNIA_LOGO'.
+ENDFORM.                    "**** TOP_OF_PAGE ****
+
+*      Form  F029_EVENTTAB_BUILD
+
+FORM F029_EVENTTAB_BUILD USING IT_EVENTS TYPE SLIS_T_EVENT.
+  DATA: LS_EVENT TYPE SLIS_ALV_EVENT.
+
+  CALL FUNCTION 'REUSE_ALV_EVENTS_GET'
+    EXPORTING
+      I_LIST_TYPE = 0
+    IMPORTING
+      ET_EVENTS   = IT_EVENTS.
+
+  READ TABLE IT_EVENTS WITH KEY NAME =  SLIS_EV_TOP_OF_PAGE
+                     INTO LS_EVENT.
+  IF SY-SUBRC = 0.
+    MOVE SLIS_EV_TOP_OF_PAGE TO LS_EVENT-NAME.
+    MOVE 'TEST' TO LS_EVENT-FORM.
+    APPEND LS_EVENT TO IT_EVENTS.
+  ENDIF.
+
+ENDFORM.                    "**** F029_EVENTTAB_BUILD ****
+
+*To Display the Title for the ALV Grid Display
+FORM F029_COMMENT_BUILD USING IT_TOP_OF_PAGE TYPE SLIS_T_LISTHEADER.
+
+  DATA : I_T549T  TYPE STANDARD TABLE OF T549T ,
+         WA_T549T TYPE T549T .
+  DATA : L_I_HEADER  TYPE SLIS_T_LISTHEADER,
+         L_WA_HEADER TYPE SLIS_LISTHEADER.
+  DATA : VAR(45) TYPE C.
+  DATA : D_DATE(40)  TYPE N.
+  DATA : A_DATE(18) TYPE N,
+         B_DATE(18) TYPE N.
+  DATA : BUKRS    TYPE BUKRS.
+  DATA : LV_BUKRS(70) TYPE C.
+  DATA : BUKRS_TEXT TYPE BUTXT.
+
+  SELECT BUKRS
+                UP TO 1 ROWS FROM PA0001
+                INTO BUKRS
+                WHERE BUKRS = PNPBUKRS-LOW ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+*_ Company Name
+  CALL FUNCTION 'HRWPC_RFC_BUKRS_TEXT_GET'
+    EXPORTING
+      BUKRS      = BUKRS
+    IMPORTING
+      BUKRS_TEXT = BUKRS_TEXT.
+
+  CLEAR LV_BUKRS.
+  LV_BUKRS = BUKRS.
+
+
+  SELECT * "#EC CI_NOORDER " Added by <IT-CAR Tool> during Code Remediation
+          INTO CORRESPONDING FIELDS OF WA_T549T
+                        FROM T549T
+                     WHERE SPRSL = 'EN' AND
+                           ABKRS IN PNPABKRS.
+  ENDSELECT.
+
+
+  SELECT SINGLE BTEXT
+           FROM T001P
+           INTO WA_FINAL-BTEXT
+           WHERE BTRTL = WA_FINAL-BTRTL.
+
+
+*Display Text of each Payrol Area
+  CONCATENATE 'Payroll Area : ' WA_T549T-ATEXT INTO
+  L_WA_HEADER-INFO SEPARATED BY SPACE.
+
+  VAR = L_WA_HEADER-INFO.
+
+  WRITE PN-BEGDA TO A_DATE MM/DD/YYYY.
+  WRITE PN-ENDDA TO B_DATE MM/DD/YYYY.
+
+
+  CONCATENATE 'PERIOD:' A_DATE 'TO' B_DATE INTO D_DATE
+      SEPARATED BY ' '.
+
+***convert inverted-date D_date into date e_date.
+
+  DATA: LS_LINE    TYPE SLIS_LISTHEADER.
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'H'.
+  LS_LINE-INFO = BUKRS_TEXT.
+  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+
+*  LS_LINE-TYP  = 'H'.
+*  LS_LINE-INFO = 'Chennai'.
+*  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+
+  LS_LINE-TYP  = 'S'.
+  LS_LINE-INFO = D_DATE.
+  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+
+
+*  LS_LINE-TYP  = 'H'.
+*  LS_LINE-INFO = WA_FINAL-BTEXT.
+*  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+ENDFORM.                    "F029_COMMENT_BUILD
+
+*&      Form  CREATE_FIELDCAT
+* --------------------------------------------------------------------------------
+FORM CREATE_FIELDCAT .
+  IF P_ADD <> 'X' AND P_DEL <> 'X'.
+    DATA: LS_FIELDCAT TYPE SLIS_FIELDCAT_ALV.
+    CLEAR LS_FIELDCAT .
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '1'.
+    LS_FIELDCAT-FIELDNAME   = 'PERNR'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Employee No'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '2'.
+    LS_FIELDCAT-FIELDNAME   = 'NAME'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '30'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Employee Name'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT.
+
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '3'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TICNM'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '12'.
+**  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Temp Certificate No.'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '3'.
+    LS_FIELDCAT-FIELDNAME   = 'W_EEPFM'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'PF number'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '4'.
+    LS_FIELDCAT-FIELDNAME   = 'PERNR1'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Member Id'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '5'.
+    LS_FIELDCAT-FIELDNAME   = 'W_PF'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EPF Wages'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '6'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3FB'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EPS Wages'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+*
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '7'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3FBN'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EDLI Wages'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '8'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F1'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EE Share Due'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '9'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F2'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'VPF'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '10'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F5'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Total Employee EPF'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '11'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F4'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EPS Share Due'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '12'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F3'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Diff EPF and EPS  share due'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '13'.
+*    LS_FIELDCAT-FIELDNAME   = 'W_PFA'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F9'.             "added by Siva Kumar"
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'PF Admin Charges'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '14'.
+*    LS_FIELDCAT-FIELDNAME   = 'W_EDLI'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F7'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EDLI'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '15'.
+*    LS_FIELDCAT-FIELDNAME   = 'W_EDL'.
+    LS_FIELDCAT-FIELDNAME   = 'W_3F8'.                "Changes Did by Siva Kumar on 30.12.2015"
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EDLI Inspection Charge'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '16'.
+    LS_FIELDCAT-FIELDNAME   = 'W_TOT'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+    LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Total Amount'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '17'.
+    LS_FIELDCAT-FIELDNAME   = 'W_LOP'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'NCP/LOP Days'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '18'.
+    LS_FIELDCAT-FIELDNAME   = 'W_GBDAT'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Date of Birth'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '19'.
+    LS_FIELDCAT-FIELDNAME   = 'W_ATH'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Hiring Date'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '20'.
+    LS_FIELDCAT-FIELDNAME   = 'W_EPSF'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EPS Flag Type'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '21'.
+    LS_FIELDCAT-FIELDNAME   = 'W_AGE'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Superannuation Age >= 58'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '22'.
+    LS_FIELDCAT-FIELDNAME   = 'W_IWC'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '22'.
+*  LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'IW Category'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+  ENDIF.
+
+  IF P_ADD = 'X'.
+
+    CLEAR LS_FIELDCAT .
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '1'.
+    LS_FIELDCAT-FIELDNAME   = 'PERNR'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Employee No'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '2'.
+    LS_FIELDCAT-FIELDNAME   = 'NAME'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '30'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Employee Name'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT.
+
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '3'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TICNM'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '12'.
+**  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Temp Certificate No.'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '3'.
+    LS_FIELDCAT-FIELDNAME   = 'W_EEPFM'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'PF number'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '4'.
+    LS_FIELDCAT-FIELDNAME   = 'PERNR1'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Member Id'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '18'.
+    LS_FIELDCAT-FIELDNAME   = 'W_GBDAT'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Date of Birth'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '19'.
+    LS_FIELDCAT-FIELDNAME   = 'W_ATH'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Hiring Date'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '20'.
+    LS_FIELDCAT-FIELDNAME   = 'W_EPSF'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'EPS Flag Type'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '21'.
+    LS_FIELDCAT-FIELDNAME   = 'W_AGE'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Superannuation Age >= 58'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '22'.
+    LS_FIELDCAT-FIELDNAME   = 'W_AHG'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Period'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '23'.
+    LS_FIELDCAT-FIELDNAME   = 'W_RELN'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '22'.
+*  LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Relationship with member'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '23'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_GEN'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '22'.
+**  LS_FIELDCAT-DO_SUM       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Gender'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '24'.
+    LS_FIELDCAT-FIELDNAME   = 'W_GEND'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '22'.
+*  LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Gender'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '25'.
+    LS_FIELDCAT-FIELDNAME   = 'FNAME'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '22'.
+*  LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Father/Husband Name'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '26'.
+    LS_FIELDCAT-FIELDNAME   = 'W_DOJEPF'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'DOJ EPF'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '26'.
+    LS_FIELDCAT-FIELDNAME   = 'W_DOJEPS'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  LS_FIELDCAT-DO_SUM       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'DOJ EPF'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+  ENDIF.
+
+
+  IF P_DEL = 'X'.
+
+    CLEAR LS_FIELDCAT .
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '1'.
+    LS_FIELDCAT-FIELDNAME   = 'PERNR'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Employee No'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '2'.
+    LS_FIELDCAT-FIELDNAME   = 'NAME'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '30'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Employee Name'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT.
+
+
+
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '3'.
+    LS_FIELDCAT-FIELDNAME   = 'W_EEPFM'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'PF number'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '4'.
+    LS_FIELDCAT-FIELDNAME   = 'PERNR1'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Member Id'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT.
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '18'.
+    LS_FIELDCAT-FIELDNAME   = 'W_GBDAT'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Date of Birth'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    CLEAR LS_FIELDCAT.
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '19'.
+    LS_FIELDCAT-FIELDNAME   = 'W_ATH'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+    LS_FIELDCAT-SELTEXT_L =  'Hiring Date'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+
+
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '20'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_AHG'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+**  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Period'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT .
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '21'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_AGE'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+**  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Superannuation Age >= 58'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT .
+
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '22'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_IWC'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '22'.
+**  LS_FIELDCAT-DO_SUM       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'IW Category'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT .
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '23'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_GEN'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '22'.
+**  LS_FIELDCAT-DO_SUM       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Gender'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT .
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '24'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_GEND'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '22'.
+**  LS_FIELDCAT-DO_SUM       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Gender'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '27'.
+    LS_FIELDCAT-FIELDNAME   = 'W_DOEEPF'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  LS_FIELDCAT-DO_SUM       = ''.
+    LS_FIELDCAT-SELTEXT_L =  'Date of exit from EPF'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '28'.
+    LS_FIELDCAT-FIELDNAME   = 'W_DOEEPS'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  LS_FIELDCAT-DO_SUM       = ''.
+    LS_FIELDCAT-SELTEXT_L =  'Date for exit from EPS'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+    LS_FIELDCAT-ROW_POS     = '1'.
+    LS_FIELDCAT-COL_POS     = '29'.
+    LS_FIELDCAT-FIELDNAME   = 'W_DOEECR'.
+    LS_FIELDCAT-KEY         = ''.
+    LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  LS_FIELDCAT-DO_SUM       = ''.
+    LS_FIELDCAT-SELTEXT_L =  'ECR for leaving service'.
+    APPEND LS_FIELDCAT TO GT_FIELDCAT.
+    CLEAR LS_FIELDCAT .
+
+  ENDIF.
+
+
+
+
+ENDFORM.                    " CREATE_FIELDCAT

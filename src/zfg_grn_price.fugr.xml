@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for BAPI GRN price and Quantity</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_GRN_PRICEF01</SOBJ_NAME>
+    <SOBJ_NAME>LZFG_GRN_PRICETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_GRN_PRICE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_GRN_PRICE_QUANTITY</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi for GRN price and Quantuty</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MATERIAL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>RANGE_S_MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_QUAN_PRICE</PARAMETER>
+       <DBSTRUCT>ZSTR_GRN_QUAN_PRICE</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MATERIAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Line of Range Table for Data Element MATNR</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_QUAN_PRICE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for grn Quantity and Price</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>IRN Cancel of JSON - FG Tech Service</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LYSD_FG_IRN_CANCELTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLYSD_FG_IRN_CANCEL</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>YSD_FM_IRN_CANCEL</FUNCNAME>
+     <SHORT_TEXT>IRN Cancel for Einvoice</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_IRN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IG_IRN</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IM_VBELN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>VBELN_VF</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EX_ERROR</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EX_CANCEL_OUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZSD_IRN_COUT</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>T_ERROR_MSG</PARAMETER>
+       <TYP>BAPIRET2_T</TYP>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>UPDATE_ERROR</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_IRN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Invoice Reference Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IM_VBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Billing Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EX_ERROR</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EX_CANCEL_OUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Output Structure of IRN cancel invoice &amp; Eway</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_ERROR_MSG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return parameter table</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPDATE_ERROR</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Error in pudate the table</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

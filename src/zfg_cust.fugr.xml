@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for BAPI (ZBAPI_ACCOUNT_PAYABLE_CUST)</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_CUSTTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_CUST</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_ACCOUNT_PAYABLE_CUST</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi for customer line items</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FISCAL_YEAR</PARAMETER>
+       <TYP>GJAHR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MONTH</PARAMETER>
+       <TYP>ZMONTHS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_BSIS</PARAMETER>
+       <DBSTRUCT>ZSTR_BSIS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FISCAL_YEAR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MONTH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Month</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_BSIS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for BSIS</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_CUST_KNVV</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Vendor Master Data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KUNNR_TTY</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>STA_DAT</PARAMETER>
+       <TYP>ERDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>END_DAT</PARAMETER>
+       <TYP>ERDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_CUSTOMER</PARAMETER>
+       <DBSTRUCT>ZSD_ST_CUST_KUNNV</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Account Number of Vendor or Creditor</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>STA_DAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date on which the record was created</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>END_DAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date on which the record was created</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_CUSTOMER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure Customer KNVV BAPI</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_GET_CUST_GROUP</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Vendor Master Data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>STA_DAT</PARAMETER>
+       <TYP>ERDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>END_DAT</PARAMETER>
+       <TYP>ERDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MAT_CUST</PARAMETER>
+       <DBSTRUCT>ZMM_MAT_CUSGRP</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Account Number of Vendor or Creditor</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>STA_DAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date on which the record was created</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>END_DAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date of Last Change</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MAT_CUST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure Customer KNVV BAPI</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_GLACC_EXPENSES</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>G / L Account Expenses</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>GL_ACCOUNT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BKK_R_HKONT_BCA</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FISC_YEAR</PARAMETER>
+       <TYP>GJAHR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PERIOD</PARAMETER>
+       <TYP>MONAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_GL_EXPENSE</PARAMETER>
+       <DBSTRUCT>ZSTR_GLACC_EXP</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GL_ACCOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Ledger Account</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FISC_YEAR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PERIOD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal period</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_GL_EXPENSE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for G/l Expenses</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_GLACC_EXP_DEPRECIATION</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>G / L Account Expenses Depreciations</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>GL_ACCOUNT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BKK_R_HKONT_BCA</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FISC_YEAR</PARAMETER>
+       <TYP>GJAHR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PERIOD</PARAMETER>
+       <TYP>MONAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>ALV_CHECK</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>CHAR1</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_GL_EXPENSE</PARAMETER>
+       <TYPES>O</TYPES>
+       <TYP>ZSTR_GLACC_EXP_DEPRECIATION</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GL_ACCOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Ranges Table Category for G/L Account (BCA)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FISC_YEAR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PERIOD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal period</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ALV_CHECK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Single-Character Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_GL_EXPENSE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for G/l Expenses</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZFI_CUSTOMER_STAT_PDF</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Customer Open Lineitems PDF</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>KUNNR</PARAMETER>
+       <TYP>KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <TYP>BLDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <TYP>BLDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EP_STRING</PARAMETER>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date in Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date in Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EP_STRING</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZFI_VENDOR_STAT_PDF</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Customer Open Lineitems PDF</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>LIFNR</PARAMETER>
+       <TYP>LIFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <TYP>BLDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <TYP>BLDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EP_STRING</PARAMETER>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LIFNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Vendor Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date in Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date in Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EP_STRING</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

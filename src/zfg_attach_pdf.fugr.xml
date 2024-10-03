@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for attachment of pdf</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_ATTACH_PDFTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_ATTACH_PDF</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZATTACH_PDF_APPL_SERVER</FUNCNAME>
+     <SHORT_TEXT>Function to add pdf to financial Documents</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FNAME</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TEXT100</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BELNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BELNR_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MBLNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BELNR_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MJAHR</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>MJAHR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DOCTYP</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TOAOM-AR_OBJECT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>OBJECTTYPE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TOAOM-SAP_OBJECT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>STATUS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FLAG</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>MSG</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>FILENAME_MISSING</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>OPENDATA_SETERROR</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DOCNO_MISSING</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Comment</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BELNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MBLNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MJAHR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Document Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOCTYP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>OBJECTTYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>SAP ArchiveLink: Object type of business object</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>STATUS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FILENAME_MISSING</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Filename Name Missing</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>OPENDATA_SETERROR</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Open data set error</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOCNO_MISSING</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Document Number Missing</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

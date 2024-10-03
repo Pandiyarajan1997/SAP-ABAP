@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_NROB" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <ATTRIBUTES>
+    <OBJECT>ZREF_DOC</OBJECT>
+    <DOMLEN>NUM16</DOMLEN>
+    <PERCENTAGE>16.0</PERCENTAGE>
+    <BUFFER>X</BUFFER>
+    <NOIVBUFFER>00000020</NOIVBUFFER>
+    <UNAME>KPABAP</UNAME>
+    <UDATE>2024-01-30</UDATE>
+    <UTIME>14:23:14</UTIME>
+   </ATTRIBUTES>
+   <TEXT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZREF_DOC</OBJECT>
+    <TXT>dms retailer acnt posting ref document</TXT>
+    <TXTSHORT>dms ref doc no</TXTSHORT>
+   </TEXT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

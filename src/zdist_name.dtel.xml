@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDIST_NAME</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>CHAR50</DOMNAME>
+    <HEADLEN>16</HEADLEN>
+    <SCRLEN1>09</SCRLEN1>
+    <SCRLEN2>16</SCRLEN2>
+    <SCRLEN3>16</SCRLEN3>
+    <DDTEXT>Distributor Name</DDTEXT>
+    <REPTEXT>Distributor Name</REPTEXT>
+    <SCRTEXT_S>Dist Name</SCRTEXT_S>
+    <SCRTEXT_M>Distributor Name</SCRTEXT_M>
+    <SCRTEXT_L>Distributor Name</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

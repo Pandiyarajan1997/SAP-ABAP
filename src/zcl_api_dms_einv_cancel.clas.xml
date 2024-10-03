@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_API_DMS_EINV_CANCEL</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Cancel the Einvoice process for DMS</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>DELIVERY_CANCEL</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>INVOICE_CANCELLATION</CMPNAME>
+     <SCONAME>INV_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Billing Document</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>INVOICE_CANCELLATION</CMPNAME>
+     <SCONAME>LV_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>INVOICE_CANCELLATION</CMPNAME>
+     <SCONAME>RTRN_INV</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PGI_REVERSE</CMPNAME>
+     <SCONAME>DELIVERY_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Delivery</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PGI_REVERSE</CMPNAME>
+     <SCONAME>LV_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SORDER_CANCEL</CMPNAME>
+     <SCONAME>LV_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SORDER_CANCEL</CMPNAME>
+     <SCONAME>SALESORDER_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>VALIDATIONS</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

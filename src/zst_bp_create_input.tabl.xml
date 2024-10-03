@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TABL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD02V>
+    <TABNAME>ZST_BP_CREATE_INPUT</TABNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <TABCLASS>INTTAB</TABCLASS>
+    <DDTEXT>BP Create Input Structure</DDTEXT>
+    <MASTERLANG>E</MASTERLANG>
+    <EXCLASS>4</EXCLASS>
+   </DD02V>
+   <DD03P_TABLE>
+    <DD03P>
+     <FIELDNAME>ACCOUNT_TYPE</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000002</INTLEN>
+     <DATATYPE>CHAR</DATATYPE>
+     <LENG>000001</LENG>
+     <MASK>  CHAR</MASK>
+     <DDTEXT>Account Type</DDTEXT>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>CUSTOMER</FIELDNAME>
+     <ROLLNAME>ZST_CUST_CREATE_INPUT</ROLLNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <DATATYPE>STRU</DATATYPE>
+     <MASK>  STRUS</MASK>
+     <COMPTYPE>S</COMPTYPE>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>VENDOR</FIELDNAME>
+     <ROLLNAME>ZST_VENDOR_CREATE_INPUT</ROLLNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <DATATYPE>STRU</DATATYPE>
+     <MASK>  STRUS</MASK>
+     <COMPTYPE>S</COMPTYPE>
+    </DD03P>
+   </DD03P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

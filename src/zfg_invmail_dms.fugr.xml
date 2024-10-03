@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Invoice Mail</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_INVMAIL_DMSTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_INVMAIL_DMS</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZINVOICE_MAIL_WITH_PDF_DMS</FUNCNAME>
+     <SHORT_TEXT>Invoice Mail with PDF Attachment</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>VBELN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>VBELN_VF</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>GJAHR</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>GJAHR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>MAIL_SENT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FLAG</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>VBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Billing Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GJAHR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MAIL_SENT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

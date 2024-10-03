@@ -1,0 +1,1294 @@
+*&----------------------------------------------------------------------------*
+*& Report :  Z_QAREJECTION_REPORT
+*&----------------------------------------------------------------------------*
+*& Title  :
+*&----------------------------------------------------------------------------*
+*& Report Author         : Jestop Jeswin Charles (ABAP Consultant)
+*& Functional Consultant :
+*& Company               : Sphinax Info Systems (SIS)
+*& Report Creation Date  : 05.03.2021
+*& Transaction Code      :
+*& Request Number        :
+*&----------------------------------------------------------------------------*
+
+REPORT ZPRODUCT_VARIANCE.
+
+"DECLARARTION **************************>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+TABLES:AUFM,MAST,MAKT,AFPO,AFKO,A890,KONP,STPO,STKO.
+
+
+
+TYPES:BEGIN OF TY_STKO,
+       STLNR TYPE STKO-STLNR,
+       STLAL TYPE STKO-STLAL,
+       BMENG TYPE STKO-BMENG,
+      END OF TY_STKO.
+
+DATA: IT_STKO TYPE TABLE OF TY_STKO,
+      WA_STKO TYPE          TY_STKO.
+
+TYPES:BEGIN OF TY_MAST,
+      MATNR TYPE MAST-MATNR,
+      WERKS TYPE MAST-WERKS,
+      STLNR TYPE MAST-STLNR,
+      STLAL TYPE MAST-STLAL,
+     END OF TY_MAST.
+
+DATA:IT_MAST TYPE TABLE OF TY_MAST,
+      WA_MAST TYPE TY_MAST.
+
+TYPES: BEGIN OF TY_STPO,
+        STLTY TYPE STPO-STLTY,
+        STLNR TYPE STPO-STLNR,
+        STLKN TYPE STPO-STLKN,
+        STPOZ TYPE STPO-STPOZ,
+        IDNRK TYPE STPO-IDNRK,
+        MEINS TYPE STPO-MEINS,
+        MENGE TYPE STPO-MENGE,
+      END OF TY_STPO.
+
+DATA:IT_STPO TYPE TABLE OF TY_STPO,
+      WA_STPO TYPE TY_STPO.
+
+DATA:IT_STPO1 TYPE TABLE OF TY_STPO,
+      WA_STPO1 TYPE TY_STPO.
+
+
+TYPES: BEGIN OF TY_AUFM1,
+          MBLNR TYPE AUFM-MBLNR, "Material Doc.
+          MJAHR TYPE AUFM-MJAHR, "Mat. Doc. Year
+          ZEILE TYPE AUFM-ZEILE, "Mat. Doc.Item
+          BLDAT TYPE AUFM-BLDAT, "Document Date
+          BUDAT TYPE AUFM-BUDAT, "Posting Date
+          BWART TYPE AUFM-BWART, " Movement Type
+          MATNR TYPE AUFM-MATNR, "Material
+          WERKS TYPE AUFM-WERKS, "Plant
+          CHARG TYPE AUFM-CHARG, "Batch
+          LIFNR TYPE AUFM-LIFNR, "Vendor
+          KDAUF TYPE AUFM-KDAUF, "Sales Order
+          KDPOS TYPE AUFM-KDPOS, "Sales Ord. Item
+          DMBTR TYPE AUFM-DMBTR, "Amount in LC
+          WAERS TYPE AUFM-WAERS, "Currency
+          MENGE TYPE AUFM-MENGE, "Quantity
+          MEINS TYPE AUFM-MEINS, "Base Unit
+          ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          AUFNR TYPE AUFM-AUFNR, "Order
+          SAKTO TYPE AUFM-SAKTO, "G/L Account
+        END OF TY_AUFM1.
+
+DATA: IT_AUFM1 TYPE TABLE OF TY_AUFM1,
+      WA_AUFM1 TYPE TY_AUFM1.
+
+DATA: IT_AUFM2 TYPE TABLE OF TY_AUFM1,
+      WA_AUFM2 TYPE TY_AUFM1.
+
+TYPES: BEGIN OF TY_AUFM,
+          MBLNR TYPE AUFM-MBLNR, "Material Doc.
+          MJAHR TYPE AUFM-MJAHR, "Mat. Doc. Year
+          BLDAT TYPE AUFM-BLDAT, "Document Date
+          BUDAT TYPE AUFM-BUDAT, "Posting Date
+          BWART TYPE AUFM-BWART, " Movement Type
+          MATNR TYPE AUFM-MATNR, "Material
+          WERKS TYPE AUFM-WERKS, "Plant
+          CHARG TYPE AUFM-CHARG, "Batch
+          LIFNR TYPE AUFM-LIFNR, "Vendor
+          KDAUF TYPE AUFM-KDAUF, "Sales Order
+          KDPOS TYPE AUFM-KDPOS, "Sales Ord. Item
+          DMBTR TYPE AUFM-DMBTR, "Amount in LC
+          WAERS TYPE AUFM-WAERS, "Currency
+          MENGE TYPE AUFM-MENGE, "Quantity
+          MEINS TYPE AUFM-MEINS, "Base Unit
+          ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          AUFNR TYPE AUFM-AUFNR, "Order
+          SAKTO TYPE AUFM-SAKTO, "G/L Account
+        END OF TY_AUFM.
+
+DATA: IT_AUFM TYPE TABLE OF TY_AUFM,
+      WA_AUFM TYPE TY_AUFM.
+
+TYPES:BEGIN OF TY_MAKT,
+            MATNR TYPE MAKT-MATNR,
+            SPRAS TYPE MAKT-SPRAS,
+            MAKTX TYPE MAKT-MAKTX,
+            MAKTG TYPE MAKT-MAKTG,
+          END OF TY_MAKT.
+
+DATA:IT_MAKT TYPE TABLE OF TY_MAKT,
+      WA_MAKT TYPE TY_MAKT.
+
+TYPES: BEGIN OF TY_AFKO,
+              AUFNR TYPE AFKO-AUFNR,
+              PLNBEZ TYPE AFKO-PLNBEZ, "material
+              GAMNG TYPE AFKO-GAMNG,"Target quantity
+              STLAL TYPE AFKO-STLAL, "Alt BOM
+              IGMNG TYPE AFKO-IGMNG,"Confirmed qty
+              STLNR TYPE AFKO-STLNR,
+            END OF TY_AFKO.
+
+DATA:IT_AFKO TYPE TABLE OF TY_AFKO,
+      WA_AFKO TYPE TY_AFKO.
+
+TYPES:BEGIN OF TY_AFPO,
+  AUFNR TYPE AFPO-AUFNR,
+  PSMNG TYPE AFPO-PSMNG, "Item quantity
+  WEMNG TYPE AFPO-WEMNG, "GR quantity
+  END OF TY_AFPO.
+
+DATA:IT_AFPO TYPE TABLE OF TY_AFPO,
+     WA_AFPO TYPE TY_AFPO.
+
+TYPES:BEGIN OF TY_A890,
+    KSCHL TYPE A890-KSCHL,
+    RESWK TYPE A890-RESWK,
+    MATNR TYPE A890-MATNR,
+    DATBI TYPE A890-DATBI,
+    DATAB TYPE A890-DATAB,
+    KNUMH TYPE A890-KNUMH,
+  END OF TY_A890.
+
+DATA:IT_A890 TYPE TABLE OF TY_A890,
+      WA_A890 TYPE TY_A890.
+
+TYPES:BEGIN OF TY_KONP,
+  KNUMH TYPE KONP-KNUMH,
+  KSCHL TYPE KONP-KSCHL,
+  KBETR TYPE KONP-KBETR,
+  END OF TY_KONP.
+
+DATA:IT_KONP TYPE TABLE OF TY_KONP,
+     WA_KONP TYPE TY_KONP.
+
+TYPES: BEGIN OF TY_FINAL,
+
+          MBLNR TYPE AUFM-MBLNR, "Material Doc.
+          MJAHR TYPE AUFM-MJAHR, "Mat. Doc. Year
+          ZEILE TYPE AUFM-ZEILE, "Mat. Doc.Item
+          BLDAT TYPE AUFM-BLDAT, "Document Date
+          BUDAT TYPE AUFM-BUDAT, "Posting Date
+          BWART TYPE AUFM-BWART, " Movement Type
+          MATNR TYPE AUFM-MATNR, "Material
+          WERKS TYPE AUFM-WERKS, "Plant
+          CHARG TYPE AUFM-CHARG, "Batch
+          LIFNR TYPE AUFM-LIFNR, "Vendor
+          KDAUF TYPE AUFM-KDAUF, "Sales Order
+          KDPOS TYPE AUFM-KDPOS, "Sales Ord. Item
+          DMBTR TYPE AUFM-DMBTR, "Amount in LC
+          WAERS TYPE AUFM-WAERS, "Currency
+          MENGE TYPE AUFM-MENGE, "Quantity
+          MEINS TYPE AUFM-MEINS, "Base Unit
+          ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          AUFNR TYPE AUFM-AUFNR, "Order
+          SAKTO TYPE AUFM-SAKTO, "G/L Account
+          MAST_MATNR TYPE MAST-MATNR,
+          MAST_WERKS TYPE MAST-WERKS,
+          MAST_STLNR TYPE MAST-STLNR,
+          MAST_STLAL TYPE MAST-STLAL,
+          MAK_MATNR TYPE MAKT-MATNR,
+          MAK_SPRAS TYPE MAKT-SPRAS,
+          MAKTX TYPE MAKT-MAKTX,
+          MAKTG TYPE MAKT-MAKTG,
+          AFK_AUFNR TYPE AFKO-AUFNR,
+          PLNBEZ TYPE AFKO-PLNBEZ, "material
+          GAMNG TYPE AFKO-GAMNG,"Target quantity
+          STLAL TYPE AFKO-STLAL, "Alt BOM
+          IGMNG TYPE AFKO-IGMNG,"Confirmed qty
+          AFP_AUFNR TYPE AFPO-AUFNR,
+          PSMNG TYPE AFPO-PSMNG, "Item quantity
+          WEMNG TYPE AFPO-WEMNG, "GR quantity
+          SEM_MATNR TYPE AUFM-MATNR,
+          SEM_MAKTG TYPE MAKT-MAKTG,
+          HR_MATNR TYPE AUFM-MATNR,
+          HR_MAKTG TYPE MAKT-MAKTG,
+          A8_KSCHL TYPE A890-KSCHL,
+          A8_RESWK TYPE A890-RESWK,
+          A8_MATNR TYPE A890-MATNR,
+          DATBI TYPE A890-DATBI,
+          DATAB TYPE A890-DATAB,
+          A8_KNUMH TYPE A890-KNUMH,
+          KNUMH TYPE KONP-KNUMH,
+          KSCHL TYPE KONP-KSCHL,
+          KBETR TYPE KONP-KBETR,
+          TOT_VAL(12) TYPE P DECIMALS 2,"AUFM-DMBTR, "QTY * Value
+          TAR_VAL(12) TYPE P DECIMALS 2, " (Target qty*Tvalue)
+          ACT_VAL(12) TYPE P DECIMALS 2,  " ( Delivey qty*Tvalue)
+          DEL_VAL(12) TYPE P DECIMALS 2,  " ( Delivey qty*Tvalue)
+          RAT_TAR_VAL(12) TYPE P DECIMALS 2,
+          RAT_DEL_VAL(12) TYPE P DECIMALS 2,
+          101_COUNT TYPE I,
+          102_COUNT TYPE I,
+          102_CHARG TYPE AUFM-CHARG, "Batch
+          101_CHARG TYPE AUFM-CHARG, "Batch
+          STA TYPE CHAR1,
+          STKO_STLNR TYPE STKO-STLNR,
+          STKO_BMENG TYPE STKO-BMENG,
+          STLNR TYPE STPO-STLNR,
+          IDNRK TYPE STPO-IDNRK,
+          STPO_MENGE TYPE STPO-MENGE,
+          RAT_UNIT(12) TYPE P DECIMALS 2,
+          LV_ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          TOT_ERFMG TYPE AUFM-ERFMG,
+          TOT_DMBTR TYPE AUFM-DMBTR,
+          ROW_COUNT TYPE I,
+          TOT_Y TYPE STPO-MENGE ,
+          AFKO_STLNR TYPE AFKO-STLNR,
+          OUT_BATCH TYPE AUFM-CHARG,
+          STD_PRICE(12) TYPE P DECIMALS 2,
+          STD_VALUE(12) TYPE P DECIMALS 2,
+          QTY_VAR TYPE STPO-MENGE,
+          PRI_VAR(12) TYPE P DECIMALS 2,
+END OF TY_FINAL.
+
+
+DATA:IT_FINAL TYPE TABLE OF TY_FINAL,
+      WA_FINAL TYPE TY_FINAL.
+
+DATA:IT3_FINAL TYPE TABLE OF TY_FINAL,
+      WA3_FINAL TYPE TY_FINAL.
+
+TYPES: BEGIN OF TY_KEKO,
+        KALNR TYPE KEKO-KALNR,
+        KADKY TYPE KEKO-KADKY,
+        MATNR TYPE KEKO-MATNR,
+        WERKS TYPE KEKO-WERKS,
+        KADAT TYPE KEKO-KADAT,
+        BIDAT TYPE KEKO-BIDAT,
+      END OF TY_KEKO.
+
+DATA: IT_KEKO TYPE TABLE OF TY_KEKO,
+      WA_KEKO TYPE TY_KEKO.
+
+TYPES: BEGIN OF TY_CKIS,
+        KALNR TYPE CKIS-KALNR,
+        KADKY TYPE CKIS-KADKY,
+        MATNR TYPE CKIS-MATNR,
+        WERTN TYPE CKIS-WERTN,
+      END OF TY_CKIS.
+
+DATA: IT_CKIS TYPE TABLE OF TY_CKIS,
+      WA_CKIS TYPE TY_CKIS.
+
+
+TYPES : BEGIN OF TY_STAS,
+        STLTY TYPE STAS-STLTY,
+        STLNR TYPE STAS-STLNR,
+        STLAL TYPE STAS-STLAL,
+        STLKN TYPE STAS-STLKN,
+        STASZ TYPE STAS-STASZ,
+        AENNR TYPE STAS-AENNR,
+      END OF TY_STAS.
+
+DATA: IT_STAS TYPE TABLE OF TY_STAS,
+      WA_STAS TYPE TY_STAS.
+
+
+DATA :   T_WERKS  TYPE AUFM-WERKS,
+         T_MJAHR  TYPE AUFM-MJAHR,
+         T_AUFNR  TYPE AUFM-AUFNR,
+         T_MATNR  TYPE AUFM-MATNR,
+         T_STLNR  TYPE STPO-STLNR,
+         T_IDNRK  TYPE STPO-IDNRK.
+
+DATA:IT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV,
+       WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV,
+       WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+       IT_REPID TYPE SY-REPID VALUE SY-REPID ,
+       IT_SORT TYPE SLIS_T_SORTINFO_ALV,
+       WA_SORT TYPE SLIS_SORTINFO_ALV.
+
+
+
+"Selection Screen *******************************<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+SELECTION-SCREEN BEGIN OF BLOCK B1 WITH FRAME TITLE TEXT-001.
+SELECT-OPTIONS:S_WERKS FOR AUFM-WERKS OBLIGATORY, " Plant
+               S_AUFNR FOR AUFM-AUFNR, " Processor Number
+               S_BUDAT FOR AUFM-BUDAT OBLIGATORY.  "Posting date
+SELECTION-SCREEN END OF BLOCK B1.
+
+
+
+*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+START-OF-SELECTION.
+
+
+
+  SELECT MBLNR
+         MJAHR
+         ZEILE
+         BLDAT
+         BUDAT
+         BWART
+         MATNR
+         WERKS
+         CHARG
+         LIFNR
+         KDAUF
+         KDPOS
+         DMBTR
+         WAERS
+         MENGE
+         MEINS
+         ERFMG
+         AUFNR
+         SAKTO FROM AUFM
+               INTO TABLE IT_AUFM1
+               WHERE AUFNR IN S_AUFNR
+               AND BUDAT IN S_BUDAT
+               AND WERKS IN S_WERKS
+               AND ( BWART  = '101' OR BWART = '102' ).
+
+
+  IF  SY-SUBRC = 0.
+
+    SELECT MBLNR
+           MJAHR
+           ZEILE
+           BLDAT
+           BUDAT
+           BWART
+           MATNR
+           WERKS
+           CHARG
+           LIFNR
+           KDAUF
+           KDPOS
+           DMBTR
+           WAERS
+           MENGE
+           MEINS
+           ERFMG
+           AUFNR
+           SAKTO  FROM AUFM
+                  INTO TABLE IT_AUFM2
+                  FOR ALL ENTRIES IN IT_AUFM1
+                  WHERE AUFNR = IT_AUFM1-AUFNR AND
+                        WERKS IN S_WERKS AND
+                        ( BWART  = '101' OR BWART = '102' OR BWART  = '261' OR BWART = '262' ).
+
+
+    SORT IT_AUFM2 BY WERKS MJAHR AUFNR BWART MATNR.
+
+
+    LOOP AT IT_AUFM2 INTO WA_AUFM2.
+
+      IF  WA_AUFM2-BWART  = '101' OR WA_AUFM2-BWART  = '102' .
+
+        MOVE-CORRESPONDING WA_AUFM2 TO WA_AUFM.
+        APPEND WA_AUFM TO IT_AUFM.
+
+      ELSE.
+
+        IF T_WERKS = WA_AUFM2-WERKS AND T_MJAHR = WA_AUFM2-MJAHR
+       AND T_AUFNR = WA_AUFM2-AUFNR AND T_MATNR = WA_AUFM2-MATNR.
+
+
+          READ TABLE IT_AUFM INTO WA_AUFM WITH KEY WERKS = WA_AUFM2-WERKS
+                                                   MJAHR = WA_AUFM2-MJAHR
+                                                   AUFNR = WA_AUFM2-AUFNR
+                                                   MATNR = WA_AUFM2-MATNR.
+
+          WA_AUFM-DMBTR = WA_AUFM-DMBTR + WA_AUFM2-DMBTR.
+          WA_AUFM-MENGE = WA_AUFM-MENGE + WA_AUFM2-MENGE.
+          WA_AUFM-ERFMG = WA_AUFM-ERFMG + WA_AUFM2-ERFMG.
+
+          MODIFY IT_AUFM FROM WA_AUFM TRANSPORTING DMBTR MENGE ERFMG WHERE WERKS = WA_AUFM2-WERKS AND
+                                                                           MJAHR = WA_AUFM2-MJAHR AND
+                                                                           AUFNR = WA_AUFM2-AUFNR AND
+                                                                           MATNR = WA_AUFM2-MATNR .
+
+
+          .
+
+        ELSE.
+
+          MOVE-CORRESPONDING WA_AUFM2 TO WA_AUFM.
+          APPEND WA_AUFM TO IT_AUFM.
+
+        ENDIF.
+
+        CLEAR :  T_WERKS,
+                 T_MJAHR,
+                 T_AUFNR,
+                 T_MATNR.
+
+        T_WERKS = WA_AUFM2-WERKS.
+        T_MJAHR = WA_AUFM2-MJAHR.
+        T_AUFNR = WA_AUFM2-AUFNR.
+        T_MATNR = WA_AUFM2-MATNR.
+
+      ENDIF.
+
+      CLEAR : WA_AUFM, WA_AUFM2.
+
+    ENDLOOP.
+
+    SELECT
+      MATNR
+      SPRAS
+      MAKTX
+      MAKTG
+      FROM MAKT
+         INTO TABLE IT_MAKT
+         FOR ALL ENTRIES IN IT_AUFM
+         WHERE MATNR = IT_AUFM-MATNR.
+
+    SELECT
+      AUFNR
+      PLNBEZ
+      GAMNG
+      STLAL
+      IGMNG
+      STLNR
+      FROM AFKO
+       INTO TABLE IT_AFKO
+       FOR ALL ENTRIES IN IT_AUFM
+       WHERE AUFNR = IT_AUFM-AUFNR.
+
+    SELECT
+      MATNR
+      WERKS
+      STLNR
+      STLAL
+      FROM MAST
+    INTO TABLE IT_MAST
+    FOR ALL ENTRIES IN IT_AFKO
+     WHERE MATNR = IT_AFKO-PLNBEZ AND
+           WERKS IN S_WERKS AND
+           STLNR = IT_AFKO-STLNR AND
+           STLAL = IT_AFKO-STLAL.
+
+    SELECT
+      AUFNR
+      PSMNG
+      WEMNG
+      FROM AFPO
+    INTO TABLE IT_AFPO
+    FOR ALL ENTRIES IN IT_AUFM
+    WHERE AUFNR = IT_AUFM-AUFNR.
+
+    SELECT
+      KSCHL
+      RESWK
+      MATNR
+      DATBI
+      DATAB
+      KNUMH
+      FROM A890
+      INTO TABLE IT_A890
+      FOR ALL ENTRIES IN
+      IT_AUFM
+      WHERE MATNR = IT_AUFM-MATNR
+     AND ( DATAB => S_BUDAT-LOW AND DATBI <= S_BUDAT-HIGH ).
+
+    IF IT_A890  IS NOT INITIAL.
+      SELECT
+        KNUMH
+        KSCHL
+        KBETR
+        FROM KONP
+      INTO TABLE IT_KONP
+      FOR ALL ENTRIES IN IT_A890
+      WHERE KNUMH = IT_A890-KNUMH.
+    ENDIF.
+    SELECT
+      STLNR
+      STLAL
+      BMENG
+      FROM STKO
+      INTO TABLE IT_STKO
+      FOR ALL ENTRIES IN IT_MAST
+      WHERE STLNR = IT_MAST-STLNR AND
+            STLAL = IT_MAST-STLAL.
+
+    SELECT STLTY
+       STLNR
+       STLAL
+       STLKN
+       STASZ
+       AENNR FROM STAS INTO TABLE IT_STAS
+             FOR ALL ENTRIES IN IT_MAST
+             WHERE STLNR = IT_MAST-STLNR AND STLAL = IT_MAST-STLAL.
+
+    SELECT STLTY
+           STLNR
+           STLKN
+           STPOZ
+           IDNRK
+           MEINS
+           MENGE FROM STPO INTO TABLE IT_STPO1
+                 FOR ALL ENTRIES IN IT_STAS
+                 WHERE STLNR = IT_STAS-STLNR AND
+                       STLTY = IT_STAS-STLTY AND
+                       STLKN = IT_STAS-STLKN.
+
+    SELECT KALNR
+           KADKY
+           MATNR
+           WERKS
+           KADAT
+           BIDAT FROM KEKO INTO TABLE IT_KEKO
+                 FOR ALL ENTRIES IN IT_AUFM1
+                 WHERE MATNR = IT_AUFM1-MATNR AND
+                       WERKS = IT_AUFM1-WERKS AND
+                       KADAT <= IT_AUFM1-BUDAT AND
+                       BIDAT >= IT_AUFM1-BUDAT AND
+                       FEH_STA = 'FR'.
+
+    SELECT KALNR
+           KADKY
+           MATNR
+           WERTN FROM CKIS INTO TABLE IT_CKIS
+                 FOR ALL ENTRIES IN IT_KEKO
+                 WHERE KALNR = IT_KEKO-KALNR AND
+                       KADKY = IT_KEKO-KADKY AND
+                       TYPPS = 'M' .
+
+
+    SORT IT_STPO1 BY STLNR IDNRK.
+
+
+    LOOP AT  IT_STPO1 INTO WA_STPO1.
+
+      IF  T_STLNR = WA_STPO1-STLNR AND T_IDNRK = WA_STPO1-IDNRK.
+
+        READ TABLE IT_STPO INTO WA_STPO WITH KEY STLNR = WA_STPO1-STLNR IDNRK = WA_STPO1-IDNRK.
+
+        WA_STPO-MENGE = WA_STPO-MENGE + WA_STPO1-MENGE.
+
+        MODIFY IT_STPO FROM WA_STPO TRANSPORTING MENGE WHERE STLNR = WA_STPO-STLNR AND IDNRK = WA_STPO-IDNRK.
+
+        CLEAR WA_STPO.
+
+      ELSE.
+        CLEAR : WA_STPO1-STLKN , WA_STPO1-STPOZ .
+        APPEND WA_STPO1 TO IT_STPO.
+
+      ENDIF.
+
+      CLEAR : T_STLNR , T_IDNRK.
+      T_STLNR = WA_STPO1-STLNR.
+      T_IDNRK = WA_STPO1-IDNRK.
+
+      CLEAR : WA_STPO1, WA_STPO.
+
+    ENDLOOP.
+
+    DATA : TEMP TYPE AUFM-CHARG.
+    CLEAR : T_AUFNR , TEMP.
+
+    SORT IT_AUFM BY AUFNR BWART MATNR.
+
+    LOOP AT IT_AUFM INTO WA_AUFM.
+
+      CLEAR T_MATNR.
+      CALL FUNCTION 'CONVERSION_EXIT_MATN1_OUTPUT'
+        EXPORTING
+          INPUT  = WA_AUFM-MATNR
+        IMPORTING
+          OUTPUT = T_MATNR.
+
+
+
+      IF WA_AUFM-BWART  = '101' OR WA_AUFM-BWART  = '102'.
+
+        WA_FINAL-101_COUNT = 1.
+        WA_FINAL-MBLNR     = WA_AUFM-MBLNR.
+        WA_FINAL-BUDAT     = WA_AUFM-BUDAT.
+        WA_FINAL-BWART     = WA_AUFM-BWART.
+        WA_FINAL-HR_MATNR  = WA_AUFM-MATNR.
+        WA_FINAL-WERKS     = WA_AUFM-WERKS.
+        WA_FINAL-CHARG     = WA_AUFM-CHARG.
+        WA_FINAL-DMBTR     = WA_AUFM-DMBTR.
+        WA_FINAL-WAERS     = WA_AUFM-WAERS.
+        WA_FINAL-MENGE     = WA_AUFM-MENGE.
+        WA_FINAL-MEINS     = WA_AUFM-MEINS.
+        WA_FINAL-ERFMG     = WA_AUFM-ERFMG.
+        WA_FINAL-AUFNR     = WA_AUFM-AUFNR.
+        WA_FINAL-MATNR     = WA_AUFM-MATNR.
+        SHIFT WA_FINAL-HR_MATNR LEFT DELETING LEADING '0'.
+
+        CLEAR : WA_KEKO .
+        LOOP AT IT_KEKO INTO WA_KEKO WHERE MATNR = T_MATNR AND WERKS = WA_FINAL-WERKS AND
+                                           KADAT <= WA_FINAL-BUDAT AND BIDAT >= WA_FINAL-BUDAT .
+
+          EXIT.
+
+        ENDLOOP.
+
+        IF T_AUFNR IS INITIAL.
+
+          CLEAR TEMP.
+          TEMP = WA_FINAL-CHARG.
+          WA_FINAL-OUT_BATCH = TEMP.
+
+        ELSEIF T_AUFNR NE WA_FINAL-AUFNR.
+
+          CLEAR TEMP.
+          TEMP = WA_FINAL-CHARG.
+          WA_FINAL-OUT_BATCH = TEMP.
+
+        ENDIF.
+
+      ELSEIF WA_AUFM-BWART = '261' OR WA_AUFM-BWART = '262' .
+
+        WA_FINAL-MBLNR     = WA_AUFM-MBLNR.
+        WA_FINAL-BUDAT     = WA_AUFM-BUDAT.
+        WA_FINAL-BWART     = WA_AUFM-BWART.
+        WA_FINAL-SEM_MATNR = WA_AUFM-MATNR.
+        WA_FINAL-WERKS     = WA_AUFM-WERKS.
+        WA_FINAL-CHARG     = WA_AUFM-CHARG.
+        WA_FINAL-DMBTR     = WA_AUFM-DMBTR.
+        WA_FINAL-WAERS     = WA_AUFM-WAERS.
+        WA_FINAL-MENGE     = WA_AUFM-MENGE.
+        WA_FINAL-MEINS     = WA_AUFM-MEINS.
+        WA_FINAL-ERFMG     = WA_AUFM-ERFMG.
+        WA_FINAL-AUFNR     = WA_AUFM-AUFNR.
+        WA_FINAL-MATNR     = WA_AUFM-MATNR.
+        WA_FINAL-OUT_BATCH = TEMP.
+
+        CLEAR : T_AUFNR.
+        T_AUFNR = WA_AUFM-AUFNR.
+
+
+        IF WA_KEKO IS NOT INITIAL .
+
+          CLEAR WA_CKIS.
+          READ TABLE IT_CKIS INTO WA_CKIS WITH KEY KALNR = WA_KEKO-KALNR KADKY = WA_KEKO-KADKY MATNR = WA_FINAL-MATNR.
+
+          WA_FINAL-STD_PRICE = WA_CKIS-WERTN.
+
+        ENDIF.
+
+
+        SHIFT WA_FINAL-SEM_MATNR LEFT DELETING LEADING '0'.
+      ENDIF.
+
+
+
+      IF WA_FINAL-DMBTR IS NOT INITIAL.
+        WA_FINAL-TOT_VAL = WA_FINAL-MENGE * WA_FINAL-DMBTR.
+      ENDIF.
+      READ TABLE IT_MAKT INTO WA_MAKT WITH KEY MATNR = WA_AUFM-MATNR.
+
+      IF WA_AUFM-BWART = '101' OR WA_AUFM-BWART = '102'.
+        WA_FINAL-MAKTX = WA_MAKT-MAKTX.
+        WA_FINAL-HR_MAKTG = WA_MAKT-MAKTG.
+
+      ELSEIF WA_AUFM-BWART = '261' OR WA_AUFM-BWART = '262' .
+
+        WA_FINAL-MAKTX = WA_MAKT-MAKTX.
+        WA_FINAL-SEM_MAKTG = WA_MAKT-MAKTG.
+      ENDIF.
+
+      READ TABLE IT_AFKO INTO WA_AFKO WITH KEY AUFNR = WA_FINAL-AUFNR.
+
+      IF SY-SUBRC = 0.
+        WA_FINAL-GAMNG = WA_AFKO-GAMNG.
+        WA_FINAL-PLNBEZ = WA_AFKO-PLNBEZ.
+        WA_FINAL-STLAL = WA_AFKO-STLAL.
+        WA_FINAL-IGMNG = WA_AFKO-IGMNG.
+        WA_FINAL-AFKO_STLNR = WA_AFKO-STLNR.
+      ENDIF.
+
+      READ TABLE IT_AFPO INTO WA_AFPO WITH KEY AUFNR = WA_FINAL-AUFNR.
+      IF SY-SUBRC = 0.
+
+        WA_FINAL-PSMNG = WA_AFPO-PSMNG.
+        WA_FINAL-WEMNG = WA_AFPO-WEMNG.
+
+      ENDIF.
+
+      READ TABLE IT_MAST INTO WA_MAST WITH KEY  MATNR = WA_FINAL-PLNBEZ
+                                                WERKS = WA_FINAL-WERKS
+                                                STLAL = WA_FINAL-STLAL.
+      IF  SY-SUBRC = 0.
+        WA_FINAL-MAST_STLNR = WA_MAST-STLNR.
+        WA_FINAL-MAST_MATNR = WA_MAST-MATNR.
+      ENDIF.
+
+      READ TABLE  IT_STKO INTO WA_STKO WITH KEY STLNR =  WA_FINAL-MAST_STLNR STLAL = WA_FINAL-STLAL.
+
+      IF  SY-SUBRC = 0.
+        WA_FINAL-STKO_BMENG = WA_STKO-BMENG.
+      ENDIF.
+
+
+
+
+      READ TABLE IT_STPO INTO WA_STPO WITH KEY STLNR = WA_MAST-STLNR
+                                               IDNRK = WA_AUFM-MATNR.
+      IF  SY-SUBRC = 0.
+        WA_FINAL-STLNR = WA_STPO-STLNR.
+        WA_FINAL-IDNRK = WA_STPO-IDNRK.
+        WA_FINAL-STPO_MENGE = WA_STPO-MENGE.
+
+        DELETE TABLE IT_STPO FROM WA_STPO.
+
+      ENDIF.
+
+      IF  WA_FINAL-STKO_BMENG  IS NOT INITIAL.
+        WA_FINAL-TOT_Y = (  WA_FINAL-STPO_MENGE / WA_FINAL-STKO_BMENG  ).
+      ENDIF.
+      READ TABLE IT_A890 INTO WA_A890 WITH KEY MATNR = WA_FINAL-MATNR
+                                               RESWK =  WA_FINAL-WERKS .
+      IF  SY-SUBRC = 0.
+        IF WA_A890-KSCHL = 'ZZPB'.
+
+          WA_FINAL-A8_KNUMH = WA_A890-KNUMH.
+
+        ENDIF.
+      ENDIF.
+
+      READ TABLE IT_KONP INTO WA_KONP WITH KEY KNUMH = WA_FINAL-A8_KNUMH."WA_A890-KNUMH.
+
+      IF SY-SUBRC = 0.
+        WA_FINAL-KBETR = WA_KONP-KBETR.
+      ENDIF.
+
+      IF WA_FINAL-STKO_BMENG IS NOT INITIAL.
+        WA_FINAL-STPO_MENGE = ( WA_FINAL-STPO_MENGE / WA_FINAL-STKO_BMENG ) * WA_FINAL-GAMNG.
+      ENDIF.
+      WA_FINAL-TAR_VAL =   WA_FINAL-TOT_Y * WA_FINAL-IGMNG.
+      WA_FINAL-DEL_VAL =   WA_FINAL-TOT_Y * WA_FINAL-WEMNG.
+      WA_FINAL-RAT_TAR_VAL = WA_FINAL-KBETR * WA_FINAL-TAR_VAL.
+      WA_FINAL-RAT_DEL_VAL = WA_FINAL-KBETR * WA_FINAL-DEL_VAL.
+      WA_FINAL-RAT_UNIT = WA_FINAL-DMBTR / WA_FINAL-ERFMG.
+      WA_FINAL-STD_VALUE = WA_FINAL-STPO_MENGE * WA_FINAL-STD_PRICE.
+
+      if wa_final-STPO_MENGE ne 0 and WA_FINAL-GAMNG ne 0.
+
+      WA_FINAL-QTY_VAR = ( ( ( WA_FINAL-STPO_MENGE / WA_FINAL-GAMNG ) * WA_FINAL-WEMNG ) - WA_FINAL-ERFMG )	 * WA_FINAL-STD_PRICE .
+
+      endif.
+
+      WA_FINAL-PRI_VAR = ( WA_FINAL-STD_PRICE - WA_FINAL-RAT_UNIT ) * WA_FINAL-ERFMG.
+
+      IF WA_AUFM-BWART = '101' OR WA_AUFM-BWART = '261'.
+
+        SHIFT WA_FINAL-AUFNR LEFT DELETING LEADING '0'.
+        APPEND WA_FINAL TO IT_FINAL.
+        CLEAR WA_FINAL.
+
+      ELSEIF WA_AUFM-BWART = '102' OR WA_AUFM-BWART = '262'.
+
+        WA_FINAL-DMBTR = WA_AUFM-DMBTR * -1.
+        WA_FINAL-ERFMG = WA_AUFM-ERFMG * -1.
+
+        SHIFT WA_FINAL-AUFNR LEFT DELETING LEADING '0'.
+        APPEND WA_FINAL TO IT3_FINAL.
+        CLEAR WA_FINAL.
+
+      ENDIF.
+
+
+      CLEAR :       WA_MAKT,
+                    WA_AUFM,
+                    WA_AFKO,
+                    WA_AFPO,
+                    WA_MAST,
+                    WA_STKO,
+                    WA_STAS,
+                    WA_STPO,
+                    WA_A890,
+                    WA_KONP.
+
+
+    ENDLOOP.
+
+    SORT IT_FINAL BY BWART.
+    SORT IT3_FINAL BY BWART.
+
+    APPEND LINES OF IT3_FINAL TO IT_FINAL.
+
+    SELECT MATNR SPRAS MAKTX MAKTG FROM MAKT
+       APPENDING  TABLE IT_MAKT
+       FOR ALL ENTRIES IN IT_STPO
+       WHERE MATNR = IT_STPO-IDNRK.
+
+SORT IT_MAKT  . " Added by <IT-CAR Tool> during Code Remediation
+SORT IT_MAKT  . " Added by <IT-CAR Tool> during Code Remediation
+ delete ADJACENT DUPLICATES FROM it_makt COMPARING ALL FIELDS.
+
+
+    LOOP AT IT_STPO INTO WA_STPO.
+
+
+
+      READ TABLE IT_STAS INTO WA_STAS WITH KEY STLNR = WA_STPO-STLNR.
+
+      IF  SY-SUBRC = 0.
+
+        WA_FINAL-STLNR = WA_STPO-STLNR.
+        WA_FINAL-IDNRK = WA_STPO-IDNRK.
+        WA_FINAL-STPO_MENGE = WA_STPO-MENGE.
+
+        READ TABLE IT_MAST INTO WA_MAST WITH KEY STLNR = WA_STAS-STLNR STLAL = WA_STAS-STLAL.
+
+        IF SY-SUBRC = 0.
+
+          WA_FINAL-MAST_STLNR = WA_MAST-STLNR.
+          WA_FINAL-MAST_MATNR = WA_MAST-MATNR.
+
+          READ TABLE IT_AFKO INTO WA_AFKO WITH KEY PLNBEZ = WA_MAST-MATNR STLNR = WA_MAST-STLNR STLAL = WA_MAST-STLAL.
+
+          WA_FINAL-AUFNR = WA_AFKO-AUFNR.
+          WA_FINAL-SEM_MATNR = WA_STPO-IDNRK.
+          WA_FINAL-GAMNG = WA_AFKO-GAMNG.
+          WA_FINAL-PLNBEZ = WA_AFKO-PLNBEZ.
+          WA_FINAL-STLAL = WA_AFKO-STLAL.
+          WA_FINAL-IGMNG = WA_AFKO-IGMNG.
+          WA_FINAL-AFKO_STLNR = WA_AFKO-STLNR.
+
+          READ TABLE IT_MAKT INTO WA_MAKT WITH KEY MATNR = WA_FINAL-SEM_MATNR.
+          WA_FINAL-SEM_MAKTG = WA_MAKT-MAKTX.
+
+          READ TABLE IT_AFPO INTO WA_AFPO WITH KEY AUFNR = WA_FINAL-AUFNR.
+          IF SY-SUBRC = 0.
+
+            WA_FINAL-PSMNG = WA_AFPO-PSMNG.
+            WA_FINAL-WEMNG = WA_AFPO-WEMNG.
+
+          ENDIF.
+
+          READ TABLE  IT_STKO INTO WA_STKO WITH KEY STLNR =  WA_FINAL-MAST_STLNR.
+
+          IF  SY-SUBRC = 0.
+            WA_FINAL-STKO_BMENG = WA_STKO-BMENG.
+          ENDIF.
+
+          READ TABLE IT_A890 INTO WA_A890 WITH KEY MATNR = WA_FINAL-MATNR
+                                                     RESWK =  WA_FINAL-WERKS .
+          IF  SY-SUBRC = 0.
+            IF WA_A890-KSCHL = 'ZZPB'.
+
+              WA_FINAL-A8_KNUMH = WA_A890-KNUMH.
+
+            ENDIF.
+          ENDIF.
+
+          READ TABLE IT_KONP INTO WA_KONP WITH KEY KNUMH = WA_FINAL-A8_KNUMH."WA_A890-KNUMH.
+
+          IF SY-SUBRC = 0.
+            WA_FINAL-KBETR = WA_KONP-KBETR.
+          ENDIF.
+
+          READ TABLE IT_AFPO INTO WA_AFPO WITH KEY AUFNR = WA_FINAL-AUFNR.
+          IF SY-SUBRC = 0.
+
+            WA_FINAL-PSMNG = WA_AFPO-PSMNG.
+            WA_FINAL-WEMNG = WA_AFPO-WEMNG.
+
+          ENDIF.
+
+          IF WA_FINAL-STKO_BMENG IS NOT INITIAL.
+            WA_FINAL-TOT_Y = (  WA_FINAL-STPO_MENGE / WA_FINAL-STKO_BMENG  ).
+          ENDIF.
+
+          WA_FINAL-STPO_MENGE = ( WA_FINAL-STPO_MENGE / WA_FINAL-STKO_BMENG ) * WA_FINAL-GAMNG.
+          WA_FINAL-TAR_VAL =   WA_FINAL-TOT_Y * WA_FINAL-IGMNG.
+          WA_FINAL-DEL_VAL =   WA_FINAL-TOT_Y * WA_FINAL-WEMNG.
+          WA_FINAL-RAT_TAR_VAL = WA_FINAL-KBETR * WA_FINAL-TAR_VAL.
+          WA_FINAL-RAT_DEL_VAL = WA_FINAL-KBETR * WA_FINAL-DEL_VAL.
+          WA_FINAL-RAT_UNIT = WA_FINAL-DMBTR / WA_FINAL-ERFMG.
+          WA_FINAL-STD_VALUE = WA_FINAL-STPO_MENGE * WA_FINAL-STD_PRICE.
+          WA_FINAL-QTY_VAR = ( ( ( WA_FINAL-STPO_MENGE / WA_FINAL-GAMNG ) * WA_FINAL-WEMNG ) - WA_FINAL-ERFMG )   * WA_FINAL-STD_PRICE .
+          WA_FINAL-PRI_VAR = ( WA_FINAL-STD_PRICE - WA_FINAL-RAT_UNIT ) * WA_FINAL-ERFMG.
+
+           READ TABLE IT_AUFM1 INTO WA_AUFM1 WITH KEY AUFNR = WA_FINAL-AUFNR.
+
+          WA_FINAL-WAERS = WA_AUFM1-WAERS.
+          WA_FINAL-OUT_BATCH = wa_aufm1-CHARG.
+          SHIFT WA_FINAL-AUFNR LEFT DELETING LEADING '0'.
+          SHIFT WA_FINAL-SEM_MATNR LEFT DELETING LEADING '0'.
+
+
+
+
+
+
+          APPEND WA_FINAL TO IT_FINAL.
+          CLEAR WA_FINAL.
+
+
+
+
+
+        ENDIF.
+      ENDIF.
+
+
+
+
+      CLEAR :  WA_MAKT,
+              WA_AUFM,
+              WA_AFKO,
+              WA_AFPO,
+              WA_MAST,
+              WA_STKO,
+              WA_STAS,
+              WA_STPO,
+              WA_A890,
+              WA_KONP.
+
+
+
+
+    ENDLOOP.
+
+  ELSE.
+
+    MESSAGE 'No records found.......................' TYPE 'E'.
+
+  ENDIF.
+
+
+
+
+
+
+*  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<FIELD CATELOG>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  WA_FIELDCAT-FIELDNAME ='AUFNR'. "AUFM-AUFNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Order No'.
+  WA_FIELDCAT-SELTEXT_L ='Order No'.
+  WA_FIELDCAT-COL_POS   = 1.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME ='OUT_BATCH'. "AUFM-AUFNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Output Batch No'.
+  WA_FIELDCAT-SELTEXT_L ='Output Batch Number'.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+  WA_FIELDCAT-COL_POS   = 2.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME ='HR_MATNR'. "AUFM-MATNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='FG material'.
+  WA_FIELDCAT-SELTEXT_L ='FG material code'.
+  WA_FIELDCAT-COL_POS   = 3.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='HR_MAKTG'. "MAKT-MAKTX or MAKT-MAKTG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S = 'FG Material desc'.
+  WA_FIELDCAT-SELTEXT_L = 'FG Material description'.
+  WA_FIELDCAT-COL_POS   = 4.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+*  WA_SORT-EXPA      = 'X'. "This hides the item details
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='BWART'. "AUFM-BWART
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Movement Type'.
+  WA_FIELDCAT-SELTEXT_L ='Movement Type'.
+  WA_FIELDCAT-COL_POS   = 5.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='SEM_MATNR'. "AUFM-MATNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM material'.
+  WA_FIELDCAT-SELTEXT_L ='BOM material list'.
+  WA_FIELDCAT-COL_POS   = 6.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='SEM_MAKTG'. "MAKT-MAKTX or MAKT-MAKTG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Material desc'.
+  WA_FIELDCAT-SELTEXT_L ='BOM Material description'.
+  WA_FIELDCAT-COL_POS   = 7.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='STPO_MENGE'.
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Qty'.
+  WA_FIELDCAT-SELTEXT_L ='BOM Quantity'.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+  WA_FIELDCAT-COL_POS   = 8.
+
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='STD_PRICE'.
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Standard Price'.
+  WA_FIELDCAT-SELTEXT_L ='Standard Price'.
+  WA_FIELDCAT-COL_POS   = 9.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+
+  WA_FIELDCAT-FIELDNAME = 'STD_VALUE'.
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Standard Value'.
+  WA_FIELDCAT-SELTEXT_L ='Standard Value'.
+  WA_FIELDCAT-COL_POS   = 10.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+
+
+
+
+
+
+
+  WA_FIELDCAT-FIELDNAME = 'ERFMG'."'TOT_ERFMG'.
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Actual qty'.
+  WA_FIELDCAT-SELTEXT_L ='Actual consumption qty'.
+  WA_FIELDCAT-COL_POS   = 11.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+
+  WA_FIELDCAT-FIELDNAME ='DMBTR'."  'TOT_DMBTR'."'DMBTR'. "AUFM-DMBTR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Actual value '.
+  WA_FIELDCAT-SELTEXT_L ='Actual value '.
+  WA_FIELDCAT-COL_POS   = 12.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='RAT_UNIT'. "WA_FINAL-RAT_UNIT
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Rate Per Unit'.
+  WA_FIELDCAT-SELTEXT_L ='Rate Per Unit'.
+  WA_FIELDCAT-COL_POS   = 13.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='WAERS'. "AUFM-WAERS
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='currency '.
+  WA_FIELDCAT-SELTEXT_L ='currency '.
+  WA_FIELDCAT-COL_POS   = 14.
+  WA_FIELDCAT-OUTPUTLEN = '5'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+
+  WA_FIELDCAT-FIELDNAME ='GAMNG'. "AFKO-GAMNG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Target Qty'.
+  WA_FIELDCAT-SELTEXT_L ='Target Qty'.
+  WA_FIELDCAT-COL_POS   = 16.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='IGMNG'. "AFKO-IGMNG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Confirm Qty'.
+  WA_FIELDCAT-SELTEXT_L ='Confirm Qty'.
+  WA_FIELDCAT-COL_POS   = 17.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='WEMNG'. "AFPO-WEMNG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Delivery Qty'.
+  WA_FIELDCAT-SELTEXT_L ='Delivery Qty'.
+  WA_FIELDCAT-COL_POS   = 18.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+
+
+  WA_FIELDCAT-FIELDNAME ='TAR_VAL'. "Actual consumption qty * Actual value
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Target Value'.
+  WA_FIELDCAT-SELTEXT_L ='Target Value'.
+  WA_FIELDCAT-COL_POS   = 19.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='DEL_VAL'. " Delivey qty * T value
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Actual Value'.
+  WA_FIELDCAT-SELTEXT_L ='Actual Value'.
+  WA_FIELDCAT-COL_POS   = 20.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='KBETR'. "Rate per BOM konp-kbert
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Rate Per BOM'.
+  WA_FIELDCAT-SELTEXT_L ='Rate Per BOM'.
+  WA_FIELDCAT-COL_POS   = 21.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='RAT_TAR_VAL'. "Rate Tar Qty konp-kbert (Konp-KBERT*AFKO-GAMNG)
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Target Value '.
+  WA_FIELDCAT-SELTEXT_L ='BOM Target Value'.
+  WA_FIELDCAT-COL_POS   = 22.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='RAT_DEL_VAL'. "(Konp-KBERT*AFPO-WEMNG)
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Delivery Value'.
+  WA_FIELDCAT-SELTEXT_L ='BOM Delivery Value'.
+  WA_FIELDCAT-COL_POS   = 23.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME = 'QTY_VAR'.
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Qty Variant'.
+  WA_FIELDCAT-SELTEXT_L ='Quantity Variant'.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+  WA_FIELDCAT-COL_POS   = 24.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME = 'PRI_VAR'.
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Price Variant'.
+  WA_FIELDCAT-SELTEXT_L ='Price Variant'.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+  WA_FIELDCAT-COL_POS   = 25.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+
+***********commented on 22.04.2020 starts
+  WA_SORT-SPOS = '1'.
+  WA_SORT-FIELDNAME = 'AUFNR'.
+  WA_SORT-UP = 'X'.
+
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+
+  WA_SORT-SPOS = '2'.
+  WA_SORT-FIELDNAME = 'OUT_BATCH'.
+  WA_SORT-DOWN = 'X'.
+
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+
+  WA_SORT-SPOS = '3'.
+  WA_SORT-FIELDNAME = 'BWART'.
+  WA_SORT-UP = 'X'.
+
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+
+  WA_LAYOUT-ZEBRA = 'X'.
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+      EXPORTING
+*   I_INTERFACE_CHECK                 = ' '
+*   I_BYPASSING_BUFFER                = ' '
+*   I_BUFFER_ACTIVE                   = ' '
+        I_CALLBACK_PROGRAM                = IT_REPID
+*   I_CALLBACK_PF_STATUS_SET          = ' '
+*   I_CALLBACK_USER_COMMAND           = ' '
+*   I_CALLBACK_TOP_OF_PAGE            = ' '
+*   I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*   I_CALLBACK_HTML_END_OF_LIST       = ' '
+*   I_STRUCTURE_NAME                  =
+*   I_BACKGROUND_ID                   = ' '
+*   I_GRID_TITLE                      =
+*   I_GRID_SETTINGS                   =
+        IS_LAYOUT                         = WA_LAYOUT
+        IT_FIELDCAT                       = IT_FIELDCAT
+*   IT_EXCLUDING                      =
+*   IT_SPECIAL_GROUPS                 =
+     IT_SORT                           = IT_SORT
+*   IT_FILTER                         =
+*   IS_SEL_HIDE                       =
+*   I_DEFAULT                         = 'X'
+*   I_SAVE                            = ' '
+*   IS_VARIANT                        =
+*   IT_EVENTS                         =
+*   IT_EVENT_EXIT                     =
+*   IS_PRINT                          =
+*   IS_REPREP_ID                      =
+*   I_SCREEN_START_COLUMN             = 0
+*   I_SCREEN_START_LINE               = 0
+*   I_SCREEN_END_COLUMN               = 0
+*   I_SCREEN_END_LINE                 = 0
+*   I_HTML_HEIGHT_TOP                 = 0
+*   I_HTML_HEIGHT_END                 = 0
+*   IT_ALV_GRAPHICS                   =
+*   IT_HYPERLINK                      =
+*   IT_ADD_FIELDCAT                   =
+*   IT_EXCEPT_QINFO                   =
+*   IR_SALV_FULLSCREEN_ADAPTER        =
+* IMPORTING
+*   E_EXIT_CAUSED_BY_CALLER           =
+*   ES_EXIT_CAUSED_BY_USER            =
+       TABLES
+         T_OUTTAB                          = IT_FINAL
+* EXCEPTIONS
+*   PROGRAM_ERROR                     = 1
+*   OTHERS                            = 2
+               .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.

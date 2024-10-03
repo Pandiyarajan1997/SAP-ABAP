@@ -1,0 +1,3 @@
+FUNCTION-POOL ZFG_CUSTOMER_DETAILS.         "MESSAGE-ID ..
+
+* INCLUDE LZFG_CUSTOMER_DETAILSD...          " Local class definition

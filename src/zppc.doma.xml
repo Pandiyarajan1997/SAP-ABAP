@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZPPC</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000004</LENG>
+    <OUTPUTLEN>000004</OUTPUTLEN>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>Purpose Code</DDTEXT>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>CASH</DOMVALUE_L>
+     <DDTEXT>Cash Management Transfer</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>CORT</DOMVALUE_L>
+     <DDTEXT>Trade Settlement Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>DIVI</DOMVALUE_L>
+     <DDTEXT>Dividend</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>GOVT</DOMVALUE_L>
+     <DDTEXT>Government Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>HEDG</DOMVALUE_L>
+     <DDTEXT>Hedging</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0006</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>INTC</DOMVALUE_L>
+     <DDTEXT>Intra Company Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0007</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>INTE</DOMVALUE_L>
+     <DDTEXT>Interest</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0008</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>LOAN</DOMVALUE_L>
+     <DDTEXT>Loan</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0009</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>PENS</DOMVALUE_L>
+     <DDTEXT>Pension Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0010</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SALA</DOMVALUE_L>
+     <DDTEXT>Salary Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0011</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SECU</DOMVALUE_L>
+     <DDTEXT>Securities</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0012</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SSBE</DOMVALUE_L>
+     <DDTEXT>Social Security Benefit</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0013</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SUPP</DOMVALUE_L>
+     <DDTEXT>Supplier Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0014</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>TAXS</DOMVALUE_L>
+     <DDTEXT>Tax Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0015</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>TRAD</DOMVALUE_L>
+     <DDTEXT>Trade</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0016</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>TREA</DOMVALUE_L>
+     <DDTEXT>Treasury Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0017</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>VATX</DOMVALUE_L>
+     <DDTEXT>Value Added Tax Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0018</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>WHLD</DOMVALUE_L>
+     <DDTEXT>With Holding</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

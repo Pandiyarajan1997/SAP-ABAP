@@ -1,0 +1,42 @@
+"Name: \PR:SAPMF02D\FO:XKNVP-PERNR_PRUEFEN\SE:BEGIN\EI
+ENHANCEMENT 0 ZKNVP_PARVW_LINDEX.
+*
+data: lv_bdc.
+
+
+GET PARAMETER ID 'BDC' FIELD LV_BDC.
+ IF sy-tcode eq 'XD02' and lv_bdc eq 'X'.
+
+
+
+  IF  RF02D-KTONR CO '0123456789 '
+  AND RF02D-KTONR NE SPACE.
+    CONDENSE RF02D-KTONR NO-GAPS.
+    UNPACK RF02D-KTONR TO KNVP-PARNR.
+
+*----------Partnernummer zwischen 1 und 9999999000 ? -------------------
+    IF KNVP-PARNR GT 9999999000.
+      CLEAR: OK-CODE, CRS_LINE.
+      SET CURSOR FIELD 'RF02D-KTONR' LINE SY-STEPL.
+      MESSAGE E645.
+    ENDIF.
+    IF KNVP-PARNR = 0.
+      exit.
+
+*      CLEAR: OK-CODE, CRS_LINE.
+*      SET CURSOR FIELD 'RF02D-KTONR' LINE SY-STEPL.
+*      MESSAGE E613.
+    ENDIF.
+  ELSE.
+
+*---------- Interne Nummer zulässig? (NEU 001 - 999) -------------------
+    PERFORM PARNR_NEU_PRUEFEN.
+
+*---------- Interne Nummer: KNVP-PARNR aufbereiten ---------------------
+    RF02D-VONNR = RF02D-KTONR.
+    MOVE '9999999' TO RF02D-VONNR(7).
+    KNVP-PARNR = RF02D-VONNR.
+  ENDIF.
+
+ ENDIF.
+ENDENHANCEMENT.

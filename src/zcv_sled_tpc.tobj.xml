@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TOBJ" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJH>
+    <OBJECTNAME>ZCV_SLED_TP</OBJECTNAME>
+    <OBJECTTYPE>C</OBJECTTYPE>
+    <IMPORTABLE>3</IMPORTABLE>
+   </OBJH>
+   <OBJT>
+    <LANGUAGE>E</LANGUAGE>
+    <OBJECTNAME>ZCV_SLED_TP</OBJECTNAME>
+    <OBJECTTYPE>C</OBJECTTYPE>
+    <DDTEXT>Cluster View for Transfer post log</DDTEXT>
+   </OBJT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

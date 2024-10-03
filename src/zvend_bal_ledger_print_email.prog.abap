@@ -1,0 +1,1008 @@
+*&---------------------------------------------------------------------*
+*& Report  ZVEND_BAL_LEDGER_PRINT_EMAIL
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZVEND_BAL_LEDGER_PRINT_EMAIL.
+
+TABLES: BSIK.
+TABLES: LFA1.
+TABLES: ZMAIL_ID.
+
+TYPES: BEGIN OF GS_LFA1,
+       LIFNR TYPE LFA1-LIFNR,                  " Vendor Code
+       NAME1 TYPE LFA1-NAME1,                  " Customer Name
+       ADRNR TYPE LFA1-ADRNR,                  " Address Number
+       END OF GS_LFA1.
+
+DATA: GT_LFA1 TYPE TABLE OF GS_LFA1,
+      WA_LFA1 TYPE GS_LFA1.
+TYPES : BEGIN OF GS_T003T,
+       BLART TYPE T003T-BLART,
+       LTEXT TYPE T003T-LTEXT,
+       SPRAS TYPE T003T-SPRAS,
+       END OF GS_T003T.
+
+DATA : GT_T003T TYPE  TABLE OF GS_T003T,
+       WA_T003T TYPE GS_T003T.
+
+DATA : GT_T003T1 TYPE  TABLE OF GS_T003T,
+       WA_T003T1 TYPE GS_T003T.
+
+DATA : GT_T003T2 TYPE  TABLE OF GS_T003T,
+       WA_T003T2 TYPE GS_T003T.
+
+TYPES: BEGIN OF GS_BSIK,
+       PRCTR TYPE BSIK-PRCTR,                  " Profit Center
+       LIFNR TYPE BSIK-LIFNR,                  " Customer Number
+       AUGBL TYPE BSIK-AUGBL,
+       BUDAT TYPE BSIK-BUDAT,                  " Posting Date in the Document
+       BLDAT TYPE BSIK-BLDAT,
+       BLART TYPE BSIK-BLART,
+       ZFBDT TYPE BSIK-ZFBDT,                  " Baseline Date for Due Date Calculation
+       DMBTR TYPE BSIK-DMBTR,                  " Amount in Local Currency
+       SHKZG TYPE BSIK-SHKZG,                  " Debit/Credit Indicator
+       XBLNR TYPE BSIK-XBLNR,                  " Reference Document Number
+       BELNR TYPE BSIK-BELNR,                  " Bill Number
+       GSBER TYPE BSIK-GSBER,                  " Business Area
+       SGTXT TYPE BSIK-SGTXT,                  " Text Or Remarks
+       EBELN TYPE BSIK-EBELN,
+       UMSKZ TYPE BSIK-UMSKZ,
+       BUKRS TYPE BSIK-BUKRS,
+       GJAHR TYPE BSIK-GJAHR,
+       SKNTO TYPE BSAK-SKNTO,
+              END OF GS_BSIK.
+
+DATA: GT_BSIK TYPE TABLE OF GS_BSIK,
+      GT_BSIK1 TYPE TABLE OF GS_BSIK,
+      WA_BSIK TYPE GS_BSIK,
+      WA_BSIK1 TYPE GS_BSIK.
+
+DATA: LV_IND TYPE I.
+
+TYPES: BEGIN OF GS_BSAK,
+       PRCTR TYPE BSAK-PRCTR,                  " Profit Center
+       LIFNR TYPE BSAK-LIFNR,                  " Customer Number
+       AUGBL TYPE BSAK-AUGBL,
+       BUDAT TYPE BSAK-BUDAT,                  " Posting Date in the Document
+       BLDAT TYPE BSAK-BLDAT,
+       BLART TYPE BSAK-BLART,
+       ZFBDT TYPE BSAK-ZFBDT,                  " Baseline Date for Due Date Calculation
+       DMBTR TYPE BSAK-DMBTR,                  " Amount in Local Currency
+       SHKZG TYPE BSAK-SHKZG,                  " Debit/Credit Indicator
+       XBLNR TYPE BSAK-XBLNR,                  " Reference Document Number
+       BELNR TYPE BSAK-BELNR,                  " Bill Number
+       GSBER TYPE BSAK-GSBER,                  " Business Area
+       SGTXT TYPE BSAK-SGTXT,                  " Text OR Remarks
+       EBELN TYPE BSAK-EBELN,                  " Billing Doc.No
+       UMSKZ TYPE BSAK-UMSKZ,                  " Spl.Gl.Ind
+       BUKRS TYPE BSAK-BUKRS,
+       GJAHR TYPE BSAK-GJAHR,
+       SKNTO TYPE BSAK-SKNTO ,
+       UMSKS TYPE BSAK-UMSKS,
+       AUGDT TYPE BSAK-AUGDT,
+       ZUONR TYPE BSAK-ZUONR,
+       BUZEI TYPE BSAK-BUZEI,
+       END OF GS_BSAK.
+
+DATA: GT_BSAK TYPE TABLE OF GS_BSAK,
+      WA_BSAK TYPE GS_BSAK,
+      WA_BSAK1 TYPE GS_BSAK,
+      GT_BSAK1 TYPE TABLE OF GS_BSAK,
+      GT_BSAK2 TYPE TABLE OF GS_BSAK.
+
+DATA: GT_BSAK7 TYPE TABLE OF GS_BSAK,
+      WA_BSAK7 TYPE GS_BSAK.
+
+TYPES: BEGIN OF GS_ADRC,
+       ADDRNUMBER TYPE ADRC-ADDRNUMBER,        " Address Number
+       STREET TYPE ADRC-STREET,                " Street
+       CITY1 TYPE ADRC-CITY1,                  " District
+       CITY2 TYPE ADRC-CITY2,                  " City
+       POST_CODE1 TYPE ADRC-POST_CODE1,        " Postal Code
+       END OF GS_ADRC.
+
+DATA: GT_ADRC TYPE TABLE OF GS_ADRC WITH HEADER LINE,
+      WA_ADRC TYPE GS_ADRC.
+
+TYPES : BEGIN OF TY_CHK,
+         BELNR TYPE BSAK-BELNR,                  " Bill Number
+         BUDAT  TYPE BSIK-BUDAT,                 " Posting Date
+         BLART TYPE BSIK-BLART,                  " Bill Doc. Type
+         CR_AMT TYPE BSAK-DMBTR,                 " Cr Amount
+         DR_AMT TYPE BSAK-DMBTR,                 " Dr Amount
+         SHKZG TYPE BSIK-SHKZG,
+        END OF TY_CHK.
+
+TYPES: BEGIN OF GS_FINAL,
+       LIFNR TYPE BSAK-LIFNR,                  " Customer Number
+       UMSKZ TYPE BSIK-UMSKZ,                  " Spl.GL Ind
+       BELNR TYPE BSAK-BELNR,                  " Bill Number
+       EBELN TYPE BSAK-EBELN,                  " Billing Document Number
+       XBLNR TYPE BSIK-XBLNR,                  " Reference Document Number
+       BLDAT TYPE BSAK-BLDAT,                  " Posting Date in the Document
+       CR_AMT TYPE BSAK-DMBTR,                 " Cr Amount
+       DR_AMT TYPE BSAK-DMBTR,                 " Dr Amount
+       BUDAT  TYPE BSIK-BUDAT,                 " Posting Date
+       NAME1  TYPE LFA1-NAME1,                 " Customer Name
+       BLART TYPE BSIK-BLART,                  " Bill Doc. Type
+       BSCHL TYPE BSID-BSCHL,
+       SGTXT TYPE BSIK-SGTXT,                  " Text OR Remarks
+       GSBER TYPE BSIK-GSBER,                  " Business Area
+       SHKZG TYPE BSIK-SHKZG,                  " Dbit/Crdit ind.
+       BAL_AMT TYPE BSAK-DMBTR,                " Balance Amount
+       LTEXT TYPE T003T-LTEXT,                  " Bill Doc .Type Descrption
+       BUKRS TYPE BSIK-BUKRS ,
+       GJAHR TYPE BSIK-GJAHR,
+       SKNTO TYPE BSAK-SKNTO ,
+       LV_COUNT TYPE INT1,
+       STA  TYPE INT1,
+       T_TTTEXT TYPE CHAR20,
+       END OF GS_FINAL.
+
+DATA: GT_FINAL TYPE TABLE OF GS_FINAL WITH HEADER LINE,
+      WA_FINAL TYPE GS_FINAL,
+      GT_FINAL1 TYPE TABLE OF GS_FINAL WITH HEADER LINE,
+      WA_FINAL1 TYPE GS_FINAL,
+      GT_FINAL2 TYPE TABLE OF GS_FINAL WITH HEADER LINE,
+      WA_FINAL2 TYPE GS_FINAL,
+      GT_FINAL3 TYPE TABLE OF GS_FINAL WITH HEADER LINE,
+      WA_FINAL3 TYPE GS_FINAL,
+      GS_CHK TYPE TY_CHK.
+
+TYPES: BEGIN OF GS_FAGLFLEXA,
+       DOCNR TYPE FAGLFLEXA-DOCNR,
+       PRCTR TYPE FAGLFLEXA-PRCTR,
+       BSCHL TYPE FAGLFLEXA-BSCHL,
+       END OF GS_FAGLFLEXA.
+
+DATA: GT_FAGLFLEXA TYPE TABLE OF GS_FAGLFLEXA,
+      WA_FAGLFLEXA TYPE GS_FAGLFLEXA.
+
+TYPES : BEGIN OF GS_LFC1,
+        LIFNR TYPE LFC1-LIFNR,
+        BUKRS TYPE LFC1-BUKRS,
+        UMSAV TYPE LFC1-UMSAV,
+        GJAHR TYPE LFC1-GJAHR,
+        END OF GS_LFC1.
+
+DATA: GT_LFC1 TYPE TABLE OF GS_LFC1,
+      WA_LFC1 TYPE GS_LFC1.
+
+DATA: OR_BUDAT TYPE  BSAK-BUDAT,
+      OR_BUKRS TYPE BSIK-BUKRS,
+      OR_LIFNR TYPE LFA1-LIFNR,
+      FM_NAME TYPE RS38L_FNAM,
+      OR_PRCTR TYPE CEPC-PRCTR,
+      OR_UMSKZ TYPE BSIK-UMSKZ.
+
+DATA: L_LIFNR TYPE LFA1-LIFNR,
+      L_PRCTR TYPE CEPC-PRCTR.
+
+DATA: B_DATE TYPE SY-DATUM.
+
+DATA: LV_OPN TYPE BSAK-DMBTR,
+      RV_OPN TYPE BSAK-DMBTR,
+      LV_TOTAL TYPE BSAK-DMBTR,
+      LV_TRANS TYPE BSAK-DMBTR,
+      LV_DATE TYPE SY-DATUM,
+      LV_FRDAT TYPE SY-DATUM,
+      LV_TODAT TYPE SY-DATUM,
+      LV_SUM TYPE BSAK-DMBTR,
+      LV_BUK TYPE T001-BUKRS,
+      LV_CRAMT TYPE BSAK-DMBTR,
+      LV_DBAMT TYPE BSAK-DMBTR,
+      LV_CDISC TYPE BSAK-DMBTR.
+
+DATA: IT_EMAIL TYPE STANDARD TABLE OF ZMAIL_ID,
+      WA_EMAIL TYPE ZMAIL_ID.
+
+************************************ PR@$@TH
+
+TYPES: BEGIN OF TEM_LFA1,
+  LIFNR TYPE LFA1-LIFNR,
+  NAME1 TYPE LFA1-NAME1,
+  ADRNR TYPE LFA1-ADRNR,
+  END OF TEM_LFA1.
+DATA: Z_LFA1 TYPE TABLE OF TEM_LFA1,
+      Y_LFA1 TYPE TEM_LFA1.
+
+TYPES: BEGIN OF TEM_LFB1,
+  LIFNR TYPE LFB1-LIFNR,
+  BUKRS TYPE LFB1-BUKRS,
+  END OF TEM_LFB1.
+DATA: Z_LFB1 TYPE TABLE OF TEM_LFB1,
+      Y_LFB1 TYPE TEM_LFB1.
+
+DATA: I_OTF       TYPE ITCOO    OCCURS 0 WITH HEADER LINE,
+      I_TLINE     LIKE TLINE    OCCURS 0 WITH HEADER LINE,
+      I_RECORD    LIKE SOLISTI1 OCCURS 0 WITH HEADER LINE,
+      I_XSTRING   TYPE XSTRING,
+* Objects to send mail.
+      I_OBJPACK   LIKE SOPCKLSTI1 OCCURS 0 WITH HEADER LINE,
+      I_OBJTXT    LIKE SOLISTI1   OCCURS 0 WITH HEADER LINE,
+      I_OBJBIN    LIKE SOLIX      OCCURS 0 WITH HEADER LINE,
+      I_RECLIST   LIKE SOMLRECI1  OCCURS 0 WITH HEADER LINE,
+* Work Area declarations
+      WA_OBJHEAD  TYPE SOLI_TAB,
+      W_CTRLOP    TYPE SSFCTRLOP,
+      W_COMPOP    TYPE SSFCOMPOP,
+      W_RETURN    TYPE SSFCRESCL,
+      WA_BUFFER   TYPE STRING,
+* Variables declarations
+      V_FORM_NAME TYPE RS38L_FNAM,
+      V_LEN_IN    LIKE SOOD-OBJLEN.
+DATA: S_EMAIL TYPE  ADR6-SMTP_ADDR.
+*DATA: S_EMAIL1 TYPE  ADR6-SMTP_ADDR VALUE 'accountsreply@sheenlac.in'.
+
+DATA: SM_NAME TYPE LFA1-NAME1.
+DATA: COUNT TYPE I VALUE 1 .
+
+TYPES: BEGIN OF TY_EMAIL_DEL,
+  LIFNR TYPE LFA1-KUNNR,
+  NAME1 TYPE LFA1-NAME1,
+  EMAIL TYPE ADR6-SMTP_ADDR,
+  STATS TYPE I,
+  END OF TY_EMAIL_DEL.
+
+DATA: IT_STS TYPE TABLE OF TY_EMAIL_DEL,
+      WA_STS TYPE TY_EMAIL_DEL.
+
+DATA: STS TYPE LIFNR.
+DATA: CUR_DAT TYPE SY-DATUM.
+DATA: DAY TYPE I.
+DATA: F_D TYPE CHAR8,
+      T_D TYPE CHAR8.
+
+TYPES: BEGIN OF TY_BUDAT,
+  LOW TYPE BSID-BUDAT,
+  HIGH TYPE BSID-BUDAT,
+  END OF TY_BUDAT.
+
+TYPES: BEGIN OF TY_EMAIL_CHAR,
+STATS(1) TYPE C,
+LIFNR(10) TYPE C,
+NAME1(35) TYPE C,
+EMAIL(241) TYPE C,
+END OF TY_EMAIL_CHAR.
+
+DATA: WA_STS_CHAR TYPE TY_EMAIL_CHAR.
+
+DATA:   IT_MESSAGE TYPE STANDARD TABLE OF SOLISTI1 INITIAL SIZE 0
+              WITH HEADER LINE.
+DATA:   IT_ATTACH TYPE STANDARD TABLE OF SOLISTI1 INITIAL SIZE 0
+              WITH HEADER LINE.
+
+DATA:   T_PACKING_LIST LIKE SOPCKLSTI1 OCCURS 0 WITH HEADER LINE,
+        T_CONTENTS LIKE SOLISTI1 OCCURS 0 WITH HEADER LINE,
+        T_RECEIVERS LIKE SOMLRECI1 OCCURS 0 WITH HEADER LINE,
+        T_ATTACHMENT LIKE SOLISTI1 OCCURS 0 WITH HEADER LINE,
+        T_OBJECT_HEADER LIKE SOLISTI1 OCCURS 0 WITH HEADER LINE,
+        W_CNT TYPE I,
+        W_SENT_ALL(1) TYPE C,
+        W_DOC_DATA LIKE SODOCCHGI1,
+        GD_ERROR    TYPE SY-SUBRC,
+        GD_RECIEVER TYPE SY-SUBRC.
+
+DATA: P_EMAIL   TYPE SOMLRECI1-RECEIVER
+                                VALUE 'prasath@sphinaxinfosystems.com'.
+DATA: TOT TYPE INT2.
+DATA: TOT_C(6) TYPE C.
+
+TYPES:BEGIN OF TY_DOC,
+  BELNR TYPE BSAK-BELNR,
+  END OF TY_DOC.
+
+DATA: IT_DOC TYPE TABLE OF TY_DOC,
+      WA_DOC TYPE TY_DOC.
+
+DATA: IT_VBSEGK TYPE TABLE OF VBSEGK,
+      WA_VBSEGK TYPE VBSEGK.
+
+*********************************PR@$@TH
+
+SELECTION-SCREEN: BEGIN OF BLOCK EMAIL_REP WITH FRAME TITLE TEXT-001.
+SELECT-OPTIONS: SO_LIFNR FOR LFA1-LIFNR.
+PARAMETERS: SO_BUKRS LIKE LFB1-BUKRS.
+SELECT-OPTIONS: SO_BUDAT FOR BSIK-BUDAT.
+SELECTION-SCREEN: END OF BLOCK EMAIL_REP.
+
+INITIALIZATION.
+  SO_BUKRS = 1000 .
+  CUR_DAT = SY-DATUM.
+  DATA: ID_PAR_DAYS	TYPE T009B-BUTAG ,
+        ID_PAR_MONTH  TYPE T009B-BUMON ,
+        ID_PAR_YEAR	TYPE T009B-BDATJ .
+
+  ID_PAR_MONTH =  CUR_DAT+4(2) .
+  ID_PAR_YEAR = CUR_DAT(4) .
+
+  IF CUR_DAT+4(2) = 01 .
+    ID_PAR_YEAR = ID_PAR_YEAR - 1 .
+
+    CONCATENATE  ID_PAR_YEAR'1201' INTO SO_BUDAT-LOW .
+    CONCATENATE ID_PAR_YEAR'1231' INTO SO_BUDAT-HIGH .
+  ELSE.
+    ID_PAR_MONTH = ID_PAR_MONTH - 1 .
+
+    CALL FUNCTION 'NUMBER_OF_DAYS_PER_MONTH_GET'
+      EXPORTING
+        PAR_MONTH = ID_PAR_MONTH
+        PAR_YEAR  = ID_PAR_YEAR
+      IMPORTING
+        PAR_DAYS  = ID_PAR_DAYS.
+
+    CONCATENATE  ID_PAR_YEAR ID_PAR_MONTH '01' INTO SO_BUDAT-LOW .
+    CONCATENATE ID_PAR_YEAR ID_PAR_MONTH ID_PAR_DAYS INTO SO_BUDAT-HIGH .
+  ENDIF.
+  APPEND: SO_BUDAT.
+
+START-OF-SELECTION.
+  PERFORM: FETCHDATA.
+*  PERFORM: STATUS_EMAIL.
+
+END-OF-SELECTION.
+
+*&---------------------------------------------------------------------*
+*&      Form  FETCHDATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FETCHDATA .
+
+  SELECT LIFNR BUKRS FROM LFB1 INTO TABLE Z_LFB1 WHERE BUKRS EQ SO_BUKRS AND LOEVM <> 'X' AND LIFNR IN SO_LIFNR .
+  SELECT LIFNR NAME1 ADRNR FROM LFA1 INTO TABLE Z_LFA1 FOR ALL ENTRIES IN Z_LFB1 WHERE LIFNR EQ Z_LFB1-LIFNR.
+  SELECT * FROM ZMAIL_ID INTO TABLE IT_EMAIL.
+  DELETE IT_EMAIL WHERE EMAIL_ID IS INITIAL .
+  SORT Z_LFB1 BY LIFNR.
+  LOOP AT Z_LFB1 INTO Y_LFB1.
+    CLEAR: I_OTF[],I_TLINE[],I_RECORD[],I_XSTRING,I_OBJPACK[],I_OBJTXT[],I_OBJBIN[],I_RECLIST[],WA_OBJHEAD[],W_CTRLOP,W_COMPOP,W_RETURN,WA_BUFFER,V_LEN_IN.
+    READ TABLE Z_LFA1 INTO Y_LFA1 WITH KEY LIFNR = Y_LFB1-LIFNR.
+    CLEAR: SM_NAME,STS.
+    SM_NAME = Y_LFA1-NAME1.
+    STS = Y_LFA1-LIFNR.
+    CLEAR:S_EMAIL,WA_EMAIL.
+    IF Y_LFA1-ADRNR IS NOT INITIAL.
+      SELECT SMTP_ADDR UP TO 1 ROWS FROM ADR6 INTO S_EMAIL WHERE ADDRNUMBER EQ Y_LFA1-ADRNR ORDER BY PRIMARY KEY.
+      ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+      READ TABLE IT_EMAIL INTO WA_EMAIL WITH KEY EMAIL_ID = S_EMAIL.
+    ENDIF.
+    IF S_EMAIL IS NOT INITIAL AND WA_EMAIL IS INITIAL.
+      CLEAR: LV_BUK.
+      SELECT BUKRS  FROM T001 INTO LV_BUK WHERE BUKRS EQ Y_LFB1-BUKRS.
+        CLEAR: GT_BSAK.
+        SELECT
+           PRCTR
+           LIFNR
+           UMSKZ
+           AUGBL
+           BUDAT
+           BLDAT
+           BLART
+           ZFBDT
+           DMBTR
+           SHKZG
+           XBLNR
+           BELNR
+           GSBER
+           SGTXT
+           EBELN
+           BUKRS
+           GJAHR
+           SKNTO
+           UMSKS
+           AUGDT
+           ZUONR
+           BUZEI FROM BSAK INTO CORRESPONDING FIELDS OF TABLE GT_BSAK WHERE BUDAT IN SO_BUDAT AND BUKRS EQ Y_LFB1-BUKRS
+                                                          AND LIFNR EQ Y_LFB1-LIFNR AND UMSKZ <> 'H'  AND UMSKZ <> 'F' .
+
+        CLEAR:GT_BSIK.
+        SELECT
+           PRCTR
+           LIFNR
+           AUGBL
+           BUDAT
+           BLDAT
+           BLART
+           ZFBDT
+           DMBTR
+           SHKZG
+           XBLNR
+           BELNR
+           GSBER
+           SGTXT
+           EBELN
+           UMSKZ
+           BUKRS
+           GJAHR
+           SKNTO FROM BSIK INTO CORRESPONDING FIELDS OF TABLE GT_BSIK WHERE BUDAT IN SO_BUDAT AND BUKRS EQ Y_LFB1-BUKRS
+                                                          AND LIFNR EQ Y_LFB1-LIFNR AND UMSKZ <> 'H' AND UMSKZ <> 'F'.
+
+        CLEAR:GT_BSAK1.
+        SELECT
+          PRCTR
+          LIFNR
+          UMSKZ
+          AUGBL
+          BUDAT
+          BLDAT
+          BLART
+          ZFBDT
+          DMBTR
+          SHKZG
+          XBLNR
+          BELNR
+          GSBER
+          SGTXT
+          EBELN
+          BUKRS
+          GJAHR
+          SKNTO
+          UMSKS
+          AUGDT
+          ZUONR
+          BUZEI FROM BSAK INTO CORRESPONDING FIELDS OF TABLE GT_BSAK1
+                WHERE  BUDAT BETWEEN '01.04.2014' AND SO_BUDAT-LOW AND BUKRS EQ Y_LFB1-BUKRS AND LIFNR EQ Y_LFB1-LIFNR AND UMSKZ <> 'H' AND UMSKZ <> 'F' .
+
+        CLEAR: GT_BSIK1.
+        SELECT
+          PRCTR
+          LIFNR
+          AUGBL
+          BUDAT
+          BLDAT
+          BLART
+          ZFBDT
+          DMBTR
+          SHKZG
+          XBLNR
+          BELNR
+          GSBER
+          SGTXT
+          EBELN
+          UMSKZ
+          BUKRS
+          GJAHR
+          SKNTO FROM BSIK INTO CORRESPONDING FIELDS OF TABLE GT_BSIK1
+                WHERE BUDAT BETWEEN '01.04.2014'  AND  SO_BUDAT-LOW AND BUKRS EQ Y_LFB1-BUKRS AND LIFNR EQ Y_LFB1-LIFNR AND UMSKZ <> 'H' AND UMSKZ <> 'F'.
+        REFRESH IT_DOC.
+        LOOP AT GT_BSAK INTO WA_BSAK.
+          WA_DOC-BELNR =  WA_BSAK-BELNR .
+          APPEND WA_DOC TO IT_DOC .
+        ENDLOOP.
+
+        LOOP AT  GT_BSIK INTO WA_BSIK.
+          WA_DOC-BELNR = WA_BSIK-BELNR.
+          APPEND WA_DOC TO IT_DOC.
+        ENDLOOP.
+
+        LOOP AT GT_BSAK1 INTO WA_BSAK1.
+          WA_DOC-BELNR =  WA_BSAK1-BELNR .
+          APPEND WA_DOC TO IT_DOC .
+        ENDLOOP.
+
+        LOOP AT  GT_BSIK1 INTO WA_BSIK1.
+          WA_DOC-BELNR = WA_BSIK1-BELNR.
+          APPEND WA_DOC TO IT_DOC.
+        ENDLOOP.
+
+        SELECT * FROM VBSEGK INTO TABLE IT_VBSEGK FOR ALL ENTRIES IN IT_DOC WHERE BELNR = IT_DOC-BELNR AND LIFNR = SO_LIFNR .
+        LOOP AT IT_VBSEGK INTO WA_VBSEGK.
+          DELETE GT_BSAK WHERE BELNR = WA_VBSEGK-BELNR.
+          DELETE GT_BSIK WHERE BELNR = WA_VBSEGK-BELNR.
+          DELETE GT_BSAK1 WHERE BELNR = WA_VBSEGK-BELNR.
+          DELETE GT_BSIK1 WHERE BELNR = WA_VBSEGK-BELNR.
+        ENDLOOP.
+
+        CLEAR:GT_BSAK7.
+        SORT GT_BSAK BY BELNR AUGBL.
+        APPEND LINES OF GT_BSAK TO GT_BSIK.
+        APPEND LINES OF GT_BSAK TO GT_BSAK7.
+        DELETE GT_BSAK7 WHERE SHKZG = 'S'.
+        APPEND LINES OF GT_BSAK1 TO GT_BSIK1.
+
+        IF GT_BSIK[] IS NOT INITIAL.
+          CLEAR: GT_LFA1[].
+          SELECT
+            LIFNR
+            NAME1
+            ADRNR FROM LFA1 INTO TABLE GT_LFA1 FOR ALL ENTRIES IN GT_BSIK
+                            WHERE LIFNR = GT_BSIK-LIFNR.
+          CLEAR: GT_T003T.
+          SELECT BLART
+                 LTEXT
+                 SPRAS FROM  T003T INTO TABLE GT_T003T FOR ALL ENTRIES IN GT_BSIK WHERE BLART = GT_BSIK-BLART AND SPRAS = 'E' ORDER BY PRIMARY KEY.  " Added by <IT-CAR Tool> during Code Remediation
+          CLEAR:GT_T003T1.
+          SELECT  BLART
+                  LTEXT
+                  SPRAS FROM  T003T INTO TABLE GT_T003T1 FOR ALL ENTRIES IN GT_BSAK WHERE BLART = GT_BSAK-BLART AND SPRAS = 'E' ORDER BY PRIMARY KEY.  " Added by <IT-CAR Tool> during Code Remediation
+
+          APPEND  LINES OF GT_T003T1 TO GT_T003T.
+          CLEAR:GT_T003T2.
+          SELECT  BLART
+                  LTEXT
+                  SPRAS FROM  T003T INTO TABLE GT_T003T2 FOR ALL ENTRIES IN GT_BSIK WHERE BLART = GT_BSIK-BLART AND SPRAS = 'E' ORDER BY PRIMARY KEY.  " Added by <IT-CAR Tool> during Code Remediation
+          APPEND  LINES OF GT_T003T2 TO GT_T003T.
+
+        ENDIF.
+        IF GT_LFA1[] IS  NOT INITIAL.
+          CLEAR: GT_ADRC.
+          SELECT  ADDRNUMBER
+                  STREET
+                  CITY1
+                  CITY2
+                  POST_CODE1 FROM ADRC INTO TABLE GT_ADRC FOR ALL ENTRIES IN GT_LFA1 WHERE ADDRNUMBER = GT_LFA1-ADRNR.
+
+        ENDIF.
+        CLEAR: GT_LFC1.
+        IF GT_BSIK IS NOT INITIAL.
+          SELECT  LIFNR
+                  BUKRS
+                  UMSAV
+                  GJAHR FROM LFC1 INTO TABLE GT_LFC1 FOR ALL ENTRIES IN GT_BSIK WHERE LIFNR = GT_BSIK-LIFNR AND GJAHR = GT_BSIK-GJAHR AND BUKRS = GT_BSIK-BUKRS.
+        ENDIF.
+      ENDSELECT.
+
+      CLEAR: LV_TOTAL.
+      LOOP AT GT_LFC1 INTO WA_LFC1.
+        LV_TOTAL =  WA_LFC1-UMSAV.
+      ENDLOOP.
+      CLEAR:WA_LFC1.
+
+      LOOP AT GT_BSIK1 INTO WA_BSIK1 .
+        IF  WA_BSIK1-BUDAT < SO_BUDAT-LOW.
+          IF WA_BSIK1-SHKZG = 'S'.
+            LV_OPN = LV_OPN  + WA_BSIK1-DMBTR.
+          ELSEIF WA_BSIK1-SHKZG = 'H'.
+            LV_OPN  = LV_OPN - WA_BSIK1-DMBTR.
+          ENDIF.
+        ENDIF.
+        CLEAR WA_BSIK1.
+      ENDLOOP.
+
+      SORT GT_BSIK BY BUDAT BELNR BLART SHKZG.
+
+      LOOP AT GT_BSIK INTO WA_BSIK.
+        WA_FINAL-XBLNR = WA_BSIK-XBLNR.
+        WA_FINAL-BLDAT = WA_BSIK-BLDAT.
+        WA_FINAL-LIFNR = WA_BSIK-LIFNR.
+        WA_FINAL-BELNR = WA_BSIK-BELNR.
+        WA_FINAL-BUDAT = WA_BSIK-BUDAT.
+        WA_FINAL-GSBER = WA_BSIK-GSBER.
+        WA_FINAL-SGTXT = WA_BSIK-SGTXT.
+        WA_FINAL-EBELN = WA_BSIK-EBELN.
+        WA_FINAL-UMSKZ = WA_BSIK-UMSKZ.
+        WA_FINAL-BUKRS = WA_BSIK-BUKRS.
+        READ TABLE GT_T003T INTO WA_T003T WITH KEY BLART = WA_BSIK-BLART.
+        WA_FINAL-LTEXT = WA_T003T-LTEXT.
+        WA_FINAL-BLART = WA_BSIK-BLART.
+        READ TABLE GT_LFA1 INTO WA_LFA1 WITH KEY LIFNR = WA_BSIK-LIFNR.
+        WA_FINAL-NAME1 = WA_LFA1-NAME1.
+        WA_FINAL-SHKZG = WA_BSIK-SHKZG.
+        IF GS_CHK-BUDAT = WA_BSIK-BUDAT AND GS_CHK-BLART = WA_BSIK-BLART AND GS_CHK-BELNR = WA_BSIK-BELNR
+                                        AND GS_CHK-SHKZG = WA_BSIK-SHKZG AND WA_BSIK-SHKZG = 'H'.
+          WA_FINAL-SKNTO = LV_CDISC + WA_BSIK-SKNTO.
+          LV_CDISC = WA_FINAL-SKNTO.
+          WA_FINAL-CR_AMT = LV_CRAMT + WA_BSIK-DMBTR .
+          LV_CRAMT = WA_FINAL-CR_AMT.
+          DELETE GT_FINAL INDEX LV_IND.
+        ELSEIF GS_CHK-BUDAT = WA_BSIK-BUDAT AND GS_CHK-BLART = WA_BSIK-BLART AND GS_CHK-BELNR = WA_BSIK-BELNR
+                                            AND GS_CHK-SHKZG = WA_BSIK-SHKZG AND WA_BSIK-SHKZG = 'S'.
+          WA_FINAL-DR_AMT = LV_DBAMT + WA_BSIK-DMBTR.
+          LV_DBAMT = WA_FINAL-DR_AMT.
+          DELETE GT_FINAL INDEX LV_IND.
+        ELSEIF GS_CHK-BUDAT = WA_BSIK-BUDAT AND GS_CHK-BLART = WA_BSIK-BLART AND GS_CHK-BELNR = WA_BSIK-BELNR
+                                            AND GS_CHK-SHKZG = WA_BSIK-SHKZG AND WA_BSIK-SHKZG = 'C' AND WA_T003T-BLART = 'AB'.
+          WA_FINAL-CR_AMT = LV_CRAMT + WA_BSIK-DMBTR.
+          LV_CRAMT = WA_FINAL-CR_AMT.
+          DELETE GT_FINAL INDEX LV_IND.
+        ELSEIF GS_CHK-BUDAT = WA_BSIK-BUDAT AND GS_CHK-BLART = WA_BSIK-BLART AND GS_CHK-BELNR = WA_BSIK-BELNR
+                                            AND WA_BSIK-SHKZG = 'D' AND WA_T003T-BLART = 'AB'.
+          WA_FINAL-DR_AMT = LV_DBAMT + WA_BSIK-DMBTR.
+          LV_DBAMT = WA_FINAL-DR_AMT.
+          DELETE GT_FINAL INDEX LV_IND.
+        ELSEIF ( GS_CHK-BUDAT <> WA_BSIK-BUDAT AND GS_CHK-BLART <> WA_BSIK-BLART AND GS_CHK-BELNR <> WA_BSIK-BELNR AND WA_BSIK-SHKZG <> 'S' )
+            OR ( ( GS_CHK-BUDAT <> WA_BSIK-BUDAT OR GS_CHK-BLART <> WA_BSIK-BLART OR GS_CHK-BELNR <> WA_BSIK-BELNR ) AND WA_BSIK-SHKZG <> 'S' ) OR
+                 ( GS_CHK-SHKZG <> WA_BSIK-SHKZG AND WA_BSIK-SHKZG <> 'S' ) .
+          WA_FINAL-SKNTO = WA_BSIK-SKNTO.
+          LV_CDISC = WA_FINAL-SKNTO .
+          WA_FINAL-CR_AMT = WA_BSIK-DMBTR.
+          LV_CRAMT = WA_FINAL-CR_AMT .
+        ELSEIF ( GS_CHK-BUDAT <> WA_BSIK-BUDAT AND GS_CHK-BLART <> WA_BSIK-BLART AND GS_CHK-BELNR <> WA_BSIK-BELNR AND WA_BSIK-SHKZG <> 'H' )
+            OR ( ( GS_CHK-BUDAT <> WA_BSIK-BUDAT OR GS_CHK-BLART <> WA_BSIK-BLART OR GS_CHK-BELNR <> WA_BSIK-BELNR ) AND WA_BSIK-SHKZG <> 'H' ) OR
+               ( GS_CHK-SHKZG <> WA_BSIK-SHKZG AND WA_BSIK-SHKZG <> 'H' ) .
+          WA_FINAL-DR_AMT = WA_BSIK-DMBTR .
+          LV_DBAMT = WA_FINAL-DR_AMT  .
+        ELSEIF ( GS_CHK-BUDAT <> WA_BSIK-BUDAT AND GS_CHK-BLART <> WA_BSIK-BLART AND GS_CHK-BELNR <> WA_BSIK-BELNR AND
+                 GS_CHK-SHKZG <> WA_BSIK-SHKZG AND WA_BSIK-SHKZG = 'C' )  OR  WA_T003T-BLART = 'AB'.
+          WA_FINAL-CR_AMT = WA_BSIK-DMBTR.
+          LV_CRAMT = WA_FINAL-CR_AMT.
+        ELSEIF ( GS_CHK-BUDAT <> WA_BSIK-BUDAT AND GS_CHK-BLART <> WA_BSIK-BLART AND GS_CHK-BELNR <> WA_BSIK-BELNR AND
+                 GS_CHK-SHKZG <> WA_BSIK-SHKZG AND WA_BSIK-SHKZG = 'D') OR WA_T003T-BLART = 'AB'.
+          WA_FINAL-DR_AMT = WA_BSIK-DMBTR.
+          LV_DBAMT = WA_FINAL-DR_AMT.
+        ENDIF.
+        GS_CHK-BELNR = WA_BSIK-BELNR.
+        GS_CHK-BUDAT = WA_BSIK-BUDAT.
+        GS_CHK-BLART = WA_BSIK-BLART.
+        GS_CHK-SHKZG = WA_BSIK-SHKZG.
+        APPEND WA_FINAL TO GT_FINAL.
+        CLEAR : WA_FINAL,WA_BSIK.
+        DESCRIBE TABLE GT_FINAL LINES LV_IND.
+      ENDLOOP.
+
+      CLEAR: GT_BSIK[].
+      CLEAR: GS_CHK ,WA_BSIK, WA_T003T, WA_LFA1 .
+
+      APPEND LINES OF GT_FINAL TO GT_FINAL1.
+      APPEND LINES OF GT_FINAL TO GT_FINAL2.
+
+      TYPES: BEGIN OF A,
+             LN TYPE I,
+             END OF A.
+      DATA: GT_LINE TYPE TABLE OF A,
+            GS_LINE TYPE A.
+
+      LOOP AT GT_FINAL1 INTO WA_FINAL1.
+        IF GS_CHK-BUDAT = WA_FINAL1-BUDAT AND
+             GS_CHK-BLART = WA_FINAL1-BLART AND
+             GS_CHK-BELNR = WA_FINAL1-BELNR.
+          IF WA_FINAL1-CR_AMT GT GS_CHK-CR_AMT.
+            GS_LINE-LN = SY-TABIX.
+          ENDIF.
+        ENDIF.
+        GS_CHK-BELNR = WA_FINAL1-BELNR.
+        GS_CHK-BUDAT = WA_FINAL1-BUDAT.
+        GS_CHK-BLART = WA_FINAL1-BLART.
+        GS_CHK-CR_AMT = WA_FINAL1-CR_AMT.
+        GS_CHK-DR_AMT = WA_FINAL1-DR_AMT.
+      ENDLOOP.
+      B_DATE = SO_BUDAT-HIGH.
+      SORT GT_FINAL BY BUDAT SHKZG.
+      LOOP AT GT_FINAL INTO WA_FINAL.
+        READ TABLE GT_FINAL2 INTO WA_FINAL2 WITH KEY BELNR = WA_FINAL-BELNR SHKZG = WA_FINAL-SHKZG .
+        IF WA_FINAL2-SKNTO IS NOT INITIAL .
+          WA_FINAL2-CR_AMT = WA_FINAL2-CR_AMT - WA_FINAL2-SKNTO.
+          APPEND WA_FINAL2 TO GT_FINAL3.
+          CLEAR: WA_FINAL2-CR_AMT.
+          WA_FINAL2-CR_AMT = WA_FINAL2-SKNTO.
+          APPEND WA_FINAL2 TO GT_FINAL3.
+          DELETE GT_FINAL WHERE BELNR = WA_FINAL2-BELNR AND SHKZG = 'H' .
+        ENDIF.
+      ENDLOOP.
+
+      APPEND LINES OF GT_FINAL3 TO GT_FINAL.
+
+      LOOP AT GT_FINAL INTO WA_FINAL.
+        LV_SUM = LV_SUM + WA_FINAL-DR_AMT - WA_FINAL-CR_AMT .
+        WA_FINAL-BAL_AMT = LV_SUM.
+        MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING BAL_AMT.
+        AT END OF LIFNR.
+          CLEAR :LV_SUM,WA_FINAL,WA_BSIK.
+        ENDAT.
+      ENDLOOP.
+
+      LOOP AT GT_FINAL INTO WA_FINAL WHERE LIFNR = ' '.
+        WA_FINAL-LIFNR = WA_LFA1-LIFNR.
+        MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING LIFNR.
+        CLEAR  WA_FINAL.
+      ENDLOOP.
+      CLEAR: RV_OPN.
+      RV_OPN = LV_TOTAL - LV_OPN.
+      SORT GT_FINAL BY BUDAT SHKZG.
+
+
+      CALL FUNCTION 'SSF_FUNCTION_MODULE_NAME'
+        EXPORTING
+          FORMNAME           = 'ZSF_VEN_ACCOUNT_LEDGER_MAIL'
+*         VARIANT            = ' '
+*         DIRECT_CALL        = ' '
+        IMPORTING
+          FM_NAME            = FM_NAME
+        EXCEPTIONS
+          NO_FORM            = 1
+          NO_FUNCTION_MODULE = 2
+          OTHERS             = 3.
+      IF SY-SUBRC <> 0.
+        MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+        WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+      ENDIF.
+
+      W_CTRLOP-GETOTF = ABAP_TRUE.
+      W_CTRLOP-NO_DIALOG = ABAP_TRUE.
+      W_COMPOP-TDNOPREV = ABAP_TRUE.
+      W_CTRLOP-PREVIEW = SPACE.
+      W_COMPOP-TDDEST = 'LOCL'.
+
+      IF GT_FINAL[] IS NOT INITIAL .
+
+        CALL FUNCTION FM_NAME "'/1BCDWB/SF00000527'
+          EXPORTING
+*         ARCHIVE_INDEX        =
+*         ARCHIVE_INDEX_TAB    =
+*         ARCHIVE_PARAMETERS   =
+            CONTROL_PARAMETERS   = W_CTRLOP
+*         MAIL_APPL_OBJ        =
+*         MAIL_RECIPIENT       =
+*         MAIL_SENDER          =
+            OUTPUT_OPTIONS       = W_COMPOP
+            USER_SETTINGS        = ABAP_TRUE"'X'
+            BAL_DATE             = B_DATE
+            LV_FRDT              = SO_BUDAT-LOW
+            LV_TODT              = SO_BUDAT-HIGH
+            LV_OPN               = LV_OPN
+            LV_BUK               = LV_BUK
+          IMPORTING
+*         DOCUMENT_OUTPUT_INFO =
+            JOB_OUTPUT_INFO      = W_RETURN
+*         JOB_OUTPUT_OPTIONS   =
+          TABLES
+            GT_LFA1              = GT_LFA1[]
+            GT_BSID              = GT_FINAL[]
+          EXCEPTIONS
+            FORMATTING_ERROR     = 1
+            INTERNAL_ERROR       = 2
+            SEND_ERROR           = 3
+            USER_CANCELED        = 4
+            OTHERS               = 5.
+        IF SY-SUBRC <> 0.
+*        Implement suitable error handling here
+        ENDIF.
+
+
+        I_OTF[] = W_RETURN-OTFDATA[].
+
+        CALL FUNCTION 'CONVERT_OTF'
+          EXPORTING
+            FORMAT                = 'PDF'  "'ASCII'
+            MAX_LINEWIDTH         = 132
+*           ARCHIVE_INDEX         = ' '
+*           COPYNUMBER            = 0
+*           ASCII_BIDI_VIS2LOG    = ' '
+*           PDF_DELETE_OTFTAB     = ' '
+*           PDF_USERNAME          = ' '
+*           PDF_PREVIEW           = ' '
+*           USE_CASCADING         = ' '
+*           MODIFIED_PARAM_TABLE  =
+          IMPORTING
+            BIN_FILESIZE          = V_LEN_IN
+            BIN_FILE              = I_XSTRING
+          TABLES
+            OTF                   = I_OTF
+            LINES                 = I_TLINE
+          EXCEPTIONS
+            ERR_MAX_LINEWIDTH     = 1
+            ERR_FORMAT            = 2
+            ERR_CONV_NOT_POSSIBLE = 3
+            ERR_BAD_OTF           = 4
+            OTHERS                = 5.
+        IF SY-SUBRC <> 0.
+*          Implement suitable error handling here
+        ENDIF.
+
+        CALL FUNCTION 'SCMS_XSTRING_TO_BINARY'
+          EXPORTING
+            BUFFER                = I_XSTRING
+*         APPEND_TO_TABLE       = ' '
+*       IMPORTING
+*         OUTPUT_LENGTH         =
+          TABLES
+            BINARY_TAB            = I_OBJBIN[].
+
+        DATA: IN_MAILID TYPE AD_SMTPADR.
+        CLEAR IN_MAILID.
+        IN_MAILID = S_EMAIL .
+        PERFORM SEND_MAIL USING IN_MAILID .
+        COMMIT WORK.
+        COUNT = COUNT + 1 .
+      ENDIF.
+      CLEAR: GT_FINAL[] , WA_FINAL , GT_FINAL1[] ,WA_FINAL1 ,GT_FINAL2[] ,WA_FINAL2 ,GT_FINAL3[] ,WA_FINAL3 , LV_OPN , LV_BUK ,GT_LFA1[].
+    ENDIF.
+  ENDLOOP.
+
+ENDFORM.                    " FETCHDATA
+*&---------------------------------------------------------------------*
+*&      Form  SEND_MAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_IN_MAILID  text
+*----------------------------------------------------------------------*
+FORM SEND_MAIL  USING IN_MAILID.
+
+  DATA: SALUTATION TYPE STRING.
+  DATA: BODY TYPE STRING.
+  DATA: BODY1 TYPE STRING.
+  DATA: FOOTER TYPE STRING.
+  DATA: SUBJECT(50) TYPE C.
+  DATA: TEM_BDY TYPE STRING.
+
+  DATA: LO_SEND_REQUEST TYPE REF TO CL_BCS,
+        LO_DOCUMENT     TYPE REF TO CL_DOCUMENT_BCS,
+        LO_SENDER       TYPE REF TO IF_SENDER_BCS ,
+        LO_RECIPIENT    TYPE REF TO IF_RECIPIENT_BCS VALUE IS INITIAL,LT_MESSAGE_BODY TYPE BCSY_TEXT,
+        LX_DOCUMENT_BCS TYPE REF TO CX_DOCUMENT_BCS,
+        LV_SENT_TO_ALL  TYPE OS_BOOLEAN.
+
+  DATA: SENDER_MAIL TYPE  ADR6-SMTP_ADDR VALUE 'VendorConfirmation@sheenlac.in' .
+
+  DATA:SM_NAM TYPE SO_OBJ_DES.
+  DATA:HEADER TYPE CHAR100.
+  DATA:CONTENT TYPE CHAR100.
+  CLEAR: SALUTATION , BODY ,FOOTER ,LO_SEND_REQUEST ,LO_DOCUMENT ,LO_SENDER ,LO_RECIPIENT ,LV_SENT_TO_ALL.
+
+  LO_SEND_REQUEST = CL_BCS=>CREATE_PERSISTENT( ).
+
+  CLEAR: LT_MESSAGE_BODY.
+  TRANSLATE SM_NAME TO LOWER CASE.
+
+  DATA: F_DAT TYPE CHAR10,
+        T_DAT TYPE CHAR10.
+  CONCATENATE SO_BUDAT-LOW+6(2) '.' SO_BUDAT-LOW+4(2) '.' SO_BUDAT-LOW(4) INTO F_DAT.
+  CONCATENATE SO_BUDAT-HIGH+6(2) '.' SO_BUDAT-HIGH+4(2) '.' SO_BUDAT-HIGH(4) INTO T_DAT.
+
+  FOOTER = 'Dear Sir/Madam,'.
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  FOOTER = ' '.
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  CONCATENATE '    We are pleased to sending you the confirmation of balance for the period ending(' T_DAT ')' INTO TEM_BDY SEPARATED BY SPACE.
+
+  FOOTER = TEM_BDY .
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  FOOTER = 'Kindly Confirm the same with in 15 days of else the balance as per our records is treated as correct'.
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  FOOTER = '-In case of any query Contact No as ( 044-43949926 / vendorconfirmation@sheenlac.in )'.
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  FOOTER = ' '.
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  FOOTER = 'Any dispute " Chennai Jurisdiction "'.
+  APPEND FOOTER TO LT_MESSAGE_BODY.
+  CLEAR: FOOTER.
+
+  DATA: WA_T247 TYPE T247.
+  SELECT SINGLE * FROM T247 INTO WA_T247 WHERE SPRAS = 'EN' AND MNR = SO_BUDAT-LOW+4(2) .
+
+  SHIFT Y_LFB1-LIFNR LEFT DELETING LEADING '0' .
+
+  CONCATENATE 'Confirmation of Balance' Y_LFB1-LIFNR 'For' WA_T247-KTX '/' SO_BUDAT-LOW(4) INTO SUBJECT SEPARATED BY SPACE.
+
+  LO_DOCUMENT = CL_DOCUMENT_BCS=>CREATE_DOCUMENT(
+  I_TYPE = 'RAW'
+  I_TEXT = LT_MESSAGE_BODY
+  I_SUBJECT = SUBJECT ). "'Statement Of The Account'
+
+  DATA: MON TYPE I,
+        F_KTX TYPE T247-KTX,
+        T_KTX TYPE T247-KTX.
+  IF SO_BUDAT-LOW(4) = SO_BUDAT-HIGH(4) AND SO_BUDAT-LOW+4(2) = SO_BUDAT-HIGH+4(2).
+    SELECT SINGLE KTX FROM T247 INTO F_KTX WHERE MNR = SO_BUDAT-LOW+4(2) AND SPRAS = 'EN'.
+    TRANSLATE SM_NAME TO UPPER CASE.
+    CONCATENATE SM_NAME'_' F_KTX SO_BUDAT-LOW(4) '_Statement' INTO SM_NAM.
+  ELSE.
+    SELECT SINGLE KTX FROM T247 INTO F_KTX WHERE MNR = SO_BUDAT-LOW+4(2) AND SPRAS = 'EN'.
+    SELECT SINGLE KTX FROM T247 INTO T_KTX WHERE MNR = SO_BUDAT-HIGH+4(2) AND SPRAS = 'EN'.
+    TRANSLATE SM_NAME TO UPPER CASE.
+    IF SO_BUDAT-LOW(4) = SO_BUDAT-HIGH(4).
+      CONCATENATE SM_NAME '_' F_KTX '-' T_KTX  SO_BUDAT-LOW(4) '_Statement' INTO SM_NAM.
+    ELSE.
+      CONCATENATE SM_NAME '_' F_KTX SO_BUDAT-LOW(4) '_' T_KTX SO_BUDAT-HIGH(4) '_Statement' INTO SM_NAM .
+    ENDIF.
+  ENDIF.
+
+  TRY.
+      LO_DOCUMENT->ADD_ATTACHMENT(
+      EXPORTING
+      I_ATTACHMENT_TYPE = 'PDF'
+      I_ATTACHMENT_SUBJECT = SM_NAM
+      I_ATT_CONTENT_HEX = I_OBJBIN[] ).
+    CATCH CX_DOCUMENT_BCS INTO LX_DOCUMENT_BCS.
+  ENDTRY.
+
+*  LO_SENDER = 'prasathram1991@gmail.com'.
+*  SY-UNAME = 'SHEENLAC PAINTS'.
+*  CALL FUNCTION 'RFC_PING' IN BACKGROUND TASK.
+*  COMMIT WORK.
+  DATA: NAME TYPE XUBNAME VALUE 'SHEENLAC'.
+*  SY-UNAME = NAME .
+
+
+  LO_SEND_REQUEST->SET_DOCUMENT( LO_DOCUMENT ).
+*  LO_SENDER = CL_SAPUSER_BCS=>CREATE( SY-UNAME ).
+  LO_SENDER = CL_CAM_ADDRESS_BCS=>CREATE_INTERNET_ADDRESS( SENDER_MAIL ).
+  LO_SEND_REQUEST->SET_SENDER( LO_SENDER ).
+  LO_RECIPIENT = CL_CAM_ADDRESS_BCS=>CREATE_INTERNET_ADDRESS( IN_MAILID ).
+  LO_SEND_REQUEST->ADD_RECIPIENT( EXPORTING I_RECIPIENT = LO_RECIPIENT I_EXPRESS = ABAP_TRUE ).
+  LO_SEND_REQUEST->ADD_RECIPIENT( LO_RECIPIENT ).
+  LO_SEND_REQUEST->SEND( EXPORTING I_WITH_ERROR_SCREEN = ABAP_TRUE RECEIVING RESULT = LV_SENT_TO_ALL ).
+  TOT = TOT + 1 .
+  COMMIT WORK.
+ENDFORM.                    " SEND_MAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  STATUS_EMAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM STATUS_EMAIL .
+
+  DATA: F_E(100) TYPE C.
+  DATA: HDAT_F(10) TYPE C,
+        HDAT_T(10) TYPE C.
+  TYPES: BEGIN OF TY_LINES,
+        LINE TYPE CHAR255,
+        END OF TY_LINES.
+  DATA:  TI_LINES TYPE STANDARD TABLE OF TY_LINES,
+         WA_LINES TYPE TY_LINES.
+
+  DATA:  TITLE TYPE STRING.
+
+  CONCATENATE SO_BUDAT-LOW+6(2) '.' SO_BUDAT-LOW+4(2) '.' SO_BUDAT-LOW(4) INTO HDAT_F .
+  CONCATENATE SO_BUDAT-HIGH+6(2) '.' SO_BUDAT-HIGH+4(2) '.' SO_BUDAT-HIGH(4) INTO HDAT_T .
+  CONCATENATE 'Vendor Statement From ' HDAT_F ' To ' HDAT_T  INTO F_E  SEPARATED BY SPACE.
+
+  TITLE =  F_E.
+
+  WA_LINES = 'Dear Developer,'.
+  APPEND WA_LINES TO TI_LINES .
+
+  WA_LINES = '   This mail has been generated automatically. Please do not reply'.
+  APPEND WA_LINES TO TI_LINES .
+
+  TOT_C = TOT .
+  CONCATENATE 'Email Send Sucessfully: ' TOT_C ' Vendors' INTO WA_LINES.
+  APPEND WA_LINES TO TI_LINES .
+
+  WA_LINES = '______________________________________________________________________'.
+  APPEND: WA_LINES TO TI_LINES .
+  WA_LINES = 'Thanks&Regards'.
+  APPEND: WA_LINES TO TI_LINES .
+  WA_LINES = 'SIS-TEAM'.
+  APPEND: WA_LINES TO TI_LINES .
+
+
+  CALL FUNCTION 'EFG_GEN_SEND_EMAIL'
+    EXPORTING
+      I_TITLE                = TITLE
+      I_SENDER               = 'no-reply@sheenlac.in'
+      I_RECIPIENT            = 'prasath@sphinaxinfosystems.com'
+      I_FLG_COMMIT           = 'X'
+      I_FLG_SEND_IMMEDIATELY = 'X'
+    TABLES
+      I_TAB_LINES            = TI_LINES
+    EXCEPTIONS
+      NOT_QUALIFIED          = 1
+      FAILED                 = 2
+      OTHERS                 = 3.
+
+  PRINT-CONTROL FUNCTION 'SAPBLD'.
+  WRITE:/'Email Sending Status', SY-ULINE.
+  PRINT-CONTROL FUNCTION 'SAOFF'.
+
+  IF TOT < 1.
+    WRITE:/ 'No Emails Send' COLOR COL_NEGATIVE .
+  ELSE.
+    WRITE:/ 'Email Send Sucessfully', TOT ,'Vendors' COLOR COL_POSITIVE .
+  ENDIF.
+
+ENDFORM.                    " STATUS_EMAIL

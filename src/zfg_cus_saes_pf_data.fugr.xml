@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for customer sales data</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_CUS_SAES_PF_DATATOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_CUS_SAES_PF_DATA</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZSD_CUS_SALESAREA_PF_DATA</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Customer Sales Area and Partner Function data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>OBJID</PARAMETER>
+       <TYP>CHAR15</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VKORG</PARAMETER>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VTWEG</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>VTWEG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>SPART</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>SPART</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_CUSTOMER</PARAMETER>
+       <DBSTRUCT>ZSTR_CUST_MIS_NEW</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_CUSTOMER_PARTNER</PARAMETER>
+       <DBSTRUCT>ZSTR_CUST_PARTNER_MIS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/CAS_TT_KUNNR_RANGE</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>OBJID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Char 15</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Organization</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VTWEG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Distribution Channel</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>SPART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Division</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_CUSTOMER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for customer data</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_CUSTOMER_PARTNER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure For Customer Partner Function</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range table for Sold to party</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

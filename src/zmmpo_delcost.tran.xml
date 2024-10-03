@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TRAN" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TSTC>
+    <TCODE>ZMMPO_DELCOST</TCODE>
+    <PGMNA>ZMM_DELIVERY</PGMNA>
+    <DYPNO>1000</DYPNO>
+    <CINFO>gA==</CINFO>
+   </TSTC>
+   <TSTCC>
+    <TCODE>ZMMPO_DELCOST</TCODE>
+    <S_WEBGUI>1</S_WEBGUI>
+   </TSTCC>
+   <TSTCT>
+    <SPRSL>E</SPRSL>
+    <TCODE>ZMMPO_DELCOST</TCODE>
+    <TTEXT>MM: PO DELIVERY COST</TTEXT>
+   </TSTCT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

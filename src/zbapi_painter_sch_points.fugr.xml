@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>PAINTER SCHEME POINTS</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_PAINTER_SCH_POINTSTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_PAINTER_SCH_POINTS</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_PAINTER_SCH_POINTS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>PAINTER SCHEME POINTS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>REGIO</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>REGIO</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_PAINTER_POINT</PARAMETER>
+       <DBSTRUCT>ZPAINTER_SCH_POINTS_DETAIL</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_RETURN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BAPIRET2_T</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>REGIO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Region (State, Province, County)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>From Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PAINTER_POINT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>PAINTER SCH POINTS DETAILS</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return parameter table</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

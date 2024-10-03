@@ -1,0 +1,844 @@
+**&---------------------------------------------------------------------*
+**& Report  ZEXCISE_DLR_RECEIPT_RETURN.
+**&
+**&---------------------------------------------------------------------*
+*&Functional                   : Mr. Ramachandran                       *
+*& Developer                   : Mr. Ramachandran                       *
+*& Modified  On                :                                       *
+*& Company                     : Sheenlac Paints Pvt Ltd               *
+*& Verified By                 :                                       *
+*& Title                       : Excise Dealer Return Report (Receipts)*
+*& Report Name                 : Excise Dealer Return Report (Receipts)*
+*& Development Id              : kpabap                                *
+*& Related Information         : Excise Dealer Return Report (Receipts)*
+**&---------------------------------------------------------------------*
+*
+
+REPORT ZEXCISE_DLR_RECEIPT_RETURN.
+
+
+
+
+TYPES : BEGIN OF GS_J_1IRG23D,
+        DOCYR TYPE J_1IRG23D-DOCYR,              "Year
+        POSNR TYPE J_1IRG23D-POSNR,              "Item.
+        WERKS TYPE J_1IRG23D-WERKS,              "Plant
+        ZEILE TYPE J_1IEXCDTL-ZEILE,              "Item.
+        EXNUM TYPE J_1IRG23D-EXNUM,              "Official No.
+        DEPEXNUM TYPE J_1IRG23D-DEPEXNUM,       "Official No.
+        MATNR TYPE J_1IRG23D-MATNR,              "M.CODE
+        MAKTX TYPE J_1IRG23D-MAKTX,              "M.DES
+        CHAPID TYPE J_1IRG23D-CHAPID,
+        MENGE TYPE J_1IRG23D-MENGE,              "QTY
+        MEINS TYPE J_1IRG23D-MEINS,              "UINT
+        EXBAS TYPE J_1IRG23D-EXBAS,              "EXC BASE
+*        USNAM TYPE J_1IRG23D-USNAM,              "user name
+        CPUDT TYPE J_1IRG23D-CPUDT,              "Date
+        EXBED TYPE J_1IRG23D-EXBED,              "BED
+        ECS TYPE J_1IRG23D-ECS,                  "ECS
+        EXADDTAX1 TYPE J_1IRG23D-EXADDTAX1,     "AT1 percentage EXADDTAX1
+        END OF GS_J_1IRG23D.
+
+DATA : GT_J_1IRG23D TYPE TABLE OF GS_J_1IRG23D ,
+       WA_J_1IRG23D TYPE GS_J_1IRG23D.
+
+TYPES : BEGIN OF GS_J_1IEXCDTL,
+        DOCYR TYPE J_1IEXCDTL-DOCYR,              "Year
+        ZEILE TYPE J_1IEXCDTL-ZEILE,              "Item.
+        EXNUM TYPE J_1IEXCDTL-EXNUM,              "Official No.
+        USNAM TYPE J_1IEXCDTL-USNAM,              "user name
+        CPUDT TYPE J_1IEXCDTL-CPUDT,              "Date
+        WERKS TYPE J_1IEXCDTL-WERKS,              "Plant
+        MATNR TYPE J_1IEXCDTL-MATNR,              "M.CODE
+        MAKTX TYPE J_1IEXCDTL-MAKTX,              "M.DES
+        RCWRK TYPE J_1IEXCDTL-RCWRK,
+        CHAPID TYPE J_1IEXCDTL-CHAPID,              "M.DES
+        MENGE TYPE J_1IEXCDTL-MENGE,              "QTY
+        MEINS TYPE J_1IEXCDTL-MEINS,              "UINT
+        EXBAS TYPE J_1IEXCDTL-EXBAS,              "EXC BASE
+        EXBED TYPE J_1IEXCDTL-EXBED,              "BED
+        ECS TYPE J_1IEXCDTL-ECS,                  "ECS
+        EXADDTAX1 TYPE J_1IEXCDTL-EXADDTAX1,     "AT1 percentage EXADDTAX1
+        END OF GS_J_1IEXCDTL.
+
+DATA : GT_J_1IEXCDTL TYPE TABLE OF GS_J_1IEXCDTL ,
+       WA_J_1IEXCDTL TYPE GS_J_1IEXCDTL.
+
+
+TYPES : BEGIN OF GS_J_1IMOCOMP,
+        BUKRS TYPE J_1IMOCOMP-BUKRS,
+        WERKS TYPE J_1IMOCOMP-WERKS,
+        J_1IEXCD TYPE J_1IMOCOMP-J_1IEXCD,
+       END OF GS_J_1IMOCOMP.
+
+DATA : GT_J_1IMOCOMP TYPE TABLE OF GS_J_1IMOCOMP,
+       WA_J_1IMOCOMP TYPE GS_J_1IMOCOMP.
+
+TYPES : BEGIN OF GS_T001W,
+        WERKS TYPE T001W-WERKS,
+        NAME1 TYPE T001W-NAME1,
+        ADRNR TYPE T001W-ADRNR,
+        END OF GS_T001W.
+
+DATA : GT_T001W TYPE TABLE OF GS_T001W,
+       WA_T001W TYPE GS_T001W.
+
+DATA : GT_T001W1 TYPE TABLE OF GS_T001W,
+       WA_T001W1 TYPE GS_T001W.
+
+TYPES : BEGIN OF GS_ADRC,
+        ADDRNUMBER TYPE ADRC-ADDRNUMBER,         "ADDRNUMBER
+        STREET TYPE ADRC-STREET,                 "Street
+        HOUSE_NUM1 TYPE ADRC-HOUSE_NUM1,        "House Number
+      END OF GS_ADRC.
+
+ DATA : GT_ADRC TYPE TABLE OF GS_ADRC,
+        WA_ADRC TYPE GS_ADRC.
+
+
+TYPES : BEGIN OF GS_FINAL,
+        DOCYR TYPE J_1IRG23D-DOCYR,              " YEAR
+        POSNR TYPE J_1IRG23D-POSNR,              "Item
+        DEPEXNUM TYPE J_1IRG23D-DEPEXNUM,        "Official No.
+        ZEILE TYPE J_1IRG23D-ZEILE,              "Mat. Doc.Item
+        EXNUM TYPE J_1IRG23D-EXNUM,              "Official No.
+        USNAM TYPE J_1IEXCDTL-USNAM,              "username
+        CPUDT TYPE J_1IRG23D-CPUDT,              "Date
+        MATNR TYPE J_1IRG23D-MATNR,              "M.CODE
+        MAKTX TYPE J_1IRG23D-MAKTX,              "M.DES
+        CHAPID TYPE J_1IRG23D-CHAPID,
+        MENGE TYPE J_1IRG23D-MENGE,              "QTY
+        MEINS TYPE J_1IRG23D-MEINS,              "UINT
+        EXBAS TYPE J_1IRG23D-EXBAS,              "EXC BASE
+        EXBED TYPE J_1IRG23D-EXBED,              "BED
+        ECS TYPE J_1IRG23D-ECS,                  "ECS
+        EXADDTAX1 TYPE P DECIMALS 2,    "AT1 percentage
+        BUKRS TYPE J_1IMOCOMP-BUKRS,
+        WERKS TYPE J_1IMOCOMP-WERKS,
+        J_1IEXCD TYPE J_1IMOCOMP-J_1IEXCD,
+        NAME1 TYPE T001W-NAME1,
+        STREET TYPE ADRC-STREET,               "STREET
+        TOTALAMT TYPE P DECIMALS 2,
+    END OF GS_FINAL.
+
+TYPES : BEGIN OF GS_FINAL1, " Added By Govind 0n 30-10-2014
+        DOCYR TYPE J_1IEXCDTL-DOCYR,              " YEAR
+        POSNR TYPE J_1IEXCDTL-ZEILE,              "Item
+        EXNUM TYPE J_1IEXCDTL-EXNUM,              "Official No.
+        USNAM TYPE J_1IEXCDTL-USNAM,              "username
+        CPUDT TYPE J_1IEXCDTL-CPUDT,              "Date
+        MATNR TYPE J_1IEXCDTL-MATNR,              "M.CODE
+        MAKTX TYPE J_1IEXCDTL-MAKTX,              "M.DES
+        RCWRK TYPE J_1IEXCDTL-RCWRK,
+        CHAPID TYPE J_1IEXCDTL-CHAPID,              "M.DES
+        MENGE TYPE J_1IEXCDTL-MENGE,              "QTY
+        MEINS TYPE J_1IEXCDTL-MEINS,              "UINT
+        EXBAS TYPE J_1IEXCDTL-EXBAS,              "EXC BASE
+        EXBED TYPE J_1IEXCDTL-EXBED,              "BED
+        ECS TYPE J_1IEXCDTL-ECS,                  "ECS
+        EXADDTAX1 TYPE P DECIMALS 2,    "AT1 percentage
+        BUKRS TYPE J_1IMOCOMP-BUKRS,
+        WERKS TYPE J_1IMOCOMP-WERKS,
+        WERKS1 TYPE J_1IMOCOMP-WERKS,
+        J_1IEXCD TYPE J_1IMOCOMP-J_1IEXCD,
+        NAME1 TYPE T001W-NAME1,
+        RNAME1 TYPE T001W-NAME1,
+
+        ADRNR TYPE T001W-ADRNR,
+
+        ADDRNUMBER TYPE ADRC-ADDRNUMBER,
+        STREET TYPE ADRC-STREET,
+        STREET1 TYPE ADRC-STREET,
+
+        TOTALAMT TYPE P DECIMALS 2,
+        q_code type char10,
+        LV_DESC TYPE CHAR30,
+    END OF GS_FINAL1.
+
+DATA : GT_FINAL TYPE TABLE OF GS_FINAL,
+       WA_FINAL TYPE GS_FINAL.
+
+DATA : GT_FINAL1 TYPE TABLE OF GS_FINAL1, " Added By Govind 0n 30-10-2014
+       WA_FINAL1 TYPE GS_FINAL1.
+
+DATA : GT_FCAT TYPE SLIS_T_FIELDCAT_ALV,
+       WA_FCAT TYPE SLIS_FIELDCAT_ALV.
+
+DATA : GT_FCAT1 TYPE SLIS_T_FIELDCAT_ALV, " Added By Govind 0n 30-10-2014
+       WA_FCAT1 TYPE SLIS_FIELDCAT_ALV.
+
+DATA : LAYOUT TYPE SLIS_LAYOUT_ALV.
+
+DATA : GT_SORT TYPE SLIS_T_SORTINFO_ALV,
+       WA_SORT TYPE SLIS_SORTINFO_ALV.
+
+DATA : GT_SORT1 TYPE SLIS_T_SORTINFO_ALV, " Added By Govind 0n 30-10-2014
+       WA_SORT1 TYPE SLIS_SORTINFO_ALV.
+
+*DATA: L_BUKRS TYPE J_1IMOCOMP-BUKRS,
+*      L_WERKS TYPE J_1IRG23D-WERKS,
+*      L_CPUDT TYPE J_1IRG23D-CPUDT,
+*      L_DOCYR TYPE J_1IRG23D-DOCYR.
+
+*DATA : LV_BUKRS TYPE J_1IMOCOMP-BUKRS,
+*       LV_WERKS TYPE J_1IEXCDTL-RCWRK,
+*       LV_CPUDT TYPE J_1IRG23D-CPUDT,
+*       LV_DOCYR TYPE J_1IRG23D-DOCYR.
+
+*DATA: L_BUKRS TYPE J_1IMOCOMP-BUKRS,
+*      L_WERKS TYPE J_1IRG23D-WERKS,
+*      L_CPUDT TYPE J_1IRG23D-CPUDT,
+*      L_DOCYR TYPE J_1IRG23D-DOCYR.
+
+DATA : LV_BUKRS TYPE J_1IMOCOMP-BUKRS ,
+       LV_WERKS TYPE J_1IRG23D-WERKS,
+       LV_CPUDT TYPE J_1IRG23D-CPUDT,
+       LV_EXNUM TYPE J_1IRG23D-EXNUM,
+       LV_DOCYR TYPE J_1IRG23D-DOCYR .
+
+
+DATA : LV_NAME1(200) TYPE C .
+
+SELECTION-SCREEN : BEGIN OF BLOCK S WITH FRAME TITLE TEXT-101.
+
+SELECT-OPTIONS:  " SO_BUKRS FOR LV_BUKRS OBLIGATORY,
+                  SO_WERKS FOR LV_WERKS NO INTERVALS NO-EXTENSION OBLIGATORY,
+                  SO_DOCYR FOR LV_DOCYR,
+                 " SO_EXNUM FOR LV_EXNUM,
+                  SO_RWERK FOR LV_WERKS NO-DISPLAY,
+                  SO_CPUDT FOR LV_CPUDT.
+SELECTION-SCREEN:END OF BLOCK S.
+
+
+AT SELECTION-SCREEN .
+
+*  IF SO_BUKRS IS NOT INITIAL .
+*    SELECT SINGLE BUKRS FROM J_1IMOCOMP INTO LV_BUKRS WHERE BUKRS IN SO_BUKRS .
+*    IF SY-SUBRC NE 0.
+*      MESSAGE 'Enter Valid Company Code' TYPE 'E'.
+*    ENDIF.
+*  ENDIF.
+
+  IF SO_WERKS IS NOT INITIAL .
+    SELECT WERKS UP TO 1 ROWS FROM T001W INTO LV_WERKS WHERE WERKS IN SO_WERKS  ORDER BY PRIMARY KEY.
+    ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+    IF SY-SUBRC <> 0.
+      MESSAGE 'Enter Valid Plant' TYPE 'E'.
+    ENDIF.
+  ENDIF.
+
+  IF SO_CPUDT IS NOT INITIAL .
+    SELECT CPUDT UP TO 1 ROWS FROM J_1IRG23D INTO LV_CPUDT WHERE CPUDT  IN SO_CPUDT ORDER BY PRIMARY KEY.
+    ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+    IF SY-SUBRC NE 0.
+      MESSAGE 'Enter Valid Date.' TYPE 'E' .
+    ENDIF.
+  ENDIF.
+
+*  IF SO_DOCYR IS NOT INITIAL .
+*    SELECT SINGLE DOCYR FROM J_1IRG23D INTO LV_DOCYR WHERE DOCYR  IN SO_DOCYR.
+*    IF SY-SUBRC NE 0.
+*      MESSAGE 'Enter Valid Year.' TYPE 'E' .
+*    ENDIF.
+*  ENDIF.
+
+
+START-OF-SELECTION.
+
+
+  PERFORM GET_DATA.
+  PERFORM FIELDCATLOG.
+  PERFORM ALV_DISPLAY.
+
+
+
+END-OF-SELECTION.
+
+
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM GET_DATA.
+
+IF SO_WERKS-LOW = '1100' .
+    SELECT
+        BUKRS
+        WERKS
+        J_1IEXCD
+        FROM
+        J_1IMOCOMP INTO TABLE GT_J_1IMOCOMP ."  WHERE BUKRS IN SO_BUKRS . " AND WERKS IN SO_WERKS.
+
+    IF GT_J_1IMOCOMP[] IS NOT INITIAL.
+
+      SELECT
+        DOCYR
+        POSNR
+        WERKS
+        ZEILE
+        EXNUM
+        DEPEXNUM
+        MATNR
+        MAKTX
+        CHAPID
+        MENGE
+        MEINS
+        EXBAS
+        CPUDT
+        EXBED
+        ECS
+        EXADDTAX1
+        FROM J_1IRG23D INTO TABLE GT_J_1IRG23D FOR ALL ENTRIES IN GT_J_1IMOCOMP
+           WHERE WERKS = GT_J_1IMOCOMP-WERKS AND CPUDT IN SO_CPUDT AND DOCYR IN SO_DOCYR AND WERKS IN SO_WERKS . " AND EXNUM IN SO_EXNUM .
+        ENDIF.
+
+ DELETE GT_J_1IRG23D WHERE  POSNR = '' .
+
+    IF GT_J_1IRG23D[] IS NOT INITIAL.
+
+      SELECT DOCYR
+        ZEILE
+        EXNUM
+        USNAM
+        CPUDT
+        WERKS
+        MATNR
+        MAKTX
+        RCWRK
+        CHAPID
+        MENGE
+        MEINS
+        EXBAS
+        EXBED
+        ECS
+        EXADDTAX1
+      FROM
+       J_1IEXCDTL INTO TABLE GT_J_1IEXCDTL FOR ALL ENTRIES IN GT_J_1IRG23D WHERE WERKS = GT_J_1IRG23D-WERKS AND WERKS IN SO_WERKS AND
+        EXNUM = GT_J_1IRG23D-EXNUM AND CPUDT IN SO_CPUDT.
+      ENDIF.
+
+
+    IF GT_J_1IEXCDTL[] IS NOT INITIAL.
+
+      SELECT
+        WERKS
+        NAME1
+        ADRNR
+        FROM
+        T001W INTO TABLE GT_T001W FOR ALL ENTRIES IN GT_J_1IEXCDTL WHERE WERKS = GT_J_1IEXCDTL-WERKS.
+
+  SELECT
+        WERKS
+        NAME1
+        ADRNR
+        FROM
+        T001W INTO TABLE GT_T001W1 FOR ALL ENTRIES IN GT_J_1IEXCDTL WHERE WERKS = GT_J_1IEXCDTL-RCWRK.
+ ENDIF.
+ IF GT_T001W1[] IS NOT INITIAL.
+    SELECT
+        ADDRNUMBER
+        STREET
+        HOUSE_NUM1
+      FROM
+        ADRC INTO TABLE GT_ADRC FOR ALL ENTRIES IN GT_T001W1 WHERE ADDRNUMBER = GT_T001W1-ADRNR.
+    ENDIF.
+
+      SELECT SINGLE NAME1 FROM T001W INTO LV_NAME1 WHERE WERKS = LV_WERKS .
+
+    LOOP AT GT_J_1IEXCDTL INTO WA_J_1IEXCDTL.
+        WA_FINAL1-POSNR = WA_J_1IEXCDTL-ZEILE.
+        WA_FINAL1-DOCYR = WA_J_1IEXCDTL-DOCYR.
+      "  WA_FINAL1-EXNUM = WA_J_1IEXCDTL-EXNUM.
+        WA_FINAL1-USNAM = WA_J_1IEXCDTL-USNAM.
+        WA_FINAL1-CPUDT = WA_J_1IEXCDTL-CPUDT.
+        WA_FINAL1-WERKS = WA_J_1IEXCDTL-WERKS.
+        WA_FINAL1-MATNR = WA_J_1IEXCDTL-MATNR.
+        WA_FINAL1-MAKTX = WA_J_1IEXCDTL-MAKTX.
+        WA_FINAL1-RCWRK = WA_J_1IEXCDTL-RCWRK.
+        WA_FINAL1-CHAPID = WA_J_1IEXCDTL-CHAPID.
+        WA_FINAL1-MENGE = WA_J_1IEXCDTL-MENGE.
+        WA_FINAL1-MEINS = WA_J_1IEXCDTL-MEINS.
+        WA_FINAL1-EXBAS = WA_J_1IEXCDTL-EXBAS.
+        WA_FINAL1-EXBED = WA_J_1IEXCDTL-EXBED.
+        WA_FINAL1-ECS = WA_J_1IEXCDTL-ECS.
+        WA_FINAL1-EXADDTAX1 = WA_J_1IEXCDTL-EXADDTAX1.
+        wa_final1-q_code = 'U'.
+      READ TABLE  GT_J_1IMOCOMP INTO WA_J_1IMOCOMP WITH  KEY WERKS = WA_J_1IEXCDTL-RCWRK.
+        WA_FINAL1-BUKRS = WA_J_1IMOCOMP-BUKRS.
+           WA_FINAL1-J_1IEXCD = WA_J_1IMOCOMP-J_1IEXCD.
+      READ TABLE GT_T001W INTO WA_T001W WITH KEY  WERKS = WA_J_1IEXCDTL-WERKS.
+      WA_FINAL1-NAME1 = WA_T001W-NAME1.
+
+      LOOP AT GT_J_1IRG23D INTO WA_J_1IRG23D WHERE EXNUM = WA_J_1IEXCDTL-EXNUM . " AND WERKS = SO_WERKS-LOW .
+*        IF SO_WERKS-LOW <> '1100' .
+*          WA_FINAL1-EXNUM = WA_J_1IRG23D-DEPEXNUM .
+*          ENDIF.
+       IF SO_WERKS-LOW = '1100' .
+          WA_FINAL1-EXNUM = WA_J_1IEXCDTL-EXNUM .
+          ENDIF.
+      ENDLOOP.
+
+      READ TABLE GT_T001W1 INTO WA_T001W1 WITH KEY  WERKS = WA_J_1IEXCDTL-RCWRK.
+      IF SY-SUBRC = 0.
+      WA_FINAL1-ADRNR = WA_T001W1-ADRNR.
+      WA_FINAL1-RNAME1 = WA_T001W1-NAME1.
+      ENDIF.
+
+      APPEND WA_FINAL1 TO GT_FINAL1.
+      CLEAR WA_FINAL1.
+
+    ENDLOOP.
+
+    ENDIF.
+
+IF SO_WERKS-LOW <> '1100' .
+    SELECT
+        BUKRS
+        WERKS
+        J_1IEXCD
+        FROM
+        J_1IMOCOMP INTO TABLE GT_J_1IMOCOMP ."  WHERE BUKRS IN SO_BUKRS . " AND WERKS IN SO_WERKS.
+
+    IF GT_J_1IMOCOMP[] IS NOT INITIAL.
+
+      SELECT
+        DOCYR
+        POSNR
+        WERKS
+        ZEILE
+        EXNUM
+        DEPEXNUM
+        MATNR
+        MAKTX
+        CHAPID
+        MENGE
+        MEINS
+        EXBAS
+        CPUDT
+        EXBED
+        ECS
+        EXADDTAX1
+        FROM J_1IRG23D INTO TABLE GT_J_1IRG23D
+           WHERE WERKS NE SO_WERKS AND CPUDT IN SO_CPUDT AND DOCYR IN SO_DOCYR . " AND WERKS IN SO_WERKS . " AND EXNUM IN SO_EXNUM .
+        ENDIF.
+
+ DELETE GT_J_1IRG23D WHERE  POSNR = '' .
+
+    IF GT_J_1IRG23D[] IS NOT INITIAL.
+
+      SELECT DOCYR
+        ZEILE
+        EXNUM
+        USNAM
+        CPUDT
+        WERKS
+        MATNR
+        MAKTX
+        RCWRK
+        CHAPID
+        MENGE
+        MEINS
+        EXBAS
+        EXBED
+        ECS
+        EXADDTAX1
+      FROM
+       J_1IEXCDTL INTO TABLE GT_J_1IEXCDTL FOR ALL ENTRIES IN GT_J_1IRG23D WHERE RCWRK = GT_J_1IRG23D-WERKS  AND WERKS IN SO_WERKS AND
+        EXNUM = GT_J_1IRG23D-EXNUM .
+      ENDIF.
+
+    IF GT_J_1IEXCDTL[] IS NOT INITIAL.
+
+      SELECT
+        WERKS
+        NAME1
+        ADRNR
+        FROM
+        T001W INTO TABLE GT_T001W FOR ALL ENTRIES IN GT_J_1IEXCDTL WHERE WERKS = GT_J_1IEXCDTL-WERKS.
+
+  SELECT
+        WERKS
+        NAME1
+        ADRNR
+        FROM
+        T001W INTO TABLE GT_T001W1 FOR ALL ENTRIES IN GT_J_1IEXCDTL WHERE WERKS = GT_J_1IEXCDTL-RCWRK.
+ ENDIF.
+ IF GT_T001W1[] IS NOT INITIAL.
+    SELECT
+        ADDRNUMBER
+        STREET
+        HOUSE_NUM1
+      FROM
+        ADRC INTO TABLE GT_ADRC FOR ALL ENTRIES IN GT_T001W1 WHERE ADDRNUMBER = GT_T001W1-ADRNR.
+    ENDIF.
+
+      SELECT SINGLE NAME1 FROM T001W INTO LV_NAME1 WHERE WERKS = LV_WERKS .
+
+*    LOOP AT GT_J_1IEXCDTL INTO WA_J_1IEXCDTL.
+*        WA_FINAL1-POSNR = WA_J_1IEXCDTL-ZEILE.
+*        WA_FINAL1-DOCYR = WA_J_1IEXCDTL-DOCYR.
+*      "  WA_FINAL1-EXNUM = WA_J_1IEXCDTL-EXNUM.
+*        WA_FINAL1-USNAM = WA_J_1IEXCDTL-USNAM.
+*        WA_FINAL1-CPUDT = WA_J_1IEXCDTL-CPUDT.
+*        WA_FINAL1-WERKS = WA_J_1IEXCDTL-WERKS.
+*        WA_FINAL1-MATNR = WA_J_1IEXCDTL-MATNR.
+*        WA_FINAL1-MAKTX = WA_J_1IEXCDTL-MAKTX.
+*        WA_FINAL1-RCWRK = WA_J_1IEXCDTL-RCWRK.
+*        WA_FINAL1-CHAPID = WA_J_1IEXCDTL-CHAPID.
+*        WA_FINAL1-MENGE = WA_J_1IEXCDTL-MENGE.
+*        WA_FINAL1-MEINS = WA_J_1IEXCDTL-MEINS.
+*        WA_FINAL1-EXBAS = WA_J_1IEXCDTL-EXBAS.
+*        WA_FINAL1-EXBED = WA_J_1IEXCDTL-EXBED.
+*        WA_FINAL1-ECS = WA_J_1IEXCDTL-ECS.
+*        WA_FINAL1-EXADDTAX1 = WA_J_1IEXCDTL-EXADDTAX1.
+*        wa_final1-q_code = 'U'.
+*      READ TABLE  GT_J_1IMOCOMP INTO WA_J_1IMOCOMP WITH  KEY WERKS = WA_J_1IEXCDTL-RCWRK.
+*        WA_FINAL1-BUKRS = WA_J_1IMOCOMP-BUKRS.
+*           WA_FINAL1-J_1IEXCD = WA_J_1IMOCOMP-J_1IEXCD.
+*      READ TABLE GT_T001W INTO WA_T001W WITH KEY  WERKS = WA_J_1IEXCDTL-WERKS.
+*      WA_FINAL1-NAME1 = WA_T001W-NAME1.
+*
+*     " READ TABLE GT_T001W INTO WA_T001W WITH KEY  WERKS = WA_J_1IEXCDTL-WERKS WERKS = SO_WERKS-LOW.
+*
+*
+*
+*      LOOP AT GT_J_1IRG23D INTO WA_J_1IRG23D WHERE EXNUM = WA_J_1IEXCDTL-EXNUM AND WERKS NE SO_WERKS-LOW .
+*        IF SO_WERKS-LOW <> '1100' .
+*          WA_FINAL1-EXNUM = WA_J_1IRG23D-DEPEXNUM .
+*          ENDIF.
+**       IF SO_WERKS-LOW = '1100' .
+**          WA_FINAL1-EXNUM = WA_J_1IEXCDTL-EXNUM .
+**          ENDIF.
+*      ENDLOOP.
+*
+*      READ TABLE GT_T001W1 INTO WA_T001W1 WITH KEY  WERKS = WA_J_1IEXCDTL-RCWRK.
+*      IF SY-SUBRC = 0.
+*      WA_FINAL1-ADRNR = WA_T001W1-ADRNR.
+*      WA_FINAL1-RNAME1 = WA_T001W1-NAME1.
+*      ENDIF.
+*
+*      APPEND WA_FINAL1 TO GT_FINAL1.
+*      CLEAR WA_FINAL1.
+*
+*    ENDLOOP.
+
+
+LOOP AT GT_J_1IRG23D INTO WA_J_1IRG23D WHERE WERKS = '1100'.
+" MOVE-CORRESPONDING WA_J_1IRG23D TO WA_FINAL1 .
+    WA_FINAL1-EXNUM = WA_J_1IRG23D-DEPEXNUM .
+    WA_FINAL1-CHAPID = WA_J_1IRG23D-CHAPID.
+  "  WA_FINAL1-MATNR = WA_J_1IRG23D-MATNR.
+    WA_FINAL1-MAKTX = WA_J_1IRG23D-MAKTX.
+    WA_FINAL1-CPUDT = WA_J_1IRG23D-CPUDT.
+           WA_FINAL1-MENGE = WA_J_1IRG23D-MENGE.
+        WA_FINAL1-MEINS = WA_J_1IRG23D-MEINS.
+
+          WA_FINAL1-EXBED = WA_J_1IRG23D-EXBED.
+
+   " LOOP AT GT_J_1IEXCDTL INTO WA_J_1IEXCDTL WHERE EXNUM = WA_J_1IRG23D-EXNUM AND MATNR = WA_J_1IRG23D-MATNR.
+
+READ TABLE GT_J_1IEXCDTL INTO WA_J_1IEXCDTL WITH KEY EXNUM = WA_J_1IRG23D-EXNUM .
+        WA_FINAL1-POSNR = WA_J_1IEXCDTL-ZEILE.
+        WA_FINAL1-DOCYR = WA_J_1IEXCDTL-DOCYR.
+      "  WA_FINAL1-EXNUM = WA_J_1IEXCDTL-EXNUM.
+        WA_FINAL1-USNAM = WA_J_1IEXCDTL-USNAM.
+
+        WA_FINAL1-WERKS = WA_J_1IEXCDTL-WERKS.
+         WA_FINAL1-MATNR = WA_J_1IEXCDTL-MATNR.
+
+        WA_FINAL1-RCWRK = WA_J_1IEXCDTL-RCWRK.
+
+
+        WA_FINAL1-EXBAS = WA_J_1IEXCDTL-EXBAS.
+        WA_FINAL1-EXBED = WA_J_1IEXCDTL-EXBED.
+        WA_FINAL1-ECS = WA_J_1IEXCDTL-ECS.
+        WA_FINAL1-EXADDTAX1 = WA_J_1IEXCDTL-EXADDTAX1.
+    "    ENDLOOP.
+
+      READ TABLE  GT_J_1IMOCOMP INTO WA_J_1IMOCOMP WITH  KEY WERKS =  WA_J_1IEXCDTL-RCWRK.
+           WA_FINAL1-BUKRS = WA_J_1IMOCOMP-BUKRS.
+           WA_FINAL1-J_1IEXCD = WA_J_1IMOCOMP-J_1IEXCD.
+
+
+        wa_final1-q_code = 'U'.
+
+      READ TABLE GT_T001W INTO WA_T001W WITH KEY  WERKS = WA_J_1IEXCDTL-WERKS.
+
+      WA_FINAL1-NAME1 = WA_T001W-NAME1.
+
+     " READ TABLE GT_T001W INTO WA_T001W WITH KEY  WERKS = WA_J_1IEXCDTL-WERKS WERKS = SO_WERKS-LOW.
+
+
+*        IF SO_WERKS-LOW <> '1100' .
+*          WA_FINAL1-EXNUM = WA_J_1IRG23D-DEPEXNUM .
+*          ENDIF.
+*       IF SO_WERKS-LOW = '1100' .
+*          WA_FINAL1-EXNUM = WA_J_1IEXCDTL-EXNUM .
+*          ENDIF.
+
+      READ TABLE GT_T001W1 INTO WA_T001W1 WITH KEY  WERKS = WA_J_1IEXCDTL-RCWRK.
+      IF SY-SUBRC = 0.
+      WA_FINAL1-ADRNR = WA_T001W1-ADRNR.
+      WA_FINAL1-RNAME1 = WA_T001W1-NAME1.
+      ENDIF.
+
+      APPEND WA_FINAL1 TO GT_FINAL1.
+      CLEAR WA_FINAL1.
+
+    ENDLOOP.
+
+
+
+    ENDIF.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    LOOP AT GT_FINAL1 INTO WA_FINAL1.
+
+    READ TABLE GT_ADRC INTO WA_ADRC WITH KEY ADDRNUMBER = WA_FINAL1-ADRNR.
+      IF SY-SUBRC = 0.
+       WA_FINAL1-ADDRNUMBER = WA_ADRC-ADDRNUMBER.
+       WA_FINAL1-STREET = WA_ADRC-STREET.
+      ENDIF.
+
+      WA_FINAL1-TOTALAMT = WA_FINAL1-EXBED + WA_FINAL1-ECS + WA_FINAL1-EXADDTAX1.
+      MODIFY GT_FINAL1 FROM WA_FINAL1 TRANSPORTING TOTALAMT ADDRNUMBER STREET.
+      CLEAR WA_FINAL1.
+
+    ENDLOOP.
+
+    LOOP AT GT_FINAL1 INTO WA_FINAL1.
+      IF WA_FINAL1-WERKS = '1100' .
+        WA_FINAL1-LV_DESC = 'Manufacturer' .
+        ENDIF.
+                 IF WA_FINAL1-WERKS <> '1100' .
+                   WA_FINAL1-LV_DESC = 'Dealer' .
+                 ENDIF.
+                  MODIFY GT_FINAL1 FROM WA_FINAL1 TRANSPORTING LV_DESC.
+                  CLEAR WA_FINAL1 .
+    ENDLOOP.
+
+
+ENDFORM.                    "GET_DATA
+
+*&---------------------------------------------------------------------*
+*&      Form  FIELDCATLOG
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM FIELDCATLOG.
+
+    PERFORM ALV_LAYOUT1 USING 1 'Invoice No' 'EXNUM' 'GT_FINAL1' '' '' ''  '' ''.
+    PERFORM ALV_LAYOUT1 USING 2 'Date' 'CPUDT' 'GT_FINAL1' '' '' '' ''  ''.
+  "   IF SO_WERKS-LOW = '1100' .
+   " PERFORM ALV_LAYOUT1 USING 3 'Issued By' 'Manufacturer' 'GT_FINAL1' '' '' '' ''  ''.
+   "  ENDIF.
+    " IF SO_WERKS-LOW <> '1100' .
+    PERFORM ALV_LAYOUT1 USING 3 'Issued By' 'LV_DESC' 'GT_FINAL1' '' '' '' ''  ''.
+    " ENDIF.
+    PERFORM ALV_LAYOUT1 USING 4 'Registration No' 'J_1IEXCD' 'GT_FINAL' '' '' '' ''  '' .
+    PERFORM ALV_LAYOUT1 USING 5 'Issue Plant' 'RCWRK' 'GT_FINAL1' 'X' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 6 'Issue Plant Name' 'RNAME1' 'GT_FINAL1' '' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 7 'Address' 'STREET' 'GT_FINAL1' '' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 8 'Material Code' 'MATNR' 'GT_FINAL1' '' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 9 'Material Description' 'MAKTX' 'GT_FINAL1' '' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 10 'CETSH Number' 'CHAPID' 'GT_FINAL1' '' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 10 'Quantity Code' 'Q_CODE' 'GT_FINAL1' '' '' '' ''  ''.
+    PERFORM ALV_LAYOUT1 USING 11 'Quantity' 'MENGE' 'GT_FINAL1' 'X' '' '' ''  'X'.
+    PERFORM ALV_LAYOUT1 USING 12 'Amount Of Duty Involved' 'EXBED' 'GT_FINAL1' 'X' '' '' ''  'X'.
+
+*    PERFORM ALV_LAYOUT1 USING 1 'Recev.Plant' 'WERKS' 'GT_FINAL1' '' '' '' '' '' .
+*    PERFORM ALV_LAYOUT1 USING 3 'Recev.Plant Name' 'NAME1' 'GT_FINAL1' '' '' '' ''  '' .
+*    PERFORM ALV_LAYOUT1 USING 4 'ECC No.' 'J_1IEXCD' 'GT_FINAL' '' '' '' ''  '' .
+*    PERFORM ALV_LAYOUT1 USING 5 'Chapter Id' 'CHAPID' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 7 'Date Of Invoice' 'CPUDT' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 9 'Invoice No' 'EXNUM' 'GT_FINAL1' '' '' ''  '' ''.
+*    PERFORM ALV_LAYOUT1 USING 11 'Mat Code' 'MATNR' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 12 'Mat Description' 'MAKTX' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 13 'Unit Of Measurement' 'MEINS' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 14 'Supply Plant' 'RCWRK' 'GT_FINAL1' 'X' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 15 'Supply Plant Name' 'RNAME1' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 16 'Address' 'STREET' 'GT_FINAL1' '' '' '' ''  ''.
+*    PERFORM ALV_LAYOUT1 USING 17 'Receiving Qty' 'MENGE' 'GT_FINAL1' 'X' '' '' ''  'X'.
+*    PERFORM ALV_LAYOUT1 USING 19 'Exc Base' 'EXBAS' 'GT_FINAL1' 'X' '' '' ''  'X'.
+*    PERFORM ALV_LAYOUT1 USING 21 'BED' 'EXBED' 'GT_FINAL1' 'X' '' '' ''  'X'.
+*    PERFORM ALV_LAYOUT1 USING 23 'ECS' 'ECS' 'GT_FINAL1' 'X' '' '' ''  'X'.
+*    PERFORM ALV_LAYOUT1 USING 25 'HECS' 'EXADDTAX1' 'GT_FINAL1' 'X' ''  '' '' ''.
+*    PERFORM ALV_LAYOUT1 USING 27 'Total Value' 'TOTALAMT' 'GT_FINAL1' 'X' ''  '' '' 'X'.
+
+*    WA_SORT1-FIELDNAME = 'WERKS'.
+*    WA_SORT1-TABNAME = 'GT_FINAL1'.
+*    WA_SORT1-UP = 'X'.
+*    APPEND WA_SORT1 TO GT_SORT1.
+*    CLEAR WA_SORT1.
+*
+*    WA_SORT1-FIELDNAME = 'NAME1'.
+*    WA_SORT1-TABNAME = 'GT_FINAL1'.
+*    WA_SORT1-UP = 'X'.
+*    APPEND WA_SORT1 TO GT_SORT1.
+*    CLEAR WA_SORT1.
+*
+*  WA_SORT1-FIELDNAME = 'RCWRK'.
+*    WA_SORT1-TABNAME = 'GT_FINAL1'.
+*    WA_SORT1-UP = 'X'.
+*    WA_SORT1-SUBTOT = 'X'.
+*    APPEND WA_SORT1 TO GT_SORT1.
+*    CLEAR WA_SORT1.
+*
+*  WA_SORT1-FIELDNAME = 'RNAME1'.
+*    WA_SORT1-TABNAME = 'GT_FINAL1'.
+*    WA_SORT1-UP = 'X'.
+*    APPEND WA_SORT1 TO GT_SORT1.
+*    CLEAR WA_SORT1.
+
+*    WA_SORT1-FIELDNAME = 'STREET'.
+*    WA_SORT1-TABNAME = 'GT_FINAL1'.
+*    WA_SORT1-UP = 'X'.
+**  WA_SORT-SUBTOT = 'X'.
+*    APPEND WA_SORT1 TO GT_SORT1.
+*    CLEAR WA_SORT1.
+
+
+
+
+
+ENDFORM.                    "FIELDCATLOG
+
+
+
+*&---------------------------------------------------------------------* " Added By Govind 0n 30-10-2014
+*&      Form  ALV_LAYOUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P1         text
+*      -->P2         text
+*      -->P3         text
+*      -->P4         text
+*      -->P5         text
+*      -->P6         text
+*      -->P7         text
+*      -->P8         text
+*      -->P9         text
+*----------------------------------------------------------------------*
+FORM ALV_LAYOUT1 USING P1 P2 P3 P4 P5 P6 P7 P8 P9.
+
+
+
+  WA_FCAT1-COL_POS = P1.
+  WA_FCAT1-SELTEXT_L = P2.
+  WA_FCAT1-FIELDNAME = P3.
+  WA_FCAT1-TABNAME = P4.
+  WA_FCAT1-DO_SUM = P5.
+  WA_FCAT1-OUTPUTLEN = P6.
+  WA_FCAT1-KEY = P7.
+  WA_FCAT1-NO_OUT = P8.
+  WA_FCAT1-NO_ZERO = P9.
+
+  APPEND WA_FCAT1 TO GT_FCAT1.
+  CLEAR WA_FCAT1.
+
+
+
+ENDFORM.                    "ALV_LAYOUT
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM ALV_DISPLAY.
+
+
+  LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+  LAYOUT-ZEBRA = 'X'.
+
+
+
+    CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+      EXPORTING
+        I_CALLBACK_PROGRAM     = SY-REPID
+        I_CALLBACK_TOP_OF_PAGE = 'ALV_CATALOG_HEADER'
+        IS_LAYOUT              = LAYOUT
+        IT_FIELDCAT            = GT_FCAT1[]
+        IT_SORT                = GT_SORT1[]
+        I_DEFAULT              = 'X'
+        I_SAVE                 = 'A'
+      TABLES
+        T_OUTTAB               = GT_FINAL1[].
+
+    IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+
+  ENDIF.
+
+
+ENDFORM.                    "ALV_DISPLAY
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_CATALOG_HEADER
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM ALV_CATALOG_HEADER.
+
+  DATA : LIT_HEADER TYPE  SLIS_T_LISTHEADER,
+       LS_LINE TYPE SLIS_LISTHEADER.
+
+  DATA : LV_WERKS(100) TYPE C.
+
+  CLEAR : LV_WERKS.
+*          LV_LIFNR,
+  IF SO_WERKS-HIGH IS NOT INITIAL.
+    CONCATENATE 'Plant Code :' SO_WERKS-LOW 'To' SO_WERKS-HIGH INTO LV_WERKS SEPARATED BY SPACE.
+  ELSE.
+   " CONCATENATE 'Plant Code :' SO_WERKS-LOW INTO LV_WERKS SEPARATED BY SPACE.
+
+     CONCATENATE 'Plant Name : ' LV_NAME1 INTO LV_WERKS SEPARATED BY SPACE .
+
+  ENDIF.
+
+
+
+
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'S'.
+  LS_LINE-KEY = ' '.
+  LS_LINE-INFO = LV_WERKS.
+  APPEND LS_LINE TO LIT_HEADER.
+
+   CLEAR LS_LINE.
+  LS_LINE-TYP  = 'H'.
+  LS_LINE-KEY = ' '.
+  LS_LINE-INFO = 'Excise Dealer Receipt Register ' .
+  APPEND LS_LINE TO LIT_HEADER.
+
+
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = LIT_HEADER.
+
+
+
+ENDFORM.                    "ALV_CATALOG_HEADER

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>HALB ORDER</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZSTR_UID_MFG_ORDER_HALBTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZSTR_UID_MFG_ORDER_HALB</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_DATA_UID_MFG_ORDER_HALB</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>HALB ORDER</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IT_MFG_DATE</PARAMETER>
+       <TYP>CO_STRMP</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MFG_ORDER_HALB</PARAMETER>
+       <DBSTRUCT>ZSTR_UID_MFG_ORDER</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_MFG_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Planned Order Start Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MFG_ORDER_HALB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Order View</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

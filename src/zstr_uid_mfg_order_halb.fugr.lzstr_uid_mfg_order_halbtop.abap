@@ -1,0 +1,3 @@
+FUNCTION-POOL ZSTR_UID_MFG_ORDER_HALB.      "MESSAGE-ID ..
+
+* INCLUDE LZSTR_UID_MFG_ORDER_HALBD...       " Local class definition

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZQA11QA11_1103</SCVARIANT>
+     <PROGNAME>SAPMQEVA</PROGNAME>
+     <DYNPRO>1103</DYNPRO>
+     <VERSION>10</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZQA11QA11_1103</SCVARIANT>
+      <SCVTEXT>Expiry field as readonly</SCVTEXT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZQA11QA11_1103</SCVARIANT>
+      <FIELDNAME>RQEVA-MHD_01</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+      <ITYPE>D</ITYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

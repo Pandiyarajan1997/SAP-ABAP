@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Process order batch cost</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZPP_PROCORD_BATCHCOSTTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZPP_PROCORD_BATCHCOST</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZPP_PROCORD_BATCH_BOM_COST</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Process order Batch cost based on the original BOM</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>BOM_COST</PARAMETER>
+       <TYPES>O</TYPES>
+       <TYP>ZSTR_PROCORD_BATCH_BOM_COST</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>CONSUMPTION_COST</PARAMETER>
+       <TYPES>O</TYPES>
+       <TYP>ZSTR_PROCORD_CONSUMPTION_COST</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>ACTIVITY_COST</PARAMETER>
+       <DBSTRUCT>ZSTR_PROCORD_ACTIVITY_COST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>AUFNR</PARAMETER>
+       <DBSTRUCT>AUFNR_RANG</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_UOM</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BOM_COST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Process order Batch cost based on the original</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CONSUMPTION_COST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Process order Batch cost based on consumption</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ACTIVITY_COST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Process order Batch cost based on the original</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>AUFNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Ranges table for AUFK-AUFNR (order/network number)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_UOM</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Incorrect UOM</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

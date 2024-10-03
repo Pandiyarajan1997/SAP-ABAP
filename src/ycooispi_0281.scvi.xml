@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>YCOOISPI_0281</SCVARIANT>
+     <PROGNAME>SAPLSVAR</PROGNAME>
+     <DYNPRO>0281</DYNPRO>
+     <VERSION>9</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>YCOOISPI_0281</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOOISPI_0281</SCVARIANT>
+      <FIELDNAME>V_TEXT2</FIELDNAME>
+      <ITYPE>0</ITYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

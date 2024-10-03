@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_STVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <STVI>
+    <SHDTVCIU>
+     <TCVARIANT>Z_MIRO_0020</TCVARIANT>
+     <TCODE>MIRO</TCODE>
+     <VERSION>3</VERSION>
+    </SHDTVCIU>
+    <SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>Z_MIRO_0020</TCVARIANT>
+      <SCVARIANT>Z_MIRO_0020</SCVARIANT>
+     </SHDTVSVCIU>
+    </SHDTVSVCIU>
+   </STVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

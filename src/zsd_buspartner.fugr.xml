@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Business Partner Function Group</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZSD_BUSPARTNERTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZSD_BUSPARTNER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZSD_DMS_PLANT_VALIDATION</FUNCNAME>
+     <SHORT_TEXT>Validation for Plant in Business Partner</SHORT_TEXT>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

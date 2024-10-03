@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_API_ALPN_GRN_PHYS_INVEN</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>API for physical inventory to the material batch for ALPN</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>BATCH_CREATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>contains batch create</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>contains all bapi for physical inventory</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>material price change based on invoice amnt</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>VALIDATION_PROCESS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>contains validation &amp; main process</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>BATCH_CREATE</CMPNAME>
+     <SCONAME>BATCH</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Transfer Table to SAPLMBIN for Batch/Stock Selection</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>BATCH_CREATE</CMPNAME>
+     <SCONAME>MATERIAL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Material Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>BATCH_CREATE</CMPNAME>
+     <SCONAME>PLANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Plant Table for National (Centrally Agreed) Contracts</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>BATCH_CREATE</CMPNAME>
+     <SCONAME>STORAGELOC</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Material Master View on Storage Location and Batch Selection</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>BATCH_CREATE</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>BELNR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Physical Inventory Document</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>COMP_CODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Company Code</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>LS_HEADER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>BAPI Communication Structure: Create Phys. Inv. Doc., Header</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>LT_ITEMCOUNT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>BAPI Communication Structure: Count Data for Item</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>LT_ITEMCREATE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>BAPI Communication Structure: Create Phys. Inv. Doc., Items</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PHYSICAL_BAPI</CMPNAME>
+     <SCONAME>YEAR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Material Document Year</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <SCONAME>AMOUNT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Price in BAPI currency format</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <SCONAME>BUKRS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Company Code</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <SCONAME>DATE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Date for Pricing and Exchange Rate</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <SCONAME>MATERIAL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Material Number (18 Characters)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <SCONAME>PLANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Valuation area</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRICE_CHANGE</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>VALIDATION_PROCESS</CMPNAME>
+     <SCONAME>DOUBLE_CLICK_CHECK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>for enable double click check</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>VALIDATION_PROCESS</CMPNAME>
+     <SCONAME>LS_INPUT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure for direct physical inventory for dms - input</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>VALIDATION_PROCESS</CMPNAME>
+     <SCONAME>LV_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

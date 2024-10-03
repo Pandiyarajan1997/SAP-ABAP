@@ -1,0 +1,148 @@
+FUNCTION ZFM_TRIP_SHEET_UPDATE.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(ACTION) TYPE  C
+*"     VALUE(WA_ZFREIGHT_HEADER) TYPE  ZFREIGHT_HEADER OPTIONAL
+*"  TABLES
+*"      IT_ZFREIGHT_ITEM STRUCTURE  ZFREIGHT_ITEM OPTIONAL
+*"      IT_ZFREIGHT_TRAN STRUCTURE  ZFREIGHT_TRAN OPTIONAL
+*"      IT_ZFREIGHT_HEADER STRUCTURE  ZFREIGHT_HEADER OPTIONAL
+*"  EXCEPTIONS
+*"      DB_UPDATE_SUCCESS
+*"      DB_UPDATE_FAIL
+*"      DB_INSERT_SUCCESS
+*"      DB_INSERT_FAIL
+*"      DB_TRIP_DELETE_SUCCESS
+*"      DB_TRIP_DELETE_FAIL
+*"----------------------------------------------------------------------
+
+  DATA: HEADER,
+        ITEM,
+        TRANS,
+        DB.
+
+  CLEAR: HEADER,
+        ITEM,
+        TRANS,
+        DB.
+
+
+  IF ACTION EQ 'I'. " Create or Insert new trip sheet into table
+
+    INSERT ZFREIGHT_HEADER FROM WA_ZFREIGHT_HEADER.
+    IF SY-SUBRC EQ 0.
+      HEADER = 'I' .
+    ENDIF.
+    INSERT ZFREIGHT_ITEM FROM TABLE IT_ZFREIGHT_ITEM.
+    IF SY-SUBRC EQ 0.
+      ITEM = 'I'.
+    ENDIF.
+*    IF IT_ZFREIGHT_TRAN IS NOT INITIAL.
+      INSERT ZFREIGHT_TRAN FROM TABLE IT_ZFREIGHT_TRAN.
+      IF SY-SUBRC EQ 0.
+        TRANS = 'I'.
+      ENDIF.
+*    ENDIF.
+    IF HEADER EQ 'I' AND ITEM EQ 'I'.
+      DB = 'I'.
+    ELSE.
+      DB = 'J'.
+    ENDIF.
+
+  ELSEIF ACTION EQ 'U'. " Change the values of already existing trip sheet number
+
+    UPDATE ZFREIGHT_HEADER FROM WA_ZFREIGHT_HEADER.
+    COMMIT WORK.
+    IF SY-SUBRC EQ 0.
+      HEADER = 'U' .
+    ENDIF.
+    modify ZFREIGHT_ITEM FROM TABLE IT_ZFREIGHT_ITEM .
+     "UPDATE ZFREIGHT_ITEM FROM TABLE IT_ZFREIGHT_ITEM.
+    " INSERT ZFREIGHT_ITEM FROM TABLE IT_ZFREIGHT_ITEM.
+    COMMIT WORK.
+    IF SY-SUBRC EQ 0.
+      ITEM = 'U'.
+    ENDIF.
+*    IF IT_ZFREIGHT_TRAN IS NOT INITIAL.
+      modify ZFREIGHT_TRAN from IT_ZFREIGHT_TRAN.
+      "UPDATE ZFREIGHT_TRAN FROM TABLE IT_ZFREIGHT_TRAN.
+      COMMIT WORK.
+      IF SY-SUBRC EQ 0.
+        TRANS = 'U'.
+      ENDIF.
+*    ENDIF.
+    IF HEADER EQ 'U' AND ITEM EQ 'U'.
+      DB = 'U'.
+    ELSE.
+      DB = 'V'.
+    ENDIF.
+
+  ELSEIF ACTION EQ 'S'. " Approval table updation
+
+    UPDATE ZFREIGHT_HEADER FROM TABLE IT_ZFREIGHT_HEADER.
+    COMMIT WORK.
+*    IF SY-SUBRC EQ 0.
+*      HEADER = 'X' .
+*    ENDIF.
+
+  ELSEIF ACTION EQ 'D'. " Trip sheet deletion
+
+    DELETE ZFREIGHT_HEADER FROM WA_ZFREIGHT_HEADER.
+    IF SY-SUBRC EQ 0.
+      HEADER = 'D' .
+    ENDIF.
+    DELETE ZFREIGHT_ITEM FROM TABLE IT_ZFREIGHT_ITEM.
+    IF SY-SUBRC EQ 0.
+      ITEM = 'D'.
+    ENDIF.
+*    IF IT_ZFREIGHT_TRAN IS NOT INITIAL.
+      DELETE ZFREIGHT_TRAN FROM TABLE IT_ZFREIGHT_TRAN.
+      IF SY-SUBRC EQ 0.
+        TRANS = 'D'.
+      ENDIF.
+*    ENDIF.
+    IF HEADER EQ 'D' AND ITEM EQ 'D'.
+      DB = 'D'.
+    ELSE.
+      DB = 'E'.
+    ENDIF.
+
+  ENDIF.
+
+  IF DB = 'U'.
+
+    RAISE DB_UPDATE_SUCCESS.
+
+  ELSEIF DB = 'V'.
+
+    RAISE DB_UPDATE_FAIL.
+
+  ELSEIF DB = 'I'.
+
+    RAISE DB_INSERT_SUCCESS.
+
+  ELSEIF DB = 'J'.
+
+    RAISE DB_INSERT_FAIL.
+
+  ELSEIF DB = 'D'.
+
+    RAISE DB_TRIP_DELETE_SUCCESS.
+
+  ELSEIF DB = 'E'.
+
+    RAISE DB_TRIP_DELETE_FAIL.
+
+  ENDIF.
+
+
+  CLEAR: ACTION,
+         WA_ZFREIGHT_HEADER.
+  REFRESH: IT_ZFREIGHT_HEADER,
+           IT_ZFREIGHT_ITEM,
+           IT_ZFREIGHT_TRAN.
+
+
+
+ENDFUNCTION.

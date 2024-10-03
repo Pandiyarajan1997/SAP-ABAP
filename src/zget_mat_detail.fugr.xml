@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Get Material Master Details</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_MAT_DETAILTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_MAT_DETAIL</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_MAT_MASTER_DETAIL</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get Material Master Details</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LV_VTWEG</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>VTWEG</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MAT_DETAIL</PARAMETER>
+       <DBSTRUCT>ZGET_MAT_DETAIL</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Organization</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_VTWEG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Distribution Channel</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MAT_DETAIL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Material Data</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

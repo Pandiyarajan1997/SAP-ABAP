@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_STVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <STVI>
+    <SHDTVCIU>
+     <TCVARIANT>YCOR2</TCVARIANT>
+     <TCODE>COR2</TCODE>
+     <VERSION>14</VERSION>
+    </SHDTVCIU>
+    <SHDTTCIU>
+     <SHDTTCIU>
+      <LANGU>E</LANGU>
+      <TCVARIANT>YCOR2</TCVARIANT>
+      <TCVTEXT>ycor2</TCVTEXT>
+     </SHDTTCIU>
+    </SHDTTCIU>
+    <SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>YCOR2</TCVARIANT>
+      <SCVARIANT>YCOR2</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>YCOR2</TCVARIANT>
+      <SCVARIANT>YCOR2_5110</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>YCOR2</TCVARIANT>
+      <SCVARIANT>YCOR2_5115</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>YCOR2</TCVARIANT>
+      <SCVARIANT>YCOR2_5120</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>YCOR2</TCVARIANT>
+      <SCVARIANT>YCOR2_5800</SCVARIANT>
+     </SHDTVSVCIU>
+    </SHDTVSVCIU>
+   </STVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

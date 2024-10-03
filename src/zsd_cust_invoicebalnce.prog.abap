@@ -1,0 +1,1824 @@
+*&---------------------------------------------------------------------*
+*& Report   ZSD_CUST_INVOICEBALNCE
+*&
+*&---------------------   CREATED  ------------------------------------*
+*&Functional                   : Mr.Govindarajan                       *
+*& Developer                   : Govindarajan                          *
+*& Created On                  : 28 Apr 2014                           *
+*& Company                     : Sheenlac Paints Pvt Ltd               *
+*& Title                       : Customer  Bill Wise Report
+*& Report Name                 :  ZSD_CUST_INVOICEBALNCE               *
+*& Development Id              : itlabap                               *
+*& Solman call No              :                                       *
+*& Transport Request           :                                       *
+*& Related Information         : ALV Hierarchical Display For          *
+*&                               Customer  BillWise Report             *
+*&                                                                     *
+*&---------------------------------------------------------------------*
+
+REPORT ZSD_CUST_INVOICEBALNCE.
+
+DATA:
+      W_AUX_FKDAT TYPE VBRK-FKDAT,
+      W_VBELN TYPE VBRK-VBELN,
+      W_KUNAG TYPE VBRK-KUNAG,
+      W_MATNR TYPE VBRP-MATNR,
+      W_CHARG TYPE LIPS-CHARG,                               " BATCH FOR INVOICE DETAILS
+      W_INV_VKBUR TYPE VBRP-VKBUR,                           " SALES OFFICE FOR INVOICE
+      W_SPART TYPE VBRK-SPART,
+
+      COUNTER TYPE I VALUE '0',
+      GT_LIST     TYPE VRM_VALUES,
+      GWA_LIST    TYPE VRM_VALUE,
+      GT_VALUES   TYPE TABLE OF DYNPREAD,                     " INTERNAL TABLE FOR LIST BOX
+      GWA_VALUES  TYPE DYNPREAD,                              " WORK AREA FOR LIST BOX
+      GV_SELECTED_VALUE(10) TYPE C,
+      IT_FIELDCAT  TYPE TABLE OF SLIS_FIELDCAT_ALV,
+      WA_FIELDCAT  LIKE LINE OF IT_FIELDCAT,
+      IT_EVENTS TYPE SLIS_T_EVENT,
+IT_SORT TYPE SLIS_T_SORTINFO_ALV,
+WA_SORT LIKE LINE OF IT_SORT,
+IT_SORT1 TYPE SLIS_T_SORTINFO_ALV,
+WA_SORT1 LIKE LINE OF IT_SORT,
+G_SENT_TO_ALL TYPE SONV-FLAG,
+G_TAB_LINES   TYPE I,
+I_EVENT TYPE SLIS_T_EVENT,
+
+
+W_KUNNR TYPE KNC1-KUNNR,
+W_BUKRS TYPE KNC1-BUKRS,                                " VARIABLE DECLARATIONS FOR ACCOUNT BALANCES
+W_VKBUR TYPE KNVV-VKBUR,                                " SALES OFFICE FOR ACCOUNT BALANCES
+*      W_GJAHR TYPE KNC1-GJAHR,
+W_RE_PERIOD TYPE BSID-MONAT,
+
+W_S_MATNR TYPE MARD-MATNR,                               " VARIABLE DECLARATIONS FOR STOCK
+W_S_BUKRS TYPE T001-BUKRS,
+W_S_HKONT TYPE BSEG-HKONT,
+W_S_WERKS TYPE T001W-WERKS,
+W_S_LGORT TYPE T001L-LGORT,
+W_S_CHARG TYPE MCHB-CHARG,
+W_S_BWTAR TYPE MBEW-BWTAR,
+W_S_BWART TYPE MSEG-BWART,
+W_S_DATUM TYPE MKPF-BUDAT.
+
+*--------------------------------------------------------------*
+* TYPES DECLARATION
+*--------------------------------------------------------------*
+
+
+TYPES: BEGIN OF TY_VBRK_VBRP,                           "FINAL TABLE TYPE FOR OVERVIEW REPORT
+       FKDAT TYPE VBRK-FKDAT,
+       SPART TYPE VBRK-SPART,
+       VRKME TYPE VBRP-VRKME,
+       VBELN TYPE VBRK-VBELN,
+
+       FKART TYPE VBRK-FKART,
+       KUNAG TYPE VBRK-KUNAG,
+       KUNRG TYPE VBRK-KUNRG,
+       VKORG TYPE VBRK-VKORG,
+       VTWEG TYPE VBRK-VTWEG,
+       NETWR TYPE VBRK-NETWR,
+       SFAKN TYPE VBRK-SFAKN,
+       KNKLI TYPE VBRK-KNKLI,
+       MWSBK TYPE VBRK-MWSBK,
+       POSNR TYPE VBRP-POSNR,
+       VKBUR TYPE VBRP-VKBUR,
+       MATNR TYPE VBRP-MATNR,
+       FKIMG TYPE VBRP-FKIMG,
+       VGBEL TYPE VBRP-VGBEL,
+*       UMREN TYPE MARM-UMREN,
+*       TOT_BAS TYPE VBRP-FKIMG,
+*       BAS_UNIT(1) TYPE C,
+*       TOTAL TYPE FKIMG,
+*       TOT_QUA TYPE FKIMG,
+
+       END OF TY_VBRK_VBRP,
+
+
+       BEGIN OF TY_TVKBT,
+       VKBUR TYPE TVKBT-VKBUR,
+       BEZEI TYPE TVKBT-BEZEI,
+       END OF TY_TVKBT,
+
+       BEGIN OF TY_TSPAT,
+       SPART TYPE TSPAT-SPART,
+       VTEXT TYPE TSPAT-VTEXT,
+       END OF TY_TSPAT,
+
+       BEGIN OF TY_KNA1,
+       KUNNR TYPE KNA1-KUNNR,
+       NAME1 TYPE KNA1-NAME1,
+       NAME2 TYPE KNA1-NAME2,
+       END OF TY_KNA1,
+
+       BEGIN OF TY_MARM,
+       MATNR TYPE MARM-MATNR,
+       MEINH TYPE MARM-MEINH,
+       UMREZ TYPE MARM-UMREZ,
+       UMREN TYPE MARM-UMREN,
+       END OF TY_MARM,
+
+
+       BEGIN OF TY_FINOVR,                           "FINAL TABLE TYPE FOR OVERVIEW REPORT
+       FKDAT TYPE VBRK-FKDAT,
+       VKBUR TYPE VBRP-VKBUR,
+       KUNRG TYPE VBRK-KUNAG,
+       SPART TYPE VBRK-SPART,
+       VBELN TYPE VBRK-VBELN,
+       CANDOC(1) TYPE C,
+       FKART TYPE VBRK-FKART,
+       KUNAG TYPE VBRK-KUNAG,
+*       KUNRG TYPE VBRK-KUNRG,
+       VKORG TYPE VBRK-VKORG,
+       VTWEG TYPE VBRK-VTWEG,
+       NETWR TYPE VBRK-NETWR,
+       SFAKN TYPE VBRK-SFAKN,
+       KNKLI TYPE VBRK-KNKLI,
+       MWSBK TYPE VBRK-MWSBK,
+       BTGEW TYPE LIKP-BTGEW,
+       INV_VAL TYPE NETWR,
+       INV_RCV TYPE DMBTR,
+       POSNR TYPE VBRP-POSNR,
+
+       BEZEI TYPE TVKBT-BEZEI,
+       VTEXT TYPE TSPAT-VTEXT,
+       NAME1 TYPE KNA1-NAME1,
+       NAME2 TYPE KNA1-NAME2,
+       SUM_CUST TYPE KBETR,                             " SUM CUSTOMER WISE
+       SUM_OFF TYPE KBETR,                              " SUM SALES OFFICE WISE
+       SUM_DIV TYPE KBETR,
+       V_COUNT TYPE I,
+       FLAG(1) TYPE C,
+       INV_BAL TYPE DMBTR,
+       END OF TY_FINOVR.
+
+TYPES: BEGIN OF TY_TVKBT2,
+    VKBUR TYPE TVKBT-VKBUR,
+    BEZEI TYPE TVKBT-BEZEI,
+    END OF TY_TVKBT2,
+
+    BEGIN OF TY_TSPAT2,
+    SPART TYPE TSPAT-SPART,
+    VTEXT TYPE TSPAT-VTEXT,
+    END OF TY_TSPAT2,
+
+    BEGIN OF TY_KNA12,
+
+    KUNNR TYPE KNA1-KUNNR,
+    NAME1 TYPE KNA1-NAME1,
+    NAME2 TYPE KNA1-NAME2,
+    END OF TY_KNA12,
+
+    BEGIN OF TY_LIKP,
+    VBELN TYPE LIKP-VBELN,
+    BTGEW TYPE LIKP-BTGEW,
+    END OF TY_LIKP,
+
+
+   BEGIN OF TY_VDRK2,
+
+FKDAT TYPE VBRK-FKDAT,
+VBELN TYPE VBRP-VBELN,
+LPOSNR TYPE LIPS-POSNR,
+MATNR TYPE VBRP-MATNR,
+FKIMG TYPE VBRP-FKIMG,
+VGPOS TYPE VBRP-VGPOS,
+PSTYV TYPE LIPS-PSTYV,
+SPART TYPE  VBRK-SPART,
+NETWR TYPE VBRK-NETWR,
+KUNAG TYPE VBRK-KUNAG,
+KUNRG TYPE VBRK-KUNRG,
+SFAKN TYPE VBRK-SFAKN,
+POSNR TYPE VBRP-POSNR,
+ARKTX TYPE VBRP-ARKTX,
+VRKME TYPE VBRP-VRKME,
+VGBEL TYPE VBRP-VGBEL,
+VKBUR TYPE VBRP-VKBUR,
+LMATNR TYPE LIPS-MATNR,
+LVBELN TYPE LIPS-VBELN,
+LFIMG TYPE LIPS-LFIMG,
+CHARG TYPE LIPS-CHARG,
+DEL_FLAG(1) TYPE C,
+PROC_KEY(1) TYPE C,
+
+END OF TY_VDRK2,
+
+
+   BEGIN OF TY_FINALDET,                              " FINAL TABLE TYPE FOR DETAIL REPORT
+   FKDAT TYPE VBRK-FKDAT,
+   VKBUR TYPE VBRP-VKBUR,
+
+
+   BEZEI TYPE TVKBT-BEZEI,
+   SPART TYPE VBRK-SPART,
+   VTEXT TYPE TSPAT-VTEXT,
+   VBELN TYPE VBRP-VBELN,
+   LVBELN TYPE LIPS-VBELN,
+   ORDER_NUM TYPE I,
+   CHARG TYPE LIPS-CHARG,
+   SORT_KEY(1) TYPE C,                               " SORT KEY is there so that the Header and will be shown first and items beneath it
+   SORT_CRIT TYPE POSNR,
+   CANDOC(1) TYPE C,
+   POSNR TYPE VBRP-POSNR,
+
+
+   MATNR TYPE VBRP-MATNR,
+   ARKTX TYPE VBRP-ARKTX,
+*   CHARG TYPE LIPS-CHARG,
+   FKIMG TYPE VBRP-FKIMG,
+   VRKME TYPE VBRP-VRKME,
+   NETWR(10) TYPE C,                                 " NETWR field has been declared as character field so that Net price fields for multiple batch split rows will be shown as '-'.
+   KUNAG TYPE VBRK-KUNAG,
+   NAME1 TYPE KNA1-NAME1,
+   KUNRG TYPE VBRK-KUNRG,
+   NAME2 TYPE KNA1-NAME1,
+   SFAKN TYPE VBRK-SFAKN,
+   LFIMG TYPE LIPS-LFIMG,
+   FLAG2(2)  TYPE C,
+   PROC_KEY(1) TYPE C,                               " PROCESS KEY
+
+   END OF TY_FINALDET.
+
+
+
+TYPES : BEGIN OF TY_BSEG,
+        BUKRS TYPE BSEG-BUKRS,
+        BELNR TYPE BSEG-BELNR,
+        GJAHR TYPE BSEG-GJAHR,
+        BSCHL TYPE BSEG-BSCHL,
+        KOART TYPE BSEG-KOART,
+        SHKZG TYPE BSEG-SHKZG,
+        DMBTR TYPE BSEG-DMBTR,
+        VBELN TYPE BSEG-VBELN,
+
+        END OF TY_BSEG.
+TYPES: BEGIN OF TY_BSID,
+       BUKRS TYPE BSID-BUKRS,                    " Company Code
+       KUNNR TYPE BSID-KUNNR,                    " Customer Code
+*       AUGDT TYPE BSID-AUGDT,                     " Clearing Date
+*       AUGBL TYPE BSID-AUGBL,                     " Document Number of the Clearing Document
+       BELNR TYPE BSID-BELNR,                    " Accounting Document Number
+       BUDAT TYPE BSIK-BUDAT,                    " Posting Date in the Document
+       BLDAT TYPE BSIK-BLDAT,                    " Document Date in Document
+       XBLNR TYPE BSID-XBLNR,                    " Bill Number
+       SHKZG TYPE BSID-SHKZG,                    " Debit/Credit Indicator
+       DMBTR TYPE BSID-DMBTR,                    " Bill Amount ( In Doc Currency )
+       VBELN TYPE BSAD-VBELN,                    " BilL Doc No
+*       PRCTR TYPE BSID-PRCTR,                    " Profit Center
+       END OF TY_BSID.
+
+TYPES: BEGIN OF TY_BSAD,
+BUKRS TYPE BSAD-BUKRS,                    " Company Code
+KUNNR TYPE BSAD-KUNNR,                    " Customer Code
+*AUGDT TYPE BSAD-AUGDT,                     " Clearing Date
+*AUGBL TYPE BSAD-AUGBL,                     " Document Number of the Clearing Document
+BELNR TYPE BSAD-BELNR,                    " Accounting Document Number
+BUDAT TYPE BSAK-BUDAT,                    " Posting Date in the Document
+BLDAT TYPE BSAK-BLDAT,                    " Document Date in Document
+XBLNR TYPE BSAD-XBLNR,                    " Bill Number
+SHKZG TYPE BSAD-SHKZG,                    " Debit/Credit Indicator
+DMBTR TYPE BSAD-DMBTR,                    " Bill Amount ( In Doc Currency )
+VBELN TYPE BSAD-VBELN,                    " Bil Doc No
+END OF TY_BSAD.
+
+*--------------------------------------------------------------*
+*INTERNAL TABLE DECLARATIONS
+*--------------------------------------------------------------*
+
+
+
+DATA: IT_VBRK TYPE TABLE OF TY_VBRK_VBRP,
+IT_TVKBT TYPE TABLE OF TY_TVKBT,
+IT_TSPAT  TYPE TABLE OF TY_TSPAT,
+IT_KNA1 TYPE TABLE OF TY_KNA1,
+IT_VBRK2 TYPE TABLE OF TY_VDRK2,
+IT_TVKBT2 TYPE TABLE OF TY_TVKBT2,
+IT_TSPAT2  TYPE TABLE OF TY_TSPAT2,
+IT_KNA12 TYPE TABLE OF TY_KNA12,
+IT_MARM TYPE TABLE OF TY_MARM,
+IT_LIKP TYPE TABLE OF TY_LIKP,
+IT_FINOVR TYPE TABLE OF TY_FINOVR,
+IT_FINALDET TYPE TABLE OF TY_FINALDET,
+
+IT_DOCDATA TYPE STANDARD TABLE OF SODOCCHGI1,
+IT_PACKLIST TYPE STANDARD TABLE OF SOPCKLSTI1,
+IT_ATTACHMENT TYPE STANDARD TABLE OF SOLISTI1,
+IT_BODY_MSG TYPE STANDARD TABLE OF SOLISTI1,
+IT_RECEIVERS TYPE STANDARD TABLE OF SOMLRECI1,
+IT_RSPARAMS TYPE STANDARD TABLE OF RSPARAMS.                                   " INTERNAL TABLE FOR TAKING SELECTION SCREEN VALUES FOR STOCK
+
+DATA: IT_BSEG TYPE STANDARD TABLE OF TY_BSEG,
+      WA_BSEG TYPE TY_BSEG,
+      IT_BSAD TYPE STANDARD TABLE OF TY_BSAD,
+      WA_BSAD TYPE TY_BSAD,
+      IT_BSID TYPE STANDARD TABLE OF TY_BSID,
+      WA_BSID TYPE TY_BSID.
+
+*DATA: G_S_SORTTAB            TYPE SLIS_SORTINFO_ALV,
+*      G_T_SORTTAB            TYPE SLIS_T_SORTINFO_ALV.
+
+*--------------------------------------------------------------*
+*WORK AREA DECLARATIONS
+*--------------------------------------------------------------*
+
+DATA: WA_VBRK TYPE TY_VBRK_VBRP,
+      WA_TVKBT TYPE  TY_TVKBT,
+      WA_TSPAT  TYPE TY_TSPAT,
+      WA_KNA1 TYPE TY_KNA1,
+      WA_VBRK2 TYPE TY_VDRK2,
+      WA_LAYOUT     TYPE SLIS_LAYOUT_ALV,
+      WA_EVENTS         TYPE SLIS_ALV_EVENT,
+      WA_TVKBT2 TYPE  TY_TVKBT2,
+      WA_TSPAT2  TYPE TY_TSPAT2,
+      WA_KNA12 TYPE TY_KNA12,
+      WA_FINALDET LIKE LINE OF IT_FINALDET,
+      WA_FINOVR LIKE LINE OF IT_FINOVR,
+      WA_MARM LIKE LINE OF IT_MARM,
+      WA_LIKP LIKE LINE OF IT_LIKP,
+*      WA_FINOVR1 LIKE LINE OF IT_FINOVR,
+      WA_DOCDATA LIKE LINE OF IT_DOCDATA,
+      WA_PACKLIST LIKE LINE OF IT_PACKLIST,
+      WA_ATTACHMENT LIKE LINE OF IT_ATTACHMENT,
+      WA_BODY_MSG LIKE LINE OF IT_BODY_MSG,
+      WA_RECEIVERS LIKE LINE OF IT_RECEIVERS,
+      WA_RSPARAMS LIKE LINE OF IT_RSPARAMS.                                      " WORK AREA FOR TAKING SELECTION SCREEN VALUES FOR STOCK
+
+DATA : I_ALV_TOP_OF_PAGE TYPE SLIS_T_LISTHEADER.
+
+SELECTION-SCREEN: BEGIN OF BLOCK B1.
+
+PARAMETERS: PS_PARM AS LISTBOX VISIBLE LENGTH 20 USER-COMMAND ABC MODIF ID TB1.            " SELECTION SCREEN PARAMETER FOR INVOICE AND CUSTOMER BALANCES
+
+SELECTION-SCREEN: END OF BLOCK B1.
+
+
+
+*SELECTION-SCREEN: BEGIN OF BLOCK B2 WITH FRAME TITLE TEXT-T01.
+*
+*PARAMETERS : R1 RADIOBUTTON GROUP G1 USER-COMMAND UC1 MODIF ID TB2 DEFAULT 'X' ,          " SELECTION SCREEN FOR INVOICE
+*
+*            R2 RADIOBUTTON GROUP G1 MODIF ID TB2.
+
+SELECTION-SCREEN SKIP.
+
+SELECT-OPTIONS: SO_FKDAT FOR W_AUX_FKDAT MODIF ID TB2 DEFAULT SY-DATUM OBLIGATORY,        " SELECTION SCREEN ELEMENTS FOR INVOICE
+                SO_VBELN FOR W_VBELN MODIF ID TB2,
+                SO_KUNAG FOR W_KUNAG MODIF ID TB2,
+                SO_MATNR FOR W_MATNR MODIF ID TB2 NO-DISPLAY,
+                SO_CHARG FOR W_CHARG MODIF ID TB5 NO-DISPLAY,
+                SO_VKBU2 FOR W_INV_VKBUR MODIF ID TB2,                                    " SELECT OPTIONS FOR SALES OFFICE IN invoice
+                SO_SPART FOR W_SPART MODIF ID TB2.
+
+SELECTION-SCREEN SKIP.
+
+PARAMETERS: P_CB AS CHECKBOX USER-COMMAND CBC MODIF ID TB2.
+
+*SELECTION-SCREEN: END OF BLOCK B2.
+
+INITIALIZATION.
+
+  GWA_LIST-KEY = '1'.
+  GWA_LIST-TEXT = 'CUSTOMER BILL WISE OUTSTANDING'.
+  APPEND GWA_LIST TO GT_LIST.
+  CLEAR: GWA_LIST.
+*
+*  GWA_LIST-KEY = '2'.
+*  GWA_LIST-TEXT = 'ACCOUNTBALANCES'.
+*  APPEND GWA_LIST TO GT_LIST.
+*  CLEAR: GWA_LIST.
+*
+*  GWA_LIST-KEY = '3'.
+*  GWA_LIST-TEXT = 'STOCK'.
+*  APPEND GWA_LIST TO GT_LIST.
+*  CLEAR: GWA_LIST.
+*
+*    GWA_LIST-KEY = '5'.
+*  GWA_LIST-TEXT = 'CUSTOMER BILL WISE OUTSTANDING'.
+*  APPEND GWA_LIST TO GT_LIST.
+*  CLEAR: GWA_LIST.
+
+  CALL FUNCTION 'VRM_SET_VALUES'
+    EXPORTING
+      ID              = 'PS_PARM'
+      VALUES          = GT_LIST
+    EXCEPTIONS
+      ID_ILLEGAL_NAME = 1
+      OTHERS          = 2.
+
+
+  IF PS_PARM IS INITIAL.                                                 " TO SET SET THE INITIAL VALUE SHOWN IN LIST BOX AS 'INVOICE'
+
+    PS_PARM = '1'.
+
+  ENDIF.
+
+
+
+  LOOP AT SCREEN.
+
+
+    IF SCREEN-NAME = 'PS_PARM'.
+      SCREEN-INPUT = 0.
+      MODIFY SCREEN.
+    ENDIF.
+
+  ENDLOOP.
+
+
+*ENDIF.
+
+
+AT SELECTION-SCREEN OUTPUT.
+
+*IF R1 = 'X'.
+*  LOOP AT SCREEN.
+*IF SCREEN-NAME = 'SO_CHARG-LOW'.
+*         SCREEN-ACTIVE = 1.
+*         SCREEN-INPUT = 0.
+*         MODIFY SCREEN.
+*        ENDIF.
+*
+*IF SCREEN-NAME = 'SO_CHARG-HIGH'.
+*         SCREEN-ACTIVE = 1.
+*         SCREEN-INPUT = 0.
+*         MODIFY SCREEN.
+*        ENDIF.
+*IF SCREEN-NAME = 'SO_MATNR-LOW'.
+*        SCREEN-ACTIVE = 1.
+*         SCREEN-INPUT = 0.
+*         MODIFY SCREEN.
+*        ENDIF.
+*        IF SCREEN-NAME = 'SO_MATNR-HIGH'.
+*        SCREEN-ACTIVE = 1.
+*         SCREEN-INPUT = 0.
+*         MODIFY SCREEN.
+*        ENDIF.
+*
+* IF SCREEN-GROUP1 = 'TB1'.
+*       SCREEN-INPUT = 0.
+*       MODIFY SCREEN.
+* ENDIF.
+*
+* ENDLOOP.
+* ENDIF.
+
+
+* IF R2 = 'X'.
+*    LOOP AT SCREEN.
+*      IF SCREEN-NAME = 'SO_MATNR'.
+*        SCREEN-ACTIVE = 1.
+*        SCREEN-INPUT = 1.
+*        MODIFY SCREEN.
+*      ENDIF.
+*
+*      IF SCREEN-NAME = 'SO_CHARG'.
+*        SCREEN-ACTIVE = 1.
+*        SCREEN-INPUT = 1.
+*        MODIFY SCREEN.
+*       ENDIF.
+*
+*      IF SCREEN-NAME = 'PS_PARM'.
+*         SCREEN-INPUT = 0.
+*         MODIFY SCREEN.
+*ENDIF.
+*
+*   ENDLOOP.
+*   ENDIF.
+
+
+*--------------------------------------------------------------*
+*At Selection Screen Ouput ON List Box PS_PARM
+*--------------------------------------------------------------*
+
+
+AT SELECTION-SCREEN ON PS_PARM.
+  CLEAR: GWA_VALUES, GT_VALUES.
+  REFRESH GT_VALUES.
+  GWA_VALUES-FIELDNAME = 'PS_PARM'.
+  APPEND GWA_VALUES TO GT_VALUES.
+  CALL FUNCTION 'DYNP_VALUES_READ'
+    EXPORTING
+      DYNAME             = SY-CPROG
+      DYNUMB             = SY-DYNNR
+      TRANSLATE_TO_UPPER = 'X'
+    TABLES
+      DYNPFIELDS         = GT_VALUES.
+
+  READ TABLE GT_VALUES INDEX 1 INTO GWA_VALUES.
+  IF SY-SUBRC = 0 AND GWA_VALUES-FIELDVALUE IS NOT INITIAL.
+    READ TABLE GT_LIST INTO GWA_LIST
+                      WITH KEY KEY = GWA_VALUES-FIELDVALUE.
+    IF SY-SUBRC = 0.
+      GV_SELECTED_VALUE = GWA_LIST-TEXT.
+    ENDIF.
+  ENDIF.
+
+
+START-OF-SELECTION.
+
+*    IF R1 = 'X'.
+
+  PERFORM DATA_RETRIEVAL_OVERVIEW.
+  PERFORM AUTHCHECK_OVERVIEW.
+  PERFORM BUILD_FIELDCATALOG_OVERVIEW.
+  PERFORM BUILD_ALV_OVERVIEW.
+  PERFORM SUB_GET_EVENT.
+*  PERFORM SUBTOTAL_TEXT.
+  PERFORM POPULATE_SORT.
+  PERFORM SUB_POPULATE_LAYOUT.
+*    ENDIF.
+END-OF-SELECTION.
+  PERFORM ALV_REPORT_DISPLAY.
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  DATA_RETRIEVAL_OVERVIEW
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM DATA_RETRIEVAL_OVERVIEW .
+
+  SELECT    VBRK~FKDAT "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+            VBRK~SPART
+            VBRK~VBELN
+            VBRK~FKART
+            VBRK~KUNAG
+            VBRK~KUNRG
+            VBRK~VKORG
+            VBRK~VTWEG
+            VBRK~NETWR
+            VBRK~SFAKN
+            VBRK~KNKLI
+            VBRK~MWSBK
+            VBRP~POSNR
+            VBRP~VRKME
+            VBRP~VKBUR
+            VBRP~MATNR
+            VBRP~FKIMG
+            VBRP~VGBEL
+            INTO CORRESPONDING FIELDS OF TABLE IT_VBRK
+            FROM VBRK JOIN VBRP ON VBRK~VBELN = VBRP~VBELN "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+            WHERE VBRK~FKDAT IN SO_FKDAT AND VBRK~VBELN IN SO_VBELN AND VBRK~KUNAG IN SO_KUNAG AND VBRP~VKBUR IN SO_VKBU2 AND VBRK~SPART IN SO_SPART.
+
+SORT IT_VBRK BY VBELN. " Added by <IT-CAR Tool> during Code Remediation
+  DELETE ADJACENT DUPLICATES FROM IT_VBRK COMPARING VBELN.
+
+  IF IT_VBRK[] IS NOT  INITIAL.
+*BREAK-POINT.
+*
+*SELECT  BUKRS
+*        BELNR
+*        GJAHR
+*        BSCHL
+*        KOART
+*        SHKZG
+*        DMBTR
+*        VBELN
+*          FROM BSEG INTO TABLE IT_BSEG FOR ALL ENTRIES IN IT_VBRK WHERE VBELN = IT_VBRK-VBELN AND KUNNR = IT_VBRK-KUNAG AND  KOART = 'D' AND BSCHL = '01'.
+
+    SELECT BUKRS
+           KUNNR
+*      AUDAT
+*      AUGAL
+           BELNR
+           BUDAT
+           BLDAT
+           XBLNR
+           SHKZG
+           DMBTR
+           VBELN
+       FROM BSID INTO TABLE IT_BSID FOR ALL ENTRIES IN IT_VBRK WHERE VBELN = IT_VBRK-VBELN
+      AND KUNNR = IT_VBRK-KUNAG  AND VBELN = IT_VBRK-VBELN.
+
+  ENDIF.
+*
+*IF SY-SUBRC = 0.
+*
+*
+*    SELECT BUKRS
+*           KUNNR
+**      AUDAT
+**      AUGAL
+*           BELNR
+*           BUDAT
+*           BLDAT
+*           XBLNR
+*           SHKZG
+*           DMBTR
+*           VBELN
+*       FROM BSAD INTO TABLE IT_BSAD FOR ALL ENTRIES IN IT_BSEG WHERE BELNR = IT_BSEG-BELNR AND VBELN = IT_BSEG-VBELN AND BUKRS = IT_BSEG-BUKRS.
+*
+*      ENDIF.
+
+  SELECT VBELN
+         BTGEW FROM LIKP INTO TABLE IT_LIKP FOR ALL ENTRIES IN IT_VBRK
+         WHERE VBELN = IT_VBRK-VGBEL.
+
+
+
+
+
+  TYPES: BEGIN OF TY_VBRK_TEMP,
+       SPART TYPE VBRK-SPART,
+       VKBUR TYPE VBRP-VKBUR,
+       KUNAG TYPE VBRK-KUNAG,
+       KUNRG TYPE VBRK-KUNRG,
+  END OF TY_VBRK_TEMP.
+
+  DATA: IT_VBRK_TEMP TYPE STANDARD TABLE OF TY_VBRK_TEMP,
+        WA_VBRK_TEMP LIKE LINE OF IT_VBRK_TEMP.
+
+  LOOP AT IT_VBRK INTO WA_VBRK.
+
+    MOVE-CORRESPONDING WA_VBRK TO WA_VBRK_TEMP.
+    APPEND WA_VBRK_TEMP TO IT_VBRK_TEMP.
+    CLEAR: WA_VBRK, WA_VBRK_TEMP.
+
+  ENDLOOP.
+
+  SORT IT_VBRK_TEMP BY SPART VKBUR KUNAG KUNRG.
+
+  DELETE ADJACENT DUPLICATES FROM IT_VBRK_TEMP COMPARING ALL FIELDS.
+
+  IF IT_VBRK_TEMP IS NOT INITIAL.
+
+    SELECT VKBUR
+           BEZEI
+           FROM TVKBT INTO TABLE IT_TVKBT
+           FOR ALL ENTRIES IN IT_VBRK_TEMP
+           WHERE VKBUR = IT_VBRK_TEMP-VKBUR
+           AND SPRAS = 'EN'.
+
+    SELECT SPART
+           VTEXT
+           FROM TSPAT INTO TABLE IT_TSPAT
+           FOR ALL ENTRIES IN IT_VBRK_TEMP
+           WHERE SPART = IT_VBRK_TEMP-SPART
+           AND SPRAS = 'EN'.
+
+    SELECT KUNNR
+           NAME1
+           NAME2
+           FROM KNA1 INTO TABLE IT_KNA1
+           FOR ALL ENTRIES IN IT_VBRK_TEMP
+           WHERE KUNNR = IT_VBRK_TEMP-KUNRG AND KUNNR = IT_VBRK_TEMP-KUNAG.
+
+  ENDIF.
+
+  LOOP AT IT_VBRK INTO WA_VBRK.
+
+    WA_FINOVR-FKDAT = WA_VBRK-FKDAT.
+    WA_FINOVR-SPART = WA_VBRK-SPART.
+    WA_FINOVR-VBELN = WA_VBRK-VBELN.
+    WA_FINOVR-FKART = WA_VBRK-FKART.
+    WA_FINOVR-KUNAG = WA_VBRK-KUNAG.
+    WA_FINOVR-KUNRG = WA_VBRK-KUNRG.
+    WA_FINOVR-VKORG = WA_VBRK-VKORG.
+    WA_FINOVR-VTWEG = WA_VBRK-VTWEG.
+    WA_FINOVR-NETWR = WA_VBRK-NETWR.
+    WA_FINOVR-SFAKN = WA_VBRK-SFAKN.
+*    wa_finovr-posnr = wa_vbrk-posnr.
+    WA_FINOVR-VKBUR = WA_VBRK-VKBUR.
+    WA_FINOVR-MWSBK = WA_VBRK-MWSBK.
+    WA_FINOVR-INV_VAL = WA_VBRK-NETWR + WA_VBRK-MWSBK.
+
+    READ TABLE IT_BSID INTO WA_BSID WITH KEY VBELN = WA_VBRK-VBELN.
+    IF SY-SUBRC = 0.
+      WA_FINOVR-INV_RCV = WA_BSID-DMBTR.
+    ENDIF.
+    READ TABLE IT_LIKP INTO WA_LIKP WITH KEY VBELN = WA_VBRK-VGBEL.
+
+    IF SY-SUBRC = 0.
+
+      WA_FINOVR-BTGEW = WA_LIKP-BTGEW.
+
+    ENDIF.
+
+    READ TABLE IT_TVKBT INTO WA_TVKBT WITH KEY VKBUR = WA_VBRK-VKBUR.
+    IF SY-SUBRC = 0.
+      WA_FINOVR-BEZEI = WA_TVKBT-BEZEI.
+    ENDIF.
+
+    READ TABLE IT_TSPAT INTO WA_TSPAT WITH KEY SPART = WA_VBRK-SPART.
+
+    IF SY-SUBRC = 0.
+      WA_FINOVR-VTEXT = WA_TSPAT-VTEXT.
+    ENDIF.
+
+    READ TABLE IT_KNA1 INTO WA_KNA1 WITH KEY KUNNR = WA_VBRK-KUNAG .
+
+    IF SY-SUBRC = 0.
+      WA_FINOVR-NAME1 = WA_KNA1-NAME1.
+      WA_FINOVR-NAME2 = WA_KNA1-NAME1.
+    ENDIF.
+
+*     WA_FINOVR-INV_BAL =  WA_FINOVR-INV_VAL - WA_FINOVR-INV_RCV.
+
+    APPEND WA_FINOVR TO IT_FINOVR.
+    CLEAR WA_FINOVR.
+  ENDLOOP.
+
+
+
+  DATA: IT_TEMP TYPE STANDARD TABLE OF TY_FINOVR,
+         WA_TEMP LIKE LINE OF IT_TEMP.
+
+
+  DATA: CNT TYPE I VALUE '0'.
+
+  IF P_CB EQ 'X'.
+
+    LOOP AT IT_FINOVR INTO WA_FINOVR.
+
+
+      IF WA_FINOVR-SFAKN IS NOT INITIAL.
+
+        WA_FINOVR-CANDOC = 'X'.
+
+        MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING CANDOC.
+
+        APPEND WA_FINOVR TO IT_TEMP.
+
+        CLEAR WA_FINOVR.
+
+      ENDIF.
+
+    ENDLOOP.
+
+
+    LOOP AT IT_FINOVR INTO WA_FINOVR.
+
+      READ TABLE IT_TEMP INTO WA_TEMP WITH KEY SFAKN = WA_FINOVR-VBELN.
+
+      IF SY-SUBRC = 0.
+
+        MODIFY IT_FINOVR FROM WA_TEMP TRANSPORTING CANDOC.
+
+      ENDIF.
+
+    ENDLOOP.
+
+  ENDIF.
+
+
+  IF P_CB NE 'X'.
+
+    LOOP AT IT_FINOVR INTO WA_FINOVR.
+
+      CNT = CNT + 1.
+      IF WA_FINOVR-SFAKN IS NOT INITIAL.
+
+        WA_TEMP-SFAKN = WA_FINOVR-SFAKN.
+
+        APPEND WA_TEMP TO IT_TEMP.
+
+        DELETE IT_FINOVR INDEX CNT.
+
+        CNT = CNT - 1.
+
+      ENDIF.
+    ENDLOOP.
+
+    LOOP AT IT_TEMP INTO WA_TEMP.
+
+      DELETE IT_FINOVR WHERE VBELN = WA_TEMP-SFAKN.
+
+    ENDLOOP.
+
+    DELETE IT_FINOVR WHERE VKBUR = ''.                        "
+
+  ENDIF.
+
+
+  DATA: SUM_CUST TYPE NETWR,
+        SUM_OFF TYPE NETWR,
+        SUM_DIV TYPE NETWR.
+
+
+
+
+  SORT IT_FINOVR BY FKDAT VKBUR KUNRG.
+
+  LOOP AT IT_FINOVR INTO WA_FINOVR.
+
+    SUM_CUST = WA_FINOVR-NETWR + SUM_CUST + WA_FINOVR-MWSBK.
+
+
+    AT END OF KUNRG.
+
+      WA_FINOVR-SUM_CUST = SUM_CUST.
+
+      MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING SUM_CUST.
+      CLEAR: SUM_CUST.
+    ENDAT.
+
+  ENDLOOP.
+
+
+  LOOP AT IT_FINOVR INTO WA_FINOVR.
+
+    COUNTER = COUNTER + 1.
+    SUM_OFF = WA_FINOVR-NETWR + SUM_OFF + WA_FINOVR-MWSBK.
+
+    AT END OF VKBUR.
+
+
+      WA_FINOVR-V_COUNT = COUNTER.
+      WA_FINOVR-SUM_OFF = SUM_OFF.
+
+      MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING V_COUNT SUM_OFF.
+      CLEAR: COUNTER, SUM_OFF.
+
+
+    ENDAT.
+
+
+  ENDLOOP.
+
+  LOOP AT IT_FINOVR INTO WA_FINOVR.
+    SUM_DIV = WA_FINOVR-NETWR + SUM_CUST + WA_FINOVR-MWSBK.
+    AT END OF SPART.
+      WA_FINOVR-SUM_DIV = SUM_DIV.
+      MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING V_COUNT SUM_DIV.
+      CLEAR : COUNTER,SUM_DIV.
+    ENDAT.
+  ENDLOOP.
+
+
+*  LOOP AT IT_FINOVR INTO WA_FINOVR.
+*    IF WA_FINOVR-V_COUNT IS INITIAL.
+*      WA_FINOVR-V_COUNT = '-'.
+*      MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING V_COUNT.
+*    ENDIF.
+*    CLEAR:WA_FINOVR-V_COUNT.
+*
+*  ENDLOOP.
+
+  IF IT_FINOVR IS INITIAL.
+
+
+    MESSAGE 'No Data Exists for the Input' TYPE 'S' DISPLAY LIKE 'E'.
+
+    STOP.
+
+  ENDIF.
+
+ENDFORM.                    "
+
+
+
+
+
+
+" DATA_RETRIEVAL_OVERVIEW
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_FIELDCATALOG_OVERVIEW
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  AUTHCHECK_OVERVIEW
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM AUTHCHECK_OVERVIEW .
+
+  LOOP AT IT_FINOVR INTO WA_FINOVR.
+    AUTHORITY-CHECK OBJECT 'ZINVOICE'
+    ID 'ZVKBUR' FIELD WA_FINOVR-VKBUR
+    ID 'ZSPART' DUMMY
+    ID 'ACTVT' FIELD '03'.
+    IF SY-SUBRC NE 0.
+      WA_FINOVR-FLAG = 'x' .
+      MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING FLAG.
+      MESSAGE 'NO AUTHORIZATION FOR CERTAIN RECORDS' TYPE 'S'.
+    ENDIF.
+
+    AUTHORITY-CHECK OBJECT 'ZINVOICE'
+    ID 'ZVKBUR' DUMMY
+    ID 'ZSPART' FIELD WA_FINOVR-SPART
+    ID 'ACTVT' FIELD '03'.
+    IF SY-SUBRC NE 0.
+      WA_FINOVR-FLAG = 'x' .
+      MODIFY IT_FINOVR FROM WA_FINOVR TRANSPORTING FLAG.
+      MESSAGE 'NO AUTHORIZATION FOR CERTAIN RECORDS' TYPE 'S'.
+    ENDIF.
+    CLEAR: WA_FINOVR.
+  ENDLOOP.
+
+  DELETE IT_FINOVR WHERE FLAG = 'x'.
+
+
+ENDFORM.                    " AUTHCHECK_OVERVIEW
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_FIELDCATALOG_OVERVIEW
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM BUILD_FIELDCATALOG_OVERVIEW .
+
+  WA_FIELDCAT-FIELDNAME   = 'FKDAT'.
+  WA_FIELDCAT-SELTEXT_M   = 'BILLING DATE'.
+  WA_FIELDCAT-COL_POS     = 1.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_SORT-FIELDNAME = 'FKDAT'.
+  WA_SORT-UP = 'X'.
+  WA_SORT-GROUP = 'X'.
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+
+  WA_FIELDCAT-FIELDNAME   = 'VKBUR'.
+  WA_FIELDCAT-SELTEXT_M   = 'SALES OFFICE'.
+  WA_FIELDCAT-COL_POS     = 2.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_SORT-FIELDNAME = 'VKBUR'.
+  WA_SORT-UP = 'X'.
+  WA_SORT-GROUP = 'X'.
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+
+  WA_FIELDCAT-FIELDNAME   = 'BEZEI'.
+  WA_FIELDCAT-SELTEXT_M   = 'SALES DESCRIPTION'.
+  WA_FIELDCAT-COL_POS     = 3.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME   = 'VKORG'.
+  WA_FIELDCAT-SELTEXT_M   = 'SALES ORGANIZATION'.
+  WA_FIELDCAT-COL_POS     = 4.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'VTWEG'.
+  WA_FIELDCAT-SELTEXT_M   = 'DISTRIBUTION CHANNEL'.
+  WA_FIELDCAT-COL_POS     = 5.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'SPART'.
+  WA_FIELDCAT-SELTEXT_M   = 'SALES DIVISION'.
+  WA_FIELDCAT-COL_POS     = 6.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'VTEXT'.
+  WA_FIELDCAT-SELTEXT_M   = 'SALES DIVISION DESCRIPTION'.
+  WA_FIELDCAT-COL_POS     = 7.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'VBELN'.
+  WA_FIELDCAT-SELTEXT_M   = 'BILLING DOCUMENT'.
+  WA_FIELDCAT-COL_POS     = 8.
+  WA_FIELDCAT-HOTSPOT     = 'X'.
+  WA_FIELDCAT-CFIELDNAME   = 'VBELN'.
+  WA_FIELDCAT-CTABNAME    = 'VBRP'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME   = 'CANDOC'.
+  WA_FIELDCAT-SELTEXT_M   = 'CANCELLED DOCUMENT'.
+  WA_FIELDCAT-COL_POS     = 9.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+
+
+  WA_FIELDCAT-FIELDNAME   = 'FKART'.
+  WA_FIELDCAT-SELTEXT_M   = 'BILLING TYPE'.
+  WA_FIELDCAT-COL_POS     = 10.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+*
+*  WA_FIELDCAT-FIELDNAME   = 'KUNAG'.
+*  WA_FIELDCAT-SELTEXT_M   = 'SOLD-TO-PARTY'.
+*  WA_FIELDCAT-COL_POS     = 11.
+*  WA_FIELDCAT-CFIELDNAME   = 'KUNAG'.
+*  WA_FIELDCAT-CTABNAME    = 'VBRK'.
+*
+*  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+*  WA_FIELDCAT-FIELDNAME   = 'NAME1'.
+*  WA_FIELDCAT-SELTEXT_M   = 'SP NAME'.
+*  WA_FIELDCAT-COL_POS     = 10.
+*  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME   = 'KUNRG'.
+  WA_FIELDCAT-SELTEXT_M   = 'PAYER'.
+  WA_FIELDCAT-COL_POS     = 11.
+  WA_FIELDCAT-CFIELDNAME   = 'KUNRG'.
+  WA_FIELDCAT-CTABNAME    = 'VBRK'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'NAME2'.
+  WA_FIELDCAT-SELTEXT_M   = 'PY NAME'.
+  WA_FIELDCAT-COL_POS     = 12.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'BTGEW'.
+  WA_FIELDCAT-SELTEXT_M   = 'TOTAL IN LITES'.
+  WA_FIELDCAT-COL_POS     = 13.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+
+
+
+  WA_FIELDCAT-FIELDNAME   = 'NETWR'.
+  WA_FIELDCAT-SELTEXT_M   = 'NET VALUE'.
+  WA_FIELDCAT-COL_POS     = 14.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME   = 'MWSBK'.
+  WA_FIELDCAT-SELTEXT_M   = 'TAX VALUE'.
+  WA_FIELDCAT-COL_POS     = 15.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'INV_VAL'.
+  WA_FIELDCAT-SELTEXT_M   = 'INVOICE VALUE'.
+  WA_FIELDCAT-COL_POS     = 16.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'INV_RCV'.
+  WA_FIELDCAT-SELTEXT_M   = 'BAL. VALUE'.
+  WA_FIELDCAT-COL_POS     = 17.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME   = 'SUM_CUST'.
+  WA_FIELDCAT-SELTEXT_M   = 'CUSTOMER SUM'.
+  WA_FIELDCAT-COL_POS     = 18.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  WA_FIELDCAT-NO_OUT      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'SUM_OFF'.
+  WA_FIELDCAT-SELTEXT_M   = 'SALES OFFICE SUM'.
+  WA_FIELDCAT-COL_POS     = 19.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  WA_FIELDCAT-NO_OUT      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'SUM_DIV'.
+  WA_FIELDCAT-SELTEXT_M   = 'DIVISION SUM'.
+  WA_FIELDCAT-COL_POS     = 20.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  WA_FIELDCAT-NO_OUT      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME   = 'V_COUNT'.
+  WA_FIELDCAT-SELTEXT_M   = 'COUNTER'.
+  WA_FIELDCAT-COL_POS     = 21.
+  WA_FIELDCAT-DO_SUM      = 'X'.
+  WA_FIELDCAT-NO_OUT      = 'X'.
+  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+  CLEAR  WA_FIELDCAT.
+
+*   WA_FIELDCAT-FIELDNAME   = 'INV_BAL'.
+*  WA_FIELDCAT-SELTEXT_M   = 'BALANCE VALUE'.
+*  WA_FIELDCAT-COL_POS     = 21.
+*WA_FIELDCAT-DO_SUM      = 'X'.
+*  APPEND WA_FIELDCAT TO IT_FIELDCAT.
+*  CLEAR  WA_FIELDCAT.
+
+
+ENDFORM.                    "BUILD_FIELDCATALOG_OVERVIEW
+
+" BUILD_FIELDCATALOG_OVERVIEW
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_ALV_OVERVIEW
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM BUILD_ALV_OVERVIEW .
+
+
+  LOOP AT IT_FINOVR TRANSPORTING NO FIELDS WHERE CANDOC = 'X'.
+
+    EXIT.
+
+  ENDLOOP.
+
+  IF SY-SUBRC NE 0.
+
+    READ TABLE IT_FIELDCAT INTO WA_FIELDCAT WITH KEY FIELDNAME = 'CANDOC'.
+
+    IF SY-SUBRC = 0.
+
+      WA_FIELDCAT-NO_OUT = 'X'.
+      WA_FIELDCAT-TECH   = 'X'.
+
+      MODIFY IT_FIELDCAT FROM WA_FIELDCAT INDEX SY-TABIX.
+
+    ENDIF.
+
+  ENDIF.
+
+
+
+ENDFORM.                    "BUILD_ALV_OVERVIEW
+
+*&---------------------------------------------------------------------*
+*&      Form  MY_STATUS
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->RT_EXTAB   text
+*----------------------------------------------------------------------*
+FORM PF_STATUS_GET USING RT_EXTAB TYPE SLIS_T_EXTAB.
+
+  SET PF-STATUS 'MY_STATUS'.
+
+ENDFORM.                    "MY_STATUS
+
+*&---------------------------------------------------------------------*
+*&      Form  MY_USER_COMMAND
+*&---------------------------------------------------------------------*
+*      FOR SENDING EMAIL WITH EXCEL ATTACHMENT
+*----------------------------------------------------------------------*
+*      -->R_UCOMM    text
+*----------------------------------------------------------------------*
+FORM MY_USER_COMMAND USING R_UCOMM LIKE SY-UCOMM RS_SELFIELD TYPE SLIS_SELFIELD.
+
+  CASE R_UCOMM.
+
+    WHEN '&MAI'.
+
+      PERFORM BUILD_XLS_DATA_TABLE.
+
+      PERFORM SEND_MAIL.
+
+    WHEN '&IC1'.
+
+      IF RS_SELFIELD-FIELDNAME = 'VBELN'.
+
+        SET PARAMETER ID 'VF' FIELD RS_SELFIELD-VALUE.
+        CALL TRANSACTION 'VF03' AND SKIP FIRST SCREEN.
+      ENDIF.
+
+  ENDCASE.
+ENDFORM.                    "MY_USER_COMMAND
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_XLS_DATA_TABLE
+*&---------------------------------------------------------------------*
+*       FOR BUILDING EXCEL DATA
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM BUILD_XLS_DATA_TABLE .
+
+  CLASS CL_ABAP_CHAR_UTILITIES DEFINITION LOAD.
+  CONSTANTS:
+  CON_TAB  TYPE C VALUE CL_ABAP_CHAR_UTILITIES=>HORIZONTAL_TAB,
+  CON_CRET TYPE C VALUE CL_ABAP_CHAR_UTILITIES=>CR_LF.
+
+  CONCATENATE 'BILLING DATE '
+               'SALES OFFICE'
+               'SALES OFFICE DESCRIPTION'
+               'SALES ORGANIZATION'
+               'DISTRIBUTION CHANNEL'
+               'SALES DIVISION'
+               'SALES DIVISION DESCRIPTION'
+               'BILLING DOCUMENT NO'
+               'BILLING TYPE'
+               'PAYER'
+               'PAYER NAME'
+               'TOT LTR'
+               'NET VALUE'
+               'TAX VALUE'
+               'INVOICE VALUE'
+               'CUSTOMER SUM'
+               'SL OFFICE SUM'
+               'COUNTER'
+  INTO  WA_ATTACHMENT SEPARATED BY  CON_TAB.
+
+  CONCATENATE CON_CRET
+  WA_ATTACHMENT
+  INTO WA_ATTACHMENT.
+
+  APPEND WA_ATTACHMENT TO IT_ATTACHMENT.
+  CLEAR  WA_ATTACHMENT.
+
+
+  DATA:    LV_STR_BTGEW TYPE STRING,
+            LV_STRING_OVR TYPE STRING,
+            LV_MWSBK TYPE STRING,
+            LV_INV_VAL TYPE STRING,
+            LV_SUM_CUST TYPE STRING,
+            LV_SUM_OFF TYPE STRING,
+            LV_COUNT TYPE STRING.
+  LOOP AT IT_FINOVR INTO WA_FINOVR.
+
+    MOVE: WA_FINOVR-BTGEW TO LV_STR_BTGEW,
+          WA_FINOVR-NETWR TO LV_STRING_OVR,
+          WA_FINOVR-MWSBK TO LV_MWSBK,
+          WA_FINOVR-INV_VAL TO LV_INV_VAL,
+          WA_FINOVR-SUM_CUST TO LV_SUM_CUST,
+          WA_FINOVR-SUM_OFF TO LV_SUM_OFF,
+          WA_FINOVR-V_COUNT TO LV_COUNT.
+
+    CONCATENATE  WA_FINOVR-FKDAT WA_FINOVR-VKBUR WA_FINOVR-BEZEI WA_FINOVR-VKORG WA_FINOVR-VTWEG WA_FINOVR-SPART WA_FINOVR-VTEXT  WA_FINOVR-VBELN WA_FINOVR-FKART
+    WA_FINOVR-KUNRG WA_FINOVR-NAME2 LV_STR_BTGEW LV_STRING_OVR LV_MWSBK LV_INV_VAL
+    LV_SUM_CUST LV_SUM_OFF LV_COUNT
+  INTO WA_ATTACHMENT SEPARATED BY CON_TAB.
+
+    CONCATENATE CON_CRET WA_ATTACHMENT
+    INTO WA_ATTACHMENT.
+    APPEND WA_ATTACHMENT TO IT_ATTACHMENT.
+    CLEAR WA_ATTACHMENT.
+
+  ENDLOOP.
+
+ENDFORM.                    " BUILD_XLS_DATA_TABLE
+*&---------------------------------------------------------------------*
+*&      Form  SEND_MAIL
+*&---------------------------------------------------------------------*
+*       FOR SENDING MAIL WITH EXCEL ATTACHMENT
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM SEND_MAIL .
+
+  WA_DOCDATA-OBJ_NAME = 'MAIL WITH EXCEL ATTACHMENT'.
+  WA_DOCDATA-OBJ_DESCR = 'SAP Reports'.
+
+  PERFORM BODY_OF_MAIL USING: SPACE, 'Hello ',
+  'Please find the attached excel sheet'.
+
+  DESCRIBE TABLE IT_BODY_MSG LINES G_TAB_LINES.
+  WA_PACKLIST-HEAD_START = 1.
+  WA_PACKLIST-HEAD_NUM   = 0.
+  WA_PACKLIST-BODY_START = 1.
+  WA_PACKLIST-BODY_NUM   = G_TAB_LINES.
+  WA_PACKLIST-DOC_TYPE   = 'RAW'.
+  APPEND WA_PACKLIST TO IT_PACKLIST.
+  CLEAR  WA_PACKLIST.
+
+  "Write Packing List for Attachment
+  WA_PACKLIST-TRANSF_BIN = SPACE.
+  WA_PACKLIST-HEAD_START = 1.
+  WA_PACKLIST-HEAD_NUM   = 1.
+  WA_PACKLIST-BODY_START = G_TAB_LINES + 1.
+  DESCRIBE TABLE IT_ATTACHMENT LINES WA_PACKLIST-BODY_NUM.
+  WA_PACKLIST-DOC_TYPE   = 'XLS'.
+  WA_PACKLIST-OBJ_DESCR  = 'SAP Invoice Details'.
+  WA_PACKLIST-OBJ_NAME   = 'XLS_ATTACHMENT'.
+  WA_PACKLIST-DOC_SIZE   = WA_PACKLIST-BODY_NUM * 255.
+  APPEND WA_PACKLIST TO IT_PACKLIST.
+  CLEAR  WA_PACKLIST.
+
+  APPEND LINES OF IT_ATTACHMENT TO IT_BODY_MSG.
+  "Fill the document data and get size of attachment
+  WA_DOCDATA-OBJ_LANGU  = SY-LANGU.
+  READ TABLE IT_BODY_MSG INTO WA_BODY_MSG INDEX G_TAB_LINES.
+  WA_DOCDATA-DOC_SIZE = ( G_TAB_LINES - 1 ) * 255 + STRLEN( WA_BODY_MSG ).
+
+  "Receivers List.
+  WA_RECEIVERS-REC_TYPE   = 'U'.  "Internet address
+  WA_RECEIVERS-RECEIVER   = 'no-reply@sheenlac.in'.
+  WA_RECEIVERS-COM_TYPE   = 'INT'.
+  WA_RECEIVERS-NOTIF_DEL  = 'X'.
+  WA_RECEIVERS-NOTIF_NDEL = 'X'.
+  APPEND WA_RECEIVERS TO IT_RECEIVERS .
+  CLEAR:WA_RECEIVERS.
+
+  CALL FUNCTION 'SO_NEW_DOCUMENT_ATT_SEND_API1'                                 " FUNCTION MODULE FOR MAIL SENDING
+    EXPORTING
+      DOCUMENT_DATA                    = WA_DOCDATA
+      PUT_IN_OUTBOX                    = 'X'
+      COMMIT_WORK                      = 'X'
+   IMPORTING
+      SENT_TO_ALL                      = G_SENT_TO_ALL
+*   NEW_OBJECT_ID                    =
+    TABLES
+      PACKING_LIST                     = IT_PACKLIST
+*   OBJECT_HEADER                    =
+*   CONTENTS_BIN                     =
+     CONTENTS_TXT                     = IT_BODY_MSG
+*   CONTENTS_HEX                     =
+*   OBJECT_PARA                      =
+*   OBJECT_PARB                      =
+      RECEIVERS                        = IT_RECEIVERS
+  EXCEPTIONS
+     TOO_MANY_RECEIVERS               = 1
+     DOCUMENT_NOT_SENT                = 2
+     DOCUMENT_TYPE_NOT_EXIST          = 3
+     OPERATION_NO_AUTHORIZATION       = 4
+     PARAMETER_ERROR                  = 5
+     X_ERROR                          = 6
+     ENQUEUE_ERROR                    = 7
+     OTHERS                           = 8
+            .
+  IF SY-SUBRC <> 0.
+
+    WRITE: 'FAILURE'.
+
+  ELSE.
+
+    WAIT UP TO 2 SECONDS.
+
+    SUBMIT RSCONN01 WITH MODE = 'INT'
+        WITH OUTPUT = 'X'
+        AND RETURN.
+  ENDIF.
+ENDFORM.                    " SEND_MAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  BODY_OF_MAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM BODY_OF_MAIL USING L_MESSAGE.
+
+  WA_BODY_MSG = L_MESSAGE.
+  APPEND WA_BODY_MSG TO IT_BODY_MSG.
+  CLEAR  WA_BODY_MSG.
+
+ENDFORM.                    " BODY_OF_MAIL
+
+*&---------------------
+
+*&---------------------------------------------------------------------*
+*&      Form  PF_STATUS_GET_DETAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->RT_EXTAB   text
+*----------------------------------------------------------------------*
+FORM PF_STATUS_GET_DETAIL USING RT_EXTAB TYPE SLIS_T_EXTAB.
+
+  SET PF-STATUS 'MY_STATUS'.
+
+ENDFORM.                    "PF_STATUS_GET_DETAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  MY_USER_COMMAND_DETAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->R_UCOMM      text
+*      -->RS_SELFIELD  text
+*----------------------------------------------------------------------*
+FORM MY_USER_COMMAND_DETAIL USING R_UCOMM LIKE SY-UCOMM RS_SELFIELD TYPE SLIS_SELFIELD.
+
+  CASE R_UCOMM.
+
+    WHEN '&MAI'.
+
+      PERFORM BUILD_XLS_DATA_TABLE_DETAIL.
+
+      PERFORM SEND_MAIL_DETAIL.
+
+  ENDCASE.
+
+  IF RS_SELFIELD-FIELDNAME = 'VBELN'.
+
+    SET PARAMETER ID 'VF' FIELD RS_SELFIELD-VALUE.
+    CALL TRANSACTION 'VF03' AND SKIP FIRST SCREEN.
+  ENDIF.
+
+
+ENDFORM.                    "MY_USER_COMMAND_DETAIL
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_XLS_DATA_TABLE_DETAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM BUILD_XLS_DATA_TABLE_DETAIL .
+
+  CLASS CL_ABAP_CHAR_UTILITIES DEFINITION LOAD.
+  CONSTANTS:
+  CON_TAB  TYPE C VALUE CL_ABAP_CHAR_UTILITIES=>HORIZONTAL_TAB,
+  CON_CRET TYPE C VALUE CL_ABAP_CHAR_UTILITIES=>CR_LF.
+
+  CONCATENATE 'BILLING DOCUMENT DATE'
+               'SALES OFFICE'
+               'SALES OFFICE DESCRIPTION'
+               'SALES DIVISION'
+               'SALES DIVISION DESCRPTION'
+               'BILLING DOCUMENT NO'
+               'BILLING ITEM'
+               'MATERIAL NUMBER'
+               'MATERIAL DESCRIPTION'
+               'BATCH NO'
+               'QUANTITY'
+               'SALES UNIT'
+               'NET VALUE'
+               'SOLD TO PARTY'
+               'SP NAME'
+               'PAYER'
+               'PY NAME'
+  INTO  WA_ATTACHMENT SEPARATED BY  CON_TAB.
+
+  CONCATENATE CON_CRET
+  WA_ATTACHMENT
+  INTO WA_ATTACHMENT.
+
+  APPEND WA_ATTACHMENT TO IT_ATTACHMENT.
+  CLEAR  WA_ATTACHMENT.
+
+  DATA: LV_STRING_DET TYPE STRING,
+        LV_STRING_DET_NETWR TYPE STRING.
+
+
+  LOOP AT IT_FINALDET INTO WA_FINALDET.
+
+
+    LV_STRING_DET = WA_FINALDET-FKIMG.
+    LV_STRING_DET_NETWR = WA_FINALDET-NETWR.
+
+    CONCATENATE  WA_FINALDET-FKDAT
+                 WA_FINALDET-VKBUR
+                 WA_FINALDET-BEZEI
+                 WA_FINALDET-SPART
+                 WA_FINALDET-VTEXT
+                 WA_FINALDET-VBELN
+                 WA_FINALDET-POSNR
+                 WA_FINALDET-MATNR
+                 WA_FINALDET-ARKTX
+                 WA_FINALDET-CHARG
+                 LV_STRING_DET
+                 WA_FINALDET-VRKME
+                 LV_STRING_DET_NETWR
+                 WA_FINALDET-KUNAG
+                 WA_FINALDET-NAME1
+                 WA_FINALDET-KUNRG
+                 WA_FINALDET-NAME2
+  INTO WA_ATTACHMENT SEPARATED BY CON_TAB.  "#EC CI_FLDEXT_OK[2215424]    "Added by SPLABAP during code remediation
+    " FINAL TABLE TYPE FOR DETAIL REPORT
+
+    CONCATENATE CON_CRET WA_ATTACHMENT
+    INTO WA_ATTACHMENT.
+    APPEND WA_ATTACHMENT TO IT_ATTACHMENT.
+    CLEAR WA_ATTACHMENT.
+  ENDLOOP.
+
+ENDFORM.                    "BUILD_XLS_DATA_TABLE_DETAIL
+" BUILD_XLS_DATA_TABLE_DETAIL
+*&---------------------------------------------------------------------*
+*&      Form  SEND_MAIL_DETAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM SEND_MAIL_DETAIL .
+
+  WA_DOCDATA-OBJ_NAME = 'MAIL WITH EXCEL ATTACHMENT'.
+  WA_DOCDATA-OBJ_DESCR = 'SAP Reports'.
+
+  PERFORM BODY_OF_MAIL USING: SPACE, 'Hello ',
+  'Please find the attached excel sheet'.
+
+  DESCRIBE TABLE IT_BODY_MSG LINES G_TAB_LINES.
+  WA_PACKLIST-HEAD_START = 1.
+  WA_PACKLIST-HEAD_NUM   = 0.
+  WA_PACKLIST-BODY_START = 1.
+  WA_PACKLIST-BODY_NUM   = G_TAB_LINES.
+  WA_PACKLIST-DOC_TYPE   = 'RAW'.
+  APPEND WA_PACKLIST TO IT_PACKLIST.
+  CLEAR  WA_PACKLIST.
+
+  "Write Packing List for Attachment
+  WA_PACKLIST-TRANSF_BIN = SPACE.
+  WA_PACKLIST-HEAD_START = 1.
+  WA_PACKLIST-HEAD_NUM   = 1.
+  WA_PACKLIST-BODY_START = G_TAB_LINES + 1.
+  DESCRIBE TABLE IT_ATTACHMENT LINES WA_PACKLIST-BODY_NUM.
+  WA_PACKLIST-DOC_TYPE   = 'XLS'.
+  WA_PACKLIST-OBJ_DESCR  = 'Excell Attachment'.
+  WA_PACKLIST-OBJ_NAME   = 'XLS_ATTACHMENT'.
+  WA_PACKLIST-DOC_SIZE   = WA_PACKLIST-BODY_NUM * 255.
+  APPEND WA_PACKLIST TO IT_PACKLIST.
+  CLEAR  WA_PACKLIST.
+
+  APPEND LINES OF IT_ATTACHMENT TO IT_BODY_MSG.
+  "Fill the document data and get size of attachment
+  WA_DOCDATA-OBJ_LANGU  = SY-LANGU.
+  READ TABLE IT_BODY_MSG INTO WA_BODY_MSG INDEX G_TAB_LINES.
+  WA_DOCDATA-DOC_SIZE = ( G_TAB_LINES - 1 ) * 255 + STRLEN( WA_BODY_MSG ).
+
+  "Receivers List.
+  WA_RECEIVERS-REC_TYPE   = 'U'.  "Internet address
+  WA_RECEIVERS-RECEIVER   = 'no-reply@sheenlac.in'.
+  WA_RECEIVERS-COM_TYPE   = 'INT'.
+  WA_RECEIVERS-NOTIF_DEL  = 'X'.
+  WA_RECEIVERS-NOTIF_NDEL = 'X'.
+  APPEND WA_RECEIVERS TO IT_RECEIVERS .
+  CLEAR:WA_RECEIVERS.
+
+  CALL FUNCTION 'SO_NEW_DOCUMENT_ATT_SEND_API1'                                 " FUNCTION MODULE FOR MAIL SENDING
+    EXPORTING
+      DOCUMENT_DATA                    = WA_DOCDATA
+      PUT_IN_OUTBOX                    = 'X'
+      COMMIT_WORK                      = 'X'
+   IMPORTING
+      SENT_TO_ALL                      = G_SENT_TO_ALL
+*   NEW_OBJECT_ID                    =
+    TABLES
+      PACKING_LIST                     = IT_PACKLIST
+*   OBJECT_HEADER                    =
+*   CONTENTS_BIN                     =
+     CONTENTS_TXT                     = IT_BODY_MSG
+*   CONTENTS_HEX                     =
+*   OBJECT_PARA                      =
+*   OBJECT_PARB                      =
+      RECEIVERS                        = IT_RECEIVERS
+  EXCEPTIONS
+     TOO_MANY_RECEIVERS               = 1
+     DOCUMENT_NOT_SENT                = 2
+     DOCUMENT_TYPE_NOT_EXIST          = 3
+     OPERATION_NO_AUTHORIZATION       = 4
+     PARAMETER_ERROR                  = 5
+     X_ERROR                          = 6
+     ENQUEUE_ERROR                    = 7
+     OTHERS                           = 8
+            .
+  IF SY-SUBRC <> 0.
+
+    WRITE: 'FAILURE'.
+
+  ELSE.
+
+    WAIT UP TO 2 SECONDS.
+
+    SUBMIT RSCONN01 WITH MODE = 'INT'
+        WITH OUTPUT = 'X'
+        AND RETURN.
+  ENDIF.
+ENDFORM.                " SEND_MAIL_DETAILENDFORM.                    " DATA_RETRIEVAL_DETAIL
+
+*
+* WA_SORT-FIELDNAME = 'SPART'.
+*  WA_SORT-UP = 'X'.
+*  WA_SORT-SUBTOT = 'X'.
+*  WA_SORT-TABNAME = 'G_T_TOTALS_FLAT'.
+*  APPEND WA_SORT TO IT_SORT.
+
+*&---------------------------------------------------------------------*
+*&      Form  POPULATE_SORT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM POPULATE_SORT .
+  SORT IT_FINOVR BY FKDAT KUNRG SPART.
+  WA_SORT-FIELDNAME = 'KUNRG'.
+  WA_SORT-UP = 'X'.
+  WA_SORT-SUBTOT = 'X'.
+  WA_SORT-TABNAME = 'IT_FINOVR'.
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+*  SORT IT_FINOVR BY  SPART  .
+*  WA_SORT-FIELDNAME = 'SPART'.
+*  WA_SORT-UP = 'X'.
+*  WA_SORT-SUBTOT = 'X'.
+*  WA_SORT-TABNAME = 'IT_FINOVR'.
+*  APPEND WA_SORT TO IT_SORT.
+*  CLEAR WA_SORT.
+ENDFORM.                    " POPULATE_SORT
+
+**&---------------------------------------------------------------------*
+**&      Form  SUBTOTAL_TEXT
+**&---------------------------------------------------------------------*
+**       text
+**----------------------------------------------------------------------*
+**      -->P_TOTAL        text
+**      -->P_SUBTOT_TEXT  text
+**----------------------------------------------------------------------*
+*FORM SUBTOTAL_TEXT CHANGING
+*               P_TOTAL TYPE ANY
+*               P_SUBTOT_TEXT TYPE SLIS_SUBTOT_TEXT.
+*
+*BREAK-POINT.
+** Customer  level sub total
+*
+*  IF P_SUBTOT_TEXT-CRITERIA = 'KUNRG'.
+*    P_SUBTOT_TEXT-DISPLAY_TEXT_FOR_SUBTOTAL  = 'Customer Total'.
+*  ENDIF.
+*
+** division level sub total
+*  IF P_SUBTOT_TEXT-CRITERIA = 'SPART'.
+*    P_SUBTOT_TEXT-DISPLAY_TEXT_FOR_SUBTOTAL = 'DivisionTotal'.
+*  ENDIF.
+*
+*
+*ENDFORM.                    "subtotal_text
+*&---------------------------------------------------------------------*
+*&      Form  SUB_GET_EVENT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM SUB_GET_EVENT .
+  CONSTANTS : C_FORMNAME_SUBTOTAL_TEXT TYPE SLIS_FORMNAME VALUE
+  'SUBTOTAL_TEXT'.
+
+  DATA: L_S_EVENT TYPE SLIS_ALV_EVENT.
+
+*BREAK-POINT.
+  CALL FUNCTION 'REUSE_ALV_EVENTS_GET'
+    EXPORTING
+      I_LIST_TYPE     = 4
+    IMPORTING
+      ET_EVENTS       = I_EVENT
+    EXCEPTIONS
+      LIST_TYPE_WRONG = 0
+      OTHERS          = 0.
+
+* Subtotal
+  READ TABLE I_EVENT  INTO L_S_EVENT
+                    WITH KEY NAME = SLIS_EV_SUBTOTAL_TEXT.
+  IF SY-SUBRC = 0.
+    MOVE C_FORMNAME_SUBTOTAL_TEXT TO L_S_EVENT-FORM.
+    MODIFY I_EVENT FROM L_S_EVENT INDEX SY-TABIX.
+  ENDIF.
+
+
+ENDFORM.                    " SUB_GET_EVENT
+
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_REPORT_DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM ALV_REPORT_DISPLAY .
+
+WA_LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+           WA_LAYOUT-ZEBRA = 'X'.
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+  EXPORTING
+*   I_INTERFACE_CHECK                 = ' '
+*   I_BYPASSING_BUFFER                = ' '
+*   I_BUFFER_ACTIVE                   = ' '
+      I_CALLBACK_PROGRAM                = SY-REPID
+      I_CALLBACK_PF_STATUS_SET          = 'PF_STATUS_GET'
+      I_CALLBACK_USER_COMMAND           = 'MY_USER_COMMAND'
+   I_CALLBACK_TOP_OF_PAGE            = 'SUB_ALV_TOP_OF_PAGE'
+*   I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*   I_CALLBACK_HTML_END_OF_LIST       = ' '
+*   I_STRUCTURE_NAME                  =
+*   I_BACKGROUND_ID                   = ' '
+*   I_GRID_TITLE                      =
+*   I_GRID_SETTINGS                   =
+   IS_LAYOUT                          = WA_LAYOUT
+      IT_FIELDCAT                     = IT_FIELDCAT
+*   IT_EXCLUDING                      =
+*   IT_SPECIAL_GROUPS                 =
+    IT_SORT                           = IT_SORT
+*   IT_FILTER                         =
+*   IS_SEL_HIDE                       =
+   I_DEFAULT                          = 'X'
+   I_SAVE                             = 'A'
+*   IS_VARIANT                        =
+   IT_EVENTS                          = I_EVENT[]
+*   IT_EVENT_EXIT                     =
+*   IS_PRINT                          =
+*   IS_REPREP_ID                      =
+*   I_SCREEN_START_COLUMN             = 0
+*   I_SCREEN_START_LINE               = 0
+*   I_SCREEN_END_COLUMN               = 0
+*   I_SCREEN_END_LINE                 = 0
+*   I_HTML_HEIGHT_TOP                 = 0
+*   I_HTML_HEIGHT_END                 = 0
+*   IT_ALV_GRAPHICS                   =
+*   IT_HYPERLINK                      =
+*   IT_ADD_FIELDCAT                   =
+*   IT_EXCEPT_QINFO                   =
+*   IR_SALV_FULLSCREEN_ADAPTER        =
+* IMPORTING
+*   E_EXIT_CAUSED_BY_CALLER           =
+*   ES_EXIT_CAUSED_BY_USER            =
+    TABLES
+      T_OUTTAB                          = IT_FINOVR[]
+* EXCEPTIONS
+*   PROGRAM_ERROR                     = 1
+*   OTHERS                            = 2
+            .
+  IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+ENDFORM.                    " ALV_REPORT_DISPLAY
+
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  SUB_POPULATE_LAYOUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM SUB_POPULATE_LAYOUT .
+*  CLEAR WA_LAYOUT.
+*  WA_LAYOUT-COLWIDTH_OPTIMIZE = 'X'." Optimization of Col width
+ENDFORM.                    " SUB_POPULATE_LAYOUT
+
+*&amp;---------------------------------------------------------------------*
+*       FORM sub_alv_top_of_page
+*---------------------------------------------------------------------*
+*       Call ALV top of page
+*---------------------------------------------------------------------*
+*       No parameter
+*---------------------------------------------------------------------*
+
+FORM SUB_ALV_TOP_OF_PAGE.                                   "#EC CALLED
+
+* To write header for the ALV
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = I_ALV_TOP_OF_PAGE.
+
+*  BREAK-POINT.
+ENDFORM.                    "alv_top_of_page
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  subtotal_text
+*&amp;---------------------------------------------------------------------*
+*       Build subtotal text
+*----------------------------------------------------------------------*
+*       P_TOTAL  Total
+*       P_SUBTOT_TEXT Subtotal text info
+*----------------------------------------------------------------------*
+FORM SUBTOTAL_TEXT CHANGING
+               P_TOTAL TYPE ANY
+               P_SUBTOT_TEXT TYPE SLIS_SUBTOT_TEXT.
+
+*  BREAK-POINT.
+* Material level sub total
+  IF P_SUBTOT_TEXT-CRITERIA = 'KUNRG'.
+    P_SUBTOT_TEXT-DISPLAY_TEXT_FOR_SUBTOTAL
+    = 'Customer level total'(009).
+  ENDIF.
+
+** Plant level sub total
+*  IF P_SUBTOT_TEXT-CRITERIA = 'SPART'.
+*    P_SUBTOT_TEXT-DISPLAY_TEXT_FOR_SUBTOTAL = 'Division level total'(010).
+*  ENDIF.
+
+
+ENDFORM.                    "subtotal_text

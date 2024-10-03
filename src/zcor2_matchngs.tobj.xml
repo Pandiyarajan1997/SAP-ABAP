@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TOBJ" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJH>
+    <OBJECTNAME>ZCOR2_MATCHNG</OBJECTNAME>
+    <OBJECTTYPE>S</OBJECTTYPE>
+    <CLIDEP>X</CLIDEP>
+    <OBJCATEG>APPL</OBJCATEG>
+    <IMPORTABLE>3</IMPORTABLE>
+   </OBJH>
+   <OBJT>
+    <LANGUAGE>E</LANGUAGE>
+    <OBJECTNAME>ZCOR2_MATCHNG</OBJECTNAME>
+    <OBJECTTYPE>S</OBJECTTYPE>
+    <DDTEXT>COR1-COR2 Material Change Allow</DDTEXT>
+   </OBJT>
+   <OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCOR2_MATCHNG</OBJECTNAME>
+     <OBJECTTYPE>S</OBJECTTYPE>
+     <TABNAME>ZCOR2_MATCHNG</TABNAME>
+     <DDIC>X</DDIC>
+     <PRIM_TABLE>X</PRIM_TABLE>
+    </OBJS>
+   </OBJS>
+   <TOBJ>
+    <TDDAT>
+     <TABNAME>ZCOR2_MATCHNG</TABNAME>
+     <CCLASS>&amp;NC&amp;</CCLASS>
+    </TDDAT>
+    <TVDIR>
+     <TABNAME>ZCOR2_MATCHNG</TABNAME>
+     <AREA>ZCOR2_MATCHNG</AREA>
+     <TYPE>1</TYPE>
+     <LISTE>0001</LISTE>
+     <BASTAB>X</BASTAB>
+     <FLAG>X</FLAG>
+    </TVDIR>
+   </TOBJ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_STVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <STVI>
+    <SHDTVCIU>
+     <TCVARIANT>ZQA11QA11</TCVARIANT>
+     <TCODE>QA11</TCODE>
+     <VERSION>11</VERSION>
+    </SHDTVCIU>
+    <SHDTTCIU>
+     <SHDTTCIU>
+      <LANGU>E</LANGU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <TCVTEXT>Expiry field as Display only</TCVTEXT>
+     </SHDTTCIU>
+    </SHDTTCIU>
+    <SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <SCVARIANT>ZQA11</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <SCVARIANT>ZQA11QA11_0100</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <SCVARIANT>ZQA11QA11_0101</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <SCVARIANT>ZQA11QA11_0200</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <SCVARIANT>ZQA11QA11_1101</SCVARIANT>
+     </SHDTVSVCIU>
+     <SHDTVSVCIU>
+      <TCVARIANT>ZQA11QA11</TCVARIANT>
+      <SCVARIANT>ZQA11QA11_1103</SCVARIANT>
+     </SHDTVSVCIU>
+    </SHDTVSVCIU>
+   </STVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

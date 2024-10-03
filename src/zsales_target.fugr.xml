@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Sales Target</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZSALES_TARGETTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZSALES_TARGET</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SALES_TARGET</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Sales Target</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IT_MON</PARAMETER>
+       <TYP>ZMONT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_YEAR</PARAMETER>
+       <TYP>ZYEA</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_SALES_TARGET</PARAMETER>
+       <DBSTRUCT>ZSALES_MONTH_TG</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_MON</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Month</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_YEAR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SALES_TARGET</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Team Monthly Team</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

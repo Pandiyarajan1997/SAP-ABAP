@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_PURCHASE_ORDER_CREATE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>DMS Purchasing Process</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ZMM_PO_HEADER_TXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Texts: (Header or Item)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ZMM_PO_ITEM_TT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchase Order Item</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>HEADERTEXT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Texts: (Header or Item)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>ITEM_TAB</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchase Order Item</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>POHEADER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchase Order Header Data</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>POHEADERX</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchase Order Header Data (Change Parameter)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>PONUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchasing Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>RETURN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return table</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

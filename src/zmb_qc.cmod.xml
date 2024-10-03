@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CMOD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <MODACT>
+    <MODACT>
+     <NAME>ZMB_QC</NAME>
+    </MODACT>
+    <MODACT>
+     <NAME>ZMB_QC</NAME>
+     <MEMBER>QAAT0001</MEMBER>
+    </MODACT>
+   </MODACT>
+   <MODTEXT>
+    <MODTEXT>
+     <SPRSL>E</SPRSL>
+     <NAME>ZMB_QC</NAME>
+     <MODTEXT>Auto MIGO Material Quality Certificate</MODTEXT>
+    </MODTEXT>
+   </MODTEXT>
+   <MODATTR>
+    <MODATTR>
+     <NAME>ZMB_QC</NAME>
+     <STATUS>A</STATUS>
+    </MODATTR>
+   </MODATTR>
+  </asx:values>
+ </asx:abap>
+</abapGit>

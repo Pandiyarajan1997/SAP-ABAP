@@ -1,0 +1,1838 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<abapGit version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TDLINES>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>ANNEX</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>BOXITEM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>ANNEXURE A</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Drawing the outer lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;19.0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;19.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;27.5&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;19.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Drawing the title lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;1.0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;2.0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Vertical lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;6.0&apos; CM YPOS &apos;1&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;18.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;14.0&apos; CM YPOS &apos;1&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;18.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;22.0&apos; CM YPOS &apos;1&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;18.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles printing</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P7</TDFORMAT>
+     <TDLINE>,,Packages No.,,Container No.,,Marks on Packages,,One time Seal No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>DATE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>Place _______________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>Date  ________________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>FOOTER1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = &amp;G_PAGES&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>3) I/We hereby certify that the above mentioned goods have been</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>manufactured,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>,,(a) availing facility / without availing facility of CENVAT credit</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>under CENVAT Credit Rules, 2002</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>,,(b) availing facility / without availing facility under Notification</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>No. 21/2004-Central Excise (N.T.) dated 6th June, 2004 issued under rule</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>18 of Central Excise Rules, 2002.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>,,(c) availing facility / without availing facility under Notification</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>No. 43/2001-Central Excise (N.T.), dated the 26th June, 2001 issued</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>under rule 19 of Central Excise (No.2) Rules, 2001.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>4) I/We hereby declare that the exports is in discharge of the export</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>obligation under a Quantity based Advance License/Value based Advance</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>License / Under claim of Duty Drawback under Customs &amp; Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Duties Drawback Rules, 1995.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>5) I/We hereby declare that the above particulars are true and correctly</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>stated.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P5</TDFORMAT>
+     <TDLINE>6) Certified that the description and value of the goods covered by this</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>invoice / ARE-1 have been checked by me and the goods have been packed</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>and sealed under my supervision.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>FOOTER2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = &amp;G_PAGES&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>FOOTER2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;1.8&apos; CM WIDTH &apos;8.0&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;4.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;0&apos; CM WIDTH &apos;8.0&apos; CM HEIGHT &apos;4.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;4.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;2.8&apos; CM WIDTH &apos;8.0&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;4.0&apos; CM WIDTH &apos;8.0&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; M</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Amount of duty involved on</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>goods cleared for Export</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>RS:&amp;TOT_BED3&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Rupees:&amp;TOT_WORDS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Time of Removal: &lt;C4&gt;&amp;J_1IEXCHDR-REMTIME&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Date of Removal: &lt;C4&gt;&amp;J_1IEXCHDR-BUDAT&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Vehicle No :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Container No :</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>FOOTER3</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = &amp;G_PAGES&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Signature of owner or his Authorised agent with date.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Name in Block Letters &amp; Designation (SEAL)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>HEADER1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>HEADER1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Range   :  &amp;J_1IREGSET-J_1IEXCRG&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Division : &amp;J_1IREGSET-J_1IEXCDI&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Address  : &amp;GS_T001W-STRAS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>&amp;GS_T001W-PFACH&amp;&amp;GS_T001W-ORT01&amp; &amp;GS_T001W-PSTLZ&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Commissionerate: &amp;J_1IREGSET-J_1IEXCCO&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>HEADER2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>HEADER2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>&lt;C2&gt;Form A.R.E.1&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>Application For Removal of Excisable Goods</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;G_MODE&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>&amp;G_MODE(40)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>For Export by [Air / Sea / Post / Land]*/</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>Export under VBAL / QBAL / OTHERS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;G_EXP&amp; NE &apos; &apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>&amp;G_EXP(40)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>HEADER3</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>HEADER3</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>A.R.E 1 No.: &amp;j_1iexchdr-exnum&amp;/2016-17</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Original/Duplicate/Triplicate</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Quadruplicate/Extra Copy</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Date: &amp;j_1iexchdr-exdat&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Page: &amp;PAGE&amp; of &amp;g_tot_pages&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>MAIN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>ITEMVALUES</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>PROTECT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE>,,&amp;T001W-NAME1(15)&amp;,,      &amp;J_1IEXCDTL-NUM_OF_PKGS(CIZ)&amp;,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>            &amp;J_1IEXCDTL-NTGEW(CIZ)&amp;,,,,        &amp;J_1IEXCDTL-MENGE(CIZ)&amp;,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>            &amp;J_1IEXCDTL-MAKTX(20)&amp;,,        &amp;J_1IEXCDTL-EXBAS(CIZ)&amp;,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> &amp;J_1IEXCDTL-BEDRATE&amp;,,      &amp;J_1IEXCDTL-EXBED(CIZ)&amp;,,,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>               &amp;J_1IEXCDTL-RDOC2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE>&amp;T001W-NAME1+15(15)&amp;,,   &amp;J_1IEXCDTL-DESC_PKG(10)&amp;,,  &amp;J_1IEXCDTL-BRGEW&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,&amp;J_1IEXCDTL-MRK_PKG+10(10)&amp;,,    &amp;J_1IEXCDTL-MEINS&amp;,,,,              &amp;J_1IEXCDTL-MAKTX+20(20)&amp;,,,, &amp;J_1IEXCDTL-ECSRATE(CIZ)&amp;,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;J_1IEXCDTL-ECS(CIZ)&amp;,,,,,,                           &amp;GT_EXCDATE-EXDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE> &amp;T001W-STRAS(15)&amp; ,,        &amp;J_1IEXCDTL-DESC_PKG+10(10)&amp;,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>       &amp;J_1IEXCDTL-GEWEI&amp;,,&amp;J_1IEXCDTL-MRK_PKG+20(10)&amp;,,,, ,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> &amp;J_1IEXCDTL-EXADDRATE1(CIZ)&amp;,,&amp;J_1IEXCDTL-EXADDTAX1(CIZ)&amp;,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>                                          &amp;J_1IBOND-BONDNOEX&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE>,,&amp;T001W-STRAS+15(15)&amp;,,&amp;J_1IEXCDTL-DESC_PKG+20(10)&amp;,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>&amp;J_1IEXCDTL-NOS_ON_PKG(10)&amp;,,,,,,,,,,&amp;G_TOT_OTHERS(CIZ)&amp;,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>                                           &amp;J_1IBOND-BUDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE>&amp;T001W-ORT01&amp;,,,,,,&amp;J_1IEXCDTL-NOS_ON_PKG+20(10)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE>,,&amp;T001W-PSTLZ&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P6</TDFORMAT>
+     <TDLINE>,,&amp;J_1IREGSET-J_1IEXCRN&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDPROTECT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>ITEMS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P7</TDFORMAT>
+     <TDLINE>,,&amp;j_1iexcdtl-nos_on_pkg&amp;,,&amp;g_cono&amp;,,&amp;j_1iexcdtl-mrk_pkg&amp;,,&amp;g_seal&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Printing</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>TITHEAD</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.0&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.3&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;2.6&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;28.3&apos;CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT&apos;10.0&apos; CM FRAME&apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;13.0&apos;CM YPOS &apos;0.5&apos;CM WIDTH &apos;5.0&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.9&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;3.1&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;10&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Vertical Lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;3.2&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;5.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;6.7&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.4&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;10.0&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;13.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;15.0&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;16.2&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;18.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;23.4&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;27.5&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Display</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>  ,,,,,,,,,,,,,,,,,,BED</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>   Particulars of        No.and,,     Gross,,      Marks &amp;,,    Quantity</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,,,,,,,              No &amp; Date of Invoice   Amount of ,,       Remarks</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>   manufacturers      Description   Weight/    Nos.on       of,,,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>      Description,,            Value,,      Rate,,     Amount,,    under</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>which duty was,,  Rebate clamied</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  of goods and,,       of          Net       Packages   Goods,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>      of Goods,,,,,,,,           of,,,,   paid/no.&amp;date of bond</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  his Central         Packages,,     Weight,,,,,,,,,,           Duty</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>             executedunder rule-19</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  Ex. Reg. No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,,,,,,,,,,,                              Rs.,,           %,,      Rs,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>         Rs</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,         1,,          2,,       3,,        4,,           5,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>            6                7,,                      8 ,,            9</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,                   10,,               11</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PARTA</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>                                                     PART A</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>                                 Page:  &amp;N_PAGES&amp; of &amp;g_tot_pages&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>  CERTIFICATION BY THE CENTRAL EXCISE OFFICE Page:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>1. Certified that duty has been paid by debit entry in the Personal</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Ledger Account No ________________________ and / or CENVAT Account Entry</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>No._______________________ or recorded as payable in Daily Stock Account</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>on the goods described overleaf.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>OR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>   Certified that the owner has entered into Bond No./ Letter of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Undertaking(LUT) under Rule 19 of Central Excise Rules, 2001 with the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>ASST./ Depnty Commissioner Of Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>(F.No.____________________________), duly accepted by the Assistant</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Commissioner / Deputy Commissioner of Central Excise,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>&amp;J_1IREGSET-J_1IEXCDI&amp;        on __________________________ (Date).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;G_ROWS&amp; = 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>2. Certified that I have opened and examined the Packages No.&lt;C3&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>&amp;J_1IEXCDTL-NOS_ON_PKG&amp;&lt;/&gt; and found that the particulars stated and the description of goods, given overleaf and the packing list</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>(if any) are correct and that all the packages have been stuffed in the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>container No. &lt;C3&gt;&amp;g_cono&amp;&lt;/&gt; with Marks &lt;C3&gt;&amp;J_1IEXCDTL-MRK_PKG&amp;&lt;/&gt; and</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>the same has been sealed with Central Excise Seal/One time Seal (OTS)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>No. &lt;C3&gt;&amp;g_seal&amp;&lt;/&gt;.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>2. Certified that I have opened and examined the Packages No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>_____________________________ and found that the particulars stated and</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>the description of goods, given overleaf and the packing list (if any)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>are correct and that all the packages have been stuffed in the container</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>No. _______________________ with Marks _________________ and the same</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>has been sealed with Central Excise Seal/One time Seal (OTS) No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>___________________________.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>3. I have verified with the records, the exporter is only availing the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>export incentives, as specified in box No.6 and found it to be true.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>4. Certified that I have drawn three representative samples from the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>consignment (wherever necessary) and have handed over, two sets there of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>duly sealed to the exporter/his authorised representative.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PARTB</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>PART B</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>CERTIFICATION BY THE CUSTOMS OFFICER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Certified that the consignment was shipped under my supervision under</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Shipping Bill No._____________________ dated _______________ by</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>S.S./Flight No._____________________ which left on the _____ day of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>___________ (Month) ______ (Year).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>OR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Certified that the above mentioned consignment was stuffed in Container</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>No.______________________ belonging to Shipping Line __________________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>based on the &quot;Let Export Order&quot; given on ________ day of ____________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>(Month) ______ (Year) on the Shipping Bill No. dated and sealed by seal</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>/ one time lock No.__________________ in my supervision and the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>container was handed over to the Custodian M/s _________________ for</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>being shipped via _____________________ (Name of the Port).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>OR</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Certified that the above-mentioned consignment has been duly identified</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>and has passed the land frontier today at __________________ in its</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>original condition under Bill of Exports No.___________________ .</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Place ________________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Date  ________________,,,, Signature</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P3</TDFORMAT>
+     <TDLINE>,,,, (Name and designation of the Customs</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P3</TDFORMAT>
+     <TDLINE>,,,,  officer in Block letters)/(Seal)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PARTC</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>PART C</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>EXPORT BY POST</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Certified that the consignment described overleaf has been despatched</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>by post to ___________________ on the _______ day of __________ (Month)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>______ (Year).</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Place ________________</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Date  ________________,,,, Signature of Post Master (Seal)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PARTD</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>PART D</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>REBATE SANCTION ORDER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>&lt;C1&gt;(On Original, Duplicate and Triplicate)&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Refund Order No.______________ dated _________ Rebate of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Rs.____________ (Rupees ______________________________) sanctioned vide</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>cheque No.____________ dated _____________ .</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Place ________________,,,, Assistant Commissioner/Maritime</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Date  ________________,,,, Commissioner of Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SRP</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+     <TDLINE>SELF REMOVAL PROCEDURE (SRP)</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P3</TDFORMAT>
+     <TDLINE>         signature</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P3</TDFORMAT>
+     <TDLINE> Superitendent of Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SRP1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P3</TDFORMAT>
+     <TDLINE>    signature</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P3</TDFORMAT>
+     <TDLINE>Inspector of Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SUBHEAD</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>To,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Superitendent of Central Excise,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Range:&amp;J_1IREGSET-J_1IEXCRG&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>&lt;C3&gt;&amp;g_addr_exc&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>1. Particulars of (Assistant / Deputy Commissioner of Central Excise)/</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Maritime Commissioner of Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;J_1IEXCHDR-EXPIND&amp; = &apos;N&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> from whom rebate shall be claimed and his complete postal address.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IEXCHDR-EXPIND&amp; = &apos;B&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;J_1IBOND-BONDTYP&amp; = &apos;FIXB&apos; OR &amp;J_1IBOND-BONDTYP&amp; = &apos;RUNB&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> with whom bond is executed* and his complete postal address.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IBOND-BONDTYP&amp; = &apos;LOUT&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> with whom undertaking is executed* and his complete postal address.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>&lt;C3&gt;&amp;g_addr_cus&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>2. I/We &amp;GS_T001W-NAME1&amp; of &amp;GS_T001W-STRAS&amp; &amp;GS_T001W-ORT01&amp; propose to</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>export the under-mentioned consignment to &amp;GS_T005T-LANDX&amp;(Country of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>destination) [BY AIR/SEA/LAND/POST] under claim for</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>rebate/Bond/undertaking.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;G_MODE&amp; NE SPACE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>&amp;G_MODE(40)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>[BY AIR / SEA / LAND / PARCEL POST]*</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;J_1IBOND-BONDTYP&amp; = &apos;FIXB&apos; OR &amp;J_1IBOND-BONDTYP&amp; = &apos;RUNB&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> under claim for bond.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IBOND-BONDTYP&amp; = &apos;REBT&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> under claim for rebate.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IBOND-BONDTYP&amp; = &apos;LOUT&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> under claim for undertaking*.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Printing</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.0&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.3&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;2.6&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;28.3&apos;CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT&apos;10.0&apos; CM FRAME&apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;11.9&apos;CM YPOS &apos;0.5&apos;CM WIDTH &apos;6.1&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.9&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;4.1&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;10&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Vertical Lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;2.8&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;4.3&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;5.7&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;7.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.6&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;11.9&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;14.0&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;16.0&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;18.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;23.4&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;27.5&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Display</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>  ,,,,,,,,,,,,,,,,,,BED</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>Particulars of     No.and,,    Gross,,    Marks &amp;,,   Quantity,,,,,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>            No &amp; Date of Invoice   Amount of ,,         Remarks</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,manufacturers    Description Weight/  Nos.on    of,,,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>        Description,,            Value,,    Rate,,  Amount,,     under</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>which duty was,,   Rebate clamied</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,of goods and,, of        Net      Packages   Goods,,      of Goods,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,    of,,           paid/no.&amp;date of bond</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,his Central      Packages,,   Weight,,,,,,,,,,    Duty,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE> executed under rule-19</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,Ex. Reg. No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,,,,,,,,,,,                     Rs.,,        %,, Rs,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>    Rs</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,   1,,   2,,3,,4,,5,,6,,7,,8,,    9,,          10,,   11</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SUBTIT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>On First Page the SUBHEAD will be printed, on following pages the</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>TITHEAD will be printed depending on the flag setting.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>SUBHEAD Printing</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>To,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Superitendent of Central Excise,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>Range:&amp;J_1IREGSET-J_1IEXCRG&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>&lt;C3&gt;&amp;g_addr_exc&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>1. Particulars of (Assistant / Deputy Commissioner of Central Excise) /</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Maritime Commissioner of Central Excise</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;J_1IEXCHDR-EXPIND&amp; = &apos;N&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> from whom rebate shall be claimed and his complete postal address.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IEXCHDR-EXPIND&amp; = &apos;B&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;J_1IBOND-BONDTYP&amp; = &apos;FIXB&apos; OR &amp;J_1IBOND-BONDTYP&amp; = &apos;RUNB&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> with whom bond is executed* and his complete postal address.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IBOND-BONDTYP&amp; = &apos;LOUT&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> with whom undertaking is executed* and his complete postal address.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>&lt;C3&gt;&amp;g_addr_cus&amp;&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+     <TDLINE>2. I/We &amp;GS_T001W-NAME1&amp; of &amp;GS_T001W-STRAS&amp; &amp;GS_T001W-ORT01&amp; propose to</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>export the under-mentioned consignment to &amp;t005t-LANDX&amp; (Country of</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>destination) [BY AIR/SEA/LAND/POST] under claim for</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>rebate/Bond/undertaking.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P2</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;G_MODE&amp; NE SPACE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>&amp;G_MODE(40)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>[by Air / Sea / Land / Parcel Post]*</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;J_1IBOND-BONDTYP&amp; = &apos;FIXB&apos; OR &amp;J_1IBOND-BONDTYP&amp; = &apos;RUNB&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> under claim for bond.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IBOND-BONDTYP&amp; = &apos;REBT&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> under claim for rebate.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>ELSEIF &amp;J_1IBOND-BONDTYP&amp; = &apos;LOUT&apos;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE> under claim for undertaking*.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Printing</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ELSE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Drawing The Outer Lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.0&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.3&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;2.6&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;28.3&apos;CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT&apos;10.0&apos; CM FRAME&apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;13.0&apos;CM YPOS &apos;0.5&apos;CM WIDTH &apos;5.0&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.9&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;3.1&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;10&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Vertical Lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;3.2&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;5.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;6.7&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.4&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;10.0&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;13.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;15.0&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;16.2&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;18.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;23.4&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;27.5&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Display</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>  ,,,,,,,,,,,,,,,,,,BED</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>   Particulars of        No.and,,     Gross,,      Marks &amp;,,    Quantity</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,,,,,,,              No &amp; Date of Invoice   Amount of ,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>       Remarks</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>   manufacturers      Description   Weight/   Nos.on       of,,,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>       Description,,            Value,,       Rate,,     Amount,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>    under which duty was,,  Rebate clamied</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  of goods and,,       of          Net        Packages   Goods,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>       of Goods,,,,,,,,            of,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>   paid/no.&amp;date of bond</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  his Central         Packages,,     Weight,,,,,,,,,,           Duty</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>              executedunder rule-19</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  Ex. Reg. No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,,,,,,,,,,,                              Rs.,,           %,,      Rs,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>          Rs</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,         1,,          2,,       3,,        4,,           5,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>             6                7,,                      8 ,,            9</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,                   10,,               11</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>TESTWIND</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = &amp;G_PAGES&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>total window</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;3.0&apos;CM YPOS &apos;0&apos;CM WIDTH &apos;8.0&apos;CM HEIGHT &apos;1.0&apos;CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;6.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;1.0&apos; CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;1.0&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;1.0&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>footer</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,                       Total,,    &amp;tot_val&amp;&amp;TOT_BED&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>TITHEAD1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Printing</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.0&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos;CM YPOS &apos;2.3&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;2.6&apos; CM WIDTH &apos;27.5&apos;CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;28.3&apos;CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT&apos;10.0&apos; CM FRAME&apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;13.0&apos;CM YPOS &apos;0.5&apos;CM WIDTH &apos;5.0&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.9&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;3.1&apos; CM HEIGHT &apos;0&apos;LN FRAME &apos;0.2mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;0&apos; CM YPOS &apos;10&apos; CM WIDTH &apos;27.5&apos; CM HEIGHT &apos;0&apos; LN FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Vertical Lines</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;3.2&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos; CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;5.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;6.7&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.4&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;10.0&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;13.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;15.0&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;16.2&apos; CM YPOS &apos;0.5&apos;CM WIDTH &apos;0&apos;CM HEIGHT &apos;9.5&apos;CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;18.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;21.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;10&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;23.4&apos; CM YPOS &apos;0&apos;CM WIDTH &apos;0&apos; CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;27.5&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos;CM HEIGHT &apos;10.0&apos;CM FRAME &apos;0.2&apos;mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>Titles Display</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>  ,,,,,,,,,,,,,,,,,,BED</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>   Particulars of        No.and,,     Gross,,      Marks &amp;,,    Quantity</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,,,,,,,,,              No &amp; Date of Invoice   Amount of ,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>       Remarks</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>   manufacturers      Description    Weight/   Nos.on       of,,,,,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>       Description,,            Value,,      Rate,,     Amount,,   under</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>which duty was,,   Rebate clamied</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  of goods and,,       of          Net        Packages   Goods,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>       of Goods,,,,,,,,            of,,,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>   paid/no.&amp;date of bond</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  his Central         Packages,,     Weight,,,,,,,,,,           Duty</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>              executedunder rule-19</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,  Ex. Reg. No.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,,,,,,,,,,,                              Rs.,,           %,,      Rs,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>          Rs</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,         1,,          2,,       3,,        4,,           5,,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>             6                7,,                      8 ,,            9</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>=</TDFORMAT>
+     <TDLINE>,,                   10,,               11</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>TOTAL</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; = &amp;G_PAGES&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>total window</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;3.0&apos;CM YPOS &apos;0&apos;CM WIDTH &apos;8.0&apos;CM HEIGHT &apos;1.0&apos;CM FRAME &apos;0.2&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;6.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;1.0&apos; CM FRAME &apos;0.2&apos;Mm</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;8.0&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;1.0&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX XPOS &apos;9.2&apos; CM YPOS &apos;0&apos; CM WIDTH &apos;0&apos; CM HEIGHT &apos;1.0&apos; CM FRAME &apos;0.2&apos;MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>P4</TDFORMAT>
+     <TDLINE>,,                       Total,,    &amp;tot_val&amp;&amp;TOT_BED&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF</TDLINE>
+    </TLINE>
+   </TDLINES>
+  </asx:values>
+ </asx:abap>
+</abapGit>

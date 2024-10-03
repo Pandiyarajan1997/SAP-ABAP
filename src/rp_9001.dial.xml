@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DIAL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DIAL>
+    <TDCT>
+     <DNAM>RP_9001</DNAM>
+     <PROG>MP900100</PROG>
+     <DYNR>1000</DYNR>
+    </TDCT>
+    <DIA_PARS>
+     <DIAPAR>
+      <DNAM>RP_9001</DNAM>
+      <SPRAS>E</SPRAS>
+      <PARAMTEXT>Migration test</PARAMTEXT>
+     </DIAPAR>
+    </DIA_PARS>
+   </DIAL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

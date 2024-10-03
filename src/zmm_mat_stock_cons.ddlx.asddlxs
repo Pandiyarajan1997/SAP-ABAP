@@ -1,0 +1,41 @@
+@Metadata.layer: #PARTNER
+annotate view zmm_mat_stock_cons with
+{
+  @UI: { lineItem: [{ position: 10, label: 'Material Number' }],
+         identification: [{ position: 10, label: 'Material Number' }],
+         selectionField: [{ position: 20 }]
+   }
+  Material;
+  @UI: { lineItem: [{ position: 20, label: 'Plant' }],
+         identification: [{ position: 20, label: 'Plant' }],
+         selectionField: [{ position: 20 }]
+   }
+  Plant;
+  @UI: { lineItem: [{ position: 30, label: 'Storage Loc' }],
+         identification: [{ position: 30, label: 'Storage Loc' }],
+         selectionField: [{ position: 30 }]
+   }
+  Stloc;
+  @UI: { lineItem: [{ position: 40, label: 'Batch Number' }],
+         identification: [{ position: 40, label: 'Batch Number' }],
+         selectionField: [{ position: 40 }]
+   }
+  Batch;
+  @UI: { lineItem: [{ position: 50, label: 'Safety Stock' }],
+         identification: [{ position: 50, label: 'Safety Stock' }]
+   }
+  SafetyStock;
+  @UI: { lineItem: [{ position: 60, label: 'Stock' }],
+         identification: [{ position: 60, label: 'Stock' }]
+   }
+  Stock;
+  @UI: { lineItem: [{ position: 70, label: 'Stock value' }],
+         identification: [{ position: 70, label: 'Stock value' }]
+   }
+  Stkvalue;
+  @UI: { lineItem: [{ position: 80, label: 'Stock Date' }],
+         identification: [{ position: 80, label: 'Stock Date' }]
+   }
+  Cdate;
+
+}

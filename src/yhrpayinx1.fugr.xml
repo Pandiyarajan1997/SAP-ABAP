@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group For Currency in Words</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLYHRPAYINX1</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>YHR_IN_CHG_INR_WRDS_2</FUNCNAME>
+     <SHORT_TEXT>Changes INR amount to words new</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>AMT_IN_NUM</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>PC207-BETRG</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>AMT_IN_WORDS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>C</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>DATA_TYPE_MISMATCH</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>AMT_IN_NUM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>HR Payroll: Amount</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>AMT_IN_WORDS</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATA_TYPE_MISMATCH</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>The imported amount too long</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>YCOOISPI_1100</SCVARIANT>
+     <PROGNAME>PPIO_ENTRY</PROGNAME>
+     <DYNPRO>1100</DYNPRO>
+     <VERSION>16</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>YCOOISPI_1100</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOOISPI_1100</SCVARIANT>
+      <FIELDNAME>PPIO_ENTRY_SC1100-ALV_VARIANT</FIELDNAME>
+      <ITYPE>C</ITYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

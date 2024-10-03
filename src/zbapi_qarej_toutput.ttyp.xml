@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TTYP" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD40V>
+    <TYPENAME>ZBAPI_QAREJ_TOUTPUT</TYPENAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <ROWTYPE>ZBAPI_QAREJ_OUTPUT</ROWTYPE>
+    <ROWKIND>S</ROWKIND>
+    <DATATYPE>STRU</DATATYPE>
+    <ACCESSMODE>T</ACCESSMODE>
+    <KEYDEF>D</KEYDEF>
+    <KEYKIND>N</KEYKIND>
+    <DDTEXT>Table for BAPI Export</DDTEXT>
+   </DD40V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

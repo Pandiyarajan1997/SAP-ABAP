@@ -1,0 +1,3 @@
+FUNCTION-POOL ZBAPI_STICKER_PRINTER.        "MESSAGE-ID ..
+
+* INCLUDE LZBAPI_STICKER_PRINTERD...         " Local class definition

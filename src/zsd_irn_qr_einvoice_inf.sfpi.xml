@@ -1,0 +1,1740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SFPI" serializer_version="v1.0.0">
+ <asx:abap version="1.0" xmlns:asx="http://www.sap.com/abapxml">
+  <asx:values>
+   <VERSION>1</VERSION>
+   <TYPE/>
+   <INTERFACE href="#o1"/>
+   <INTERFACET>
+    <FPINTERFACET>
+     <NAME/>
+     <STATE/>
+     <LANGUAGE>E</LANGUAGE>
+     <ID/>
+     <TEXT>Interface for Invoice</TEXT>
+    </FPINTERFACET>
+   </INTERFACET>
+  </asx:values>
+  <asx:heap xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:abap="http://www.sap.com/abapxml/types/built-in" xmlns:cls="http://www.sap.com/abapxml/classes/global" xmlns:dic="http://www.sap.com/abapxml/types/dictionary">
+   <cls:CL_FP_INTERFACE_DATA id="o1">
+    <CL_FP_INTERFACE_DATA classVersion="1">
+     <CODING href="#o5"/>
+     <PARAMETERS href="#o4"/>
+     <GLOBAL_DEFINITIONS href="#o3"/>
+     <REFERENCE_FIELDS href="#o2"/>
+     <XSD_DEFINITIONS/>
+    </CL_FP_INTERFACE_DATA>
+   </cls:CL_FP_INTERFACE_DATA>
+   <cls:CL_FP_REFERENCE_FIELDS id="o2">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_REFERENCE_FIELDS classVersion="1">
+     <REFERENCE_FIELDS/>
+    </CL_FP_REFERENCE_FIELDS>
+   </cls:CL_FP_REFERENCE_FIELDS>
+   <cls:CL_FP_GLOBAL_DEFINITIONS id="o3">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_GLOBAL_DEFINITIONS classVersion="1">
+     <GLOBAL_DATA>
+      <SFPGDATA>
+       <NAME>GV_CIN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR50</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_BILL_TO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_BILL_TO</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_SH_TO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_BILL_TO</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GT_ITEM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TT_ITEM</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LS_ITEM</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ITEM</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOT_STR</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>CHAR1024</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_TOTAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_TOTAL</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_ADRC_HEAD</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>WA_ADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_PLANT_GSTIN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1BBRANCH-GSTIN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_CUST_GSTIN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KNA1-STCD3</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_DISC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KBETR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_HEADING</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BIL_NUM_HEADING</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BIL_ADDR_TITLE1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_BIL_ADDR_TITLE2</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOT_INV</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>MAXBT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TTOT_QTY</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>FKIMG</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_BADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_ADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_KNA1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_KNA1</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_SADRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TY_SADRC</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GT_HSN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TT_HSN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LV_TCSPRC</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_ROUND_OFF</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>KWERT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_QRCODE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_IRN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IG_IRN</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_EWBNO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_EWBDAT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IG_EGENDAT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_EWB_EXPDATE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>J_1IG_EGENDAT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GS_TRANSDTLS</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_EWAY_TRDTLS</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_HEADERTXT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_FOR_TEXT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_REG_ADD1</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_REG_ADD2</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_REG_ADD3</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_BILL_DATE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>DATS</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOTAL_WEIGHT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>STRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+     </GLOBAL_DATA>
+     <TYPES>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_SOLD_TO_PARTY,</FPCLINE>
+      <FPCLINE>          GSTIN(20)      TYPE C,</FPCLINE>
+      <FPCLINE>          NAME(80)       TYPE C,</FPCLINE>
+      <FPCLINE>          STREET(60)     TYPE C,</FPCLINE>
+      <FPCLINE>          CITY1(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          POST_CODE1(10) TYPE C,</FPCLINE>
+      <FPCLINE>          STATE_DESC(20)  TYPE C,</FPCLINE>
+      <FPCLINE>          CNTRY_DESC(20) TYPE C,</FPCLINE>
+      <FPCLINE>          SERIAL_NUM     TYPE VBRK-XBLNR,</FPCLINE>
+      <FPCLINE>          DATE           TYPE DATUM,</FPCLINE>
+      <FPCLINE>        END OF TY_SOLD_TO_PARTY.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_BILL_TO,</FPCLINE>
+      <FPCLINE>          NAME1(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          NAME2(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          STREET(60)     TYPE C,</FPCLINE>
+      <FPCLINE>          CITY1(40)      TYPE C,</FPCLINE>
+      <FPCLINE>          POST_CODE1(10) TYPE C,</FPCLINE>
+      <FPCLINE>          REGION(3)      TYPE C,</FPCLINE>
+      <FPCLINE>          COUNTRY(20)    TYPE C,</FPCLINE>
+      <FPCLINE>          STATE          TYPE BEZEI,</FPCLINE>
+      <FPCLINE>          STATE_CODE(20) TYPE C,</FPCLINE>
+      <FPCLINE>          STATE_DESC(20) TYPE C,</FPCLINE>
+      <FPCLINE>          GSTIN          TYPE KNA1-STCD3,</FPCLINE>
+      <FPCLINE>        END OF TY_BILL_TO.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_MARA,</FPCLINE>
+      <FPCLINE>         MATNR TYPE MARA-MATNR,</FPCLINE>
+      <FPCLINE>         MTART TYPE MARA-MTART,</FPCLINE>
+      <FPCLINE>         MATKL TYPE MARA-MATKL,</FPCLINE>
+      <FPCLINE>         MEINS TYPE MARA-MEINS,</FPCLINE>
+      <FPCLINE>       END OF TY_MARA.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_ITEM,</FPCLINE>
+      <FPCLINE>           POSNR  TYPE  POSNR,</FPCLINE>
+      <FPCLINE>           MATNR  TYPE MATNR,</FPCLINE>
+      <FPCLINE>          DESC     TYPE text150,</FPCLINE>
+      <FPCLINE>          HSN       TYPE  J_1IG_HSN_SAC,</FPCLINE>
+      <FPCLINE>          FKIMG  TYPE  FKIMG,</FPCLINE>
+      <FPCLINE>          UNIT      TYPE VRKME,&quot;kmein,</FPCLINE>
+      <FPCLINE>          VBELN  TYPE VBELN_VL,</FPCLINE>
+      <FPCLINE>          CHARG  TYPE CHAR50,</FPCLINE>
+      <FPCLINE>          COUNT  TYPE I,</FPCLINE>
+      <FPCLINE>          VRKME(3)  TYPE C,</FPCLINE>
+      <FPCLINE>          TOT_QUAN TYPE FKIMG,</FPCLINE>
+      <FPCLINE>          VOLUM1 TYPE VBRP-VOLUM,</FPCLINE>
+      <FPCLINE>          AMOUNT TYPE KBETR,</FPCLINE>
+      <FPCLINE>          RATE      TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TOTAL     TYPE KWERT,</FPCLINE>
+      <FPCLINE>          DISCOUNT  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TAX_VAL   TYPE KWERT,</FPCLINE>
+      <FPCLINE>          CGST_RATE TYPE P,</FPCLINE>
+      <FPCLINE>          CGST_VAL  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          SGST_RATE TYPE P,</FPCLINE>
+      <FPCLINE>          SGST_VAL  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          IGST_RATE TYPE P,</FPCLINE>
+      <FPCLINE>          IGST_VAL  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TCS_RATE TYPE P DECIMALS 3,        &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>          TCS_VAL  TYPE KWERT,    &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>          R1 TYPE KWERT,</FPCLINE>
+      <FPCLINE>          R2 TYPE KWERT,</FPCLINE>
+      <FPCLINE>          R3 TYPE KWERT,</FPCLINE>
+      <FPCLINE>          R4 TYPE KWERT, &quot;Coded By Prabhu</FPCLINE>
+      <FPCLINE>          F TYPE C,</FPCLINE>
+      <FPCLINE>        END OF TY_ITEM.</FPCLINE>
+      <FPCLINE>TYPES: TT_ITEM TYPE STANDARD TABLE OF TY_ITEM.</FPCLINE>
+      <FPCLINE>TYPES : BEGIN OF TY_TOTAL,</FPCLINE>
+      <FPCLINE>          TAX_VAL TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TOTAL TYPE KWERT,</FPCLINE>
+      <FPCLINE>          CGST  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          SGST  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          IGST  TYPE KWERT,</FPCLINE>
+      <FPCLINE>          TCSV  TYPE KWERT,         &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>          FKIMG  TYPE  FKIMG,</FPCLINE>
+      <FPCLINE>           DISCOUNT  TYPE KWERT,</FPCLINE>
+      <FPCLINE>           R1 TYPE KWERT,</FPCLINE>
+      <FPCLINE>          R2 TYPE KWERT,</FPCLINE>
+      <FPCLINE>         R4 TYPE KWERT, &quot;&quot;Coded By Prabhu</FPCLINE>
+      <FPCLINE>           VOLUM1 TYPE VBRP-VOLUM,</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*          tax_val   TYPE p,</FPCLINE>
+      <FPCLINE>        END OF TY_TOTAL.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_KSCHL,</FPCLINE>
+      <FPCLINE>          KSCHL TYPE KSCHL,</FPCLINE>
+      <FPCLINE>        END OF TY_KSCHL.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES : BEGIN OF TY_CHARG,</FPCLINE>
+      <FPCLINE>          BIL_NUMBER TYPE VBELN,</FPCLINE>
+      <FPCLINE>          ITM_NUMBER TYPE POSNR,</FPCLINE>
+      <FPCLINE>          POSPA TYPE POSPA,</FPCLINE>
+      <FPCLINE>          BATCH TYPE CHARG_D,</FPCLINE>
+      <FPCLINE>          MATERIAL TYPE MATNR,</FPCLINE>
+      <FPCLINE>        END OF TY_CHARG.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*types:begin of str_vol,</FPCLINE>
+      <FPCLINE>*      vbeln type vbrp-vbeln,</FPCLINE>
+      <FPCLINE>*      POSNR type vbrp-POSNR,</FPCLINE>
+      <FPCLINE>*      volum type vbrp-volum,</FPCLINE>
+      <FPCLINE>*  end of str_vol.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>* Added on 11 Aug 2017</FPCLINE>
+      <FPCLINE>TYPES: BEGIN OF TY_MARM,</FPCLINE>
+      <FPCLINE>        MATNR TYPE MARM-MATNR,</FPCLINE>
+      <FPCLINE>        MEINH TYPE MARM-MEINH,</FPCLINE>
+      <FPCLINE>        UMREZ TYPE MARM-UMREZ,</FPCLINE>
+      <FPCLINE>        UMREN TYPE MARM-UMREN,</FPCLINE>
+      <FPCLINE>      END OF TY_MARM.</FPCLINE>
+      <FPCLINE>TYPES: TT_MARM TYPE STANDARD TABLE OF TY_MARM.</FPCLINE>
+      <FPCLINE>TYPES: BEGIN OF TY_VBPA,</FPCLINE>
+      <FPCLINE>        VBELN TYPE VBPA-VBELN,</FPCLINE>
+      <FPCLINE>        PARVW TYPE VBPA-PARVW,</FPCLINE>
+      <FPCLINE>        KUNNR TYPE VBPA-KUNNR,</FPCLINE>
+      <FPCLINE>        ADRNR TYPE VBPA-ADRNR,</FPCLINE>
+      <FPCLINE>      END OF TY_VBPA.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_ADRC,</FPCLINE>
+      <FPCLINE>        ADDRNUMBER TYPE ADRC-ADDRNUMBER,</FPCLINE>
+      <FPCLINE>        NAME1 TYPE ADRC-NAME1,</FPCLINE>
+      <FPCLINE>        CITY1 TYPE ADRC-CITY1,</FPCLINE>
+      <FPCLINE>        CITY2 TYPE ADRC-CITY2,</FPCLINE>
+      <FPCLINE>        POST_CODE1 TYPE ADRC-POST_CODE1,</FPCLINE>
+      <FPCLINE>        STREET TYPE ADRC-STREET,</FPCLINE>
+      <FPCLINE>        HOUSE_NUM1 TYPE ADRC-HOUSE_NUM1,</FPCLINE>
+      <FPCLINE>        STR_SUPPL1 TYPE ADRC-STR_SUPPL1,</FPCLINE>
+      <FPCLINE>        COUNTRY TYPE ADRC-COUNTRY,</FPCLINE>
+      <FPCLINE>        REGION TYPE ADRC-REGION,</FPCLINE>
+      <FPCLINE>        TEL_NUMBER TYPE ADRC-TEL_NUMBER,</FPCLINE>
+      <FPCLINE>        state  TYPE adrc-extension1,</FPCLINE>
+      <FPCLINE>      END OF TY_ADRC.</FPCLINE>
+      <FPCLINE>TYPES: TT_ADRC TYPE STANDARD TABLE OF TY_ADRC.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_LIKP,</FPCLINE>
+      <FPCLINE>        VBELN TYPE LIKP-VBELN,</FPCLINE>
+      <FPCLINE>        KUNNR TYPE LIKP-KUNNR,</FPCLINE>
+      <FPCLINE>      END OF TY_LIKP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_KNA1,</FPCLINE>
+      <FPCLINE>        KUNNR TYPE KNA1-KUNNR,</FPCLINE>
+      <FPCLINE>        NAME1 TYPE KNA1-NAME1,</FPCLINE>
+      <FPCLINE>        ORT01 TYPE KNA1-ORT01,</FPCLINE>
+      <FPCLINE>        PSTLZ TYPE KNA1-PSTLZ,</FPCLINE>
+      <FPCLINE>        REGIO TYPE KNA1-REGIO,</FPCLINE>
+      <FPCLINE>        STRAS TYPE KNA1-STRAS,</FPCLINE>
+      <FPCLINE>        TELF1 TYPE KNA1-TELF1,</FPCLINE>
+      <FPCLINE>        ORT02 TYPE KNA1-ORT02,</FPCLINE>
+      <FPCLINE>        STCD3 TYPE KNA1-STCD3,</FPCLINE>
+      <FPCLINE>        LAND1 TYPE KNA1-LAND1,</FPCLINE>
+      <FPCLINE>      END OF TY_KNA1.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>TYPES: BEGIN OF TY_SADRC,</FPCLINE>
+      <FPCLINE>        ADDRNUMBER TYPE ADRC-ADDRNUMBER,</FPCLINE>
+      <FPCLINE>        NAME1 TYPE ADRC-NAME1,</FPCLINE>
+      <FPCLINE>        POST_CODE1 TYPE ADRC-POST_CODE1,</FPCLINE>
+      <FPCLINE>        STREET TYPE ADRC-STREET,</FPCLINE>
+      <FPCLINE>        HOUSE_NUM1 TYPE ADRC-HOUSE_NUM1,</FPCLINE>
+      <FPCLINE>        STR_SUPPL1 TYPE ADRC-STR_SUPPL1,&quot;created on 09.09.2020 by prabhu</FPCLINE>
+      <FPCLINE>        REGION TYPE ADRC-REGION,</FPCLINE>
+      <FPCLINE>        TEL_NUMBER TYPE ADRC-TEL_NUMBER,</FPCLINE>
+      <FPCLINE>        MC_CITY1 TYPE ADRC-MC_CITY1,</FPCLINE>
+      <FPCLINE>        state  TYPE adrc-extension1,</FPCLINE>
+      <FPCLINE>      END OF TY_SADRC,</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      BEGIN OF TY_HSN,</FPCLINE>
+      <FPCLINE>      RNO TYPE I,</FPCLINE>
+      <FPCLINE>      HSN(4),</FPCLINE>
+      <FPCLINE>      QTY  TYPE  FKIMG,</FPCLINE>
+      <FPCLINE>      UNIT TYPE VRKME,&quot;kmein,</FPCLINE>
+      <FPCLINE>      TAX_VAL TYPE KWERT,</FPCLINE>
+      <FPCLINE>      PER TYPE P,</FPCLINE>
+      <FPCLINE>      RATE TYPE KWERT,</FPCLINE>
+      <FPCLINE>      MATNR TYPE MATNR,</FPCLINE>
+      <FPCLINE>      TCS_RATE TYPE P DECIMALS 3,        &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>      TCS_VAL  TYPE KWERT,    &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>     END OF TY_HSN.</FPCLINE>
+      <FPCLINE>     TYPES: TT_HSN TYPE STANDARD TABLE OF TY_HSN.</FPCLINE>
+     </TYPES>
+     <FIELDSYMBOLS/>
+    </CL_FP_GLOBAL_DEFINITIONS>
+   </cls:CL_FP_GLOBAL_DEFINITIONS>
+   <cls:CL_FP_PARAMETERS id="o4">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_PARAMETERS classVersion="1">
+     <IMPORT_PARAMETERS>
+      <SFPIOPAR>
+       <NAME>IS_BIL_INVOICE</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>LBBIL_INVOICE</TYPENAME>
+       <OPTIONAL>X</OPTIONAL>
+       <BYVALUE>X</BYVALUE>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+     </IMPORT_PARAMETERS>
+     <EXPORT_PARAMETERS/>
+     <TABLE_PARAMETERS/>
+     <EXCEPTIONS/>
+    </CL_FP_PARAMETERS>
+   </cls:CL_FP_PARAMETERS>
+   <cls:CL_FP_CODING id="o5">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_CODING classVersion="1">
+     <INPUT_PARAMETERS/>
+     <OUTPUT_PARAMETERS/>
+     <INITIALIZATION>
+      <FPCLINE>*************************</FPCLINE>
+      <FPCLINE>*--Data declarations</FPCLINE>
+      <FPCLINE>**************************</FPCLINE>
+      <FPCLINE>DATA: gs_sp TYPE  ty_sold_to_party.</FPCLINE>
+      <FPCLINE>DATA: gv_insurance  TYPE  kwert,</FPCLINE>
+      <FPCLINE>      gv_freight  TYPE  kwert,</FPCLINE>
+      <FPCLINE>      wa_t001w  TYPE  t001w,</FPCLINE>
+      <FPCLINE>*      LV_TOT_INV TYPE  MAXBT,</FPCLINE>
+      <FPCLINE>      gv_packing  TYPE  kwert.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Condition type Ranges</FPCLINE>
+      <FPCLINE>DATA : lt_conditions TYPE TABLE OF ty_kschl,</FPCLINE>
+      <FPCLINE>       lt_lips       TYPE TABLE OF lips,      &quot;Freight</FPCLINE>
+      <FPCLINE>       lt_freight    TYPE TABLE OF ty_kschl,      &quot;Freight</FPCLINE>
+      <FPCLINE>       lt_disc       TYPE TABLE OF ty_kschl,      &quot;Discount</FPCLINE>
+      <FPCLINE>       lt_makt       TYPE TABLE OF makt,          &quot;Material descriptions</FPCLINE>
+      <FPCLINE>       ls_conditions TYPE ty_kschl,               &quot;All Conditions</FPCLINE>
+      <FPCLINE>       ls_disc       TYPE ty_kschl,               &quot;Discount structure</FPCLINE>
+      <FPCLINE>       ls_lips       TYPE lips,               &quot;Discount structure</FPCLINE>
+      <FPCLINE>       ls_freight    TYPE  ty_kschl,</FPCLINE>
+      <FPCLINE>       lv_amt        TYPE i.              &quot;Freight structure</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Local structures</FPCLINE>
+      <FPCLINE>DATA :ls_excdefn TYPE j_1iexcdefn,               &quot;Conditions</FPCLINE>
+      <FPCLINE>      ls_vbrp    TYPE vbrp,                      &quot;Billing items</FPCLINE>
+      <FPCLINE>      ls_item    TYPE ty_item,</FPCLINE>
+      <FPCLINE>      ls_makt    TYPE  makt,                     &quot;Material</FPCLINE>
+      <FPCLINE>*      LS_KONV    TYPE KONV, &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>      ls_konv    TYPE prcd_elements,  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>      ls_adrc    TYPE adrc,</FPCLINE>
+      <FPCLINE>      ls_branch  TYPE j_1bbranch,</FPCLINE>
+      <FPCLINE>      ls_vbpa    TYPE vbpa.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*--Local Variables</FPCLINE>
+      <FPCLINE>DATA : lv_cgst       TYPE kschl,                 &quot;Central GST</FPCLINE>
+      <FPCLINE>       lv_sgst       TYPE kschl,                 &quot;State GST</FPCLINE>
+      <FPCLINE>       lv_igst       TYPE kschl,                 &quot;Integrated GST</FPCLINE>
+      <FPCLINE>       lv_tcsc       TYPE kschl,                 &quot;TCS &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>       lv_basic      TYPE kschl,                 &quot;Basic Price</FPCLINE>
+      <FPCLINE>       lv_pack       TYPE kschl,                 &quot;Packing &amp; forwarding</FPCLINE>
+      <FPCLINE>       lv_insur      TYPE kschl,                 &quot;Insurance</FPCLINE>
+      <FPCLINE>       lv_index      TYPE i      VALUE 0,        &quot;Index</FPCLINE>
+      <FPCLINE>       lv_adrnr      TYPE adrnr,                 &quot;Address Number</FPCLINE>
+      <FPCLINE>       lv_gstin      TYPE stcd3,                 &quot;GST Number</FPCLINE>
+      <FPCLINE>       lv_branch     TYPE j_1bbranc_,            &quot;Bus Partner</FPCLINE>
+      <FPCLINE>       lv_cntry_desc TYPE landx,                 &quot;country description</FPCLINE>
+      <FPCLINE>       lv_state_desc TYPE bezei20,               &quot;State description</FPCLINE>
+      <FPCLINE>       lv_kalsm      TYPE kalsm,                 &quot;Pricing Procedure</FPCLINE>
+      <FPCLINE>       lv_hsn_sac    TYPE j_1ig_hsn_sac,         &quot;HSN/SAC Code\</FPCLINE>
+      <FPCLINE>       lv_dr1r2      TYPE kwert,</FPCLINE>
+      <FPCLINE>       lv_tot_tax    TYPE kwert,</FPCLINE>
+      <FPCLINE>*       lv_vgbel      TYPE vgbel,</FPCLINE>
+      <FPCLINE>       lv_hno(4),</FPCLINE>
+      <FPCLINE>       lv_ind        TYPE i,</FPCLINE>
+      <FPCLINE>       lv_hsn        TYPE i,</FPCLINE>
+      <FPCLINE>       lv_tcsp       TYPE p DECIMALS 3,       &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>       lv_round      TYPE kschl,             &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>       lv_round_v    TYPE kwert..         &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>DATA : lv_index1      TYPE i      VALUE 0.</FPCLINE>
+      <FPCLINE>DATA : lv_index_hsn      TYPE i      VALUE 1.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>CLEAR gs_total.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*******************************</FPCLINE>
+      <FPCLINE>**--Billing Header/Item details</FPCLINE>
+      <FPCLINE>********************************</FPCLINE>
+      <FPCLINE>***BREAK HTC_ABAP.</FPCLINE>
+      <FPCLINE>SELECT SINGLE * FROM vbrk</FPCLINE>
+      <FPCLINE>                INTO @DATA(gs_vbrk)</FPCLINE>
+      <FPCLINE>                WHERE vbeln EQ @is_bil_invoice-hd_gen-bil_number.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>DATA LV_MARM_FLAG TYPE  C.</FPCLINE>
+      <FPCLINE>IF gs_vbrk-fkart EQ &apos;YBDP&apos;.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  lv_marm_flag = &apos;X&apos;.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>  SELECT * FROM vbrp</FPCLINE>
+      <FPCLINE>           INTO TABLE @DATA(gt_vbrp)</FPCLINE>
+      <FPCLINE>           WHERE vbeln EQ @is_bil_invoice-hd_gen-bil_number.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  SORT gt_vbrp by matnr.</FPCLINE>
+      <FPCLINE>ELSE.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*  Message that the Invalid Invoice number</FPCLINE>
+      <FPCLINE>  RETURN.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>********** ADDRESS -- SHIP TO AND BILL TO PARTY **********</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>****Billing***</FPCLINE>
+      <FPCLINE>DATA GS_VBPA  TYPE  TY_VBPA.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>SELECT vbeln</FPCLINE>
+      <FPCLINE>       parvw</FPCLINE>
+      <FPCLINE>       kunnr</FPCLINE>
+      <FPCLINE>       adrnr</FPCLINE>
+      <FPCLINE>  FROM vbpa</FPCLINE>
+      <FPCLINE>  INTO gs_vbpa</FPCLINE>
+      <FPCLINE>  UP TO 1 ROWS</FPCLINE>
+      <FPCLINE>  WHERE vbeln EQ is_bil_invoice-hd_gen-bil_number</FPCLINE>
+      <FPCLINE>*  AND parvw EQ &apos;SP&apos;.</FPCLINE>
+      <FPCLINE>  AND parvw EQ &apos;RE&apos;</FPCLINE>
+      <FPCLINE>  ORDER BY PRIMARY KEY.</FPCLINE>
+      <FPCLINE>ENDSELECT.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  SELECT SINGLE addrnumber</FPCLINE>
+      <FPCLINE>                name1</FPCLINE>
+      <FPCLINE>                city1</FPCLINE>
+      <FPCLINE>                city2</FPCLINE>
+      <FPCLINE>                post_code1</FPCLINE>
+      <FPCLINE>                street</FPCLINE>
+      <FPCLINE>                house_num1</FPCLINE>
+      <FPCLINE>                str_suppl1</FPCLINE>
+      <FPCLINE>                country</FPCLINE>
+      <FPCLINE>                region</FPCLINE>
+      <FPCLINE>                tel_number</FPCLINE>
+      <FPCLINE>                extension1 as state</FPCLINE>
+      <FPCLINE>                FROM adrc</FPCLINE>
+      <FPCLINE>                INTO gs_badrc</FPCLINE>
+      <FPCLINE>                WHERE addrnumber EQ gs_vbpa-adrnr.</FPCLINE>
+      <FPCLINE>  SELECT SINGLE bezei FROM t005u</FPCLINE>
+      <FPCLINE>    INTO @DATA(state_reg)</FPCLINE>
+      <FPCLINE>            WHERE bland = @gs_badrc-region AND</FPCLINE>
+      <FPCLINE>                  land1 = @gs_badrc-country .</FPCLINE>
+      <FPCLINE>  gs_badrc-state = state_reg.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>****Billing***</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*****Shipping*****</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>********* Selected for full street adress of ship to party****</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>SELECT SINGLE vgbel</FPCLINE>
+      <FPCLINE>  INTO @DATA(lv_vgbel) FROM vbrp</FPCLINE>
+      <FPCLINE>  WHERE vbeln EQ @is_bil_invoice-hd_gen-bil_number.</FPCLINE>
+      <FPCLINE>IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>  SELECT SINGLE vbeln,</FPCLINE>
+      <FPCLINE>                kunnr</FPCLINE>
+      <FPCLINE>                FROM likp</FPCLINE>
+      <FPCLINE>                INTO @DATA(gs_likp)</FPCLINE>
+      <FPCLINE>                WHERE vbeln EQ @lv_vgbel.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>  SELECT SINGLE kunnr</FPCLINE>
+      <FPCLINE>                name1</FPCLINE>
+      <FPCLINE>                ort01</FPCLINE>
+      <FPCLINE>                pstlz</FPCLINE>
+      <FPCLINE>                regio</FPCLINE>
+      <FPCLINE>                stras</FPCLINE>
+      <FPCLINE>                telf1</FPCLINE>
+      <FPCLINE>                ort02</FPCLINE>
+      <FPCLINE>                stcd3</FPCLINE>
+      <FPCLINE>                land1</FPCLINE>
+      <FPCLINE>                FROM kna1</FPCLINE>
+      <FPCLINE>                INTO gs_kna1</FPCLINE>
+      <FPCLINE>                WHERE kunnr EQ gs_likp-kunnr.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>SELECT vbeln</FPCLINE>
+      <FPCLINE>       parvw</FPCLINE>
+      <FPCLINE>       kunnr</FPCLINE>
+      <FPCLINE>       adrnr</FPCLINE>
+      <FPCLINE>  FROM vbpa</FPCLINE>
+      <FPCLINE>  INTO gs_vbpa</FPCLINE>
+      <FPCLINE>  UP TO 1 ROWS</FPCLINE>
+      <FPCLINE>  WHERE vbeln EQ is_bil_invoice-hd_gen-bil_number</FPCLINE>
+      <FPCLINE>*  AND parvw EQ &apos;SH&apos;</FPCLINE>
+      <FPCLINE>  AND parvw EQ &apos;WE&apos;</FPCLINE>
+      <FPCLINE>  ORDER BY PRIMARY KEY .</FPCLINE>
+      <FPCLINE>ENDSELECT.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  SELECT SINGLE addrnumber</FPCLINE>
+      <FPCLINE>                name1</FPCLINE>
+      <FPCLINE>                post_code1</FPCLINE>
+      <FPCLINE>                street</FPCLINE>
+      <FPCLINE>                house_num1</FPCLINE>
+      <FPCLINE>                str_suppl1  &quot;created on 09.09.2020 by prabhu</FPCLINE>
+      <FPCLINE>                region</FPCLINE>
+      <FPCLINE>                tel_number</FPCLINE>
+      <FPCLINE>                mc_city1</FPCLINE>
+      <FPCLINE>                extension1 as state</FPCLINE>
+      <FPCLINE>                FROM adrc</FPCLINE>
+      <FPCLINE>                INTO gs_sadrc</FPCLINE>
+      <FPCLINE>                WHERE addrnumber EQ gs_vbpa-adrnr.</FPCLINE>
+      <FPCLINE>  SELECT SINGLE bezei FROM t005u</FPCLINE>
+      <FPCLINE>    INTO  state_reg</FPCLINE>
+      <FPCLINE>            WHERE bland = gs_kna1-regio AND</FPCLINE>
+      <FPCLINE>                  land1 = gs_kna1-land1 .</FPCLINE>
+      <FPCLINE>  gs_sadrc-state = state_reg.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE>********* Selected for full street adress of ship to party*************</FPCLINE>
+      <FPCLINE>*****Shipping*****</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>********** ADDRESS -- SHIP TO AND BILL TO PARTY **********</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>* Added on 11 Aug 2017</FPCLINE>
+      <FPCLINE>IF lv_marm_flag = &apos;X&apos; AND gt_vbrp IS NOT INITIAL.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  SELECT matnr,</FPCLINE>
+      <FPCLINE>         meinh,</FPCLINE>
+      <FPCLINE>         umrez,</FPCLINE>
+      <FPCLINE>         umren</FPCLINE>
+      <FPCLINE>         FROM marm</FPCLINE>
+      <FPCLINE>         INTO TABLE @DATA(gt_marm)</FPCLINE>
+      <FPCLINE>         FOR ALL ENTRIES IN @gt_vbrp</FPCLINE>
+      <FPCLINE>         WHERE matnr EQ @gt_vbrp-matnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>****************************************</FPCLINE>
+      <FPCLINE>*--Condition records header/item details</FPCLINE>
+      <FPCLINE>****************************************</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>SELECT  *</FPCLINE>
+      <FPCLINE>*  FROM KONV  &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  FROM prcd_elements  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>                INTO TABLE @DATA(gt_konv)</FPCLINE>
+      <FPCLINE>                WHERE knumv EQ @gs_vbrk-knumv.</FPCLINE>
+      <FPCLINE>IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>  SELECT * FROM konp</FPCLINE>
+      <FPCLINE>           INTO TABLE @DATA(gt_konp)</FPCLINE>
+      <FPCLINE>           FOR ALL ENTRIES IN @gt_konv</FPCLINE>
+      <FPCLINE>           WHERE knumh EQ @gt_konv-knumh.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>************************</FPCLINE>
+      <FPCLINE>*--Material descriptions</FPCLINE>
+      <FPCLINE>*************************</FPCLINE>
+      <FPCLINE>SELECT * FROM makt</FPCLINE>
+      <FPCLINE>         INTO TABLE lt_makt</FPCLINE>
+      <FPCLINE>         FOR ALL ENTRIES IN gt_vbrp</FPCLINE>
+      <FPCLINE>         WHERE matnr EQ gt_vbrp-matnr AND</FPCLINE>
+      <FPCLINE>               spras EQ sy-langu.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF NOT gt_vbrp[] IS INITIAL .</FPCLINE>
+      <FPCLINE>  SELECT * FROM lips INTO TABLE lt_lips FOR ALL ENTRIES IN gt_vbrp WHERE vbeln EQ gt_vbrp-vgbel</FPCLINE>
+      <FPCLINE>               AND matnr EQ gt_vbrp-matnr AND charg NE &apos; &apos;.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE>******************</FPCLINE>
+      <FPCLINE>*--Condition types</FPCLINE>
+      <FPCLINE>******************</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>CLEAR:ls_excdefn, ls_konv,ls_disc,ls_freight,lv_kalsm,lv_basic.</FPCLINE>
+      <FPCLINE>lv_kalsm = gs_vbrk-kalsm.</FPCLINE>
+      <FPCLINE>LOOP AT gt_konv INTO ls_konv.&quot; WHERE KPOSN EQ &apos;000001&apos; .</FPCLINE>
+      <FPCLINE>  ls_conditions-kschl = ls_konv-kschl.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Tax Conditions</FPCLINE>
+      <FPCLINE>  IF ls_konv-koaid EQ &apos;D&apos;.   &quot; Tax</FPCLINE>
+      <FPCLINE>    CLEAR ls_excdefn.</FPCLINE>
+      <FPCLINE>    SELECT SINGLE *                                       &quot;condition name</FPCLINE>
+      <FPCLINE>                  FROM j_1iexcdefn</FPCLINE>
+      <FPCLINE>                  INTO ls_excdefn</FPCLINE>
+      <FPCLINE>                  WHERE kalsm = lv_kalsm      AND</FPCLINE>
+      <FPCLINE>                        kschl = ls_konv-kschl.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    IF ls_excdefn-cond_name EQ &apos;CGSTAR&apos;.                  &quot;CGST</FPCLINE>
+      <FPCLINE>      lv_cgst = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>    ELSEIF ls_excdefn-cond_name EQ &apos;SGSTAR&apos;.              &quot;SGST</FPCLINE>
+      <FPCLINE>      lv_sgst = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>    ELSEIF ls_excdefn-cond_name EQ &apos;IGSTAR&apos;.              &quot;IGST</FPCLINE>
+      <FPCLINE>      lv_igst = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  IF ls_konv-koaid EQ &apos;A&apos; .&quot;AND LS_KONV-KNTYP NE &apos;E&apos;.       &quot;Discount</FPCLINE>
+      <FPCLINE>    ls_disc-kschl = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>    APPEND ls_disc TO lt_disc.</FPCLINE>
+      <FPCLINE>    CLEAR ls_disc.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  IF ls_konv-kntyp EQ &apos;F&apos;.                                &quot;Freight</FPCLINE>
+      <FPCLINE>    ls_freight-kschl = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>    APPEND ls_freight TO lt_freight.</FPCLINE>
+      <FPCLINE>    CLEAR ls_freight.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  IF ls_konv-kntyp EQ &apos;A&apos;.                                &quot;Packing</FPCLINE>
+      <FPCLINE>    lv_pack = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  IF ls_konv-kntyp EQ &apos;C&apos;.                                &quot;Insurance</FPCLINE>
+      <FPCLINE>    lv_insur = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  IF ls_konv-koaid EQ &apos;B&apos;.                                &quot;Basic</FPCLINE>
+      <FPCLINE>    lv_basic = ls_konv-kschl.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  APPEND ls_conditions TO lt_conditions.</FPCLINE>
+      <FPCLINE>  CLEAR: ls_conditions,ls_konv.</FPCLINE>
+      <FPCLINE>ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*******************************</FPCLINE>
+      <FPCLINE>*******Final Table*************</FPCLINE>
+      <FPCLINE>*******************************</FPCLINE>
+      <FPCLINE>*BREAK-POINT.</FPCLINE>
+      <FPCLINE>CLEAR: lv_index,</FPCLINE>
+      <FPCLINE>        lv_hsn.</FPCLINE>
+      <FPCLINE>*CLEAR : row_no.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>&quot;ROW NO = 0 .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*LOOP AT gt_vbrp INTO ls_vbrp WHERE fkimg NE 0.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>**  row_no = row_no + 1 .</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>LOOP AT gt_vbrp INTO ls_vbrp WHERE fkimg NE 0.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*-_Serial number</FPCLINE>
+      <FPCLINE>  lv_index  = lv_index + 1.</FPCLINE>
+      <FPCLINE>*  CALL FUNCTION &apos;CONVERSION_EXIT_ALPHA_OUTPUT&apos;</FPCLINE>
+      <FPCLINE>*  EXPORTING</FPCLINE>
+      <FPCLINE>*    INPUT         = LV_INDEX</FPCLINE>
+      <FPCLINE>* IMPORTING</FPCLINE>
+      <FPCLINE>*   OUTPUT        = LV_INDEX</FPCLINE>
+      <FPCLINE>  .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  ls_item-posnr       = lv_index .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  READ TABLE lt_lips</FPCLINE>
+      <FPCLINE>  INTO ls_lips WITH KEY vbeln = ls_vbrp-vgbel matnr = ls_vbrp-matnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc = 0.</FPCLINE>
+      <FPCLINE>    ls_item-charg  = ls_lips-charg.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  ls_item-matnr = ls_vbrp-matnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*----------------Added by Ram for STO</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Material description</FPCLINE>
+      <FPCLINE>  CLEAR ls_makt.</FPCLINE>
+      <FPCLINE>  READ TABLE lt_makt INTO ls_makt</FPCLINE>
+      <FPCLINE>                     WITH KEY matnr = ls_vbrp-matnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*Added by Samsudeen on 02.06.2023</FPCLINE>
+      <FPCLINE>    SELECT SINGLE kdmat FROM vbap</FPCLINE>
+      <FPCLINE>      INTO @DATA(l_partno)</FPCLINE>
+      <FPCLINE>      WHERE vbeln = @ls_vbrp-aubel</FPCLINE>
+      <FPCLINE>      AND posnr = @ls_vbrp-aupos.</FPCLINE>
+      <FPCLINE>    IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>      IF l_partno IS NOT INITIAL.</FPCLINE>
+      <FPCLINE>        ls_item-desc  = |{ ls_makt-maktx }( { l_partno } )|.</FPCLINE>
+      <FPCLINE>      ELSE.</FPCLINE>
+      <FPCLINE>        ls_item-desc  = |{ ls_makt-maktx }|.</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>    ELSE.</FPCLINE>
+      <FPCLINE>      ls_item-desc  = |{ ls_makt-maktx }|.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>*----Total Volume</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*--HSN number</FPCLINE>
+      <FPCLINE>  CLEAR lv_hsn_sac.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  CALL FUNCTION &apos;J_1IG_GET_HSN_SAC&apos;</FPCLINE>
+      <FPCLINE>    EXPORTING</FPCLINE>
+      <FPCLINE>      im_matnr   = ls_vbrp-matnr</FPCLINE>
+      <FPCLINE>      im_werks   = ls_vbrp-werks</FPCLINE>
+      <FPCLINE>    IMPORTING</FPCLINE>
+      <FPCLINE>      ex_hsn_sac = lv_hsn_sac.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  lv_hno = lv_hsn_sac.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  DATA:knumv TYPE vbrk-knumv.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  SELECT SINGLE knumv FROM vbrk INTO knumv WHERE vbeln = is_bil_invoice-hd_gen-bil_number.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*READ TABLE gt_konv INTO ls_konv INDEX 1.</FPCLINE>
+      <FPCLINE>  IF gs_vbrk-fkart = &apos;YSTO&apos;.</FPCLINE>
+      <FPCLINE>    READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>   WITH KEY kposn = ls_vbrp-posnr knumv = knumv kschl = &apos;ZTRP&apos;.</FPCLINE>
+      <FPCLINE>    IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>      ls_item-total    = ls_konv-kwert .</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>  ELSE.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>               WITH KEY kposn = ls_vbrp-posnr knumv = knumv  kschl = &apos;PR00&apos;.</FPCLINE>
+      <FPCLINE>    IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>      IF gs_vbrk-fkart NE &apos;YRF2&apos;.</FPCLINE>
+      <FPCLINE>        ls_item-total    = ls_konv-kwert .</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>      &quot;ADD START BY KANNE ON 08.03.2022</FPCLINE>
+      <FPCLINE>    ELSEIF sy-subrc &lt;&gt; 0.</FPCLINE>
+      <FPCLINE>      READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                 WITH KEY kposn = ls_vbrp-posnr knumv = knumv  kschl = &apos;PB01&apos;.</FPCLINE>
+      <FPCLINE>      IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>        IF gs_vbrk-fkart NE &apos;YRF2&apos;.</FPCLINE>
+      <FPCLINE>          ls_item-total    = ls_konv-kwert .</FPCLINE>
+      <FPCLINE>        ENDIF.</FPCLINE>
+      <FPCLINE>      ELSEIF sy-subrc &lt;&gt; 0.</FPCLINE>
+      <FPCLINE>        READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                   WITH KEY kposn = ls_vbrp-posnr knumv = knumv.&quot;*   KSCHL = &apos;PR00&apos;.</FPCLINE>
+      <FPCLINE>        IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>          IF gs_vbrk-fkart NE &apos;YRF2&apos;.</FPCLINE>
+      <FPCLINE>            ls_item-total    = ls_konv-kwert .</FPCLINE>
+      <FPCLINE>          ENDIF.</FPCLINE>
+      <FPCLINE>        ENDIF.</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>      &quot;ADD END BY KANNE ON 08.03.2022</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>    &quot;ADD END BY KANNE ON 07.03.2022</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>  ls_item-hsn         = lv_hsn_sac.                       &quot;HSN/SAC</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  IF lv_marm_flag = &apos;X&apos;.</FPCLINE>
+      <FPCLINE>    READ TABLE gt_marm INTO DATA(gs_marm) WITH KEY matnr = ls_vbrp-matnr meinh = &apos;L&apos;.</FPCLINE>
+      <FPCLINE>    IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>      ls_item-fkimg = ls_vbrp-fkimg * ( gs_marm-umren / gs_marm-umrez ).</FPCLINE>
+      <FPCLINE>      ls_item-rate = ls_item-total / ls_item-fkimg .</FPCLINE>
+      <FPCLINE>      gs_total-fkimg = gs_total-fkimg + ls_vbrp-fkimg.&quot;Total Quantity of all line items</FPCLINE>
+      <FPCLINE>      lv_ttot_qty = lv_ttot_qty + ls_item-fkimg.</FPCLINE>
+      <FPCLINE>      ls_item-vrkme = gs_marm-meinh.</FPCLINE>
+      <FPCLINE>    ELSE.</FPCLINE>
+      <FPCLINE>      ls_item-fkimg = ls_vbrp-fkimg.</FPCLINE>
+      <FPCLINE>      ls_item-rate = ls_item-total / ls_vbrp-fkimg.</FPCLINE>
+      <FPCLINE>      gs_total-fkimg = gs_total-fkimg + ls_item-fkimg.&quot;Total Quantity of all line items</FPCLINE>
+      <FPCLINE>      lv_ttot_qty = lv_ttot_qty + ls_item-fkimg.</FPCLINE>
+      <FPCLINE>      ls_item-vrkme = ls_vbrp-vrkme.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>  ELSE.</FPCLINE>
+      <FPCLINE>    ls_item-fkimg = ls_vbrp-fkimg.</FPCLINE>
+      <FPCLINE>    ls_item-rate = ls_item-total / ls_vbrp-fkimg.</FPCLINE>
+      <FPCLINE>    gs_total-fkimg = gs_total-fkimg + ls_item-fkimg.&quot;Total Quantity of all line items</FPCLINE>
+      <FPCLINE>    lv_ttot_qty = lv_ttot_qty + ls_item-fkimg.</FPCLINE>
+      <FPCLINE>    ls_item-vrkme = ls_vbrp-vrkme.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  &quot;Quantity</FPCLINE>
+      <FPCLINE>    ls_item-unit = ls_item-vrkme.</FPCLINE>
+      <FPCLINE>*    ls_item-unit = ls_vbrp-vrkme.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  IF gs_vbrk-fkart EQ &apos;YSTO&apos;</FPCLINE>
+      <FPCLINE>    OR gs_vbrk-fkart EQ &apos;YBFS&apos; .</FPCLINE>
+      <FPCLINE>    ls_item-tax_val = ls_vbrp-netwr.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>  gs_total-total = gs_total-total + ls_item-total.   &quot;added on 13/9     &quot;Total(all line items)(before discount)</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  ls_item-volum1  = ls_vbrp-volum .</FPCLINE>
+      <FPCLINE>*****Added by Abidulla</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*-Discount</FPCLINE>
+      <FPCLINE>  CLEAR ls_disc.</FPCLINE>
+      <FPCLINE>*  CLEAR  tot_disc.</FPCLINE>
+      <FPCLINE>  SORT lt_disc BY kschl .</FPCLINE>
+      <FPCLINE>  DELETE ADJACENT DUPLICATES FROM lt_disc COMPARING kschl .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  LOOP AT lt_disc INTO ls_disc.</FPCLINE>
+      <FPCLINE>    IF ls_disc-kschl = &apos;Y004&apos; OR  ls_disc-kschl = &apos;ZCAD&apos; OR</FPCLINE>
+      <FPCLINE>      ls_disc-kschl = &apos;YB04&apos;.</FPCLINE>
+      <FPCLINE>      READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                           WITH KEY kschl = ls_disc-kschl</FPCLINE>
+      <FPCLINE>                                    kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      IF sy-subrc IS INITIAL AND ls_konv-kwert LT &apos;0&apos;.</FPCLINE>
+      <FPCLINE>***********alteration @ PR@$@TH ON 31.12.2018</FPCLINE>
+      <FPCLINE>        ls_item-discount = ls_item-discount + ls_konv-kwert. &quot;LS_ITEM-DISCOUNT +</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>        lv_disc  = ls_konv-kbetr. &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>        gs_total-discount = gs_total-discount + ls_konv-kwert .&quot;LS_ITEM-DISCOUNT.</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>**************</FPCLINE>
+      <FPCLINE>*--Rebate1</FPCLINE>
+      <FPCLINE>    IF ls_disc-kschl = &apos;Y005&apos; OR ls_disc-kschl = &apos;Y006&apos;</FPCLINE>
+      <FPCLINE>      OR ls_disc-kschl = &apos;YBSD&apos;  OR ls_disc-kschl = &apos;Z011&apos;</FPCLINE>
+      <FPCLINE>      OR ls_disc-kschl = &apos;Z012&apos;.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      LOOP AT gt_konv INTO ls_konv WHERE kschl = ls_disc-kschl AND</FPCLINE>
+      <FPCLINE>                                         kposn = ls_vbrp-posnr .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>        ls_item-r1 =  ls_item-r1  + ls_konv-kwert .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Rebate2</FPCLINE>
+      <FPCLINE>    IF ls_disc-kschl = &apos;Y007&apos; OR ls_disc-kschl = &apos;ZPRB&apos;</FPCLINE>
+      <FPCLINE>      OR ls_disc-kschl = &apos;Z008&apos; .</FPCLINE>
+      <FPCLINE>      READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                           WITH KEY kschl = ls_disc-kschl</FPCLINE>
+      <FPCLINE>                                    kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      IF sy-subrc IS INITIAL AND ls_konv-kwert LT &apos;0&apos;.</FPCLINE>
+      <FPCLINE>        ls_item-r2 =  ls_konv-kwert  .</FPCLINE>
+      <FPCLINE>        ls_item-r3 = ls_item-r3 + ls_konv-kwert .</FPCLINE>
+      <FPCLINE>        gs_total-r2 = gs_total-r2 + ls_item-r2.</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>************Coded By Prabhu starts**********************</FPCLINE>
+      <FPCLINE>    IF ls_disc-kschl = &apos;Y008&apos; OR ls_disc-kschl = &apos;Z009&apos;.</FPCLINE>
+      <FPCLINE>      READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                           WITH KEY kschl = ls_disc-kschl</FPCLINE>
+      <FPCLINE>                                    kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>      IF sy-subrc IS INITIAL AND ls_konv-kwert LT &apos;0&apos;.</FPCLINE>
+      <FPCLINE>*        LS_ITEM-R4 = LS_KONV-KWERT.</FPCLINE>
+      <FPCLINE>        ls_item-r4 = ls_item-r4 + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>        gs_total-r4 = gs_total-r4 + ls_item-r4.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>************Coded By Prabhu end**********************</FPCLINE>
+      <FPCLINE>    lv_dr1r2 = ls_item-discount + ls_item-r1 + ls_item-r3 + ls_item-r4.</FPCLINE>
+      <FPCLINE>    &quot; LV_TOT_TAX = GS_TOTAL-DISCOUNT + GS_TOTAL-R1 + GS_TOTAL-R2 + GS_TOTAL-R4.</FPCLINE>
+      <FPCLINE>    lv_tot_tax = gs_total-discount + gs_total-r2 + gs_total-r4.</FPCLINE>
+      <FPCLINE>    ls_item-tax_val =  ls_item-total + lv_dr1r2.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    CLEAR: ls_disc,</FPCLINE>
+      <FPCLINE>           lv_dr1r2.</FPCLINE>
+      <FPCLINE>  ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  gs_total-r1 = gs_total-r1 + ls_item-r1 .</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  IF lt_disc IS INITIAL.</FPCLINE>
+      <FPCLINE>    ls_item-tax_val = ls_item-total .</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  gs_total-tax_val = gs_total-total + lv_tot_tax + gs_total-r1.</FPCLINE>
+      <FPCLINE>  CLEAR lv_tot_tax.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*--Taxable value</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  gs_total-volum1 = gs_total-volum1 +  ls_vbrp-volum.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*--Freight</FPCLINE>
+      <FPCLINE>  CLEAR ls_freight.</FPCLINE>
+      <FPCLINE>  LOOP AT lt_freight INTO ls_freight .</FPCLINE>
+      <FPCLINE>    READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                         WITH KEY kschl = ls_freight-kschl</FPCLINE>
+      <FPCLINE>                                  kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>    IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>      gv_freight = gv_freight + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>    CLEAR ls_freight.</FPCLINE>
+      <FPCLINE>  ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*--Insurance</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_insur</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>    gv_insurance = gv_insurance + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Packing &amp; Forwarding charges</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_pack</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>    gv_packing = gv_packing + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*---Calculation for CGST</FPCLINE>
+      <FPCLINE>  CLEAR ls_konv.</FPCLINE>
+      <FPCLINE>  lv_cgst = &apos;JOCG&apos;. &quot;Added by Abidulla</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_cgst</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>    ls_item-cgst_rate   = ls_konv-kbetr.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-cgst_val    = ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    gs_total-cgst = gs_total-cgst + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Calculation for SGST</FPCLINE>
+      <FPCLINE>  CLEAR ls_konv.</FPCLINE>
+      <FPCLINE>  lv_sgst = &apos;JOSG&apos;.</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_sgst</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>    ls_item-sgst_rate    = ls_konv-kbetr. &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-sgst_val     = ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    gs_total-sgst = gs_total-sgst + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--calculation for IGST</FPCLINE>
+      <FPCLINE>  CLEAR ls_konv.</FPCLINE>
+      <FPCLINE>  lv_igst = &apos;JOIG&apos;.</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_igst</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*    LS_ITEM-IGST_RATE   = LS_KONV-KBETR / 10.  &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-igst_rate   = ls_konv-kbetr.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-igst_val    = ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    gs_total-igst = gs_total-igst + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>*    lv_igstp =  ls_item-igst_rate .</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*Added by //DEVK921432 on 12/10/2020---&gt;&gt;&gt;</FPCLINE>
+      <FPCLINE>*---Calculation for TCS</FPCLINE>
+      <FPCLINE>  CLEAR ls_konv.</FPCLINE>
+      <FPCLINE>  lv_tcsc = &apos;JTC1&apos;.</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_tcsc</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*    LS_ITEM-TCS_RATE   = LS_KONV-KBETR / 10. &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-tcs_rate   = ls_konv-kbetr. &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-tcs_val    = ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    gs_total-tcsv = gs_total-tcsv + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>*    LV_TCSP =  LS_KONV-KBETR / 10 .  &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    lv_tcsp =  ls_konv-kbetr. &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    lv_tcsprc = lv_tcsp.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>* Added by Samsudeen M on 17.03.2023</FPCLINE>
+      <FPCLINE>  CLEAR ls_konv.</FPCLINE>
+      <FPCLINE>  DATA(lv_tcs) = &apos;Y001&apos;.</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_tcs</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*    LS_ITEM-TCS_RATE   = LS_KONV-KBETR / 10. &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-tcs_rate   = ls_konv-kbetr. &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    ls_item-tcs_val    = ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    gs_total-tcsv = gs_total-tcsv + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>*    LV_TCSP =  LS_KONV-KBETR / 10 .  &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    lv_tcsp =  ls_konv-kbetr. &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    lv_tcsprc = lv_tcsp.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>*---Calculation for Rounding off</FPCLINE>
+      <FPCLINE>  CLEAR ls_konv.</FPCLINE>
+      <FPCLINE>  lv_round = &apos;YDIF&apos;.</FPCLINE>
+      <FPCLINE>  READ TABLE gt_konv INTO ls_konv</FPCLINE>
+      <FPCLINE>                     WITH KEY kschl = lv_round</FPCLINE>
+      <FPCLINE>                              kposn = ls_vbrp-posnr.</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>    lv_round_v = lv_round_v + ls_konv-kwert.</FPCLINE>
+      <FPCLINE>    gv_round_off = lv_round_v.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>*Ended by //DEVK921432 on 12/10/2020---&gt;&gt;&gt;</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  DATA: lv_per  TYPE p,</FPCLINE>
+      <FPCLINE>        lv_rate TYPE kwert.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  DESCRIBE TABLE gt_hsn LINES lv_hsn.</FPCLINE>
+      <FPCLINE>  IF lv_hsn GT 0.</FPCLINE>
+      <FPCLINE>*    LV_IND = LV_INDEX - 1.</FPCLINE>
+      <FPCLINE>    READ TABLE gt_hsn INTO DATA(gs_hsn) WITH KEY hsn = lv_hno .</FPCLINE>
+      <FPCLINE>*                                           PER = LS_ITEM-IGST_RATE .&quot;INDEX LV_IND.</FPCLINE>
+      <FPCLINE>    lv_ind = sy-tabix.</FPCLINE>
+      <FPCLINE>    IF sy-subrc EQ 0.&quot; AND GS_HSN-HSN EQ LV_HNO.</FPCLINE>
+      <FPCLINE>      gs_hsn-rno = lv_ind.</FPCLINE>
+      <FPCLINE>      gs_hsn-hsn = lv_hno.</FPCLINE>
+      <FPCLINE>      gs_hsn-qty = gs_hsn-qty + ls_item-fkimg.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      IF ls_item-vrkme EQ &apos;BT&apos;.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*        SELECT SINGLE UMREN &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>        SELECT SINGLE umren &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>          INTO @DATA(lv_umren)</FPCLINE>
+      <FPCLINE>          FROM marm</FPCLINE>
+      <FPCLINE>*          UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>          WHERE matnr = @gs_hsn-matnr.</FPCLINE>
+      <FPCLINE>*          ORDER BY PRIMARY KEY.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>*        ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>        IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>          gs_hsn-qty = gs_hsn-qty / lv_umren .</FPCLINE>
+      <FPCLINE>        ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      ELSE.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>        gs_hsn-unit = ls_item-vrkme.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>      gs_hsn-per = gs_hsn-per.</FPCLINE>
+      <FPCLINE>      gs_hsn-rate = gs_hsn-rate + ls_item-cgst_val + ls_item-sgst_val + ls_item-igst_val.</FPCLINE>
+      <FPCLINE>      gs_hsn-tax_val = gs_hsn-tax_val + ls_item-tax_val.</FPCLINE>
+      <FPCLINE>      IF gs_hsn-tax_val EQ &apos;0&apos; .</FPCLINE>
+      <FPCLINE>        gs_hsn-tax_val = gs_hsn-tax_val + ls_item-total.</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE>      gs_hsn-matnr = ls_item-matnr.</FPCLINE>
+      <FPCLINE>      gs_hsn-tcs_rate = ls_item-tcs_rate.   &quot;Added by //DEVK921432 on 15/10/2020</FPCLINE>
+      <FPCLINE>      gs_hsn-tcs_val = gs_hsn-tcs_val + ls_item-tcs_val.   &quot;Added by //DEVK921432 //DEVK921471 on 15/10/2020</FPCLINE>
+      <FPCLINE>      MODIFY gt_hsn FROM gs_hsn INDEX lv_ind.</FPCLINE>
+      <FPCLINE>    ELSE.</FPCLINE>
+      <FPCLINE>      lv_index_hsn = lv_index_hsn + 1.</FPCLINE>
+      <FPCLINE>      gs_hsn-rno = lv_index_hsn.</FPCLINE>
+      <FPCLINE>      gs_hsn-hsn = lv_hno.</FPCLINE>
+      <FPCLINE>      gs_hsn-qty = ls_item-fkimg.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      IF ls_item-vrkme EQ &apos;BT&apos;.</FPCLINE>
+      <FPCLINE>        SELECT SINGLE umren</FPCLINE>
+      <FPCLINE>          INTO lv_umren</FPCLINE>
+      <FPCLINE>          FROM marm</FPCLINE>
+      <FPCLINE>*          UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>          WHERE matnr = gs_hsn-matnr.</FPCLINE>
+      <FPCLINE>*          ORDER BY PRIMARY KEY.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>*        ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>        IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>          gs_hsn-qty = gs_hsn-qty / lv_umren .</FPCLINE>
+      <FPCLINE>        ENDIF.</FPCLINE>
+      <FPCLINE>      ELSE.</FPCLINE>
+      <FPCLINE>        gs_hsn-unit = ls_item-vrkme.</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      gs_hsn-per = ls_item-cgst_rate + ls_item-sgst_rate + ls_item-igst_rate.</FPCLINE>
+      <FPCLINE>      lv_per = gs_hsn-per.</FPCLINE>
+      <FPCLINE>      gs_hsn-rate = ls_item-cgst_val + ls_item-sgst_val + ls_item-igst_val.</FPCLINE>
+      <FPCLINE>      &quot;commented by ram on 21/2</FPCLINE>
+      <FPCLINE>      &quot;LV_RATE = GS_HSN-RATE.</FPCLINE>
+      <FPCLINE>      &quot;ended by ram on 21/2</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      gs_hsn-tax_val = ls_item-tax_val.</FPCLINE>
+      <FPCLINE>      gs_hsn-matnr = ls_item-matnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>      gs_hsn-tcs_rate = ls_item-tcs_rate.   &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>      gs_hsn-tcs_val = ls_item-tcs_val.   &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>      APPEND gs_hsn TO gt_hsn.</FPCLINE>
+      <FPCLINE>      &quot; CLEAR : LV_PER .</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE>  ELSE.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    gs_hsn-rno = lv_index_hsn.</FPCLINE>
+      <FPCLINE>    gs_hsn-hsn = lv_hno.</FPCLINE>
+      <FPCLINE>    gs_hsn-qty = ls_item-fkimg.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    IF ls_item-vrkme EQ &apos;BT&apos;.</FPCLINE>
+      <FPCLINE>*      SELECT SINGLE UMREN &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>      SELECT umren &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>        INTO lv_umren</FPCLINE>
+      <FPCLINE>        FROM marm</FPCLINE>
+      <FPCLINE>        UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>        WHERE matnr = gs_hsn-matnr</FPCLINE>
+      <FPCLINE>        ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>      ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>      IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>        gs_hsn-qty = gs_hsn-qty / lv_umren .</FPCLINE>
+      <FPCLINE>      ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    ELSE.</FPCLINE>
+      <FPCLINE>      gs_hsn-unit = ls_item-vrkme.</FPCLINE>
+      <FPCLINE>    ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    gs_hsn-per = ls_item-cgst_rate + ls_item-sgst_rate + ls_item-igst_rate.</FPCLINE>
+      <FPCLINE>    lv_per = gs_hsn-per.</FPCLINE>
+      <FPCLINE>    gs_hsn-rate = ls_item-cgst_val + ls_item-sgst_val + ls_item-igst_val.</FPCLINE>
+      <FPCLINE>    lv_rate = gs_hsn-rate.</FPCLINE>
+      <FPCLINE>    gs_hsn-tax_val = ls_item-tax_val.</FPCLINE>
+      <FPCLINE>    gs_hsn-matnr = ls_item-matnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    gs_hsn-tcs_rate = ls_item-tcs_rate.   &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE>    gs_hsn-tcs_val = ls_item-tcs_val.   &quot;Added by //DEVK921432 on 12/10/2020</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    APPEND gs_hsn TO gt_hsn.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  DATA(gv_batch) = ls_item-charg.</FPCLINE>
+      <FPCLINE>  CONDENSE gv_batch NO-GAPS.</FPCLINE>
+      <FPCLINE>*  ls_item-desc = |{ ls_item-desc } Batch:{ gv_batch }|.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  ls_item-discount =  ls_item-R1 + ls_item-R3 + ls_item-R4 .</FPCLINE>
+      <FPCLINE>  gs_total-discount = gs_total-discount + ls_item-discount.</FPCLINE>
+      <FPCLINE>  APPEND ls_item TO gt_item.</FPCLINE>
+      <FPCLINE>  CLEAR: ls_item, gs_hsn,lv_umren.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>ENDLOOP.</FPCLINE>
+      <FPCLINE>CLEAR:lv_per,lv_rate.</FPCLINE>
+      <FPCLINE>*---------</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF gt_item[] IS NOT INITIAL.</FPCLINE>
+      <FPCLINE>  DELETE gt_item WHERE fkimg IS INITIAL.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE>LOOP AT gt_item ASSIGNING FIELD-SYMBOL(&lt;fs1&gt;).</FPCLINE>
+      <FPCLINE>  &lt;fs1&gt;-discount = &lt;fs1&gt;-discount * -1.</FPCLINE>
+      <FPCLINE>ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>******** Line jump Logic    *************</FPCLINE>
+      <FPCLINE>*DATA: rem    TYPE i,</FPCLINE>
+      <FPCLINE>*      cut    TYPE i,</FPCLINE>
+      <FPCLINE>*      lv_cut TYPE posnr.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*IF is_bil_invoice-hd_gen-bil_number EQ &apos;4162000248&apos; OR is_bil_invoice-hd_gen-bil_number EQ &apos;4162000255&apos;.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*  DATA(gv_jump) = 6.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*  LOOP AT gt_item INTO ls_item.</FPCLINE>
+      <FPCLINE>*    ls_item-posnr = sy-tabix.</FPCLINE>
+      <FPCLINE>*    MODIFY gt_item FROM ls_item TRANSPORTING posnr.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*    rem = ls_item-posnr MOD gv_jump.</FPCLINE>
+      <FPCLINE>*    IF rem EQ 0.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*      cut = ls_item-posnr + 1.</FPCLINE>
+      <FPCLINE>*      lv_cut = cut.</FPCLINE>
+      <FPCLINE>*    ENDIF.</FPCLINE>
+      <FPCLINE>*    IF ls_item-posnr EQ lv_cut.</FPCLINE>
+      <FPCLINE>*      ls_item-f = &apos;X&apos;.</FPCLINE>
+      <FPCLINE>*    ELSE.</FPCLINE>
+      <FPCLINE>*      ls_item-f = &apos; &apos;.</FPCLINE>
+      <FPCLINE>*    ENDIF.</FPCLINE>
+      <FPCLINE>*</FPCLINE>
+      <FPCLINE>*    MODIFY gt_item FROM ls_item TRANSPORTING f.</FPCLINE>
+      <FPCLINE>*    CLEAR: cut.</FPCLINE>
+      <FPCLINE>*  ENDLOOP.</FPCLINE>
+      <FPCLINE>*ELSE.</FPCLINE>
+      <FPCLINE>*  ls_item-f = &apos; &apos;.</FPCLINE>
+      <FPCLINE>*ENDIF.</FPCLINE>
+      <FPCLINE>********** Line jump Logic    *************</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>********************</FPCLINE>
+      <FPCLINE>*--Supplier Details</FPCLINE>
+      <FPCLINE>*********************</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>CLEAR: ls_vbrp, lv_branch,lv_state_desc,lv_cntry_desc.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>READ TABLE gt_vbrp INTO ls_vbrp INDEX 1.                &quot;#EC CI_NOORDER</FPCLINE>
+      <FPCLINE>&quot;Added by CSPLABAP during code remediation</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Get the GSTIN</FPCLINE>
+      <FPCLINE>CALL FUNCTION &apos;J_1IG_GET_PLANT_DETAILS&apos;</FPCLINE>
+      <FPCLINE>  EXPORTING</FPCLINE>
+      <FPCLINE>    im_werks  = ls_vbrp-werks</FPCLINE>
+      <FPCLINE>    im_bukrs  = gs_vbrk-bukrs</FPCLINE>
+      <FPCLINE>  IMPORTING</FPCLINE>
+      <FPCLINE>    ex_branch = lv_branch</FPCLINE>
+      <FPCLINE>    ex_gstin  = lv_gstin.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>SELECT *</FPCLINE>
+      <FPCLINE>  FROM j_1bbranch</FPCLINE>
+      <FPCLINE>  INTO ls_branch</FPCLINE>
+      <FPCLINE>  UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  WHERE bukrs EQ gs_vbrk-bukrs AND</FPCLINE>
+      <FPCLINE>        branch EQ lv_branch</FPCLINE>
+      <FPCLINE>  ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>  SELECT *</FPCLINE>
+      <FPCLINE>    FROM adrc</FPCLINE>
+      <FPCLINE>    INTO ls_adrc</FPCLINE>
+      <FPCLINE>    UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    WHERE addrnumber = ls_branch-adrnr</FPCLINE>
+      <FPCLINE>    ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*--state description</FPCLINE>
+      <FPCLINE>    SELECT SINGLE bezei FROM t005u</FPCLINE>
+      <FPCLINE>                 INTO lv_state_desc</FPCLINE>
+      <FPCLINE>                 WHERE spras = &apos;EN&apos; AND</FPCLINE>
+      <FPCLINE>                       land1 = ls_adrc-country AND</FPCLINE>
+      <FPCLINE>                       bland = ls_adrc-region.</FPCLINE>
+      <FPCLINE>*--Country Description</FPCLINE>
+      <FPCLINE>    SELECT SINGLE landx FROM t005t</FPCLINE>
+      <FPCLINE>                 INTO lv_cntry_desc</FPCLINE>
+      <FPCLINE>                 WHERE spras EQ &apos;EN&apos; AND</FPCLINE>
+      <FPCLINE>                       land1 EQ ls_adrc-country.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>    CONCATENATE ls_adrc-name1</FPCLINE>
+      <FPCLINE>                &apos; &apos;</FPCLINE>
+      <FPCLINE>                ls_adrc-name2</FPCLINE>
+      <FPCLINE>                INTO gs_sp-name.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>    MOVE ls_adrc-street     TO gs_sp-street.</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-city1      TO gs_sp-city1.</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-post_code1 TO gs_sp-post_code1.</FPCLINE>
+      <FPCLINE>    MOVE lv_state_desc      TO gs_sp-state_desc.</FPCLINE>
+      <FPCLINE>    MOVE lv_cntry_desc      TO gs_sp-cntry_desc.</FPCLINE>
+      <FPCLINE>    MOVE gs_vbrk-xblnr      TO  gs_sp-serial_num.</FPCLINE>
+      <FPCLINE>    MOVE gs_vbrk-fkdat      TO  gs_sp-date.</FPCLINE>
+      <FPCLINE>    MOVE ls_branch-gstin    TO  gs_sp-gstin.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*************************</FPCLINE>
+      <FPCLINE>*--Bill-to-party details</FPCLINE>
+      <FPCLINE>*************************</FPCLINE>
+      <FPCLINE>CLEAR: lv_adrnr ,ls_adrc,lv_cntry_desc.</FPCLINE>
+      <FPCLINE>*SELECT SINGLE * &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>SELECT * &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  INTO ls_vbpa</FPCLINE>
+      <FPCLINE>  FROM vbpa</FPCLINE>
+      <FPCLINE>  UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  WHERE vbeln = is_bil_invoice-hd_gen-bil_number AND parvw = &apos;RE&apos;</FPCLINE>
+      <FPCLINE>  ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>lv_adrnr = ls_vbpa-adrnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*  SELECT SINGLE * &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  SELECT * &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    FROM adrc</FPCLINE>
+      <FPCLINE>    INTO ls_adrc</FPCLINE>
+      <FPCLINE>    UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    WHERE addrnumber = lv_adrnr</FPCLINE>
+      <FPCLINE>    ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Country Description</FPCLINE>
+      <FPCLINE>    SELECT SINGLE landx FROM t005t</FPCLINE>
+      <FPCLINE>                 INTO lv_cntry_desc</FPCLINE>
+      <FPCLINE>                 WHERE spras EQ &apos;EN&apos; AND</FPCLINE>
+      <FPCLINE>                       land1 EQ ls_adrc-country.</FPCLINE>
+      <FPCLINE>*--State description</FPCLINE>
+      <FPCLINE>    SELECT SINGLE bezei</FPCLINE>
+      <FPCLINE>                  FROM t005u</FPCLINE>
+      <FPCLINE>                  INTO gs_bill_to-state</FPCLINE>
+      <FPCLINE>                  WHERE spras EQ &apos;EN&apos; AND</FPCLINE>
+      <FPCLINE>                        land1 EQ ls_adrc-country AND</FPCLINE>
+      <FPCLINE>                        bland EQ ls_adrc-region.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--GSTIN</FPCLINE>
+      <FPCLINE>    SELECT SINGLE stcd3</FPCLINE>
+      <FPCLINE>           FROM   kna1</FPCLINE>
+      <FPCLINE>           INTO   gs_bill_to-gstin</FPCLINE>
+      <FPCLINE>           WHERE  kunnr EQ ls_vbpa-kunnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>    MOVE ls_adrc-name1       TO gs_bill_to-name1.</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-street      TO gs_bill_to-street .</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-city1       TO gs_bill_to-city1.</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-post_code1  TO gs_bill_to-post_code1.</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-region      TO gs_bill_to-region.</FPCLINE>
+      <FPCLINE>    MOVE lv_cntry_desc       TO gs_bill_to-country.</FPCLINE>
+      <FPCLINE>    MOVE ls_adrc-region      TO gs_bill_to-state_code.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*************************</FPCLINE>
+      <FPCLINE>*--Ship-to-party details</FPCLINE>
+      <FPCLINE>*************************</FPCLINE>
+      <FPCLINE>CLEAR: lv_adrnr ,ls_adrc, ls_vbpa,lv_cntry_desc.</FPCLINE>
+      <FPCLINE>*SELECT SINGLE * &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>SELECT * &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  INTO ls_vbpa</FPCLINE>
+      <FPCLINE>  FROM vbpa</FPCLINE>
+      <FPCLINE>  UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  WHERE vbeln = is_bil_invoice-hd_gen-bil_number AND parvw = &apos;WE&apos;</FPCLINE>
+      <FPCLINE>  ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>*  SELECT SINGLE * &quot;Commented by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  SELECT * &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    FROM adrc</FPCLINE>
+      <FPCLINE>    INTO ls_adrc</FPCLINE>
+      <FPCLINE>    UP TO 1 ROWS  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>    WHERE addrnumber = ls_vbpa-adrnr</FPCLINE>
+      <FPCLINE>    ORDER BY PRIMARY KEY.	&quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE>  ENDSELECT.  &quot;Added by SPLABAP during code remediation</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--Country Description</FPCLINE>
+      <FPCLINE>  SELECT SINGLE landx FROM t005t</FPCLINE>
+      <FPCLINE>               INTO lv_cntry_desc</FPCLINE>
+      <FPCLINE>               WHERE spras EQ &apos;EN&apos; AND</FPCLINE>
+      <FPCLINE>                     land1 EQ ls_adrc-country.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--State description</FPCLINE>
+      <FPCLINE>  SELECT SINGLE bezei</FPCLINE>
+      <FPCLINE>                FROM t005u</FPCLINE>
+      <FPCLINE>                INTO gs_sh_to-state</FPCLINE>
+      <FPCLINE>                WHERE spras EQ &apos;EN&apos; AND</FPCLINE>
+      <FPCLINE>                      land1 EQ ls_adrc-country AND</FPCLINE>
+      <FPCLINE>                      bland EQ ls_adrc-region.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*--GSTIN</FPCLINE>
+      <FPCLINE>  SELECT SINGLE stcd3</FPCLINE>
+      <FPCLINE>         FROM   kna1</FPCLINE>
+      <FPCLINE>         INTO   gs_sh_to-gstin</FPCLINE>
+      <FPCLINE>         WHERE kunnr EQ ls_vbpa-kunnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  MOVE ls_adrc-name1       TO gs_sh_to-name1.</FPCLINE>
+      <FPCLINE>  MOVE ls_adrc-street      TO gs_sh_to-street.</FPCLINE>
+      <FPCLINE>  MOVE ls_adrc-city1       TO gs_sh_to-city1.</FPCLINE>
+      <FPCLINE>  MOVE ls_adrc-post_code1  TO gs_sh_to-post_code1.</FPCLINE>
+      <FPCLINE>  MOVE ls_adrc-region      TO gs_sh_to-region.</FPCLINE>
+      <FPCLINE>  MOVE lv_cntry_desc       TO gs_sh_to-country.</FPCLINE>
+      <FPCLINE>  MOVE ls_adrc-region      TO gs_sh_to-state_code.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  gs_total-R1 =  gs_total-R1  * -1.</FPCLINE>
+      <FPCLINE>  gs_total-R2 =  gs_total-R2  * -1.</FPCLINE>
+      <FPCLINE>  gs_total-R4 =  gs_total-R4  * -1.</FPCLINE>
+      <FPCLINE>  gs_total-discount = gs_total-discount * -1.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>gs_total-tax_val = gs_total-total - gs_total-discount.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>gv_tot_inv  = gs_total-tax_val + gs_total-cgst +</FPCLINE>
+      <FPCLINE>              gs_total-sgst  + gs_total-igst + gs_total-tcsv + gv_round_off.   &quot;TCSV, GV_ROUND_OFF  Added by //DEVK921432 on 12/10/2</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*****************</FPCLINE>
+      <FPCLINE>*--Total in words</FPCLINE>
+      <FPCLINE>*****************</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>CALL FUNCTION &apos;J_1IG_AMT_IN_WORDS&apos;</FPCLINE>
+      <FPCLINE>  EXPORTING</FPCLINE>
+      <FPCLINE>    amt_in_num         = gv_tot_inv</FPCLINE>
+      <FPCLINE>  IMPORTING</FPCLINE>
+      <FPCLINE>    amt_in_words       = gv_tot_str</FPCLINE>
+      <FPCLINE>  EXCEPTIONS</FPCLINE>
+      <FPCLINE>    data_type_mismatch = 1</FPCLINE>
+      <FPCLINE>    OTHERS             = 2.</FPCLINE>
+      <FPCLINE>IF sy-subrc &lt;&gt; 0.</FPCLINE>
+      <FPCLINE>* Implement suitable error handling here</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>IF sy-subrc IS INITIAL.</FPCLINE>
+      <FPCLINE>  TRANSLATE gv_tot_str TO UPPER CASE.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*Added by Samsudeen M on 23.03.2023</FPCLINE>
+      <FPCLINE>DATA: lt_lines TYPE TABLE OF tline.</FPCLINE>
+      <FPCLINE>&quot;Headertxt display</FPCLINE>
+      <FPCLINE>DATA(l_tdname) = CONV tdobname( is_bil_invoice-hd_gen-bil_number ).</FPCLINE>
+      <FPCLINE>SELECT SINGLE * FROM stxh INTO @DATA(l_htext)</FPCLINE>
+      <FPCLINE>                WHERE tdname = @l_tdname</FPCLINE>
+      <FPCLINE>                AND tdobject = &apos;VBBK&apos;.</FPCLINE>
+      <FPCLINE>IF sy-subrc = 0.</FPCLINE>
+      <FPCLINE>  REFRESH: lt_lines.</FPCLINE>
+      <FPCLINE>  CALL FUNCTION &apos;READ_TEXT&apos;</FPCLINE>
+      <FPCLINE>    EXPORTING</FPCLINE>
+      <FPCLINE>      client                  = sy-mandt</FPCLINE>
+      <FPCLINE>      id                      = l_htext-tdid</FPCLINE>
+      <FPCLINE>      language                = l_htext-tdspras</FPCLINE>
+      <FPCLINE>      name                    = l_htext-tdname</FPCLINE>
+      <FPCLINE>      object                  = l_htext-tdobject</FPCLINE>
+      <FPCLINE>    TABLES</FPCLINE>
+      <FPCLINE>      lines                   = lt_lines</FPCLINE>
+      <FPCLINE>    EXCEPTIONS</FPCLINE>
+      <FPCLINE>      id                      = 1</FPCLINE>
+      <FPCLINE>      language                = 2</FPCLINE>
+      <FPCLINE>      name                    = 3</FPCLINE>
+      <FPCLINE>      not_found               = 4</FPCLINE>
+      <FPCLINE>      object                  = 5</FPCLINE>
+      <FPCLINE>      reference_check         = 6</FPCLINE>
+      <FPCLINE>      wrong_access_to_archive = 7</FPCLINE>
+      <FPCLINE>      OTHERS                  = 8.</FPCLINE>
+      <FPCLINE>  IF sy-subrc = 0.</FPCLINE>
+      <FPCLINE>    CLEAR: gv_headertxt.</FPCLINE>
+      <FPCLINE>    LOOP AT lt_lines INTO DATA(lw_lines).</FPCLINE>
+      <FPCLINE>      gv_headertxt = |{ gv_headertxt } { lw_lines-tdline }|.</FPCLINE>
+      <FPCLINE>    ENDLOOP.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  DATA(lv_exp_date) = CONV j_1ig_vdtodate( 0 ).</FPCLINE>
+      <FPCLINE>  SELECT SINGLE ebillno egen_dat vdtodate FROM j_1ig_ewaybill</FPCLINE>
+      <FPCLINE>  INTO (gv_ewbno, gv_ewbdat, gv_ewb_expdate ) &quot;lv_qrcode</FPCLINE>
+      <FPCLINE>                        WHERE docno     = is_bil_invoice-hd_gen-bil_number</FPCLINE>
+      <FPCLINE>                          AND status = &apos;A&apos;      &quot;ACTIVE</FPCLINE>
+      <FPCLINE>                          AND bukrs     = gs_vbrk-bukrs.</FPCLINE>
+      <FPCLINE>*  IF lv_exp_date IS NOT INITIAL.</FPCLINE>
+      <FPCLINE>*    WRITE lv_exp_date TO gv_ewb_expdate DD/MM/YYYY.</FPCLINE>
+      <FPCLINE>*  ENDIF.</FPCLINE>
+      <FPCLINE>*ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>CLEAR gs_transdtls.</FPCLINE>
+      <FPCLINE>SELECT SINGLE * FROM zsd_eway_trdtls INTO gs_transdtls</FPCLINE>
+      <FPCLINE>  WHERE docno = is_bil_invoice-hd_gen-bil_number</FPCLINE>
+      <FPCLINE>    AND STATUS = &apos;A&apos;.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  CLEAR: GS_HSN, LS_ITEM.</FPCLINE>
+      <FPCLINE>  INSERT LS_ITEM INTO GT_ITEM INDEX 1.</FPCLINE>
+      <FPCLINE>  INSERT GS_HSN INTO GT_HSN INDEX 1.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  CASE gs_vbrk-bukrs.</FPCLINE>
+      <FPCLINE>    WHEN &apos;DMS1&apos;.</FPCLINE>
+      <FPCLINE>            select single signed_qrcode</FPCLINE>
+      <FPCLINE>                          irn</FPCLINE>
+      <FPCLINE>               from zdms_invoice_irn into ( gv_qrcode,gv_irn ) &quot;lv_str</FPCLINE>
+      <FPCLINE>              where docno       = is_bil_invoice-hd_gen-bil_number&quot;bil_number</FPCLINE>
+      <FPCLINE>                and irn_status  = &apos;ACT&apos;</FPCLINE>
+      <FPCLINE>                and bukrs       = gs_vbrk-bukrs.</FPCLINE>
+      <FPCLINE>    WHEN OTHERS.</FPCLINE>
+      <FPCLINE>            select single signed_qrcode</FPCLINE>
+      <FPCLINE>                          irn</FPCLINE>
+      <FPCLINE>               from j_1ig_invrefnum into ( gv_qrcode,gv_irn ) &quot;lv_str</FPCLINE>
+      <FPCLINE>              where docno       = is_bil_invoice-hd_gen-bil_number&quot;bil_number</FPCLINE>
+      <FPCLINE>                and irn_status  = &apos;ACT&apos;</FPCLINE>
+      <FPCLINE>                and bukrs       = gs_vbrk-bukrs.</FPCLINE>
+      <FPCLINE>  ENDCASE.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  gv_tot_inv = ABS( gv_tot_inv  ).</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  CASE is_bil_invoice-hd_org-salesorg.</FPCLINE>
+      <FPCLINE>    WHEN &apos;1000&apos;. gv_for_text = &apos;For SHEENLAC PAINTS LIMITED&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add1 = &apos;Registered office: Sheenlac Tower&apos;&apos;s - No.124, Developed Plots,&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add2 = &apos;Industrial Estate, Ambattur  Chennai-600098.&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add3 = &apos;Phone : 044 - 43949900 Fax : 044 - 42857194.&apos;.</FPCLINE>
+      <FPCLINE>    WHEN &apos;2000&apos;. gv_for_text = &apos;For SHEENLAC NOROO COATINGS INDIA PVT LTD&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add1 = &apos;Registered office: No.124, Developed Plots, SIDCO Industrial Estate,&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add2 = &apos;Ambattur,Chennai - 600098&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add3 = &apos;Phone : 044 - 49113333  Fax :&apos;.</FPCLINE>
+      <FPCLINE>    WHEN &apos;1700&apos;. gv_for_text = &apos;For SPHINAX CHEMICAL INDS. (PVT) LTD&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add1 = &apos;Registered office: 124 Developed plots, Industrial Estate&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add2 = &apos;Ambattur, Chennai - 600 098&apos;.</FPCLINE>
+      <FPCLINE>    WHEN &apos;4000&apos;. gv_for_text = &apos;For JENSON &amp; NICHOLSON PAINTS PVT LTD&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add1 = &apos;Registered office: Old  No.109B,&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add2 = &apos;New No-124,Developed Plots,&apos;.</FPCLINE>
+      <FPCLINE>        gv_reg_add3 = &apos;Sidco Industrial Estate,Ambattur ,Chennai-600098.&apos;.</FPCLINE>
+      <FPCLINE>    WHEN &apos;1400&apos;. gv_for_text = &apos;For  M/S. Tech Services&apos;.</FPCLINE>
+      <FPCLINE>    WHEN OTHERS.</FPCLINE>
+      <FPCLINE>  ENDCASE.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*  gv_del_date = is_bil_invoice-hd_gen-bil_date.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF IS_BIL_INVOICE-HD_GEN-BIL_TYPE	NE &apos;YBRE&apos;.</FPCLINE>
+      <FPCLINE>  lv_heading = &apos;TAX INVOICE&apos;.</FPCLINE>
+      <FPCLINE>  lv_bil_num_heading = &apos;BILL NO:&apos;.</FPCLINE>
+      <FPCLINE>  lv_bil_addr_title1 = &apos;Billing Details:&apos;.</FPCLINE>
+      <FPCLINE>  lv_bil_addr_title2 = &apos;Shipping Details:&apos;.</FPCLINE>
+      <FPCLINE>ELSE.</FPCLINE>
+      <FPCLINE>  lv_heading = &apos;CREDIT NOTE&apos;.</FPCLINE>
+      <FPCLINE>  lv_bil_num_heading = &apos;CREDIT NOTE NO:&apos;.</FPCLINE>
+      <FPCLINE>  lv_bil_addr_title1 = &apos;To:&apos;.</FPCLINE>
+      <FPCLINE>  lv_bil_addr_title2 = &apos;To:&apos;.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>gv_bill_date  = is_bil_invoice-hd_gen-bil_date.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>clear : wa_adrc, wa_t001w, wa_adrc_head.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*ship to party address</FPCLINE>
+      <FPCLINE>read table is_bil_invoice-hd_adr into DATA(wa_hd_adr)</FPCLINE>
+      <FPCLINE>with key  bil_number  =  is_bil_invoice-hd_gen-bil_number.</FPCLINE>
+      <FPCLINE>if sy-subrc = 0.</FPCLINE>
+      <FPCLINE>  select  single *  from adrc into wa_adrc where addrnumber = wa_hd_adr-addr_no.</FPCLINE>
+      <FPCLINE>endif.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>*sales office</FPCLINE>
+      <FPCLINE>select single *  from  vbrp  into @DATA(wa_vbrp)</FPCLINE>
+      <FPCLINE>   where  vbeln  =  @is_bil_invoice-hd_gen-bil_number.</FPCLINE>
+      <FPCLINE>if sy-subrc =  0.</FPCLINE>
+      <FPCLINE>  select single *  from t001w into wa_t001w where werks = wa_vbrp-werks.</FPCLINE>
+      <FPCLINE>  select single * from adrc into wa_adrc_head</FPCLINE>
+      <FPCLINE>      where addrnumber = wa_t001w-adrnr.</FPCLINE>
+      <FPCLINE>endif.</FPCLINE>
+      <FPCLINE>******************************</FPCLINE>
+      <FPCLINE>data: ibranch type t001w-j_1bbranch.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>select single j_1bbranch from t001w into ibranch</FPCLINE>
+      <FPCLINE>  where werks eq wa_vbrp-werks.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>select single gstin from j_1bbranch into lv_plant_gstin</FPCLINE>
+      <FPCLINE>   where branch eq ibranch.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>select single * from vbrk into  @DATA(wa_vbrk)</FPCLINE>
+      <FPCLINE>  where vbeln = @is_bil_invoice-hd_gen-bil_number  .&quot;wa_it_kond-bil_number.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>select single stcd3 from kna1 into lv_cust_gstin</FPCLINE>
+      <FPCLINE>     where kunnr eq  wa_vbrk-kunrg.&quot;&apos;10008857&apos;.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>*  Total Weight : &amp;IS_BIL_INVOICE-HD_GEN-BRT_WEIGHT(C)&amp;</FPCLINE>
+      <FPCLINE>*&amp;IS_BIL_INVOICE-HD_GEN-UNIT_OF_WEIGHT(C)&amp;</FPCLINE>
+      <FPCLINE>GV_TOTAL_WEIGHT = |{ IS_BIL_INVOICE-HD_GEN-BRT_WEIGHT } { IS_BIL_INVOICE-HD_GEN-UNIT_OF_WEIGHT }|.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE/>
+      <FPCLINE>  gs_total-tax_val = gs_total-total - ( gs_total-r1 + gs_total-r2 + gs_total-r4 ).</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>IF gs_vbrk-bukrs = &apos;1000&apos;.</FPCLINE>
+      <FPCLINE>gv_cin = &apos;CIN: U24114TN1975PTC007024&apos;.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+     </INITIALIZATION>
+     <FORMS/>
+    </CL_FP_CODING>
+   </cls:CL_FP_CODING>
+  </asx:heap>
+ </asx:abap>
+</abapGit>

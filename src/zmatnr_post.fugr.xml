@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Material Save: On Post</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZMATNR_POSTTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZMATNR_POST</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZSAMPLE_INTERFACE_00001250</FUNCNAME>
+     <SHORT_TEXT>Interface Description for Event 00001250 (Material)</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_MARA_NEW</PARAMETER>
+       <DBFIELD>MARA</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MARA_OLD</PARAMETER>
+       <DBFIELD>MARA</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MARA</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MARC_NEW</PARAMETER>
+       <DBFIELD>MARC</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MARC_OLD</PARAMETER>
+       <DBFIELD>MARC</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MARC</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MARD_NEW</PARAMETER>
+       <DBFIELD>MARD</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MARD_OLD</PARAMETER>
+       <DBFIELD>MARD</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MARD</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MBEW_NEW</PARAMETER>
+       <DBFIELD>MBEW</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MBEW_OLD</PARAMETER>
+       <DBFIELD>MBEW</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MBEW</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MFHM_NEW</PARAMETER>
+       <DBFIELD>MFHM</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MFHM_OLD</PARAMETER>
+       <DBFIELD>MFHM</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MFHM</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MLGN_NEW</PARAMETER>
+       <DBFIELD>MLGN</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MLGN_OLD</PARAMETER>
+       <DBFIELD>MLGN</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MLGN</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MLGT_NEW</PARAMETER>
+       <DBFIELD>MLGT</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MLGT_OLD</PARAMETER>
+       <DBFIELD>MLGT</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MLGT</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MPGD_NEW</PARAMETER>
+       <DBFIELD>MPGD</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MPGD_OLD</PARAMETER>
+       <DBFIELD>MPGD</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MPGD</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MPOP_NEW</PARAMETER>
+       <DBFIELD>MPOP</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MPOP_OLD</PARAMETER>
+       <DBFIELD>MPOP</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MPOP</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MVKE_NEW</PARAMETER>
+       <DBFIELD>MVKE</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_MVKE_OLD</PARAMETER>
+       <DBFIELD>MVKE</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MVKE</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MAKT</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MARM</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MEAN</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MLAN</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_ICDTXT_MATERIAL</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_PROW</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_GESV</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_UNGV</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MAEX</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MAPE</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_MKAL</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>UPD_QMAT</PARAMETER>
+       <DBFIELD>CDPOS-CHNGIND</DBFIELD>
+       <OPTIONAL>X</OPTIONAL>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FL_UPD_TASK</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>XFELD</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>T_ICDTXT_MATERIAL</PARAMETER>
+       <DBSTRUCT>CDTXT</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MAKT_NEW</PARAMETER>
+       <DBSTRUCT>XDMAKT</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MAKT_OLD</PARAMETER>
+       <DBSTRUCT>XDMAKT</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MARM_NEW</PARAMETER>
+       <DBSTRUCT>XDMARM</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MARM_OLD</PARAMETER>
+       <DBSTRUCT>XDMARM</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MEAN_NEW</PARAMETER>
+       <DBSTRUCT>XDMEAN</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MEAN_OLD</PARAMETER>
+       <DBSTRUCT>XDMEAN</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MLAN_NEW</PARAMETER>
+       <DBSTRUCT>XDMLAN</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MLAN_OLD</PARAMETER>
+       <DBSTRUCT>XDMLAN</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MAEX_NEW</PARAMETER>
+       <DBSTRUCT>XDMAEX</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MAEX_OLD</PARAMETER>
+       <DBSTRUCT>XDMAEX</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MAPE_NEW</PARAMETER>
+       <DBSTRUCT>XDMAPE</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MAPE_OLD</PARAMETER>
+       <DBSTRUCT>XDMAPE</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MKAL_NEW</PARAMETER>
+       <DBSTRUCT>XDMKAL</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_MKAL_OLD</PARAMETER>
+       <DBSTRUCT>XDMKAL</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_PROW_NEW</PARAMETER>
+       <DBSTRUCT>XDPROW</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_PROW_OLD</PARAMETER>
+       <DBSTRUCT>XDPROW</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_QMAT_NEW</PARAMETER>
+       <DBSTRUCT>XDQMAT</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_QMAT_OLD</PARAMETER>
+       <DBSTRUCT>XDQMAT</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_GESV_NEW</PARAMETER>
+       <DBSTRUCT>XDGESV</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_GESV_OLD</PARAMETER>
+       <DBSTRUCT>XDGESV</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_UNGV_NEW</PARAMETER>
+       <DBSTRUCT>XDUNGV</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_UNGV_OLD</PARAMETER>
+       <DBSTRUCT>XDUNGV</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_MARA_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Client-Specific Material Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MARA_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Client-Specific Material Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MARA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MARA</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MARC_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant-Specific Material Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MARC_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant-Specific Material Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MARC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MARC</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MARD_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Storage Location-Specific Material Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MARD_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Storage Location-Specific Material Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MARD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MARD</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MBEW_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Valuation Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MBEW_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Valuation Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MBEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MBEW</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MFHM_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Production Resource/Tool Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MFHM_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Production Resource/Tool Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MFHM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MFHM</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MLGN_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Warehouse Number-Specific Material Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MLGN_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Warehouse Number-Specific Material Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MLGN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MLGN</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MLGT_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Storage Type-Specific Material Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MLGT_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Storage Type-Specific Material Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MLGT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MLGT</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MPGD_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Planning Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MPGD_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Planning Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MPGD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MPGD</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MPOP_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Forecast Parameter (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MPOP_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Forecast Parameter (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MPOP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MPOP</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MVKE_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_MVKE_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MVKE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MVKE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MAKT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MAKT</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MARM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MARM</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MEAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MEAN</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MLAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MLAN</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_ICDTXT_MATERIAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Change Regarding Long Texts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_PROW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding PROW</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_GESV</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding GESV</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_UNGV</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding UNGV</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MAEX</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MAEX</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MAPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MAPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_MKAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding MKAL</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPD_QMAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type of Change Regarding QMAT</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FL_UPD_TASK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Checkbox</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_ICDTXT_MATERIAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Key for Changed Long Texts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MAKT_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Short Texts (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MAKT_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Short Texts (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MARM_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Unit of Measure (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MARM_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Unit of Measure (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MEAN_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>International Article Number (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MEAN_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>International Article Number (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MLAN_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tax Classifications (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MLAN_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tax Classifications (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MAEX_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Export Control Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MAEX_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Export Control Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MAPE_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Short Texts (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MAPE_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customs Tariff Preference (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MKAL_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Production Versions (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_MKAL_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Production Versions (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_PROW_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Forecast Values (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_PROW_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Forecast Values (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_QMAT_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>QM Check Data (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_QMAT_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>QM Check Data (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_GESV_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Total Consumption (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_GESV_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Total Consumption (Old Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_UNGV_NEW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Unplanned Consumption (New Status)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_UNGV_OLD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Unplanned Consumption (Old Status)</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+   <LONGTEXTS_ZSAMPLE_INTERFACE_00001250>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZSAMPLE_INTERFACE_00001250</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0001</VERSION>
+      <TXTLINES>00047</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZSAMPLE_INTERFACE_00001250</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00001</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Stammdaten Material, Datenübergabe&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001250&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;INTERFACE&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>EVENT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Zeitpunkt wird beim Anlegen und Ändern eines Materials nach dem</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Schreiben der Materialstammdaten durchlaufen.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>SCHNITTSTELLE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Die Schnittstelle stellt pro Datenbank-Tabelle jeweils die Daten zum</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>aktuellen Stand als auch zum Stand vor der Änderung bereit.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Die Schnittstelle umfaßt folgende Arten von Parametern:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Update-Kennzeichen (z.B. UPD_MARA, UPD_MARC, ...)</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Diese Kennzeichen zeigen an, ob eine Änderung an der zugeordneten</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Datenbanktabelle (z.B. MARA, MARC, ...) vorgenommen wurde.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Mögliche Werte bei Änderungen sind:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>U = Update</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>I = Insert</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Eine Ausnahme bildet das Update-Kennzeichen UPD_ICDTXT_MATERIAL. Dieses</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>enthält &apos;X&apos;, wenn eine Langtextänderung erfolgt ist.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Wenn keine Änderung vorliegt ist der Parameter mit SPACE belegt.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Import-Parameter</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Diese Parameter dienen zur Übergabe von Daten für diejenigen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Datenbank-Tabellen (z.B. MARA, MARC, MARD, MBEW, ...), für die pro</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Aufruf nur 1 Datensatz übergeben werden kann.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Tabellen-Parameter</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Diese Parameter dienen zur Übergabe von Daten für diejenigen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Datenbank-Tabellen (MAKT, MARM, MEAN, ...), für die pro Aufruf mehrere</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Datensätze übergeben werden können.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Bei Tabellen-Parametern (z.B. für MAKT) ist das zugeordnete</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Update-Kennzeichen (z.B. UPD_MAKT) immer mit &apos;U&apos; belegt, sobald</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Datensätze angelegt, geändert oder gelöscht wurden. Jeder Datensatz</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>enthält ein zusätzliches Update-Kennzeichen, das für den Datensatz</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>angibt, ob dieser angelegt, geändert oder gelöscht wurde.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Wurde der Datensatz geändert, steht sowohl in der Tabelle mit den</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Altwerten, als auch in der Tabelle mit den Neuwerten ein Satz mit</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Kennzeichen &apos;U&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Wurde der Datensatz hinzugefügt, steht in der Tabelle mit den Neuwerten</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>ein Satz mit dem Kennzeichen &apos;I&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Wurde der Datensatz gelöscht, steht in der Tabelle mit den Altwerten</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>ein Satz mit dem Kennzeichen &apos; &apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Eine Ausnahme bildet der Tabellen-Parameter T_ICDTXT_MATERIAL. In</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>dieser Tabelle werden nur die geänderten Langtextschlüssel übergeben</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>und keine Langtextdaten. Das Update-Kennzeichen ist dabei wie folgt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>belegt:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&apos;I&apos;, wenn der Langtext neu angelegt wurde</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&apos;U&apos;, wenn der Langtext geändert wurde</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&apos;D&apos;, wenn der Langtext gelöscht wurde</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZSAMPLE_INTERFACE_00001250</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0001</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00046</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZSAMPLE_INTERFACE_00001250</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00001</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Master data material, data transfer&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001250&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;INTERFACE&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>EVENT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The event will run when creating and changing a material after writing</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the material master data.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>INTERFACE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>For each database table, the interface provides the data for the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>current status and the status before the change was made.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The interface includes the following parameter types:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Update indicator (for example, UPD_MARA, UPD_MARC, ...)</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>These indicators display whether a change has been made to the assigned</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>database table (for example, MARA, MARC, ...).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>Possible values for changes:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>U = Update</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>I = Insert</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>An exception forms the update indicator UPD_ICDTXT_MATERIAL. This</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>includes &apos;X&apos; if a change to the long text has been made.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>If no change has been made, the parameter has the value SPACE.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Import parameters</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>These parameters help transfer data for those database tables (for</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>example, MARA, MARC, MARD, MBEW, ...) for which only one data record</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>can be transferred for each call.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Table parameters</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>These parameters help transfer data for those database tables (MAKT,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>MARM, MEAN, ...) for which several data records can be transferred for</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>each call.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>For table parameters (for example, for MAKT) the assigned update</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>indicator (for example, UPD_MAKT) is always &apos;U&apos; if data records were</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>created, changed or deleted. Every data record includes an additional</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>update indicator that specifies for the data record, whether it was</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>created, changed or deleted.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>If the data record was changed, a record with indicator &apos;U&apos; can be</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>found in both the table with the old values and the table with the new</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>values.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>If the data record was added, a record with indicator &apos;I&apos; can be found</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>in the table with the new values.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>If the data record was deleted, a record with indicator &apos; &apos; can be</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>found in the table with old values.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>An exception forms the table parameter T_ICDTXT_MATERIAL. In this</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>table, only the changed long text keys are transferred, no long text</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>data. The update indicator is therefore as follows:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&apos;I&apos;, if the long text is new</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&apos;U&apos;, if the long text has been changed</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&apos;D&apos;, if the long text has been deleted</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_ZSAMPLE_INTERFACE_00001250>
+  </asx:values>
+ </asx:abap>
+</abapGit>

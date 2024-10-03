@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>Gst Mandatory For All Billing type</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>ENHO</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>ZTESTING</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>ENHO</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>ZTESTING</ORG_MAIN_NAME>
+    <PROGRAMNAME>ZTESTING</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>FA74F82EE5111EE884DF007D70155C0C</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>FA74F82EE5111EE884DF007D70155C0C</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>051</LENGTH>
+       <TEXT>Gst Mandatory For All Billing type</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZGST_MANDATORY</OBJ_NAME>
+     <CONCEPT>FA74F82EE5111EE884DF007D70155C0C</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>PARTNER INFORMATION</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZGET_DATA_MIS_PARTNER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_DATA_MIS_PARTNER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>GET PARTNER EMAIL AND PHONE</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PARNR_ID</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>PERNR_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_PARTNER</PARAMETER>
+       <DBSTRUCT>ZSTR_MIS_PART_EM_MOB</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PARNR_ID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Standard Selections for HR Master Data Reporting</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>FROM DATE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TO DATE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PARTNER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>MIS PARTNER EMAIL AND MOBIL</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

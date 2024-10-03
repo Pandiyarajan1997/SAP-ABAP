@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>BOM Hoerarchy</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZPP_BOM_HIERARCHYTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZPP_BOM_HIERARCHY</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZPP_GET_BOM_HIER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bom Hierarchy</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>WRBA_MATNR_TABLE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>MARC-WERKS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_HIER</PARAMETER>
+       <DBSTRUCT>ZPP_BOM_HIER</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Material</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HIER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Bom Hierarchy Structure</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

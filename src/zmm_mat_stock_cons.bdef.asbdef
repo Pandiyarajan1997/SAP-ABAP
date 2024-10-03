@@ -1,0 +1,8 @@
+projection;
+
+define behavior for zmm_mat_stock_cons alias Materialstk
+{
+  use create;
+  use update;
+  use delete;
+}

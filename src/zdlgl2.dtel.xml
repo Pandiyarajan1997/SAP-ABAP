@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDLGL2</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>CHAR100</DOMNAME>
+    <SCRLEN1>07</SCRLEN1>
+    <SCRLEN2>12</SCRLEN2>
+    <DDTEXT>GL Long text 2</DDTEXT>
+    <SCRTEXT_S>Long 2</SCRTEXT_S>
+    <SCRTEXT_M>Long Text 2</SCRTEXT_M>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>YKP_MM_CONTRACT_NEW</NAME>
+    <SQLX>X</SQLX>
+    <SUBC>S</SUBC>
+    <APPL>M</APPL>
+    <RSTAT>K</RSTAT>
+    <RLOAD>E</RLOAD>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>ER1</KEY>
+     <ENTRY>1st reminder</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>ER2</KEY>
+     <ENTRY>2nd reminder</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>ER3</KEY>
+     <ENTRY>3rd reminder</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>MA1</KEY>
+     <ENTRY>1st urging letter</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>MA2</KEY>
+     <ENTRY>2nd urging letter</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>MA3</KEY>
+     <ENTRY>3rd urging letter</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>TIM</KEY>
+     <ENTRY>Time</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>ZBT</KEY>
+     <ENTRY>Terms of payment:</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Smart Form Print Program for Purchasing Documents</ENTRY>
+     <LENGTH>50</LENGTH>
+    </item>
+   </TPOOL>
+   <I18N_TPOOL>
+    <item>
+     <LANGUAGE>D</LANGUAGE>
+     <TEXTPOOL>
+      <item>
+       <ID>I</ID>
+       <KEY>ER1</KEY>
+       <ENTRY>1. Erinnerung</ENTRY>
+       <LENGTH>13</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>ER2</KEY>
+       <ENTRY>2. Erinnerung</ENTRY>
+       <LENGTH>13</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>ER3</KEY>
+       <ENTRY>3. Erinnerung</ENTRY>
+       <LENGTH>13</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>MA1</KEY>
+       <ENTRY>1. Mahnung</ENTRY>
+       <LENGTH>10</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>MA2</KEY>
+       <ENTRY>2. Mahnung</ENTRY>
+       <LENGTH>10</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>MA3</KEY>
+       <ENTRY>3. Mahnung</ENTRY>
+       <LENGTH>10</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>TIM</KEY>
+       <ENTRY>Uhrzeit</ENTRY>
+       <LENGTH>7</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>ZBT</KEY>
+       <ENTRY>Zahlungsbedingungen:</ENTRY>
+       <LENGTH>20</LENGTH>
+      </item>
+      <item>
+       <ID>R</ID>
+       <ENTRY>Druckprogramm Einkaufsbelege</ENTRY>
+       <LENGTH>28</LENGTH>
+      </item>
+     </TEXTPOOL>
+    </item>
+   </I18N_TPOOL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

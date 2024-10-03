@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Account Payable BAPI</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFI_ACCPAYTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFI_ACCPAY</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_ACCOUNT_PAYABLE</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Account payable BAPI for FBL1N</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VENDOR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>RANGE_LIFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>CURRENT_DATE</PARAMETER>
+       <DEFAULT>SY-DATUM</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_VENDOR_OPEN_ITEMS</PARAMETER>
+       <DBSTRUCT>ZSTR_BSIK</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_COMPCODE</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>VENDOR_NOT_AVAILABLE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VENDOR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Account Number of Vendor or Creditor</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CURRENT_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_VENDOR_OPEN_ITEMS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Account payable BAPI</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_COMPCODE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Company Code does not exists</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VENDOR_NOT_AVAILABLE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Vendor does not exists in company code</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Quality Rejection</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_QAREJTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_QAREJ</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_VENDOR_QM_REJECTION</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Quality Rejection</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>LIFNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>LIFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUDAT_LOW</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUDAT_HIGH</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>RETURN</PARAMETER>
+       <TYP>BAPIRET2</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>OUTPUT</PARAMETER>
+       <DBSTRUCT>ZBAPI_QAREJ_OUTPUT</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LIFNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Vendor Code for bapi ZBAPI_QAREJ</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUDAT_LOW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date for BAPI ZBAPI_QAREJ</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUDAT_HIGH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date for BAPI ZBAPI_QAREJ</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>OUTPUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Output structure of BAPI ZBAPI_QAREJ</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,5813 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHR_PAYREG
+*&
+*&----------------------------------------------------------------------*
+*&
+*&
+*&----------------------------------------------------------------------*
+
+REPORT  ZHR_PAYREG_NEW5
+        NO STANDARD PAGE HEADING LINE-SIZE 255.
+
+TYPE-POOLS : SLIS.
+
+TABLES : PERNR,
+         T528T,
+         PA0000,
+         PA0001,
+         PA0002,
+         PA0021,
+         PA0416,
+         PA2001,
+         PA2002,
+         PA0008,
+         PA0009.
+
+INFOTYPES : 0000,
+            0001,
+            0002,
+            0007,
+            0021,
+            0009,
+            2001 MODE N,
+            2002 MODE N.
+
+TYPES : BEGIN OF TY_PA0009,
+        PERNR LIKE PA0009-PERNR,
+        BANKL LIKE PA0009-BANKL,
+        BANKN LIKE PA0009-BANKN,
+        END OF TY_PA0009.
+
+
+DATA : IT_PA0009 TYPE TABLE OF TY_PA0009,
+       WA_PA0009 TYPE TY_PA0009.
+
+DATA : IT_P0000 TYPE TABLE OF PA0000,
+       WA_P0000 TYPE PA0000.
+
+DATA : V_BANKA LIKE BNKA-BANKA.
+
+DATA : IT_RT TYPE PC207 OCCURS 0,
+       WA_RT LIKE LINE OF IT_RT.
+
+DATA : IT_PT TYPE PC207 OCCURS 0,
+       WA_PT LIKE LINE OF IT_PT.
+
+DATA : IT_RT1 TYPE PC207 OCCURS 0,
+       WA_RT1 LIKE LINE OF IT_RT.
+
+
+
+DATA : BEGIN OF IT_FINAL OCCURS 0,
+       PERNR LIKE PA0002-PERNR,       " PERNR
+       ORGEH LIKE PA0001-ORGEH,       " ORG UNIT
+       NAME  TYPE CHAR50 ,            " Employee NAME
+       FNAME TYPE CHAR50 ,            " Father's NAME
+       TOTAL  TYPE ABBETR,
+       PSUB(15) TYPE C,
+       PLSTX TYPE PLSTX,
+       PLANS TYPE PLANS,
+       BTRTL TYPE BTRTL,
+       BANKL LIKE PA0009-BANKL,
+       BANKN LIKE PA0009-BANKN,
+       BANKA LIKE BNKA-BANKA,
+       W_R9996 TYPE BETRG,
+       W_1000 TYPE BETRG,
+       W_1001 TYPE BETRG,
+       W_1002 TYPE BETRG,
+       W_1003 TYPE BETRG,
+       W_1004 TYPE BETRG,
+       W_1005 TYPE BETRG,
+       W_1006 TYPE BETRG,
+       W_1007 TYPE BETRG,
+       W_1008 TYPE BETRG,
+
+       W_1100	 TYPE BETRG,        " Notice Pay Recovery
+       W_1101  TYPE BETRG,        "   Staff loan Repayment
+       W_1102  TYPE BETRG,        " Vehicle Loan Repayment
+       W_1103	 TYPE BETRG,        " Other Deductions
+       W_1104  TYPE BETRG,        " Gratuity ---- Added by Suren Clss on 27.10.2014
+       W_1016  TYPE BETRG,        " Loan repayment ---- Added by Govind on 31.01.2015
+       W_1017  TYPE BETRG,        " Variable pay Deduction ---- Added by Govind on 03.03.2015
+       W_1018  TYPE BETRG,        " VTDS Refund ---- Added by Govind on 07.04.2015
+       W_3F1   TYPE BETRG,        " Ee PF contribution
+       W_3E1   TYPE BETRG,        " Ee ESI contribution
+       W_3P1   TYPE BETRG,        " Prof Tax - split period
+       W_460   TYPE BETRG,        " Income Tax
+* added new wage type dated on 14-08-2015 by siva
+          w_4026 type betrg,
+           w_4027 type betrg,
+            w_4028 type betrg,
+             w_4029 type betrg,
+              w_4030 type betrg,
+               w_4031 type betrg,
+*        *        added new wage type dated on 14-08-2015 by siva
+            W_4015 type betrg,
+             W_4016 type betrg,
+              W_4017 type betrg,
+               W_4018 type betrg,
+                W_4019 type betrg,
+                W_4050 type betrg,
+                 W_4052 type betrg,
+                  W_4057 type betrg,
+
+
+       PAREA(35) TYPE C,
+       W_ESI  TYPE BETRG,
+       W_PF   TYPE BETRG,
+       W_3002 TYPE BETRG,
+       W_3005 TYPE BETRG,
+       W_PTAX TYPE BETRG,
+       W_INCDED TYPE BETRG,
+*       W_1103     TYPE BETRG,
+       W_TDS    TYPE BETRG,
+       W_1106 TYPE BETRG,
+
+       W_1009 TYPE BETRG, "Leave Encashment
+       W_9000 TYPE BETRG, " Bonus
+       W_1201 TYPE BETRG, " Education reimbersement fee
+
+       W_2003  TYPE BETRG, "
+       W_2011	 TYPE BETRG, "Variable Incentive Arrears
+       W_2013	 TYPE BETRG, " Incentive Arrears
+       W_2015	 TYPE BETRG, "Other Earnings Arrears
+       W_2017	 TYPE BETRG, "late Coming Arrears
+
+
+       W_LID 	 TYPE BETRG, " INTEREST DUE
+       W_ZF5 	 TYPE BETRG, " CF PF
+       W_ZP2   TYPE BETRG,
+       W_ZE1   TYPE BETRG,
+       W_ZP1   TYPE BETRG, " PTAX Arrears.
+
+
+       W_TOT_DED TYPE BETRG,
+       W_NETPAY TYPE BETRG,
+       W_TOT_EARN TYPE BETRG,
+       TRFGR   TYPE TRFGR,
+       TRFST   TYPE TRFST,
+       APZNR   TYPE PC205,
+       KDIVI   TYPE KDIVI,
+*       ADIVI   TYPE ADIVI,
+       ADIVI   TYPE I,
+*       CALEN_DAYS TYPE ADIVI,
+*       CALEN_DAYS TYPE I,
+       CALEN_DAYS TYPE PC207-ANZHL,
+*       WORKED_DAYS TYPE ADIVI,
+*       WORKED_DAYS TYPE I,
+       WORKED_DAYS TYPE P DECIMALS 2,
+*       WORKING_DAYS TYPE I,
+       WORKING_DAYS TYPE P DECIMALS 2,
+*       WORKING_DAYS TYPE ADIVI,
+       LTD     TYPE P2002-ABWTG,
+       TD      TYPE P2002-ABWTG,
+       LD      TYPE P2002-ABWTG,
+       AD      TYPE ANZHL,
+
+
+
+       AD1 TYPE STDAZ,         " ADDED BY RAM
+       AD2 TYPE P DECIMALS 2,
+       AD3 TYPE P DECIMALS 2,
+
+
+       W_LOP   TYPE ABRTG,
+*       W_460   TYPE BETRG,
+       HD      TYPE BETRG,
+
+       ANZHL   LIKE PC207-ANZHL,
+       NUMBR   LIKE PA0416-NUMBR,
+       W_9TDS  TYPE BETRG,
+       BTEXT(30)   TYPE C,
+       ESGROUP(20) TYPE C,
+       EGROUP(20) TYPE C,
+       ROWCOLOR(4) TYPE C,
+
+
+        W_TOT_EARN2 TYPE BETRG,
+*        W_4000      TYPE NETWR,
+        W_4000      TYPE BETRG,
+        W_4001      TYPE BETRG,
+        W_4002      TYPE BETRG,
+        W_4003      TYPE BETRG,
+        W_4004      TYPE BETRG,
+        W_4005      TYPE BETRG,
+        W_4006      TYPE BETRG,
+        W_4007      TYPE BETRG,
+        W_4008      TYPE BETRG,
+        W_4011      TYPE BETRG,
+        W_4012      TYPE BETRG,
+        W_2021      TYPE BETRG,
+        W_2023      TYPE BETRG,
+        W_2025      TYPE BETRG,
+
+
+        W_2001      TYPE BETRG,
+        W_2005      TYPE BETRG,
+        W_2007      TYPE BETRG,
+        W_2009      TYPE BETRG,
+
+
+        W_2033      TYPE BETRG,          "   Meal Coupons Ded Arrears
+
+        W_2027  TYPE BETRG,          "   Meal Coupons arrears
+        W_2029  TYPE BETRG,          "   Leave travel Allowance arrears
+        W_2031  TYPE BETRG,          "   Attire Allowance Arrears
+        W_VAR_ARR    TYPE BETRG,          "   Variable Incentive Arrears
+
+        W_TOT_DED2  TYPE BETRG,
+        W_4100      TYPE BETRG,
+        W_NETPAY2   TYPE BETRG,
+
+****Added by Suren Clss on 27.10.2014
+
+*        BANK_KEY TYPE PA0009-BANKL,
+        W_1200 TYPE BETRG,          " Bonus
+        W_1109 TYPE BETRG,          " Incentive Deduction
+        W_LXE  TYPE BETRG,          " Loan Complete Repayment
+        W_1111 TYPE BETRG,          " Actual Loan Deduction with Interest
+        W_LEP  TYPE BETRG,          " Special Payment of Loan
+        W_1300 TYPE BETRG,          " Sheenlac LIC Premium
+        W_560  TYPE BETRG,          " Salaries Payable
+        W_3P3  TYPE BETRG,          " Employee P Tax
+        W_3W1  TYPE BETRG,          " Employee LWF
+        W_1011 TYPE BETRG,
+        W_1012 TYPE BETRG,
+        W_1013 TYPE BETRG,
+        W_3F2 TYPE BETRG,          "VPF Contribution
+        W_3FS TYPE BETRG,          "NPS - National Pension Scheme
+        PAYMENT_METH TYPE T042Z-TEXT1,
+        PAYMENT TYPE PA0009-ZLSCH,
+
+        BUKRS TYPE PA0001-BUKRS,
+        WERKS TYPE PA0001-WERKS,
+        KOSTL TYPE PA0001-KOSTL,
+        BTRTL1 TYPE PA0001-BTRTL,
+        PERSG TYPE PA0001-PERSG,
+        PERSK TYPE PA0001-PERSK,
+        ABKRS TYPE PA0001-ABKRS,
+        ANSVH TYPE PA0001-ANSVH,
+        PLANS1 TYPE PA0001-PLANS,
+        ORGEH1 TYPE PA0001-ORGEH,
+
+        WERKS_T TYPE T500P-NAME1,
+        BTRTL_T TYPE T001P-BTEXT,
+        PERSG_T TYPE T501T-PTEXT,
+        PERSK_T TYPE T503T-PTEXT,
+        ABKRS_T TYPE T549T-ATEXT,
+        PLANS_T TYPE T528T-PLSTX,
+        ORGEH_T TYPE T527X-ORGTX,
+        HIR_DATE TYPE PA0041-DAT01,
+
+        EMP_STAT TYPE T529U-TEXT1,
+        UNAME TYPE PA0008-UNAME,
+        STATUS TYPE PA0000-STAT2,
+        ACTION TYPE T529T-MNTXT,
+*        TOTALDAYS TYPE ADIVI,
+*        TOTALDAYS TYPE I,
+         TOTALDAYS TYPE P DECIMALS 2,
+        BANK_KEY TYPE PA0009-BANKL,
+        BANK_ACC TYPE PA0009-BANKN,
+        BANK_NAME TYPE BNKA-BANKA,
+        INACTIVE TYPE I,
+*        INACTIVE TYPE bseg-KURSR,
+        ZONE TYPE T542T-ATX,
+        PURPOSE TYPE PA0009-ZWECK,
+        MAIL    TYPE PA0105-USRID_LONG,
+        PHONE   TYPE PA0105-USRID_LONG,
+        CELL    TYPE PA0105-USRID,
+        GROSS   TYPE BETRG,
+        W_AGE   TYPE P ,
+       END OF IT_FINAL.
+
+DATA : DAY1 TYPE I,
+       DAY2 TYPE I,
+       DAY3 TYPE I,
+       DAY4 TYPE I,
+       DAY5 TYPE I,
+       LV_PAYMENT(2) TYPE C,
+       WA_PAYMENT TYPE T042Z,
+*       LV_INACTIVE TYPE ADIVI,
+       LV_INACTIVE TYPE I,
+       LV_CHECK TYPE I,
+       LV_CHECK1 TYPE I,
+       LV_START TYPE PA0000-BEGDA,
+       LV_END TYPE PA0000-ENDDA,
+       DATE1 TYPE PA0000-ENDDA,
+       DATE2 TYPE PA0000-ENDDA,
+       DATE3 TYPE PA0000-ENDDA,
+       LV_BEGDA TYPE PA0000-BEGDA,
+       LV_DATE TYPE SY-DATUM,
+       E_MONTH(6) TYPE P DECIMALS 5,
+       AGE(6) TYPE P DECIMALS 5.
+*DATA : DAY1 TYPE ADIVI,
+*       DAY2 TYPE ADIVI,
+*       DAY3 TYPE ADIVI,
+*       DAY4 TYPE ADIVI,
+*       DAY5 TYPE ADIVI,
+*       LV_PAYMENT(2) TYPE C,
+*       WA_PAYMENT TYPE T042Z,
+**       LV_INACTIVE TYPE ADIVI,
+*       LV_INACTIVE TYPE bseg-KURSR,
+*       LV_CHECK TYPE ADIVI,
+*       LV_CHECK1 TYPE ADIVI,
+*       LV_START TYPE PA0000-BEGDA,
+*       LV_END TYPE PA0000-ENDDA.
+
+DATA : WA_FINAL LIKE LINE OF IT_FINAL.
+
+DATA : LV_LINES TYPE I.
+
+*INTERNAL TABLE DECLARTION
+
+DATA : L_LAYOUT TYPE SLIS_LAYOUT_ALV,
+       X_EVENTS TYPE SLIS_ALV_EVENT,
+       IT_EVENTS TYPE SLIS_T_EVENT.
+
+
+DATA :  GT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV.
+*        wa_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV.
+
+
+
+DATA:WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV,
+     IT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV,
+     WA_SORT     TYPE SLIS_SORTINFO_ALV,
+*     IT_SORT     TYPE SLIS_T_SORTINFO_ALV,
+*     IT_EVENTS   TYPE SLIS_T_EVENT,
+     IT_TOP_OF_PAGE TYPE SLIS_T_LISTHEADER,
+     WA_ALV_EVENT    TYPE SLIS_ALV_EVENT.
+
+DATA:WA_LISTHEADER TYPE SLIS_LISTHEADER,
+     IT_LISTHEADER TYPE SLIS_T_LISTHEADER,
+     WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+     WK_VARIANT LIKE DISVARIANT,
+     WK_VARIANT_SAVE(1) TYPE C,
+     WK_EXIT(1) TYPE C,
+     WX_VARIANT LIKE DISVARIANT,
+     WK_LAYOUT TYPE SLIS_LAYOUT_ALV,
+     WK_REPID LIKE SY-REPID.
+
+
+*--------------------------------------------------------------------*
+* Declaration for Constants
+*--------------------------------------------------------------------*
+CONSTANTS: C_FORMNAME_TOP_OF_PAGE TYPE SLIS_FORMNAME
+                          VALUE 'F_TOP_OF_PAGE'.
+
+
+DATA :  GV_YEAR TYPE PABRJ,
+        GV_MONTH1 TYPE PABRP.
+
+TYPES: BEGIN OF TY_T549Q,
+         PERMO TYPE PERMO,             " Period Parameter
+         BEGDA TYPE BEGDA,             " Start Date
+         ENDDA TYPE ENDDA,             " End Date
+       END OF TY_T549Q.
+
+TYPES : BEGIN OF TY_WAGE,
+       LGART TYPE PA0008-LGA01,
+       END OF TY_WAGE.
+
+DATA : IT_WAGE TYPE TABLE OF TY_WAGE,
+       WA_WAGE TYPE TY_WAGE.
+
+DATA : PAR_MONTH  LIKE  T009B-BUMON,
+       PAR_YEAR LIKE  T009B-BDATJ,
+       PAR_DAYS LIKE  T009B-BUTAG,
+       GV_ABKRS     TYPE ABKRS,             " Payroll Area
+       GV_PERMO     TYPE PERMO.             " Period  Parameter
+
+DATA : GW_T549Q     TYPE TY_T549Q,
+       GT_T549Q     TYPE STANDARD TABLE OF TY_T549Q INITIAL SIZE 0.
+
+DATA: IT_AB TYPE HRPAY99_AB.
+DATA: WA_AB LIKE LINE OF IT_AB.
+
+DATA: BEGIN OF IT_T500P OCCURS 0,
+      PERSA TYPE T500P-PERSA,
+      NAME1 TYPE T500P-NAME1,
+  END OF IT_T500P.
+DATA: WA_T500P LIKE LINE OF IT_T500P.
+
+DATA : BEGIN OF ITAB6 OCCURS 0.
+        INCLUDE STRUCTURE ISCAL_DAY.
+DATA : END OF ITAB6.
+DATA : WA_ITAB6 LIKE LINE OF ITAB6.
+
+DATA : N_LIN1(1) TYPE N.
+DATA : W_WERKS TYPE WERKS.
+DATA : W_CAL(2)   TYPE C.
+
+
+
+DATA : STR_RGDIR TYPE STANDARD TABLE OF PC261 ,
+       IT_OUT_RGDIR TYPE STANDARD TABLE OF PC261 ,
+       WA_OUT_RGDIR TYPE PC261 ,
+       I_RESULT TYPE PAYIN_RESULT ,
+       WA_HEADER TYPE LINE OF HRPAY99_RT .
+
+DATA : LSX_RESULT_WPBP TYPE HRPAY99_WPBP.
+DATA : LSX_WPBP TYPE LINE OF HRPAY99_WPBP.
+DATA : W_WPBP   TYPE PC205.
+DATA : IT_WPBP  TYPE HRPAY99_WPBP.
+
+DATA :  WA_P0009 TYPE PA0009.
+DATA :  WA_T001P TYPE T001P,
+        WA_T501T TYPE T501T,
+        WA_T503T TYPE T503T,
+        WA_T549T TYPE T549T,
+        WA_PA0000 TYPE PA0000,
+        LV_MASSN TYPE PA0000-MASSN.
+
+DATA : IT_PA0041 TYPE TABLE OF PA0041,
+       WA_PA0041 TYPE PA0041.
+
+DATA : IT_PA0105 TYPE TABLE OF PA0105,
+       WA_PA0105 TYPE PA0105.
+
+DATA : LV_STATUS TYPE PA0000-STAT2.
+DATA : W_PAYDAYS1 TYPE PC207-ANZHL.
+DATA : LV_HLOP TYPE PC207-ANZHL.
+
+SELECTION-SCREEN BEGIN OF BLOCK C1.
+
+*  SELECT-OPTIONS : S_WAGES FOR PA0008-LGA01.
+SELECT-OPTIONS : S_PAY FOR PA0009-ZLSCH NO-EXTENSION NO INTERVALS.
+*  SELECT-OPTIONS : S_STATUS FOR PA0000-STAT2 NO-EXTENSION NO INTERVALS.
+SELECTION-SCREEN END OF BLOCK C1.
+
+*_Company Code Mandatory
+AT SELECTION-SCREEN OUTPUT.
+  LOOP AT SCREEN.
+    IF SCREEN-NAME = 'PNPBUKRS-LOW'.
+      SCREEN-REQUIRED = 1.
+      MODIFY SCREEN.
+    ENDIF.
+  ENDLOOP.
+*
+*LOOP AT SCREEN.
+*    IF SCREEN-NAME = 'PNPWERKS-LOW'.
+*      SCREEN-REQUIRED = 1.
+*      MODIFY SCREEN.
+*    ENDIF.
+*ENDLOOP.
+
+
+
+*&--> exclude employee with employment status NE 0.
+*RP-SEL-EIN-AUS-INIT.
+INITIALIZATION.
+  PNPSTAT2-LOW = '3'.
+  PNPSTAT2-HIGH = SPACE.
+  PNPSTAT2-OPTION = 'EQ'.
+  PNPSTAT2-SIGN = 'I'.
+  APPEND PNPSTAT2.
+  CLEAR  PNPSTAT2.
+
+
+
+*&--> START-OF-SELECTION
+START-OF-SELECTION.
+
+
+*&--> GET PERNR
+GET PERNR.
+
+*&-->
+  INCLUDE: MPZDAT02, "?Work tables for daily work
+           RPPPXD00, "?R/3 data definition for PCL1 & pcl2 buffer
+           RPPPXD10, "?Data definition for PCL1, pcl2
+           PC2RXID0, "?Data definition, cluster IS file pcl2
+           RPCLST00,
+           RPC2B200,
+           RPTSIM00.
+
+  DATA : WA_SALDO LIKE LINE OF SALDO.
+
+
+*&--> Employee Name
+  RP-PROVIDE-FROM-LAST P0001 SPACE PN-BEGDA PN-ENDDA .
+  IF PNP-SW-FOUND EQ 1.
+
+    WA_FINAL-PERNR = P0001-PERNR.
+
+    CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT'
+      EXPORTING
+        INPUT  = WA_FINAL-PERNR
+      IMPORTING
+        OUTPUT = WA_FINAL-PERNR.
+
+    WA_FINAL-NAME  = P0001-ENAME.
+    WA_FINAL-PAREA  = P0001-WERKS.
+  ENDIF.
+
+  WA_FINAL-BUKRS = P0001-BUKRS.
+  WA_FINAL-WERKS = P0001-WERKS.
+  WA_FINAL-KOSTL = P0001-KOSTL.
+  WA_FINAL-BTRTL1 = P0001-BTRTL.
+  WA_FINAL-PERSG = P0001-PERSG.
+  WA_FINAL-PERSK = P0001-PERSK.
+  WA_FINAL-ABKRS = P0001-ABKRS.
+  WA_FINAL-ANSVH = P0001-ANSVH.
+  WA_FINAL-PLANS1 = P0001-PLANS.
+  WA_FINAL-ORGEH1 = P0001-ORGEH.
+
+  TRANSLATE WA_FINAL-KOSTL TO UPPER CASE .
+
+  SELECT SINGLE ATX FROM T542T
+    INTO WA_FINAL-ZONE
+    WHERE SPRAS = 'EN'
+    AND   MOLGA = '40'
+    AND   ANSVH = P0001-ANSVH.
+
+  TRANSLATE WA_FINAL-ZONE TO UPPER CASE.
+
+  SELECT SINGLE BTEXT FROM T001P
+    INTO WA_FINAL-BTRTL_T
+    WHERE WERKS = WA_FINAL-WERKS
+    AND   BTRTL = WA_FINAL-BTRTL1.
+
+  TRANSLATE WA_FINAL-BTRTL_T TO UPPER CASE.
+
+  SELECT SINGLE PTEXT FROM T501T
+    INTO WA_FINAL-PERSG_T
+    WHERE SPRSL = 'EN'
+    AND   PERSG = WA_FINAL-PERSG.
+  TRANSLATE WA_FINAL-PERSG_T TO UPPER CASE.
+
+  SELECT SINGLE PTEXT FROM T503T
+    INTO WA_FINAL-PERSK_T
+    WHERE SPRSL = 'EN'
+    AND   PERSK = WA_FINAL-PERSK.
+  TRANSLATE WA_FINAL-PERSK_T TO UPPER CASE.
+
+  SELECT SINGLE ATEXT FROM T549T
+    INTO WA_FINAL-ABKRS_T
+    WHERE SPRSL = 'EN'
+    AND   ABKRS = WA_FINAL-ABKRS.
+  TRANSLATE WA_FINAL-ABKRS_T TO UPPER CASE.
+
+  SELECT SINGLE PLSTX FROM T528T
+    INTO WA_FINAL-PLANS_T
+    WHERE SPRSL = 'EN'
+    AND   PLANS = WA_FINAL-PLANS1.
+  TRANSLATE WA_FINAL-PLANS_T TO UPPER CASE.
+
+  SELECT SINGLE ORGTX FROM T527X
+    INTO WA_FINAL-ORGEH_T
+    WHERE SPRSL = 'EN'
+    AND   ORGEH = WA_FINAL-ORGEH1.
+  TRANSLATE WA_FINAL-ORGEH_T TO UPPER CASE.
+
+  SELECT SINGLE NAME1 FROM T500P
+    INTO WA_FINAL-WERKS_T
+    WHERE PERSA = WA_FINAL-WERKS
+    AND   BUKRS = WA_FINAL-BUKRS.
+
+  TRANSLATE WA_FINAL-WERKS_T TO UPPER CASE.
+
+
+*   if  WA_FINAL-PAREA NE PNPWERKS-LOW.
+*     reject.
+*     endif.
+
+
+
+*&--> Position Text
+  SELECT
+         PLSTX
+         UP TO 1 ROWS FROM
+         T528T
+         INTO WA_FINAL-PLSTX
+         WHERE SPRSL = 'EN'
+         AND   OTYPE = 'S'
+         AND   PLANS = P0001-PLANS ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  WA_FINAL-PSUB = WA_FINAL-BTRTL.
+
+  SELECT BTEXT
+           UP TO 1 ROWS FROM T001P
+           INTO WA_FINAL-BTEXT
+           WHERE BTRTL = WA_FINAL-BTRTL ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+
+
+  SELECT PERSA NAME1 FROM T500P INTO TABLE IT_T500P." where PERSA = WA_FINAL-PAREA.
+
+*LOOP at it_t500p into wa_t500p where persa = PNPWERKS-LOW.
+*if sy-subrc = 0.
+*READ TABLE IT_T500P WITH KEY PERSA = PERNR-WERKS   .
+*endif.
+*
+*ENDLOOP.
+  IF SY-SUBRC = 0.
+    READ TABLE IT_T500P WITH KEY PERSA = PERNR-WERKS   .
+  ENDIF.
+
+  SELECT SINGLE
+         PTEXT
+         FROM T501T
+         INTO WA_FINAL-EGROUP
+         WHERE SPRSL = SY-LANGU
+         AND   PERSG = P0001-PERSG.
+
+  SELECT SINGLE PTEXT
+             FROM T503T
+             INTO WA_FINAL-ESGROUP
+             WHERE SPRSL = SY-LANGU
+             AND  PERSK = P0001-PERSK.
+
+*_LTD
+  RP-READ-ALL-TIME-ITY PNPBEGDA PNPENDDA.
+  LOOP AT P2002 WHERE SUBTY = 'OD'.
+    WA_FINAL-LTD = P2002-ABWTG.
+    CLEAR P2002-ABWTG.
+  ENDLOOP.
+
+*_TD
+  LOOP AT P2002 WHERE SUBTY = 'OO'.
+    WA_FINAL-TD =  P2002-ABWTG.
+    CLEAR P2002-ABWTG.
+  ENDLOOP.
+
+*&-->Get Period Parameter for the given Payrol Area.
+  CLEAR: GV_ABKRS, GV_PERMO.
+  SELECT SINGLE ABKRS PERMO
+                FROM T549A                  " Table for Payroll Areas
+                INTO (GV_ABKRS , GV_PERMO)
+                WHERE ABKRS EQ P0001-ABKRS.
+
+
+  CALL FUNCTION 'HRAR_GET_PAYROLL_PERIOD'
+    EXPORTING
+      PERMO = GV_PERMO       "v_mm1
+      DATE  = PNPBEGDA
+    IMPORTING
+*     BEGDA =
+*     ENDDA =
+      PABRJ = GV_YEAR
+      PABRP = GV_MONTH1.
+
+*&-->Pseudo code and Macros in Time Cluster:
+  B2-KEY-PABRJ = GV_YEAR.       "?Year
+  B2-KEY-PABRP = GV_MONTH1.     "?Month
+  B2-KEY-CLTYP = '1'.           "?Cluster Type
+  B2-KEY-PERNR = PERNR-PERNR.   "?Personnel No
+  RP-INIT-BUFFER.
+
+  IMPORT ZES    FROM DATABASE PCL2(B2) ID B2-KEY. " Time Balances per Day
+  IMPORT SALDO  FROM DATABASE PCL2(B2) ID B2-KEY. " Time Balances per Period
+  IMPORT FEHLER FROM DATABASE PCL2(B2) ID B2-KEY. " Messages
+  IMPORT ANWES  FROM DATABASE PCL2(B2) ID B2-KEY.  " Attendances
+  IMPORT PT     FROM DATABASE PCL2(B2) ID B2-KEY.  " Attendances
+  IMPORT ABWKONTI FROM DATABASE PCL2(B2) ID B2-KEY.  " Attendances
+
+
+**_ AD
+*LOOP AT SALDO INTO WA_SALDO.
+**IF WA_SALDO-ZTART = '9002'.
+*  IF WA_SALDO-ZTART = ''.
+*   WA_FINAL-AD    = WA_SALDO-ANZHL.
+*CLEAR WA_SALDO-ANZHL.
+*ENDIF.
+*ENDLOOP.
+  LOOP AT P2001 WHERE SUBTY = 'LOP'.
+
+"     WA_FINAL-AD    = P2001-ABWTG.
+
+WA_FINAL-AD    = P2001-KALTG.
+    CLEAR P2001-KALTG.
+  ENDLOOP.
+
+
+ LOOP AT P2001 WHERE SUBTY = 'HLOP'.  "Added by ram given requirement siva on 5/8/2015
+    WA_FINAL-AD1    = P2001-ABWTG .
+    IF WA_FINAL-AD1 IS NOT INITIAL .
+      WA_FINAL-AD2 = WA_FINAL-AD2 + WA_FINAL-AD1 * '0.5' .
+    ENDIF.
+    CLEAR P2001-ABWTG .
+  ENDLOOP.
+
+  WA_FINAL-AD3 = WA_FINAL-AD + WA_FINAL-AD2 .
+
+*_LD
+  LOOP AT P2001 WHERE SUBTY = 'SL' OR
+                      SUBTY = 'PL' OR
+                      SUBTY = 'CL' .
+    WA_FINAL-LD = P2001-ABWTG.
+    CLEAR P2001-ABWTG.
+  ENDLOOP.
+
+  CALL FUNCTION 'CU_READ_RGDIR'
+    EXPORTING
+      PERSNR                   = PERNR-PERNR
+*   BUFFER                   =
+*   NO_AUTHORITY_CHECK       = ' '
+* IMPORTING
+*   MOLGA                    =
+    TABLES
+      IN_RGDIR                 = STR_RGDIR
+   EXCEPTIONS
+     NO_RECORD_FOUND          = 1
+     OTHERS                   = 2
+            .
+  IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  IF STR_RGDIR[] IS NOT INITIAL.
+
+    CALL FUNCTION 'CD_SELECT_DATE_RANGE'
+      EXPORTING
+        FPPER_BEGDA = PN-BEGDA
+        FPPER_ENDDA = PN-ENDDA
+      TABLES
+        IN_RGDIR    = STR_RGDIR
+        OUT_RGDIR   = IT_OUT_RGDIR.
+
+  ENDIF.
+*BREAK-POINT.
+  SELECT * UP TO 1 ROWS FROM PA0009
+    INTO WA_P0009
+    WHERE PERNR = PERNR-PERNR
+    AND   ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  LV_PAYMENT = WA_P0009-ZLSCH.
+  WA_FINAL-BANK_KEY = WA_P0009-BANKL.
+  WA_FINAL-BANK_ACC = WA_P0009-BANKN.
+  WA_FINAL-PURPOSE = WA_P0009-ZWECK.
+
+  SELECT SINGLE BANKA FROM BNKA
+    INTO WA_FINAL-BANK_NAME
+    WHERE BANKS = 'IN'
+    AND   BANKL = WA_P0009-BANKL.
+
+  TRANSLATE WA_FINAL-BANK_NAME TO UPPER CASE.
+  CLEAR : WA_P0009.
+
+
+  SELECT * UP TO 1 ROWS FROM PA0000
+     INTO WA_PA0000
+     WHERE PERNR = PERNR-PERNR
+     AND   ENDDA = '99991231' ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+  WA_FINAL-STATUS = WA_PA0000-STAT2.
+  LV_MASSN = WA_PA0000-MASSN.
+
+  SELECT SINGLE MNTXT FROM T529T
+    INTO WA_FINAL-ACTION
+    WHERE SPRSL = 'EN'
+    AND   MASSN = LV_MASSN.
+
+  TRANSLATE WA_FINAL-ACTION TO UPPER CASE.
+
+  SELECT SINGLE TEXT1 FROM T529U
+    INTO WA_FINAL-EMP_STAT
+    WHERE SPRSL = 'EN'
+    AND   STATN = '2'
+    AND   STATV = WA_FINAL-STATUS.
+
+  TRANSLATE WA_FINAL-EMP_STAT TO UPPER CASE.
+
+  SELECT * FROM PA0105
+    INTO TABLE IT_PA0105
+    WHERE PERNR = PERNR-PERNR
+    AND   ENDDA = '99991231'.
+
+  READ TABLE IT_PA0105 INTO WA_PA0105 WITH KEY SUBTY = '0010'.
+  IF SY-SUBRC = 0.
+    WA_FINAL-MAIL = WA_PA0105-USRID_LONG.
+  ENDIF.
+
+  READ TABLE IT_PA0105 INTO WA_PA0105 WITH KEY SUBTY = '0020'.
+  IF SY-SUBRC = 0.
+    WA_FINAL-PHONE = WA_PA0105-USRID_LONG.
+  ENDIF.
+
+  READ TABLE IT_PA0105 INTO WA_PA0105 WITH KEY SUBTY = 'CELL'.
+  IF SY-SUBRC = 0.
+    WA_FINAL-CELL = WA_PA0105-USRID.
+  ENDIF.
+
+  SELECT * FROM PA0041
+    INTO TABLE IT_PA0041
+    WHERE PERNR = PERNR-PERNR.
+*    AND   ENDDA = '99991231'.
+
+  LOOP AT  IT_PA0041 INTO WA_PA0041.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR01 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT01.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR02 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT02.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR03 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT03.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR04 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT04.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR05 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT05.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR06 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT06.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR07 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT07.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR08 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT08.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR09 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT09.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR10 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT10.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR11 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT11.
+    ENDIF.
+
+    READ TABLE IT_PA0041 INTO WA_PA0041 WITH KEY DAR12 = 'S1'.
+    IF SY-SUBRC = 0.
+      WA_FINAL-HIR_DATE = WA_PA0041-DAT12.
+    ENDIF.
+
+  ENDLOOP.
+
+
+
+  SELECT SINGLE * FROM T042Z
+    INTO WA_PAYMENT
+    WHERE LAND1 = 'IN'
+    AND   ZLSCH = LV_PAYMENT.
+
+  WA_FINAL-PAYMENT_METH = WA_PAYMENT-TEXT1.
+
+  IF WA_FINAL-PAYMENT_METH IS INITIAL AND LV_PAYMENT IS INITIAL.
+
+    WA_FINAL-PAYMENT_METH = 'CASH PAYMENT'.
+
+  ENDIF.
+
+  TRANSLATE WA_FINAL-PAYMENT_METH TO UPPER CASE.
+  WA_FINAL-PAYMENT = LV_PAYMENT.
+*if it_out_rgdir[] is not initial.
+  LOOP AT IT_OUT_RGDIR INTO WA_OUT_RGDIR  WHERE SRTZA EQ 'A'
+                                          AND   PAYTY EQ ' '.
+
+    CLEAR I_RESULT.
+
+    CALL FUNCTION 'PYXX_READ_PAYROLL_RESULT'
+      EXPORTING
+        CLUSTERID                          = 'IN'
+        EMPLOYEENUMBER                     = PERNR-PERNR
+        SEQUENCENUMBER                     = WA_OUT_RGDIR-SEQNR
+*   READ_ONLY_BUFFER                   = ' '
+*   READ_ONLY_INTERNATIONAL            = ' '
+*   ARC_GROUP                          = ' '
+*   CHECK_READ_AUTHORITY               = 'X'
+*   FILTER_CUMULATIONS                 = 'X'
+*   CLIENT                             =
+* IMPORTING
+*   VERSION_NUMBER_PAYVN               =
+*   VERSION_NUMBER_PCL2                =
+      CHANGING
+        PAYROLL_RESULT                     = I_RESULT
+     EXCEPTIONS
+       ILLEGAL_ISOCODE_OR_CLUSTERID       = 1
+       ERROR_GENERATING_IMPORT            = 2
+       IMPORT_MISMATCH_ERROR              = 3
+       SUBPOOL_DIR_FULL                   = 4
+       NO_READ_AUTHORITY                  = 5
+       NO_RECORD_FOUND                    = 6
+       VERSIONS_DO_NOT_MATCH              = 7
+       ERROR_READING_ARCHIVE              = 8
+       ERROR_READING_RELID                = 9
+       OTHERS                             = 10
+              .
+    IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+*DATA : UNAME1 TYPE PA0000-UNAME.
+    MOVE I_RESULT-INTER-RT TO IT_RT.
+    MOVE I_RESULT-INTER-WPBP TO IT_WPBP.
+    MOVE I_RESULT-INTER-AB TO IT_AB.
+    MOVE I_RESULT-INTER-VERSION-UNAME TO WA_FINAL-UNAME.
+*_ LOP
+    CLEAR : LV_HLOP.
+    LOOP AT IT_AB INTO WA_AB.
+
+      IF WA_AB-AWART = 'HLOP'.
+
+      LV_HLOP = LV_HLOP + '0.5'.
+
+      ELSE.
+
+      WA_FINAL-W_LOP = WA_AB-ABRTG.
+
+      ENDIF.
+
+      CLEAR WA_AB-ABRTG.
+
+    ENDLOOP.
+
+    SORT IT_RT BY LGART.
+
+* READ TABLE IT_WPBP INTO W_WPBP WITH KEY btrtl = P_SAREA.
+    LOOP AT IT_WPBP INTO W_WPBP.
+      WA_FINAL-BTRTL = W_WPBP-BTRTL.
+      WA_FINAL-TRFGR = W_WPBP-TRFGR.
+      WA_FINAL-TRFST = W_WPBP-TRFST.
+      WA_FINAL-KDIVI = W_WPBP-KDIVI.
+      WA_FINAL-ADIVI = W_WPBP-ADIVI.
+      CLEAR : W_WPBP-BTRTL,
+              W_WPBP-TRFGR,
+              W_WPBP-TRFST,
+              W_WPBP-ADIVI,
+              W_WPBP-KDIVI.
+    ENDLOOP.
+
+
+
+****************Earnings
+
+    DATA :  DAYS  TYPE I.
+
+    DATA : WEEKS TYPE I,
+           MONTHS TYPE I,
+           YEARS  TYPE I,
+           D_MONTHS TYPE I,
+           TAB TYPE P99SG_MONTH_TAB.
+
+    CONCATENATE PN-BEGDA+6(2) PN-BEGDA+4(2) PN-BEGDA+0(4) INTO DATE1.
+    CONCATENATE PN-ENDDA+6(2) PN-ENDDA+4(2) PN-ENDDA+0(4) INTO DATE2.
+
+
+*BREAK-POINT.
+
+
+    CALL FUNCTION 'HR_99S_INTERVAL_BETWEEN_DATES'
+      EXPORTING
+        BEGDA     = PN-BEGDA
+        ENDDA     = PN-ENDDA
+*       TAB_MODE  = ' '
+      IMPORTING
+        DAYS      = DAYS
+        C_WEEKS   = WEEKS
+        C_MONTHS  = MONTHS
+        C_YEARS   = YEARS
+*       WEEKS     =
+*       MONTHS    =
+*       YEARS     =
+        D_MONTHS  = D_MONTHS
+        MONTH_TAB = TAB.
+
+    WA_FINAL-CALEN_DAYS   = DAYS.
+    WA_FINAL-WORKING_DAYS = WA_FINAL-ADIVI.
+
+    CLEAR : WA_RT.
+
+    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/845'.
+
+    IF SY-SUBRC = 0.
+
+      DAY1 = WA_RT-ANZHL.
+      CLEAR : WA_RT.
+    ENDIF.
+
+    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/846'.
+
+    IF SY-SUBRC = 0.
+
+      DAY2 = WA_RT-ANZHL.
+      CLEAR : WA_RT.
+    ENDIF.
+
+    IF DAY1 IS NOT INITIAL.
+
+      DAY3 = DAY1 / 8.
+
+    ENDIF.
+
+    IF DAY2 IS NOT INITIAL.
+
+      DAY4 = DAY2 / 8.
+
+    ENDIF.
+
+    DAY5 = DAY3 + DAY4.
+*BREAK-POINT.
+    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1105' .      " Absence Days
+    IF SY-SUBRC = 0.
+      WA_FINAL-TOTALDAYS = WA_RT-ANZHL.
+      CLEAR WA_RT.
+    ENDIF.
+
+
+    WA_FINAL-WORKED_DAYS = WA_FINAL-CALEN_DAYS - WA_FINAL-TOTALDAYS  . "Hidded By Govind on 27-04-2015- LV_HLOP" - LV_HLOP.
+
+*BREAK-POINT.
+    SELECT * FROM PA0000
+      INTO TABLE IT_P0000
+      WHERE PERNR = PERNR-PERNR.
+
+    CLEAR : WA_P0000 , LV_CHECK , LV_CHECK1.
+    LOOP AT  IT_P0000 INTO WA_P0000.
+
+      IF WA_P0000-STAT2 = '1'.
+
+        IF WA_P0000-BEGDA BETWEEN PN-BEGDA AND PN-ENDDA OR WA_P0000-ENDDA BETWEEN PN-BEGDA AND PN-ENDDA.
+
+          DATE1 = WA_P0000-BEGDA+4(2).
+
+          IF WA_P0000-ENDDA = '99991231'.
+
+            CLEAR : WA_P0000-ENDDA.
+            WA_P0000-ENDDA = PN-ENDDA.
+
+          ENDIF.
+
+          DATE2 = WA_P0000-ENDDA+4(2).
+          DATE3 = PN-BEGDA+4(2).
+
+          IF DATE1 = DATE2.
+
+            IF WA_P0000-ENDDA = '99991231'.
+              CLEAR : WA_P0000-ENDDA.
+              WA_PA0000-ENDDA  = PN-ENDDA.
+            ENDIF.
+
+            LV_INACTIVE = WA_P0000-ENDDA - WA_P0000-BEGDA.
+
+            IF LV_INACTIVE = '0'.
+
+              CONTINUE.
+
+            ELSE.
+
+              IF LV_INACTIVE < 0.
+                LV_INACTIVE = LV_INACTIVE * -1.
+              ENDIF.
+              LV_INACTIVE = LV_INACTIVE + 1.
+
+            ENDIF.
+
+          ELSEIF DATE1 < DATE3.
+
+            LV_INACTIVE = WA_P0000-ENDDA - PN-BEGDA.
+            IF LV_INACTIVE < 0.
+              LV_INACTIVE = LV_INACTIVE * -1.
+            ENDIF.
+            LV_INACTIVE = LV_INACTIVE + 1.
+
+          ELSEIF DATE2 > DATE3.
+
+            LV_INACTIVE = PN-ENDDA - WA_P0000-BEGDA.
+            IF LV_INACTIVE < 0.
+              LV_INACTIVE = LV_INACTIVE * -1.
+            ENDIF.
+            LV_INACTIVE = LV_INACTIVE + 1.
+
+          ENDIF.
+
+          WA_FINAL-TOTALDAYS = WA_FINAL-TOTALDAYS + LV_INACTIVE.
+
+        ENDIF.
+        CLEAR : LV_INACTIVE.
+
+
+      ELSEIF WA_P0000-STAT2 = '0'.
+
+        CLEAR : DATE1 , DATE2 , DATE3.
+
+        DATE1 = WA_P0000-BEGDA+0(6).
+*        DATE2 = WA_P0000-ENDDA+4(2).
+        DATE2 = PN-BEGDA+0(6).
+
+        IF DATE1 = DATE2.
+
+          W_PAYDAYS1 = WA_P0000-BEGDA+6(2) - 1.
+
+        ENDIF.
+
+      ELSEIF WA_P0000-STAT2 = '3'.
+
+        CLEAR : DATE1 , DATE2 , DATE3 , W_PAYDAYS1.
+
+        DATE1 = WA_P0000-BEGDA+0(6).
+        DATE2 = PN-BEGDA+0(6).
+
+        IF DATE1 = DATE2 AND WA_P0000-MASSN = '01'.
+
+          W_PAYDAYS1 = WA_FINAL-CALEN_DAYS - WA_P0000-BEGDA+6(2) .
+          W_PAYDAYS1 = W_PAYDAYS1 + 1.
+        ENDIF.
+
+        IF DATE1 = DATE2 AND WA_P0000-MASSN = '18'.
+
+          W_PAYDAYS1 = WA_FINAL-CALEN_DAYS - WA_P0000-BEGDA+6(2) .
+          W_PAYDAYS1 = W_PAYDAYS1 + 1.
+        ENDIF.
+
+        IF DATE1 = DATE2 AND WA_P0000-MASSN = '12'.
+
+          W_PAYDAYS1 = WA_FINAL-CALEN_DAYS - WA_P0000-BEGDA+6(2).
+          W_PAYDAYS1 = W_PAYDAYS1 + 1.
+        ENDIF.
+
+
+      ENDIF.
+**************************** Added By Govind On 25-Feb-2015 for Seniority ***
+      IF WA_P0000-STAT2 = '1' OR WA_P0000-STAT2 = '3'.
+
+        SELECT BEGDA UP TO 1 ROWS FROM PA0000 INTO LV_BEGDA  WHERE PERNR = WA_P0000-PERNR ORDER BY PRIMARY KEY.
+        ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+        IF SY-SUBRC = 0.
+          CALL FUNCTION 'FIMA_DECIMAL_MONTHS_AND_YEARS'
+            EXPORTING
+              I_DATE_FROM = LV_BEGDA
+              I_DATE_TO   = SY-DATUM
+*             I_FLG_360   = ' '
+            IMPORTING
+              E_MONTHS    = E_MONTH
+              E_YEARS     = AGE.
+          .
+          WA_FINAL-W_AGE = E_MONTH  .
+        ENDIF.
+      ENDIF.
+********************
+    ENDLOOP.
+    CLEAR : LV_INACTIVE.
+
+
+    IF W_PAYDAYS1 IS NOT INITIAL.
+
+      WA_FINAL-WORKED_DAYS = W_PAYDAYS1 - WA_FINAL-TOTALDAYS . "Hidded By Govind on 27-04-2015- LV_HLOP.
+
+    ELSEIF WA_FINAL-TOTALDAYS IS NOT INITIAL .
+
+      WA_FINAL-WORKED_DAYS = WA_FINAL-CALEN_DAYS - WA_FINAL-TOTALDAYS ."- LV_HLOP. "Hidded By Govind on 27-04-2015- LV_HLOP  "- LV_HLOP.
+
+    ENDIF.
+
+*    BREAK-POINT.
+*    WA_FINAL-TOTALDAYS = WA_FINAL-TOTALDAYS + LV_HLOP. " Commended By Govind On 22-04-2015
+    WA_FINAL-TOTALDAYS = WA_FINAL-TOTALDAYS. "+ LV_HLOP.
+    CLEAR : LV_HLOP.
+
+
+    DESCRIBE TABLE IT_RT LINES LV_LINES.
+
+    LOOP AT IT_RT INTO WA_RT.
+
+      CASE WA_RT-LGART.
+
+        WHEN '4000'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4000.
+
+        WHEN '1000'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4000.
+
+        WHEN '2001'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2001.
+
+        WHEN '4001'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4001.
+
+        WHEN '1002'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4001.
+
+        WHEN '2005'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2005.
+
+        WHEN '4002'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4002.
+
+        WHEN '1003'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4002.
+
+        WHEN '2007'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2007.
+
+        WHEN '4003'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4003.
+
+        WHEN '1004'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4003.
+
+        WHEN '2009'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2009.
+
+        WHEN '4004'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4004.
+
+        WHEN '2021'.
+
+*      ADD wa_rt-BETRG TO WA_FINAL-W_4004.
+          ADD WA_RT-BETRG TO WA_FINAL-W_2021.
+
+        WHEN '4004'.
+
+*      ADD wa_rt-BETRG TO WA_FINAL-W_4004.
+          ADD WA_RT-BETRG TO WA_FINAL-W_4004.
+
+        WHEN '4007'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4007.
+
+        WHEN '2027'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2027.
+
+        WHEN '4008'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4008.
+
+        WHEN '1005'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4008.
+
+        WHEN '2011'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2011.
+
+        WHEN '4011'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4011.
+
+        WHEN '2029'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2029.
+
+        WHEN '1001'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1001.
+
+        WHEN '2003'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2003.
+
+        WHEN '4012'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4012.
+
+        WHEN '2031'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2031.
+
+        WHEN '1009'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1009.
+
+        WHEN '1104'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1104.
+
+        WHEN '1017'.
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1017. "Variable pay Deduction Added by Govind on 03.03.2015
+        WHEN '1018'.
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1018. "VTDS Refund Added by Govind on 07.04.2015
+
+        WHEN '1016'. " Loan repayment Added By Govind On 31-jn-2015
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1016  .
+
+        WHEN '1006'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1006.
+
+        WHEN '2013'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2013.
+
+        WHEN '1200'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1200.
+
+        WHEN '1201'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1201.
+
+        WHEN '1008'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1008.
+
+        WHEN '2015'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2015.
+*          added new wage type dated on 14-08-2015 by siva
+           WHEN '4026'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4026.
+           WHEN '4027'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4027.
+           WHEN '4028'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4028.
+           WHEN '4029'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4029.
+           WHEN '4030'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4030.
+           WHEN '4031'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4031.
+*            added new wage type dated on 14-08-2015 by siva
+*                  added new wage type dated on 17-08-2015 by siva
+
+when '4015'.
+  ADD WA_RT-BETRG TO WA_FINAL-W_4015.
+
+  when '4016'.
+  ADD WA_RT-BETRG TO WA_FINAL-W_4016.
+  when '4017'.
+  ADD WA_RT-BETRG TO WA_FINAL-W_4017.
+  when '4018'.
+  ADD WA_RT-BETRG TO WA_FINAL-W_4018.
+  when '4019'.
+  ADD WA_RT-BETRG TO WA_FINAL-W_4019.
+  when '4052'.
+  ADD WA_RT-BETRG TO WA_FINAL-W_4052.
+
+
+*      added new wage type dated on 17-08-2015 by siva
+
+
+
+
+
+
+        WHEN '4005'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4005.
+
+        WHEN '2023'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2023.
+
+        WHEN '1007'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1007.
+
+        WHEN '4006'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_4006.
+
+        WHEN '2025'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_2025.
+
+*
+
+        WHEN '1011'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_1011.
+
+        WHEN '/560'.
+
+          ADD WA_RT-BETRG TO WA_FINAL-W_NETPAY.
+
+        WHEN '1100'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1100.
+*          Added deduction wage types by siva on 17-08-2015
+          WHEN '4050'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_4050.
+*          ended deduction wage types by siva on 17-08-2015
+
+
+        WHEN '1103'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1103.
+
+        WHEN '1109'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1109.
+
+        WHEN '/LEX'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_LXE.
+
+        WHEN '1111'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1111.
+
+        WHEN '/LEP'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_LEP.
+
+        WHEN '1300'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1300.
+
+        WHEN '/3F1'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F1.
+
+        WHEN '/3F2'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3F2.
+
+        WHEN '/460'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_460.
+
+        WHEN '/3P1'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3P3.
+
+         WHEN '/ZP1'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_ZP1.
+
+        WHEN '/3E1'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3E1.
+
+        WHEN '/3W1'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3W1.
+
+        WHEN '4100'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_4100.
+
+        WHEN '4057'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_4057.
+
+        WHEN '2033'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_2033.
+
+        WHEN '3002'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3002.
+
+        WHEN '3005'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3005.
+
+        WHEN '1106'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1106.
+
+        WHEN '1101'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1101.
+
+        WHEN '1102'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1102.
+
+        WHEN '/ZF5'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_ZF5.
+
+        WHEN '2017'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_2017.
+
+        WHEN '1012'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1012.
+
+        WHEN '1013'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_1013.
+
+        WHEN '/3FS'.
+
+          IF WA_RT-BETRG < 0.
+            WA_RT-BETRG = WA_RT-BETRG * -1.
+          ENDIF.
+          ADD WA_RT-BETRG TO WA_FINAL-W_3FS.
+
+*    WHEN '/ZP2'.
+*
+*      IF WA_rt-betrg < 0.
+*         WA_rt-betrg = WA_rt-betrg * -1.
+*      ENDIF.
+*      ADD wa_rt-BETRG TO WA_FINAL-W_ZP2.
+*
+*    WHEN '/ZE1'.
+*
+*      IF WA_rt-betrg < 0.
+*         WA_rt-betrg = WA_rt-betrg * -1.
+*      ENDIF.
+*      ADD wa_rt-BETRG TO WA_FINAL-W_ZE1.
+*
+
+
+
+      ENDCASE.
+
+      CLEAR : WA_RT.
+
+*
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4000' .      " Basic Pay
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4000 = WA_RT-BETRG + WA_FINAL-W_4000.
+* CLEAR WA_RT.
+* ENDIF.
+*
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1000' .      " Basic Pay
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4000 = WA_RT-BETRG + WA_FINAL-W_4000.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2001' .      " Basic Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2001 = WA_RT-BETRG + WA_FINAL-W_2001.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4001' .      " HRA
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4001 = WA_RT-BETRG + WA_FINAL-W_4001.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1002' .      " HRA
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4001 = WA_RT-BETRG + WA_FINAL-W_4001.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2005' .      " HRA Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2005 = WA_RT-BETRG + WA_FINAL-W_2005.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4002' .      " Conveyance Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4002 = WA_RT-BETRG + WA_FINAL-W_4002.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1003' .      " Conveyance Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4002 = WA_RT-BETRG + WA_FINAL-W_4002.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2007' .      " Conveyance Allowance Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2007 = WA_RT-BETRG + WA_FINAL-W_2007.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4003' .      " Special Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4003 = WA_RT-BETRG + WA_FINAL-W_4003.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1004' .      " Special Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4003 = WA_RT-BETRG + WA_FINAL-W_4003.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2009' .      " Special Allowance Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2009 = WA_RT-BETRG + WA_FINAL-W_2009.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4004' .      " Medical Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4004 = WA_RT-BETRG + WA_FINAL-W_4004.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2021' .      " Medical Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4004 = WA_RT-BETRG + WA_FINAL-W_4004.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4007' .      " Meal Coupon
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4007 = WA_RT-BETRG + WA_FINAL-W_4007.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2027' .      " Meal Coupon Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2027 = WA_RT-BETRG + WA_FINAL-W_2027.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4008' .      " Variable Incentive
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4008 = WA_RT-BETRG + WA_FINAL-W_4008.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1005' .      " Variable Incentive
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4008 = WA_RT-BETRG + WA_FINAL-W_4008.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2011' .      " Variable Incentive Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2011 = WA_RT-BETRG + WA_FINAL-W_2011.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4011' .      " LTA
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4011 = WA_RT-BETRG + WA_FINAL-W_4011.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2029' .      " LTA Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2029 = WA_RT-BETRG + WA_FINAL-W_2029.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1001' .      " Daily Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1001 = WA_RT-BETRG + WA_FINAL-W_1001.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2003' .      " DA Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2003 = WA_RT-BETRG + WA_FINAL-W_2003.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4012' .      " Attire Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4012 = WA_RT-BETRG + WA_FINAL-W_4012.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2031' .      " Attire Allowance Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2031 = WA_RT-BETRG + WA_FINAL-W_2031.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1009' .      " Leave Encashment
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1009 = WA_RT-BETRG + WA_FINAL-W_1009.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1104' .      " Gratuity
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1104 = WA_RT-BETRG + WA_FINAL-W_1104.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1006' .      " Target Incentives
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1006 = WA_RT-BETRG + WA_FINAL-W_1006.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2013' .      " Incentives Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2013 = WA_RT-BETRG + WA_FINAL-W_2013.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1200' .      " Bonus
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1200 = WA_RT-BETRG + WA_FINAL-W_1200.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1201' .      " Education Reimbursement Fee
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1201 = WA_RT-BETRG + WA_FINAL-W_1201.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1008' .      " Other Earnings
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1008 = WA_RT-BETRG + WA_FINAL-W_1008.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2015' .      " Other Earnings Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2015 = WA_RT-BETRG + WA_FINAL-W_2015.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4005' .      " Professional Development
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4005 = WA_RT-BETRG + WA_FINAL-W_4005.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2023' .      " Professional Development Arrears
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2023 = WA_RT-BETRG + WA_FINAL-W_2023.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1007' .      " Attendance Bonus
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1007 = WA_RT-BETRG + WA_FINAL-W_1007.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4006' .      " Telephone Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4006 = WA_RT-BETRG + WA_FINAL-W_4006.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2025' .      " Telephone Allowance
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4006 = WA_RT-BETRG + WA_FINAL-W_4006.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1011' .      "Miscelleanous Payment
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1011 = WA_RT-BETRG + WA_FINAL-W_1011.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '3995' .      "Monthly Gross Salary
+* IF SY-SUBRC = 0.
+* WA_FINAL-GROSS = WA_RT-BETRG + WA_FINAL-GROSS.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '3996' .      "Monthly Gross Salary
+* IF SY-SUBRC = 0.
+* WA_FINAL-GROSS = WA_RT-BETRG + WA_FINAL-GROSS.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '3998' .      "Monthly Gross Salary
+* IF SY-SUBRC = 0.
+* WA_FINAL-GROSS = WA_RT-BETRG + WA_FINAL-GROSS.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '3999' .      "Monthly Gross Salary
+* IF SY-SUBRC = 0.
+* WA_FINAL-GROSS = WA_RT-BETRG + WA_FINAL-GROSS.
+* CLEAR WA_RT.
+* ENDIF.
+*
+*
+**WA_FINAL-W_TOT_EARN = WA_FINAL-W_4000 + WA_FINAL-W_4001 + WA_FINAL-W_4002 + WA_FINAL-W_4003 +
+**                      WA_FINAL-W_4004 + WA_FINAL-W_4007 + WA_FINAL-W_4008 + WA_FINAL-W_4011 +
+**                      WA_FINAL-W_1009 + WA_FINAL-W_1104 + WA_FINAL-W_1006 + WA_FINAL-W_1200 +
+**                      WA_FINAL-W_1201 + WA_FINAL-W_1008 + WA_FINAL-W_1001 + WA_FINAL-W_1001 +
+**                      WA_FINAL-W_1007 + WA_FINAL-W_2001 + WA_FINAL-W_2003 + WA_FINAL-W_2005 +
+**                      WA_FINAL-W_2007 + WA_FINAL-W_2009 + WA_FINAL-W_2011 + WA_FINAL-W_2013 +
+**                      WA_FINAL-W_2015 + WA_FINAL-W_2027 + WA_FINAL-W_2029 + WA_FINAL-W_2031 +
+**                      WA_FINAL-W_4005 + WA_FINAL-W_4006 + WA_FINAL-W_4012 + WA_FINAL-W_2023 +
+**                      WA_FINAL-W_1011.
+*
+*
+******************Deductions.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1100' .      " Notice Pay Recovery
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1100 = WA_RT-BETRG + WA_FINAL-W_1100.
+*   IF WA_FINAL-W_1100 < 0.
+*   WA_FINAL-W_1100 = WA_FINAL-W_1100 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1103' .      " Other Deduction
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1103 = WA_RT-BETRG + WA_FINAL-W_1103.
+* IF WA_FINAL-W_1103 < 0.
+*   WA_FINAL-W_1103 = WA_FINAL-W_1103 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1109' .      " Incentive Deduction
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1109 = WA_RT-BETRG + + WA_FINAL-W_1109.
+*   IF WA_FINAL-W_1109 < 0.
+*   WA_FINAL-W_1109 = WA_FINAL-W_1109 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/LEX' .      " Loan Complete Repayment
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_LXE = WA_RT-BETRG + WA_FINAL-W_LXE.
+*   IF WA_FINAL-W_LXE < 0.
+*   WA_FINAL-W_LXE = WA_FINAL-W_LXE * -1.
+* ENDIF.
+*
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1111' .      " Actual Loan Deduction Wiith Interest
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1111 = WA_RT-BETRG + WA_FINAL-W_1111.
+*   IF WA_FINAL-W_1111 < 0.
+*   WA_FINAL-W_1111 = WA_FINAL-W_1111 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/LEP' .      " Special Payment of Loan
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_LEP = WA_RT-BETRG + WA_FINAL-W_LEP.
+*   IF WA_FINAL-W_LEP < 0.
+*   WA_FINAL-W_LEP = WA_FINAL-W_LEP * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1300' .      " Sheenlac LIC Premium
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1300 = WA_RT-BETRG + WA_FINAL-W_1300.
+*   IF WA_FINAL-W_1300 < 0.
+*   WA_FINAL-W_1300 = WA_FINAL-W_1300 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/3F1' .      " Employee PF and Pension
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3F1 = WA_RT-BETRG + WA_FINAL-W_3F1.
+*   IF WA_FINAL-W_3F1 < 0.
+*   WA_FINAL-W_3F1 = WA_FINAL-W_3F1 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/3F2' .      " VPF Contribution
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3F2 = WA_RT-BETRG + WA_FINAL-W_3F2.
+*   IF WA_FINAL-W_3F2 < 0.
+*   WA_FINAL-W_3F2 = WA_FINAL-W_3F2 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/460' .      " Employee TDS Deduction
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_460 = WA_RT-BETRG + WA_FINAL-W_460.
+*   IF WA_FINAL-W_460 < 0.
+*   WA_FINAL-W_460 = WA_FINAL-W_460 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/3P1' .      " Professional Tax
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3P3 = WA_RT-BETRG + WA_FINAL-W_3P3.
+*   IF WA_FINAL-W_3P3 < 0.
+*   WA_FINAL-W_3P3 = WA_FINAL-W_3P3 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/3E1' .      " Employee ESI
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3E1 = WA_RT-BETRG + WA_FINAL-W_3E1.
+*    IF WA_FINAL-W_3E1 < 0.
+*   WA_FINAL-W_3E1 = WA_FINAL-W_3E1 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/3W1' .      " Employee LWF
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3W1 = WA_RT-BETRG + WA_FINAL-W_3W1.
+*    IF WA_FINAL-W_3W1 < 0.
+*   WA_FINAL-W_3W1 = WA_FINAL-W_3W1 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '4100' .      " Meal Coupon Deduction
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_4100 = WA_RT-BETRG + WA_FINAL-W_4100.
+*  IF WA_FINAL-W_4100 < 0.
+*   WA_FINAL-W_4100 = WA_FINAL-W_4100 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2033' .      " Meal Coupon Deduction Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2033 = WA_RT-BETRG + WA_FINAL-W_2033.
+*    IF WA_FINAL-W_2033 < 0.
+*   WA_FINAL-W_2033 = WA_FINAL-W_2033 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '3002' .      " STADV
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3002 = WA_RT-BETRG + WA_FINAL-W_3002.
+*    IF WA_FINAL-W_3002 < 0.
+*   WA_FINAL-W_3002 = WA_FINAL-W_3002 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '3005' .      " VAEDV
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_3005 = WA_RT-BETRG + WA_FINAL-W_3005.
+*    IF WA_FINAL-W_3005 < 0.
+*   WA_FINAL-W_3005 = WA_FINAL-W_3005 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1106' .      " Attendance Deductions
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1106 = WA_RT-BETRG + WA_FINAL-W_1106.
+*    IF WA_FINAL-W_1106 < 0.
+*   WA_FINAL-W_1106 = WA_FINAL-W_1106 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1101' .      " Staff Loan Repayment
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1101 = WA_RT-BETRG + WA_FINAL-W_1101.
+*    IF WA_FINAL-W_1101 < 0.
+*   WA_FINAL-W_1101 = WA_FINAL-W_1101 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1102' .      " Vehicle Loan Repayment
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1102 = WA_RT-BETRG + WA_FINAL-W_1102.
+*    IF WA_FINAL-W_1102 < 0.
+*   WA_FINAL-W_1102 = WA_FINAL-W_1102 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+** READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/LID' .      " Interest Due
+** IF SY-SUBRC = 0.
+** WA_FINAL-W_LID = WA_RT-BETRG.
+** CLEAR WA_RT.
+** ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/ZF5' .      " CF PF
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_ZF5 = WA_RT-BETRG + WA_FINAL-W_ZF5.
+*    IF WA_FINAL-W_ZF5 < 0.
+*   WA_FINAL-W_ZF5 = WA_FINAL-W_ZF5 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '2017' .      " Other Deductions Arrear
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_2017 = WA_RT-BETRG + WA_FINAL-W_2017.
+*    IF WA_FINAL-W_2017 < 0.
+*   WA_FINAL-W_2017 = WA_FINAL-W_2017 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1012' .      " Miscellaneous Deduction
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1012 = WA_RT-BETRG + WA_FINAL-W_1012.
+*    IF WA_FINAL-W_1012 < 0.
+*   WA_FINAL-W_1012 = WA_FINAL-W_1012 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+*READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '1013' .      " Telephone Deduction
+* IF SY-SUBRC = 0.
+* WA_FINAL-W_1013 = WA_RT-BETRG + WA_FINAL-W_1013.
+*    IF WA_FINAL-W_1013 < 0.
+*   WA_FINAL-W_1013 = WA_FINAL-W_1013 * -1.
+* ENDIF.
+* CLEAR WA_RT.
+* ENDIF.
+*
+* ENDLOOP.
+*
+*    READ TABLE IT_RT INTO WA_RT WITH KEY LGART = '/560'.      " NET PAY
+*      IF SY-SUBRC = 0.
+*      WA_FINAL-W_NETPAY = WA_RT-BETRG.
+*      CLEAR WA_RT.
+*      ENDIF.
+
+    ENDLOOP.
+
+    WA_FINAL-W_TOT_EARN = WA_FINAL-W_4000 + WA_FINAL-W_4001 + WA_FINAL-W_4002 + WA_FINAL-W_4003 +
+                          WA_FINAL-W_4004 + WA_FINAL-W_4007 + WA_FINAL-W_4008 + WA_FINAL-W_4011 +
+                          WA_FINAL-W_1009 + WA_FINAL-W_1104 + WA_FINAL-W_1006 + WA_FINAL-W_1200 +
+                          WA_FINAL-W_1201 + WA_FINAL-W_1008 + WA_FINAL-W_1001 + WA_FINAL-W_1001 +
+                          WA_FINAL-W_1007 + WA_FINAL-W_2001 + WA_FINAL-W_2003 + WA_FINAL-W_2005 +
+                          WA_FINAL-W_2007 + WA_FINAL-W_2009 + WA_FINAL-W_2011 + WA_FINAL-W_2013 +
+                          WA_FINAL-W_2015 + WA_FINAL-W_2027 + WA_FINAL-W_2029 + WA_FINAL-W_2031 +
+                          WA_FINAL-W_4005 + WA_FINAL-W_4006 + WA_FINAL-W_4012 + WA_FINAL-W_2023 +
+                          WA_FINAL-W_1011 + WA_FINAL-W_2021 + WA_FINAL-W_1018 + WA_FINAL-W_4026 +
+                          WA_FINAL-W_4027 + WA_FINAL-W_4028 +  WA_FINAL-W_4029  + WA_FINAL-W_4030 +
+                          WA_FINAL-W_4031 + WA_FINAL-W_4015 + WA_FINAL-W_4016 + WA_FINAL-W_4017 +
+                          WA_FINAL-W_4018 + WA_FINAL-W_4019 + WA_FINAL-W_4052.
+
+
+    WA_FINAL-W_TOT_DED =  WA_FINAL-W_1100 + WA_FINAL-W_1103 + WA_FINAL-W_1109 + WA_FINAL-W_LXE  +
+                          WA_FINAL-W_1111 + WA_FINAL-W_LEP  + WA_FINAL-W_1300 + WA_FINAL-W_3F1  +
+                          WA_FINAL-W_460  + WA_FINAL-W_3P3  + WA_FINAL-W_3E1  + WA_FINAL-W_3W1  +
+                          WA_FINAL-W_4100 + WA_FINAL-W_4057 + WA_FINAL-W_2033 + WA_FINAL-W_3002 + WA_FINAL-W_3005 +
+                          WA_FINAL-W_1106 + WA_FINAL-W_1101 + WA_FINAL-W_1102 + WA_FINAL-W_1013 +
+                          WA_FINAL-W_ZF5  + WA_FINAL-W_2017 + WA_FINAL-W_1012 + WA_FINAL-W_3F2 + WA_FINAL-W_1016 + WA_FINAL-W_1017 + WA_FINAL-W_ZP1 + WA_FINAL-W_4050 . "Added Byu Govind WA_FINAL-W_1016,WA_FINAL-W_1017,WA_FINAL-W_ZP1
+*                      WA_FINAL-W_ZP2  + WA_FINAL-W_ZE1.
+
+
+    IF WA_FINAL-W_TOT_DED < 0.
+      WA_FINAL-W_TOT_DED = WA_FINAL-W_TOT_DED * -1.
+    ENDIF.
+
+    TRANSLATE WA_FINAL-NAME TO UPPER CASE.
+
+  ENDLOOP.
+
+  APPEND WA_FINAL TO IT_FINAL.
+  CLEAR  : WA_FINAL , DAYS , DAY1  , DAY2 , DAY3 , DAY4 , DAY5.
+
+  DELETE IT_FINAL WHERE NAME IS INITIAL.
+  DELETE IT_FINAL WHERE W_TOT_EARN IS INITIAL.
+
+  IF S_PAY IS NOT INITIAL.
+
+    DELETE IT_FINAL WHERE PAYMENT NE S_PAY-LOW.
+
+  ENDIF.
+
+
+*-------------------------------> END OF SELECTION ------------------*
+END-OF-SELECTION.
+
+*if pernr is not initial and  WA_FINAL-W_4026  ne 0.
+*
+*  PERFORM CREATE_FIELDCAT.
+*  DATA: SORT TYPE SLIS_SORTINFO_ALV,
+*        IT_SORT TYPE  SLIS_T_SORTINFO_ALV.
+*
+*
+*  L_LAYOUT-TOTALS_TEXT = 'TOTAL'.
+**l_layout-SUBTOTALS_TEXT = 'SUBTOTAL'.
+*
+*
+*  PERFORM F029_EVENTTAB_BUILD USING IT_EVENTS[].
+*  PERFORM F029_COMMENT_BUILD  USING IT_TOP_OF_PAGE[].
+*  WA_LAYOUT-ZEBRA = 'X'.
+*  WA_LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+*
+*
+*  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+*    EXPORTING
+*      I_BACKGROUND_ID    = 'ALV_BACKGROUND'
+*      I_CALLBACK_PROGRAM = SY-REPID
+**     i_callback_program = sy-cprog
+*      I_GRID_TITLE       = 'Pay Register Report'
+*      IS_LAYOUT          = L_LAYOUT
+*      IT_FIELDCAT        = GT_FIELDCAT[]
+*      IT_EVENTS          = IT_EVENTS
+*      IT_SORT            = IT_SORT
+*      I_SAVE             = 'X'
+*      I_DEFAULT          = 'X'
+*      IS_VARIANT         = WK_VARIANT
+*    TABLES
+*      T_OUTTAB           = IT_FINAL
+*    EXCEPTIONS
+*      PROGRAM_ERROR      = 1
+*      OTHERS             = 2.
+*  IF SY-SUBRC <> 0.
+*    MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*             WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+*  ENDIF.
+*
+*ENDIF.
+* To Set the Columns for the ALV Grid Display
+
+
+
+  PERFORM CREATE_FIELDCAT1.
+  DATA: SORT1 TYPE SLIS_SORTINFO_ALV,
+        IT_SORT1 TYPE  SLIS_T_SORTINFO_ALV.
+
+
+  L_LAYOUT-TOTALS_TEXT = 'TOTAL'.
+*l_layout-SUBTOTALS_TEXT = 'SUBTOTAL'.
+
+
+  PERFORM F029_EVENTTAB_BUILD USING IT_EVENTS[].
+  PERFORM F029_COMMENT_BUILD  USING IT_TOP_OF_PAGE[].
+  WA_LAYOUT-ZEBRA = 'X'.
+  WA_LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+    EXPORTING
+      I_BACKGROUND_ID    = 'ALV_BACKGROUND'
+      I_CALLBACK_PROGRAM = SY-REPID
+*     i_callback_program = sy-cprog
+      I_GRID_TITLE       = 'Pay Register Report'
+      IS_LAYOUT          = L_LAYOUT
+      IT_FIELDCAT        = GT_FIELDCAT[]
+      IT_EVENTS          = IT_EVENTS
+      IT_SORT            = IT_SORT1
+      I_SAVE             = 'X'
+      I_DEFAULT          = 'X'
+      IS_VARIANT         = WK_VARIANT
+    TABLES
+      T_OUTTAB           = IT_FINAL
+    EXCEPTIONS
+      PROGRAM_ERROR      = 1
+      OTHERS             = 2.
+  IF SY-SUBRC <> 0.
+    MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+             WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+
+FORM ALV  USING VALUE(P_0994) VALUE(P_0995) VALUE(P_0996)
+VALUE(P_0997)
+VALUE(P_0998) VALUE(P_0999).
+  CLEAR WA_FIELDCAT.
+  WA_FIELDCAT-COL_POS       =  P_0994.
+  WA_FIELDCAT-FIELDNAME     =  P_0995.
+  WA_FIELDCAT-TABNAME       =  P_0996.
+  WA_FIELDCAT-REPTEXT_DDIC  =  P_0997.
+  WA_FIELDCAT-OUTPUTLEN     =  P_0998.
+  WA_FIELDCAT-DO_SUM        =  P_0999.
+  APPEND WA_FIELDCAT TO  GT_FIELDCAT.
+ENDFORM.                    "ALV
+
+* To Set the Title for the ALV Grid Display
+FORM TEST.
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = IT_TOP_OF_PAGE[]
+      I_LOGO             = 'BRITANNIA_LOGO'.
+ENDFORM.                    "**** TOP_OF_PAGE ****
+
+*      Form  F029_EVENTTAB_BUILD
+
+FORM F029_EVENTTAB_BUILD USING IT_EVENTS TYPE SLIS_T_EVENT.
+  DATA: LS_EVENT TYPE SLIS_ALV_EVENT.
+
+  CALL FUNCTION 'REUSE_ALV_EVENTS_GET'
+    EXPORTING
+      I_LIST_TYPE = 0
+    IMPORTING
+      ET_EVENTS   = IT_EVENTS.
+
+  READ TABLE IT_EVENTS WITH KEY NAME =  SLIS_EV_TOP_OF_PAGE
+                     INTO LS_EVENT.
+  IF SY-SUBRC = 0.
+    MOVE SLIS_EV_TOP_OF_PAGE TO LS_EVENT-NAME.
+    MOVE 'TEST' TO LS_EVENT-FORM.
+    APPEND LS_EVENT TO IT_EVENTS.
+  ENDIF.
+
+ENDFORM.                    "**** F029_EVENTTAB_BUILD ****
+
+*To Display the Title for the ALV Grid Display
+FORM F029_COMMENT_BUILD USING IT_TOP_OF_PAGE TYPE SLIS_T_LISTHEADER.
+
+  DATA : I_T549T  TYPE STANDARD TABLE OF T549T ,
+         WA_T549T TYPE T549T .
+  DATA : L_I_HEADER  TYPE SLIS_T_LISTHEADER,
+         L_WA_HEADER TYPE SLIS_LISTHEADER.
+  DATA : VAR(45) TYPE C.
+  DATA : D_DATE(40)  TYPE N.
+  DATA : A_DATE(18) TYPE N,
+         B_DATE(18) TYPE N.
+  DATA : BUKRS    TYPE BUKRS.
+  DATA : LV_BUKRS(70) TYPE C.
+  DATA : BUKRS_TEXT TYPE BUTXT.
+
+  SELECT BUKRS
+                UP TO 1 ROWS FROM PA0001
+                INTO BUKRS
+                WHERE BUKRS = PNPBUKRS-LOW ORDER BY PRIMARY KEY.
+  ENDSELECT. " Added by <IT-CAR Tool> during Code Remediation
+
+*_ Company Name
+  CALL FUNCTION 'HRWPC_RFC_BUKRS_TEXT_GET'
+    EXPORTING
+      BUKRS      = BUKRS
+    IMPORTING
+      BUKRS_TEXT = BUKRS_TEXT.
+
+  CLEAR LV_BUKRS.
+  LV_BUKRS = BUKRS.
+
+
+  SELECT * "#EC CI_NOORDER " Added by <IT-CAR Tool> during Code Remediation
+          INTO CORRESPONDING FIELDS OF WA_T549T
+                        FROM T549T
+                     WHERE SPRSL = 'EN' AND
+                           ABKRS IN PNPABKRS.
+  ENDSELECT.
+
+
+  SELECT SINGLE BTEXT
+           FROM T001P
+           INTO WA_FINAL-BTEXT
+           WHERE BTRTL = WA_FINAL-BTRTL.
+
+
+*Display Text of each Payrol Area
+  CONCATENATE 'Payroll Area : ' WA_T549T-ATEXT INTO
+  L_WA_HEADER-INFO SEPARATED BY SPACE.
+
+  VAR = L_WA_HEADER-INFO.
+
+  WRITE PN-BEGDA TO A_DATE MM/DD/YYYY.
+  WRITE PN-ENDDA TO B_DATE MM/DD/YYYY.
+
+
+  CONCATENATE 'PERIOD:' A_DATE 'TO' B_DATE INTO D_DATE
+      SEPARATED BY ' '.
+
+***convert inverted-date D_date into date e_date.
+
+  DATA: LS_LINE    TYPE SLIS_LISTHEADER.
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'H'.
+  LS_LINE-INFO = BUKRS_TEXT.
+  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+
+*  LS_LINE-TYP  = 'H'.
+*  LS_LINE-INFO = 'Chennai'.
+*  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+
+  LS_LINE-TYP  = 'S'.
+  LS_LINE-INFO = D_DATE.
+  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+
+
+*  LS_LINE-TYP  = 'H'.
+*  LS_LINE-INFO = WA_FINAL-BTEXT.
+*  APPEND LS_LINE TO IT_TOP_OF_PAGE.
+ENDFORM.                    "F029_COMMENT_BUILD
+
+*&      Form  CREATE_FIELDCAT
+* --------------------------------------------------------------------------------
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '15'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '16'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1004'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special All'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '17'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '18'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Incentive'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '19'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2011'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Inc All'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '20'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1006'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'INC'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '21'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2013'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'INC Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '22'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ATT Bon'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '23'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1008'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'OE'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '24'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2015'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'OE Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '25'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Leave Encashment'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '26'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_9000'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Bonus'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '28'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_EARN'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Total Earnings'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+***************
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '29'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1100'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'NETPAY.REC'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '30'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1101'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'STAFF.LOAN'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '31'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1102'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'VEHICAL.LOAN'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '32'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1103'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'OTH.DED'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '33'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3F1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'EPF'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '34'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3E1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ESI.CON'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '35'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3P1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'PTAX'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '36'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_460'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'INCOME.TAX'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '31'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_3002'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'STAFFLOAN.REG'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+**
+**
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '37'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_3005'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'VEHICLE.LOAN'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+**
+**
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '38'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_LID'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'INTEREST.DUE'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+**
+**
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '39'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_ZF5'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'CF.PF'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+*
+*****************
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '37'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_DED'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TOT.DEDUC'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '38'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_NETPAY'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'NET.PAY'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*ENDIF.
+*
+*
+*if PNPBUKRS-LOW EQ '1300'.
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '8'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4000'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Basic Pay'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '9'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2001'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Basic Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '10'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4001'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'HRA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '11'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'HRA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '12'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4002'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '13'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '14'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4003'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '15'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '16'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4004'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Medical Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '17'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2021'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Medical All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '18'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'PD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '19'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2023'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'PD Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '20'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4006'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TPA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '21'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2025'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TPA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '22'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '23'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2027'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '24'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4008'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Incentive'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '25'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2011'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'VIA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '26'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4011'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'LTA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2029'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'LTA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '28'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4012'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ATT.ALL'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '29'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2031'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ATT.ALL.ARR'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '24'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2025'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'TELEALLW'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+****
+****
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '27'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2027'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'MEALCOPN'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+****
+****
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '28'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2029'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'LTAARR'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+****
+****
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '29'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2031'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'ATTIREALLW'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '30'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Leave Encashment'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '31'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1104'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Gratuity'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '32'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1006'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Target Incentives'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '33'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1200'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Bonus'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '34'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Edu Reimbursement Fee'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '35'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1008'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Other Earnings'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '36'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_EARN2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TOTEARN'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '37'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1100'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Notice Pay Recovery'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '38'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1103'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Other Deductions'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '39'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1109'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Incentive Deduction'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '40'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_LXE'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Loan Complete Repayment'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '41'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1111'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Act Loan Ded With Interest'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '42'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_LEP'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special Payment of Loan'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '43'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1300'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Sheenlac LIC Premium'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '44'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4100'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Deduction'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '45'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2033'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '46'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1101'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Staff Ln Rep'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '47'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1102'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Vehicle Ln Rep'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '48'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_PF'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee PF & Pension'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '49'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_ESI'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee ESI'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+***************
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '50'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_PTAX'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Professional Tax'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*    CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '51'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TDS'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee TDS'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '52'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3W1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee LWF'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '53'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_DED2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TOTALDED'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '54'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_NETPAY2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Net Pay'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+
+*ENDIF.
+
+                 " CREATE_FIELDCAT
+*
+**
+**CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+*** EXPORTING
+***   I_INTERFACE_CHECK                 = ' '
+***   I_BYPASSING_BUFFER                = ' '
+***   I_BUFFER_ACTIVE                   = ' '
+***   I_CALLBACK_PROGRAM                = ' '
+***   I_CALLBACK_PF_STATUS_SET          = ' '
+***   I_CALLBACK_USER_COMMAND           = ' '
+***   I_CALLBACK_TOP_OF_PAGE            = ' '
+***   I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+***   I_CALLBACK_HTML_END_OF_LIST       = ' '
+***   I_STRUCTURE_NAME                  =
+***   I_BACKGROUND_ID                   = ' '
+***   I_GRID_TITLE                      =
+***   I_GRID_SETTINGS                   =
+***   IS_LAYOUT                         =
+***   IT_FIELDCAT                       =
+***   IT_EXCLUDING                      =
+***   IT_SPECIAL_GROUPS                 =
+***   IT_SORT                           =
+***   IT_FILTER                         =
+***   IS_SEL_HIDE                       =
+***   I_DEFAULT                         = 'X'
+***   I_SAVE                            = ' '
+***   IS_VARIANT                        =
+***   IT_EVENTS                         =
+***   IT_EVENT_EXIT                     =
+***   IS_PRINT                          =
+***   IS_REPREP_ID                      =
+***   I_SCREEN_START_COLUMN             = 0
+***   I_SCREEN_START_LINE               = 0
+***   I_SCREEN_END_COLUMN               = 0
+***   I_SCREEN_END_LINE                 = 0
+***   I_HTML_HEIGHT_TOP                 = 0
+***   I_HTML_HEIGHT_END                 = 0
+***   IT_ALV_GRAPHICS                   =
+***   IT_HYPERLINK                      =
+***   IT_ADD_FIELDCAT                   =
+***   IT_EXCEPT_QINFO                   =
+***   IR_SALV_FULLSCREEN_ADAPTER        =
+*** IMPORTING
+***   E_EXIT_CAUSED_BY_CALLER           =
+***   ES_EXIT_CAUSED_BY_USER            =
+**  TABLES
+**    T_OUTTAB                          =
+*** EXCEPTIONS
+***   PROGRAM_ERROR                     = 1
+***   OTHERS                            = 2
+**          .
+**IF SY-SUBRC <> 0.
+*** Implement suitable error handling here
+**ENDIF.
+
+FORM CREATE_FIELDCAT1 .
+  DATA: LS_FIELDCAT TYPE SLIS_FIELDCAT_ALV.
+  CLEAR LS_FIELDCAT.
+
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '1'.
+  LS_FIELDCAT-FIELDNAME   = 'PERNR'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Employee No'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '2'.
+  LS_FIELDCAT-FIELDNAME   = 'NAME'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '30'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Employee Name'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '2'.
+*  LS_FIELDCAT-FIELDNAME   = 'KDIVI'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'WD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '3'.
+*  LS_FIELDCAT-FIELDNAME   = 'ADIVI'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'WD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '3'.
+  LS_FIELDCAT-FIELDNAME   = 'CALEN_DAYS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Calendar Days'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '4'.
+  LS_FIELDCAT-FIELDNAME   = 'WORKING_DAYS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Working Days'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '5'.
+  LS_FIELDCAT-FIELDNAME   = 'WORKED_DAYS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Worked Days'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '6'.
+  LS_FIELDCAT-FIELDNAME   = 'PAYMENT_METH'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Payment Method'.
+*  LS_FIELDCAT-REF_TABNAME =   'IT_FINAL'.
+*  LS_FIELDCAT-REF_FIELDNAME = 'PAYMENT_METH'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+*           REF_FIELDNAME  LIKE DD03P-FIELDNAME,
+*         REF_TABNAME    LIKE DD03P-TABNAME,
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '4'.
+*  LS_FIELDCAT-FIELDNAME   = 'LTD'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'LTD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '5'.
+*  LS_FIELDCAT-FIELDNAME   = 'TD'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '6'.
+*  LS_FIELDCAT-FIELDNAME   = 'AD'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'AD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '7'.
+*  LS_FIELDCAT-FIELDNAME   = 'LD'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'LD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+***********
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '7'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4000'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4015'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Basic Pay'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '8'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2001'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Basic Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '9'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4001'.
+   LS_FIELDCAT-FIELDNAME   = 'W_4016'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'HRA'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '10'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2005'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'HRA Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '11'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1001'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Daily Allowance'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '12'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2003'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Daily All Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '13'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4002'.
+   LS_FIELDCAT-FIELDNAME   = 'W_4018'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Conveyance Allowance'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '14'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2007'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Conveyance All Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '15'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4003'.
+   LS_FIELDCAT-FIELDNAME   = 'W_4019'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Special Allowance'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '16'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2009'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Special All Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '17'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2021'.
+   LS_FIELDCAT-FIELDNAME   = 'W_4030'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Medical Allowance Arrears'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '18'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4005'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Professional Development'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '19'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2023'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Prof Development Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '20'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4007'.
+   LS_FIELDCAT-FIELDNAME   = 'W_4017'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '21'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2027'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '22'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4008'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4052'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Incentive'.
+  LS_FIELDCAT-SELTEXT_L =  'Variable Pay'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '23'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2011'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Incentive Arrear'.
+  LS_FIELDCAT-SELTEXT_L =  'Variable Pay Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '24'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4011'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'LTA'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '25'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2029'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'LTA Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '26'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4012'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Attire Allowance'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '27'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2031'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Attire All Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '28'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1008'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Other Earnings'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '29'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2015'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Other Earning Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '30'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1009'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Leave Encashment'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '31'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1104'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Gratuity'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '32'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1006'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Target Incentives'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '33'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1200'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Bonus'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '34'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1007'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Attendance Bonus'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '35'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Educ Reimbursement Fee'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '36'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2013'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Incentive Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '37'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4006'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Telephone Allowance'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '38'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1011'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Miscellaneous Payment'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '39'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1018'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'TDS Refund'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '40'.
+  LS_FIELDCAT-FIELDNAME   = 'W_TOT_EARN'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Total Earnings'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '41'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1100'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Notice Pay Recovery'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '42'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1103'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Late Coming Deduction'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '43'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1109'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Incentive Deduction'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '44'.
+  LS_FIELDCAT-FIELDNAME   = 'W_LXE'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Loan Complete Repayment'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '45'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1111'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Actual Loan Ded with Int'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '46'.
+  LS_FIELDCAT-FIELDNAME   = 'W_LEP'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Special Payment of Loan'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '48'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1300'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'LIC Premium'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '49'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4050'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'PF & Pension'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '50'.
+  LS_FIELDCAT-FIELDNAME   = 'W_460'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'TDS Deduction'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '51'.
+  LS_FIELDCAT-FIELDNAME   = 'W_3P3'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Professional Tax'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+   CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '52'.
+  LS_FIELDCAT-FIELDNAME   = 'W_ZP1'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'PTAX Arrears'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '53'.
+  LS_FIELDCAT-FIELDNAME   = 'W_3E1'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'ESI'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '54'.
+  LS_FIELDCAT-FIELDNAME   = 'W_3W1'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'LWF'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '55'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4057'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'DED:Food Coupons'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '56'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2033'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon Ded Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+*    CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '52'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_LID'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Interest Due'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '57'.
+  LS_FIELDCAT-FIELDNAME   = 'W_ZF5'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'PF Arrears'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '58'.
+  LS_FIELDCAT-FIELDNAME   = 'W_2017'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Other Ded Arrear'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '57'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1012'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Miscellaneous Deductions'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+   CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '59'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1017'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Variable pay Deduction'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '60'.
+  LS_FIELDCAT-FIELDNAME   = 'W_3F2'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'VPF Contribution'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '61'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1016'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Loan Repayment'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '62'.
+  LS_FIELDCAT-FIELDNAME   = 'W_TOT_DED'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Total Deductions'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '63'.
+  LS_FIELDCAT-FIELDNAME   = 'W_NETPAY'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Net Pay'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '64'.
+  LS_FIELDCAT-FIELDNAME   = 'BUKRS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Company Code'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '65'.
+  LS_FIELDCAT-FIELDNAME   = 'WERKS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Personnel Area'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '66'.
+  LS_FIELDCAT-FIELDNAME   = 'WERKS_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'Personnel Area Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '68'.
+  LS_FIELDCAT-FIELDNAME   = 'KOSTL'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-SELTEXT_L =  'Cost Center'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '69'.
+  LS_FIELDCAT-FIELDNAME   = 'BTRTL1'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Sub Area'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '70'.
+  LS_FIELDCAT-FIELDNAME   = 'BTRTL_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'Sub Area Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '71'.
+  LS_FIELDCAT-FIELDNAME   = 'PERSG'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Employee Group'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '72'.
+  LS_FIELDCAT-FIELDNAME   = 'PERSG_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'Emp Group Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '73'.
+  LS_FIELDCAT-FIELDNAME   = 'PERSK'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Emp Sub Group'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '74'.
+  LS_FIELDCAT-FIELDNAME   = 'PERSK_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'Emp Sub Group Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '75'.
+  LS_FIELDCAT-FIELDNAME   = 'ABKRS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'PayRoll Area'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '76'.
+  LS_FIELDCAT-FIELDNAME   = 'ABKRS_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'PayRoll Area Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '77'.
+  LS_FIELDCAT-FIELDNAME   = 'PLANS1'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Position'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '78'.
+  LS_FIELDCAT-FIELDNAME   = 'PLANS_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'Position Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '79'.
+  LS_FIELDCAT-FIELDNAME   = 'ORGEH1'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Org. Unit'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '80'.
+  LS_FIELDCAT-FIELDNAME   = 'ORGEH_T'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '35'.
+  LS_FIELDCAT-SELTEXT_L =  'Org. Unit Text'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+*    CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '75'.
+*  LS_FIELDCAT-FIELDNAME   = 'ANSVH'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '30'.
+*  LS_FIELDCAT-SELTEXT_L =  'Zone'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '81'.
+  LS_FIELDCAT-FIELDNAME   = 'ZONE'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '30'.
+  LS_FIELDCAT-SELTEXT_L =  'Zone'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '82'.
+  LS_FIELDCAT-FIELDNAME   = 'HIR_DATE'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Hiring Date'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '83'.
+  LS_FIELDCAT-FIELDNAME   = 'EMP_STAT'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '32'.
+  LS_FIELDCAT-SELTEXT_L =  'Employment Status'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '84'.
+  LS_FIELDCAT-FIELDNAME   = 'UNAME'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-SELTEXT_L =  'Changed By'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '85'.
+  LS_FIELDCAT-FIELDNAME   = 'ACTION'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '30'.
+  LS_FIELDCAT-SELTEXT_L =  'Action Type'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '86'.
+  LS_FIELDCAT-FIELDNAME   = 'TOTALDAYS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '20'.
+  LS_FIELDCAT-SELTEXT_L =  'Absence Days'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '87'.
+  LS_FIELDCAT-FIELDNAME   = 'BANK_ACC'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '25'.
+  LS_FIELDCAT-SELTEXT_L =  'Bank Account No'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '88'.
+  LS_FIELDCAT-FIELDNAME   = 'BANK_NAME'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '35'.
+  LS_FIELDCAT-SELTEXT_L =  'Bank Name'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '89'.
+  LS_FIELDCAT-FIELDNAME   = 'W_1013'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+  LS_FIELDCAT-DO_SUM       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Telephone Deductions'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '90'.
+  LS_FIELDCAT-FIELDNAME   = 'PURPOSE'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '40'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Reason'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '91'.
+  LS_FIELDCAT-FIELDNAME   = 'MAIL'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '30'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Email ID'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '92'.
+  LS_FIELDCAT-FIELDNAME   = 'PHONE'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Telephone No'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '93'.
+  LS_FIELDCAT-FIELDNAME   = 'CELL'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '12'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Mobile No'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '94'.
+  LS_FIELDCAT-FIELDNAME   = 'GROSS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Monthly Gross Salary'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '95'.
+  LS_FIELDCAT-FIELDNAME   = 'W_3FS'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '23'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'National Pension Scheme'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '91'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_ZP2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '23'.
+**  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'P.Tax Arrears'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '92'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_ZE1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '23'.
+**  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ESI Arrears'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '96'.
+  LS_FIELDCAT-FIELDNAME   = 'W_4004'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '23'.
+*  ls_fieldcat-do_sum       = 'X'.
+  LS_FIELDCAT-SELTEXT_L =  'Medical Allowance'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '97'.
+  LS_FIELDCAT-FIELDNAME   = 'BANK_KEY'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '25'.
+  LS_FIELDCAT-SELTEXT_L =  'Bank Key'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+  CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '98'.
+  LS_FIELDCAT-FIELDNAME   = 'W_AGE'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '25'.
+  LS_FIELDCAT-SELTEXT_L =  'Seniority'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+
+    CLEAR LS_FIELDCAT.
+  LS_FIELDCAT-ROW_POS     = '1'.
+  LS_FIELDCAT-COL_POS     = '100'.
+  LS_FIELDCAT-FIELDNAME   = 'AD3'.
+  LS_FIELDCAT-KEY         = ''.
+  LS_FIELDCAT-OUTPUTLEN   = '25'.
+  LS_FIELDCAT-SELTEXT_L =  'Total L.O.P'.
+  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+  CLEAR LS_FIELDCAT .
+
+**_ IF Company CODE NE '1300'
+*if PNPBUKRS-LOW NE '1300'.
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '8'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1000'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Basic Pay'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '9'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2001'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Basic Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '10'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1001'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Daily Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '11'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2003'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Daily All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '12'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1002'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'HRA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '13'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'HRA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '14'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1003'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance All'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '15'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '16'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1004'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special All'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '17'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '18'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Incentive'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '19'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2011'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Inc All'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '20'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1006'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'INC'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '21'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2013'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'INC Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '22'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ATT Bon'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '23'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1008'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'OE'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '24'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2015'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'OE Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '25'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Leave Encashment'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '26'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_9000'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Bonus'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Education Reimbursement'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '28'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_EARN'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Total Earnings'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+***************
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '29'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1100'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'NETPAY.REC'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '30'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1101'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'STAFF.LOAN'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '31'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1102'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'VEHICAL.LOAN'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '32'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1103'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'OTH.DED'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '33'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3F1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'EPF'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '34'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3E1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ESI.CON'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '35'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3P1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'PTAX'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '36'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_460'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'INCOME.TAX'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '31'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_3002'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'STAFFLOAN.REG'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+**
+**
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '37'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_3005'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'VEHICLE.LOAN'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+**
+**
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '38'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_LID'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'INTEREST.DUE'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+**
+**
+**  CLEAR LS_FIELDCAT.
+**  LS_FIELDCAT-ROW_POS     = '1'.
+**  LS_FIELDCAT-COL_POS     = '39'.
+**  LS_FIELDCAT-FIELDNAME   = 'W_ZF5'.
+**  LS_FIELDCAT-KEY         = ''.
+**  LS_FIELDCAT-OUTPUTLEN   = '8'.
+**  ls_fieldcat-do_sum       = 'X'.
+**  LS_FIELDCAT-SELTEXT_L =  'CF.PF'.
+**  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+**  clear LS_FIELDCAT .
+*
+*****************
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '37'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_DED'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TOT.DEDUC'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '38'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_NETPAY'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'NET.PAY'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*ENDIF.
+*
+*
+*if PNPBUKRS-LOW EQ '1300'.
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '8'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4000'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Basic Pay'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '9'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2001'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Basic Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '10'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4001'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'HRA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '11'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'HRA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '12'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4002'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '13'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Conveyance Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '14'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4003'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '15'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '16'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4004'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Medical Allowance'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '17'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2021'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Medical All Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '18'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4005'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'PD'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '19'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2023'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'PD Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '20'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4006'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TPA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '21'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2025'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TPA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '22'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4007'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '23'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2027'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '24'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4008'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Variable Incentive'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '25'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2011'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'VIA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '26'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4011'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'LTA'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '27'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2029'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'LTA Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '28'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4012'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ATT.ALL'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '29'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2031'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'ATT.ALL.ARR'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '24'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2025'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'TELEALLW'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+****
+****
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '27'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2027'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'MEALCOPN'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+****
+****
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '28'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2029'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'LTAARR'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+****
+****
+****  CLEAR LS_FIELDCAT.
+****  LS_FIELDCAT-ROW_POS     = '1'.
+****  LS_FIELDCAT-COL_POS     = '29'.
+****  LS_FIELDCAT-FIELDNAME   = 'W_2031'.
+****  LS_FIELDCAT-KEY         = ''.
+****  LS_FIELDCAT-OUTPUTLEN   = '8'.
+****  ls_fieldcat-do_sum       = 'X'.
+****  LS_FIELDCAT-SELTEXT_L =  'ATTIREALLW'.
+****  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+****  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '30'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1009'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Leave Encashment'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '31'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1104'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Gratuity'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '32'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1006'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Target Incentives'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '33'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1200'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Bonus'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '34'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1201'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Edu Reimbursement Fee'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '35'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1008'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Other Earnings'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '36'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_EARN2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '8'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TOTEARN'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '37'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1100'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Notice Pay Recovery'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '38'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1103'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Other Deductions'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '39'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1109'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Incentive Deduction'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '40'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_LXE'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Loan Complete Repayment'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '41'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1111'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Act Loan Ded With Interest'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '42'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_LEP'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Special Payment of Loan'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '43'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1300'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Sheenlac LIC Premium'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*
+*
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '44'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_4100'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Deduction'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '45'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_2033'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Meal Coupon Arrear'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '46'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1101'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Staff Ln Rep'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '47'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_1102'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Vehicle Ln Rep'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '48'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_PF'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '20'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee PF & Pension'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '49'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_ESI'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee ESI'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+***************
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '50'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_PTAX'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Professional Tax'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*    CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '51'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TDS'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee TDS'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '52'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_3W1'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Employee LWF'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '53'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_TOT_DED2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'TOTALDED'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+*
+*
+*  CLEAR LS_FIELDCAT.
+*  LS_FIELDCAT-ROW_POS     = '1'.
+*  LS_FIELDCAT-COL_POS     = '54'.
+*  LS_FIELDCAT-FIELDNAME   = 'W_NETPAY2'.
+*  LS_FIELDCAT-KEY         = ''.
+*  LS_FIELDCAT-OUTPUTLEN   = '15'.
+*  ls_fieldcat-do_sum       = 'X'.
+*  LS_FIELDCAT-SELTEXT_L =  'Net Pay'.
+*  APPEND LS_FIELDCAT TO GT_FIELDCAT.
+*  clear LS_FIELDCAT .
+
+
+*ENDIF.
+
+ENDFORM.                    " CREATE_FIELDCAT

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_API_SALESORDER_SIMULATION</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>DMS Sales order simulation API</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GST_CHECK</CMPNAME>
+     <SCONAME>CUSTOMER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Customer Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GST_CHECK</CMPNAME>
+     <SCONAME>CUST_GST</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Tax Number 3</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GST_CHECK</CMPNAME>
+     <SCONAME>DISTRIBUTOR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>distributor field</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GST_CHECK</CMPNAME>
+     <SCONAME>STATUS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Character Field with Length 10</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

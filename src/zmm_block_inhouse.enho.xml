@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>Inhouse material not allow ext procurement</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>PROG</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>SAPFMMEX</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>PROG</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>SAPFMMEX</ORG_MAIN_NAME>
+    <PROGRAMNAME>SAPFMMEX</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <ENHANCEMENTS>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>SAPFMMEX</PROGRAMNAME>
+     <ENHMODE>S</ENHMODE>
+     <FULL_NAME>\PR:SAPFMMEX\FO:MT06E_MTART\SE:END\EI</FULL_NAME>
+    </ENH_HOOK_IMPL>
+   </ENHANCEMENTS>
+   <FILES>
+    <item>
+     <NAME>\PR:SAPFMMEX\FO:MT06E_MTART\SE:END\EI</NAME>
+     <FILE>6cbc1ce7</FILE>
+    </item>
+   </FILES>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>FA74F82EE5111ED594E6232FDF531D04</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>FA74F82EE5111ED594E6232FDF531D04</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>063</LENGTH>
+       <TEXT>Inhouse material not allow ext procurement</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZMM_BLOCK_INHOUSE</OBJ_NAME>
+     <CONCEPT>FA74F82EE5111ED594E6232FDF531D04</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

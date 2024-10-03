@@ -1,0 +1,4 @@
+@EndUserText.label: 'Material Stock Service Defintion'
+define service ZMATSTK_SRV_DEF {
+  expose zmm_mat_stock_cons;
+}

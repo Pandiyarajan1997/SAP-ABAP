@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>Company Wise Auothrization Object Display</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>PROG</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>GPETSN3646RQODZ5N9DKT4BVCAO</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>PROG</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>GPETSN3646RQODZ5N9DKT4BVCAO</ORG_MAIN_NAME>
+    <PROGRAMNAME>GPETSN3646RQODZ5N9DKT4BVCAO</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>FA74F82EE5111ED4A4C7F3C93F63C705</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>FA74F82EE5111ED4A4C7F3C93F63C705</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>062</LENGTH>
+       <TEXT>Company Wise Auothrization Object Display</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZSHL_COMPANY_AUTH</OBJ_NAME>
+     <CONCEPT>FA74F82EE5111ED4A4C7F3C93F63C705</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

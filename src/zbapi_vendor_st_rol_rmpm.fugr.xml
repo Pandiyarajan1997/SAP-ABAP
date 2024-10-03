@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>vendor stock rol rm pm</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_VENDOR_ST_ROL_RMPMTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_VENDOR_ST_ROL_RMPM</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_VENDOR_ST_ROL_RMPM</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>STOCK ROL RM PM</SHORT_TEXT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_VENDOR_ROL</PARAMETER>
+       <DBSTRUCT>ZSTR_STK_ROL_VEN_RMPM</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_VENDOR_ROL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>STOCK ROL VENDOR RM PM</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

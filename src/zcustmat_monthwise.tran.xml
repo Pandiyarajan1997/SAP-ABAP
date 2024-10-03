@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TRAN" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TSTC>
+    <TCODE>ZCUSTMAT_MONTHWISE</TCODE>
+    <PGMNA>ZSD_CUSTMAT_MONTHWISE1</PGMNA>
+    <DYPNO>1000</DYPNO>
+    <CINFO>gA==</CINFO>
+   </TSTC>
+   <TSTCC>
+    <TCODE>ZCUSTMAT_MONTHWISE</TCODE>
+    <S_WEBGUI>1</S_WEBGUI>
+    <S_WIN32>X</S_WIN32>
+    <S_PLATIN>X</S_PLATIN>
+   </TSTCC>
+   <TSTCT>
+    <SPRSL>E</SPRSL>
+    <TCODE>ZCUSTMAT_MONTHWISE</TCODE>
+    <TTEXT>Customer With Product Monthwise Rep</TTEXT>
+   </TSTCT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,730 @@
+*&---------------------------------------------------------------------*
+*& Report  ZTAX_REPORT
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZTAX_REPORT.
+
+
+TYPE-POOLS : SLIS.
+TABLES : BKPF, BSEG, LFA1.
+
+
+DATA : ST_BUDAT TYPE BUDAT.
+
+DATA : TOT_AMT TYPE BSIS-PSWBT .
+
+DATA : LV_SUM TYPE RESB-BDMNG.
+
+DATA: LV_COUNT TYPE SY-TABIX.
+
+DATA : V_COUNT TYPE I VALUE 0.
+
+DATA: LV_BELNRCOUNT TYPE SY-TABIX.
+
+TYPES : BEGIN OF GS_BSIS,
+        BUKRS TYPE BSIS-BUKRS,
+        BELNR TYPE BSIS-BELNR,
+        GJAHR TYPE BSIS-GJAHR,
+        BLART TYPE BSIS-BLART,
+        BLDAT TYPE BSIS-BLDAT,
+        BUDAT TYPE BSIS-BUDAT,
+        XBLNR TYPE BSIS-XBLNR,
+        MWSKZ TYPE BSIS-MWSKZ,
+        SHKZG TYPE BSIS-SHKZG,
+        PSWBT TYPE BSIS-PSWBT,
+        HKONT TYPE BSIS-HKONT ,
+        END OF GS_BSIS.
+
+DATA : GT_BSIS TYPE STANDARD TABLE OF GS_BSIS,
+       WA_BSIS TYPE  GS_BSIS.
+
+TYPES : BEGIN OF GS_BSAS,
+    BUKRS TYPE BSIS-BUKRS,
+    BELNR TYPE BSIS-BELNR,
+    GJAHR TYPE BSIS-GJAHR,
+    BLART TYPE BSIS-BLART,
+    BLDAT TYPE BSIS-BLDAT,
+    BUDAT TYPE BSIS-BUDAT,
+    XBLNR TYPE BSIS-XBLNR,
+    MWSKZ TYPE BSIS-MWSKZ,
+    SHKZG TYPE BSIS-SHKZG,
+    PSWBT TYPE BSIS-PSWBT,
+    HKONT TYPE BSIS-HKONT ,
+END OF GS_BSAS.
+
+DATA : GT_BSAS TYPE STANDARD TABLE OF GS_BSAS,
+       WA_BSAS TYPE  GS_BSAS.
+
+TYPES : BEGIN OF GS_BSIS_BSAS,
+    BUKRS TYPE BSIS-BUKRS,
+    BELNR TYPE BSIS-BELNR,
+    GJAHR TYPE BSIS-GJAHR,
+    BLART TYPE BSIS-BLART,
+    BLDAT TYPE BSIS-BLDAT,
+    BUDAT TYPE BSIS-BUDAT,
+    XBLNR TYPE BSIS-XBLNR,
+    MWSKZ TYPE BSIS-MWSKZ,
+    SHKZG TYPE BSIS-SHKZG,
+    PSWBT TYPE BSIS-PSWBT,
+    HKONT TYPE BSIS-HKONT,
+END OF GS_BSIS_BSAS.
+
+DATA : GT_BSIS_BSAS TYPE STANDARD TABLE OF GS_BSIS_BSAS,
+       WA_BSIS_BSAS TYPE  GS_BSIS_BSAS.
+
+TYPES : BEGIN OF GS_BSIS_BASIC,
+    BUKRS TYPE BSIS-BUKRS,
+    BELNR TYPE BSIS-BELNR,
+    GJAHR TYPE BSIS-GJAHR,
+    MWSKZ TYPE BSIS-MWSKZ,
+    SHKZG TYPE BSIS-SHKZG,
+    PSWBT TYPE BSIS-PSWBT,
+    HKONT TYPE BSIS-HKONT,
+    WRBTR TYPE BSIS-WRBTR, "amound
+END OF GS_BSIS_BASIC.
+
+DATA : GT_BSIS_BASIC TYPE STANDARD TABLE OF GS_BSIS_BASIC,
+       WA_BSIS_BASIC TYPE  GS_BSIS_BASIC.
+
+TYPES : BEGIN OF GS_BSIK,
+            LIFNR TYPE BSIK-LIFNR ,
+            GJAHR TYPE BSIK-GJAHR,
+            BELNR TYPE BSIK-BELNR,
+         END OF GS_BSIK .
+
+DATA : GT_BSIK TYPE STANDARD TABLE OF GS_BSIK,
+       WA_BSIK TYPE  GS_BSIK.
+
+TYPES : BEGIN OF GS_BSAK,
+            LIFNR TYPE BSAK-LIFNR ,
+            GJAHR TYPE BSAK-GJAHR,
+            BELNR TYPE BSAK-BELNR,
+         END OF GS_BSAK .
+
+DATA : GT_BSAK TYPE STANDARD TABLE OF GS_BSAK,
+       WA_BSAK TYPE  GS_BSAK.
+
+TYPES : BEGIN OF  GS_LFA1,
+        LIFNR TYPE LFA1-LIFNR,
+        NAME1 TYPE LFA1-NAME1,
+        ADRNR TYPE ADRNR,
+        ERDAT TYPE ERDAT_RF,
+        KUNNR  TYPE KUNNR,
+        END OF GS_LFA1.
+
+DATA : GT_LFA1 TYPE STANDARD TABLE OF GS_LFA1,
+       WA_LFA1 TYPE GS_LFA1.
+
+TYPES : BEGIN OF  GS1_LFA1,
+        LIFNR TYPE LFA1-LIFNR,
+        NAME1 TYPE LFA1-NAME1,
+        ADRNR TYPE ADRNR,
+        ERDAT TYPE ERDAT_RF,
+        KUNNR  TYPE KUNNR,
+        END OF GS1_LFA1.
+
+DATA : GT1_LFA1 TYPE STANDARD TABLE OF GS1_LFA1,
+       WA1_LFA1 TYPE GS1_LFA1.
+
+
+TYPES : BEGIN OF GS_J_1IMOVEND,
+        LIFNR     TYPE LIFNR,
+        J_1ISERN TYPE J_1ISERN,
+       END OF GS_J_1IMOVEND.
+
+
+DATA : GT_J_1IMOVEND TYPE STANDARD TABLE OF GS_J_1IMOVEND,
+       WA_J_1IMOVEND TYPE GS_J_1IMOVEND.
+
+DATA : GT1_J_1IMOVEND TYPE STANDARD TABLE OF GS_J_1IMOVEND,
+       WA1_J_1IMOVEND TYPE GS_J_1IMOVEND.
+
+
+TYPES : BEGIN OF GS_BKPF,
+            BELNR TYPE BKPF-BELNR ,
+            GJAHR TYPE BKPF-GJAHR ,
+            CPUDT TYPE BKPF-CPUDT,
+        END OF GS_BKPF .
+
+DATA : GT_BKPF TYPE STANDARD TABLE OF GS_BKPF,
+       WA_BKPF TYPE  GS_BKPF.
+
+
+
+TYPES : BEGIN OF GS_FINAL,
+        BUKRS TYPE BSIS-BUKRS,
+        BELNR TYPE BSIS-BELNR,
+        GJAHR TYPE BSIS-GJAHR,
+        BLART TYPE BSIS-BLART,
+        BLDAT TYPE BSIS-BLDAT,
+        BUDAT TYPE BSIS-BUDAT,
+        XBLNR TYPE BSIS-XBLNR,
+        SHKZG TYPE BSIS-SHKZG,
+        MWSKZ TYPE BSEG-MWSKZ,
+        PSWBT TYPE BSEG-PSWBT,
+        HKONT TYPE BSEG-HKONT,
+        LIFNR TYPE LFA1-LIFNR,
+        WERKS TYPE BSEG-WERKS,
+        NAME1 TYPE LFA1-NAME1,
+        J_1ISERN TYPE J_1ISERN,
+        CPUDT TYPE BKPF-CPUDT,
+        WRBTR TYPE BSIS-WRBTR,
+
+        TOT_AMT TYPE BSIS-PSWBT,
+        V_COUNT TYPE I,
+
+        V_BELNRCOUNT TYPE I ,
+
+        END OF GS_FINAL.
+
+DATA :GT_FINAL TYPE STANDARD TABLE OF GS_FINAL,
+      WA_FINAL TYPE GS_FINAL.
+
+TYPES : BEGIN OF GS_FINAL_TEMP,
+        BUKRS TYPE BSIS-BUKRS,
+        BELNR TYPE BSIS-BELNR,
+        GJAHR TYPE BSIS-GJAHR,
+        BLART TYPE BSIS-BLART,
+        BLDAT TYPE BSIS-BLDAT,
+        BUDAT TYPE BSIS-BUDAT,
+        XBLNR TYPE BSIS-XBLNR,
+        SHKZG TYPE BSIS-SHKZG,
+        MWSKZ TYPE BSEG-MWSKZ,
+        PSWBT TYPE BSEG-PSWBT,
+        HKONT TYPE BSEG-HKONT,
+        LIFNR TYPE LFA1-LIFNR,
+        WERKS TYPE BSEG-WERKS,
+        NAME1 TYPE LFA1-NAME1,
+        J_1ISERN TYPE J_1ISERN,
+        CPUDT TYPE BKPF-CPUDT,
+        WRBTR TYPE BSIS-WRBTR,
+
+        TOT_AMT TYPE BSIS-PSWBT,
+        V_COUNT TYPE I,
+
+        V_BELNRCOUNT TYPE I ,
+
+        END OF GS_FINAL_TEMP.
+
+DATA :GT_FINAL_TEMP TYPE STANDARD TABLE OF GS_FINAL_TEMP,
+      WA_FINAL_TEMP TYPE GS_FINAL_TEMP.
+
+
+DATA  :  LV_BUKRS TYPE BSEG-BUKRS ,
+         LV_BUDAT TYPE BSIS-BUDAT ,
+         LV_HKONT TYPE BSEG-HKONT ,
+         LV_BLART TYPE BSIS-BLART ,
+         LV_MWSKZ TYPE BSIS-MWSKZ .
+
+DATA : GT_FCAT TYPE SLIS_T_FIELDCAT_ALV,
+       IT_SORT TYPE SLIS_T_SORTINFO_ALV,
+       WA_FCAT TYPE SLIS_FIELDCAT_ALV,
+       WA_SORT TYPE SLIS_SORTINFO_ALV.
+
+DATA : LAYOUT TYPE SLIS_LAYOUT_ALV.
+
+
+*&---------------------------------------------------------------------*
+*&  Selection Screen Fields
+*&---------------------------------------------------------------------*
+
+SELECTION-SCREEN BEGIN OF BLOCK B1 WITH FRAME TITLE TITLE.
+SELECT-OPTIONS  : SO_BUKRS FOR LV_BUKRS OBLIGATORY NO INTERVALS NO-EXTENSION ,
+                  SO_BUDAT FOR LV_BUDAT,
+                  SO_HKONT FOR LV_HKONT,
+                  SO_BLART FOR LV_BLART,
+                  SO_MWSKZ FOR LV_MWSKZ .
+
+SELECTION-SCREEN END OF BLOCK B1.
+
+
+START-OF-SELECTION.
+  PERFORM GET_DATA.
+  PERFORM READ_DATA.
+
+END-OF-SELECTION.
+  PERFORM FIELD_CATLOG.
+  PERFORM ALV_DISPLAY.
+
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM GET_DATA .
+  SELECT BUKRS
+         BELNR
+         GJAHR
+         BLART
+         BLDAT
+         BUDAT
+         XBLNR
+         MWSKZ
+         SHKZG
+         PSWBT
+         HKONT
+       FROM BSIS INTO TABLE GT_BSIS
+       WHERE BUKRS IN SO_BUKRS AND HKONT IN SO_HKONT AND BUDAT IN SO_BUDAT AND BLART IN SO_BLART AND MWSKZ IN SO_MWSKZ
+       AND ( MWSKZ EQ 'IJ' OR MWSKZ EQ 'I8' OR BLART EQ 'KR' OR BLART EQ 'RE' OR BLART EQ 'KA' OR BLART EQ 'SA').
+
+  SELECT BUKRS
+       BELNR
+       GJAHR
+       BLART
+       BLDAT
+       BUDAT
+       XBLNR
+       MWSKZ
+       SHKZG
+       PSWBT
+       HKONT
+     FROM BSAS INTO TABLE GT_BSAS
+     WHERE BUKRS IN SO_BUKRS AND HKONT IN SO_HKONT AND BUDAT IN SO_BUDAT AND BLART IN SO_BLART AND MWSKZ IN SO_MWSKZ
+     AND ( MWSKZ EQ 'IJ' OR MWSKZ EQ 'I8' OR BLART EQ 'KR' OR BLART EQ 'RE' OR BLART EQ 'KA' OR BLART EQ 'SA') .
+
+APPEND LINES OF GT_BSIS TO GT_BSIS_BSAS.
+APPEND LINES OF GT_BSAS TO GT_BSIS_BSAS.
+
+  SELECT   LIFNR
+           GJAHR
+           BELNR
+       FROM BSIK INTO TABLE GT_BSIK FOR ALL ENTRIES IN GT_BSIS_BSAS WHERE BELNR = GT_BSIS_BSAS-BELNR AND GJAHR = GT_BSIS_BSAS-GJAHR .
+
+  SELECT
+       LIFNR
+       GJAHR
+       BELNR
+   FROM BSAK INTO TABLE GT_BSAK FOR ALL ENTRIES IN GT_BSIS_BSAS WHERE BELNR = GT_BSIS_BSAS-BELNR AND GJAHR = GT_BSIS_BSAS-GJAHR .
+
+  SELECT  LIFNR
+          NAME1
+          ADRNR
+          ERDAT
+          KUNNR FROM LFA1 INTO TABLE GT_LFA1
+          FOR ALL ENTRIES IN GT_BSIK  WHERE LIFNR = GT_BSIK-LIFNR.
+
+  SELECT  LIFNR
+      NAME1
+      ADRNR
+      ERDAT
+      KUNNR FROM LFA1 INTO TABLE GT1_LFA1
+      FOR ALL ENTRIES IN GT_BSAK  WHERE LIFNR = GT_BSAK-LIFNR.
+
+  SELECT  LIFNR
+          J_1ISERN FROM LFA1  INTO TABLE GT_J_1IMOVEND
+          FOR ALL ENTRIES IN GT_BSIK WHERE LIFNR = GT_BSIK-LIFNR.
+
+  SELECT  LIFNR
+      J_1ISERN FROM LFA1  INTO TABLE GT1_J_1IMOVEND
+      FOR ALL ENTRIES IN GT_BSAK WHERE LIFNR = GT_BSAK-LIFNR.
+
+  SELECT   BELNR
+    GJAHR
+    CPUDT
+    FROM BKPF INTO TABLE GT_BKPF FOR ALL ENTRIES IN GT_BSIS_BSAS WHERE BELNR = GT_BSIS_BSAS-BELNR AND GJAHR = GT_BSIS_BSAS-GJAHR .
+
+  SELECT BUKRS "#EC CI_DB_OPERATION_OK[2431747] " Added by <IT-CAR Tool> during Code Remediation
+         BELNR
+         GJAHR
+         MWSKZ
+         SHKZG
+         PSWBT
+         HKONT
+         WRBTR
+       FROM BSEG INTO TABLE GT_BSIS_BASIC FOR ALL ENTRIES IN GT_BSIS_BSAS WHERE BELNR = GT_BSIS_BSAS-BELNR
+       AND GJAHR = GT_BSIS_BSAS-GJAHR
+     and BUZEI = '02'.
+
+
+
+ENDFORM.                    " GET_DATA
+*&---------------------------------------------------------------------*
+*&      Form  READ_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM READ_DATA .
+
+  LOOP AT GT_BSIS_BSAS INTO WA_BSIS_BSAS.
+
+    WA_FINAL-BUKRS = WA_BSIS_BSAS-BUKRS.
+    WA_FINAL-BELNR = WA_BSIS_BSAS-BELNR.
+    WA_FINAL-GJAHR = WA_BSIS_BSAS-GJAHR.
+    WA_FINAL-MWSKZ = WA_BSIS_BSAS-MWSKZ.
+    WA_FINAL-BELNR = WA_BSIS_BSAS-BELNR.
+    WA_FINAL-SHKZG = WA_BSIS_BSAS-SHKZG.
+    WA_FINAL-PSWBT = WA_BSIS_BSAS-PSWBT.
+    WA_FINAL-HKONT = WA_BSIS_BSAS-HKONT.
+    WA_FINAL-BLART = WA_BSIS_BSAS-BLART.
+    WA_FINAL-BLDAT = WA_BSIS_BSAS-BLDAT.
+    WA_FINAL-BUDAT = WA_BSIS_BSAS-BUDAT.
+    WA_FINAL-XBLNR = WA_BSIS_BSAS-XBLNR.
+
+    LOOP AT GT_BKPF INTO WA_BKPF WHERE BELNR = WA_FINAL-BELNR .
+    WA_FINAL-CPUDT  = WA_BKPF-CPUDT .
+    ENDLOOP.
+
+    READ TABLE  GT_BSIK  INTO  WA_BSIK  WITH KEY   BELNR = WA_FINAL-BELNR.
+    IF SY-SUBRC = 0 .
+      WA_FINAL-LIFNR  = WA_BSIK-LIFNR .
+    ENDIF.
+
+    IF WA_FINAL-LIFNR IS INITIAL .
+      READ TABLE GT_BSAK INTO WA_BSAK WITH KEY  BELNR = WA_FINAL-BELNR.
+      IF SY-SUBRC = 0 .
+        WA_FINAL-LIFNR  = WA_BSAK-LIFNR .
+      ENDIF.
+    ENDIF.
+
+    APPEND WA_FINAL TO GT_FINAL.
+    CLEAR WA_FINAL.
+  ENDLOOP.
+
+  LOOP AT GT_FINAL INTO WA_FINAL .
+    SHIFT WA_FINAL-HKONT LEFT DELETING LEADING '0' .
+    MODIFY GT_FINAL FROM WA_FINAL .
+    CLEAR WA_FINAL.
+  ENDLOOP.
+
+ DELETE GT_FINAL WHERE HKONT NE '26364211' AND HKONT NE '26364221' AND
+                     HKONT NE '26364231' AND HKONT NE '26364241' AND HKONT NE '26364251' AND HKONT NE '26364271' AND HKONT NE '26365101'  .
+APPEND LINES OF GT_FINAL TO GT_FINAL_TEMP.
+
+  LOOP AT GT_FINAL INTO WA_FINAL .
+
+
+
+    READ TABLE GT_LFA1 INTO WA_LFA1 WITH KEY LIFNR = WA_FINAL-LIFNR.
+    IF SY-SUBRC = 0 .
+      WA_FINAL-NAME1  = WA_LFA1-NAME1.
+    ENDIF.
+
+    IF WA_FINAL-NAME1 IS INITIAL .
+      READ TABLE GT1_LFA1 INTO WA1_LFA1 WITH KEY LIFNR = WA_FINAL-LIFNR.
+      IF SY-SUBRC = 0 .
+        WA_FINAL-NAME1  = WA1_LFA1-NAME1.
+      ENDIF.
+    ENDIF.
+
+    READ TABLE GT_J_1IMOVEND  INTO WA_J_1IMOVEND  WITH KEY LIFNR = WA_FINAL-LIFNR.
+    IF SY-SUBRC = 0 .
+      WA_FINAL-J_1ISERN  = WA_J_1IMOVEND-J_1ISERN.
+    ENDIF.
+
+    IF WA_FINAL-J_1ISERN IS INITIAL.
+      READ TABLE GT1_J_1IMOVEND  INTO WA1_J_1IMOVEND  WITH KEY LIFNR = WA_FINAL-LIFNR.
+      IF SY-SUBRC = 0 .
+        WA_FINAL-J_1ISERN  = WA1_J_1IMOVEND-J_1ISERN.
+      ENDIF.
+    ENDIF.
+
+
+    MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING J_1ISERN NAME1.
+    CLEAR WA_FINAL.
+  ENDLOOP.
+
+  LOOP AT GT_FINAL INTO WA_FINAL .
+
+    IF  WA_FINAL-SHKZG EQ 'H' .
+      WA_FINAL-PSWBT = - WA_FINAL-PSWBT .
+    ENDIF .
+    MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING PSWBT .
+    CLEAR WA_FINAL .
+
+  ENDLOOP.
+
+
+
+  LV_COUNT = 0 .
+
+  LOOP AT GT_FINAL INTO WA_FINAL .
+
+    WA_FINAL-V_COUNT = LV_COUNT  + 1.
+
+    ON CHANGE OF WA_FINAL-BELNR .
+      CLEAR LV_SUM .
+      CLEAR LV_COUNT .
+
+
+
+    ENDON.
+
+    LV_COUNT = LV_COUNT + WA_FINAL-TOT_AMT  .
+
+    WA_FINAL-V_COUNT = LV_COUNT.
+
+    LV_SUM  = LV_SUM + WA_FINAL-PSWBT .
+
+    WA_FINAL-TOT_AMT = LV_SUM . "#EC CI_FLDEXT_OK[2610650]    "Added by SPLABAP during code remediation
+
+
+    MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING V_COUNT TOT_AMT .
+
+    CLEAR WA_FINAL.
+
+
+  ENDLOOP.
+
+  LOOP AT GT_FINAL INTO WA_FINAL .
+    LV_BELNRCOUNT = LV_BELNRCOUNT + 1 .
+
+    AT END OF BELNR .
+      WA_FINAL-V_BELNRCOUNT = LV_BELNRCOUNT .
+
+      MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING V_BELNRCOUNT .
+
+    ENDAT.
+
+    CLEAR WA_FINAL.
+
+  ENDLOOP.
+
+  DELETE GT_FINAL WHERE V_BELNRCOUNT EQ '0' .
+
+ LOOP AT GT_FINAL INTO WA_FINAL .
+    MODIFY GT_FINAL FROM WA_FINAL .
+    CLEAR WA_FINAL.
+  ENDLOOP .
+
+  LOOP AT GT_FINAL_TEMP INTO WA_FINAL_TEMP .
+    READ TABLE GT_BSIS_BASIC INTO WA_BSIS_BASIC WITH KEY BELNR = WA_FINAL_TEMP-BELNR.
+    IF SY-SUBRC = 0.
+      WA_FINAL_TEMP-WRBTR = WA_BSIS_BASIC-WRBTR.
+    ENDIF.
+
+
+    MODIFY GT_FINAL_TEMP FROM WA_FINAL_TEMP ."TRANSPORTING WRBTR.
+CLEAR WA_FINAL_TEMP.
+ ENDLOOP.
+
+ LV_COUNT = 0 .
+
+  LOOP AT GT_FINAL_TEMP INTO WA_FINAL_TEMP .
+
+    WA_FINAL_TEMP-V_COUNT = LV_COUNT  + 1.
+    ON CHANGE OF WA_FINAL_TEMP-BELNR .
+    CLEAR LV_SUM .
+    CLEAR LV_COUNT .
+    ENDON.
+
+    LV_COUNT = LV_COUNT + WA_FINAL_TEMP-TOT_AMT  .
+    WA_FINAL_TEMP-V_COUNT = LV_COUNT.
+    LV_SUM  = LV_SUM + WA_FINAL_TEMP-PSWBT .
+    WA_FINAL_TEMP-TOT_AMT = LV_SUM .    "#EC CI_FLDEXT_OK[2610650]    "Added by SPLABAP during code remediation
+    MODIFY GT_FINAL_TEMP FROM WA_FINAL_TEMP TRANSPORTING V_COUNT TOT_AMT .
+
+
+    READ TABLE GT_LFA1 INTO WA_LFA1 WITH KEY LIFNR = WA_FINAL_TEMP-LIFNR.
+    IF SY-SUBRC = 0 .
+      WA_FINAL_TEMP-NAME1  = WA_LFA1-NAME1.
+    ENDIF.
+
+    IF WA_FINAL-NAME1 IS INITIAL .
+      READ TABLE GT1_LFA1 INTO WA1_LFA1 WITH KEY LIFNR = WA_FINAL_TEMP-LIFNR.
+      IF SY-SUBRC = 0 .
+        WA_FINAL_TEMP-NAME1  = WA1_LFA1-NAME1.
+      ENDIF.
+    ENDIF.
+
+    READ TABLE GT_J_1IMOVEND  INTO WA_J_1IMOVEND  WITH KEY LIFNR = WA_FINAL_TEMP-LIFNR.
+    IF SY-SUBRC = 0 .
+      WA_FINAL_TEMP-J_1ISERN  = WA_J_1IMOVEND-J_1ISERN.
+    ENDIF.
+
+    IF WA_FINAL_TEMP-J_1ISERN IS INITIAL.
+      READ TABLE GT1_J_1IMOVEND  INTO WA1_J_1IMOVEND  WITH KEY LIFNR = WA_FINAL_TEMP-LIFNR.
+      IF SY-SUBRC = 0 .
+        WA_FINAL_TEMP-J_1ISERN  = WA1_J_1IMOVEND-J_1ISERN.
+      ENDIF.
+    ENDIF.
+
+
+    MODIFY GT_FINAL_TEMP FROM WA_FINAL_TEMP TRANSPORTING J_1ISERN NAME1.
+    CLEAR WA_FINAL_TEMP.
+
+
+  ENDLOOP.
+
+
+*   LOOP AT GT_FINAL_TEMP INTO WA_FINAL_TEMP .
+*    MODIFY GT_FINAL_TEMP FROM WA_FINAL_TEMP .
+*    CLEAR WA_FINAL_TEMP.
+*  ENDLOOP .
+
+
+ENDFORM.                    " READ_DATA
+*&---------------------------------------------------------------------*
+*&      Form  FIELD_CATLOG
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FIELD_CATLOG .
+
+  PERFORM ALV_LAYOUT USING 1 'Company Code' 'BUKRS' 'GT_FINAL_TEMP' '' .
+  PERFORM ALV_LAYOUT USING 3 'SAP Document Number' 'BELNR' 'GT_FINAL_TEMP' ''.
+  PERFORM ALV_LAYOUT USING 5 'Document Type' 'BLART' 'GT_FINAL_TEMP' ''.
+  PERFORM ALV_LAYOUT USING 7 'Invoice Number' 'XBLNR' 'GT_FINAL_TEMP' ''.
+  PERFORM ALV_LAYOUT USING 9 'Document Date' 'BLDAT' 'GT_FINAL_TEMP' ''.
+  PERFORM ALV_LAYOUT USING 11 'Posting Date' 'BUDAT' 'GT_FINAL_TEMP' ''.
+
+
+  PERFORM ALV_LAYOUT USING 12 'Entry Date' 'CPUDT' 'GT_FINAL_TEMP' ''.
+
+  PERFORM ALV_LAYOUT USING 13 'G/L Account Number' 'HKONT' 'GT_FINAL_TEMP' ''.
+  PERFORM ALV_LAYOUT USING 15 'Amount' 'TOT_AMT' 'GT_FINAL_TEMP' ''.
+  PERFORM ALV_LAYOUT USING 17 'Tax Code' 'MWSKZ' 'GT_FINAL_TEMP' ''.
+
+  PERFORM ALV_LAYOUT USING 18 'Vendor Code' 'LIFNR' 'GT_FINAL_TEMP' ''.
+
+  PERFORM ALV_LAYOUT USING 19 'Name Of Service Provider' 'NAME1' 'GT_FINAL_TEMP' ''.
+
+  PERFORM ALV_LAYOUT USING 23 'Service Tax Registration Number' 'J_1ISERN' 'GT_FINAL_TEMP' ''.
+
+
+  PERFORM ALV_LAYOUT USING 25 'Base Amt' 'WRBTR' 'GT_FINAL_TEMP' ''.
+
+ENDFORM.                    " FIELD_CATLOG
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_LAYOUT
+*----------------------------------------------------------------------*
+FORM ALV_LAYOUT USING P1 P2 P3 P4 P5.
+  CLEAR WA_FCAT.
+  WA_FCAT-COL_POS = P1.
+  WA_FCAT-SELTEXT_L = P2.
+  WA_FCAT-FIELDNAME = P3.
+  WA_FCAT-TABNAME = P4.
+  WA_FCAT-DO_SUM = P5.
+  APPEND WA_FCAT TO GT_FCAT.
+
+ENDFORM.                    " ALV_LAYOUT
+*&---------------------------------------------------------------------*
+*&      Form  ALV_DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM ALV_DISPLAY .
+
+  LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+  LAYOUT-ZEBRA = 'X'.
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+   EXPORTING
+*     I_INTERFACE_CHECK                 = ' '
+*     I_BYPASSING_BUFFER                = ' '
+*     I_BUFFER_ACTIVE                   = ' '
+     I_CALLBACK_PROGRAM                = SY-REPID
+*     I_CALLBACK_PF_STATUS_SET          = ' '
+*     I_CALLBACK_USER_COMMAND           = ' '
+   I_CALLBACK_TOP_OF_PAGE            = 'ALV_CATALOG_HEADER'
+*     I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*     I_CALLBACK_HTML_END_OF_LIST       = ' '
+*     I_STRUCTURE_NAME                  =
+*     I_BACKGROUND_ID                   = ' '
+*     I_GRID_TITLE                      =
+*     I_GRID_SETTINGS                   =
+      IS_LAYOUT                     = LAYOUT
+      IT_FIELDCAT                    = GT_FCAT[]
+*     IT_EXCLUDING                      =
+*     IT_SPECIAL_GROUPS                 =
+      IT_SORT                        = IT_SORT
+*     IT_FILTER                         =
+*     IS_SEL_HIDE                       =
+     I_DEFAULT                         = 'X'
+     I_SAVE                            = 'A'
+*     IS_VARIANT                        =
+*     IT_EVENTS                         =
+*     IT_EVENT_EXIT                     =
+*     IS_PRINT                          =
+*     IS_REPREP_ID                      =
+*     I_SCREEN_START_COLUMN             = 0
+*     I_SCREEN_START_LINE               = 0
+*     I_SCREEN_END_COLUMN               = 0
+*     I_SCREEN_END_LINE                 = 0
+*     I_HTML_HEIGHT_TOP                 = 0
+*     I_HTML_HEIGHT_END                 = 0
+*     IT_ALV_GRAPHICS                   =
+*     IT_HYPERLINK                      =
+*     IT_ADD_FIELDCAT                   =
+*     IT_EXCEPT_QINFO                   =
+*     IR_SALV_FULLSCREEN_ADAPTER        =
+*   IMPORTING
+*     E_EXIT_CAUSED_BY_CALLER           =
+*     ES_EXIT_CAUSED_BY_USER            =
+      TABLES
+          T_OUTTAB                       = GT_FINAL_TEMP[]
+*   EXCEPTIONS
+*     PROGRAM_ERROR                     = 1
+*     OTHERS                            = 2
+            .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+ENDFORM.                    " ALV_DISPLAY
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_CATALOG_HEADER
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM ALV_CATALOG_HEADER.
+
+*     DATA:WA_HEADER TYPE SLIS_LISTHEADER,
+*          IT_HEADER TYPE SLIS_T_LISTHEADER.
+*
+*  WA_HEADER-TYP = 'H'.
+*  WA_HEADER-INFO  = 'Service Tax Report' .
+*  APPEND WA_HEADER TO IT_HEADER.
+*  CLEAR WA_HEADER.
+*
+*   WA_HEADER-TYP = 'S'.
+*  CONCATENATE 'Report Run Date:'
+*                 SY-DATUM+6(2) '-'
+*                 SY-DATUM+4(2) '-'
+*                 SY-DATUM+0(4) INTO WA_HEADER-INFO.
+*  APPEND WA_HEADER TO IT_HEADER.
+*  CLEAR WA_HEADER.
+*
+*    CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+*    EXPORTING
+*      IT_LIST_COMMENTARY = IT_HEADER .
+*    "  I_LOGO             = 'ZLOGO'  .
+
+
+
+
+  DATA : LIT_HEADER TYPE  SLIS_T_LISTHEADER,
+       LS_LINE TYPE SLIS_LISTHEADER.
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'H'.
+  LS_LINE-KEY = ' '.
+  LS_LINE-INFO = 'Service Tax Report' .
+  APPEND LS_LINE TO LIT_HEADER.
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = LIT_HEADER
+      I_LOGO             = 'ZLOGO'.
+
+
+ENDFORM.                    "ALV_CATALOG_HEADER

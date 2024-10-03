@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Access token Function Module</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_GREYTIPF01</SOBJ_NAME>
+    <SOBJ_NAME>LZFG_GREYTIPTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_GREYTIP</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZHR_GET_ACCESS_TOKEN</FUNCNAME>
+     <SHORT_TEXT>Access Token API Call</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FOCRCE_GEN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>XFELD</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ACCESS_TOKEN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZACCESS</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>COMMUNICATION_FAILURE</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>STATUS_FAILURE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FOCRCE_GEN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Force Generation of auth Key</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ACCESS_TOKEN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for structure</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>COMMUNICATION_FAILURE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>failure to communicate to source</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>STATUS_FAILURE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>incorrect response</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZHR_GET_ACCESS_TOKEN_RUPIFI</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Access Token API Call</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FOCRCE_GEN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>XFELD</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>CUSTYPE</PARAMETER>
+       <TYP>ZFINCODE</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ACCESS_TOKEN</PARAMETER>
+       <TYP>ZRIAUTHSTR</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>COMMUNICATION_FAILURE</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>STATUS_FAILURE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FOCRCE_GEN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Force Generation of auth Key</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CUSTYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Finance type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ACCESS_TOKEN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for structure</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>COMMUNICATION_FAILURE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>failure to communicate to source</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>STATUS_FAILURE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>incorrect response</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

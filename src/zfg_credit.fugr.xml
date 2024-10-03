@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Credit mangement details</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_CREDITTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_CREDIT</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_CREDIT_BLKRLS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Detials of t Credit blok and Credit release</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_CREDIT_BLK</PARAMETER>
+       <DBSTRUCT>ZSTR_CREDIT_BLK</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_CREDIT_BLK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Credit block bapi</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

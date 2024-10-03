@@ -1,0 +1,11 @@
+"Name: \PR:SAPMV45A\FO:USEREXIT_FIELD_MODIFICATION\SE:END\EI
+ENHANCEMENT 0 ZSALES_ORDER_TERM_HIDE.
+*
+IF vbak-auart = 'YBBP' .
+ IF SCREEN-NAME = 'VBKD-ZTERM'.
+    SCREEN-INPUT = 0.               " Disable for input.
+ ENDIF.
+ENDIF.
+  "santhosh added code here..
+
+ENDENHANCEMENT.

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group Einvoice Update Tech</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LYFG_EINV_UPDATETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLYFG_EINV_UPDATE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>YSD_FG_IRN_EWB_UPDATE</FUNCNAME>
+     <SHORT_TEXT>Einvoice Update</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_IRN_DTEL</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IG_INVREFNUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IM_EWB_DETL</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IG_EWAYBILL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_IRN_DTEL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>GST India: Link IRN details to Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IM_EWB_DETL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Link E-Way Bill to Document</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Budget Calculation</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBUDGET_CALULATIONTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBUDGET_CALULATION</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_BUDGET_CALCULATION_MIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Budget calculation to MIS Portal</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMPANY_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FISCAL_YEAR</PARAMETER>
+       <TYP>GNJHR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MONTH</PARAMETER>
+       <TYP>ZMONTHS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_BUDGET</PARAMETER>
+       <DBSTRUCT>ZSTR_BUDGET</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMPANY_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FISCAL_YEAR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Fiscal Year</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MONTH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>MONTH</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_BUDGET</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for BAPI Budget calculation</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

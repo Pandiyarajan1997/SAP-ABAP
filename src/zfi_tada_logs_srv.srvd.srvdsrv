@@ -1,0 +1,4 @@
+@EndUserText.label: 'Travel Log Service Definitiomn'
+define service ZFI_TADA_LOGS_SRV {
+  expose ZFI_TRA_INC_LOG as connection;
+}

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SICF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <URL>/sap/bc/bsp/sap/zhr_emp_asset/</URL>
+   <ICFSERVICE>
+    <ICF_NAME>ZHR_EMP_ASSET</ICF_NAME>
+    <ORIG_NAME>zhr_emp_asset</ORIG_NAME>
+   </ICFSERVICE>
+   <ICFDOCU>
+    <ICF_NAME>ZHR_EMP_ASSET</ICF_NAME>
+    <ICF_LANGU>E</ICF_LANGU>
+    <ICF_DOCU>Hr asset upload report Fiori App</ICF_DOCU>
+   </ICFDOCU>
+  </asx:values>
+ </asx:abap>
+</abapGit>

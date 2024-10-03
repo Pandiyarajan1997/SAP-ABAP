@@ -1,0 +1,930 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function group for service PO</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZMM_SERVICE_POF00</SOBJ_NAME>
+    <SOBJ_NAME>LZMM_SERVICE_POF01</SOBJ_NAME>
+    <SOBJ_NAME>LZMM_SERVICE_POF02</SOBJ_NAME>
+    <SOBJ_NAME>LZMM_SERVICE_POF03</SOBJ_NAME>
+    <SOBJ_NAME>LZMM_SERVICE_POI00</SOBJ_NAME>
+    <SOBJ_NAME>LZMM_SERVICE_POT00</SOBJ_NAME>
+    <SOBJ_NAME>LZMM_SERVICE_POTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZMM_SERVICE_PO</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>TABLEFRAME_ZMM_SERVICE_PO</FUNCNAME>
+     <SHORT_TEXT>Extended Table Maintenance: Upper Level</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>VIEW_ACTION</PARAMETER>
+       <DEFAULT>&apos;S&apos;</DEFAULT>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VIEW_NAME</PARAMETER>
+       <DBFIELD>DD02V-TABNAME</DBFIELD>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>CORR_NUMBER</PARAMETER>
+       <DBFIELD>E070-TRKORR</DBFIELD>
+       <DEFAULT>&apos; &apos;</DEFAULT>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>DBA_SELLIST</PARAMETER>
+       <DBSTRUCT>VIMSELLIST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>DPL_SELLIST</PARAMETER>
+       <DBSTRUCT>VIMSELLIST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
+       <DBSTRUCT>VIMEXCLFUN</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>X_HEADER</PARAMETER>
+       <DBSTRUCT>VIMDESC</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>X_NAMTAB</PARAMETER>
+       <DBSTRUCT>VIMNAMTAB</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>MISSING_CORR_NUMBER</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>VIEW_ACTION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Aktion mit Tabelle: anz./änd./transp. (S/U/T)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VIEW_NAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Name der Tabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CORR_NUMBER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DBA_SELLIST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DPL_SELLIST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>X_HEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für die Tabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>X_NAMTAB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für die Tabellen-Felder</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Korrekturnummer fehlt</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>TABLEPROC_ZMM_SERVICE_PO</FUNCNAME>
+     <GLOBAL_FLAG>X</GLOBAL_FLAG>
+     <SHORT_TEXT>Lower-level extended table maintenance</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FCODE</PARAMETER>
+       <DEFAULT>&apos;RDED&apos;</DEFAULT>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VIEW_ACTION</PARAMETER>
+       <DEFAULT>&apos;S&apos;</DEFAULT>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VIEW_NAME</PARAMETER>
+       <DBFIELD>DD02V-TABNAME</DBFIELD>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>CORR_NUMBER</PARAMETER>
+       <DBFIELD>E070-TRKORR</DBFIELD>
+       <DEFAULT>&apos; &apos;</DEFAULT>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>UCOMM</PARAMETER>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>UPDATE_REQUIRED</PARAMETER>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>CORR_KEYTAB</PARAMETER>
+       <DBSTRUCT>E071K</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>DBA_SELLIST</PARAMETER>
+       <DBSTRUCT>VIMSELLIST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>DPL_SELLIST</PARAMETER>
+       <DBSTRUCT>VIMSELLIST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
+       <DBSTRUCT>VIMEXCLFUN</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>EXTRACT</PARAMETER>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>TOTAL</PARAMETER>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>X_HEADER</PARAMETER>
+       <DBSTRUCT>VIMDESC</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>X_NAMTAB</PARAMETER>
+       <DBSTRUCT>VIMNAMTAB</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>MISSING_CORR_NUMBER</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>SAVING_CORRECTION_FAILED</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FCODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>gewünschte Funktion des Bausteins</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VIEW_ACTION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Aktion mit Tabelle: anz./änd./transp. (S/U/T)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VIEW_NAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Name der Tabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CORR_NUMBER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UCOMM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>UPDATE_REQUIRED</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CORR_KEYTAB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DBA_SELLIST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DPL_SELLIST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EXTRACT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TOTAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>X_HEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für die Tabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>X_NAMTAB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für die Tabellen-Felder</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Korrekturnummer fehlt</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZFUND_GET</FUNCNAME>
+     <SHORT_TEXT>Function module to get fund based on date</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>DATE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>LV_FUND</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR10</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>ENTER_DATE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_FUND</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Character Field with Length 10</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ENTER_DATE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Date is Mandatory</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_SERVICE_PO_MAINTAIN</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for service PO Maintenence</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>POHEADER</PARAMETER>
+       <TYP>BAPIMEPOHEADER</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_FLAG</PARAMETER>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PONUMBER</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>EBELN</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_ITEM</PARAMETER>
+       <DBSTRUCT>BAPIMEPOITEM</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_ACCITEM</PARAMETER>
+       <DBSTRUCT>BAPIMEPOACCOUNT</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_MESSAGES</PARAMETER>
+       <TYP>ZMM_API_LOG_TT</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_ITEMTEXT</PARAMETER>
+       <DBSTRUCT>BAPIMEPOTEXT</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_CUST</PARAMETER>
+       <DBSTRUCT>ZST_AUTOSR_PO_CUST</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>POHEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Auto service PO</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_FLAG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Flag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PONUMBER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Purchasing Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_ITEM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Purchase Order Item</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_ACCITEM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Account Assignment Fields for Purchase Order</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_MESSAGES</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Auto Service PO Log from API</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_ITEMTEXT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Texts: (Header or Item)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_CUST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure of Auto Service PO BAPI</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+   <DYNPROS>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZMM_SERVICE_PO</PROGRAM>
+      <SCREEN>0001</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>View Maintenance: Overview Screen ZMM_PO_PLANT_CC</DESCRIPT>
+      <TYPE>N</TYPE>
+      <NEXTSCREEN>0001</NEXTSCREEN>
+      <LINES>061</LINES>
+      <COLUMNS>255</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>TABLE_CTRL</TYPE>
+       <NAME>TCTRL_ZMM_PO_PLANT_CC</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>255</LENGTH>
+       <HEIGHT>059</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_SCROLL_V>X</C_SCROLL_V>
+       <C_SCROLL_H>X</C_SCROLL_H>
+       <TC_TABTYPE>ENTRY</TC_TABTYPE>
+       <TC_SEPAR_V>X</TC_SEPAR_V>
+       <TC_SEPAR_H>X</TC_SEPAR_H>
+       <TC_TITLE>X</TC_TITLE>
+       <TC_HEADER>X</TC_HEADER>
+       <TC_CONFIG>X</TC_CONFIG>
+       <TC_SEL_LNS>MULTIPLE</TC_SEL_LNS>
+       <TC_SEL_CLS>NONE</TC_SEL_CLS>
+       <TC_LSEL_CL>X</TC_LSEL_CL>
+       <TC_FIXCOL>001</TC_FIXCOL>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH_TMPL</TYPE>
+       <NAME>VIM_POSI_PUSH</NAME>
+       <TEXT>____________________</TEXT>
+       <LINE>061</LINE>
+       <COLUMN>019</COLUMN>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>POSI</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>VIM_POSITION_INFO</NAME>
+       <TEXT>______________________________</TEXT>
+       <LINE>061</LINE>
+       <COLUMN>040</COLUMN>
+       <LENGTH>030</LENGTH>
+       <VISLENGTH>030</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <UP_LOWER>X</UP_LOWER>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <OUTPUTONLY>X</OUTPUTONLY>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <_--32_DIMENS>X</_--32_DIMENS>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <NAME>OK_CODE</NAME>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_PLANT_CC</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>VIM_FRAME_FIELD</NAME>
+       <TEXT>____________________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <LENGTH>060</LENGTH>
+       <VISLENGTH>060</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <UP_LOWER>X</UP_LOWER>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_TITLE>X</TC_TITLE>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_PLANT_CC</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZMM_PO_PLANT_CC-ZWERKS</NAME>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>4</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_PLANT_CC</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZMM_PO_PLANT_CC-ZKOSTL</NAME>
+       <LINE>001</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_PLANT_CC</CONT_NAME>
+       <TYPE>CHECK</TYPE>
+       <NAME>VIM_MARKED</NAME>
+       <LINE>001</LINE>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>001</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <TC_SELCOL>X</TC_SELCOL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_PLANT_CC</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZMM_PO_PLANT_CC-ZWERKS</NAME>
+       <TEXT>?___</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>KEY</GROUP1>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <PARAM_ID>WRK</PARAM_ID>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_PLANT_CC</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZMM_PO_PLANT_CC-ZKOSTL</NAME>
+       <TEXT>?_________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <CONV_EXIT>ALPHA</CONV_EXIT>
+       <PARAM_ID>KOS</PARAM_ID>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  TCTRL_ZMM_PO_PLANT_CC CURSOR NEXTLINE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> LOOP AT EXTRACT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZMM_PO_PLANT_CC-ZWERKS .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZMM_PO_PLANT_CC-ZKOSTL .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZMM_PO_PLANT_CC-ZWERKS .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZMM_SERVICE_PO</PROGRAM>
+      <SCREEN>0002</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>View Maintenance: Overview Screen ZMM_PO_VEN_TAX</DESCRIPT>
+      <TYPE>N</TYPE>
+      <NEXTSCREEN>0002</NEXTSCREEN>
+      <LINES>061</LINES>
+      <COLUMNS>255</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>TABLE_CTRL</TYPE>
+       <NAME>TCTRL_ZMM_PO_VEN_TAX</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>255</LENGTH>
+       <HEIGHT>059</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_SCROLL_V>X</C_SCROLL_V>
+       <C_SCROLL_H>X</C_SCROLL_H>
+       <TC_TABTYPE>ENTRY</TC_TABTYPE>
+       <TC_SEPAR_V>X</TC_SEPAR_V>
+       <TC_SEPAR_H>X</TC_SEPAR_H>
+       <TC_TITLE>X</TC_TITLE>
+       <TC_HEADER>X</TC_HEADER>
+       <TC_CONFIG>X</TC_CONFIG>
+       <TC_SEL_LNS>MULTIPLE</TC_SEL_LNS>
+       <TC_SEL_CLS>NONE</TC_SEL_CLS>
+       <TC_LSEL_CL>X</TC_LSEL_CL>
+       <TC_FIXCOL>001</TC_FIXCOL>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH_TMPL</TYPE>
+       <NAME>VIM_POSI_PUSH</NAME>
+       <TEXT>____________________</TEXT>
+       <LINE>061</LINE>
+       <COLUMN>019</COLUMN>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>POSI</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>VIM_POSITION_INFO</NAME>
+       <TEXT>______________________________</TEXT>
+       <LINE>061</LINE>
+       <COLUMN>040</COLUMN>
+       <LENGTH>030</LENGTH>
+       <VISLENGTH>030</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <UP_LOWER>X</UP_LOWER>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <OUTPUTONLY>X</OUTPUTONLY>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <_--32_DIMENS>X</_--32_DIMENS>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <NAME>OK_CODE</NAME>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_VEN_TAX</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>VIM_FRAME_FIELD</NAME>
+       <TEXT>____________________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <LENGTH>060</LENGTH>
+       <VISLENGTH>060</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <UP_LOWER>X</UP_LOWER>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_TITLE>X</TC_TITLE>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_VEN_TAX</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZMM_PO_VEN_TAX-VENDOR</NAME>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_VEN_TAX</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZMM_PO_VEN_TAX-TAXCODE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>002</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>4</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_VEN_TAX</CONT_NAME>
+       <TYPE>CHECK</TYPE>
+       <NAME>VIM_MARKED</NAME>
+       <LINE>001</LINE>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>001</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <TC_SELCOL>X</TC_SELCOL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_VEN_TAX</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZMM_PO_VEN_TAX-VENDOR</NAME>
+       <TEXT>?_________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>KEY</GROUP1>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <CONV_EXIT>ALPHA</CONV_EXIT>
+       <PARAM_ID>LIF</PARAM_ID>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZMM_PO_VEN_TAX</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZMM_PO_VEN_TAX-TAXCODE</NAME>
+       <TEXT>?_</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>002</LENGTH>
+       <VISLENGTH>002</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  TCTRL_ZMM_PO_VEN_TAX CURSOR NEXTLINE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> LOOP AT EXTRACT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZMM_PO_VEN_TAX-VENDOR .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZMM_PO_VEN_TAX-TAXCODE .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZMM_PO_VEN_TAX-VENDOR .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>   ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+   </DYNPROS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

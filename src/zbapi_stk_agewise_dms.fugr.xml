@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Stk Agewise DMS FG</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_STK_AGEWISE_DMSTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_STK_AGEWISE_DMS</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_STK_AGEWISE_DMS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>FM Stock Agewise DMS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_BUKRS</PARAMETER>
+       <DEFAULT>&apos;DMS1&apos;</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IR_KUNNR</PARAMETER>
+       <TYP>KUNNR_TTY</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_BLDAT</PARAMETER>
+       <DEFAULT>SY-DATUM</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BLDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_BATCH</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>XFELD</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>GT_BATCH</PARAMETER>
+       <TYP>ZTT_STK_AGEWISE_DMS_WIBATCH</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IR_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range table for KUNNR</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_BLDAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date in Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_BATCH</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_BATCH</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

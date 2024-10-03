@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZQM02_0450</SCVARIANT>
+     <PROGNAME>SAPLIPAR</PROGNAME>
+     <DYNPRO>0450</DYNPRO>
+     <VERSION>13</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZQM02_0450</SCVARIANT>
+      <SCVTEXT>Change notification</SCVTEXT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZQM02_0450</SCVARIANT>
+      <FIELDNAME>RQM02-PARNR_VERA</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+      <ITYPE>C</ITYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

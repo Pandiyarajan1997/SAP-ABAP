@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>YCOR6N_0130</SCVARIANT>
+     <PROGNAME>SAPLCOWB</PROGNAME>
+     <DYNPRO>0130</DYNPRO>
+     <VERSION>12</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>YCOR6N_0130</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOR6N_0130</SCVARIANT>
+      <FIELDNAME>BMAR</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOR6N_0130</SCVARIANT>
+      <FIELDNAME>DELE</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOR6N_0130</SCVARIANT>
+      <FIELDNAME>DMAR</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOR6N_0130</SCVARIANT>
+      <FIELDNAME>MALL</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

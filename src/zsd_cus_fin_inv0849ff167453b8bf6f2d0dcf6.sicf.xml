@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SICF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <URL>/sap/ZAPI_SERVICE/zsd_cus_fin_inv/</URL>
+   <ICFSERVICE>
+    <ICF_NAME>ZSD_CUS_FIN_INV</ICF_NAME>
+    <HTTPCDE500>2</HTTPCDE500>
+    <HTTPCDE401>2</HTTPCDE401>
+    <HTTPCDELPAG>2</HTTPCDELPAG>
+    <HTTPCDENFPAG>2</HTTPCDENFPAG>
+    <ORIG_NAME>zsd_cus_fin_inv</ORIG_NAME>
+   </ICFSERVICE>
+   <ICFDOCU>
+    <ICF_NAME>ZSD_CUS_FIN_INV</ICF_NAME>
+    <ICF_LANGU>E</ICF_LANGU>
+    <ICF_DOCU>Api for get details of sf customer invoice</ICF_DOCU>
+   </ICFDOCU>
+   <ICFHANDLER_TABLE>
+    <ICFHANDLER>
+     <ICF_NAME>ZSD_CUS_FIN_INV</ICF_NAME>
+     <ICFORDER>01</ICFORDER>
+     <ICFTYP>A</ICFTYP>
+     <ICFHANDLER>ZCL_API_CUS_FIN_INV</ICFHANDLER>
+    </ICFHANDLER>
+   </ICFHANDLER_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

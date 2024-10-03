@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Trip Sheet</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_TRIP_SHEETTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_TRIP_SHEET</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFM_TRIP_SHEET_UPDATE</FUNCNAME>
+     <SHORT_TEXT>Function Module for updating Trip sheet tables</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>ACTION</PARAMETER>
+       <TYP>C</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>WA_ZFREIGHT_HEADER</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZFREIGHT_HEADER</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_ZFREIGHT_ITEM</PARAMETER>
+       <DBSTRUCT>ZFREIGHT_ITEM</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_ZFREIGHT_TRAN</PARAMETER>
+       <DBSTRUCT>ZFREIGHT_TRAN</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_ZFREIGHT_HEADER</PARAMETER>
+       <DBSTRUCT>ZFREIGHT_HEADER</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>DB_UPDATE_SUCCESS</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DB_UPDATE_FAIL</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DB_INSERT_SUCCESS</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DB_INSERT_FAIL</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DB_TRIP_DELETE_SUCCESS</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>DB_TRIP_DELETE_FAIL</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>ACTION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Insert or Update</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>WA_ZFREIGHT_HEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Freight Header Details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ZFREIGHT_ITEM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Freight Item Details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ZFREIGHT_TRAN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Freight Transaction Details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ZFREIGHT_HEADER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Freight Header Details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DB_UPDATE_SUCCESS</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>DB Update has been successful</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DB_UPDATE_FAIL</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>DB Update has failed</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DB_INSERT_SUCCESS</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>DB Insertion successful</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DB_INSERT_FAIL</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>DB Insertion failed</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DB_TRIP_DELETE_SUCCESS</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Trip sheet deletion success</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DB_TRIP_DELETE_FAIL</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Trip sheet deletion fail</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

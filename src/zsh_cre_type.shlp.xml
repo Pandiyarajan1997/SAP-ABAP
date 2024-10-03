@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SHLP" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD30V>
+    <SHLPNAME>ZSH_CRE_TYPE</SHLPNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DDTEXT>Search Help Credit Type Desc</DDTEXT>
+    <ISSIMPLE>X</ISSIMPLE>
+    <SELMETHOD>ZCUST_ACC_TYPE</SELMETHOD>
+    <SELMTYPE>T</SELMTYPE>
+    <SELMEXIT>ZCUST_CREDIT</SELMEXIT>
+    <DIALOGTYPE>D</DIALOGTYPE>
+   </DD30V>
+   <DD32P_TABLE>
+    <DD32P>
+     <SHLPNAME>ZSH_CRE_TYPE</SHLPNAME>
+     <FIELDNAME>TYP_NAM</FIELDNAME>
+     <FLPOSITION>0001</FLPOSITION>
+     <ROLLNAME>ZCNAME</ROLLNAME>
+     <SHLPINPUT>X</SHLPINPUT>
+     <SHLPOUTPUT>X</SHLPOUTPUT>
+     <SHLPSELPOS>01</SHLPSELPOS>
+     <SHLPLISPOS>01</SHLPLISPOS>
+     <ROLLCHANGE>X</ROLLCHANGE>
+    </DD32P>
+   </DD32P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

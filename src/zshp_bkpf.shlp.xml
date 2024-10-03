@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SHLP" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD30V>
+    <SHLPNAME>ZSHP_BKPF</SHLPNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DDTEXT>Search help for BKPF-BELNR</DDTEXT>
+    <ISSIMPLE>X</ISSIMPLE>
+    <SELMETHOD>BKPF</SELMETHOD>
+    <SELMTYPE>T</SELMTYPE>
+    <DIALOGTYPE>D</DIALOGTYPE>
+   </DD30V>
+   <DD32P_TABLE>
+    <DD32P>
+     <SHLPNAME>ZSHP_BKPF</SHLPNAME>
+     <FIELDNAME>BELNR</FIELDNAME>
+     <FLPOSITION>0001</FLPOSITION>
+     <ROLLNAME>BELNR_D</ROLLNAME>
+     <SHLPINPUT>X</SHLPINPUT>
+     <SHLPOUTPUT>X</SHLPOUTPUT>
+     <SHLPSELPOS>01</SHLPSELPOS>
+     <SHLPSELDIS>X</SHLPSELDIS>
+     <SHLPLISPOS>01</SHLPLISPOS>
+     <SCRLEN3>20</SCRLEN3>
+    </DD32P>
+   </DD32P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

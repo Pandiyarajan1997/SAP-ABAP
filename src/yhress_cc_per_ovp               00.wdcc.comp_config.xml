@@ -1,0 +1,4068 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Component Name="FPM_OVP_COMPONENT" ConfId="YHRESS_CC_PER_OVP" ConfType="00" ConfVar="">
+ <Node Name="CONFIGURATION_CONTEXT" SimpleFormat="true">
+  <Item Index="000001" SimpleFormat="true">
+   <Node Name="OVP_APPLICATION" SimpleFormat="true">
+    <Item Index="000001" SimpleFormat="true">
+     <TITLE Transl="true"/>
+     <PERSONALIZATION_ENABLED>X</PERSONALIZATION_ENABLED>
+     <HELP_ENABLED>X</HELP_ENABLED>
+     <PRINT_ENABLED/>
+     <PAGE_SELECTOR_ENABLED/>
+     <COLLAPSED_UIBB_PROC_MODE/>
+     <Node Name="MSG_MAPPER_SETTING" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <ENABLE_MAPPING>X</ENABLE_MAPPING>
+       <GENERALIZATION_TYPE>FPM01</GENERALIZATION_TYPE>
+       <ENABLE_LOGGING/>
+       <LOG_GENERALIZATION/>
+       <LOG_HIDE/>
+       <HIDE_ON_GENERALIZATION/>
+      </Item>
+     </Node>
+     <Node Name="PERSONALIZATION" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <Node Name="P_CONTENT_AREA" SimpleFormat="true"/>
+      </Item>
+     </Node>
+     <Node Name="APP_SPECIFIC_CC" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <COMPONENT>HRESS_C_PERSINFO_CONFIG</COMPONENT>
+       <CONFIG_ID>HRESS_CC_PER_CONFIG</CONFIG_ID>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+      </Item>
+     </Node>
+     <Node Name="ACTION" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_1</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000002" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_1</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000003" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_1</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000004" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_2</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000005" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_2</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000006" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_2</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000007" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_3</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000008" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_3</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000009" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_3</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000010" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_4</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000011" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_4</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000012" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_4</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000013" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_5</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000014" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_5</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000015" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_5</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000016" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_6</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000017" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_6</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000018" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_6</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000019" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_7</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000020" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_7</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000021" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_7</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000022" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_8</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000023" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_8</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000024" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_8</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000025" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_9</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000026" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_9</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000027" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_9</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000028" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_10</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000029" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_10</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000030" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_10</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000031" SimpleFormat="true">
+       <ID>FPM_SAVE_AND_BACK_TO_MAIN_12</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000032" SimpleFormat="true">
+       <ID>FPM_SAVE_12</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000033" SimpleFormat="true">
+       <ID>FPM_BACK_TO_MAIN_12</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000034" SimpleFormat="true">
+       <ID>FPM_SAVE_AND_BACK_TO_MAIN_13</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000035" SimpleFormat="true">
+       <ID>FPM_SAVE_13</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <ACTION_TYPE>0</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000036" SimpleFormat="true">
+       <ID>FPM_BACK_TO_MAIN_13</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <TARGET_CONTENT_AREA/>
+       <COMPONENT/>
+       <INTERFACE_VIEW/>
+       <CONFIG_ID/>
+       <CONFIG_TYPE>00</CONFIG_TYPE>
+       <CONFIG_VAR/>
+       <INSTANCE_ID/>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000037" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_11</ID>
+       <EVENT_ID>FPM_SAVE_AND_BACK_TO_MAIN</EVENT_ID>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000038" SimpleFormat="true">
+       <ID Final="5 ">FPM_SAVE_11</ID>
+       <EVENT_ID>FPM_SAVE</EVENT_ID>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000039" SimpleFormat="true">
+       <ID Final="5 ">FPM_BACK_TO_MAIN_11</ID>
+       <EVENT_ID>FPM_BACK_TO_MAIN</EVENT_ID>
+       <ACTION_TYPE>1</ACTION_TYPE>
+       <Node Name="EVENT_PARAMETER" SimpleFormat="true"/>
+      </Item>
+     </Node>
+     <Node Name="WIRE_MODEL" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <TRANSACTION>CL_HRESS_TRANSACTION</TRANSACTION>
+       <Node Name="WIRE" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_4</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_PER_PHOTO</COMPONENT>
+         <CONFIG_ID/>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;PHOTO_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000002" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_5</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_PERSDATA_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0002_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000003" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_9</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_ADDRESS_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0006_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000004" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_10</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_BANK_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0009_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000005" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_11</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_FAMILY_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0021_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000006" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_26</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_COMM_DATA_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0105_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000007" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_27</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_OFFICE_DATA_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0032_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000008" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_40</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ADDRESS_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_ADDRESS_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000009" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_5070984C152A4D55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_GEN_CA</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_APDATA_CA</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000010" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_41</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ADDRESS_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_ADDRESS_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000011" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_42</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_BANK_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_BANK_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000012" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_43</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_COMM_DATA_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_COMM_DATA_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000013" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_44</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_FAMILY_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_FAMILY_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000014" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_45</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_OFFICE_DATA_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_OFFICE_DATA_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000015" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_46</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_PERSDATA_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_PERSDATA_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000016" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_47</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_BANK_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_BANK_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000017" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_48</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_COMM_DATA_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_COMM_DATA_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000018" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_49</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_FAMILY_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_FAMILY_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000019" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_50</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_OFFICE_DATA_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_OFFICE_DATA_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000020" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_51</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_PERSDATA_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_PERSDATA_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000021" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_56</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_PERSID_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0185_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000022" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_57</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_PERSID_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_PERSID_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000023" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_58</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_PERSID_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_PERSID_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000024" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_60</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_ALTNAME_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0182_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000025" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_63</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ALTNAME_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_ALTNAME_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000026" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_5E75984C152A4D55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_VAL_CA</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_APDATA_GEN_CA</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000027" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_20DB9C4CDB06D511E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_MIN_CA</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_APDATA_GEN_CA</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000028" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_73DA9C4CDB06D511E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_DIS_CA</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_APDATA_GEN_CA</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000029" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_3B71984C152A4D55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_DSL_CA</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_APDATA_GEN_CA</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_RELATION</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_RELATION&gt;IT0077_07_LIN_C1_REL&lt;/BOL_RELATION&gt;&lt;CREATION_MODE/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000030" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_64</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ALTNAME_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_ALTNAME_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000031" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_94</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_BENMED_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_BENMED_US</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000032" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_95</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_BENMED_US</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0376_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000033" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_96</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_BENMED_US</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_BENMED_US</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000034" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_111</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_EXT_ORG_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0219_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000035" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_112</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_EXT_ORG_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_EXT_ORG_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000036" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_WIRE_113</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_EXT_ORG_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_EXT_ORG_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000037" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_15785A4C24CC0F34E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ADDPERDATAL_GB</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_ADDPERDATA_GB</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_RELATION</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_RELATION&gt;IT0077_08_LIN_A_REL&lt;/BOL_RELATION&gt;&lt;CREATION_MODE&gt;V&lt;/CREATION_MODE&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000038" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_E37D504C8AEC050FE10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ADDPERDATA_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_ADDPERDATA_GB</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000039" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_DE78514CAB325C25E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_ADDPERDATA_GB</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_ADDPERDATA_GB</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000040" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_8377514CAB325C25E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_ADDPERDATA_GB</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0077_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2&gt;IT0077_NN_REL&lt;/BOL_SUBSEQ_RELATION2&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000041" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE>_GENP_9EC4A04CB00D5E55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_APDATA_CA</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0077_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2&gt;IT0077_NN_REL&lt;/BOL_SUBSEQ_RELATION2&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000042" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_D269274D818C3C43E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_OVR_EMRG_ADDRESS_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT/>
+         <SRC_CONFIG_ID/>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE/>
+         <PORT_IDENTIFIER/>
+         <CONNECTOR>CL_HRESS_CONNECTOR_PER_OVR</CONNECTOR>
+         <DEPENDENCY_PARAM>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;STRUCTURE&gt;&lt;BOL_SUBSEQ_RELATION&gt;IT0006_REL&lt;/BOL_SUBSEQ_RELATION&gt;&lt;BOL_SUBSEQ_RELATION2/&gt;&lt;/STRUCTURE&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</DEPENDENCY_PARAM>
+        </Item>
+        <Item Index="000043" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_816A274D818C3C43E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_EMRG_ADDRESS_XX</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_LIST_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_OVR_EMRG_ADDRESS_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+        <Item Index="000044" SimpleFormat="true">
+         <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_C36A274D818C3C43E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+         <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+         <CONFIG_ID>HRESS_CC_PER_DTL_EMRG_ADDR_VAL</CONFIG_ID>
+         <CONFIG_TYPE>00</CONFIG_TYPE>
+         <CONFIG_VAR/>
+         <INSTANCE_ID/>
+         <SRC_COMPONENT>FPM_FORM_UIBB</SRC_COMPONENT>
+         <SRC_CONFIG_ID>HRESS_CC_PER_DTL_EMRG_ADDRESS_XX</SRC_CONFIG_ID>
+         <SRC_CONFIG_TYPE>00</SRC_CONFIG_TYPE>
+         <SRC_CONFIG_VAR/>
+         <SRC_INSTANCE_ID/>
+         <PORT_TYPE>LS</PORT_TYPE>
+         <PORT_IDENTIFIER>STANDARD</PORT_IDENTIFIER>
+         <CONNECTOR>CL_HRESS_CONNECTOR_IDENTITY</CONNECTOR>
+         <DEPENDENCY_PARAM/>
+        </Item>
+       </Node>
+      </Item>
+     </Node>
+     <Node Name="CONTENT_AREA" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <ID Final="5 ">INITIAL_SCREEN</ID>
+       <TYPE>INIT</TYPE>
+       <TITLE Transl="true">2</TITLE>
+       <DEFAULT>X</DEFAULT>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true"/>
+        </Item>
+       </Node>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>HRESS_C_PERNR_SELECTION</COMPONENT>
+           <INTERFACE_VIEW>PERNR_SELECTION_MAIN</INTERFACE_VIEW>
+           <CONFIG_ID/>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>0</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_1</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000002" SimpleFormat="true">
+       <ID Final="5 ">OVERVIEW_SCREEN</ID>
+       <TYPE>MAIN</TYPE>
+       <TITLE Transl="true">7</TITLE>
+       <DEFAULT>X</DEFAULT>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED>X</PERSONALIZATION_ENABLED>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true"/>
+        </Item>
+       </Node>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE>11</LAYOUT_TYPE>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_2</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_PERSID_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">102</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_52</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">103</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>PERSID_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_ALTNAME_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>3</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">119</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_59</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">120</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>EDIT_ALTNAME</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_ADDRESS_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>4</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">12</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_6</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">13</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>ADDRESS_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000004" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_COMM_DATA_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>5</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">64</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_24</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">65</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>COMMUNICATION_DATA</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000005" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_FAMILY_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">16</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_8</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">17</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>FAMILY_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000006" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_BANK_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">14</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_7</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">15</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>BANK_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000007" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_OFFICE_DATA_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>3</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">66</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_25</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">67</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>OFFICE_DATA</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000008" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_BENMED_US</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>5</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">182</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_86</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">183</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>BENMED_DATA</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000009" SimpleFormat="true">
+           <COMPONENT>FPM_TABBED_UIBB</COMPONENT>
+           <INTERFACE_VIEW>TABBED_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_OVR_PERSDATA_PHOTO_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">203</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_97</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">204</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>PERSDATA_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000010" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_ADDPERDATA_GB</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>6</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">387</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE>_GENP_6A01504C41F5133BE10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">388</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>ADDPERDATA_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS Final="5 ">X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000011" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_APDATA_CA</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>6</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">397</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE>_GENP_99C2A04CB00D5E55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">398</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>APDATA_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000012" SimpleFormat="true">
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_63E7274D488C3E43E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INDEX>4</INDEX>
+           <LOCATION>2</LOCATION>
+           <TYPE>T</TYPE>
+           <CONFIG_ID>HRESS_CC_PER_OVR_EMRG_ADDRESS_XX</CONFIG_ID>
+           <DEFAULT_EDIT_PAGE>EMRG_ADDRESS_DETAIL</DEFAULT_EDIT_PAGE>
+           <TITLE Transl="true">405</TITLE>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000003" SimpleFormat="true">
+       <ID Final="5 ">ADDRESS_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ADDRESS_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_12</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ADDRESS_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_34</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_1</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">205</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_1</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_1</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">209</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_1</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_1</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">213</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_1</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000004" SimpleFormat="true">
+       <ID Final="5 ">BANK_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_BANK_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_15</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_BANK_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_35</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_2</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">36</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_2</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_2</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">34</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_2</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_2</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">38</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_2</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000005" SimpleFormat="true">
+       <ID Final="5 ">FAMILY_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_FAMILY_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_17</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_FAMILY_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_36</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_3</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">47</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_3</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_3</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">45</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_3</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_3</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">49</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_3</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000006" SimpleFormat="true">
+       <ID Final="5 ">PERSDATA_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_PERSDATA_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_19</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_PER_PHOTO</COMPONENT>
+           <INTERFACE_VIEW>W_PHOTO_MODIFY</INTERFACE_VIEW>
+           <CONFIG_ID/>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_20</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_PERSDATA_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>3</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_37</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_4</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">58</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_4</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_4</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">56</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_4</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_4</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">60</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_4</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000007" SimpleFormat="true">
+       <ID Final="5 ">COMMUNICATION_DATA</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_COMM_DATA_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_29</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_COMM_DATA_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_38</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_5</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">75</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_5</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_5</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">73</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_5</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_5</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">77</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_5</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000008" SimpleFormat="true">
+       <ID Final="5 ">OFFICE_DATA</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_OFFICE_DATA_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_31</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_OFFICE_DATA_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_39</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_6</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">86</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_6</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_6</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">84</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_6</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_6</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">88</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_6</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000009" SimpleFormat="true">
+       <ID Final="5 ">PERSID_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_PERSID_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_54</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_PERSID_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_55</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_7</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">111</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_7</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_7</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">109</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_7</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_7</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">113</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_7</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000010" SimpleFormat="true">
+       <ID Final="5 ">EDIT_ALTNAME</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true">121</TITLE>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ALTNAME_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_61</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ALTNAME_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_62</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_8</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">128</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_8</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_8</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">126</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_8</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_8</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">130</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_8</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000011" SimpleFormat="true">
+       <ID Final="5 ">BENMED_DATA</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true">184</TITLE>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_9</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">199</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_9</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_9</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">191</TEXT>
+           <IMAGE>ICON_SYSTEM_SAVE</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_9</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_9</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">195</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_9</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_BENMED_US</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_92</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_BENMED_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_93</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000012" SimpleFormat="true">
+       <ID Final="5 ">PERS_DATA</ID>
+       <TYPE>MAIN</TYPE>
+       <TITLE Transl="true">217</TITLE>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>1</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED>X</PERSONALIZATION_ENABLED>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE>11</LAYOUT_TYPE>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_2</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_TABBED_UIBB</COMPONENT>
+           <INTERFACE_VIEW>TABBED_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_OVR_PERSDATA_PHOTO_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">369</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_98</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">376</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>PERSDATA_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_BENMED_US</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">372</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_99</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">377</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>BENMED_DATA</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_ADDRESS_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">373</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_100</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">378</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>ADDRESS_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true"/>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000013" SimpleFormat="true">
+       <ID Final="5 ">DEPENDENT_BEN_INFO</ID>
+       <TYPE>MAIN</TYPE>
+       <TITLE Transl="true">395</TITLE>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>1</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED>X</PERSONALIZATION_ENABLED>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE>11</LAYOUT_TYPE>
+         <INDEX>1</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_2</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_FAMILY_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">371</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_101</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true">374</EXPLANATION_TEXT>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>FAMILY_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>FPM_LIST_UIBB</COMPONENT>
+           <INTERFACE_VIEW>LIST_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_OVR_EXT_ORG_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>2</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE>T</TYPE>
+           <COLLAPSED/>
+           <TITLE Transl="true">375</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_102</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE>EXT_ORG_DETAIL</DEFAULT_EDIT_PAGE>
+           <INSTANCE_ID/>
+           <PADDING>X</PADDING>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <CAPTURE_ACTIONS>X</CAPTURE_ACTIONS>
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true"/>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000014" SimpleFormat="true">
+       <ID Final="5 ">EXT_ORG_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true"/>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>0</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED/>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_10</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">380</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_10</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_10</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">379</TEXT>
+           <IMAGE>~Icon/Save</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_10</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_10</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">381</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_10</ACTION_ID>
+             <INDEX>1</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>1</INDEX>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_EXT_ORG_XX</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_109</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_EXT_ORG_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_CFG_UIBB_110</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000015" SimpleFormat="true">
+       <ID>ADDPERDATA_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true">403</TITLE>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>1</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED>X</PERSONALIZATION_ENABLED>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID>SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>0</INDEX>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID>COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ADDPERDATA_GB</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true">394</TITLE>
+           <FPM_PRIMARY_ATTRIBUTE>_GENP_CA06504C41F5133BE10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_802ED84C3EB9731AE10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <INTERFACE_VIEW>COMPOSITE_WINDOW</INTERFACE_VIEW>
+           <COMPONENT>FPM_COMPOSITE_UIBB</COMPONENT>
+           <INDEX>2</INDEX>
+           <LOCATION>1</LOCATION>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ADDPER_COMP_GB</CONFIG_ID>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_ADDPERDATA_VAL</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>3</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE>_GENP_8960514CA332D924E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID>FPM_SAVE_AND_BACK_TO_MAIN_12</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">391</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID>FPM_SAVE_AND_BACK_TO_MAIN_12</ACTION_ID>
+             <INDEX>0</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID>FPM_SAVE_12</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">392</TEXT>
+           <IMAGE>~Icon/Save</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID>FPM_SAVE_12</ACTION_ID>
+             <INDEX>0</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID>FPM_BACK_TO_MAIN_12</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">393</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR>X</HAS_SEPARATOR>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID>FPM_BACK_TO_MAIN_12</ACTION_ID>
+             <INDEX>0</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000016" SimpleFormat="true">
+       <ID>APDATA_DETAIL</ID>
+       <TYPE>FULL</TYPE>
+       <TITLE Transl="true">399</TITLE>
+       <DEFAULT/>
+       <EXPLANATION_TEXT Transl="true"/>
+       <EXPLANATION_DOCUMENT/>
+       <DLG_NAME/>
+       <DLG_BUTTON_SET>0</DLG_BUTTON_SET>
+       <DLG_TOOLTIP_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CANCEL_BUTTON Transl="true"/>
+       <DLG_TOOLTIP_FOR_CLOSE_BUTTON Transl="true"/>
+       <ACTION_TYPE_PERS_DIALOG>0</ACTION_TYPE_PERS_DIALOG>
+       <ACTION_TYPE_DRAG_DROP_AB>0</ACTION_TYPE_DRAG_DROP_AB>
+       <ACTION_TYPE_CLOSE>1</ACTION_TYPE_CLOSE>
+       <PERSONALIZATION_ENABLED>X</PERSONALIZATION_ENABLED>
+       <DLG_TEXT_FOR_CLOSE_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_OK_BUTTON Transl="true"/>
+       <DLG_TEXT_FOR_CANCEL_BUTTON Transl="true"/>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID>FPM_SAVE_AND_BACK_TO_MAIN_13</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>1</INDEX>
+           <TEXT Transl="true">400</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID>FPM_SAVE_AND_BACK_TO_MAIN_13</ACTION_ID>
+             <INDEX>0</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID>FPM_SAVE_13</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>2</INDEX>
+           <TEXT Transl="true">401</TEXT>
+           <IMAGE>~Icon/Save</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR/>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID>FPM_SAVE_13</ACTION_ID>
+             <INDEX>0</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID>FPM_BACK_TO_MAIN_13</ELEMENT_ID>
+           <TYPE>BU</TYPE>
+           <INDEX>3</INDEX>
+           <TEXT Transl="true">402</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <TOOLTIP Transl="true"/>
+           <EXPLANATION_TEXT Transl="true"/>
+           <SPECIAL_PROPERTIES/>
+           <ENABLED>X</ENABLED>
+           <VISIBILITY>02</VISIBILITY>
+           <ALIGNMENT>LEFT</ALIGNMENT>
+           <HAS_SEPARATOR>X</HAS_SEPARATOR>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID>FPM_BACK_TO_MAIN_13</ACTION_ID>
+             <INDEX>0</INDEX>
+             <TEXT Transl="true"/>
+             <IMAGE/>
+             <HOTKEY>00</HOTKEY>
+             <ENABLED>X</ENABLED>
+             <VISIBILITY>02</VISIBILITY>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID>SECTION_1</ID>
+         <LAYOUT_TYPE/>
+         <INDEX>0</INDEX>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COMPONENT>FPM_COMPOSITE_UIBB</COMPONENT>
+           <INTERFACE_VIEW>COMPOSITE_WINDOW</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_CA</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>1</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE>_GENP_CFBC984C1B2A5D55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <CONFIG_ID>HRESS_CC_PER_DTL_APDATA_VAL_CA</CONFIG_ID>
+           <CONFIG_TYPE>00</CONFIG_TYPE>
+           <CONFIG_VAR/>
+           <LOCATION>1</LOCATION>
+           <ROW>0</ROW>
+           <INDEX>2</INDEX>
+           <NEEDS_STRETCHING/>
+           <HIDDEN/>
+           <TYPE/>
+           <COLLAPSED/>
+           <TITLE Transl="true"/>
+           <FPM_PRIMARY_ATTRIBUTE>_GENP_A9BD984C1B2A5D55E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <EXPLANATION_TEXT Transl="true"/>
+           <EXPLANATION_DOCUMENT/>
+           <DEFAULT_IN_STACK/>
+           <DEFAULT_EDIT_PAGE/>
+           <INSTANCE_ID/>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true"/>
+          </Item>
+         </Node>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID>COLUMN_ID_1</COLUMN_ID>
+           <STACKED/>
+           <ROWS>0</ROWS>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+      </Item>
+      <Item Index="000017" SimpleFormat="true">
+       <ID Final="5 ">EMRG_ADDRESS_DETAIL</ID>
+       <TITLE Transl="true">404</TITLE>
+       <TYPE>FULL</TYPE>
+       <Node Name="EXTERNAL_NAVIGATION" SimpleFormat="true"/>
+       <Node Name="PAGE_MASTER_AREA" SimpleFormat="true"/>
+       <Node Name="SECTION" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <ID Final="5 ">SECTION_1</ID>
+         <Node Name="COLUMN_LAYOUT" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <COLUMN_ID Final="5 ">COLUMN_ID_1</COLUMN_ID>
+          </Item>
+         </Node>
+         <Node Name="UIBB" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_B5E7274D488C3E43E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <INTERFACE_VIEW>FORM_WINDOW</INTERFACE_VIEW>
+           <INDEX>1</INDEX>
+           <LOCATION>1</LOCATION>
+           <COMPONENT>FPM_FORM_UIBB</COMPONENT>
+           <CONFIG_ID>HRESS_CC_PER_DTL_EMRG_ADDRESS_XX</CONFIG_ID>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <FPM_PRIMARY_ATTRIBUTE Final="5 ">_GENP_36E8274D488C3E43E10000000A42878C</FPM_PRIMARY_ATTRIBUTE>
+           <INTERFACE_VIEW>VALIDITY_PERIOD</INTERFACE_VIEW>
+           <INDEX>2</INDEX>
+           <LOCATION>1</LOCATION>
+           <COMPONENT>HRESS_C_VALIDITY</COMPONENT>
+           <CONFIG_ID>HRESS_CC_PER_DTL_EMRG_ADDR_VAL</CONFIG_ID>
+           <Node Name="UIBB_TOOLBAR" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <Node Name="UIBB_BUTTON" SimpleFormat="true"/>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+       <Node Name="TOOLBAR" SimpleFormat="true">
+        <Item Index="000001" SimpleFormat="true">
+         <Node Name="BUTTON" SimpleFormat="true">
+          <Item Index="000001" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_11</ELEMENT_ID>
+           <TEXT Transl="true">406</TEXT>
+           <IMAGE>~Icon/SaveAndBack</IMAGE>
+           <INDEX>1</INDEX>
+           <SPECIAL_PROPERTIES>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;DESIGN&gt;00&lt;/DESIGN&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</SPECIAL_PROPERTIES>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_AND_BACK_TO_MAIN_11</ACTION_ID>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000002" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_SAVE_11</ELEMENT_ID>
+           <TEXT Transl="true">407</TEXT>
+           <IMAGE>~Icon/Save</IMAGE>
+           <INDEX>2</INDEX>
+           <SPECIAL_PROPERTIES>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;DESIGN&gt;00&lt;/DESIGN&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</SPECIAL_PROPERTIES>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_SAVE_11</ACTION_ID>
+            </Item>
+           </Node>
+          </Item>
+          <Item Index="000003" SimpleFormat="true">
+           <ELEMENT_ID Final="5 ">FPM_BACK_TO_MAIN_11</ELEMENT_ID>
+           <TEXT Transl="true">408</TEXT>
+           <IMAGE>~Icon/Cancel</IMAGE>
+           <INDEX>3</INDEX>
+           <HAS_SEPARATOR/>
+           <SPECIAL_PROPERTIES>﻿&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;asx:abap xmlns:asx=&quot;http://www.sap.com/abapxml&quot; version=&quot;1.0&quot;&gt;&lt;asx:values&gt;&lt;DESIGN&gt;00&lt;/DESIGN&gt;&lt;/asx:values&gt;&lt;/asx:abap&gt;</SPECIAL_PROPERTIES>
+           <Node Name="BUTTON_SUB_ITEM" SimpleFormat="true">
+            <Item Index="000001" SimpleFormat="true">
+             <ACTION_ID Final="5 ">FPM_BACK_TO_MAIN_11</ACTION_ID>
+            </Item>
+           </Node>
+          </Item>
+         </Node>
+        </Item>
+       </Node>
+      </Item>
+     </Node>
+     <Node Name="APPLICATION_SETTINGS" SimpleFormat="true">
+      <Item Index="000001" SimpleFormat="true">
+       <TRANSIENT_STATE>N</TRANSIENT_STATE>
+       <MAXIMUM_MESSAGES_SIZE>5</MAXIMUM_MESSAGES_SIZE>
+       <SHOW_MESSAGE_LOG/>
+       <FPM_MESSAGE_AREA_DESIGN>0</FPM_MESSAGE_AREA_DESIGN>
+       <FPM_MESSAGE_AREA_DISPLAY>0</FPM_MESSAGE_AREA_DISPLAY>
+      </Item>
+     </Node>
+     <Node Name="CONF_COMP_USAGE" SimpleFormat="true"/>
+     <Node Name="PAGE_SELECTOR" SimpleFormat="true"/>
+    </Item>
+   </Node>
+  </Item>
+ </Node>
+</Component>

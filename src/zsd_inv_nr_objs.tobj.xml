@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TOBJ" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJH>
+    <OBJECTNAME>ZSD_INV_NR_OBJ</OBJECTNAME>
+    <OBJECTTYPE>S</OBJECTTYPE>
+    <CLIDEP>X</CLIDEP>
+    <OBJCATEG>APPL</OBJCATEG>
+    <IMPORTABLE>3</IMPORTABLE>
+   </OBJH>
+   <OBJT>
+    <LANGUAGE>E</LANGUAGE>
+    <OBJECTNAME>ZSD_INV_NR_OBJ</OBJECTNAME>
+    <OBJECTTYPE>S</OBJECTTYPE>
+    <DDTEXT>Table Maintance for Invoice Number Range Object</DDTEXT>
+   </OBJT>
+   <OBJS>
+    <OBJS>
+     <OBJECTNAME>ZSD_INV_NR_OBJ</OBJECTNAME>
+     <OBJECTTYPE>S</OBJECTTYPE>
+     <TABNAME>ZSD_INV_NR_OBJ</TABNAME>
+     <DDIC>X</DDIC>
+     <PRIM_TABLE>X</PRIM_TABLE>
+    </OBJS>
+   </OBJS>
+   <TOBJ>
+    <TDDAT>
+     <TABNAME>ZSD_INV_NR_OBJ</TABNAME>
+     <CCLASS>&amp;NC&amp;</CCLASS>
+    </TDDAT>
+    <TVDIR>
+     <TABNAME>ZSD_INV_NR_OBJ</TABNAME>
+     <AREA>ZSD_INV_NR_OBJ</AREA>
+     <TYPE>1</TYPE>
+     <LISTE>9000</LISTE>
+     <BASTAB>X</BASTAB>
+     <FLAG>X</FLAG>
+    </TVDIR>
+    <TVIMF>
+     <TVIMF>
+      <TABNAME>ZSD_INV_NR_OBJ</TABNAME>
+      <EVENT>05</EVENT>
+      <FORMNAME>NEW_ENTRY</FORMNAME>
+     </TVIMF>
+    </TVIMF>
+   </TOBJ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

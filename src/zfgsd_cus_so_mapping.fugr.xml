@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for customer so mapping</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFGSD_CUS_SO_MAPPINGTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFGSD_CUS_SO_MAPPING</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SD_CUS_SO_MAPPING</FUNCNAME>
+     <SHORT_TEXT>fm for customer so mapping</SHORT_TEXT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/CAS_TT_KUNNR_RANGE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_FINAL</PARAMETER>
+       <DBSTRUCT>ZSTSD_CUS_SO_MAPPING</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LT_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range table for Sold to party</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_FINAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for customer so mapping</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZSALES_DELIVERY</NAME>
+    <SUBC>1</SUBC>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <CUA>
+    <ADM>
+     <MENCODE>000001</MENCODE>
+    </ADM>
+    <STA>
+     <RSMPE_STAT>
+      <CODE>RAM</CODE>
+      <MODAL>C</MODAL>
+      <INT_NOTE>CALL BACK FUNCTION</INT_NOTE>
+      <CTXCODE>000001</CTXCODE>
+     </RSMPE_STAT>
+    </STA>
+    <MTX>
+     <RSMPE_MNLT>
+      <CODE>000001</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Context menu</TEXT>
+      <INT_NOTE>CALL BACK FUNCTION</INT_NOTE>
+     </RSMPE_MNLT>
+    </MTX>
+   </CUA>
+   <TPOOL>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Delivery Report</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>LIST</KEY>
+     <ENTRY>Delivery Details</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+   </TPOOL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

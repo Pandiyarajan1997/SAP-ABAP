@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Customer Master Details</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_CUSTOMER_DETAILSTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_CUSTOMER_DETAILS</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_CUSTOMER_DETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get Customer Information</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>LV_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/CAK_TT_CUSTOMER_RANGE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LV_VTWEG</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>VTWEG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LV_LOEVM</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>LOEVM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_CUSTOMER</PARAMETER>
+       <DBSTRUCT>ZGET_CUST_DETAILS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LV_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range Table type for Customer No.</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Organization</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_VTWEG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Distribution Channel</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_LOEVM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Deletion Indicator</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_CUSTOMER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for customer data</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

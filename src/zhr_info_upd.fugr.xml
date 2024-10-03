@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>HR infotype update</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZHR_INFO_UPDTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZHR_INFO_UPD</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZHR_INFO_UPDATE</FUNCNAME>
+     <SHORT_TEXT>HR infotype update</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_FILENAME</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>LOCALFILE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_STRUCTURE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TABNAME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>CT_RETURN_TABLE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TABLE</TYP>
+      </RSCHA>
+     </CHANGING>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_FILENAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Local file for upload/download</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_STRUCTURE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CT_RETURN_TABLE</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

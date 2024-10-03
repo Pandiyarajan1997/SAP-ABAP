@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SRVB" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SRVB>
+    <METADATA>
+     <NAME>ZFI_TADA_LOGS_SRVB</NAME>
+     <TYPE>SRVB/SVB</TYPE>
+     <DESCRIPTION>Travel and Incentives service Binding</DESCRIPTION>
+     <LINKS>
+      <item>
+       <HREF>/sap/bc/adt/businessservices/odatav2/ZFI_TADA_LOGS_SRVB</HREF>
+       <REL>http://www.sap.com/categories/odatav2</REL>
+       <TYPE>application/vnd.sap.adt.businessservices.odatav2.v2+xml</TYPE>
+       <TITLE>ODATAV2</TITLE>
+      </item>
+      <item>
+       <HREF>/sap/bc/adt/businessservices/testclass</HREF>
+       <REL>http://www.sap.com/categories/testclass</REL>
+       <TYPE>application/vnd.sap.adt.businessservices.testclass.v1+xml</TYPE>
+       <TITLE>TESTCLASS</TITLE>
+      </item>
+     </LINKS>
+     <RESPONSIBLE>KPABAP</RESPONSIBLE>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+    </METADATA>
+    <CONTENT>
+     <BIND_TYPE_IMPL>
+      <NAME>ZFI_TADA_LOGS_SRVB</NAME>
+     </BIND_TYPE_IMPL>
+     <BIND_TYPE>ODATA</BIND_TYPE>
+     <BIND_TYPE_VERSION>V2</BIND_TYPE_VERSION>
+     <SERVICES>
+      <item>
+       <SERVICE_NAME>ZFI_TADA_LOGS_SRVB</SERVICE_NAME>
+       <SERVICE_CONTENT>
+        <item>
+         <SERVICE_VERSION>0001</SERVICE_VERSION>
+         <SRVD_REF>
+          <URI>/sap/bc/adt/ddic/srvd/sources/zfi_tada_logs_srv</URI>
+          <TYPE>SRVD/SRV</TYPE>
+          <NAME>ZFI_TADA_LOGS_SRV</NAME>
+         </SRVD_REF>
+        </item>
+       </SERVICE_CONTENT>
+      </item>
+     </SERVICES>
+    </CONTENT>
+    <PUBLISHED>true</PUBLISHED>
+   </SRVB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

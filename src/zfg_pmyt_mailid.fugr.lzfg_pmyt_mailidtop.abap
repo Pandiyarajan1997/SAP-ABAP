@@ -1,0 +1,3 @@
+FUNCTION-POOL ZFG_PMYT_MAILID           . "MESSAGE-ID ...
+
+* INCLUDE LZFG_PMYT_MAILIDD...               " Local class definition

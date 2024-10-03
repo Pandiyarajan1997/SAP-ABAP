@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for F-58 Auto Mail</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLYBFFMSMPL</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>YSAMPLE_PROCESS_00002040</FUNCNAME>
+     <SHORT_TEXT>Beschreibung der Prozess-Schnittstelle 00002040</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_REGUH</PARAMETER>
+       <DBFIELD>REGUH</DBFIELD>
+      </RSIMP>
+     </IMPORT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>C_FINAA</PARAMETER>
+       <DBFIELD>FINAA</DBFIELD>
+      </RSCHA>
+     </CHANGING>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>T_FIMSG</PARAMETER>
+       <DBSTRUCT>FIMSG</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_REGUH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Regulierungsdaten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_FIMSG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Protokolltabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>C_FINAA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Ausgabestruktur</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+   <LONGTEXTS_YSAMPLE_PROCESS_00002040>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>YSAMPLE_PROCESS_00002040</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0013</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00028</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>YSAMPLE_PROCESS_00002040</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00013</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Zahlungsverkehr: Ausgabe von Avisen (Nachrichtenart)&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00002040&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Prozess</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Prozess erlaubt die Ermittlung des für das Zahlungsavis zu</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>verwendende Ausgabegeräts (Drucker, Fax oder Internet). Ferner ist es</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>möglich, das in der Konfiguration zum Zahlungsprogramm hinterlegte</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Avisformular zu übersteuern.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Schnittstelle</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Aus den übergebenen Regulierungsdaten (I_REGUH) kann ermittelt werden,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>ob der Geschäftspartner das Zahlungsavis per Brief, per Fax oder per</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>E-Mail erhalten soll. Beispielsweise kann die Faxnummer aus dem</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Stammsatz des Geschäftspartners (ZTLFX) für diese Entscheidung</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>hinzugezogen werden. Einen Vorschlag für ein mögliches Kundenprogramm</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>finden Sie im Funktionsbaustein SAMPLE_PROCESS_00002040, wobei das</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Programm individuell anzupassen ist.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zurückgegeben wird die Nachrichtenart (1 für Druck, 2 für Fax, I für</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Internet), eventuell das vom Customizing abweichende Formular und die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>für das Faxen notwendigen Angaben (C_FINAA). Nähere Angaben entnehmen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Sie bitte der Struktur &lt;DS:TRAN.SE11&gt;FINAA&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Bei Verwendung des Faxdeckblatts (z.B. &lt;DS:TRAN.SE71&gt;FI_FAX_COVER_A4</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>=</TDFORMAT>
+       <TDLINE>&lt;/&gt;) sollten die Adressen des &lt;DS:TRAN.OBY6&gt;Buchungskreises&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>(Bearbeiten -&gt; Adresse) und des</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.FI_RFFO_CUSTOMIZING_T001S&gt;Buchhaltungssachbearbeiters&lt;/&gt; gefüllt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>sein. Die Adresse des Geschäftspartners wird dem Stammsatz entnommen.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zusätzlich können Nachrichten (Messages) übergeben werden, die im</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Protokoll des gerufenen Zahlungsträgerprogramms ausgegeben werden.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>YSAMPLE_PROCESS_00002040</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0013</VERSION>
+      <TXTLINES>00027</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>YSAMPLE_PROCESS_00002040</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00013</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Pmnt transactions: Issuing advice notes (mess.type)&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00002040&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Process</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This process is used to determine the output device (printer, fax</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>machine or Internet ) to be used for the payment advice note. It is</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>also possible to override the payment advice form defined in</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Customizing for the payment program.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Interface</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The system can use the transferred payment data (I_REGUH) to determine</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>whether the customer/vendor should receive the payment advice note by</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>mail, fax or e-mail. The fax number from the customer/vendor master</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>record (ZTLFX) can be referred to. You can find a template for a</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>customer program in function module SAMPLE_PROCESS_00002040 and adapt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the program to meet your individual requirements.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The message type (1 for a printout, 2 for a fax) is transferred back,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>as well as the alternative form (where applicable) and the details</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>required for the fax (C_FINAA). For more details, see the structure</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TRAN.SE11&gt;FINAA&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>If you are using a fax cover sheet (such as</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TRAN.SE71&gt;FI_FAX_COVER_A4&lt;/&gt;), you should enter the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TRAN.OBY6&gt;company code&lt;/&gt; address (Edit -&gt; Address) and the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.FI_RFFO_CUSTOMIZING_T001S&gt;accounting clerk&apos;s&lt;/&gt; address. The</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>customer/vendor address is taken from the master record.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Messages issued in the log for the called payment medium program can</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>also be transferred.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>YSAMPLE_PROCESS_00002040      C_FINAA</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00002</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>YSAMPLE_PROCESS_00002040      C_FINAA</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Ausgabestruktur mit den für die verschiedenen Ausgabegeräten zusätzlich</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>benötigten Parameter (Fax Nummer, e-mail, u.v.m).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>YSAMPLE_PROCESS_00002040      C_FINAA</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <TXTLINES>00002</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>YSAMPLE_PROCESS_00002040      C_FINAA</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Output structure containing the additional required parameters (such as</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>fax number or e-mail address) for the various output devices.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>YSAMPLE_PROCESS_00002040      T_FIMSG</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00001</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>YSAMPLE_PROCESS_00002040      T_FIMSG</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_MSG OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>YSAMPLE_PROCESS_00002040      T_FIMSG</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <TXTLINES>00001</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>YSAMPLE_PROCESS_00002040      T_FIMSG</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_MSG OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_YSAMPLE_PROCESS_00002040>
+  </asx:values>
+ </asx:abap>
+</abapGit>

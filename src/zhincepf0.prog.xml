@@ -1,0 +1,3243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZHINCEPF0</NAME>
+    <DBAPL>P</DBAPL>
+    <DBNA>PN</DBNA>
+    <SUBC>1</SUBC>
+    <APPL>P</APPL>
+    <RSTAT>P</RSTAT>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <LDBNAME>PNP</LDBNAME>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <CUA>
+    <ADM>
+     <ACTCODE>000001</ACTCODE>
+     <MENCODE>000010</MENCODE>
+     <PFKCODE>000001</PFKCODE>
+    </ADM>
+    <STA>
+     <RSMPE_STAT>
+      <CODE>STANDARD</CODE>
+      <MODAL>D</MODAL>
+      <ACTCODE>000001</ACTCODE>
+      <PFKCODE>000001</PFKCODE>
+      <BUTCODE>0001</BUTCODE>
+      <INT_NOTE>Standard for General List Output</INT_NOTE>
+     </RSMPE_STAT>
+    </STA>
+    <FUN>
+     <RSMPE_FUNT>
+      <CODE>%ML</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Folder</FUN_TEXT>
+      <PATH>F</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>%PC</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_EXPORT</TEXT_NAME>
+      <ICON_ID>@49@</ICON_ID>
+      <FUN_TEXT>Local file...</FUN_TEXT>
+      <INFO_TEXT>Local File...</INFO_TEXT>
+      <PATH>L</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>%SC</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SEARCH</TEXT_NAME>
+      <ICON_ID>@13@</ICON_ID>
+      <FUN_TEXT>Find</FUN_TEXT>
+      <INFO_TEXT>Find</INFO_TEXT>
+      <PATH>F</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>%SL</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_MAIL</TEXT_NAME>
+      <ICON_ID>@1S@</ICON_ID>
+      <FUN_TEXT>Mail recipient</FUN_TEXT>
+      <INFO_TEXT>Mail Recipient</INFO_TEXT>
+      <PATH>M</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ABC</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_ABC</TEXT_NAME>
+      <ICON_ID>@DL@</ICON_ID>
+      <FUN_TEXT>ABC Analysis</FUN_TEXT>
+      <INFO_TEXT>ABC Analysis</INFO_TEXT>
+      <PATH>A</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ALL</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SELECT_ALL</TEXT_NAME>
+      <ICON_ID>@4B@</ICON_ID>
+      <FUN_TEXT>Select all</FUN_TEXT>
+      <INFO_TEXT>Select All</INFO_TEXT>
+      <PATH>S</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;AQW</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_WORD_PROCESSING</TEXT_NAME>
+      <ICON_ID>@DK@</ICON_ID>
+      <FUN_TEXT>Word processing...</FUN_TEXT>
+      <INFO_TEXT>Word Processing...</INFO_TEXT>
+      <PATH>W</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;AUF</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Define Breakdown...</FUN_TEXT>
+      <INFO_TEXT>Determine Totals Level Drilldown...</INFO_TEXT>
+      <PATH>D</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;AVE</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Save...</FUN_TEXT>
+      <INFO_TEXT>Save Layout...</INFO_TEXT>
+      <PATH>S</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;AVE</CODE>
+      <TEXTNO>002</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_ALV_VARIANT_SAVE</TEXT_NAME>
+      <ICON_ID>@DN@</ICON_ID>
+      <FUN_TEXT>Save layout...</FUN_TEXT>
+      <INFO_TEXT>Save Layout...</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;AVR</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Mean value</FUN_TEXT>
+      <INFO_TEXT>Mean Value</INFO_TEXT>
+      <PATH>M</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CDF</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Unfreeze columns</FUN_TEXT>
+      <INFO_TEXT>Unfreeze Columns</INFO_TEXT>
+      <PATH>U</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CFI</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Freeze to column</FUN_TEXT>
+      <INFO_TEXT>Freeze to Column</INFO_TEXT>
+      <PATH>F</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CRB</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_TOTAL_LEFT</TEXT_NAME>
+      <ICON_ID>@0B@</ICON_ID>
+      <FUN_TEXT>First column</FUN_TEXT>
+      <INFO_TEXT>First Column</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CRE</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_TOTAL_RIGHT</TEXT_NAME>
+      <ICON_ID>@0C@</ICON_ID>
+      <FUN_TEXT>Last column</FUN_TEXT>
+      <INFO_TEXT>Last Column</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CRL</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_COLUMN_LEFT</TEXT_NAME>
+      <ICON_ID>@0D@</ICON_ID>
+      <FUN_TEXT>Column left</FUN_TEXT>
+      <INFO_TEXT>Column Left</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CRR</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_COLUMN_RIGHT</TEXT_NAME>
+      <ICON_ID>@0E@</ICON_ID>
+      <FUN_TEXT>Column right</FUN_TEXT>
+      <INFO_TEXT>Column Right</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;DAU</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Automatic Separator</FUN_TEXT>
+      <INFO_TEXT>Automatic Separator</INFO_TEXT>
+      <PATH>T</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;DOF</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Separator Always Off</FUN_TEXT>
+      <INFO_TEXT>Separator Always Off</INFO_TEXT>
+      <PATH>E</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;DON</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Separator Always On</FUN_TEXT>
+      <INFO_TEXT>Separator Always On</INFO_TEXT>
+      <PATH>R</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;EB9</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_TABLE_SETTINGS</TEXT_NAME>
+      <ICON_ID>@36@</ICON_ID>
+      <FUN_TEXT>Call up report...</FUN_TEXT>
+      <INFO_TEXT>Call Up Report...</INFO_TEXT>
+      <PATH>B</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ELP</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SYSTEM_HELP</TEXT_NAME>
+      <ICON_ID>@35@</ICON_ID>
+      <FUN_TEXT>Help</FUN_TEXT>
+      <INFO_TEXT>Help</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ERW</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Manage...</FUN_TEXT>
+      <INFO_TEXT>Manage Layout...</INFO_TEXT>
+      <PATH>M</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ETA</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SELECT_DETAIL</TEXT_NAME>
+      <ICON_ID>@16@</ICON_ID>
+      <FUN_TEXT>Details</FUN_TEXT>
+      <INFO_TEXT>Details</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;F03</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Back</FUN_TEXT>
+      <INFO_TEXT>Back</INFO_TEXT>
+      <PATH>B</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;F12</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_CANCEL</TEXT_NAME>
+      <ICON_ID>@0W@</ICON_ID>
+      <FUN_TEXT>Cancel</FUN_TEXT>
+      <INFO_TEXT>Cancel</INFO_TEXT>
+      <PATH>A</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;F15</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Exit</FUN_TEXT>
+      <INFO_TEXT>Exit</INFO_TEXT>
+      <PATH>X</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;IC1</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SELECT_DETAIL</TEXT_NAME>
+      <ICON_ID>@16@</ICON_ID>
+      <FUN_TEXT>Choose</FUN_TEXT>
+      <INFO_TEXT>Choose</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ILD</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Delete filter</FUN_TEXT>
+      <INFO_TEXT>Delete Filter</INFO_TEXT>
+      <PATH>L</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ILT</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_FILTER</TEXT_NAME>
+      <ICON_ID>@4G@</ICON_ID>
+      <FUN_TEXT>Set filter</FUN_TEXT>
+      <INFO_TEXT>Set Filter</INFO_TEXT>
+      <PATH>E</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;KOM</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_COLLAPSE</TEXT_NAME>
+      <ICON_ID>@3T@</ICON_ID>
+      <FUN_TEXT>Choose...</FUN_TEXT>
+      <INFO_TEXT>Select Totals Level...</INFO_TEXT>
+      <PATH>C</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;LFO</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>List status...</FUN_TEXT>
+      <INFO_TEXT>List Status...</INFO_TEXT>
+      <PATH>L</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;LFO</CODE>
+      <TEXTNO>002</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_INFORMATION</TEXT_NAME>
+      <ICON_ID>@0S@</ICON_ID>
+      <FUN_TEXT>List status...</FUN_TEXT>
+      <INFO_TEXT>List Status...</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;LIS</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Basic list</FUN_TEXT>
+      <INFO_TEXT>Basic List</INFO_TEXT>
+      <PATH>B</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;MAX</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Maximum</FUN_TEXT>
+      <INFO_TEXT>Maximum</INFO_TEXT>
+      <PATH>A</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;MIN</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Minimum</FUN_TEXT>
+      <INFO_TEXT>Minimum</INFO_TEXT>
+      <PATH>I</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;NFO</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_INFORMATION</TEXT_NAME>
+      <ICON_ID>@0S@</ICON_ID>
+      <FUN_TEXT>Selections...</FUN_TEXT>
+      <ICON_TEXT>Selections</ICON_TEXT>
+      <INFO_TEXT>Selections...</INFO_TEXT>
+      <PATH>E</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;NTE</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_REFRESH</TEXT_NAME>
+      <ICON_ID>@42@</ICON_ID>
+      <FUN_TEXT>Refresh</FUN_TEXT>
+      <INFO_TEXT>Refresh</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OAD</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Choose...</FUN_TEXT>
+      <INFO_TEXT>Select Layout...</INFO_TEXT>
+      <PATH>H</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OAD</CODE>
+      <TEXTNO>002</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_ALV_VARIANT_CHOOSE</TEXT_NAME>
+      <ICON_ID>@DM@</ICON_ID>
+      <FUN_TEXT>Select layout...</FUN_TEXT>
+      <INFO_TEXT>Select Layout...</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;ODN</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SORT_DOWN</TEXT_NAME>
+      <ICON_ID>@3F@</ICON_ID>
+      <FUN_TEXT>Sort in descending order</FUN_TEXT>
+      <INFO_TEXT>Sort in Descending Order</INFO_TEXT>
+      <PATH>O</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OL0</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_ALV_VARIANTS</TEXT_NAME>
+      <ICON_ID>@LZ@</ICON_ID>
+      <FUN_TEXT>Change layout...</FUN_TEXT>
+      <INFO_TEXT>Change Layout...</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OLX</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_VARIANTS</TEXT_NAME>
+      <ICON_ID>@0R@</ICON_ID>
+      <FUN_TEXT>Change...</FUN_TEXT>
+      <INFO_TEXT>Change Layout...</INFO_TEXT>
+      <PATH>C</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OMP</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_COLLAPSE</TEXT_NAME>
+      <ICON_ID>@3T@</ICON_ID>
+      <FUN_TEXT>Collapse</FUN_TEXT>
+      <INFO_TEXT>Collapse</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OPT</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Optimize width</FUN_TEXT>
+      <INFO_TEXT>Optimize Width</INFO_TEXT>
+      <PATH>P</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;OUP</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SORT_UP</TEXT_NAME>
+      <ICON_ID>@3E@</ICON_ID>
+      <FUN_TEXT>Sort in ascending order</FUN_TEXT>
+      <INFO_TEXT>Sort in Ascending Order</INFO_TEXT>
+      <PATH>I</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;RNT</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_PRINT</TEXT_NAME>
+      <ICON_ID>@0X@</ICON_ID>
+      <FUN_TEXT>Print</FUN_TEXT>
+      <INFO_TEXT>Print</INFO_TEXT>
+      <PATH>P</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;RNT_PREV</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_LAYOUT_CONTROL</TEXT_NAME>
+      <ICON_ID>@3G@</ICON_ID>
+      <FUN_TEXT>Print preview</FUN_TEXT>
+      <INFO_TEXT>Print Preview</INFO_TEXT>
+      <PATH>R</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;SAL</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_DESELECT_ALL</TEXT_NAME>
+      <ICON_ID>@4D@</ICON_ID>
+      <FUN_TEXT>Deselect all</FUN_TEXT>
+      <INFO_TEXT>Deselect All</INFO_TEXT>
+      <PATH>D</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;SUM</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_INTERMEDIATE_SUM</TEXT_NAME>
+      <ICON_ID>@5V@</ICON_ID>
+      <FUN_TEXT>Subtotals...</FUN_TEXT>
+      <INFO_TEXT>Subtotals...</INFO_TEXT>
+      <PATH>U</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;UMC</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SUM</TEXT_NAME>
+      <ICON_ID>@3Z@</ICON_ID>
+      <FUN_TEXT>Total</FUN_TEXT>
+      <INFO_TEXT>Total</INFO_TEXT>
+      <PATH>T</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;XINT</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Additional Functions of SAP Query</FUN_TEXT>
+      <INFO_TEXT>Additional Functions of SAP Query</INFO_TEXT>
+      <PATH>E</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;XPA</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_EXPAND</TEXT_NAME>
+      <ICON_ID>@3S@</ICON_ID>
+      <FUN_TEXT>Expand</FUN_TEXT>
+      <INFO_TEXT>Expand</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;XXL</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_XXL</TEXT_NAME>
+      <ICON_ID>@DJ@</ICON_ID>
+      <FUN_TEXT>Spreadsheet...</FUN_TEXT>
+      <INFO_TEXT>Spreadsheet...</INFO_TEXT>
+      <PATH>A</PATH>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>AMBC</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Ambiguous Cases</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>CORC</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Correct Cases</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>DOWNLOAD</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Download EPF efile</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>PERR</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Print Errors</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>PFRM</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Print Form</FUN_TEXT>
+     </RSMPE_FUNT>
+    </FUN>
+    <MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;RNT</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>02</NO>
+      <REF_TYPE>M</REF_TYPE>
+      <REF_CODE>000002</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>03</NO>
+      <REF_TYPE>M</REF_TYPE>
+      <REF_CODE>000003</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>04</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>05</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;F15</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;AQW</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;XXL</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>03</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>%PC</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;XINT</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000003</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>%SL</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000003</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>%ML</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;ALL</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;SAL</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>03</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;ILT</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>05</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;ILD</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>06</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>07</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;OUP</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>08</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;ODN</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>09</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>10</NO>
+      <REF_TYPE>M</REF_TYPE>
+      <REF_CODE>000005</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>11</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;SUM</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>12</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>13</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>%SC</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>14</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000004</CODE>
+      <NO>15</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;F12</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000005</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;UMC</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000005</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;AVR</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000005</CODE>
+      <NO>03</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;MIN</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000005</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;MAX</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000006</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;ABC</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000006</CODE>
+      <NO>02</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000006</CODE>
+      <NO>03</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;F03</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;LIS</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>02</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>03</NO>
+      <REF_TYPE>M</REF_TYPE>
+      <REF_CODE>000008</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>04</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>05</NO>
+      <REF_TYPE>M</REF_TYPE>
+      <REF_CODE>000009</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>06</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>07</NO>
+      <REF_TYPE>M</REF_TYPE>
+      <REF_CODE>000010</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>08</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>09</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;NFO</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000007</CODE>
+      <NO>10</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;LFO</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000008</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;OLX</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000008</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;OAD</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000008</CODE>
+      <NO>03</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000008</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;AVE</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000008</CODE>
+      <NO>05</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000008</CODE>
+      <NO>06</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;ERW</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000009</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;KOM</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000009</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;AUF</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;OPT</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>02</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>03</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;CFI</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;CDF</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>05</NO>
+      <REF_TYPE>S</REF_TYPE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>06</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;DAU</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>07</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;DON</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000010</CODE>
+      <NO>08</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&amp;DOF</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+    </MEN>
+    <MTX>
+     <RSMPE_MNLT>
+      <CODE>000001</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>List</TEXT>
+      <PATH>L</PATH>
+      <INT_NOTE>STANDARD List</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000002</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Export</TEXT>
+      <PATH>E</PATH>
+      <INT_NOTE>STANDARD Save</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000003</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Send to</TEXT>
+      <PATH>S</PATH>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000004</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Edit</TEXT>
+      <PATH>E</PATH>
+      <INT_NOTE>STANDARD</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000005</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Calculate</TEXT>
+      <PATH>C</PATH>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000006</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Goto</TEXT>
+      <PATH>G</PATH>
+      <INT_NOTE>STANDARD</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000007</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Settings</TEXT>
+      <PATH>S</PATH>
+      <INT_NOTE>STANDARD</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000008</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Layout</TEXT>
+      <PATH>A</PATH>
+      <INT_NOTE>Sub STANDARD</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000009</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Summation levels</TEXT>
+      <PATH>S</PATH>
+      <INT_NOTE>Sub STANDARD</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000010</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Columns</TEXT>
+      <PATH>C</PATH>
+     </RSMPE_MNLT>
+    </MTX>
+    <ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>01</NO>
+      <MENUCODE>000001</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>02</NO>
+      <MENUCODE>000004</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>03</NO>
+      <MENUCODE>000006</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>04</NO>
+      <MENUCODE>000007</MENUCODE>
+     </RSMPE_ACT>
+    </ACT>
+    <BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>01</NO>
+      <PFNO>39</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>02</NO>
+      <PFNO>S</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>03</NO>
+      <PFNO>05</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>04</NO>
+      <PFNO>06</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>05</NO>
+      <PFNO>S</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>06</NO>
+      <PFNO>28</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>07</NO>
+      <PFNO>40</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>08</NO>
+      <PFNO>29</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>09</NO>
+      <PFNO>S</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>10</NO>
+      <PFNO>30</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>11</NO>
+      <PFNO>42</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>12</NO>
+      <PFNO>S</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>13</NO>
+      <PFNO>43</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>14</NO>
+      <PFNO>44</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>15</NO>
+      <PFNO>45</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>16</NO>
+      <PFNO>31</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>17</NO>
+      <PFNO>25</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>18</NO>
+      <PFNO>S</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>19</NO>
+      <PFNO>32</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>20</NO>
+      <PFNO>33</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>21</NO>
+      <PFNO>34</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>22</NO>
+      <PFNO>S</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>23</NO>
+      <PFNO>09</PFNO>
+     </RSMPE_BUT>
+    </BUT>
+    <PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>01</PFNO>
+      <FUNCODE>&amp;ELP</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>02</PFNO>
+      <FUNCODE>&amp;IC1</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>03</PFNO>
+      <FUNCODE>&amp;F03</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>05</PFNO>
+      <FUNCODE>&amp;ALL</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>06</PFNO>
+      <FUNCODE>&amp;SAL</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>07</PFNO>
+      <FUNCODE>&amp;NFO</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>08</PFNO>
+      <FUNCODE>&amp;NTE</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>09</PFNO>
+      <FUNCODE>DOWNLOAD</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>12</PFNO>
+      <FUNCODE>&amp;F12</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>15</PFNO>
+      <FUNCODE>&amp;F15</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>18</PFNO>
+      <FUNCODE>&amp;CRB</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>19</PFNO>
+      <FUNCODE>&amp;CRE</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>25</PFNO>
+      <FUNCODE>&amp;ABC</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>26</PFNO>
+      <FUNCODE>&amp;CRL</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>27</PFNO>
+      <FUNCODE>&amp;CRR</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>28</PFNO>
+      <FUNCODE>&amp;OUP</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>29</PFNO>
+      <FUNCODE>&amp;ILT</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>30</PFNO>
+      <FUNCODE>&amp;UMC</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>31</PFNO>
+      <FUNCODE>%SL</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>32</PFNO>
+      <FUNCODE>&amp;OL0</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>33</PFNO>
+      <FUNCODE>&amp;OAD</FUNCODE>
+      <FUNNO>002</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>34</PFNO>
+      <FUNCODE>&amp;AVE</FUNCODE>
+      <FUNNO>002</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>35</PFNO>
+      <FUNCODE>&amp;XPA</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>37</PFNO>
+      <FUNCODE>&amp;EB9</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>39</PFNO>
+      <FUNCODE>&amp;ETA</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>40</PFNO>
+      <FUNCODE>&amp;ODN</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>41</PFNO>
+      <FUNCODE>&amp;LFO</FUNCODE>
+      <FUNNO>002</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>42</PFNO>
+      <FUNCODE>&amp;SUM</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>43</PFNO>
+      <FUNCODE>&amp;XXL</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>44</PFNO>
+      <FUNCODE>&amp;AQW</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>45</PFNO>
+      <FUNCODE>%PC</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>46</PFNO>
+      <FUNCODE>&amp;RNT_PREV</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>47</PFNO>
+      <FUNCODE>&amp;OMP</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>71</PFNO>
+      <FUNCODE>%SC</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>86</PFNO>
+      <FUNCODE>&amp;RNT</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+    </PFK>
+    <SET>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>%CH</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>%ML</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>%PC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>%SC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>%SC+</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>%SL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ABC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ALL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;AQW</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;AUF</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;AVE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;AVR</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;BS</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;BS+</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;BS-</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;CDF</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;CFI</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;CRB</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;CRE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;CRL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;CRR</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;DAU</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;DOF</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;DON</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;EB3</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;EB9</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ELP</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ERW</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ETA</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;F03</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;F12</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;F15</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;IC1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ILD</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ILT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;KOM</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;LFO</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;LIS</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;MAX</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;MIN</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;NFO</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;NTE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;OAD</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;ODN</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;OL0</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;OLX</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;OMP</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;OPT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;OUP</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;RNT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;SAL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;SUM</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;UMC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;XPA</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>&amp;XXL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>AMBC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BAC1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BACK</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BEB1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BEB2</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BEB3</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BEB9</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>BEBN</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>COL0</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>COLX</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>CORC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>DETA</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>DOWNLOAD</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>DRUK</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>DSAL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>ENTE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>EXIT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>EXPA</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>FILD</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>FILT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>GLIS</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>HELP</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>HTML</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>INFO</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>KOMP</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>P+</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>P++</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>P-</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>P--</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PERR</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PF09</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PF13</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PFRM</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PIC1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PICK</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PRI</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PRIN</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>PRNT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>RW</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SALL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SAUF</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SAVE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SCRB</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SCRE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SCRL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SCRR</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SKOM</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SODN</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SOUP</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>SUMC</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>STANDARD</STATUS>
+      <FUNCTION>ZSUM</FUNCTION>
+     </RSMPE_STAF>
+    </SET>
+    <DOC>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>A</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>Standard User Interface         STANDARD</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>P</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <NORM>X</NORM>
+      <INT_NOTE>Standard Maximum Interaction</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>B</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <SUB_CODE>0001</SUB_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>Standard Maximum Interaction</INT_NOTE>
+     </RSMPE_ATRT>
+    </DOC>
+   </CUA>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>User Parameters</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>Radio Buttons</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>003</KEY>
+     <ENTRY>Output format</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>004</KEY>
+     <ENTRY>Name of the Layout Set</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>005</KEY>
+     <ENTRY>Customer Layout</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>006</KEY>
+     <ENTRY>Standard Layout</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>007</KEY>
+     <ENTRY>Employer&apos;s PF Reference No.</ENTRY>
+     <LENGTH>27</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>008</KEY>
+     <ENTRY>Additional Selection</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>009</KEY>
+     <ENTRY>Report name</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>010</KEY>
+     <ENTRY>Legal Forms-EPF</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>011</KEY>
+     <ENTRY>Name and Branch of the Bank</ENTRY>
+     <LENGTH>27</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>012</KEY>
+     <ENTRY>Address of the Bank</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>013</KEY>
+     <ENTRY>City / Pin of the Bank</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>014</KEY>
+     <ENTRY>Report date</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>015</KEY>
+     <ENTRY>PF Form 12A</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>016</KEY>
+     <ENTRY>PF Form 12A Results</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>017</KEY>
+     <ENTRY>Print Errors</ENTRY>
+     <LENGTH>12</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>018</KEY>
+     <ENTRY>Print Form</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>019</KEY>
+     <ENTRY>PF Form 5 Results</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>020</KEY>
+     <ENTRY>PF Form 10 Results</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>021</KEY>
+     <ENTRY>Test run without Printing</ENTRY>
+     <LENGTH>25</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>022</KEY>
+     <ENTRY>Return of Employees qualifying for membership</ENTRY>
+     <LENGTH>45</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>023</KEY>
+     <ENTRY>Return of Members leaving the service</ENTRY>
+     <LENGTH>37</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>024</KEY>
+     <ENTRY>Monthly contribution statement</ENTRY>
+     <LENGTH>30</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>025</KEY>
+     <LENGTH>1</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>026</KEY>
+     <ENTRY>Electronic Challan cum Return</ENTRY>
+     <LENGTH>29</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>027</KEY>
+     <ENTRY>Please select the e-filing checkbox</ENTRY>
+     <LENGTH>35</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>028</KEY>
+     <ENTRY>EPS Wages</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>029</KEY>
+     <ENTRY>Process Discontinued</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>030</KEY>
+     <ENTRY>No Payroll Results available and no</ENTRY>
+     <LENGTH>35</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>031</KEY>
+     <ENTRY>employee/employees selected for this criteria</ENTRY>
+     <LENGTH>45</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>032</KEY>
+     <ENTRY>DOJ EPF</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>033</KEY>
+     <ENTRY>DOJ EPS</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>034</KEY>
+     <ENTRY>Father/Husband Name</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>035</KEY>
+     <ENTRY>DateOfLv EPF</ENTRY>
+     <LENGTH>12</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>036</KEY>
+     <ENTRY>DateOfLv EPS</ENTRY>
+     <LENGTH>12</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>037</KEY>
+     <ENTRY>EPF Wages Arrears</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>038</KEY>
+     <ENTRY>EPF Contribution Due</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>039</KEY>
+     <ENTRY>Generating List, please wait.....</ENTRY>
+     <LENGTH>33</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>040</KEY>
+     <ENTRY>EPF Contribution Remittance</ENTRY>
+     <LENGTH>27</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>041</KEY>
+     <ENTRY>Co.Code</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>042</KEY>
+     <ENTRY>Ref.No.</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>043</KEY>
+     <ENTRY>PF Rate</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>044</KEY>
+     <ENTRY>PF Basis</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>045</KEY>
+     <ENTRY>EePFCont</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>046</KEY>
+     <ENTRY>ErPFCont</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>047</KEY>
+     <ENTRY>PFAdmChg</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>048</KEY>
+     <ENTRY>PenBasis</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>049</KEY>
+     <ENTRY>ErPenCon</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>050</KEY>
+     <ENTRY>EDLI Bas</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>051</KEY>
+     <ENTRY>EDLI ErCo</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>052</KEY>
+     <ENTRY>EDLI Adm</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>053</KEY>
+     <ENTRY>TotalEmp</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>054</KEY>
+     <ENTRY>No.LastMn</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>055</KEY>
+     <ENTRY>No.NewMn</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>056</KEY>
+     <ENTRY>No.Left</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>057</KEY>
+     <ENTRY>Employee PF No.</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>058</KEY>
+     <ENTRY>Member ID</ENTRY>
+     <LENGTH>12</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>059</KEY>
+     <ENTRY>Tot Remain</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>060</KEY>
+     <ENTRY>Emp-Name</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>061</KEY>
+     <ENTRY>Father/Husband Name</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>062</KEY>
+     <ENTRY>DateOfBirth</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>063</KEY>
+     <ENTRY>DateOfPFJn</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>064</KEY>
+     <ENTRY>Gender</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>065</KEY>
+     <ENTRY>Prev.Service</ENTRY>
+     <LENGTH>12</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>066</KEY>
+     <ENTRY>PF Form 5</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>067</KEY>
+     <ENTRY>PF Form 5 Results</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>068</KEY>
+     <ENTRY>DateOfLv</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>069</KEY>
+     <ENTRY>ReasonForLv</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>070</KEY>
+     <ENTRY>PF Form 10</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>071</KEY>
+     <ENTRY>EPS Contribution Due</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>072</KEY>
+     <ENTRY>EPS Contribution Remittance</ENTRY>
+     <LENGTH>27</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>073</KEY>
+     <ENTRY>Diff EPF &amp; EPS Due</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>074</KEY>
+     <ENTRY>Diff EPF &amp; EPS Remittance</ENTRY>
+     <LENGTH>25</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>075</KEY>
+     <ENTRY>Refund of Advances</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>091</KEY>
+     <ENTRY>PA/PSG not defined for the employee</ENTRY>
+     <LENGTH>35</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>092</KEY>
+     <ENTRY>Comapny code not defined</ENTRY>
+     <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>093</KEY>
+     <ENTRY>PF grouping not defined for the employee</ENTRY>
+     <LENGTH>40</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>094</KEY>
+     <ENTRY>Cluster result not available</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>095</KEY>
+     <ENTRY>Personal data not maintained</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>096</KEY>
+     <ENTRY>Family data not maintained</ENTRY>
+     <LENGTH>26</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>097</KEY>
+     <ENTRY>Reason for action is not maintained</ENTRY>
+     <LENGTH>35</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>100</KEY>
+     <ENTRY>Trust ID</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>101</KEY>
+     <ENTRY>Adobe PDF Document</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>102</KEY>
+     <ENTRY>SAP Script Display</ENTRY>
+     <LENGTH>18</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>103</KEY>
+     <ENTRY>Father Name</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>104</KEY>
+     <ENTRY>Previous Service</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>105</KEY>
+     <ENTRY>Disabled Flag</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>106</KEY>
+     <ENTRY>International Worker</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>107</KEY>
+     <ENTRY>DOJ</ENTRY>
+     <LENGTH>3</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>108</KEY>
+     <ENTRY>Mobile</ENTRY>
+     <LENGTH>6</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>109</KEY>
+     <ENTRY>E-Mail ID</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>110</KEY>
+     <ENTRY>H Flag EPF</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>111</KEY>
+     <ENTRY>H Flag EPS</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>112</KEY>
+     <ENTRY>Bank A/C</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>113</KEY>
+     <ENTRY>Bank Name</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>114</KEY>
+     <ENTRY>Bank Br</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>115</KEY>
+     <ENTRY>Address 1</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>116</KEY>
+     <ENTRY>Address 2</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>117</KEY>
+     <ENTRY>City</ENTRY>
+     <LENGTH>4</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>118</KEY>
+     <ENTRY>District</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>119</KEY>
+     <ENTRY>State</ENTRY>
+     <LENGTH>5</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>120</KEY>
+     <ENTRY>Pin Code</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>121</KEY>
+     <ENTRY>Marital Status</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>122</KEY>
+     <ENTRY>Father/Husband Flag</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>123</KEY>
+     <ENTRY>EPF Wages</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>124</KEY>
+     <ENTRY>Emp contribution of PF</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>125</KEY>
+     <ENTRY>Emp Refund</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>126</KEY>
+     <ENTRY>NCP Days</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>127</KEY>
+     <ENTRY>Reason Of Leaving</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>128</KEY>
+     <ENTRY>Wage Arrears</ENTRY>
+     <LENGTH>12</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>129</KEY>
+     <ENTRY>Emp EPF Arrears</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>130</KEY>
+     <ENTRY>Er EPF Arrears</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>131</KEY>
+     <ENTRY>Emp EPS Arrears</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>132</KEY>
+     <ENTRY>eFiling</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>133</KEY>
+     <ENTRY>Employee Code</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>NAM</KEY>
+     <ENTRY>Employee Name</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>NER</KEY>
+     <ENTRY>There are no errors</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>NUM</KEY>
+     <ENTRY>Emp.No.</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>PRF</KEY>
+     <ENTRY>Er PF No.</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>REM</KEY>
+     <ENTRY>Remarks</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>R</ID>
+     <ENTRY>HR:India  Employees&apos; Provident Fund  -  Reports</ENTRY>
+     <LENGTH>47</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>BANKADDR</KEY>
+     <ENTRY>Bank Address</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>BANKCITY</KEY>
+     <ENTRY>Bank City</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>BANKNAME</KEY>
+     <ENTRY>Bank Name</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_PDF</KEY>
+     <ENTRY>PDF Display</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_SCRIPT</KEY>
+     <ENTRY>SAPScript Display</ENTRY>
+     <LENGTH>25</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>REPODATE</KEY>
+     <ENTRY>Report Date</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>REPONAME</KEY>
+     <ENTRY>Report Name</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>TRUST_ID</KEY>
+     <ENTRY>Trust Id</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+   </TPOOL>
+   <LONGTEXTS>
+    <item>
+     <DOKIL>
+      <ID>RE</ID>
+      <OBJECT>ZHINCEPF0</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0012</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00161</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZHINCEPF0</TDNAME>
+      <TDID>RE</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00012</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;TITLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Provident Fund Reporting for RPFC (HINCEPF0)</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;PURPOSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This function enables you to display and print reports that provide</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>detailed information on the employee and employer contributions to the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>trust and lists the employees who would begin contributing towards</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Provident Fund (PF) or discontinue to do so.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>The data can be broken down according to user-defined search criteria</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>and grouped into key data that is displayed in the following reports:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Form 5 - Provides details of employees joining the Trust in the month</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Form 10 - Provides details of employees leaving the Trust in the month</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Form 12A - Combined statement of employee and employer contributions to</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the Fund in the month</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>ECR - Provides Provident Fund and Pension details of the employee and</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the employer for the specified month. Along with these, this report also</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>provides details of employees joining or leaving the Trust in the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>specified month.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>These reports are submitted to the Regional Provident Fund</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Commissioner&apos;s office (RPFC) in the statutory format through which the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>company reports the employee and employer&apos;s contribution details for</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>provident fund.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;INTEGRATION&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;PREREQUISITES&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>You have to maintain the&lt;LS&gt; Provident Fund Contribution &lt;/&gt;(0587)</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>infotype</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>You have run the payroll for your employees and have payroll results</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;FEATURES&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>The reports list detailed provident fund contribution details, employees</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>who join the fund or discontinue contributing depending on the form</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>selected.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Provident Fund Reporting&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>From within this report you can trigger three separate reports:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Form 5 for PF</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>The report displays the list of new employees who qualify to contribute</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>from the current payroll period, and displays the following data:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee number</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee&apos;s provident fund number</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee name</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee&apos;s date of birth</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee&apos;s date of joining the PF fund</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Form 10 for PF</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>The report displays the list of employees who discontinue contributing</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>to PF from the current payroll period, and displays the following data:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee number</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee&apos;s provident fund number</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee name</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Date of leaving</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Reason for leaving</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Form 12A for PF</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>The report displays the employee and employer contribution details with</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the break down of the amounts and percentages contributed to Provident</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Fund, PF administration, pension fund, Employee Deposit Linked Insurance</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>(EDLI) and EDLI administration and displays the following data:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee number</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee&apos;s provident fund number</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>PF rate</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employee&apos;s PF contribution amount</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employer&apos;s PF contribution amount</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>PF administration charges</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employer&apos;s pension contribution</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>Employer&apos;s EDLI contribution</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>EDLI administration charges</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>ECR</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AL</TDFORMAT>
+       <TDLINE>This report displays Provident Fund and Pension details of the employee</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>and the employer for the specified month. Along with these, this report</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>also displays details of employees joining or leaving the Trust in the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>specified month. The following fields are displayed on the ALV output</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>screen:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Employee Number&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Employee Name&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPF Wages&lt;/&gt; - Indicates the basis that the system uses to calculate</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>an employee&apos;s contribution towards provident fund.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPS Wages &lt;/&gt;- Indicates the basis that the system uses to calculate</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the employer&apos;s contribution towards pension.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPF Contribution Due&lt;/&gt; - Indicates the amount that the employee is</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>due to contribute towards provident fund.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPF Contribution Remitted &lt;/&gt;- Indicates the amount that the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>employee has remitted towards provident fund for the specified month.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPS Contribution Due&lt;/&gt; -  Indicates the amount that the employer is</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>due to contribute towards pension.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPS Contribution Remitted&lt;/&gt; -  Indicates the amount that the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>employer has remitted towards pension for the specified month.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Difference EPF &amp; EPS Contribution Due&lt;/&gt; - Indicates the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>difference between the employer&apos;s contribution to PF and pension, that</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>is due for payment for the specified month.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Difference EPF &amp; EPS Contribution Remitted &lt;/&gt;-  Indicates the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>difference between the employer&apos;s contribution to PF and pension,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE> already paid for the specified month.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;NCP Days&lt;/&gt; - Indicates the number of days in the month for which</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>wages are not due.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Refund of Advances&lt;/&gt; - Indicates the amount that is repaid toward</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>PF incase, the employee had opted for partial withdrawal of funds. The</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>refund is made by the employer on behalf of the employee.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;EPF Wages Arrears&lt;/&gt; - Indicates the unpaid wages for PF from the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>previous months.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Employee EPF Arrears&lt;/&gt; -  Indicates the contributions not made</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>towards employee PF in previous months.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Employer EPF Arrears&lt;/&gt; - Indicates the contributions not made</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>towards employer PF in previous months.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Employer EPS Arrears&lt;/&gt; - Indicates the contributions not made</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>towards employer pension in previous months.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Father/Husband Name&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Father/Husband Flag&lt;/&gt; - Indicates whether the name specified in the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>previous field is that of the employee&apos;s father or husband. This field</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>can have the values &lt;LS&gt;F&lt;/&gt; (father) or &lt;LS&gt;H&lt;/&gt; (husband).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Date of Birth&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Gender&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Date of Joining EPF&lt;/&gt; - Indicates the date on which the employee</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>joined the provident fund scheme.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Date of Joining EPS&lt;/&gt; - Indicates the date on which the employee</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>joined the pension scheme.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Date of Leaving EPF&lt;/&gt; - Indicates the date on which the employee</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>left the provident fund scheme.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Date of Leaving EPS&lt;/&gt; - Indicates the date on which the employee</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>joined the pension scheme.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B2</TDFORMAT>
+       <TDLINE>&lt;LS&gt;Reason for Leaving&lt;/&gt; - Indicates the reason due to which the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>employee left the provident fund scheme.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&amp;SELECTION&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>You set the payroll area and period for which the report is to be</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>generated in the following fields:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Payroll Area</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Payroll Period</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>You can further restrict the employees selected by entering individual</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>or a range of:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Personnel no</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Personnel Area</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Personnel Subarea</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Employee Subgroup</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Payroll area</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>You must also enter the following information:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>The &apos;Trust ID&apos; to specify the localized branch of the trust where the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>contribution is made.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>Select the &lt;LS&gt;eFiling&lt;/&gt; checkbox if you want the electronic challan to</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>be available for Provident Fund and Pension details.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&amp;STANDARD_VARIANTS&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&amp;OUTPUT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>The system generates a display list with the employees basic details</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>corresponding to the form that is selected.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>A list of errors, if any.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>B1</TDFORMAT>
+       <TDLINE>The Form 5, 10 or 12A as selected.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;ACTIVITIES&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Choose Tools -&gt; ABAP Workbench and click the ABAP Editor button to</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>access the ABAP editor window. You can also use the /se38 transaction to</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>access this window.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Enter the technical name of the report and execute.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Enter the selection criteria in the respective fields.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Select the report to be run in the &lt;LS&gt;Report name&lt;/&gt; field.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Enter the details of the bank where the amount is deposited.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Enter the date to be printed on the report in the &lt;LS&gt;Report date&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>field.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>In case you do not use the standard layout, click the &lt;LS&gt;Customer</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Layout&lt;/&gt; button, which enables you to enter an existing customized</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>layout form name.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>N1</TDFORMAT>
+       <TDLINE>Choose Program -&gt; Execute.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Mr. Sanjay&apos;s employer makes their PF contributions to the RPFC trust in</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Mumbai and Bangalore in the trust ID&apos;s RP01 and RP02 in the two cities</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>respectively.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>When Mr. Sanjay relocated to Bangalore in the month of April, his</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>employer started contributing to the trust ID RP02 instead the former.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>When the employer runs Form 5 in the month of May for the Trust ID RP02,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Mr. Sanjay is listed as he now starts contributing to the Trust ID RP02.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Similarly, running Form 10 for the Trust ID RP01 lists him as he has</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>stopped contributing.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Note</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>If no payroll results are found for the employee in the selected payroll</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>period or the employee&apos;s record is not present in the selected Trust Id</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>for any day of the period, then that employee is rejected.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

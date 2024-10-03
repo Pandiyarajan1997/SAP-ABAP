@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>STOCK ROL LT</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_DATA_MIS_STK_ROLTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_DATA_MIS_STK_ROL</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_DATA_MIS_STK_ROL</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>STOCK ROL LT</SHORT_TEXT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_STOCK_ROL</PARAMETER>
+       <DBSTRUCT>ZSTR_STK_ROL_MIS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_STOCK_ROL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>STOCK ROL LT</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

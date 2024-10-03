@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Module For Pepup Cust Partner</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZFG_PEPUP_CUST_PARTNER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_PEPUP_CUST_PARTNER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi For Pepup Customer Partner Function Details</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_VKORG</PARAMETER>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VTWEG</PARAMETER>
+       <TYP>VTWEG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_SPART</PARAMETER>
+       <TYP>SPART</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_PARVW</PARAMETER>
+       <TYP>PARVW</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_PARTNER</PARAMETER>
+       <DBSTRUCT>ZSTR_PEPUP_PARTNER</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VTWEG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Distribution Channel</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_SPART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Division</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_PARVW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Partner Function</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_PARTNER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Type table for Customer Partner Function</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

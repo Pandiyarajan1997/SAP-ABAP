@@ -1,0 +1,59 @@
+"Name: \PR:SAPMV60A\FO:KOMFK-VBELN_PRUEFEN\SE:END\EI
+ENHANCEMENT 0 ZCANCEL_INVOICE.
+
+  DATA : LV_DATE3 type sy-datum.
+  DATA : LV_DATE4 TYPE sy-datum .
+  DATA : LV_DATE5 TYPE sy-datum .
+
+
+   TYPES : BEGIN OF IT1_VBRK,
+           FKART TYPE VBRK-FKART,
+           ERDAT TYPE VBRK-ERDAT,
+         END OF IT1_VBRK.
+
+            DATA : WA1_VBRK TYPE it1_VBRK.
+
+IF SY-TCODE EQ 'VF11' .
+"IF XVBRK-XBLNR IS NOT INITIAL.
+ if KOMFK-VBELN is not initial.
+    SELECT
+     FKART
+     ERDAT
+      FROM VBRK
+        INTO WA1_VBRK
+        WHERE VBELN = KOMFK-VBELN.
+ENDSELECT.
+"commented started
+IF WA1_VBRK IS NOT INITIAL.
+
+  IF WA1_VBRK-FKART EQ 'YBRE' OR WA1_VBRK-FKART EQ 'ZFSD'
+  OR WA1_VBRK-FKART EQ 'YDMS' OR WA1_VBRK-FKART EQ 'YRMS'.
+
+    ELSE.
+         LV_DATE3 = WA1_VBRK-ERDAT .
+         LV_DATE4 = WA1_VBRK-ERDAT + 10 .
+         LV_DATE5 = SY-DATUM  .
+       IF LV_DATE4 < LV_DATE5 .
+         MESSAGE 'Kindly Check the Invoice Date' TYPE 'A' DISPLAY LIKE 'E'.
+        ENDIF.
+  ENDIF.
+
+*IF WA1_VBRK-FKART NE 'YBRE' AND WA1_VBRK-FKART NE 'ZFSD'.
+*         LV_DATE3 = WA1_VBRK-ERDAT .
+*         LV_DATE4 = WA1_VBRK-ERDAT + 10 .
+*         LV_DATE5 = SY-DATUM  .
+*       IF LV_DATE4 < LV_DATE5 .
+*         MESSAGE 'Kindly Check the Invoice Date' TYPE 'A' DISPLAY LIKE 'E'.
+*        ENDIF.
+*ENDIF.
+ ENDIF.
+"commented ended
+ENDIF.
+ENDIF.
+
+
+
+
+
+
+ENDENHANCEMENT.

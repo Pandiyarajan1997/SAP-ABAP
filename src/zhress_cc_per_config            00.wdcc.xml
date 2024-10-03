@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_WDCC" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJECT_NAME>ZHRESS_CC_PER_CONFIG            00</OBJECT_NAME>
+   <CONFIG_ID>ZHRESS_CC_PER_CONFIG</CONFIG_ID>
+   <WDA_COMPONENT>HRESS_C_PERSINFO_CONFIG</WDA_COMPONENT>
+   <DESCR_LANG>
+    <WDY_CONFIG_DATT>
+     <CONFIG_ID>ZHRESS_CC_PER_CONFIG</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <DESCRIPTION>Component Configuration for HRESS_CC_PER_CONFIG</DESCRIPTION>
+    </WDY_CONFIG_DATT>
+   </DESCR_LANG>
+  </asx:values>
+ </asx:abap>
+</abapGit>

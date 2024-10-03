@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZSD_DELETE</OBJCT>
+    <FIEL1>ACTVT</FIEL1>
+    <FIEL2>ZSPART</FIEL2>
+    <FIEL3>ZVKBUR</FIEL3>
+    <OCLSS>ZSDD</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZSD_DELETE</OBJECT>
+    <TTEXT>sales order delete</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>ZSD_DELETE</OBJCT>
+   </TOBJVORFLG>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_NROB" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <ATTRIBUTES>
+    <OBJECT>ZWAT_ROW</OBJECT>
+    <DOMLEN>NUMC5</DOMLEN>
+    <PERCENTAGE>10.0</PERCENTAGE>
+    <BUFFER>X</BUFFER>
+    <NOIVBUFFER>00000010</NOIVBUFFER>
+   </ATTRIBUTES>
+   <TEXT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZWAT_ROW</OBJECT>
+    <TXT>Table Row id for Waterbase</TXT>
+    <TXTSHORT>ZWAT_ROW</TXTSHORT>
+   </TEXT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

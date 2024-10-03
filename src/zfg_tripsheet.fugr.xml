@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>BAPI For ZTRIP tcode</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_TRIPSHEETTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_TRIPSHEET</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_TRIPSHEET</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi for tcode ZTRIP</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>VENDOR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>RANGE_LIFNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_TRIPSHEET</PARAMETER>
+       <DBSTRUCT>ZSTR_TRIPSHEET</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>VENDOR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>RANGES Structure for Supplier Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_TRIPSHEET</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for tripsheet</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

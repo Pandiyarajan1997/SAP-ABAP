@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for DMS Mobile App</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_DMS_DATA_APPF01</SOBJ_NAME>
+    <SOBJ_NAME>LZGET_DMS_DATA_APPTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_DMS_DATA_APP</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_GET_CUSTOMER_ROL</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function for get Customer ROL</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_KDGRP</PARAMETER>
+       <TYP>KDGRP</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_ROL</PARAMETER>
+       <DBSTRUCT>ZSTR_PEPUP_ROL</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_KDGRP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer group</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ROL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure For Customer ROL</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_J_1IG_GET_HSN_SAC</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get the HSN/ SAC Code</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_WERKS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_HSN</PARAMETER>
+       <DBSTRUCT>ZSTR_PEPUP_HSN</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_WERKS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HSN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure For Material HSN code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZGET_CUSTOMER_ROL</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function for get Customer ROL</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_KDGRP</PARAMETER>
+       <TYP>KDGRP</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_ROL</PARAMETER>
+       <DBSTRUCT>ZSTR_PEPUP_ROL</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_KDGRP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer group</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ROL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure For Customer ROL</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZJ_1IG_GET_HSN_SAC</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get the HSN/ SAC Code</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_WERKS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>WERKS_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_HSN</PARAMETER>
+       <DBSTRUCT>ZSTR_PEPUP_HSN</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_WERKS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant Table for National (Centrally Agreed) Contracts</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HSN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure For Material HSN code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

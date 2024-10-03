@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>BSAK AND BSIK</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_VEN_BSIK_BSAKTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_VEN_BSIK_BSAK</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_VENDOR_PORTAL_ACC</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>vendor data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>OBJID</PARAMETER>
+       <TYP>CHAR10</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_VENDOR_BSIK</PARAMETER>
+       <DBSTRUCT>BSIK</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_VENDOR_BSAK</PARAMETER>
+       <DBSTRUCT>BSAK</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>OBJID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>object id</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_VENDOR_BSIK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting: Secondary Index for Vendors</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_VENDOR_BSAK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting: Secondary Index for Vendors (Cleared Items)</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

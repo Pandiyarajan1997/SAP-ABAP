@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZDELIVERY_DETAILS_AUTOMAIL</NAME>
+    <SUBC>1</SUBC>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <CUA>
+    <ADM>
+     <ACTCODE>000001</ACTCODE>
+     <PFKCODE>000001</PFKCODE>
+    </ADM>
+    <STA>
+     <RSMPE_STAT>
+      <CODE>MY_STATUS</CODE>
+      <MODAL>D</MODAL>
+      <ACTCODE>000001</ACTCODE>
+      <PFKCODE>000001</PFKCODE>
+      <BUTCODE>0001</BUTCODE>
+      <INT_NOTE>MY_STATUS</INT_NOTE>
+     </RSMPE_STAT>
+    </STA>
+    <DOC>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>A</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>MY_STATUS</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>P</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>MY_STATUS</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>B</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <SUB_CODE>0001</SUB_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>MY_STATUS</INT_NOTE>
+     </RSMPE_ATRT>
+    </DOC>
+   </CUA>
+   <TPOOL>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Customer Delivery Details Report.</ENTRY>
+     <LENGTH>33</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_AUDAT</KEY>
+     <ENTRY>Date</ENTRY>
+     <LENGTH>21</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_KUNNR</KEY>
+     <ENTRY>Customer</ENTRY>
+     <LENGTH>21</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_WERKS</KEY>
+     <ENTRY>Sales Office</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+   </TPOOL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

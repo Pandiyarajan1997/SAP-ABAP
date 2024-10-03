@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<abapGit version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TDLINES>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>ADDRESS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>IF &amp;PAGE&amp; EQ &apos;1 &apos;.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;TVKO-TXNAM_ADR&amp; OBJECT TEXT ID ADRS LANGUAGE &amp;VBDKL-SPRAS_VST&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDIF.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ADDRESS DELIVERY PARAGRAPH AS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  TITLE    &amp;VBDKL-ANRED&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  NAME     &amp;VBDKL-NAME1&amp;, &amp;VBDKL-NAME2&amp;, &amp;VBDKL-NAME3&amp;, &amp;VBDKL-NAME4&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  STREET   &amp;VBDKL-STRAS&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  POBOX    &amp;VBDKL-PFACH&amp; CODE &amp;VBDKL-PSTL2&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  POSTCODE &amp;VBDKL-PSTLZ&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  CITY     &amp;VBDKL-ORT01&amp;, &amp;VBDKL-ORT02&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  REGION   &amp;VBDKL-REGIO&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  COUNTRY  &amp;VBDKL-LAND1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>  FROMCOUNTRY &amp;VBDKL-SLAND&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>ENDADDRESS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>FOOTER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>A1</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>A1</TDFORMAT>
+     <TDLINE>&lt;U&gt;Regd. Office:&lt;/&gt;  Old No. 109B, New No. 124, Developed Plots, SIDCO</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Industrial Estate, Ambattur,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>A1</TDFORMAT>
+     <TDLINE>Chennai-600098, Tamilnadu, India.</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>HEADER</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>INCLUDE &amp;TVKO-TXNAM_KOP&amp; OBJECT TEXT ID ADRS LANGUAGE &amp;VBDKL-SPRAS_VST&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>HEADER1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>HS</TDFORMAT>
+     <TDLINE>&amp;T001W-NAME1&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>HH</TDFORMAT>
+     <TDLINE>No.:76-A/1, GKS Estate, 11th Street, Ambattur Industrial Estate,</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDLINE>Chennai-600098</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>HH</TDFORMAT>
+     <TDLINE>Phone: +91 8300030404</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>INFO</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>CN</TDFORMAT>
+     <TDLINE>TEST CERTIFICATE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>  Product Description : &amp;MAKT-MAKTX&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>  Product Code        : &amp;MARA-MATNR&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>  Batch Number        : &amp;VBDPL-CHARG&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>  Batch Quanitity     : &amp;LV_QTY&amp; &amp;LS_QALS-MENGENEINH&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>  Mfg. Date           : &amp;MCHAR-HSDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>INFO2</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE>&lt;S&gt;Delivery item/date&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;VBDKL-VBELN&amp;&amp;&apos; &apos;*VBDPL-POSNR&amp;&amp;&apos; / &apos;VBDKL-LFDAT&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>LOGO</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>SHEENLAC</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BITMAP &apos;ZSHEENLAC&apos; OBJECT GRAPHICS ID BMAP TYPE BCOL DPI 150</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>JNPAINTS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BITMAP &apos;JENSON LOGO&apos; OBJECT GRAPHICS ID BMAP TYPE BCOL DPI 200</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>MAIN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>HD</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>BOX FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;1&apos; CM YORIGIN &apos;18&apos; LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX HEIGHT &apos;2&apos; LN FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>IT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>col 1</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;2.5&apos; CM YORIGIN &apos;18&apos; LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX WIDTH &apos;6&apos; CM HEIGHT &apos;2&apos; LN FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;8.5&apos; CM YORIGIN &apos;18&apos; LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX WIDTH &apos;5.5&apos; CM HEIGHT &apos;2&apos; LN FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;14&apos; CM YORIGIN &apos;18&apos; LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX WIDTH &apos;1.5&apos; CM HEIGHT &apos;2&apos; LN FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>AS</TDFORMAT>
+     <TDLINE> S.NO        PARAMETERS          SPECIFICATION      UNIT        RESULT</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>LINEITEMS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;1&apos; CM YORIGIN &amp;LV_LINE&amp; CM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>BOX HEIGHT &apos;2&apos; ln FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;3&apos; CM YORIGIN &amp;LV_LINE&amp; CM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>BOX WIDTH &apos;5&apos; CM HEIGHT &apos;1&apos; CM FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;8&apos; CM YORIGIN &amp;LV_LINE&amp; CM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>BOX WIDTH &apos;7&apos; CM HEIGHT &apos;1&apos; CM FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>IT</TDFORMAT>
+     <TDLINE>&amp;LV_SNO1&amp;    &amp;LV_TP(22)&amp;  &amp;LV_S(20)&amp;  &amp;LV_U(4)&amp; &amp;LV_R(19)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>EXTRA</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>IT</TDFORMAT>
+     <TDLINE>      &amp;LV_TP(22)&amp;  &amp;LV_S(20)&amp;  &amp;LV_U(4)&amp; &amp;LV_R(16)&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/E</TDFORMAT>
+     <TDLINE>NOT_FOUND</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>POSITION XORIGIN &apos;1&apos; CM YORIGIN &apos;20&apos; LN</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/:</TDFORMAT>
+     <TDLINE>BOX HEIGHT &apos;4&apos; LN FRAME &apos;0.1&apos; MM</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>BB</TDFORMAT>
+     <TDLINE>NO CHARACTERISTICS AND RESULT WERE FOUND</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>PAGE</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>*</TDFORMAT>
+     <TDLINE>&lt;S&gt;Page&lt;/&gt;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/</TDFORMAT>
+     <TDLINE>&amp;PAGE&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>You can also output the page number as &quot;x of y&quot;:</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/*</TDFORMAT>
+     <TDLINE>&amp;PAGE&amp; / &amp;SAPSCRIPT-FORMPAGES&amp;</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>/W</TDFORMAT>
+     <TDLINE>SYS</TDLINE>
+    </TLINE>
+    <TLINE>
+     <TDFORMAT>SS</TDFORMAT>
+     <TDLINE>This is a Computer generated test certificate. No Signature is required.</TDLINE>
+    </TLINE>
+   </TDLINES>
+  </asx:values>
+ </asx:abap>
+</abapGit>

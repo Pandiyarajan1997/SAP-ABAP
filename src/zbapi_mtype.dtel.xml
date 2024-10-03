@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBAPI_MTYPE</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBAPI_MTYPE</DOMNAME>
+    <HEADLEN>07</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Message type: S Success, E Error, W Warning, I Info, A Abort</DDTEXT>
+    <REPTEXT>MsgType</REPTEXT>
+    <SCRTEXT_S>Type</SCRTEXT_S>
+    <SCRTEXT_M>Process Type</SCRTEXT_M>
+    <SCRTEXT_L>Process Type</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <DEFFDNAME>TYPE</DEFFDNAME>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Meldungstyp: S Success, E Error, W Warning, I Info, A Abort</DDTEXT>
+     <REPTEXT>Msg-Typ</REPTEXT>
+     <SCRTEXT_S>Msg-Typ</SCRTEXT_S>
+     <SCRTEXT_M>Nachrichtentyp</SCRTEXT_M>
+     <SCRTEXT_L>Nachrichtentyp</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+   <LONGTEXTS>
+    <item>
+     <DOKIL>
+      <ID>DE</ID>
+      <OBJECT>ZBAPI_MTYPE</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0007</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00011</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZBAPI_MTYPE</TDNAME>
+      <TDID>DE</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00007</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFINITION&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Parameter kann folgende Werte haben:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&apos;S&apos; für Erfolgsmeldungen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&apos;E&apos; für Fehlersituationen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&apos;W&apos; für Warnungen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&apos;I&apos; für Informationsmeldungen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&apos;A&apos; für Abbruchmeldungen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Abhängig von der Implementierung eines BAPIs kann bei Abbruchmeldungen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>ein Rollback auf der Datenbank ausgeführt werden. Dies bedeutet, daß</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>alle Datenbankänderungen seit dem letzten Commit Work-Kommando</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>zurückgenommen werden. Informationen hierzu finden Sie in der</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Dokumentation zu dem betreffenden BAPI.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>DE</ID>
+      <OBJECT>ZBAPI_MTYPE</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0007</VERSION>
+      <TXTLINES>00009</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZBAPI_MTYPE</TDNAME>
+      <TDID>DE</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00007</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFINITION&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This parameter has the following values:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&quot;S&quot; for success messages</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&quot;E&quot; for error messages</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&quot;W&quot; for warnings</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>&quot;I&quot; for information messages</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Depending on the how a BAPI is implemented, if there is a termination</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>message, a rollback can be executed in the database. All database</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>changes since the last commit work command are cancelled. For further</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>information see the documentation for the BAPI in question.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Generic Whatsapp FM group</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGEN_WHATSAPPTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGEN_WHATSAPP</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFM_GEN_WHATSAPP</FUNCNAME>
+     <SHORT_TEXT>FM for Dynamic Whatsapp Trigger</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_TEMPLATE_NAME</PARAMETER>
+       <TYP>CHAR50</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_MOBILE</PARAMETER>
+       <TYP>CHAR12</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_TEMPLATE_DATA</PARAMETER>
+       <TYP>ZTT_KEY_VALUE_PAIR</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>IV_STATUS</PARAMETER>
+       <TYP>CHAR20</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>INCORRECT_MOB_NUM</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_TEMPLATE_NAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Template Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_MOBILE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Mobile number( 91 at prefix )</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TEMPLATE_DATA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for Key-value whatsapp call API</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_STATUS</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INCORRECT_MOB_NUM</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Incorrect mobile number</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

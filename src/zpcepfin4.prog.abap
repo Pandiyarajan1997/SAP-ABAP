@@ -1,0 +1,3397 @@
+*----------------------------------------------------------------------*
+*  INCLUDE PCEPFIN4                                                    *
+*XXXNTnote number  <date>   Note<note number>:<short description>
+*RBSNT794651       10032004 Note794651: Blank form is not printed when
+*                                       no valid employees are selected
+*----------------------------------------------------------------------*
+
+FORM PRINT_MODULE1.
+  DATA: CURRC TYPE WAERS.
+
+  IF DISP_FLG_LOT LT 1.
+    FORMNAME = LAYOUT.
+    LANG = LANGU.
+  ENDIF.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+
+  IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+
+    PERFORM OPEN_FORM USING LANG.
+* Page1
+    PERFORM START_FORM USING FORMNAME LANG 'PAGE1'.
+***** START OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+  ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+  PERFORM GET_CURRC CHANGING CURRC.
+
+  LOOP AT FINAL_TAB.
+    PERFORM GET_ADDRESS USING FINAL_TAB-TSTAD.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'currc' CURRC.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'name1' SADR-NAME1 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'name2' SADR-NAME2 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'stras' SADR-STRAS .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'pstlz' SADR-PSTLZ+0(6) .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'ort01' SADR-ORT01 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'fybegda' FYBEGDA(4).
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'fyendda' FYENDDA(4).
+
+    PERFORM CURR_TO_CHAR USING 'pf_rate' FINAL_TAB-PF_RATE.
+
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'pfmonth' PF_MONTH_YEAR.
+    IF FINAL_TAB-PFRFN IS NOT INITIAL.                      "PKT1152442
+      PERFORM CONVERT_TO_SCRIPTVAR USING 'pfref' FINAL_TAB-PFRFN.
+    ELSE.
+      PERFORM CONVERT_TO_SCRIPTVAR USING 'pfref' FINAL_TAB-PFREF.
+    ENDIF.
+*epf a/c
+    PERFORM CURR_TO_CHAR USING 'tot_pf_basis' FINAL_TAB-TOT_PF_BASIS.
+    PERFORM CURR_TO_CHAR USING 'tot_pf_ee_contr'
+                                FINAL_TAB-TOT_PF_EE_CONTR.
+    PERFORM CURR_TO_CHAR USING 'tot_pf_er_contr'
+                                FINAL_TAB-TOT_PF_ER_CONTR.
+
+    PERFORM CURR_TO_CHAR USING 'tot_pf_admin_chgs'
+                                FINAL_TAB-TOT_PF_ADMIN_CHGS.
+
+*pension a/c
+    PERFORM CURR_TO_CHAR USING 'tot_pen_basis' FINAL_TAB-TOT_PEN_BASIS .
+    PERFORM CURR_TO_CHAR USING 'tot_pen_er_contr'
+                                FINAL_TAB-TOT_PEN_ER_CONTR.
+
+*edli a/c
+    PERFORM CURR_TO_CHAR USING 'tot_edli_basis' FINAL_TAB-TOT_EDLI_BASIS.
+
+    PERFORM CURR_TO_CHAR USING 'tot_edli_er_contr'
+                                FINAL_TAB-TOT_EDLI_ER_CONTR.
+
+    PERFORM CURR_TO_CHAR USING 'tot_edli_admin_chgs'
+                                FINAL_TAB-TOT_EDLI_ADMIN_CHGS.
+
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'tot_no_emp'
+                                        FINAL_TAB-TOT_NO_EMP.
+*  No of subscribers for EPF
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_last_month'
+                           FINAL_TAB-NO_LAST_MONTH.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_new_this_month'
+                           FINAL_TAB-NO_NEW_THIS_MONTH.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_left_service'
+                           FINAL_TAB-NO_LEFT_SERVICE.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'total_members'
+                           FINAL_TAB-TOTAL_MEMBERS.
+
+*  No of sunscribers for pension fund
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_last_month_pen'
+                           FINAL_TAB-NO_LAST_MONTH_PEN.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_new_this_mon_pen'
+                           FINAL_TAB-NO_NEW_THIS_MONTH_PEN.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_left_service_pen'
+                           FINAL_TAB-NO_LEFT_SERVICE_PEN.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'total_members_pen'
+                           FINAL_TAB-TOTAL_MEMBERS_PEN.
+
+*  No of subscribers for EDLI
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_last_month_edli'
+                           FINAL_TAB-NO_LAST_MONTH_EDLI.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_new_this_mon_edli'
+                           FINAL_TAB-NO_NEW_THIS_MONTH_EDLI.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'no_left_service_edli'
+                           FINAL_TAB-NO_LEFT_SERVICE_EDLI.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'total_members_edli'
+                           FINAL_TAB-TOTAL_MEMBERS_EDLI.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+
+    GV_FYBEGDA = FYBEGDA(4).
+    GV_FYENDDA = FYENDDA(4).
+    GV_PFMONTH = PF_MONTH_YEAR.
+    GV_BANKNAME = BANKNAME.
+    GV_BANKADDR = BANKADDR.
+    GV_BANKCITY = BANKCITY.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+
+  ENDLOOP.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+  IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+
+
+    PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'VAR1'.
+
+    PERFORM END_FORM.
+    PERFORM CLOSE_FORM.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+  ENDIF.
+
+  IF P_PDF = 'X'.
+    GV_FPNAME = FORMNAME.
+    PERFORM PDF_DISPLAY.
+  ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '6-1-2005' *****
+
+
+
+ENDFORM.                    "PRINT_MODULE1
+
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY_LIST
+*&---------------------------------------------------------------------*
+FORM DISPLAY_LIST.
+
+  DATA: REPID LIKE SY-REPID,
+          TITLE(50) TYPE C.
+
+  REFRESH MN_TAB.
+  LOOP AT MAIN_TAB.
+    MOVE-CORRESPONDING MAIN_TAB TO MN_TAB.
+    APPEND MN_TAB.
+  ENDLOOP.
+
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'MN_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  FIELDCAT-SELTEXT_M = 'Employee No.'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EEPFN'.
+  FIELDCAT-SELTEXT_M = 'Employee PF No.'(057).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PF_RATE'.
+  FIELDCAT-SELTEXT_M = 'PF Rate'(043).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 8.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PF_EE_CONTR'.
+  FIELDCAT-SELTEXT_M = 'EePFCont'(045).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PF_ER_CONTR'.
+  FIELDCAT-SELTEXT_M = 'ErPFCont'(046).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PF_ADMIN_CHGS'.
+  FIELDCAT-SELTEXT_M = 'PFAdmChg'(047).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PEN_ER_CONTR'.
+  FIELDCAT-SELTEXT_M = 'ErPenCon'(049).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EDLI_ER_CONTR'.
+  FIELDCAT-SELTEXT_M = 'EDLI ErCo'(051).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 10.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EDLI_ADMIN_CHGS'.
+  FIELDCAT-SELTEXT_M = 'EDLI Adm'(052).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REPID = SY-REPID.
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+*  PERFORM HR_LIST TABLES MAIN_TAB FLD_NAM
+*                  USING TITLE HEADLINE.
+*
+*  CHECK SY-SUBRC = 0.
+
+  CLEAR FORM_NAME.
+  FORM_NAME = 'HR_LIST'.
+
+  PERFORM DISPLAY_ALV_GRID IN PROGRAM HINCALV0
+                        TABLES MAIN_TAB FIELDCAT G_ITAB_FCODE
+                        USING REPID 'PF Form 12A'(015)
+                        'PF Form 12A Results'(016).
+
+  IF SY-BATCH = 'X'.
+*   For output in SAP Script
+    PERFORM ERROR_CASES.
+    PERFORM PRINT_MODULE.
+  ENDIF.
+
+ENDFORM.                               " DISPLAY_LIST
+
+*&---------------------------------------------------------------------*
+*&      Form  ERROR_CASES
+*&---------------------------------------------------------------------*
+FORM ERROR_CASES.
+  DESCRIBE TABLE HR_ERROR LINES NUM.
+  IF NUM > 0.
+    CALL FUNCTION 'HR_DISPLAY_ERROR_LIST'
+      EXPORTING
+        NO_POPUP         = ' '
+        NO_PRINT         = ' '
+*       NO_IMG           = ' '
+*       LINESIZE         = SY-LINSZ
+      TABLES
+        ERROR            = HR_ERROR
+      EXCEPTIONS
+        INVALID_LINESIZE = 1
+        OTHERS           = 2.
+  ELSE.
+    MESSAGE S361(HRPADIN01).
+*   There are no errors
+    IF SY-BATCH = 'X'.
+      WRITE: TEXT-NER.
+    ENDIF.
+
+  ENDIF.
+
+ENDFORM.                               " ERROR_CASES
+
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY5
+*&---------------------------------------------------------------------*
+FORM DISPLAY5.
+
+  DATA: REPID LIKE SY-REPID,
+        TITLE(50) TYPE C.
+
+  REFRESH FRM5_TAB.
+  LOOP AT FORM5_TAB.
+    MOVE-CORRESPONDING FORM5_TAB TO FRM5_TAB.
+    APPEND FRM5_TAB.
+  ENDLOOP.
+
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'FRM5_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  FIELDCAT-SELTEXT_M = 'Employee No.'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EEPFN'.
+  FIELDCAT-SELTEXT_M = 'Employee PF No.'(057).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ENAME'.
+  FIELDCAT-SELTEXT_M = 'Emp-Name'(060).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOB'.
+  FIELDCAT-SELTEXT_M = 'DateOfBirth'(062).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 12.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOJPF'.
+  FIELDCAT-SELTEXT_M = 'DateOfPFJn'(063).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 11.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'GENDER'.
+  FIELDCAT-SELTEXT_M = 'Sex'(064).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 4.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REPID = SY-REPID.
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+
+*  PERFORM HR_LIST TABLES FORM5_TAB FLD_NAM
+*                  USING TITLE HEADLINE.
+
+  CLEAR FORM_NAME.
+  FORM_NAME = 'HR_FORM5'.
+
+* Appending blank record when selection is empty to print blank form
+  IF FORM5_TAB[] IS INITIAL.                            "RBSNT794651
+    MOVE SPACE TO FORM5_TAB-PERNR.
+    MOVE SPACE TO FORM5_TAB-DOB.
+    MOVE SPACE TO FORM5_TAB-DOJPF.
+    MOVE SPACE TO FORM5_TAB-PREV_SERVICE.
+    APPEND FORM5_TAB.
+  ENDIF.
+
+  PERFORM DISPLAY_ALV_GRID IN PROGRAM HINCALV0
+                        TABLES FORM5_TAB FIELDCAT G_ITAB_FCODE
+                        USING REPID 'PF Form 5'(066)
+                        'PF Form 5 Results'(067).
+
+  IF SY-BATCH = 'X'.
+*   For output in SAP Script
+    PERFORM ERROR_CASES.
+    PERFORM PRINT_MODULE.
+  ENDIF.
+
+ENDFORM.                                                    " DISPLAY5
+
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY10
+*&---------------------------------------------------------------------*
+FORM DISPLAY10.
+
+  DATA: REPID LIKE SY-REPID,
+          TITLE(50) TYPE C.
+  REFRESH FRM10_TAB.
+  LOOP AT FORM10_TAB.
+    MOVE-CORRESPONDING FORM10_TAB TO FRM10_TAB.
+    APPEND FRM10_TAB.
+  ENDLOOP.
+
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'FRM10_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  FIELDCAT-SELTEXT_M = 'Employee No.'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EEPFN'.
+  FIELDCAT-SELTEXT_M = 'Employee PF No.'(057).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ENAME'.
+  FIELDCAT-SELTEXT_M = 'Emp-Name'(060).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOL'.
+  FIELDCAT-SELTEXT_M = 'DateOfLv'(068).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'REASON_LEAVE'.
+  FIELDCAT-SELTEXT_M = 'ReasonForLv'(069).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 12.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REPID = SY-REPID.
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+*  PERFORM HR_LIST TABLES FORM10_TAB FLD_NAM
+*                  USING TITLE HEADLINE.
+*
+*  CHECK SY-SUBRC = 0.
+
+  CLEAR FORM_NAME.
+  FORM_NAME = 'HR_FORM10'.
+
+* Appending blank record when selection is empty to print blank form
+  IF FORM10_TAB[] IS INITIAL.                           "RBSNT794651
+    MOVE SPACE TO FORM10_TAB-ENAME.
+    MOVE SPACE TO FORM10_TAB-DOL.
+    APPEND FORM10_TAB.
+  ENDIF.
+
+  PERFORM DISPLAY_ALV_GRID IN PROGRAM HINCALV0
+                        TABLES FORM10_TAB FIELDCAT G_ITAB_FCODE
+                        USING REPID 'PF Form 10'(070)
+                        'PF Form 10 Results'(020).
+  IF SY-BATCH = 'X'.
+*   For output in SAP Script
+    PERFORM ERROR_CASES.
+    PERFORM PRINT_MODULE.
+  ENDIF.
+
+ENDFORM.                                                    " DISPLAY10
+
+*&---------------------------------------------------------------------*
+*&      Form  PRINT_FORM5
+*&---------------------------------------------------------------------*
+FORM PRINT_FORM5.
+
+  DATA: SRNO TYPE I.
+
+  IF DISP_FLG_LOT LT 1.
+    FORMNAME = LAYOUT.
+    LANG = LANGU.
+  ENDIF.
+
+  SORT FORM5_TAB ASCENDING.            " BY PFREF PERNR.
+
+  LOOP AT FORM5_TAB.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+      PERFORM OPEN_FORM USING LANG.
+* page
+      PERFORM START_FORM USING FORMNAME LANG 'PAGE1'.
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+    PERFORM GET_ADDRESS USING FORM5_TAB-TSTAD.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'name1' SADR-NAME1 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'name2' SADR-NAME2 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'stras' SADR-STRAS .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'pstlz' SADR-PSTLZ+0(6) .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'ort01' SADR-ORT01 .
+
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'pfmonth' PF_MONTH_YEAR.
+    IF FORM5_TAB-PFRFN IS NOT INITIAL.                      "PKT1152442
+      PERFORM CONVERT_TO_SCRIPTVAR USING 'pfref' FORM5_TAB-PFRFN.
+    ELSE.
+      PERFORM CONVERT_TO_SCRIPTVAR USING 'pfref' FORM5_TAB-PFREF.
+    ENDIF.
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+    GV_NAME1 = SADR-NAME1.
+    GV_STRAS = SADR-STRAS.
+    GV_ORT01 = SADR-ORT01.
+    GV_PSTLZ = SADR-PSTLZ+0(6).
+    GV_PFMONTH = PF_MONTH_YEAR.
+
+
+    IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'HDDT2'.
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'HDDT3'.
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'HDDT4'.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+    ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+    SRNO = SRNO + 1.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'srno' SRNO.
+
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'eepfn' FORM5_TAB-EEPFN.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'ename' FORM5_TAB-ENAME.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'fath_name' FORM5_TAB-FATH_NAME.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'dob' FORM5_TAB-DOB.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'gender' FORM5_TAB-GENDER.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'dojpf' FORM5_TAB-DOJPF.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'prev_service'
+                               FORM5_TAB-PREV_SERVICE.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+      PERFORM WRITE_FORM USING 'DETAIL' 'APPEND' 'BODY' 'MAIN'.
+
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'FTDT'.
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+  ENDLOOP.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+  IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    PERFORM END_FORM.
+    PERFORM CLOSE_FORM.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+  ENDIF.
+
+  IF P_PDF = 'X'.
+
+    GV_FPNAME = FORMNAME.
+
+    PERFORM PDF_DISPLAY.
+
+  ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+ENDFORM.                               " PRINT_FORM5
+
+*&---------------------------------------------------------------------*
+*&      Form  PRINT_FORM10
+*&---------------------------------------------------------------------*
+FORM PRINT_FORM10.
+
+  DATA: SRNO TYPE I.
+
+  IF DISP_FLG_LOT LT 1.
+    FORMNAME = LAYOUT.
+    LANG = LANGU.
+  ENDIF.
+
+  SORT FORM10_TAB.                     " ASCENDING BY PFREF PERNR.
+
+  LOOP AT FORM10_TAB.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+      PERFORM OPEN_FORM USING LANG.
+* page
+      PERFORM START_FORM USING FORMNAME LANG 'PAGE1'.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    ENDIF.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+    PERFORM GET_ADDRESS USING FORM10_TAB-TSTAD.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'name1' SADR-NAME1 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'name2' SADR-NAME2 .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'stras' SADR-STRAS .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'pstlz' SADR-PSTLZ+0(6) .
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'ort01' SADR-ORT01 .
+
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'pfmonth' PF_MONTH_YEAR.
+    IF FORM10_TAB-PFRFN IS NOT INITIAL.                     "PKT1152442
+      PERFORM CONVERT_TO_SCRIPTVAR USING 'pfref' FORM10_TAB-PFRFN.
+    ELSE.
+      PERFORM CONVERT_TO_SCRIPTVAR USING 'pfref' FORM10_TAB-PFREF.
+    ENDIF.
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+    GV_NAME1 = SADR-NAME1.
+    GV_STRAS = SADR-STRAS.
+    GV_ORT01 = SADR-ORT01.
+    GV_PSTLZ = SADR-PSTLZ+0(6).
+    GV_PFMONTH = PF_MONTH_YEAR.
+    IF FORM10_TAB-PFRFN IS NOT INITIAL.                     "PKT1152442
+      GV_PFREF = FORM10_TAB-PFRFN.
+    ELSE.
+      GV_PFREF = FORM10_TAB-PFREF.
+    ENDIF.
+
+    IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'HDDT2'.
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'HDDT3'.
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'HDDT4'.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+    SRNO = SRNO + 1.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'srno' SRNO.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'eepfn' FORM10_TAB-EEPFN.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'ename' FORM10_TAB-ENAME.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'fath_name' FORM10_TAB-FATH_NAME.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'dol' FORM10_TAB-DOL.
+    PERFORM CONVERT_TO_SCRIPTVAR USING 'reason_leave'
+                                     FORM10_TAB-REASON_LEAVE.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+
+      PERFORM WRITE_FORM USING 'DETAIL' 'APPEND' 'BODY' 'MAIN'.
+
+      PERFORM WRITE_FORM USING '' 'APPEND' 'BODY' 'FTDT'.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+  ENDLOOP.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+  IF P_SCRIPT = 'X'.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+    PERFORM END_FORM.
+    PERFORM CLOSE_FORM.
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+  ENDIF.
+
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+***** START OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+  IF P_PDF = 'X'.
+
+    GV_FPNAME = FORMNAME.
+
+    PERFORM PDF_DISPLAY.
+
+  ENDIF.
+***** END OF CHANGES FOR PDF FORM BY C5061983 '30-12-2004' *****
+
+
+
+
+ENDFORM.                               " PRINT_FORM10
+
+*&---------------------------------------------------------------------*
+*&      Form  SHOW_FORMNAMES
+*&---------------------------------------------------------------------*
+FORM SHOW_FORMNAMES.
+
+  TYPES: BEGIN OF FORMS,
+            FRMNM TYPE PINPF-FRMNM,
+            FRMDS TYPE PINPF-FRMDS,
+          END OF FORMS.
+
+  DATA: FORMNAMES TYPE FORMS OCCURS 0 WITH HEADER LINE.
+
+  CLEAR FORMNAMES.
+  REFRESH FORMNAMES.
+
+  MOVE 'FORM5' TO FORMNAMES-FRMNM.
+  MOVE 'Return of Employees qualifying for membership'(022)
+        TO FORMNAMES-FRMDS.
+  APPEND FORMNAMES.
+
+  MOVE 'FORM10' TO FORMNAMES-FRMNM.
+  MOVE 'Return of Members leaving the service'(023) TO FORMNAMES-FRMDS.
+  APPEND FORMNAMES.
+
+  MOVE 'FORM12A' TO FORMNAMES-FRMNM.
+  MOVE 'Monthly contribution statement'(024) TO FORMNAMES-FRMDS.
+  APPEND FORMNAMES.
+
+  MOVE 'ECR' TO FORMNAMES-FRMNM.
+  MOVE 'Electronic Challan cum Return'(026) TO FORMNAMES-FRMDS.
+  APPEND FORMNAMES.
+
+  MOVE 'KYC' TO formnames-frmnm.
+  MOVE TEXT-136 TO formnames-frmds.  " 'Know Your Custome' (136)
+  APPEND formnames.
+  MOVE 'ECR 2.0' TO formnames-frmnm.
+  MOVE text-026 TO formnames-frmds. "'Electronic Challan cum Return'(026)
+  APPEND formnames.
+  CLEAR FORMNAMES.
+
+  CALL FUNCTION 'F4IF_INT_TABLE_VALUE_REQUEST'
+       EXPORTING
+*         DDIC_STRUCTURE   = ' '
+            RETFIELD         = 'FRMNM'
+*         PVALKEY          = ' '
+            DYNPPROG         = 'HINCEPF0'
+            DYNPNR           = '1000'
+            DYNPROFIELD      = 'REPONAME'
+*         STEPL            = 0
+           WINDOW_TITLE     = 'Legal Forms-EPF'(010)
+*         VALUE            = ' '
+            VALUE_ORG        = 'S'
+*         MULTIPLE_CHOICE  = ' '
+*         DISPLAY          = ' '
+*         CALLBACK_PROGRAM = ' '
+*         CALLBACK_FORM    = ' '
+       TABLES
+            VALUE_TAB        = FORMNAMES
+*         FIELD_TAB       =
+*         RETURN_TAB       =
+*         DYNPFLD_MAPPING  =
+*    EXCEPTIONS
+*         PARAMETER_ERROR  = 1
+*         NO_VALUES_FOUND  = 2
+*         OTHERS           = 3
+            .
+  IF SY-SUBRC <> 0.                                         "#EC *
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+ENDFORM.                               " SHOW_FORMNAMES
+
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY_RESULTS
+*&---------------------------------------------------------------------*
+FORM DISPLAY_RESULTS.
+
+  ENDDATE = PN-ENDDA.
+
+  IF DISP_FLG_LOT GE 1.
+    PERFORM RE596F USING SNAME ENDDATE.
+
+*    perform (      ) in program (    ) using .........
+
+    PERFORM (T596F-MODNA) IN PROGRAM (T596F-PGMNA)
+                          CHANGING FORMNAME.
+
+    PERFORM GET_OUTPUT_TYPE USING    ENDDATE
+                            CHANGING FORMNAME
+                                     P_SCRIPT.
+    IF P_SCRIPT IS INITIAL.
+      P_PDF = 'X'.
+    ELSE.
+      CLEAR P_PDF.
+    ENDIF.
+  ENDIF.
+
+*  perform pf12a_99 changing formname.
+
+  CASE REPONAME.
+    WHEN 'FORM12A'.
+      PERFORM DISPLAY_LIST.
+    WHEN 'FORM5'.
+      PERFORM DISPLAY5.
+    WHEN 'FORM10'.
+      PERFORM DISPLAY10.
+  ENDCASE.
+
+ENDFORM.                               " DISPLAY_RESULTS
+
+
+*&---------------------------------------------------------------------*
+*&      Form  HR_LIST
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_DATA_TAB  text
+*      -->P_FLD_TAB  text
+*      -->P_TITLE  text
+*      -->P_HEADLINE  text
+*----------------------------------------------------------------------*
+FORM HR_LIST TABLES   P_DATA_TAB
+                      P_FLD_TAB
+             USING    P_TITLE
+                      P_HEADLINE.
+
+  CALL FUNCTION 'HR_DISPLAY_BASIC_LIST'
+    EXPORTING
+      BASIC_LIST_TITLE     = P_TITLE
+      FILE_NAME            = '        '
+      HEAD_LINE1           = P_HEADLINE
+      LAY_OUT              = 0
+      DYN_PUSHBUTTON_TEXT1 = 'Print Errors'(017)
+      DYN_PUSHBUTTON_TEXT2 = 'Print Form'(018)
+      ADDITIONAL_OPTIONS   = ' '
+    IMPORTING
+      RETURN_CODE          = RET_CD
+    TABLES
+      DATA_TAB             = P_DATA_TAB
+      FIELDNAME_TAB        = P_FLD_TAB
+    EXCEPTIONS
+      DOWNLOAD_PROBLEM     = 1
+      NO_DATA_TAB_ENTRIES  = 2
+      TABLE_MISMATCH       = 3
+      PRINT_PROBLEMS       = 4
+      OTHERS               = 5.
+
+  CASE SY-SUBRC.
+    WHEN 1.
+      MESSAGE E171(PN).
+*  Problem in downloading
+    WHEN 3.
+      MESSAGE E112(HRPADIN01).
+*  There is mismatch between the field table and data table
+    WHEN 4.
+      MESSAGE E113(HRPADIN01).
+*  Error due to print problems
+    WHEN 5.
+    WHEN OTHERS.
+  ENDCASE.
+
+ENDFORM.                    " HR_LIST
+
+
+*&--------------------------------------------------------------------*
+*&      Form  print_module
+*&--------------------------------------------------------------------*
+*       text
+*---------------------------------------------------------------------*
+FORM PRINT_MODULE.
+  CASE FORM_NAME.
+    WHEN 'HR_LIST'.
+      PERFORM PRINT_MODULE1.
+    WHEN 'HR_FORM5'.
+      PERFORM PRINT_FORM5.
+    WHEN 'HR_FORM10'.
+      PERFORM PRINT_FORM10.
+  ENDCASE.
+ENDFORM.                    "print_module
+*&---------------------------------------------------------------------*
+*&      Form  PDF_DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM PDF_DISPLAY .
+
+  TRY.
+
+      CALL FUNCTION 'FP_FUNCTION_MODULE_NAME'
+        EXPORTING
+          I_NAME           = GV_FPNAME
+        IMPORTING
+          E_FUNCNAME       = GV_FM_NAME
+          E_INTERFACE_TYPE = GV_E_INTERFACE_TYPE.
+      .
+
+    CATCH CX_ROOT INTO GV_W_CX_ROOT.
+      GV_MESG = GV_W_CX_ROOT->GET_TEXT( ).
+      MESSAGE GV_MESG TYPE 'E'.
+
+  ENDTRY.
+
+
+  CALL FUNCTION 'FP_JOB_OPEN'
+    CHANGING
+      IE_OUTPUTPARAMS = GV_FP_OUTPUTPARAMS
+    EXCEPTIONS
+      CANCEL          = 1
+      USAGE_ERROR     = 2
+      SYSTEM_ERROR    = 3
+      INTERNAL_ERROR  = 4
+      OTHERS          = 5.
+  IF SY-SUBRC <> 0.
+    MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+          WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+***** APPENDS DATA OF DISP_BODY TABLE *****
+***** TO GT_OUTPUT_TAB TABLE *****
+
+  IF GV_FPNAME = 'HR_IN_EPF010_99M'.
+
+    LOOP AT FORM10_TAB.
+      MOVE-CORRESPONDING FORM10_TAB TO GS_OUTPUT_TAB.
+      GS_OUTPUT_TAB-SRNO = SY-TABIX.
+      APPEND GS_OUTPUT_TAB TO GT_OUTPUT_TAB.
+      CLEAR GS_OUTPUT_TAB.
+    ENDLOOP.
+
+  ELSEIF GV_FPNAME = 'HR_IN_EPF005_99M'.
+    CLEAR GT_OUTPUT_TAB.
+    LOOP AT FORM5_TAB .
+      MOVE-CORRESPONDING FORM5_TAB TO GS_OUTPUT_TAB.
+      IF FORM5_TAB-PFRFN IS NOT INITIAL.                    "PKT1152442
+        GS_OUTPUT_TAB-PFREF = FORM5_TAB-PFRFN .
+      ELSE.
+        GS_OUTPUT_TAB-PFREF = FORM5_TAB-PFREF .
+      ENDIF.
+      GS_OUTPUT_TAB-SRNO = SY-TABIX.
+      APPEND GS_OUTPUT_TAB TO GT_OUTPUT_TAB.
+    ENDLOOP.
+
+  ELSEIF GV_FPNAME = 'HR_IN_EPF12A_99M'.
+
+    LOOP AT FINAL_TAB .
+      MOVE-CORRESPONDING FINAL_TAB TO GS_OUTPUT12A_TAB.
+      IF FINAL_TAB-PFRFN IS NOT INITIAL.                    "PKT1152442
+        GS_OUTPUT12A_TAB-PFREF = FINAL_TAB-PFRFN .
+      ELSE.
+        GS_OUTPUT12A_TAB-PFREF = FINAL_TAB-PFREF .
+      ENDIF.
+
+      WRITE FINAL_TAB-PF_RATE CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-PF_RATE.
+
+      WRITE FINAL_TAB-TOT_PF_BASIS CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_PF_BASIS.
+
+      WRITE FINAL_TAB-TOT_PF_EE_CONTR CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_PF_EE_CONTR.
+
+      WRITE FINAL_TAB-TOT_PF_ER_CONTR CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_PF_ER_CONTR.
+
+      WRITE FINAL_TAB-TOT_PF_ADMIN_CHGS CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_PF_ADMIN_CHGS.
+
+      WRITE FINAL_TAB-TOT_PEN_BASIS CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_PEN_BASIS.
+
+      WRITE FINAL_TAB-TOT_PEN_ER_CONTR CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_PEN_ER_CONTR.
+
+      WRITE FINAL_TAB-TOT_EDLI_BASIS CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_EDLI_BASIS.
+
+      WRITE FINAL_TAB-TOT_EDLI_ER_CONTR CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_EDLI_ER_CONTR.
+
+      WRITE FINAL_TAB-TOT_EDLI_ADMIN_CHGS CURRENCY CURR TO
+                                   GS_OUTPUT12A_TAB-TOT_EDLI_ADMIN_CHGS.
+
+      MOVE FINAL_TAB-TOT_NO_EMP TO GS_OUTPUT12A_TAB-TOT_NO_EMP1.
+      MOVE T500C-WAERS TO GS_T500C-WAERS.
+      APPEND GS_OUTPUT12A_TAB TO GT_OUTPUT12A_TAB.
+    ENDLOOP.
+
+  ENDIF.
+  GV_NAME1 = SADR-NAME1.
+  GV_STRAS = SADR-STRAS.
+  GV_ORT01 = SADR-ORT01.
+  GV_PSTLZ = SADR-PSTLZ+0(6).
+
+***** CALLS THE CREATED FUNCTION MODULE *****
+
+  CALL FUNCTION GV_FM_NAME
+    EXPORTING
+      GS_NAME1       = GV_NAME1
+      GS_STRAS       = GV_STRAS
+      GS_ORT01       = GV_ORT01
+      GS_PSTLZ       = GV_PSTLZ
+      GS_REPODATE    = REPODATE
+      GS_PFMONTH     = GV_PFMONTH
+      GS_BEGDA       = GV_FYBEGDA
+      GS_FYENDDA     = GV_FYENDDA
+      GS_BANKNAME    = GV_BANKNAME
+      GS_BANKADDR    = GV_BANKADDR
+      GS_BANKCITY    = GV_BANKCITY
+      T500C          = GS_T500C
+      GS_PFREF       = GV_PFREF
+      DISP_BODY12A   = GT_OUTPUT12A_TAB
+      DISP_BODY      = GT_OUTPUT_TAB
+    EXCEPTIONS
+      USAGE_ERROR    = 1
+      SYSTEM_ERROR   = 2
+      INTERNAL_ERROR = 3
+      OTHERS         = 4.
+
+
+  CALL FUNCTION 'FP_JOB_CLOSE'
+* IMPORTING
+*   E_RESULT             =
+   EXCEPTIONS
+      USAGE_ERROR          = 1
+      SYSTEM_ERROR         = 2
+      INTERNAL_ERROR       = 3
+      OTHERS               = 4
+            .
+  IF SY-SUBRC <> 0.
+    MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+            WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+  REFRESH : GT_OUTPUT12A_TAB,
+            GT_OUTPUT_TAB.
+
+
+ENDFORM.                    " PDF_DISPLAY
+
+* Start of changes for EPF efile
+*&---------------------------------------------------------------------*
+*&      Form  FILL_EFILE_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FILL_EFILE_DATA .
+  CASE REPONAME.
+    WHEN 'FORM12A'.
+      PERFORM FILL_EFILE_FORM12A.
+    WHEN 'FORM5'.
+      PERFORM FILL_EFILE_FORM5.
+    WHEN 'FORM10'.
+      PERFORM FILL_EFILE_FORM10.
+    WHEN 'ECR'.
+      PERFORM FILL_ECR.
+  ENDCASE.
+ENDFORM.                    " FILL_EFILE_DATA
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY_EFILE_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM DISPLAY_EFILE_DATA .
+
+  CASE REPONAME.
+    WHEN 'FORM12A'.
+      PERFORM EFILE_FORM12A.
+    WHEN 'FORM5'.
+      PERFORM EFILE_FORM5.
+    WHEN 'FORM10'.
+      PERFORM EFILE_FORM10.
+    WHEN 'ECR'.
+      PERFORM EFILE_ECR.
+  ENDCASE.
+
+ENDFORM.                    " DISPLAY_EFILE_DATA
+*&---------------------------------------------------------------------*
+*&      Form  EFILE_FORM12A
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM EFILE_FORM12A .
+
+  DATA: REPID LIKE SY-REPID,
+          TITLE(50) TYPE C.
+
+  CLEAR FIELDCAT.
+  REFRESH FIELDCAT[].
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'FORM12A_EFILE_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  FORM12A_HDR-PERNR = TEXT-058.
+  FIELDCAT-SELTEXT_M = 'Employee No.'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_WGS'.
+  FORM12A_HDR-EPF_WGS = TEXT-123.
+  FIELDCAT-SELTEXT_M = 'EPF Wages'(123).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EE_CONTR'.
+  FORM12A_HDR-EE_CONTR = TEXT-124.
+  FIELDCAT-SELTEXT_M = 'Emp contribution of PF'(124).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EE_REFUND'.
+  FORM12A_HDR-EE_REFUND = TEXT-125.
+  FIELDCAT-SELTEXT_M = 'Emp Refund'(125).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'NCP_DAYS'.
+  FORM12A_HDR-NCP_DAYS = TEXT-126.
+  FIELDCAT-SELTEXT_M = 'NCP Days'(126).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOL'.
+  FORM12A_HDR-DOL = TEXT-068.
+  FIELDCAT-SELTEXT_M = 'DateOfLv'(068).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 10.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'REASON_LEAVE'.
+  FORM12A_HDR-REASON_LEAVE = TEXT-127.
+  FIELDCAT-SELTEXT_M = 'Reason Of Leaving'(127).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 18.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'WAGE_ARR'.
+  FORM12A_HDR-WAGE_ARR = TEXT-128.
+  FIELDCAT-SELTEXT_M = 'Wage Arrears'(128).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 10.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EE_EPFARR'.
+  FORM12A_HDR-EE_EPFARR = TEXT-129.
+  FIELDCAT-SELTEXT_M = 'Emp EPF Arrears'(129).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ER_EPFARR'.
+  FORM12A_HDR-ER_EPFARR = TEXT-130.
+  FIELDCAT-SELTEXT_M = 'Er EPF Arrears'(130).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPS_ARR'.
+  FORM12A_HDR-EPS_ARR = TEXT-131.
+  FIELDCAT-SELTEXT_M = 'Emp EPS Arrears'(131).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PFRM' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PERR' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'KYC' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYCERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'DWNLDARRER' to g_itab_fcode.
+  APPEND g_itab_fcode.
+  MOVE 'ECRERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'ARREAR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'DWNLDARRER' to g_itab_fcode.
+  APPEND g_itab_fcode.
+  PERFORM DISPLAY_ALV_GRID TABLES FORM12A_EFILE_TAB
+                                  FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.                    " EFILE_FORM12A
+*&---------------------------------------------------------------------*
+*&      Form  EFILE_FORM5
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM EFILE_FORM5 .
+
+  DATA: REPID LIKE SY-REPID,
+        TITLE(50) TYPE C.
+
+  CLEAR FIELDCAT.
+  REFRESH FIELDCAT[].
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'FORM5_EFILE_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  FORM5_HDR-PERNR = TEXT-058.
+  FIELDCAT-SELTEXT_M = 'Employee No.'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ENAME'.
+  FORM5_HDR-ENAME = TEXT-060.
+  FIELDCAT-SELTEXT_M = 'Emp-Name'(060).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'GENDER'.
+  FORM5_HDR-GENDER = TEXT-064.
+  FIELDCAT-SELTEXT_M = 'Sex'(064).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 4.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'FATH_NAME'.
+  FORM5_HDR-FATH_NAME = TEXT-103.
+  FIELDCAT-SELTEXT_M = 'Father Name'(103).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DISABLED'.
+  FORM5_HDR-DISABLED = TEXT-105.
+  FIELDCAT-SELTEXT_M = 'Disabled Flag'(105).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'INT_WORK'.
+  FORM5_HDR-INT_WORK = TEXT-106.
+  FIELDCAT-SELTEXT_M = 'International Worker'(106).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOB'.
+  FORM5_HDR-DOB = TEXT-062.
+  FIELDCAT-SELTEXT_M = 'DateOfBirth'(062).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 12.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOJ'.
+  FORM5_HDR-DOJ = TEXT-107.
+  FIELDCAT-SELTEXT_M = 'DOJ'(107).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'MOB_NUM'.
+  FORM5_HDR-MOB_NUM = TEXT-108.
+  FIELDCAT-SELTEXT_M = 'Mobile'(108).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EMAIL'.
+  FORM5_HDR-EMAIL = TEXT-109.
+  FIELDCAT-SELTEXT_M = 'E-Mail ID'(109).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PREV_SERVICE'.
+  FORM5_HDR-PREV_SERVICE = TEXT-104.
+  FIELDCAT-SELTEXT_M = 'Previous Service'(104).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'HIGH_EPF'.
+  FORM5_HDR-HIGH_EPF = TEXT-110.
+  FIELDCAT-SELTEXT_M = 'H Flag EPF'(110).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'HIGH_EPS'.
+  FORM5_HDR-HIGH_EPS = TEXT-111.
+  FIELDCAT-SELTEXT_M = 'H Flag EPS'(111).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'BNK_ACCNM'.
+  FORM5_HDR-BNK_ACCNM = TEXT-112.
+  FIELDCAT-SELTEXT_M = 'Bank A/C'(112).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 30.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'BNK_NAME'.
+  FORM5_HDR-BNK_NAME = TEXT-113.
+  FIELDCAT-SELTEXT_M = 'Bank Name'(113).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 50.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'BRANCH_NAME'.
+  FORM5_HDR-BRANCH_NAME = TEXT-114.
+  FIELDCAT-SELTEXT_M = 'Bank Br'(114).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 50.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ADD1'.
+  FORM5_HDR-ADD1 = TEXT-115.
+  FIELDCAT-SELTEXT_M = 'Address 1'(115).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 35.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ADD2'.
+  FORM5_HDR-ADD2 = TEXT-116.
+  FIELDCAT-SELTEXT_M = 'Address 2'(116).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 35.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'CITY'.
+  FORM5_HDR-CITY = TEXT-117.
+  FIELDCAT-SELTEXT_M = 'City'(117).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 35.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DIST'.
+  FORM5_HDR-DIST = TEXT-118.
+  FIELDCAT-SELTEXT_M = 'District'(118).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 35.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'STATE'.
+  FORM5_HDR-STATE = TEXT-119.
+  FIELDCAT-SELTEXT_M = 'State'(119).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 35.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PIN_CODE'.
+  FORM5_HDR-PIN_CODE = TEXT-120.
+  FIELDCAT-SELTEXT_M = 'Pin Code'(120).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 11.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'MAR_STAT'.
+  FORM5_HDR-MAR_STAT = TEXT-121.
+  FIELDCAT-SELTEXT_M = 'Marital Status'(121).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'FATH_HUS'.
+  FORM5_HDR-FATH_HUS = TEXT-122.
+  FIELDCAT-SELTEXT_M = ' Father/Husband Flag'(122).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PFRM' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PERR' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+  PERFORM DISPLAY_ALV_GRID TABLES FORM5_EFILE_TAB
+                                  FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.                    " EFILE_FORM5
+*&---------------------------------------------------------------------*
+*&      Form  EFILE_FORM10
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM EFILE_FORM10 .
+
+  DATA: REPID LIKE SY-REPID,
+          TITLE(50) TYPE C.
+
+  CLEAR FIELDCAT.
+  REFRESH FIELDCAT[].
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'FORM10_EFILE_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  FORM10_HDR-PERNR = TEXT-058.
+  FIELDCAT-SELTEXT_M = 'Employee No.'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOL'.
+  FORM10_HDR-DOL = TEXT-068.
+  FIELDCAT-SELTEXT_M = 'DateOfLv'(068).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'REASON_LEAVE'.
+  FORM10_HDR-REASON_LEAVE = TEXT-069.
+  FIELDCAT-SELTEXT_M = 'ReasonForLv'(069).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 12.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REPID = SY-REPID.
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PFRM' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PERR' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+  PERFORM DISPLAY_ALV_GRID TABLES FORM10_EFILE_TAB
+                                  FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.                    " EFILE_FORM10
+
+*&---------------------------------------------------------------------*
+*&      Form  FILL_EFILE_FORM12A
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FILL_EFILE_FORM12A .
+
+  DATA :  LST_FEATURE_VALUES     TYPE PMEPE,
+          LFD_FEATURE_BACK_VALUE TYPE STRING.
+
+  DATA TEMP TYPE D.
+
+*Reason for leaving is printed only for employment status 0,1&2.
+  IF FORM10_TAB-DOL EQ PN-ENDDA.
+    TEMP = PN-ENDDA + 1.
+    RP-PROVIDE-FROM-LAST P0000 SPACE PN-BEGDA TEMP.
+  ELSE.
+    RP-PROVIDE-FROM-LAST P0000 SPACE PN-BEGDA PN-ENDDA.
+  ENDIF.
+  LST_FEATURE_VALUES-MOLGA = '40'.
+  LST_FEATURE_VALUES-ATTRI = 'MASSG'.
+  LST_FEATURE_VALUES-MASSG = P0000-MASSG.
+  PERFORM GET_FEATURE_VALUE  USING   LST_FEATURE_VALUES
+                           CHANGING  LFD_FEATURE_BACK_VALUE.
+
+  MOVE LFD_FEATURE_BACK_VALUE TO FORM12A_EFILE_TAB-REASON_LEAVE.
+  FORM12A_EFILE_TAB-PERNR = MAIN_TAB-PERNR+1(7).
+  FORM12A_EFILE_TAB-EPF_WGS = MAIN_TAB-PF_BASIS.
+  FORM12A_EFILE_TAB-EE_CONTR = MAIN_TAB-PF_EE_CONTR.
+  CONCATENATE FORM10_TAB-DOL+6(2) '-' FORM10_TAB-DOL+4(2) '-'
+              FORM10_TAB-DOL+0(4) INTO FORM12A_EFILE_TAB-DOL.
+
+  MOVE '0' TO FORM12A_EFILE_TAB-WAGE_ARR.
+  MOVE '0' TO FORM12A_EFILE_TAB-EE_EPFARR.
+  MOVE '0' TO FORM12A_EFILE_TAB-ER_EPFARR.
+  MOVE '0' TO  FORM12A_EFILE_TAB-EPS_ARR.
+  APPEND FORM12A_EFILE_TAB.
+*        form12a_efile_tab-ee_refund
+*        form12a_efile_tab-ncp_days
+
+ENDFORM.                    " FILL_EFILE_FORM12A
+*&---------------------------------------------------------------------*
+*&      Form  FILL_EFILE_FORM5
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FILL_EFILE_FORM5 .
+
+  DATA :  LST_FEATURE_VALUES     TYPE PMEPE,
+          LFD_FEATURE_BACK_VALUE TYPE STRING.
+
+  DATA:
+    LS_COMM   TYPE PA0105,
+    LW_BETRG  TYPE MAXBT,
+    LS_P0006  TYPE P0006,
+    LT_P0006  TYPE STANDARD TABLE OF P0006,
+    LS_P0002  TYPE P0002,
+    LS_P0009  TYPE P0009,
+    LS_BANK   TYPE BNKA.
+
+*  SELECT SINGLE USRID_LONG FROM PA0105 INTO  FORM5_EFILE_TAB-EMAIL
+  SELECT USRID_LONG FROM PA0105 INTO  FORM5_EFILE_TAB-EMAIL
+    UP TO 1 ROWS
+          WHERE PERNR  EQ PERNR-PERNR
+            AND SUBTY  EQ '0010'
+    ORDER BY PRIMARY KEY.
+    ENDSELECT.
+*  SELECT SINGLE USRID FROM PA0105 INTO  FORM5_EFILE_TAB-MOB_NUM
+     "Added by SPLABAP during code remediation
+  SELECT  USRID FROM PA0105 INTO  FORM5_EFILE_TAB-MOB_NUM
+    UP TO  1 ROWS
+          WHERE PERNR  EQ PERNR-PERNR
+            AND SUBTY  EQ 'CELL'
+    ORDER BY PRIMARY KEY.
+    ENDSELECT.
+*  SELECT SINGLE  BETRG FROM T511P INTO LW_BETRG
+     "Added by SPLABAP during code remediation
+  SELECT   BETRG FROM T511P INTO LW_BETRG
+    UP TO 1 ROWS
+          WHERE  MOLGA EQ '40'
+            AND  KONST EQ 'PFBAS'
+            AND  BEGDA LE SY-DATUM
+            AND  ENDDA GE SY-DATUM
+    ORDER BY PRIMARY KEY.
+    ENDSELECT.
+
+  CALL FUNCTION 'HR_READ_INFOTYPE'
+    EXPORTING
+      PERNR           = PERNR-PERNR
+      INFTY           = '0006'
+    TABLES
+      INFTY_TAB       = LT_P0006[]
+    EXCEPTIONS
+      INFTY_NOT_FOUND = 1
+      OTHERS          = 2.
+
+  IF SY-SUBRC EQ 0.
+    SORT LT_P0006 DESCENDING.
+    READ TABLE LT_P0006 INTO LS_P0006 WITH KEY SUBTY = '1'.
+  ENDIF.
+  SELECT SINGLE BEZEI INTO FORM5_EFILE_TAB-STATE FROM T005U
+          WHERE SPRAS EQ 'E'
+            AND LAND1 EQ LS_P0006-LAND1
+            AND BLAND EQ LS_P0006-STATE.
+  IF MAIN_TAB-PF_BASIS GE LW_BETRG.
+    FORM5_EFILE_TAB-HIGH_EPF = 'N'.
+  ELSE.
+    FORM5_EFILE_TAB-HIGH_EPF = 'Y'.
+  ENDIF.
+
+  IF MAIN_TAB-PEN_BASIS GE LW_BETRG.
+    FORM5_EFILE_TAB-HIGH_EPS = 'N'.
+  ELSE.
+    FORM5_EFILE_TAB-HIGH_EPS = 'Y'.
+  ENDIF.
+
+  MOVE:
+    PERNR-PERNR+1(7)    TO  FORM5_EFILE_TAB-PERNR,
+    FORM5_TAB-ENAME     TO  FORM5_EFILE_TAB-ENAME,
+    FORM5_TAB-GENDER    TO  FORM5_EFILE_TAB-GENDER,
+    FORM5_TAB-FATH_NAME TO  FORM5_EFILE_TAB-FATH_NAME,
+    SPACE               TO  FORM5_EFILE_TAB-INT_WORK.
+
+  CONCATENATE FORM5_TAB-DOB+6(2) '-' FORM5_TAB-DOB+4(2) '-'
+              FORM5_TAB-DOB+0(4)   INTO FORM5_EFILE_TAB-DOB.
+  CONCATENATE FORM5_TAB-DOJPF+6(2) '-' FORM5_TAB-DOJPF+4(2) '-'
+              FORM5_TAB-DOJPF+0(4) INTO FORM5_EFILE_TAB-DOJ.
+
+  FORM5_EFILE_TAB-ADD1 = LS_P0006-STRAS.
+  FORM5_EFILE_TAB-ADD2 = LS_P0006-LOCAT.
+  FORM5_EFILE_TAB-CITY = LS_P0006-ORT01.
+  FORM5_EFILE_TAB-DIST = LS_P0006-ORT02.
+  FORM5_EFILE_TAB-PIN_CODE = LS_P0006-PSTLZ.
+
+  LST_FEATURE_VALUES-MOLGA = '40'.
+  LST_FEATURE_VALUES-ATTRI = 'FAMST'.
+  LST_FEATURE_VALUES-FAMST = P0002-FAMST.
+  PERFORM GET_FEATURE_VALUE  USING   LST_FEATURE_VALUES
+                           CHANGING  LFD_FEATURE_BACK_VALUE.
+
+  MOVE LFD_FEATURE_BACK_VALUE TO FORM5_EFILE_TAB-MAR_STAT.
+
+  LOOP AT P0002 INTO LS_P0002 WHERE BEGDA <= NENDDA OR ENDDA >= NBEGDA .
+    IF LS_P0002-GESCH EQ 2 AND LS_P0002-FAMST EQ 0.
+      FORM5_EFILE_TAB-FATH_HUS = 'F'.
+    ELSEIF LS_P0002-GESCH EQ 2 AND LS_P0002-FAMST EQ 1.
+      FORM5_EFILE_TAB-FATH_HUS = 'H'.
+    ENDIF.
+  ENDLOOP.
+
+  LOOP AT P0009 INTO LS_P0009 WHERE BEGDA <= NENDDA OR ENDDA >= NBEGDA .
+    FORM5_EFILE_TAB-BNK_ACCNM = LS_P0009-BANKN.
+  ENDLOOP.
+
+  SELECT SINGLE * FROM BNKA INTO LS_BANK
+          WHERE   BANKS EQ P0009-BANKS
+            AND   BANKL EQ P0009-BANKL.
+  FORM5_EFILE_TAB-BNK_NAME = LS_BANK-BANKA.
+  FORM5_EFILE_TAB-BRANCH_NAME = LS_BANK-BRNCH.
+
+  MOVE SPACE TO FORM5_EFILE_TAB-DISABLED.
+  MOVE SPACE TO FORM5_EFILE_TAB-INT_WORK.
+
+*        FORM5_EFILE_TAB-PREV_SERVICE
+  APPEND FORM5_EFILE_TAB.
+
+ENDFORM.                    " FILL_EFILE_FORM5
+*&---------------------------------------------------------------------*
+*&      Form  FILL_EFILE_FORM10
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FILL_EFILE_FORM10 .
+
+  DATA :  LST_FEATURE_VALUES     TYPE PMEPE,
+          LFD_FEATURE_BACK_VALUE TYPE STRING.
+
+  MOVE FORM10_TAB-PERNR+1(7) TO  FORM10_EFILE_TAB-PERNR.
+  CONCATENATE FORM10_TAB-DOL+6(2) '-' FORM10_TAB-DOL+4(2) '-'
+            FORM10_TAB-DOL+0(4) INTO FORM10_EFILE_TAB-DOL.
+  LST_FEATURE_VALUES-MOLGA = '40'.
+  LST_FEATURE_VALUES-ATTRI = 'MASSG'.
+  LST_FEATURE_VALUES-MASSG = P0000-MASSG.
+  PERFORM GET_FEATURE_VALUE  USING   LST_FEATURE_VALUES
+                           CHANGING  LFD_FEATURE_BACK_VALUE.
+
+  MOVE LFD_FEATURE_BACK_VALUE TO FORM10_EFILE_TAB-REASON_LEAVE.
+
+  APPEND FORM10_EFILE_TAB.
+
+ENDFORM.                    " FILL_EFILE_FORM10
+* End of changes for EPF efile
+*&---------------------------------------------------------------------*
+*&      Form  GET_FEATURE_VALUE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_LST_FEATURE_VALUES  text
+*      <--P_LFD_FEATURE_BACK_VALUE  text
+*      <--P_LFD_ERRFL  text
+*      <--P_LTB_ERRTB  text
+*----------------------------------------------------------------------*
+FORM GET_FEATURE_VALUE  USING    PST_FEATURE_VALUES
+                        CHANGING PFD_FEATURE_BACK_VALUE.
+
+* Read the feature and get the return value
+  CALL FUNCTION 'HR_FEATURE_BACKFIELD'
+    EXPORTING
+      FEATURE                     = '40PFE'
+      STRUC_CONTENT               = PST_FEATURE_VALUES
+    IMPORTING
+      BACK                        = PFD_FEATURE_BACK_VALUE
+    EXCEPTIONS
+      DUMMY                       = 1
+      ERROR_OPERATION             = 2
+      NO_BACKVALUE                = 3
+      FEATURE_NOT_GENERATED       = 4
+      INVALID_SIGN_IN_FUNID       = 5
+      FIELD_IN_REPORT_TAB_IN_PE03 = 6
+      OTHERS                      = 7.
+
+* If value is space fill space
+  IF PFD_FEATURE_BACK_VALUE = 'SPACE'.
+    CLEAR: PFD_FEATURE_BACK_VALUE.
+    PFD_FEATURE_BACK_VALUE = SPACE.
+  ENDIF.
+
+ENDFORM.                    " GET_FEATURE_VALUE
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY_ALV_GRID
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_FORM12A_EFILE_TAB  text
+*      -->P_FIELDCAT  text
+*      -->P_G_ITAB_FCODE  text
+*----------------------------------------------------------------------*
+FORM DISPLAY_ALV_GRID  TABLES   P_ITAB GT_FIELDCAT  P_FCODE .
+
+  DATA: G_REPID LIKE SY-REPID.
+  DATA: FIELDCAT1 TYPE SLIS_T_FIELDCAT_ALV WITH HEADER LINE,
+        G_CALLING_REPID LIKE SY-REPID,
+        BEGIN OF G_ITAB_FCODE OCCURS 10,
+         FCODE LIKE RSMPE-FUNC,
+        END   OF G_ITAB_FCODE.
+
+  DATA: GT_EVENTS    TYPE SLIS_ALV_EVENT OCCURS  0 WITH HEADER LINE.
+  DATA : LAYOUT TYPE SLIS_LAYOUT_ALV.
+  G_REPID = SY-REPID.
+  G_ITAB_FCODE[] = P_FCODE[].
+*  gtitle = p_title.
+*  gheading = p_heading.
+
+  CALL FUNCTION 'REUSE_ALV_EVENTS_GET'
+    EXPORTING
+      I_LIST_TYPE = 0
+    IMPORTING
+      ET_EVENTS   = GT_EVENTS[].
+
+
+  GT_EVENTS-FORM = 'USER_COMMAND'.
+  MODIFY GT_EVENTS TRANSPORTING FORM WHERE NAME = 'USER_COMMAND'.
+  GT_EVENTS-FORM = 'SET_STATUS'.
+  MODIFY GT_EVENTS TRANSPORTING FORM WHERE NAME = 'PF_STATUS_SET'.
+
+  LAYOUT-COLWIDTH_OPTIMIZE = 'X'.                            "Added by Govind on 09/12/2014.
+  LAYOUT-ZEBRA = 'X'.
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+    EXPORTING
+      I_CALLBACK_PROGRAM     = G_REPID
+*     i_callback_top_of_page = 'TOP_OF_PAGE'
+      IT_FIELDCAT            = GT_FIELDCAT[]
+      IT_EVENTS              = GT_EVENTS[]
+      IS_LAYOUT              = LAYOUT
+    TABLES
+      T_OUTTAB               = P_ITAB
+    EXCEPTIONS
+      PROGRAM_ERROR          = 1
+      OTHERS                 = 2.
+  IF SY-SUBRC <> 0.
+    MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+            WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+ENDFORM.                    " DISPLAY_ALV_GRID
+
+*&---------------------------------------------------------------------*
+*&      Form  set_status
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->RT_EXTAB   text
+*----------------------------------------------------------------------*
+FORM SET_STATUS USING RT_EXTAB TYPE SLIS_T_EXTAB .
+  SET PF-STATUS 'STANDARD' OF PROGRAM 'HINCEPF0'
+      EXCLUDING G_ITAB_FCODE.
+ENDFORM.                    "set_status
+*&---------------------------------------------------------------------*
+*&      Form  user_command
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->R_UCOMM      text
+*      -->RS_SELFIELD  text
+*----------------------------------------------------------------------*
+FORM USER_COMMAND USING R_UCOMM     LIKE SY-UCOMM
+                        RS_SELFIELD TYPE SLIS_SELFIELD.
+
+  CASE R_UCOMM.
+    WHEN 'DOWNLOAD'.
+      PERFORM DOWNLOAD_EFILE.
+    WHEN OTHERS.
+  ENDCASE.
+ENDFORM.                    "user_command
+*&---------------------------------------------------------------------*
+*&      Form  DOWNLOAD_EFILE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM DOWNLOAD_EFILE .
+
+  DATA: FILENAME TYPE STRING,
+        PATH     TYPE STRING,
+        FPATH    TYPE STRING.
+
+  CALL FUNCTION 'GUI_FILE_SAVE_DIALOG'
+    IMPORTING
+      FILENAME = FILENAME
+      PATH     = PATH
+      FULLPATH = FPATH.
+
+  CASE REPONAME.
+    WHEN 'FORM5'.
+      INSERT FORM5_HDR INTO FORM5_EFILE_TAB INDEX 1.
+      CALL FUNCTION 'GUI_DOWNLOAD'
+        EXPORTING
+          FILENAME              = FPATH
+          FILETYPE              = 'ASC'
+          WRITE_FIELD_SEPARATOR = 'X'
+        TABLES
+          DATA_TAB              = FORM5_EFILE_TAB.
+    WHEN 'FORM10'.
+      INSERT FORM10_HDR INTO FORM10_EFILE_TAB INDEX 1.
+      CALL FUNCTION 'GUI_DOWNLOAD'
+        EXPORTING
+          FILENAME              = FPATH
+          FILETYPE              = 'ASC'
+          WRITE_FIELD_SEPARATOR = 'X'
+        TABLES
+          DATA_TAB              = FORM10_EFILE_TAB.
+    WHEN 'FORM12A'.
+      INSERT FORM12A_HDR INTO FORM12A_EFILE_TAB INDEX 1.
+      CALL FUNCTION 'GUI_DOWNLOAD'
+        EXPORTING
+          FILENAME              = FPATH
+          FILETYPE              = 'ASC'
+          WRITE_FIELD_SEPARATOR = 'X'
+        TABLES
+          DATA_TAB              = FORM12A_EFILE_TAB.
+    WHEN 'ECR'.
+      INSERT ECR_HDR INTO ECR_EFILE_TAB INDEX 1.
+      CALL FUNCTION 'GUI_DOWNLOAD'
+        EXPORTING
+          FILENAME              = FPATH
+          FILETYPE              = 'ASC'
+          WRITE_FIELD_SEPARATOR = 'X'
+        TABLES
+          DATA_TAB              = ECR_EFILE_TAB.
+    WHEN OTHERS.
+*     do nothing
+  ENDCASE.
+
+ENDFORM." DOWNLOAD_EFILE
+*&---------------------------------------------------------------------*
+*&      Form  FILL_ECR
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FILL_ECR .
+
+  DATA:
+    LS_P0002               TYPE P0002,
+    LST_FEATURE_VALUES     TYPE PMEPE,
+    LFD_FEATURE_BACK_VALUE TYPE STRING,
+    LFD_AGE_FLAG           TYPE C,
+    LFD_AGE(3)             TYPE N,
+    LFD_MEM1               TYPE CHAR40,
+    LFD_MEM2               TYPE CHAR40,
+    LFD_MEMID(7)              TYPE N,
+    LV_DATE TYPE D,
+    RV_DATE TYPE D,
+    LV1_DATE TYPE D,
+    RV1_DATE TYPE D,
+    BEGDA TYPE PA0000-BEGDA.
+
+
+  DATA: LFD_FILL_MEMBER_ID  TYPE   REF  TO HR_IN_ECR_MEM_ID.
+  DATA :  LFD_MEMID1 TYPE NUM7.              " Added BY Goivd On 08/12/2104
+*   Get the BADI
+  TRY.
+      GET BADI LFD_FILL_MEMBER_ID.
+    CATCH CX_BADI.
+  ENDTRY.
+
+
+
+  IF LFD_FILL_MEMBER_ID IS NOT INITIAL.
+
+**     Calling the BADi Implementation - To fill member id " Hidded By Govind On 08/12/2014
+*    CALL BADI lfd_fill_member_id->get_member_id
+*      EXPORTING
+*        flt_val = '40'
+*        pernr   = pernr-pernr
+*        begda   = sy-datum
+*        endda   = sy-datum
+*      IMPORTING
+*        memid   = lfd_memid.
+*
+*    lfd_memid1+3(4) = lfd_memid.
+*
+*    move lfd_memid to ecr_efile_tab-pernr.
+**  ELSE.
+
+
+    SPLIT MAIN_TAB-EEPFN AT '/' INTO LFD_MEM1 LFD_MEM2.
+    CLEAR LFD_MEM1.
+    SPLIT LFD_MEM2 AT '/' INTO LFD_MEM1 LFD_MEM2.
+    CLEAR: LFD_MEM1.
+    IF LFD_MEM2 CA '/'.
+      SPLIT LFD_MEM2 AT '/' INTO LFD_MEM1 LFD_MEM2.
+      MOVE LFD_MEM2 TO ECR_EFILE_TAB-PERNR.
+    ELSE.
+      MOVE LFD_MEM2 TO ECR_EFILE_TAB-PERNR.
+    ENDIF.
+
+  ENDIF.
+  MOVE : MAIN_TAB-PERNR TO  ECR_EFILE_TAB-EPERNR.
+
+  MOVE:
+    EMP_NAME            TO  ECR_EFILE_TAB-NAME.
+
+  IF MAIN_TAB-NEW_THIS_MONTH EQ '1'.
+
+    MOVE:
+      FORM5_TAB-GENDER    TO  ECR_EFILE_TAB-GENDER,
+      FORM5_TAB-FATH_NAME TO  ECR_EFILE_TAB-FATH_HUSB_NAME.
+
+    CONCATENATE FORM5_TAB-DOB+6(2) '/' FORM5_TAB-DOB+4(2) '/'
+                FORM5_TAB-DOB+0(4)   INTO ECR_EFILE_TAB-DOB.
+    CONCATENATE FORM5_TAB-DOJPF+6(2) '/' FORM5_TAB-DOJPF+4(2) '/'
+                FORM5_TAB-DOJPF+0(4) INTO ECR_EFILE_TAB-DOJ_EPF.
+    CONCATENATE FORM5_TAB-DOJPF+6(2) '/' FORM5_TAB-DOJPF+4(2) '/'
+                FORM5_TAB-DOJPF+0(4) INTO ECR_EFILE_TAB-DOJ_EPS.
+
+    LOOP AT P0002 INTO LS_P0002 WHERE BEGDA <= NENDDA OR ENDDA >= NBEGDA .
+      IF LS_P0002-GESCH EQ 2 AND LS_P0002-FAMST EQ 0.
+        ECR_EFILE_TAB-FATH_HUSB = 'F'.
+      ELSEIF LS_P0002-GESCH EQ 2 AND LS_P0002-FAMST EQ 1.
+        ECR_EFILE_TAB-FATH_HUSB = 'H'.
+      ELSEIF LS_P0002-GESCH EQ 1 OR LS_P0002-GESCH EQ ' '.
+        ECR_EFILE_TAB-FATH_HUSB = 'F'.
+      ENDIF.
+    ENDLOOP.
+
+  ENDIF.
+*   Get the employee age
+  LFD_AGE = SY-DATUM+0(4) - FORM5_TAB-DOB+0(4).
+  IF SY-DATUM+4(4) LT FORM5_TAB-DOB+0(4).
+    LFD_AGE = LFD_AGE - 1.
+  ENDIF.
+  IF LFD_AGE GE '58'.
+    LFD_AGE_FLAG = 'X'.
+  ENDIF.
+
+  IF MAIN_TAB-LEFT_SERVICE EQ '1'.
+*    CONCATENATE FORM10_TAB-DOL+6(2) '/' FORM10_TAB-DOL+4(2) '/'
+*                FORM10_TAB-DOL+0(4) INTO ECR_EFILE_TAB-DOL_EPF.
+    CONCATENATE   FORM10_TAB-DOL+0(4) FORM10_TAB-DOL+4(2)
+                 FORM10_TAB-DOL+6(2) INTO ECR_EFILE_TAB-DOL_EPF.
+    LV_DATE = ECR_EFILE_TAB-DOL_EPF.
+
+*    CONCATENATE FORM10_TAB-DOL+6(2) '/' FORM10_TAB-DOL+4(2) '/'
+*                FORM10_TAB-DOL+0(4) INTO ECR_EFILE_TAB-DOL_EPS.
+
+            CALL FUNCTION 'ZHR_LAST_DAY'
+              EXPORTING
+                I_DATE           = LV_DATE
+             IMPORTING
+               E_LAST_DAY       = RV_DATE.
+
+*CONCATENATE   ECR_EFILE_TAB-DOE_EPF+6(2) '/'  ECR_EFILE_TAB-DOE_EPF+4(2) '/'
+*                 ECR_EFILE_TAB-DOE_EPF+0(4) INTO ECR_EFILE_TAB-DEX_EPF.
+
+CONCATENATE   RV_DATE+6(2) '/'  RV_DATE+4(2) '/'
+                RV_DATE+0(4) INTO ECR_EFILE_TAB-DEX_EPF.
+
+ CONCATENATE   FORM10_TAB-DOL+0(4) FORM10_TAB-DOL+4(2)
+                 FORM10_TAB-DOL+6(2) INTO ECR_EFILE_TAB-DOL_EPS.
+LV1_DATE = ECR_EFILE_TAB-DOL_EPS.
+
+CALL FUNCTION 'ZHR_LAST_DAY'
+  EXPORTING
+    I_DATE           = LV1_DATE
+ IMPORTING
+   E_LAST_DAY       = RV1_DATE
+          .
+
+   CONCATENATE   RV1_DATE+6(2) '/'  RV1_DATE+4(2) '/'
+                RV1_DATE+0(4) INTO ECR_EFILE_TAB-DEX_EPS.
+            .
+
+
+    LST_FEATURE_VALUES-MOLGA = '40'.
+    LST_FEATURE_VALUES-ATTRI = 'MASSG'.
+    LST_FEATURE_VALUES-MASSG = P0000-MASSG.
+    PERFORM GET_FEATURE_VALUE  USING   LST_FEATURE_VALUES
+                             CHANGING  LFD_FEATURE_BACK_VALUE.
+
+    MOVE LFD_FEATURE_BACK_VALUE TO ECR_EFILE_TAB-REASON_LEAVE.
+
+  ENDIF.
+
+  ECR_EFILE_TAB-ADV_REF          = 'space'.
+
+
+
+*************** Added BY Goivd On 08/12/2104
+  IF MAIN_TAB-PF_EE_CONTR < 1800.
+    ECR_EFILE_TAB-EPF_WGS          = MAIN_TAB-PF_BASIS.
+  ELSE.
+    ECR_EFILE_TAB-EPF_WGS          = MAIN_TAB-PF_EE_CONTR * 100 / 12.
+  ENDIF.
+  ECR_EFILE_TAB-EPF_CONT_DUE     = MAIN_TAB-PF_EE_CONTR.
+  ECR_EFILE_TAB-EPF_CONT_REM     = MAIN_TAB-PF_EE_CONTR.
+  IF LFD_AGE_FLAG NE 'X'.
+    ECR_EFILE_TAB-EPS_WGS          = MAIN_TAB-PEN_BASIS.
+  ELSE.
+    ECR_EFILE_TAB-EPS_WGS          = '0'.
+  ENDIF.
+
+  ECR_EFILE_TAB-EPS_CONT_DUE     = MAIN_TAB-PEN_ER_CONTR.
+  ECR_EFILE_TAB-EPS_CONT_REM     = MAIN_TAB-PEN_ER_CONTR.
+  ECR_EFILE_TAB-DIFF_EPF_EPS_DUE = MAIN_TAB-PF_ER_CONTR.
+  ECR_EFILE_TAB-DIFF_EPF_EPS_REM = MAIN_TAB-PF_ER_CONTR.
+  READ TABLE NEWITAB WITH  KEY PPERIOD = PN-PABRP .
+  IF SY-SUBRC EQ 0.
+    ECR_EFILE_TAB-NCP_DAYS = NEWITAB-ABSDAYS.
+    ENDIF.
+
+ IF  ECR_EFILE_TAB-EPF_ARR_ER = 0.
+   ECR_EFILE_TAB-EPF_ARR_ER = ( ECR_EFILE_TAB-EPF_ARR_EE *  367 ) / 100  / 12.
+   ECR_EFILE_TAB-EPS_ARR_ER = ( ECR_EFILE_TAB-EPF_ARR_EE *  833 ) / 100  / 12.
+  ENDIF.
+
+IF MAIN_TAB-PF_BASIS LE 0.
+ECR_EFILE_TAB-NCP_DAYS = PN-ENDDA+6(2).
+ENDIF.
+
+
+*SELECT SINGLE BEGDA FROM PA0000 INTO BEGDA
+ "Added by SPLABAP during code remediation
+SELECT BEGDA FROM PA0000 INTO BEGDA UP TO 1 ROWS
+  WHERE BEGDA BETWEEN PN-BEGDA AND PN-ENDDA AND MASSN = '10' AND PERNR = MAIN_TAB-PERNR
+  ORDER BY PRIMARY KEY .
+  ENDSELECT.
+  IF SY-SUBRC = 0.
+
+ECR_EFILE_TAB-NCP_DAYS = PN-ENDDA+6(2) - BEGDA+6(2) + NEWITAB-ABSDAYS .
+ENDIF.
+
+  APPEND ECR_EFILE_TAB.
+
+
+
+
+ENDFORM.                    " FILL_ECR
+*&---------------------------------------------------------------------*
+*&      Form  EFILE_ECR
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM EFILE_ECR .
+
+  DATA: REPID LIKE SY-REPID,
+          TITLE(50) TYPE C.
+
+  CLEAR FIELDCAT.
+  REFRESH FIELDCAT[].
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'ZHINCEPF0'
+      I_INTERNAL_TABNAME     = 'ECR_EFILE_TAB'
+      I_INCLNAME             = 'ZPCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPERNR'.
+  FORM10_HDR-EPERNR = TEXT-133.
+  FIELDCAT-SELTEXT_M = 'Employee Code'(133).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  ECR_HDR-PERNR = TEXT-058.
+  FIELDCAT-SELTEXT_M = 'Member ID'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'NAME'.
+  ECR_HDR-NAME = TEXT-060.
+  FIELDCAT-SELTEXT_M = 'Emp-Name'(060).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_WGS'.
+  ECR_HDR-EPF_WGS = TEXT-123.
+  FIELDCAT-SELTEXT_M = 'EPF Wages'(123).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPS_WGS'.
+  ECR_HDR-EPS_WGS = TEXT-028.
+  FIELDCAT-SELTEXT_M = 'EPS Wages'(028).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_CONT_DUE'.
+  ECR_HDR-EPF_CONT_DUE = TEXT-038.
+  FIELDCAT-SELTEXT_M = 'EPF Contribution Due'(038).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_CONT_REM'.
+  ECR_HDR-EPF_CONT_REM = TEXT-040.
+  FIELDCAT-SELTEXT_M = 'EPF Contribution Remittance'(040).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPS_CONT_DUE'.
+  ECR_HDR-EPS_CONT_DUE = TEXT-071.
+  FIELDCAT-SELTEXT_M = 'EPS Contribution Due'(071).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPS_CONT_REM'.
+  ECR_HDR-EPS_CONT_REM = TEXT-072.
+  FIELDCAT-SELTEXT_M = 'EPS Contribution Remittance'(072).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DIFF_EPF_EPS_DUE'.
+  ECR_HDR-DIFF_EPF_EPS_DUE = TEXT-073.
+  FIELDCAT-SELTEXT_M = 'Diff EPF & EPS Due'(073).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DIFF_EPF_EPS_REM'.
+  ECR_HDR-DIFF_EPF_EPS_REM = TEXT-074.
+  FIELDCAT-SELTEXT_M = 'Diff EPF & EPS Remittance'(074).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 20.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'NCP_DAYS'.
+  ECR_HDR-NCP_DAYS = TEXT-126.
+  FIELDCAT-SELTEXT_M = 'NCP Days'(126).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'ADV_REF'.
+  ECR_HDR-ADV_REF = TEXT-075.
+  FIELDCAT-SELTEXT_M = 'Refund of Advances'(075).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_ARR_BASIS'.
+  ECR_HDR-EPF_ARR_BASIS = TEXT-037.
+  FIELDCAT-SELTEXT_M = 'EPF Wages Arrears'(037) .
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_ARR_EE'.
+  ECR_HDR-EPF_ARR_EE = TEXT-129.
+  FIELDCAT-SELTEXT_M = 'Emp EPF Arrears'(129).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_ARR_ER'.
+  ECR_HDR-EPF_ARR_ER = TEXT-130.
+  FIELDCAT-SELTEXT_M = 'Er EPF Arrears'(130).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPS_ARR_ER'.
+  ECR_HDR-EPS_ARR_ER = TEXT-131.
+  FIELDCAT-SELTEXT_M = 'Emp EPS Arrears'(131).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'FATH_HUSB_NAME'.
+  ECR_HDR-FATH_HUSB_NAME = TEXT-034.
+  FIELDCAT-SELTEXT_M = ' Father/Husband Name'(034).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'FATH_HUSB'.
+  ECR_HDR-FATH_HUSB = TEXT-122.
+  FIELDCAT-SELTEXT_M = ' Father/Husband Flag'(122).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOB'.
+  ECR_HDR-DOB = TEXT-062.
+  FIELDCAT-SELTEXT_M = 'DateOfBirth'(062).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 12.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'GENDER'.
+  ECR_HDR-GENDER = TEXT-064.
+  FIELDCAT-SELTEXT_M = 'Gender'(064).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 8.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOJ_EPF'.
+  ECR_HDR-DOJ_EPF = TEXT-032.
+  FIELDCAT-SELTEXT_M = 'DOJ EPF'(032).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DOJ_EPS'.
+  ECR_HDR-DOJ_EPS = TEXT-033.
+  FIELDCAT-SELTEXT_M = 'DOJ EPS'(033).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 16.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DEX_EPF'.
+  ECR_HDR-DOL_EPF = TEXT-035.
+  FIELDCAT-SELTEXT_M = 'DateOfLv EPF'(035).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 10.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'DEX_EPS'.
+  ECR_HDR-DOL_EPS = TEXT-036.
+  FIELDCAT-SELTEXT_M = 'DateOfLv EPS'(036).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 10.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'REASON_LEAVE'.
+  ECR_HDR-REASON_LEAVE = TEXT-127.
+  FIELDCAT-SELTEXT_M = 'Reason Of Leaving'(127).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 18.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PFRM' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PERR' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+  PERFORM DISPLAY_ALV_GRID TABLES ECR_EFILE_TAB
+                                  FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.                    " EFILE_ECR
+*&---------------------------------------------------------------------*
+*&      Form  FETCH_PAID_UNPAID_INDIC
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM FETCH_PAID_UNPAID_INDIC .
+  LOOP AT ITAB.
+
+    SELECT REF01 FROM T554C INTO INDITAB
+           WHERE MOLGA = '40' AND MODIF = ITAB-MOD
+                              AND KLBEW = ITAB-VALRUL
+                              AND ENDDA >= ITAB-ENDDATE
+      ORDER BY PRIMARY KEY. "Added by SPLABAP during code remediation
+    ENDSELECT.
+    IF INDITAB-INDI = ''.
+      READ TABLE ABSITAB WITH KEY BEGDA = ITAB-BEGDATE.
+*       MOVE ABSITAB-ABRTG TO INDITAB-ABSDAYS.  " get ABSENCEDAYS
+      MOVE ABSITAB-ABWTG TO INDITAB-ABSDAYS.  " get ABSENCEDAYS
+      MOVE ITAB-PERIOD TO INDITAB-PERIOD.     "get period
+      APPEND INDITAB.
+    ENDIF.
+  ENDLOOP.                                      "ITAB
+
+  PERFORM CALC_NON_CONTR_DAYS.                 "compute unpaid days
+  PERFORM CUSTOMER_EXIT_NON_CONTRI.
+
+ENDFORM.                    " FETCH_PAID_UNPAID_INDIC
+*&---------------------------------------------------------------------*
+*&      Form  CALC_NON_CONTR_DAYS
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM CALC_NON_CONTR_DAYS .
+  CLEAR ITAB.
+  REFRESH ITAB.
+  CLEAR NEWITAB.
+  REFRESH NEWITAB.
+  CLEAR: PD01,PD02,PD03,PD04,PD05,PD06,PD07,PD08,PD09,PD10,PD11,PD12.
+  CLEAR: ABS01,ABS02,ABS03,ABS04,ABS05,ABS06,ABS07,ABS08,ABS09,ABS10,ABS11,ABS12.
+
+  LOOP AT INDITAB.
+    MOVE INDITAB-PERIOD TO CURRPD.     "CURRENT PERIOD
+    CASE CURRPD.
+      WHEN '01'.
+        PD01 = CURRPD.
+        ABS01 = ABS01 + INDITAB-ABSDAYS.
+      WHEN '02'.
+        ABS02 = ABS02 + INDITAB-ABSDAYS.
+        PD02 = CURRPD.
+      WHEN '03'.
+        ABS03 = ABS03 + INDITAB-ABSDAYS.
+        PD03 = CURRPD.
+      WHEN '04'.
+        ABS04 = ABS04 + INDITAB-ABSDAYS.
+        PD04 = CURRPD.
+      WHEN '05'.
+        ABS05 = ABS05 + INDITAB-ABSDAYS.
+        PD05 = CURRPD.
+      WHEN '06'.
+        ABS06 = ABS06 + INDITAB-ABSDAYS.
+        PD06 = CURRPD.
+      WHEN '07'.
+        ABS07 = ABS07 + INDITAB-ABSDAYS.
+        PD07 = CURRPD.
+      WHEN '08'.
+        ABS08 = ABS08 + INDITAB-ABSDAYS.
+        PD08 = CURRPD.
+      WHEN '09'.
+        ABS09 = ABS09 + INDITAB-ABSDAYS.
+        PD09 = CURRPD.
+      WHEN '10'.
+        ABS10 = ABS10 + INDITAB-ABSDAYS.
+        PD10 = CURRPD.
+      WHEN '11'.
+        ABS11 = ABS11 + INDITAB-ABSDAYS.
+        PD11 = CURRPD.
+      WHEN '12'.
+        ABS12 = ABS12 + INDITAB-ABSDAYS.
+        PD12 = CURRPD.
+      WHEN OTHERS.
+        EXIT."#EC CI_NOORDER.
+         "Added by SPLABAP during code remediation
+    ENDCASE.
+  ENDLOOP.
+  CLEAR INDITAB.
+  REFRESH INDITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD01 TO NEWITAB-PPERIOD.
+  MOVE ABS01 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD02 TO NEWITAB-PPERIOD.
+  MOVE ABS02 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD03 TO NEWITAB-PPERIOD.
+  MOVE ABS03 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD04 TO NEWITAB-PPERIOD.
+  MOVE ABS04 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD05 TO NEWITAB-PPERIOD.
+  MOVE ABS05 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD06 TO NEWITAB-PPERIOD.
+  MOVE ABS06 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD07 TO NEWITAB-PPERIOD.
+  MOVE ABS07 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD08 TO NEWITAB-PPERIOD.
+  MOVE ABS08 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD09 TO NEWITAB-PPERIOD.
+  MOVE ABS09 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD10 TO NEWITAB-PPERIOD.
+  MOVE ABS10 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD11 TO NEWITAB-PPERIOD.
+  MOVE ABS11 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+  MOVE PERNR-PERNR TO NEWITAB-PERNR.
+  MOVE PD12 TO NEWITAB-PPERIOD.
+  MOVE ABS12 TO NEWITAB-ABSDAYS.
+  APPEND NEWITAB.
+
+ENDFORM.                    " CALC_NON_CONTR_DAYS
+*&---------------------------------------------------------------------*
+*&      Form  CUSTOMER_EXIT_NON_CONTRI
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM CUSTOMER_EXIT_NON_CONTRI .
+  DATA  : CUST_EXIT1 TYPE REF TO IF_EX_HR_IN_PF_NON_CONTR.
+  DATA  : IS_IMPLEMENTED1.
+
+  CALL FUNCTION 'HR_GET_BUSINESS_ADD_IN'
+    EXPORTING
+      EXIT_NAME            = 'HR_IN_PF_NON_CONTR'
+      FLT_VAL              = '40'
+   IMPORTING
+     IS_IMPLEMENTED       = IS_IMPLEMENTED1
+* TABLES
+*   ACTIVE_IMPS          =
+    CHANGING
+      INSTANCE             = CUST_EXIT1
+            .
+
+  IF NOT IS_IMPLEMENTED1 IS INITIAL.
+
+    CALL METHOD CL_EXITHANDLER=>GET_INSTANCE
+      CHANGING
+        INSTANCE = CUST_EXIT1.
+    IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*              WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+
+    CALL METHOD CUST_EXIT1->GET_NON_CONTR_DAYS
+      EXPORTING
+        FLT_VAL = '40'
+        PERNR   = PERNR
+      CHANGING
+        NEWITAB = NEWITAB[].
+
+
+  ENDIF.
+ENDFORM.                    " CUSTOMER_EXIT_NON_CONTRI
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  NEG_CASES
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM NEG_CASES .
+
+  DATA: REPID LIKE SY-REPID,
+          TITLE(50) TYPE C.
+
+  CLEAR FIELDCAT.
+  REFRESH FIELDCAT[].
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      I_PROGRAM_NAME         = 'HINCEPF0'
+      I_INTERNAL_TABNAME     = 'NEG_TAB'
+      I_INCLNAME             = 'PCEPFIN2'
+    CHANGING
+      CT_FIELDCAT            = FIELDCAT[]
+    EXCEPTIONS
+      INCONSISTENT_INTERFACE = 1
+      PROGRAM_ERROR          = 2
+      OTHERS                 = 3.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'PERNR'.
+  ECR_HDR-PERNR = TEXT-133.
+  FIELDCAT-SELTEXT_M = TEXT-133.
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'MEMID'.
+  ECR_HDR-PERNR = TEXT-058.
+  FIELDCAT-SELTEXT_M = TEXT-058. "'Member ID'(058).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 13.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'NAME'.
+  ECR_HDR-NAME = TEXT-060.
+  FIELDCAT-SELTEXT_M = TEXT-060. "'Emp-Name'(060).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 9.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_ARR_BASIS'.
+  ECR_HDR-EPF_ARR_BASIS = TEXT-037.
+  FIELDCAT-SELTEXT_M = TEXT-037. "'EPF Wages Arrears'(037) .
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_ARR_EE'.
+  ECR_HDR-EPF_ARR_EE = TEXT-129.
+  FIELDCAT-SELTEXT_M = TEXT-129. "'Emp EPF Arrears'(129).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPF_ARR_ER'.
+  ECR_HDR-EPF_ARR_ER = TEXT-130.
+  FIELDCAT-SELTEXT_M = TEXT-130. "'Er EPF Arrears'(130).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  READ TABLE FIELDCAT WITH KEY FIELDNAME = 'EPS_ARR_ER'.
+  ECR_HDR-EPS_ARR_ER = TEXT-131.
+  FIELDCAT-SELTEXT_M = TEXT-131. "'Emp EPS Arrears'(131).
+  FIELDCAT-DDICTXT = 'M'.
+  FIELDCAT-OUTPUTLEN = 15.
+  MODIFY FIELDCAT INDEX SY-TABIX.
+
+  REFRESH G_ITAB_FCODE.
+  MOVE 'CORC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'AMBC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PFRM' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'PERR' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'KYC' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+  PERFORM DISPLAY_ALV_GRID TABLES NEG_TAB
+                                  FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.                    " NEG_CASES
+
+FORM SET_STATUS1 USING RT_EXTAB TYPE SLIS_T_EXTAB .
+  SET PF-STATUS 'KYC_ERROR' OF PROGRAM 'HINCEPF0'
+  EXCLUDING G_ITAB_FCODE.
+ENDFORM.                    "set_status1
+
+FORM EFILE_KYC.
+
+  CLEAR  FIELDCAT.
+*Field catalog for KYC
+
+  FIELDCAT-FIELDNAME   = 'uan'.
+  FIELDCAT-SELTEXT_M   = TEXT-145.
+  WA_KYC_UAN-UAN = TEXT-145.
+  FIELDCAT-OUTPUTLEN = 15.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'doc_type'.
+  FIELDCAT-SELTEXT_L   = TEXT-146.
+  WA_KYC_UAN-DOC_TYPE  = TEXT-146.
+  FIELDCAT-OUTPUTLEN = 20.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'doc_no'.
+  FIELDCAT-SELTEXT_M   = TEXT-147.
+  WA_KYC_UAN-DOC_NO  = TEXT-147.
+  FIELDCAT-OUTPUTLEN = 20.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'ifsc_code'.
+  FIELDCAT-SELTEXT_M   = TEXT-148.
+  WA_KYC_UAN-IFSC_CODE  = TEXT-148.
+  FIELDCAT-OUTPUTLEN = 15.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'name'.
+  FIELDCAT-SELTEXT_M   = TEXT-149.
+  WA_KYC_UAN-NAME = TEXT-149.
+  FIELDCAT-OUTPUTLEN = 15.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'expiry'.
+  FIELDCAT-SELTEXT_M   = TEXT-150.
+  WA_KYC_UAN-EXPIRY  = TEXT-150.
+  FIELDCAT-OUTPUTLEN = 20.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'edu_qual'.
+  FIELDCAT-SELTEXT_L   = TEXT-151.
+  WA_KYC_UAN-EDU_QUAL = TEXT-151.
+  FIELDCAT-OUTPUTLEN = 25.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'ph_hand'.
+  FIELDCAT-SELTEXT_M   = TEXT-152.
+  WA_KYC_UAN-PH_HAND = TEXT-152.
+  FIELDCAT-OUTPUTLEN = 30.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'ph_cat'.
+  FIELDCAT-SELTEXT_L   = TEXT-153.
+  WA_KYC_UAN-PH_CAT = TEXT-153.
+  FIELDCAT-OUTPUTLEN = 30.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'gender'.
+  FIELDCAT-SELTEXT_M   = TEXT-154.
+  WA_KYC_UAN-GENDER = TEXT-154.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'int_work'.
+  FIELDCAT-SELTEXT_M   = TEXT-155.
+  WA_KYC_UAN-INT_WORK  = TEXT-155.
+  FIELDCAT-OUTPUTLEN = 25.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'marital'.
+  FIELDCAT-SELTEXT_M   = TEXT-156.
+  WA_KYC_UAN-MARITAL = TEXT-156.
+  FIELDCAT-OUTPUTLEN = 20.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'est_id'.
+  FIELDCAT-SELTEXT_M   = TEXT-157.
+  WA_KYC_UAN-EST_ID  = TEXT-157.
+  FIELDCAT-OUTPUTLEN = 20.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  REFRESH G_ITAB_FCODE.
+  MOVE 'DOWNLOAD' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'NEG' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+  PERFORM DISPLAY_ALV_GRID TABLES IT_KYC_UAN FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.
+
+FORM KYC_ERROR_CASES.
+
+**- Field catalog for displaying error log
+******************************************
+  CLEAR  FIELDCAT.
+  REFRESH FIELDCAT.
+  FIELDCAT-FIELDNAME   = 'PER'.
+  FIELDCAT-SELTEXT_M   = TEXT-158.
+  FIELDCAT-OUTPUTLEN = 15.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'NAME'.
+  FIELDCAT-SELTEXT_M   = TEXT-149.
+  FIELDCAT-OUTPUTLEN = 25.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  FIELDCAT-FIELDNAME   = 'DESC'.
+  FIELDCAT-SELTEXT_M   = TEXT-159.
+  FIELDCAT-OUTPUTLEN = 25.
+  APPEND FIELDCAT TO FIELDCAT.
+  CLEAR  FIELDCAT.
+
+  REFRESH G_ITAB_FCODE.
+  MOVE 'DOWNLOAD' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+  MOVE 'NEG' TO G_ITAB_FCODE-FCODE.
+  APPEND G_ITAB_FCODE.
+
+  PERFORM DISPLAY_ALV_GRID TABLES IT_KYC_UAN_ERROR FIELDCAT G_ITAB_FCODE.
+
+ENDFORM.
+
+**- fetching the information to populate KYC(UAN) fields
+********************************************************
+FORM FETCH_DETAILS.
+
+  DATA: LFD_MAR TYPE C,
+        LREF_BADI_KYC_UAN TYPE REF TO HR_IN_GET_KYC_UAN,
+        IST_PMEPE TYPE PMEPE.
+  CLEAR: WA_KYC_UAN_ERROR,
+         WA_KYC_UAN,
+         GST_KYC_UAN.
+
+**-Selecting the latest record from IT0185 subty-08 valid in the specified period
+**********************************************************************************
+   RP_PROVIDE_FROM_LAST P0185 '08' PN-BEGDA PN-ENDDA.
+   IF P0185 IS NOT INITIAL.
+     WA_KYC_UAN-UAN = P0185-ICNUM.  "UAN number
+
+**- Call BAdI for filling UAN data
+**********************************
+     TRY.
+       GET BADI LREF_BADI_KYC_UAN.
+     CATCH CX_BADI_NOT_IMPLEMENTED.
+     ENDTRY.
+
+     IF LREF_BADI_KYC_UAN IS NOT INITIAL.
+       CALL BADI LREF_BADI_KYC_UAN->GET_KYC_UAN
+         EXPORTING
+           ITB_P0004 = P0004[]
+           ITB_P0022 = P0022[]
+           ITB_P0185 = P0185[]
+           ITB_P0587 = P0587[]
+           IFD_BEGDA = PN-BEGDA
+           IFD_ENDDA = PN-ENDDA
+           IFD_PERNR = PERNR-PERNR
+        CHANGING
+           CST_KYC_UAN = GST_KYC_UAN.
+
+**- Copying the data obtained from BAdI
+********************************************
+     WA_KYC_UAN-DOC_TYPE  = GST_KYC_UAN-DOC_TYPE.
+     WA_KYC_UAN-DOC_NO    = GST_KYC_UAN-DOC_NO.
+     WA_KYC_UAN-IFSC_CODE = GST_KYC_UAN-IFSC_CODE.
+     WA_KYC_UAN-EXPIRY    = GST_KYC_UAN-EXPIRY.
+     WA_KYC_UAN-EDU_QUAL  = GST_KYC_UAN-EDU_QUAL.
+     WA_KYC_UAN-PH_CAT    = GST_KYC_UAN-PH_CAT.
+     WA_KYC_UAN-PH_HAND   = GST_KYC_UAN-PH_HAND.
+     WA_KYC_UAN-MARITAL   = GST_KYC_UAN-MARITAL.
+     WA_KYC_UAN-GENDER    = GST_KYC_UAN-GENDER.
+     WA_KYC_UAN-INT_WORK  = GST_KYC_UAN-INT_WORK.
+     WA_KYC_UAN-EST_ID    = GST_KYC_UAN-EST_ID.
+     ENDIF.
+**- Checking the master data and overwriting if the data is maintained
+**********************************************************************
+     IF P0185-OVCHK IS NOT INITIAL.
+       WA_KYC_UAN-DOC_TYPE  =  P0185-OVCHK.
+       WA_KYC_UAN-DOC_NO    =  P0185-ISSPL.
+       WA_KYC_UAN-IFSC_CODE =  P0185-DOCN1.
+       IF P0185-FPDAT IS NOT INITIAL.
+         WA_KYC_UAN-EXPIRY =  P0185-FPDAT.
+       ELSE.
+         WA_KYC_UAN-EXPIRY =  SPACE.
+       ENDIF.
+     ENDIF.
+     IF WA_KYC_UAN-EXPIRY NE SPACE.
+        CONCATENATE WA_KYC_UAN-EXPIRY+6(2) '/' WA_KYC_UAN-EXPIRY+4(2) '/'
+                    WA_KYC_UAN-EXPIRY+0(4) INTO WA_KYC_UAN-EXPIRY.
+     ENDIF.
+**- Checking if educational qualification is maintained in IT0185
+*****************************************************************
+     IF P0185-ICOLD IS NOT INITIAL.
+       WA_KYC_UAN-EDU_QUAL =  P0185-ICOLD.
+     ENDIF.
+**- Checking if Physically Handicap Category is maintained in IT0185
+********************************************************************
+     IF P0185-AUTH1 IS NOT INITIAL.
+       WA_KYC_UAN-PH_CAT =  P0185-AUTH1.
+     ENDIF.
+
+     IF WA_KYC_UAN-PH_CAT IS INITIAL.
+       WA_KYC_UAN-PH_HAND = 'N'.
+     ELSE.
+       WA_KYC_UAN-PH_HAND = 'Y'.
+     ENDIF.
+  ENDIF.
+
+**- Selecting the latest record from IT0002 valid in the specified period
+*************************************************************************
+  RP_PROVIDE_FROM_LAST P0002 SPACE PN-BEGDA PN-ENDDA.
+**- Overwriting the structure with Personal data from IT0002
+************************************************************
+  IF PNP-SW-FOUND = 1.
+*    Adding first name and last name into a single field
+    CONCATENATE  P0002-VORNA  P0002-NACHN INTO WA_KYC_UAN-NAME SEPARATED BY SPACE.
+**-  Filling gender details
+****************************************
+    IF GST_KYC_UAN-GENDER IS INITIAL.
+      IF  P0002-GESCH = 1.
+        WA_KYC_UAN-GENDER = 'M'.
+      ELSE.
+        WA_KYC_UAN-GENDER = 'F'.
+      ENDIF.
+    ENDIF.
+
+**- Filling marital status via feature 40PFE
+********************************************
+    IST_PMEPE-FAMST = P0002-FAMST.
+    IST_PMEPE-MOLGA = '40'.
+    IST_PMEPE-WERKS = P0001-WERKS.
+    IST_PMEPE-ATTRI = 'FAMST'.
+    PERFORM GET_FEATURE_VALUE USING IST_PMEPE CHANGING  LFD_MAR.
+    IF LFD_MAR IS NOT INITIAL.
+      WA_KYC_UAN-MARITAL = LFD_MAR.
+    ENDIF.
+  ENDIF.
+
+**- Check & populate error list
+*******************************
+  IF WA_KYC_UAN-UAN IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-137.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME  = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSEIF WA_KYC_UAN-NAME IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-138.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME  = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSEIF WA_KYC_UAN-EST_ID IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-139.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSEIF WA_KYC_UAN-DOC_TYPE IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-140.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME  = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSEIF WA_KYC_UAN-DOC_TYPE IS NOT INITIAL AND WA_KYC_UAN-DOC_NO IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-141.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME  = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSEIF WA_KYC_UAN-DOC_TYPE EQ 'B' AND WA_KYC_UAN-IFSC_CODE IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-142.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME  = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSEIF ( WA_KYC_UAN-DOC_TYPE EQ 'D' OR WA_KYC_UAN-DOC_TYPE EQ 'T') AND WA_KYC_UAN-EXPIRY IS INITIAL.
+    WA_KYC_UAN_ERROR-DESC = TEXT-143.
+    WA_KYC_UAN_ERROR-PER = PERNR-PERNR.
+    WA_KYC_UAN_ERROR-NAME  = WA_KYC_UAN-NAME.
+    APPEND WA_KYC_UAN_ERROR TO IT_KYC_UAN_ERROR.
+
+  ELSE.
+    APPEND WA_KYC_UAN TO IT_KYC_UAN.
+  ENDIF.
+
+ENDFORM.    " form fetch_details
+
+*&---------------------------------------------------------------------*
+*&      Form  FILL_ECR2
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM fill_ecr2 .
+  DATA:
+    ls_p0002               TYPE p0002,
+    lst_feature_values     TYPE pmepe,
+    lfd_feature_back_value TYPE string,
+    lfd_age_flag           TYPE c,
+    lfd_age(3)             TYPE n,
+    lfd_mem1               TYPE char40,
+    lfd_mem2               TYPE char40,
+    lfd_memid(7)              TYPE n.
+
+  DATA: lfd_fill_member_id  TYPE   REF  TO hr_in_ecr_mem_id.
+  DATA ls_ecr2_efile_tab LIKE ecr2_efile_tab.
+
+  lst_feature_values-molga = '40'.
+  lst_feature_values-attri = 'WAGTY'.
+
+*Get the BADI
+    TRY.
+        GET BADI lfd_fill_member_id.
+      CATCH cx_badi.
+    ENDTRY.
+
+    IF lfd_fill_member_id IS NOT INITIAL.
+*Calling the BADi Implementation - To fill member id
+      CALL BADI lfd_fill_member_id->get_member_id
+        EXPORTING
+          flt_val = '40'
+          pernr   = pernr-pernr
+          begda   = sy-datum
+          endda   = sy-datum
+        IMPORTING
+          memid   = lfd_memid.
+      move lfd_memid to neg_tab-memid.
+    ELSE.
+      SPLIT main_tab-eepfn AT '/' INTO lfd_mem1 lfd_mem2.
+      CLEAR lfd_mem1.
+      SPLIT lfd_mem2 AT '/' INTO lfd_mem1 lfd_mem2.
+      CLEAR: lfd_mem1.
+      IF lfd_mem2 CA '/'.
+        SPLIT lfd_mem2 AT '/' INTO lfd_mem1 lfd_mem2.
+        MOVE lfd_mem2 TO neg_tab-memid.
+      ELSE.
+        MOVE lfd_mem2 TO neg_tab-memid.
+      ENDIF.
+    ENDIF.
+
+**Get wagetype from feature 40PFE for Gross wages
+  PERFORM get_feature_value  USING   lst_feature_values
+                           CHANGING  lfd_feature_back_value.
+  IF lfd_feature_back_value NE ''.
+      LOOP AT prt WHERE lgart = lfd_feature_back_value.
+        ecr2_efile_tab-grs_wgs = ecr2_efile_tab-grs_wgs + prt-betrg.
+      ENDLOOP.
+  ELSE.
+      LOOP AT prt WHERE lgart = '/101'.
+        ecr2_efile_tab-grs_wgs = ecr2_efile_tab-grs_wgs + prt-betrg.
+       ENDLOOP.
+  ENDIF.
+
+   MOVE: emp_name   TO  ecr2_efile_tab-name,
+         pernr-pernr TO ecr2_efile_tab-pernr.
+
+   rp_provide_from_last p0185 '08' pn-begda pn-endda.
+   IF p0185 IS NOT INITIAL.
+     ecr2_efile_tab-uan = p0185-icnum.
+   ENDIF.
+*   Get the employee age
+* If the employee attains 58 age in the same month or later
+* compared to report execution period
+* EPS/EPF wages should be displayed for the periods ran before
+* or on period which employee attains the age 58
+  lfd_age = pn-endda+0(4) - form5_tab-dob+0(4).
+  IF pn-endda+4(4) LT form5_tab-dob+4(4).
+    lfd_age = lfd_age - 1.
+  ENDIF.
+  IF lfd_age GE '58'.
+    IF pn-endda+4(2) NE form5_tab-dob+4(2).
+      lfd_age_flag = 'X'.
+    ENDIF.
+  ENDIF.
+
+  ecr2_efile_tab-adv_ref          = 'space'.
+  ecr2_efile_tab-epf_wgs          = main_tab-pf_basis.
+  ecr2_efile_tab-epf_cont_rem     = main_tab-pf_ee_contr.
+  IF lfd_age_flag NE 'X'.
+    ecr2_efile_tab-eps_wgs          = main_tab-pen_basis.
+  ELSE.
+    ecr2_efile_tab-eps_wgs          = '0'.
+  ENDIF.
+
+  ecr2_efile_tab-edli_wgs     = main_tab-edli_basis.
+  ecr2_efile_tab-eps_cont_rem     = main_tab-pen_er_contr +
+                                    main_tab-gv_pens_contr.
+  ecr2_efile_tab-diff_epf_eps_rem = main_tab-pf_er_contr.
+
+  APPEND ecr2_efile_tab.
+**Negative cases continue in ECR 2.0
+
+  MOVE pernr-pernr TO neg_tab-pernr.
+  MOVE ecr2_efile_tab-name TO neg_tab-name.
+  IF neg_tab-epf_arr_basis LT 0 OR neg_tab-epf_arr_ee LT 0
+     OR neg_tab-epf_arr_er LT 0 OR neg_tab-eps_arr_er LT 0.
+   APPEND neg_tab.
+   neg_flag = 'X'.
+  ENDIF.
+CLEAR neg_tab.
+"Start : changes in case of Exempted Trust
+CLEAR ls_ecr2_efile_tab.
+IF p_extrst eq 'X'.
+LOOP AT ecr2_efile_tab into ls_ecr2_efile_tab.
+CLEAR ls_ecr2_efile_tab-epf_cont_rem.
+Clear ls_ecr2_efile_tab-diff_epf_eps_rem.
+MODIFY ecr2_efile_tab FROM ls_ecr2_efile_tab.
+CLEAR ls_ecr2_efile_tab.
+ENDLOOP.
+ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  ECR2_ERROR_CASES
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM ecr2_error_cases .
+   CLEAR fieldcat.
+  REFRESH fieldcat[].
+  fieldcat-fieldname   = 'PERNR'.
+  fieldcat-seltext_m   = text-133.
+  fieldcat-outputlen = 09.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  fieldcat-fieldname   = 'DESC'.
+  fieldcat-seltext_m   = text-159.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  REFRESH g_itab_fcode.
+  MOVE 'DWNLDECR2' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'ECRERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'ARREAR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'DWNLDARRER' to g_itab_fcode.
+  APPEND g_itab_fcode.
+  MOVE 'NEG' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYCERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'DOWNLOAD' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYC' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+
+PERFORM display_alv_grid TABLES it_ecr_uan_error fieldcat g_itab_fcode.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  FILL_ARREAR_FILE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM fill_arrear_file .
+  MOVE: emp_name            TO  wa_arrear-name.
+  MOVE pernr-pernr TO wa_arrear-pernr.
+*  REFRESH it_arrear.
+   rp_provide_from_last p0185 '08' pn-begda pn-endda.
+   IF p0185 IS NOT INITIAL.
+     wa_arrear-uan = p0185-icnum.
+    ELSE.
+      wa_ecr_uan_error-pernr = pernr-pernr.
+      wa_ecr_uan_error-desc  = text-137.
+      APPEND wa_ecr_uan_error to it_ecr_uan_error.
+   ENDIF.
+  APPEND wa_arrear TO it_arrear.
+
+  LOOP AT it_arrear INTO wa_arrear.
+    IF wa_arrear-epf_arr_basis IS INITIAL AND
+      wa_arrear-arr_pen_wages IS INITIAL AND
+      wa_arrear-arr_edli_wages IS INITIAL AND
+      wa_arrear-arr_ee_pf_contr IS INITIAL AND
+      wa_arrear-arr_er_pf_contr IS INITIAL AND
+      wa_arrear-arr_er_pens_contr IS INITIAL.
+    DELETE TABLE it_arrear FROM wa_arrear.
+    ENDIF.
+  ENDLOOP.
+CLEAR wa_arrear.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  EFILE_ECR2
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM efile_ecr2 .
+  DATA: repid LIKE sy-repid,
+          title(50) TYPE c.
+
+  CLEAR fieldcat.
+  REFRESH fieldcat[].
+  CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      i_program_name         = 'HINCEPF0'
+      i_internal_tabname     = 'ECR2_EFILE_TAB'
+      i_inclname             = 'PCEPFIN2'
+    CHANGING
+      ct_fieldcat            = fieldcat[]
+    EXCEPTIONS
+      inconsistent_interface = 1
+      program_error          = 2
+      OTHERS                 = 3.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'PERNR'.
+  ecr2_hdr-pernr = text-133.
+  fieldcat-seltext_m = text-133.
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 9.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'UAN'.
+  ecr2_hdr-uan = text-145.
+  fieldcat-seltext_m = text-145. "'Emp-Name'(060).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 9.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'NAME'.
+  ecr2_hdr-name = text-149.
+  fieldcat-seltext_m = text-149. "'Emp-Name'(060).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 9.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'GRS_WGS'.
+  ecr2_hdr-grs_wgs = text-162.
+  fieldcat-seltext_m = text-162. "'Emp-Name'(060).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 9.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'EPF_WGS'.
+  ecr2_hdr-epf_wgs = text-123.
+  fieldcat-seltext_m = text-123. "'EPF Wages'(123).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 16.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'EPS_WGS'.
+  ecr2_hdr-eps_wgs = text-028.
+  fieldcat-seltext_m = text-028. "'EPS Wages'(028).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 16.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'EDLI_WGS'.
+  ecr2_hdr-edli_wgs = text-168.
+  fieldcat-seltext_m = text-168.
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 9.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'EPF_CONT_REM'.
+  ecr2_hdr-epf_cont_rem = text-169.
+  fieldcat-seltext_m = text-169. "'EPF Contribution Remittance'(040).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 20.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'EPS_CONT_REM'.
+  ecr2_hdr-eps_cont_rem = text-170.
+  fieldcat-seltext_m = text-170. "'EPS Contribution Remittance'(072).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 20.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'DIFF_EPF_EPS_REM'.
+  ecr2_hdr-diff_epf_eps_rem = text-171.
+  fieldcat-seltext_m = text-171. "'Diff EPF & EPS Remittance'(074).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 20.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'NCP_DAYS'.
+  ecr2_hdr-ncp_days = text-126.
+  fieldcat-seltext_m = text-126. "'NCP Days'(126).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 9.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  READ TABLE fieldcat WITH KEY fieldname = 'ADV_REF'.
+  ecr2_hdr-adv_ref = text-075.
+  fieldcat-seltext_m = text-075. "'Refund of Advances'(075).
+  fieldcat-ddictxt = 'M'.
+  fieldcat-outputlen = 15.
+  MODIFY fieldcat INDEX sy-tabix.
+
+  REFRESH g_itab_fcode.
+  MOVE 'CORC' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'AMBC' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'PFRM' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'PERR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYC' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYCERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'DOWNLOAD' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+
+  IF neg_flag EQ 'X'.
+    CALL FUNCTION 'POPUP_TO_INFORM'
+      EXPORTING
+        TITEL  = 'Negative Arrears Available'
+        TXT1   = 'There are certain negative arrears'
+        TXT2   = 'Click on Negative Arrears Button to check'
+      EXCEPTIONS
+        OTHERS = 1.
+  ENDIF.
+
+  PERFORM display_alv_grid TABLES ecr2_efile_tab fieldcat g_itab_fcode.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  DOWNLOAD_ARREAR
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM download_arrear .
+  DATA: filename TYPE string,
+        path     TYPE string,
+        fpath    TYPE string.
+
+  CALL FUNCTION 'GUI_FILE_SAVE_DIALOG'
+    IMPORTING
+      filename = filename
+      path     = path
+      fullpath = fpath.
+
+  READ TABLE it_arrear into wa_arrear WITH KEY uan = 'UAN'.
+  IF sy-subrc NE 0.
+    INSERT arr_hdr INTO it_arrear INDEX 1.
+  ENDIF.
+         CALL FUNCTION 'GUI_DOWNLOAD'
+          EXPORTING
+            filename                        = fpath
+            filetype                        = 'ASC'
+            write_field_separator           = 'X'
+            col_select                      = 'X'
+            col_select_mask                 = ' XXXXXXXX'
+          TABLES
+            data_tab                        = it_arrear.
+  CLEAR arr_hdr.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  EFILE_ARREAR_FILE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM efile_arrear_file .
+  CLEAR fieldcat.
+  REFRESH: fieldcat[].
+  CLEAR arr_hdr.
+  arr_hdr-pernr = text-133.
+  fieldcat-fieldname   = 'PERNR'.
+  fieldcat-seltext_m   = text-133.
+  fieldcat-outputlen = 9.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-uan = text-145.
+  fieldcat-fieldname   = 'UAN'.
+  fieldcat-seltext_m   = text-145.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-name = text-060.
+  fieldcat-fieldname   = 'NAME'.
+  fieldcat-seltext_m   = text-149.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-epf_arr_basis = text-172.
+  fieldcat-fieldname   = 'EPF_ARR_BASIS'.
+  fieldcat-seltext_m   = text-172.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-arr_pen_wages = text-163.
+  fieldcat-fieldname   = 'ARR_PEN_WAGES'.
+  fieldcat-seltext_m   = text-163.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-arr_edli_wages = text-164.
+  fieldcat-fieldname   = 'ARR_EDLI_WAGES'.
+  fieldcat-seltext_m   = text-164.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-arr_ee_pf_contr = text-165.
+  fieldcat-fieldname   = 'ARR_EE_PF_CONTR'.
+  fieldcat-seltext_m   = text-165.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-arr_er_pf_contr = text-166.
+  fieldcat-fieldname   = 'ARR_ER_PF_CONTR'.
+  fieldcat-seltext_m   = text-166.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  arr_hdr-arr_er_pens_contr = text-167.
+  fieldcat-fieldname   = 'ARR_ER_PENS_CONTR'.
+  fieldcat-seltext_m   = text-167.
+  fieldcat-outputlen = 25.
+  APPEND fieldcat TO fieldcat.
+  CLEAR  fieldcat.
+
+  REFRESH g_itab_fcode.
+  MOVE 'DWNLDECR2' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'ECRERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYC' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'KYCERROR' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+  MOVE 'DOWNLOAD' TO g_itab_fcode-fcode.
+  APPEND g_itab_fcode.
+
+  READ TABLE it_arrear into wa_arrear WITH KEY uan = 'UAN'.
+  IF sy-subrc eq 0.
+    DELETE TABLE it_arrear FROM wa_arrear.
+  ENDIF.
+
+  PERFORM display_alv_grid TABLES it_arrear fieldcat g_itab_fcode.
+ENDFORM.

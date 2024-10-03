@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZASNNO</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>TEXT16</DOMNAME>
+    <HEADLEN>06</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>20</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>ASN No</DDTEXT>
+    <REPTEXT>ASN No</REPTEXT>
+    <SCRTEXT_S>ASN No</SCRTEXT_S>
+    <SCRTEXT_M>ASN No</SCRTEXT_M>
+    <SCRTEXT_L>ASN No</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

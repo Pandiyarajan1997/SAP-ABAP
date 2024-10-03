@@ -1,0 +1,3 @@
+FUNCTION-POOL ZBAPI_STK_AGEWISE_DMS.        "MESSAGE-ID ..
+
+* INCLUDE LZBAPI_STK_AGEWISE_DMSD...         " Local class definition

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>Y_COR3</SCVARIANT>
+     <PROGNAME>SAPLCOMK</PROGNAME>
+     <DYNPRO>5120</DYNPRO>
+     <VERSION>2</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>Y_COR3</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>Y_COR3</SCVARIANT>
+      <FIELDNAME>RESBD-MATXT</FIELDNAME>
+      <STEPL>1</STEPL>
+      <ITYPE>C</ITYPE>
+      <FTYPE>T</FTYPE>
+      <CONTAINER>TCTRL_5120</CONTAINER>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>Y_COR3</SCVARIANT>
+      <FIELDNAME>TCTRL_5120</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <FTYPE>E</FTYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

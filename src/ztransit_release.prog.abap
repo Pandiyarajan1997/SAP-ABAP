@@ -1,0 +1,67 @@
+*&---------------------------------------------------------------------*
+*& Report  ZTRANSIT_RELEASE
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZTRANSIT_RELEASE.
+
+TABLES: ZTRANSIT_RELEASE .
+
+DATA: IT TYPE TABLE OF ZTRANSIT_RELEASE,
+      WA TYPE ZTRANSIT_RELEASE.
+
+DATA: I TYPE I VALUE 0 ,
+      J TYPE I VALUE 0 .
+
+DATA: JN TYPE C,
+      IN TYPE C.
+
+DATA: INS(100) TYPE C,
+      UPD(100) TYPE C.
+
+DATA : LV_MBLNR TYPE MSEG-MBLNR.
+
+SELECTION-SCREEN:BEGIN OF BLOCK TRANSIT_RELEASE WITH FRAME TITLE TEXT-001.
+SELECT-OPTIONS: S_MBLNR FOR LV_MBLNR NO INTERVALS.
+SELECTION-SCREEN:END OF BLOCK TRANSIT_RELEASE.
+DATA: WA_MBLNR LIKE LINE OF S_MBLNR.
+
+AT SELECTION-SCREEN OUTPUT.
+  SET PF-STATUS 'ZTRANS_RELEASE'.
+
+AT SELECTION-SCREEN.
+  CASE SY-UCOMM.
+    WHEN 'RELEASE'.
+      SELECT * FROM ZTRANSIT_RELEASE INTO TABLE IT WHERE MBLNR IN S_MBLNR.
+      LOOP AT S_MBLNR INTO WA_MBLNR.
+        READ TABLE IT INTO WA WITH KEY MBLNR = WA_MBLNR+3(10).
+        IF WA IS NOT INITIAL.
+          UPDATE ZTRANSIT_RELEASE SET RE_FLAG = 'Y' WHERE MBLNR = WA_MBLNR+3(10).
+          I = I + 1.
+        ELSE.
+          WA-MBLNR = WA_MBLNR+3(10).
+          WA-RE_FLAG = 'Y'.
+          INSERT INTO ZTRANSIT_RELEASE VALUES WA.
+          J = J + 1.
+        ENDIF.
+        CLEAR WA .
+      ENDLOOP.
+      IN = I .
+      JN = J .
+      CLEAR: I , J .
+      CONCATENATE 'Updated' IN 'Records' INTO UPD SEPARATED BY SPACE.
+      CONCATENATE 'Inserted' JN 'Records' INTO INS SEPARATED BY SPACE.
+      CALL FUNCTION 'POPUP_TO_DISPLAY_TEXT'
+        EXPORTING
+          TITEL        = 'Number Of Records Insert & Update'
+          TEXTLINE1    = INS
+          TEXTLINE2    = UPD
+          START_COLUMN = 25
+          START_ROW    = 6.
+     CLEAR: IN , JN .
+    WHEN 'BACK'.
+      LEAVE TO SCREEN 1000 .
+  ENDCASE.

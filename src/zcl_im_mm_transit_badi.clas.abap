@@ -1,0 +1,136 @@
+class ZCL_IM_MM_TRANSIT_BADI definition
+  public
+  final
+  create public .
+
+public section.
+
+  interfaces IF_BADI_INTERFACE .
+  interfaces IF_EX_MB_MIGO_BADI .
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS ZCL_IM_MM_TRANSIT_BADI IMPLEMENTATION.
+
+
+method IF_EX_MB_MIGO_BADI~CHECK_HEADER.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~CHECK_ITEM.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~HOLD_DATA_DELETE.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~HOLD_DATA_LOAD.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~HOLD_DATA_SAVE.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~INIT.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~LINE_DELETE.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~LINE_MODIFY.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~MAA_LINE_ID_ADJUST.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~MODE_SET.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~PAI_DETAIL.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~PAI_HEADER.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~PBO_DETAIL.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~PBO_HEADER.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~POST_DOCUMENT.
+IF SY-TCODE = 'MIGO'.
+
+DATA : LV_STATUS TYPE ZTRAM_LOG_TABLE-STATUS,
+       LV_STATUS1 TYPE ZTRAM_LOG_TABLE-STATUS1.
+
+DATA : MSG(400).
+
+TYPES : it_TY_T_MSEG type standard table of TY_T_MSEG ,
+        wa_TY_T_MSEG type TY_T_MSEG .
+
+    IF IS_MKPF-BLART = 'WE' or IS_MKPF-BLART = 'WA' .
+
+"LOOP AT it_TY_T_MSEG INTO WA_TY_T_MSEG .
+
+DATA : WA_MSEG TYPE MSEG.
+
+
+LOOP AT it_MSEG INTO WA_MSEG WHERE BWART = '101' .
+
+SELECT SINGLE STATUS INTO LV_STATUS FROM ZTRAM_LOG_TABLE WHERE WERKS = WA_MSEG-WERKS .
+
+SELECT SINGLE STATUS1 INTO LV_STATUS1 FROM ZTRAM_LOG_TABLE WHERE WERKS = WA_MSEG-WERKS .
+*
+*
+   IF LV_STATUS EQ 'NO'  .
+*
+*
+     IF LV_STATUS1 NE 'YES' .
+
+   CONCATENATE WA_MSEG-WERKS 'IS MAXIMUM TRANSIT DAYS' INTO MSG SEPARATED BY SPACE .
+MESSAGE MSG TYPE 'E' DISPLAY LIKE 'E' .
+
+*
+*  IF WA_TY_T_MSEG-UMMAT EQ '1101' .
+*
+    ENDIF.
+ENDIF.
+*
+ENDLOOP.
+*
+     ENDIF.
+  ENDIF.
+
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~PROPOSE_SERIALNUMBERS.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~PUBLISH_MATERIAL_ITEM.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~RESET.
+endmethod.
+
+
+method IF_EX_MB_MIGO_BADI~STATUS_AND_HEADER.
+endmethod.
+ENDCLASS.

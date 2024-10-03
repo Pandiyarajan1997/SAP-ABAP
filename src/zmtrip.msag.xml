@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZMTRIP</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Messages for Trip sheet</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>Trip Number &amp;1 has been successfully created and entered to the Database</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>You have Already entered this Invoice Number</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>The Invoice has already been processed in trip number &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>The Trip sheet generation has failed due to incorrect inputs</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Please enter all the mandatory header and items to generate Trip sheet</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>The Trip Sheet number &amp;1 has been successfully deleted</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>The Trip Sheet number &amp;1 has failed to delete</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMTRIP</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>The Trip sheet number has been updated successfully</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

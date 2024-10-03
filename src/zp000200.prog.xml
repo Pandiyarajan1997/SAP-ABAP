@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>ZP000200</NAME>
+    <SUBC>M</SUBC>
+    <APPL>P</APPL>
+    <RSTAT>P</RSTAT>
+    <RLOAD>D</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <DYNPROS>
+    <item>
+     <HEADER>
+      <PROGRAM>ZP000200</PROGRAM>
+      <SCREEN>0200</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Subscreen for Infotype nnnn (Customer Enhancement)</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0200</NEXTSCREEN>
+      <LINES>021</LINES>
+      <COLUMNS>083</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>FRAME</TYPE>
+       <NAME>FRAME_582C</NAME>
+       <TEXT>Blood_Group_______________________________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>083</LENGTH>
+       <VISLENGTH>083</VISLENGTH>
+       <HEIGHT>003</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>P0002-ZBGRUP</NAME>
+       <LINE>002</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>V</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>P0002-ZBGRUP</NAME>
+       <LINE>002</LINE>
+       <COLUMN>023</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>006</GROUP1>
+       <GROUP3>001</GROUP3>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE MODIFY_SUBSCREEN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE MODULE_PBO_0002.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE HIDDEN_DATA_SUBSCREEN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*This chain has to include all input-fields:</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD P0002-ZBGRUP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE INPUT_STATUS_SUBSCREEN ON CHAIN-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*   infotype specific checks etc.:</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE MODULE_PAI_0002.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>ZP000200</PROGRAM>
+      <SCREEN>2220</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Subscreen for Infotype 0002 (Customer Enhancement)</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>2220</NEXTSCREEN>
+      <LINES>021</LINES>
+      <COLUMNS>083</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>FRAME</TYPE>
+       <NAME>FRAME_582C</NAME>
+       <TEXT>Additional_fields_________________________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>083</LENGTH>
+       <VISLENGTH>083</VISLENGTH>
+       <HEIGHT>003</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>P0002-ZZBGRUP</NAME>
+       <LINE>002</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>V</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>P0002-ZZBGRUP</NAME>
+       <LINE>002</LINE>
+       <COLUMN>023</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>006</GROUP1>
+       <GROUP3>001</GROUP3>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE MODIFY_SUBSCREEN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE MODULE_PBO_0002.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE HIDDEN_DATA_SUBSCREEN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*   This chain has to include all input-fields:</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD P0002-ZZBGRUP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE INPUT_STATUS_SUBSCREEN ON CHAIN-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*   infotype specific checks etc.:</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE MODULE_PAI_0002.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+   </DYNPROS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group For Tax Master Data</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZFG_SKU_TAX_MASTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_GST_N_TAX_MASTER_SIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Tax Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <TYP>ZTT_TAX_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <TYP>ZTT_COND_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <TYP>ZTT_CNF_GL01</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_TAX_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_COND_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type ZSTR_CNF_GL01</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_GST_TAX_MASTER_SIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Sales Pro GST Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <TYP>ZTT_TAX_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <TYP>ZTT_COND_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <TYP>ZTT_CNF_GL01</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>P_REGIO</PARAMETER>
+       <DBSTRUCT>ZSTR_REGION</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_TIME</PARAMETER>
+       <DBSTRUCT>ZTT_STRU_UTIME_CDHDR</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_TAX_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_COND_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type ZSTR_CNF_GL01</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_REGIO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options region</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_TIME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Select option for u time</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_TAX_GST_MASTER_SIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Sales Pro GST Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <TYP>ZTT_TAX_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <TYP>ZTT_COND_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <TYP>ZTT_CNF_GL01</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>P_REGIO</PARAMETER>
+       <DBSTRUCT>ZSTR_REGION</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_TAX_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_COND_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type ZSTR_CNF_GL01</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_REGIO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options region</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_TAX_MASTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Tax Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <TYP>ZTT_TAX_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <TYP>ZTT_COND_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <TYP>ZTT_CNF_GL01</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_TAX_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_COND_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type ZSTR_CNF_GL01</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_TAX_MASTER_SIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Tax Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <TYP>ZTT_TAX_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <TYP>ZTT_COND_TYPE</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <TYP>ZTT_CNF_GL01</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_TAX_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COND_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the structure ZSTR_COND_TYPE</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_GL01</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type ZSTR_CNF_GL01</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_TAX_NEW</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Tax Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_TAX_NEW_SIS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module for Tax Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MARA-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNA1-KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KNVV-VKBUR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KONH-KSCHL</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <TYP>ZTT_CNF_TAX_MASTER</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_DATE</PARAMETER>
+       <DBSTRUCT>ZSTR_SKU_DATE</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>S_MTART</PARAMETER>
+       <TYP>ZTT_CNF_MTART</TYP>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_VKBUR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Office</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_KSCHL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAX_MASTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>TAble type for the structure ZSTR_CNF_TAX_MASTER</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure to get date input as select options</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>S_MTART</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for the str ZSTR_CNF_MTART</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

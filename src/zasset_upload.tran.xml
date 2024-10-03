@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TRAN" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TSTC>
+    <TCODE>ZASSET_UPLOAD</TCODE>
+    <PGMNA>ZHR_ASSET_UPLOAD</PGMNA>
+    <DYPNO>1000</DYPNO>
+    <CINFO>gA==</CINFO>
+   </TSTC>
+   <TSTCC>
+    <TCODE>ZASSET_UPLOAD</TCODE>
+   </TSTCC>
+   <TSTCT>
+    <SPRSL>E</SPRSL>
+    <TCODE>ZASSET_UPLOAD</TCODE>
+    <TTEXT>Upload For Asset</TTEXT>
+   </TSTCT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

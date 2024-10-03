@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>E-Waybill function group for Tech servic</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LYSD_FG_EINVOICEF01</SOBJ_NAME>
+    <SOBJ_NAME>LYSD_FG_EINVOICETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLYSD_FG_EINVOICE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>YSD_FM_EWAYBILL_CANCEL</FUNCNAME>
+     <SHORT_TEXT>Eway Bill Cancel FM</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_VBELN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>VBELN_VF</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IM_GSTIN</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IGSTCD3</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IM_EWBILLNO</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>J_1IG_EBILLNO</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>ERROR_MSG</PARAMETER>
+       <TYP>BAPIRET2_T</TYP>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_VBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Billing Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IM_GSTIN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Tax Number 3</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IM_EWBILLNO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>E-way Bill Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ERROR_MSG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return parameter table</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

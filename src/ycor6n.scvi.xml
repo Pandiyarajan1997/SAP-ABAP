@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>YCOR6N</SCVARIANT>
+     <PROGNAME>SAPLCOWB</PROGNAME>
+     <DYNPRO>0500</DYNPRO>
+     <VERSION>10</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>YCOR6N</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOR6N</SCVARIANT>
+      <FIELDNAME>COWB_COMP-RSPOS</FIELDNAME>
+      <STEPL>1</STEPL>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+      <ITYPE>N</ITYPE>
+      <FTYPE>T</FTYPE>
+      <CONTAINER>TCTRL_0500</CONTAINER>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>YCOR6N</SCVARIANT>
+      <FIELDNAME>TCTRL_0500</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <FTYPE>E</FTYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

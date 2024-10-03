@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>GET PENDING ORDER DETAILS</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_PENDING_ORDERTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_PENDING_ORDER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_PENDING_ORDER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get Open Pending order</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>LV_KUNNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUDAT_LOW</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>AUDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUDAT_HIGH</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>AUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>OUTPUT_PEN_ORDER</PARAMETER>
+       <DBSTRUCT>ZGET_PENDING_ORDER</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LV_VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Organization</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LV_KUNNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUDAT_LOW</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date (Date Received/Sent)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUDAT_HIGH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Document Date (Date Received/Sent)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>OUTPUT_PEN_ORDER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Get Pending order details</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

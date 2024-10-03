@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZCSV_DOWN</OBJCT>
+    <FIEL1>ACTVT</FIEL1>
+    <OCLSS>ZCVS</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZCSV_DOWN</OBJECT>
+    <TTEXT>CSV UTR File Download</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>ZCSV_DOWN</OBJCT>
+   </TOBJVORFLG>
+   <TACTZ>
+    <TACTZ>
+     <BROBJ>ZCSV_DOWN</BROBJ>
+     <ACTVT>01</ACTVT>
+    </TACTZ>
+   </TACTZ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

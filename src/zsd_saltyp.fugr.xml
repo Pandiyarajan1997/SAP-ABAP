@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Bapi (ZBAPI_EMP_SALETYPE)</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZSD_SALTYPTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZSD_SALTYP</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_EMP_SALETYPE</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Employee details with salestype</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>EMPLOY_CODE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>PERNR_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_SALTYP</PARAMETER>
+       <DBSTRUCT>ZSTR_SALTYP</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>EMPLOY_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Personnel Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_SALTYP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Salestype</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

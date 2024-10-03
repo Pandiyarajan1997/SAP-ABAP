@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZREM</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZDMREM</DOMNAME>
+    <SCRLEN1>07</SCRLEN1>
+    <SCRLEN2>14</SCRLEN2>
+    <DDTEXT>Remarks</DDTEXT>
+    <SCRTEXT_S>Remarks</SCRTEXT_S>
+    <SCRTEXT_M>Seller Remarks</SCRTEXT_M>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

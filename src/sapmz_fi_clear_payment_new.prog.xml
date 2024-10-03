@@ -1,0 +1,1512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROGDIR>
+    <NAME>SAPMZ_FI_CLEAR_PAYMENT_NEW</NAME>
+    <SUBC>M</SUBC>
+    <APPL>F</APPL>
+    <RSTAT>K</RSTAT>
+    <RLOAD>E</RLOAD>
+    <FIXPT>X</FIXPT>
+    <UCCHECK>X</UCCHECK>
+   </PROGDIR>
+   <DYNPROS>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPMZ_FI_CLEAR_PAYMENT_NEW</PROGRAM>
+      <SCREEN>9000</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Incoming Payment with Invoice Adjustment</DESCRIPT>
+      <TYPE>N</TYPE>
+      <NEXTSCREEN>9000</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>173</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>TABLE_CTRL</TYPE>
+       <NAME>TC_9000</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>002</LINE>
+       <COLUMN>077</COLUMN>
+       <LENGTH>050</LENGTH>
+       <HEIGHT>008</HEIGHT>
+       <C_RESIZE_V>X</C_RESIZE_V>
+       <C_RESIZE_H>X</C_RESIZE_H>
+       <C_LINE_MIN>005</C_LINE_MIN>
+       <C_COLN_MIN>015</C_COLN_MIN>
+       <C_SCROLL_V>X</C_SCROLL_V>
+       <C_SCROLL_H>X</C_SCROLL_H>
+       <TC_TABTYPE>ENTRY</TC_TABTYPE>
+       <TC_SEPAR_V>X</TC_SEPAR_V>
+       <TC_SEPAR_H>X</TC_SEPAR_H>
+       <TC_HEADER>X</TC_HEADER>
+       <TC_CONFIG>X</TC_CONFIG>
+       <TC_SEL_LNS>MULTIPLE</TC_SEL_LNS>
+       <TC_SEL_CLS>NONE</TC_SEL_CLS>
+       <TC_LSEL_CL>X</TC_LSEL_CL>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>CONTAINER</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>013</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>135</LENGTH>
+       <HEIGHT>014</HEIGHT>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>FRAME</TYPE>
+       <NAME>B1</NAME>
+       <TEXT>Posting_Details________________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>072</LENGTH>
+       <VISLENGTH>072</VISLENGTH>
+       <HEIGHT>011</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>FRAME</TYPE>
+       <NAME>B2</NAME>
+       <TEXT>Customer_Amounts_________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>074</COLUMN>
+       <LENGTH>066</LENGTH>
+       <VISLENGTH>066</VISLENGTH>
+       <HEIGHT>011</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>DOCDATE</NAME>
+       <TEXT>Document_Date</TEXT>
+       <LINE>004</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>013</LENGTH>
+       <VISLENGTH>013</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-BLDAT</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>004</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>DATS</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>COMPANYCODE</NAME>
+       <TEXT>Company_Code</TEXT>
+       <LINE>004</LINE>
+       <COLUMN>037</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-BUKRS</NAME>
+       <TEXT>____</TEXT>
+       <LINE>004</LINE>
+       <COLUMN>053</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>POSTDATE</NAME>
+       <TEXT>Posting_Date</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-BUDAT</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>DATS</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>CURRENCY</NAME>
+       <TEXT>Currency</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>037</COLUMN>
+       <LENGTH>008</LENGTH>
+       <VISLENGTH>008</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-WAERS</NAME>
+       <TEXT>_____</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>053</COLUMN>
+       <LENGTH>005</LENGTH>
+       <VISLENGTH>005</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>DOCTYPE</NAME>
+       <TEXT>Document_Type</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>013</LENGTH>
+       <VISLENGTH>013</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-BLART</NAME>
+       <TEXT>__</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>002</LENGTH>
+       <VISLENGTH>002</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>FISCALYEAR</NAME>
+       <TEXT>Fiscal_Year</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>037</COLUMN>
+       <LENGTH>011</LENGTH>
+       <VISLENGTH>011</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-GJAHR</NAME>
+       <TEXT>____</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>053</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>NUMC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <POSS_ENTRY>0</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>REFERENCE</NAME>
+       <TEXT>Reference</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>009</LENGTH>
+       <VISLENGTH>009</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-XBLNR</NAME>
+       <TEXT>________________</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>016</LENGTH>
+       <VISLENGTH>016</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>POSTING_PERIOD</NAME>
+       <TEXT>Posting_Period</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>037</COLUMN>
+       <LENGTH>014</LENGTH>
+       <VISLENGTH>014</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-MONAT</NAME>
+       <TEXT>__</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>053</COLUMN>
+       <LENGTH>002</LENGTH>
+       <VISLENGTH>002</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>NUMC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>BANKGL</NAME>
+       <TEXT>Bank_G/L</TEXT>
+       <LINE>008</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>008</LENGTH>
+       <VISLENGTH>008</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-NEWKO</NAME>
+       <TEXT>________________</TEXT>
+       <LINE>008</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>016</LENGTH>
+       <VISLENGTH>016</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-GLDESC</NAME>
+       <TEXT>__________________________________________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>008</LINE>
+       <COLUMN>037</COLUMN>
+       <LENGTH>050</LENGTH>
+       <VISLENGTH>034</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <OUTPUTONLY>X</OUTPUTONLY>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>SPL_GL</NAME>
+       <TEXT>Special_G/L_Ind</TEXT>
+       <LINE>009</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-SPLGL</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>009</LINE>
+       <COLUMN>019</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>DOCTEXT</NAME>
+       <TEXT>Doc_Text</TEXT>
+       <LINE>010</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>008</LENGTH>
+       <VISLENGTH>008</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_HEADER-XTEXT</NAME>
+       <TEXT>_____________________________________________________</TEXT>
+       <LINE>010</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>053</LENGTH>
+       <VISLENGTH>053</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <UP_LOWER>X</UP_LOWER>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>TC_9000_MARK</NAME>
+       <ICON_NAME>ICON_SELECT_ALL</ICON_NAME>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>010</LINE>
+       <COLUMN>077</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>MAR</GROUP1>
+       <PUSH_FCODE>TC_9000_MARK</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>TC_9000_DEMARK</NAME>
+       <ICON_NAME>ICON_DESELECT_ALL</ICON_NAME>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>010</LINE>
+       <COLUMN>081</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>MAR</GROUP1>
+       <PUSH_FCODE>TC_9000_DMRK</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>TC_9000_INSR</NAME>
+       <ICON_NAME>ICON_INSERT_ROW</ICON_NAME>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>010</LINE>
+       <COLUMN>088</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>002</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>TC_9000_INSR</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>TC_9000_DELE</NAME>
+       <ICON_NAME>ICON_DELETE_ROW</ICON_NAME>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>010</LINE>
+       <COLUMN>091</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>002</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>TC_9000_DELE</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>FRAME</TYPE>
+       <NAME>B3</NAME>
+       <TEXT>List_of_Documents___________________________________________________________________________________________________________________</TEXT>
+       <LINE>012</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>139</LENGTH>
+       <VISLENGTH>139</VISLENGTH>
+       <HEIGHT>016</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <NAME>OK_CODE</NAME>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>GS_TAB-KUNNR</NAME>
+       <TEXT>Customer</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>008</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>GS_TAB-WRBTR</NAME>
+       <TEXT>Amount</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>006</LENGTH>
+       <VISLENGTH>016</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>GS_TAB-BELNR</NAME>
+       <TEXT>Bill/DR_Memo</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>CHECK</TYPE>
+       <NAME>GS_TAB-MARK</NAME>
+       <LINE>001</LINE>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>001</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <TC_SELCOL>X</TC_SELCOL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_TAB-KUNNR</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_TAB-WRBTR</NAME>
+       <TEXT>________________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>002</COLUMN>
+       <LENGTH>016</LENGTH>
+       <VISLENGTH>016</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>DEC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TC_9000</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>GS_TAB-BELNR</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  MODULE PBO_9000.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE STATUS_9000.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*&amp;SPWIZARD: PBO FLOW LOGIC FOR TABLECONTROL &apos;TC_9000&apos;</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE TC_9000_CHANGE_TC_ATTR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*&amp;SPWIZARD: MODULE TC_9000_CHANGE_COL_ATTR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  LOOP AT   GT_TAB</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>       INTO GS_TAB</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>       WITH CONTROL TC_9000</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>       CURSOR TC_9000-CURRENT_LINE.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE TC_9000_GET_LINES.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_HEADER-BUKRS.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_HEADER-BLDAT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_HEADER-MONAT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_HEADER-WAERS.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_HEADER-XBLNR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    &quot;FIELD RF05A-AGUMS.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_HEADER-XTEXT .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE HEADER_9000_MODIFY ON CHAIN-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*&amp;SPWIZARD: PAI FLOW LOGIC FOR TABLECONTROL &apos;TC_9000&apos;</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  LOOP AT GT_TAB.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    CHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>      FIELD GS_TAB-KUNNR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>      FIELD GS_TAB-WRBTR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>      FIELD GS_TAB-BELNR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>      MODULE TC_9000_MODIFY ON CHAIN-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    ENDCHAIN.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD GS_TAB-MARK</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>      MODULE TC_9000_MARK ON REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*  MODULE tc_9000_user_command.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*&amp;SPWIZARD: MODULE TC_9000_CHANGE_TC_ATTR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*&amp;SPWIZARD: MODULE TC_9000_CHANGE_COL_ATTR.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE EXIT_9000 AT EXIT-COMMAND.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE USER_COMMAND_9000.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS ON VALUE-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  FIELD GS_HEADER-NEWKO MODULE F4_NEWKO.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  FIELD GS_HEADER-SPLGL MODULE SH_SGL_9000.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+   </DYNPROS>
+   <CUA>
+    <ADM>
+     <ACTCODE>000001</ACTCODE>
+     <MENCODE>000005</MENCODE>
+     <PFKCODE>000001</PFKCODE>
+    </ADM>
+    <STA>
+     <RSMPE_STAT>
+      <CODE>9000</CODE>
+      <MODAL>D</MODAL>
+      <ACTCODE>000001</ACTCODE>
+      <PFKCODE>000001</PFKCODE>
+      <BUTCODE>0001</BUTCODE>
+      <INT_NOTE>9000 gui status</INT_NOTE>
+     </RSMPE_STAT>
+    </STA>
+    <FUN>
+     <RSMPE_FUNT>
+      <CODE>&amp;BACK1</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TYPE>E</TYPE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Back</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;CANCEL1</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TYPE>E</TYPE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_CANCEL</TEXT_NAME>
+      <ICON_ID>@0W@</ICON_ID>
+      <FUN_TEXT>Cancel</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;EXIT1</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TYPE>E</TYPE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Exit</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;POST1</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_EXECUTE_OBJECT</TEXT_NAME>
+      <ICON_ID>@15@</ICON_ID>
+      <FUN_TEXT>PostandClear</FUN_TEXT>
+      <ICON_TEXT>Post and Clear</ICON_TEXT>
+      <INFO_TEXT>Post and Clear</INFO_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;RESET</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_REFRESH</TEXT_NAME>
+      <ICON_ID>@42@</ICON_ID>
+      <FUN_TEXT>Reset</FUN_TEXT>
+      <ICON_TEXT>Reset</ICON_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>&amp;SAVE1</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_SYSTEM_SAVE</TEXT_NAME>
+      <ICON_ID>@2L@</ICON_ID>
+      <FUN_TEXT>Save</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>ENTER</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>ENTER</FUN_TEXT>
+     </RSMPE_FUNT>
+    </FUN>
+    <BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>01</NO>
+      <PFNO>08</PFNO>
+     </RSMPE_BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>02</NO>
+      <PFNO>29</PFNO>
+     </RSMPE_BUT>
+    </BUT>
+    <PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>00</PFNO>
+      <FUNCODE>ENTER</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>03</PFNO>
+      <FUNCODE>&amp;BACK1</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>08</PFNO>
+      <FUNCODE>&amp;POST1</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>11</PFNO>
+      <FUNCODE>&amp;SAVE1</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>12</PFNO>
+      <FUNCODE>&amp;CANCEL1</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>15</PFNO>
+      <FUNCODE>&amp;EXIT1</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>29</PFNO>
+      <FUNCODE>&amp;RESET</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+    </PFK>
+    <SET>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>&amp;BACK1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>&amp;CANCEL1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>&amp;EXIT1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>&amp;POST1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>&amp;RESET</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>&amp;SAVE1</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>9000</STATUS>
+      <FUNCTION>ENTER</FUNCTION>
+     </RSMPE_STAF>
+    </SET>
+    <DOC>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>A</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>9000 gui status</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>P</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>9000 gui status</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>B</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <SUB_CODE>0001</SUB_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>9000 gui status</INT_NOTE>
+     </RSMPE_ATRT>
+    </DOC>
+    <TIT>
+     <RSMPE_TITT>
+      <CODE>9000</CODE>
+      <TEXT>Automated AR Collection Booking Process - New</TEXT>
+     </RSMPE_TITT>
+    </TIT>
+   </CUA>
+   <TPOOL>
+    <item>
+     <ID>R</ID>
+     <ENTRY>Program For Auto Clearing in ZINCPAY</ENTRY>
+     <LENGTH>38</LENGTH>
+    </item>
+   </TPOOL>
+   <LONGTEXTS>
+    <item>
+     <DOKIL>
+      <ID>RE</ID>
+      <OBJECT>SAPMZ_FI_CLEAR_PAYMENT_NEW</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0008</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00121</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>SAPMZ_FI_CLEAR_PAYMENT_NEW</TDNAME>
+      <TDID>RE</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00008</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;PURPOSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Process Incoming Payment for a Customer automatically using transactions</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>F-32 and FB05. The transaction for this program is ZINCPAY.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>&lt;DS:WORD.ZINCPAY-TS&gt;Click here to view the Technical Spec&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;INTEGRATION&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;PREREQUISITES&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;FEATURES&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&amp;SELECTION&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&amp;STANDARD_VARIANTS&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U2</TDFORMAT>
+       <TDLINE>&amp;OUTPUT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;ACTIVITIES&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>How should the data be processed in the program -logic?</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>Scenarios in ZINCPAY transaction logic.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>1.,,If there are open items for a customer, then incoming payment amount</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>is processed using FB05.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>2.,,If there are no open items or negative balance open items, then</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Excess payment is posted using FB05 for that customer.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>Major Steps inside the program:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>1.,,F.13 transaction for auto clear open items for the customer.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>2.,,If there is a Bill-to-Bill scenario, resulting open items are</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>filtered based on the bill number entered and FB05 is processed.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>3.,,If it is not a Bill-to-bill scenario, then Open items are fetched,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>sort them based on due date in ascending order.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>4.,,If the net amount of all open items is 0, there is a chance that</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>several partial payments were done for the open invoices which results</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>in amount payable (to clear the invoice along with the partials) is 0.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Here F-32 is processed for the open items which will clear the invoices</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>along with partials.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>5.,,If there exists any credit notes, excess payments etc, then these</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>open items are cleared against existing invoices using F-32 before</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>considering the incoming payment amount entered on the screen.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>6.,,Then incoming payment is processed using FB05 transaction for the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>available open items.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>7.,,If there are no open items, then excess payment is posted via FB05.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>8.,,Display the output log based on the messages collected from the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>above transactions.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>PAI Logic:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>Validations on the selection screen:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Company code check based on T001 table</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Currency check along with company code</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Reference field is mandatory</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Validation to restrict payment date in the past( more then 2 months).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Get current period based on dates entered.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Customer and entered Bill number in input screen needs to be</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>validated against each other.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Check if the customer is available in the company code</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Check if customer repeated in the table control of selection screen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Check if Bill number( if entered) is the fiscal year entered</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Check if bill number repeated in the table control</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Customer number and amount fields are mandatory</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>Logic Flow:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>When &apos;&amp;POST&apos; ( Post Button pressed ):</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Call transaction F.13 for Auto clear open items if available for the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>customer. Capture the resulting message in GT_MESSAGE table.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,IF Bill-to-Bill scenario, then resulting open items are filtered</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>based on the bill number entered and FB05 is processed. If there is any</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>partial payment done on the Bill number entered this record should not</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>be processed. If the entered amount(incoming payment) is not equal to</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the Bill amount then the record should not be processed. Then incoming</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>payment is posted and cleared against the open Bill number via FB05.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,PERFORM bapi_ar_acc_getopenitems :</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Call FM: &apos;BAPI_AR_ACC_GETOPENITEMS&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,PERFORM determine_due_date:</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Consider document types: DR, AB, RV, DZ, DG, VG, KR</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Calculate due date based on payment terms, document date etc.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Update the due_date values to the internal table(gt_openitems)</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>fetched in (PERFORM bapi_ar_acc_getopenitems )</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Sort gt_open items by due_date along with the document_date,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>document_time. Here document_date and document_time were also involved</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>in sort because as per FIFO(first in first out) process multiple</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>invoices might have the same net due date. If they have same net</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>due_date, then document_date and document_time are used for FIFO pr</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>=</TDFORMAT>
+       <TDLINE>ocessing inside the same net due_date.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,PERFORM process_documents :</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Loop through open items (gt_openitems). If an open item has a</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>reference value, which means this document  might be linked(as a partial</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>payment, residual payment etc) to an original/parent invoice. Based on</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>these validations original invoice is called root document.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,While Looping gt_openitems in the above point, we can have scenarios</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>like a looped document can have invoice_reference, cannot have</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>invoice_reference. Based on these cases, we can categorize all the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>looped docuements whether they are a partial document, residual</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>document, credit note, excess payment, original invoice, Vendor</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>invoice(some times this occurs because Customer can also be a Vendor,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>where in Sheenlac wants to knock off the existing vendor open items with</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>existing customer open items).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Loop through gt_openitems again to update the document_year(there can</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>be cases where document number is same across different fiscal years),</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>to update due_date for a document. These due dates were already fetched</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>in the previous perform( determine_due_date), however due dates related</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>to all child documents(partial docs) will be updated by the original</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>documents due date for better processing later. If any credit notes</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>exist in the looped records, then these records are transferred to an</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>other internal table &apos;gt_openitemsc&apos; and delete the same from</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>gt_openitems. If a KR document scenario ( customer as a vendor), then</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>delete all records except KR documents  from the credit notes internal</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>table.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Loop through gt_open items again to segregate the Root_documents to a</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>separate internal table &apos;GT_AMNT&apos;. If payment terms is available then</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>calculate discount using &apos;Perform discount_calc&apos;. Calculate the net</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>amount payable for all the root documents.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>o,,Delete GT_AMNT where net amount less than 0 for root documents, this</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>can happen if multiple partials would have created for an original</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>invoice where in total of all partials might be more than original</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>invoice amount.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Process F-32 using (Perform f32_bdc_cn ) for invoices where the net</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>amount is exactly equal to 0 and having a root doc an child docs by</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>deleting the GT_AMNT internal table appropriately. This case is called</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&apos;Self_Clear&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Repeat the process where Vendor as a customer scenario by again using</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Performs(bapi_ar_acc_getopenitems, determine_due_date,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>process_documents, f32_bdc_cn  ) for invoices by deleting the GT_AMNT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>internal table appropriately. This case is called &apos;Vendor_Clear&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Repeat the process where Vendor as a customer scenario by again using</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Performs(bapi_ar_acc_getopenitems, determine_due_date,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>process_documents, f32_bdc_cn  ) for invoices by deleting the GT_AMNT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>internal table appropriately. This case is called &apos;Credit Notes_Clear&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+       <TDLINE>-,,Again repeat the process of fetching the open items for the customer</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>by using Performs(bapi_ar_acc_getopenitems, determine_due_date,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>process_documents, f32_bdc_cn  ). If there are no open items then</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&apos;PERFORM fb05_bdc_excess&apos;( post the incoming amount as excess payment).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>If we get open items to process then  get the incoming amount for the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>customer into the variable &apos;gv_wrbtr&apos; = gs_tab-wrbtr. Categorize</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE> whether an incoming amount matches exactly or less than or more than</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the total of all the root docs net_amount. Based on the 3 cases Call</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>FB05 transaction via (PERFORM fb05_bdc).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>*</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

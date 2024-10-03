@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>ORDER AND INVOICE DATA</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGET_DATA_ORDER_INVOCETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGET_DATA_ORDER_INVOCE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_DATA_MIS_ORD_INV</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>GET DATA ORDER AND INVOICE</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>OBJID</PARAMETER>
+       <TYP>CHAR10</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <TYP>AEDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <TYP>AEDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_INVOICE</PARAMETER>
+       <DBSTRUCT>ZSTR_INVOICE_MIS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_ORDER</PARAMETER>
+       <DBSTRUCT>ZSTR_ORDER_MIS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_CONDITION</PARAMETER>
+       <DBSTRUCT>ZSTR_CONDITION</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>DOCUMENT_NO</PARAMETER>
+       <DBSTRUCT>RANGE_VBELN</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_BATCH</PARAMETER>
+       <DBSTRUCT>ZSTR_LIPS_BNO_MIS</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>IT_VBPA</PARAMETER>
+       <DBSTRUCT>ZSTR_VBPA_MIS</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>OBJID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>object id</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>From Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>To Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_INVOICE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>INVOICE DETAIL</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ORDER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ORDER DETAIL</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_CONDITION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Condition type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOCUMENT_NO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range table for VBELN</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_BATCH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Batch no for Line items - add</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_VBPA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Partner function</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZGET_DATA_MIS_POD</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Proof of Delivery</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <TYP>AEDAT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <TYP>AEDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_POD</PARAMETER>
+       <DBSTRUCT>ZSTR_POD_MIS</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>DATE_FRM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>From Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>To Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_POD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>PROOF OF DELIVERY</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

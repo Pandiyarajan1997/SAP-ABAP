@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>PO migo data upload auto</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZPO_MIGO_DATA_UPLOAD</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZPO_MIGO_DATA_UPLOAD</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>PO MIGO data upload vendor portal to sap</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>PO_ASN_NO</PARAMETER>
+       <TYP>ZPO_MIGO_HEADER-ASN_NO</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_EBELN</PARAMETER>
+       <TYP>ZPO_MIGO_HEADER-EBELN</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_XBLNR</PARAMETER>
+       <TYP>ZPO_MIGO_HEADER-XBLNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_STATU</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>ZPO_MIGO_HEADER-FRGRL</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_EBELP</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-EBELP</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_MATNR</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_QTY</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-ERFMG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_MENGE</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-MENGE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_MEINS</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-MEINS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_LICHA</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-LICHA</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_DATE</PARAMETER>
+       <TYP>ZPO_MIGO_HEADER-EBELN</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PO_VEN_INV</PARAMETER>
+       <TYP>ZPO_MIGO_ITEM-VENDOR_INV</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>PO_ASN_NO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ASN Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_EBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Purchasing Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_XBLNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Reference Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_STATU</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Status Field String (Supplementary Pension - Public Sector)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_EBELP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Item Number of Purchasing Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_QTY</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Quantity in Unit of Entry</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_MENGE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Quantity</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_MEINS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Base Unit of Measure</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_LICHA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Vendor Batch Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Posting Date in the Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PO_VEN_INV</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Vendor Invoice Number</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

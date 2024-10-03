@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_WDCC" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJECT_NAME>YHRESS_CC_PER_OVP               00</OBJECT_NAME>
+   <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+   <WDA_COMPONENT>FPM_OVP_COMPONENT</WDA_COMPONENT>
+   <OTR_TEXT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>102</TEXT_ID>
+     <DESCRIPTION>Personal-ID</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>103</TEXT_ID>
+     <DESCRIPTION>Die Personal-ID enthält zusätzliche Daten wie Daten aus dem Führerschein zur Identifizierung des Mitarbeiters. Die Identifikationsart wird für Reportingzwecke verwendet</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>109</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>111</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>113</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>119</TEXT_ID>
+     <DESCRIPTION>Alternativer Name</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>12</TEXT_ID>
+     <DESCRIPTION>Anschriften</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>120</TEXT_ID>
+     <DESCRIPTION>Der alternative Name enthält einen zusätzlichen Namen des Mitarbeiters, welcher anstelle des eigentlichen Namens verwendet werden kann</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>121</TEXT_ID>
+     <DESCRIPTION>Content-Bereich 10</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>126</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>128</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>13</TEXT_ID>
+     <DESCRIPTION>Anschriften enthalten Daten zum ständigem Wohnsitz, zur Notfalladresse und zur Postanschrift des Mitarbeiters. Dazu können Ort, Land oder Telefonnummer gehören</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>130</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>14</TEXT_ID>
+     <DESCRIPTION>Bankverbindung</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>15</TEXT_ID>
+     <DESCRIPTION>Bankinformationen enthalten die Bankverbindung (wie Zahlungsempfänger, Bankkonto und Bankleitzahl) für verschiedene Zahlungen, wie Hauptbank, andere Bank oder Reisespesen.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>16</TEXT_ID>
+     <DESCRIPTION>Familie/Bezugsperson</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>17</TEXT_ID>
+     <DESCRIPTION>Familie/Bezugsperson enthält den Namen und das Geburtsdatum der Familienmitglieder des Mitarbeiters wie Ehegatte, Lebensgefährte, Kinder oder Kinder des Lebensgefährten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>182</TEXT_ID>
+     <DESCRIPTION>Arbeitgeberleistungen Medizinische Informationen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>183</TEXT_ID>
+     <DESCRIPTION>Arbeitgeberleistungen Medizinische Informationen enthalten die Daten bezüglich des Arztes und den Raucherstatus</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>184</TEXT_ID>
+     <DESCRIPTION>Arbeitgeberleistungen Medizinische Informationen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>191</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>195</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>199</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>2</TEXT_ID>
+     <DESCRIPTION>Persönliches Profil</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>203</TEXT_ID>
+     <DESCRIPTION>Persönliche Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>204</TEXT_ID>
+     <DESCRIPTION>Daten zur Person enthalten die Daten zur Mitarbeiteridentifizierung wie vollständiger Name und Foto</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>205</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>209</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>213</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>217</TEXT_ID>
+     <DESCRIPTION>Persönliches Profil</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>34</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>36</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>369</TEXT_ID>
+     <DESCRIPTION>Persönliche Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>371</TEXT_ID>
+     <DESCRIPTION>Familie/Bezugsperson</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>372</TEXT_ID>
+     <DESCRIPTION>Arbeitgeberleistungen Medizinische Informationen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>373</TEXT_ID>
+     <DESCRIPTION>Anschriften</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>374</TEXT_ID>
+     <DESCRIPTION>Familie/Bezugsperson enthält den Namen und das Geburtsdatum der Familienmitglieder des Mitarbeiters wie Ehegatte, Lebensgefährte, Kinder oder Kinder des Lebensgefährten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>375</TEXT_ID>
+     <DESCRIPTION>Externe Organisationen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>376</TEXT_ID>
+     <DESCRIPTION>Daten zur Person enthalten die Daten zur Mitarbeiteridentifizierung wie vollständiger Name und Foto</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>377</TEXT_ID>
+     <DESCRIPTION>Arbeitgeberleistungen Medizinische Informationen enthalten die Daten bezüglich des Arztes und den Raucherstatus</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>378</TEXT_ID>
+     <DESCRIPTION>Anschriften enthalten Daten zum ständigem Wohnsitz, zur Notfalladresse und zur Postanschrift des Mitarbeiters. Dazu können Ort, Land oder Telefonnummer gehören</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>379</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>38</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>380</TEXT_ID>
+     <DESCRIPTION>Sichern und erledigt</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>381</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>387</TEXT_ID>
+     <DESCRIPTION>Zusätzliche Daten zur Person</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>388</TEXT_ID>
+     <DESCRIPTION>Zusätzliche persönliche Daten umfassen zusätzliche Informationen über den Mitarbeiter wie ethnische Zugehörigkeit, militärischer Status oder Daten zu Behinderung.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>391</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>392</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>393</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>394</TEXT_ID>
+     <DESCRIPTION>Zusätzliche persönliche Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>395</TEXT_ID>
+     <DESCRIPTION>Mitversicherte und Begünstigte</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>397</TEXT_ID>
+     <DESCRIPTION>Zusätzliche persönliche Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>398</TEXT_ID>
+     <DESCRIPTION>Zusätzliche persönliche Daten umfassen Informationen zu Personen, die e. ethn. Minderheit Kanadas angehören, nicht kanad. Herkunft sind sowie Personen mit Behinderungen.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>399</TEXT_ID>
+     <DESCRIPTION>Zusätzliche persönliche Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>400</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>401</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>402</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>403</TEXT_ID>
+     <DESCRIPTION>Zusätzliche persönliche Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>404</TEXT_ID>
+     <DESCRIPTION>Notfalladresse</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>405</TEXT_ID>
+     <DESCRIPTION>Notfalladresse</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>406</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>407</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>408</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>45</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>47</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>49</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>56</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>58</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>60</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>64</TEXT_ID>
+     <DESCRIPTION>Kommunikation</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>65</TEXT_ID>
+     <DESCRIPTION>Kommunikation umfasst Daten zu den verschiedenen Kommunikationsmitteln, mit denen man mit dem Mitarbeiter Kontakt aufnehmen kann wie die geschäftliche Telefonnummer, Faxnummer, E-Mail, Mobilitelefon oder Pager</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>66</TEXT_ID>
+     <DESCRIPTION>Interne Daten</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>67</TEXT_ID>
+     <DESCRIPTION>Interne Daten umfassen zusätzliche Informationen zur Mitarbeiteridentifikation, Informationen zum Firmenwagen (wie Kfz-Kennzeichen) und zum Arbeitsplatz (wie Zimmer- und Gebäudenummer)</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>7</TEXT_ID>
+     <DESCRIPTION>Persönliches Profil</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>73</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>75</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>77</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>84</TEXT_ID>
+     <DESCRIPTION>Sichern</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>86</TEXT_ID>
+     <DESCRIPTION>Sichern und zurück</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>D</LANGU>
+     <TEXT_ID>88</TEXT_ID>
+     <DESCRIPTION>Abbrechen</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>102</TEXT_ID>
+     <DESCRIPTION>Personal ID</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>103</TEXT_ID>
+     <DESCRIPTION>Personal ID comprises additional information for the identification of the employee such as driver’s license details. The identification type is used for reporting purposes.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>109</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>111</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>113</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>119</TEXT_ID>
+     <DESCRIPTION>Alternative Name</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>12</TEXT_ID>
+     <DESCRIPTION>Addresses</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>120</TEXT_ID>
+     <DESCRIPTION>Alternative Name comprises an additional name of the employee that can be used instead of the original name.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>121</TEXT_ID>
+     <DESCRIPTION>Content Area 10</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>126</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>128</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>13</TEXT_ID>
+     <DESCRIPTION>Addresses comprises information related to the permanent address, emergency address, and mailing address of the employee. This could be the city, country, or telephone number.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>130</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>14</TEXT_ID>
+     <DESCRIPTION>Bank Information</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>15</TEXT_ID>
+     <DESCRIPTION>Bank Information comprises the banking details (such as the payee, bank account, and bank number) for different payments, such as main bank, other bank, or travel expenses.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>16</TEXT_ID>
+     <DESCRIPTION>Family Members / Dependents</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>17</TEXT_ID>
+     <DESCRIPTION>Family / Dependents comprises the name and birth date of the employee’s family members, such as the spouse, domestic partner, children, or children of the domestic partner.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>182</TEXT_ID>
+     <DESCRIPTION>Benefits Medical Information</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>183</TEXT_ID>
+     <DESCRIPTION>Benefits Medical Information comprises data relating to the employee’s physician information and smoker status.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>184</TEXT_ID>
+     <DESCRIPTION>Benefits Medical Information</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>191</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>195</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>199</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>2</TEXT_ID>
+     <DESCRIPTION>Personal Profile</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>203</TEXT_ID>
+     <DESCRIPTION>Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>204</TEXT_ID>
+     <DESCRIPTION>Personal Data comprises information for the identification of the employee, such as the full name, and photo.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>205</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>209</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>213</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>217</TEXT_ID>
+     <DESCRIPTION>Personal Profile</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>34</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>36</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>369</TEXT_ID>
+     <DESCRIPTION>Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>371</TEXT_ID>
+     <DESCRIPTION>Family Members / Dependents</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>372</TEXT_ID>
+     <DESCRIPTION>Benefits Medical Information</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>373</TEXT_ID>
+     <DESCRIPTION>Addresses</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>374</TEXT_ID>
+     <DESCRIPTION>Family / Dependents comprises the name and birth date of the employee’s family members, such as the spouse, domestic partner, children, or children of the domestic partner.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>375</TEXT_ID>
+     <DESCRIPTION>External Organizations</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>376</TEXT_ID>
+     <DESCRIPTION>Personal Data comprises information for the identification of the employee, such as the full name, and photo.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>377</TEXT_ID>
+     <DESCRIPTION>Benefits Medical Information comprises data relating to the employee’s physician information and smoker status.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>378</TEXT_ID>
+     <DESCRIPTION>Addresses comprises information related to the permanent address, emergency address, and mailing address of the employee. This could be the city, country, or telephone number.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>379</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>38</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>380</TEXT_ID>
+     <DESCRIPTION>Save and Done</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>381</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>387</TEXT_ID>
+     <DESCRIPTION>Additional Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>388</TEXT_ID>
+     <DESCRIPTION>Additional Personal Data comprises of additional information regarding the employee such as ethnic origin, military status and disability data.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>391</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>392</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>393</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>394</TEXT_ID>
+     <DESCRIPTION>Additional Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>395</TEXT_ID>
+     <DESCRIPTION>Dependents and Beneficiaries</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>397</TEXT_ID>
+     <DESCRIPTION>Additional Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>398</TEXT_ID>
+     <DESCRIPTION>Additional Personal data comprises additional information of people who are a minority race in Canada, who are not of Canadian origin and  people with disability.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>399</TEXT_ID>
+     <DESCRIPTION>Additional Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>400</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>401</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>402</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>403</TEXT_ID>
+     <DESCRIPTION>Additional Personal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>404</TEXT_ID>
+     <DESCRIPTION>Emergency Address</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>405</TEXT_ID>
+     <DESCRIPTION>Emergency Address</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>406</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>407</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>408</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>45</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>47</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>49</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>56</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>58</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>60</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>64</TEXT_ID>
+     <DESCRIPTION>Communication</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>65</TEXT_ID>
+     <DESCRIPTION>Communication comprises information related to different means of communication for contacting the employee, such as telephone number at work, fax number, e-mail, cell phone number, or pager.</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>66</TEXT_ID>
+     <DESCRIPTION>Internal Data</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>67</TEXT_ID>
+     <DESCRIPTION>Internal Data comprises additional information for the identification of the employee, information related to the company car (such as the license plate number), and information related to the work center (such as the room number and building number).</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>7</TEXT_ID>
+     <DESCRIPTION>Personal Profile</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>73</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>75</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>77</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>84</TEXT_ID>
+     <DESCRIPTION>Save</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>86</TEXT_ID>
+     <DESCRIPTION>Save and Back</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+    <WDY_CONFIG_COMPT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <TEXT_ID>88</TEXT_ID>
+     <DESCRIPTION>Cancel</DESCRIPTION>
+    </WDY_CONFIG_COMPT>
+   </OTR_TEXT>
+   <DESCR_LANG>
+    <WDY_CONFIG_DATT>
+     <CONFIG_ID>YHRESS_CC_PER_OVP</CONFIG_ID>
+     <LANGU>E</LANGU>
+     <DESCRIPTION>Personal Information: Component Configuration</DESCRIPTION>
+    </WDY_CONFIG_DATT>
+   </DESCR_LANG>
+  </asx:values>
+ </asx:abap>
+</abapGit>

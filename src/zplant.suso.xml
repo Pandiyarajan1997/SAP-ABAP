@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZPLANT</OBJCT>
+    <FIEL1>ZBUKRS</FIEL1>
+    <FIEL2>ZWERKS</FIEL2>
+    <FIEL3>ACTVT</FIEL3>
+    <OCLSS>ZAUT</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZPLANT</OBJECT>
+    <TTEXT>ZPP_DEM_REQ FOR PLANT AUTHERIZATION</TTEXT>
+   </TOBJT>
+   <TACTZ>
+    <TACTZ>
+     <BROBJ>ZPLANT</BROBJ>
+     <ACTVT>03</ACTVT>
+    </TACTZ>
+    <TACTZ>
+     <BROBJ>ZPLANT</BROBJ>
+     <ACTVT>04</ACTVT>
+    </TACTZ>
+    <TACTZ>
+     <BROBJ>ZPLANT</BROBJ>
+     <ACTVT>08</ACTVT>
+    </TACTZ>
+    <TACTZ>
+     <BROBJ>ZPLANT</BROBJ>
+     <ACTVT>09</ACTVT>
+    </TACTZ>
+   </TACTZ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZPURDES</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <HEADLEN>55</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>16</SCRLEN2>
+    <SCRLEN3>24</SCRLEN3>
+    <DDTEXT>Purpose Code Description</DDTEXT>
+    <REPTEXT>Purpose Code Description</REPTEXT>
+    <SCRTEXT_S>Descripn</SCRTEXT_S>
+    <SCRTEXT_M>Code Description</SCRTEXT_M>
+    <SCRTEXT_L>Purpose Code Description</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000150</LENG>
+    <OUTPUTLEN>000150</OUTPUTLEN>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

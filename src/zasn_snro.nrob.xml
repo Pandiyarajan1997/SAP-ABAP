@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_NROB" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <ATTRIBUTES>
+    <OBJECT>ZASN_SNRO</OBJECT>
+    <DTELSOBJ>WERKS_D</DTELSOBJ>
+    <YEARIND>X</YEARIND>
+    <DOMLEN>CHAR10</DOMLEN>
+    <PERCENTAGE>95.0</PERCENTAGE>
+    <BUFFER>X</BUFFER>
+    <NOIVBUFFER>00000010</NOIVBUFFER>
+   </ATTRIBUTES>
+   <TEXT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZASN_SNRO</OBJECT>
+    <TXT>ASN Number Range Object</TXT>
+    <TXTSHORT>ASN SNRO Object</TXTSHORT>
+   </TEXT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,1045 @@
+*&---------------------------------------------------------------------*
+*& Report  ZPRICE_VARIANCE
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT ZPRICE_VARIANCE.
+
+TABLES:AUFM,MAST,MAKT,AFPO,AFKO,A890,KONP,STPO,STKO.
+TYPES:BEGIN OF TY_STKO,
+     STLNR TYPE STKO-STLNR,
+     BMENG TYPE STKO-BMENG,
+  END OF TY_STKO.
+DATA:IT_STKO TYPE TABLE OF TY_STKO,
+      WA_STKO TYPE TY_STKO.
+
+TYPES:BEGIN OF TY_MAST,
+     MATNR TYPE MAST-MATNR,
+     WERKS TYPE MAST-WERKS,
+     STLNR TYPE MAST-STLNR,
+    STLAL TYPE MAST-STLAL,
+  END OF TY_MAST.
+
+DATA:IT_MAST TYPE TABLE OF TY_MAST,
+      WA_MAST TYPE TY_MAST.
+
+
+TYPES:BEGIN OF TY_STPO,
+    STLNR TYPE STPO-STLNR,
+    IDNRK TYPE STPO-IDNRK,
+    MENGE TYPE STPO-MENGE,
+    END OF TY_STPO.
+
+DATA:IT_STPO TYPE TABLE OF TY_STPO,
+      WA_STPO TYPE TY_STPO.
+
+
+TYPES: BEGIN OF TY_AUFM,
+          MBLNR TYPE AUFM-MBLNR, "Material Doc.
+          MJAHR TYPE AUFM-MJAHR, "Mat. Doc. Year
+          ZEILE TYPE AUFM-ZEILE, "Mat. Doc.Item
+          BLDAT TYPE AUFM-BLDAT, "Document Date
+          BUDAT TYPE AUFM-BUDAT, "Posting Date
+          BWART TYPE AUFM-BWART, " Movement Type
+          MATNR TYPE AUFM-MATNR, "Material
+          WERKS TYPE AUFM-WERKS, "Plant
+          CHARG TYPE AUFM-CHARG, "Batch
+          LIFNR TYPE AUFM-LIFNR, "Vendor
+          KDAUF TYPE AUFM-KDAUF, "Sales Order
+          KDPOS TYPE AUFM-KDPOS, "Sales Ord. Item
+          DMBTR TYPE AUFM-DMBTR, "Amount in LC
+          WAERS TYPE AUFM-WAERS, "Currency
+          MENGE TYPE AUFM-MENGE, "Quantity
+          MEINS TYPE AUFM-MEINS, "Base Unit
+          ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          AUFNR TYPE AUFM-AUFNR, "Order
+          SAKTO TYPE AUFM-SAKTO, "G/L Account
+
+*          101_COUNT TYPE I,
+*          102_COUNT TYPE I,
+*          HR_MATNR TYPE AUFM-MATNR,
+        END OF TY_AUFM.
+
+DATA: IT_AUFM TYPE TABLE OF TY_AUFM,
+      WA_AUFM TYPE TY_AUFM.
+
+DATA: IT1_AUFM TYPE TABLE OF TY_AUFM,
+      WA1_AUFM TYPE TY_AUFM.
+
+DATA: IT2_AUFM TYPE TABLE OF TY_AUFM,
+      WA2_AUFM TYPE TY_AUFM.
+
+TYPES:BEGIN OF TY_MAKT,
+            MATNR TYPE MAKT-MATNR,
+            SPRAS TYPE MAKT-SPRAS,
+            MAKTX TYPE MAKT-MAKTX,
+            MAKTG TYPE MAKT-MAKTG,
+          END OF TY_MAKT.
+
+DATA:IT_MAKT TYPE TABLE OF TY_MAKT,
+      WA_MAKT TYPE TY_MAKT.
+
+TYPES: BEGIN OF TY_AFKO,
+              AUFNR TYPE AFKO-AUFNR,
+              PLNBEZ TYPE AFKO-PLNBEZ, "material
+              GAMNG TYPE AFKO-GAMNG,"Target quantity
+              STLAL TYPE AFKO-STLAL, "Alt BOM
+              IGMNG TYPE AFKO-IGMNG,"Confirmed qty
+            END OF TY_AFKO.
+
+DATA:IT_AFKO TYPE TABLE OF TY_AFKO,
+      WA_AFKO TYPE TY_AFKO.
+
+TYPES:BEGIN OF TY_AFPO,
+  AUFNR TYPE AFPO-AUFNR,
+  PSMNG TYPE AFPO-PSMNG, "Item quantity
+  WEMNG TYPE AFPO-WEMNG, "GR quantity
+  END OF TY_AFPO.
+
+DATA:IT_AFPO TYPE TABLE OF TY_AFPO,
+     WA_AFPO TYPE TY_AFPO.
+
+TYPES:BEGIN OF TY_A890,
+    KSCHL TYPE A890-KSCHL,
+    RESWK TYPE A890-RESWK,
+    MATNR TYPE A890-MATNR,
+    DATBI TYPE A890-DATBI,
+    DATAB TYPE A890-DATAB,
+    KNUMH TYPE A890-KNUMH,
+  END OF TY_A890.
+
+DATA:IT_A890 TYPE TABLE OF TY_A890,
+      WA_A890 TYPE TY_A890.
+
+TYPES:BEGIN OF TY_KONP,
+  KNUMH TYPE KONP-KNUMH,
+  KSCHL TYPE KONP-KSCHL,
+  KBETR TYPE KONP-KBETR,
+  END OF TY_KONP.
+
+DATA:IT_KONP TYPE TABLE OF TY_KONP,
+     WA_KONP TYPE TY_KONP.
+
+TYPES: BEGIN OF TY_FINAL,
+
+          MBLNR TYPE AUFM-MBLNR, "Material Doc.
+          MJAHR TYPE AUFM-MJAHR, "Mat. Doc. Year
+          ZEILE TYPE AUFM-ZEILE, "Mat. Doc.Item
+          BLDAT TYPE AUFM-BLDAT, "Document Date
+          BUDAT TYPE AUFM-BUDAT, "Posting Date
+          BWART TYPE AUFM-BWART, " Movement Type
+          MATNR TYPE AUFM-MATNR, "Material
+          WERKS TYPE AUFM-WERKS, "Plant
+          CHARG TYPE AUFM-CHARG, "Batch
+          LIFNR TYPE AUFM-LIFNR, "Vendor
+          KDAUF TYPE AUFM-KDAUF, "Sales Order
+          KDPOS TYPE AUFM-KDPOS, "Sales Ord. Item
+          DMBTR TYPE AUFM-DMBTR, "Amount in LC
+          WAERS TYPE AUFM-WAERS, "Currency
+          MENGE TYPE AUFM-MENGE, "Quantity
+          MEINS TYPE AUFM-MEINS, "Base Unit
+          ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          AUFNR TYPE AUFM-AUFNR, "Order
+          SAKTO TYPE AUFM-SAKTO, "G/L Account
+
+          MAST_MATNR TYPE MAST-MATNR,
+          MAST_WERKS TYPE MAST-WERKS,
+          MAST_STLNR TYPE MAST-STLNR,
+          MAST_STLAL TYPE MAST-STLAL,
+
+          MAK_MATNR TYPE MAKT-MATNR,
+          MAK_SPRAS TYPE MAKT-SPRAS,
+          MAKTX TYPE MAKT-MAKTX,
+          MAKTG TYPE MAKT-MAKTG,
+
+          AFK_AUFNR TYPE AFKO-AUFNR,
+          PLNBEZ TYPE AFKO-PLNBEZ, "material
+          GAMNG TYPE AFKO-GAMNG,"Target quantity
+          STLAL TYPE AFKO-STLAL, "Alt BOM
+          IGMNG TYPE AFKO-IGMNG,"Confirmed qty
+
+          AFP_AUFNR TYPE AFPO-AUFNR,
+          PSMNG TYPE AFPO-PSMNG, "Item quantity
+          WEMNG TYPE AFPO-WEMNG, "GR quantity
+
+          SEM_MATNR TYPE AUFM-MATNR,
+          SEM_MAKTG TYPE MAKT-MAKTG,
+          HR_MATNR TYPE AUFM-MATNR,
+          HR_MAKTG TYPE MAKT-MAKTG,
+
+          A8_KSCHL TYPE A890-KSCHL,
+          A8_RESWK TYPE A890-RESWK,
+          A8_MATNR TYPE A890-MATNR,
+          DATBI TYPE A890-DATBI,
+          DATAB TYPE A890-DATAB,
+          A8_KNUMH TYPE A890-KNUMH,
+
+          KNUMH TYPE KONP-KNUMH,
+          KSCHL TYPE KONP-KSCHL,
+          KBETR TYPE KONP-KBETR,
+
+          TOT_VAL(12) TYPE P DECIMALS 2,"AUFM-DMBTR, "QTY * Value
+          TAR_VAL(12) TYPE P DECIMALS 2, " (Target qty*Tvalue)
+          ACT_VAL(12) TYPE P DECIMALS 2,  " ( Delivey qty*Tvalue)
+          DEL_VAL(12) TYPE P DECIMALS 2,  " ( Delivey qty*Tvalue)
+          RAT_TAR_VAL(12) TYPE P DECIMALS 2,
+          RAT_DEL_VAL(12) TYPE P DECIMALS 2,
+
+          101_COUNT TYPE I,
+          102_COUNT TYPE I,
+
+          102_CHARG TYPE AUFM-CHARG, "Batch
+          101_CHARG TYPE AUFM-CHARG, "Batch
+
+          STA TYPE CHAR1,
+
+          STKO_STLNR TYPE STKO-STLNR,
+          STKO_BMENG TYPE STKO-BMENG,
+
+          STLNR TYPE STPO-STLNR,
+          IDNRK TYPE STPO-IDNRK,
+          STPO_MENGE TYPE STPO-MENGE,
+
+          RAT_UNIT(12) TYPE P DECIMALS 2,
+          LV_ERFMG TYPE AUFM-ERFMG, "Quantity in UnE
+          TOT_ERFMG TYPE AUFM-ERFMG,
+          TOT_DMBTR TYPE AUFM-DMBTR,
+          ROW_COUNT TYPE I,
+
+          TOT_Y TYPE STPO-MENGE ,
+
+END OF TY_FINAL.
+
+DATA:IT_FINAL TYPE TABLE OF TY_FINAL,
+      WA_FINAL TYPE TY_FINAL.
+
+DATA:IT1_FINAL TYPE TABLE OF TY_FINAL,
+      WA1_FINAL TYPE TY_FINAL.
+
+DATA:IT2_FINAL TYPE TABLE OF TY_FINAL,
+      WA2_FINAL TYPE TY_FINAL.
+
+DATA:IT3_FINAL TYPE TABLE OF TY_FINAL,
+      WA3_FINAL TYPE TY_FINAL.
+
+DATA:IT4_FINAL TYPE TABLE OF TY_FINAL,
+      WA4_FINAL TYPE TY_FINAL.
+
+
+DATA:MYDATE TYPE SY-DATUM.
+SELECTION-SCREEN BEGIN OF BLOCK B1 WITH FRAME TITLE TEXT-001.
+SELECT-OPTIONS:S_WERKS FOR AUFM-WERKS OBLIGATORY, " Plant
+               S_AUFNR FOR AUFM-AUFNR, " Processor Number
+               S_BUDAT FOR AUFM-BUDAT OBLIGATORY.  "Posting date
+SELECTION-SCREEN END OF BLOCK B1.
+
+
+START-OF-SELECTION.
+  PERFORM GET_DATA.
+  PERFORM READ_DATA.
+
+END-OF-SELECTION.
+
+  DATA:IT_FIELDCAT TYPE SLIS_T_FIELDCAT_ALV,
+       WA_FIELDCAT TYPE SLIS_FIELDCAT_ALV,
+       WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+       IT_REPID TYPE SY-REPID VALUE SY-REPID ,
+       IT_SORT TYPE SLIS_T_SORTINFO_ALV,
+       WA_SORT TYPE SLIS_SORTINFO_ALV.
+
+  PERFORM FIELDCAT.
+  PERFORM LAYOUT.
+  PERFORM DISPLAY.
+  PERFORM SORT.
+
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+
+FORM GET_DATA .
+
+  SELECT MBLNR MJAHR ZEILE BLDAT BUDAT BWART MATNR WERKS CHARG LIFNR KDAUF KDPOS DMBTR WAERS MENGE MEINS ERFMG AUFNR SAKTO FROM AUFM
+    INTO TABLE IT_AUFM
+   WHERE AUFNR IN S_AUFNR
+      AND BUDAT IN S_BUDAT
+      AND WERKS IN S_WERKS
+    AND ( BWART  = '101' OR BWART = '261' OR BWART  = '102' OR BWART = '262' ).
+**********************************commented on 22.04.2020 strats
+**      AND ( BWART  = '101' OR BWART = '261' ).
+**********************************commented on 22.04.2020 ends
+
+  SELECT MBLNR MJAHR ZEILE BLDAT BUDAT BWART MATNR WERKS CHARG LIFNR KDAUF KDPOS DMBTR WAERS MENGE MEINS ERFMG AUFNR SAKTO FROM AUFM
+    INTO TABLE IT1_AUFM
+   WHERE AUFNR IN S_AUFNR
+      AND BUDAT IN S_BUDAT
+      AND WERKS IN S_WERKS
+      AND ( BWART  = '102' OR BWART = '262') . "
+**********************************commented on 22.04.2020 strats
+***  SELECT MBLNR MJAHR ZEILE BLDAT BUDAT BWART MATNR WERKS CHARG LIFNR KDAUF KDPOS DMBTR WAERS MENGE MEINS ERFMG AUFNR SAKTO FROM AUFM
+*** INTO TABLE IT2_AUFM
+***  WHERE AUFNR IN S_AUFNR
+***   AND BUDAT IN S_BUDAT
+***   AND WERKS IN S_WERKS
+***   AND ( BWART  = '101' OR BWART = '261') . "
+**********************************commented on 22.04.2020 ends
+  SELECT MATNR SPRAS MAKTX MAKTG FROM MAKT
+    INTO TABLE IT_MAKT
+    FOR ALL ENTRIES IN IT_AUFM
+    WHERE MATNR = IT_AUFM-MATNR.
+
+  SELECT  AUFNR PLNBEZ GAMNG STLAL IGMNG FROM AFKO
+    INTO TABLE IT_AFKO
+    FOR ALL ENTRIES IN IT_AUFM
+    WHERE AUFNR = IT_AUFM-AUFNR.
+
+  SELECT MATNR WERKS STLNR STLAL FROM MAST
+   INTO TABLE IT_MAST
+   FOR ALL ENTRIES IN IT_AFKO " IT_AUFM
+    WHERE MATNR = IT_AFKO-PLNBEZ.
+**    AND  WERKS = IT_AUFM-WERKS.
+
+  SELECT  AUFNR PSMNG WEMNG FROM AFPO
+    INTO TABLE IT_AFPO
+    FOR ALL ENTRIES IN IT_AUFM
+    WHERE AUFNR = IT_AUFM-AUFNR.
+
+  SELECT KSCHL RESWK MATNR DATBI DATAB KNUMH FROM A890
+    INTO TABLE IT_A890
+    FOR ALL ENTRIES IN IT_AUFM
+    WHERE MATNR = IT_AUFM-MATNR
+   AND ( DATAB => S_BUDAT-LOW AND DATBI <= S_BUDAT-HIGH )." AND ( DATAB <= S_BUDAT-LOW AND DATBI => S_BUDAT-HIGH )."old
+
+  SELECT KNUMH KSCHL KBETR FROM KONP
+    INTO TABLE IT_KONP
+    FOR ALL ENTRIES IN IT_A890
+    WHERE KNUMH = IT_A890-KNUMH.
+
+  SELECT STLNR BMENG FROM STKO
+    INTO TABLE IT_STKO
+    FOR ALL ENTRIES IN IT_MAST
+    WHERE STLNR = IT_MAST-STLNR.
+
+  SELECT  STLNR IDNRK MENGE FROM STPO
+     INTO  TABLE IT_STPO
+    FOR ALL ENTRIES IN IT_AUFM
+    WHERE IDNRK = IT_AUFM-MATNR.
+
+ENDFORM.                    " GET_DATA
+*&---------------------------------------------------------------------*
+*&      Form  READ_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM READ_DATA .
+**  SORT IT2_AUFM BY AUFNR MBLNR.
+**
+**  LOOP AT IT2_AUFM INTO WA2_AUFM.
+**    IF SY-SUBRC = 0.
+**
+**      IF WA2_AUFM-BWART  = '101'.
+**
+**        WA2_FINAL-HR_MATNR = WA2_AUFM-MATNR.
+**        WA2_FINAL-DMBTR = WA2_AUFM-DMBTR.
+**        WA2_FINAL-ERFMG = WA2_AUFM-ERFMG.
+**
+**      ELSEIF WA2_AUFM-BWART = '261'.
+**
+**        WA2_FINAL-SEM_MATNR = WA2_AUFM-MATNR.
+**        WA2_FINAL-DMBTR = WA2_AUFM-DMBTR.
+**        WA2_FINAL-ERFMG = WA2_AUFM-ERFMG.
+**
+**      ENDIF.
+**    ENDIF.
+**
+**    AT END OF ERFMG.
+**      SUM.
+**      WA_FINAL-ERFMG = WA2_AUFM-ERFMG.
+**
+**    ENDAT.
+**
+**    APPEND WA2_FINAL TO IT2_FINAL.
+**
+**  ENDLOOP.
+
+
+
+
+*  SORT IT_AUFM BY AUFNR MBLNR.
+
+  LOOP AT IT_AUFM INTO WA_AUFM.
+    IF SY-SUBRC = 0.
+
+      IF WA_AUFM-BWART  = '101' OR WA_AUFM-BWART  = '102' . " modification on 22.04.2020
+
+        WA_FINAL-101_COUNT = 1.
+        WA_FINAL-MBLNR  = WA_AUFM-MBLNR.
+        WA_FINAL-BUDAT = WA_AUFM-BUDAT.
+        WA_FINAL-BWART = WA_AUFM-BWART.
+        WA_FINAL-HR_MATNR = WA_AUFM-MATNR.
+        WA_FINAL-WERKS = WA_AUFM-WERKS.
+        WA_FINAL-CHARG = WA_AUFM-CHARG.
+        WA_FINAL-DMBTR = WA_AUFM-DMBTR.
+        WA_FINAL-WAERS = WA_AUFM-WAERS.
+        WA_FINAL-MENGE = WA_AUFM-MENGE.
+        WA_FINAL-MEINS = WA_AUFM-MEINS.
+        WA_FINAL-ERFMG = WA_AUFM-ERFMG.
+        WA_FINAL-AUFNR = WA_AUFM-AUFNR.
+        WA_FINAL-MATNR = WA_AUFM-MATNR.  "important 12.03.2020
+
+        SHIFT WA_FINAL-HR_MATNR LEFT DELETING LEADING '0'.
+
+**********************************commented on 22.04.2020 strats
+
+***        LOOP AT IT1_AUFM INTO WA1_AUFM WHERE MATNR = WA_FINAL-HR_MATNR
+***                                       AND CHARG = WA_FINAL-CHARG
+***                                       AND BWART = '102'.
+***          WA_FINAL-STA = 'X'.
+***
+***        ENDLOOP.
+
+**********************************commented on 22.04.2020 ends
+      ELSEIF WA_AUFM-BWART = '261' OR WA_AUFM-BWART = '262' ." modification on 22.04.2020
+
+        WA_FINAL-MBLNR = WA_AUFM-MBLNR.
+        WA_FINAL-BUDAT = WA_AUFM-BUDAT.
+        WA_FINAL-BWART = WA_AUFM-BWART.
+        WA_FINAL-SEM_MATNR = WA_AUFM-MATNR.
+        WA_FINAL-WERKS = WA_AUFM-WERKS.
+        WA_FINAL-CHARG = WA_AUFM-CHARG.
+        WA_FINAL-DMBTR = WA_AUFM-DMBTR.
+        WA_FINAL-WAERS = WA_AUFM-WAERS.
+        WA_FINAL-MENGE = WA_AUFM-MENGE.
+        WA_FINAL-MEINS = WA_AUFM-MEINS.
+        WA_FINAL-ERFMG = WA_AUFM-ERFMG.
+        WA_FINAL-AUFNR = WA_AUFM-AUFNR.
+        WA_FINAL-MATNR = WA_AUFM-MATNR.
+
+        SHIFT WA_FINAL-SEM_MATNR LEFT DELETING LEADING '0'.
+**      WA_FINAL-TOT_VAL = WA_FINAL-MENGE * WA_FINAL-DMBTR.
+
+**********************************commented on 22.04.2020 strats
+
+***        LOOP AT IT1_AUFM INTO WA1_AUFM WHERE MATNR = WA_FINAL-SEM_MATNR
+***                                       AND CHARG = WA_FINAL-CHARG
+***                                       AND BWART = '262'.
+***
+***          WA_FINAL-STA = 'X'.
+***
+***        ENDLOOP.
+**********************************commented on 22.04.2020 ends
+      ENDIF.
+
+***      AT END OF MATNR.
+***        SUM.
+***        WA2_FINAL-LV_ERFMG = WA_FINAL-ERFMG.
+***
+***        APPEND WA2_FINAL TO IT2_FINAL.
+***      ENDAT.
+
+
+**      MODIFY IT_FINAL FROM WA_FINAL TRANSPORTING LV_COUNT.
+
+      WA_FINAL-TOT_VAL = WA_FINAL-MENGE * WA_FINAL-DMBTR.
+
+    ENDIF.
+
+
+    READ TABLE IT_MAKT INTO WA_MAKT WITH KEY MATNR = WA_AUFM-MATNR.
+
+    IF WA_AUFM-BWART = '101' OR WA_AUFM-BWART = '102'." modification on 22.04.2020
+      WA_FINAL-MAKTX = WA_MAKT-MAKTX.
+      WA_FINAL-HR_MAKTG = WA_MAKT-MAKTG.
+
+    ELSEIF WA_AUFM-BWART = '261'OR WA_AUFM-BWART = '262' . " modification on 22.04.2020
+
+      WA_FINAL-MAKTX = WA_MAKT-MAKTX.
+      WA_FINAL-SEM_MAKTG = WA_MAKT-MAKTG.
+    ENDIF.
+
+    READ TABLE IT_AFKO INTO WA_AFKO WITH KEY AUFNR = WA_FINAL-AUFNR.
+
+    IF SY-SUBRC = 0.
+      WA_FINAL-GAMNG = WA_AFKO-GAMNG.
+      WA_FINAL-PLNBEZ = WA_AFKO-PLNBEZ.
+      WA_FINAL-STLAL = WA_AFKO-STLAL.
+      WA_FINAL-IGMNG = WA_AFKO-IGMNG.
+
+    ENDIF.
+
+    READ TABLE IT_AFPO INTO WA_AFPO WITH KEY AUFNR = WA_FINAL-AUFNR.
+    IF SY-SUBRC = 0.
+
+      WA_FINAL-PSMNG = WA_AFPO-PSMNG.
+      WA_FINAL-WEMNG = WA_AFPO-WEMNG.
+
+    ENDIF.
+
+*****************************Created On 09-03-2020 strat*************************
+
+    READ TABLE IT_MAST INTO WA_MAST WITH KEY  MATNR = WA_FINAL-PLNBEZ
+                                              WERKS = WA_FINAL-WERKS
+                                              STLAL = WA_FINAL-STLAL.
+
+    IF  SY-SUBRC = 0.
+      WA_FINAL-MAST_STLNR = WA_MAST-STLNR.
+      WA_FINAL-MAST_MATNR = WA_MAST-MATNR.
+    ENDIF.
+
+
+    READ TABLE  IT_STKO INTO WA_STKO WITH KEY STLNR =  WA_FINAL-MAST_STLNR.
+
+    IF  SY-SUBRC = 0.
+      WA_FINAL-STKO_BMENG = WA_STKO-BMENG.
+    ENDIF.
+
+    READ TABLE IT_STPO INTO WA_STPO WITH KEY STLNR = WA_FINAL-MAST_STLNR "WA_FINAL-STLNR
+                                             IDNRK = WA_FINAL-MATNR.
+
+    IF  SY-SUBRC = 0.
+      WA_FINAL-STLNR = WA_STPO-STLNR.
+      WA_FINAL-IDNRK = WA_STPO-IDNRK.
+      WA_FINAL-STPO_MENGE = WA_STPO-MENGE.
+
+    ENDIF.
+
+*    IF WA_FINAL-STPO_MENGE NE 0 AND WA_FINAL-STKO_BMENG NE 0.
+
+    WA_FINAL-TOT_Y = (  WA_FINAL-STPO_MENGE / WA_FINAL-STKO_BMENG  ).
+
+*    ENDIF.
+
+
+*****************************Created On 09-03-2020 ends*************************
+
+
+
+    READ TABLE IT_A890 INTO WA_A890 WITH KEY MATNR = WA_FINAL-MATNR" WA_FINAL-IDNRK
+                                             RESWK =  WA_FINAL-WERKS ." WA_AUFM-MATNR.
+    IF  SY-SUBRC = 0.
+
+
+* IF WA_A890-KSCHL = 'ZZPB'  AND (  WA_A890-DATAB <= WA_FINAL-BUDAT AND WA_A890-DATBI => WA_FINAL-BUDAT )."old
+
+**      IF WA_A890-KSCHL = 'ZZPB'  AND ( WA_FINAL-BUDAT =>  WA_A890-DATAB  AND WA_A890-DATBI <= WA_FINAL-BUDAT )."new
+
+      IF WA_A890-KSCHL = 'ZZPB'.
+
+        WA_FINAL-A8_KNUMH = WA_A890-KNUMH.
+
+      ENDIF.
+    ENDIF.
+
+    READ TABLE IT_KONP INTO WA_KONP WITH KEY KNUMH = WA_FINAL-A8_KNUMH."WA_A890-KNUMH.
+
+    IF SY-SUBRC = 0.
+      WA_FINAL-KBETR = WA_KONP-KBETR.
+    ENDIF.
+
+    WA_FINAL-TAR_VAL =   WA_FINAL-TOT_Y * WA_FINAL-IGMNG.
+
+    WA_FINAL-DEL_VAL =   WA_FINAL-TOT_Y * WA_FINAL-WEMNG.
+
+**    WA_FINAL-TAR_VAL =  WA_FINAL-GAMNG * WA_FINAL-TOT_VAL.
+**
+**    WA_FINAL-ACT_VAL =  WA_FINAL-WEMNG * WA_FINAL-TOT_VAL.
+
+    WA_FINAL-RAT_TAR_VAL = WA_FINAL-KBETR * WA_FINAL-TAR_VAL.     "changing on 12.03.2020
+    WA_FINAL-RAT_DEL_VAL = WA_FINAL-KBETR * WA_FINAL-DEL_VAL.     "changing on 12.03.2020
+
+**    WA_FINAL-RAT_TAR_VAL = WA_FINAL-KBETR * WA_FINAL-GAMNG.
+**    WA_FINAL-RAT_DEL_VAL = WA_FINAL-KBETR * WA_FINAL-WEMNG.
+
+    WA_FINAL-RAT_UNIT = WA_FINAL-DMBTR / WA_FINAL-ERFMG.
+
+    IF WA_AUFM-BWART = '101' OR WA_AUFM-BWART = '261'.
+
+      SHIFT WA_FINAL-AUFNR LEFT DELETING LEADING '0'.
+      APPEND WA_FINAL TO IT_FINAL.
+      CLEAR WA_FINAL.
+
+    ELSEIF WA_AUFM-BWART = '102' OR WA_AUFM-BWART = '262'.
+*******************************to show the 102 ans 262 type erfmg and dmbtr col into negative on 01.05.2020 starts
+
+      WA_FINAL-DMBTR = WA_AUFM-DMBTR * -1.
+      WA_FINAL-ERFMG = WA_AUFM-ERFMG * -1.
+*******************************to show the 102 ans 262 type erfmg and dmbtr col into negative on 01.05.2020 ends
+
+      SHIFT WA_FINAL-AUFNR LEFT DELETING LEADING '0'.
+      APPEND WA_FINAL TO IT3_FINAL.
+      CLEAR WA_FINAL.
+
+    ENDIF.
+
+  ENDLOOP.
+
+  SORT IT_FINAL BY BWART.
+  SORT IT3_FINAL BY BWART.
+
+  APPEND LINES OF IT3_FINAL TO IT_FINAL.
+***  DELETE IT_FINAL WHERE STA = 'X' ."commented on 22.04.2020
+
+*  LOOP AT IT_FINAL INTO WA_FINAL .
+*   IF WA_FINAL-SEM_MATNR IS INITIAL.
+*     WA_FINAL-ROW_COUNT = 1 .
+*   ENDIF.
+*   MODIFY IT_FINAL FROM WA_FINAL TRANSPORTING ROW_COUNT.
+*  ENDLOOP.
+*
+
+
+
+
+***********************************commented on 22.04.2020 starts
+***  APPEND LINES OF IT_FINAL TO IT1_FINAL.
+***  CLEAR SY-SUBRC .
+***  LOOP AT IT_FINAL INTO WA_FINAL.
+***    LOOP AT IT1_FINAL INTO WA1_FINAL WHERE AUFNR = WA_FINAL-AUFNR AND SEM_MATNR = WA_FINAL-SEM_MATNR AND CHARG = WA_FINAL-CHARG  .
+***      IF SY-SUBRC = '0'. "AND .
+***        WA_FINAL-TOT_ERFMG = WA_FINAL-TOT_ERFMG + WA1_FINAL-ERFMG.
+***        WA_FINAL-TOT_DMBTR = WA_FINAL-TOT_DMBTR + WA1_FINAL-DMBTR.
+***      ENDIF.
+***    ENDLOOP.
+***    MODIFY IT_FINAL FROM WA_FINAL TRANSPORTING TOT_ERFMG TOT_DMBTR.
+***    CLEAR WA_FINAL.
+***  ENDLOOP.
+***
+***  SORT : IT_FINAL BY SEM_MATNR CHARG.
+***********************************commented on 22.04.2020 ends
+
+
+
+
+**SORT : IT_FINAL DESCENDING BY TOT_ERFMG .
+
+***************************  DELETE ADJACENT DUPLICATES FROM IT_FINAL COMPARING  SEM_MATNR CHARG AUFNR   . "commented on 22.04.2020
+
+**  IF WA_FINAL-CHARG = WA_FINAL-102_CHARG.
+**
+**    DELETE IT_FINAL WHERE 102_COUNT = '1' AND 101_COUNT = '1'.
+**
+**  ENDIF.
+
+ENDFORM.                    " READ_DATA
+*&---------------------------------------------------------------------*
+*&      Form  FIELDCAT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+
+FORM FIELDCAT .
+
+  WA_FIELDCAT-FIELDNAME ='AUFNR'. "AUFM-AUFNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Order No'.
+  WA_FIELDCAT-SELTEXT_L ='Order No'.
+  WA_FIELDCAT-COL_POS   = 1.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+**  WA_FIELDCAT-FIELDNAME ='MBLNR'. "AUFM-CHARG
+**  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+**  WA_FIELDCAT-SELTEXT_S ='MBLNR'.
+**  WA_FIELDCAT-SELTEXT_L ='MBLNR'.
+**  WA_FIELDCAT-COL_POS   = 1.
+**  WA_FIELDCAT-OUTPUTLEN = '20'.
+**
+**  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+**  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='HR_MATNR'. "AUFM-MATNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='FG material'.
+  WA_FIELDCAT-SELTEXT_L ='FG material code'.
+  WA_FIELDCAT-COL_POS   = 2.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+**  WA_SORT-EXPA      = 'X'. "This hides the item details
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='HR_MAKTG'. "MAKT-MAKTX or MAKT-MAKTG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S = 'FG Material desc'.
+  WA_FIELDCAT-SELTEXT_L = 'FG Material description'.
+  WA_FIELDCAT-COL_POS   = 3.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+*  WA_SORT-EXPA      = 'X'. "This hides the item details
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='SEM_MATNR'. "AUFM-MATNR
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM material'.
+  WA_FIELDCAT-SELTEXT_L ='BOM material list'.
+  WA_FIELDCAT-COL_POS   = 4.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='SEM_MAKTG'. "MAKT-MAKTX or MAKT-MAKTG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Material desc'.
+  WA_FIELDCAT-SELTEXT_L ='BOM Material description'.
+  WA_FIELDCAT-COL_POS   = 5.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='BWART'. "AUFM-BWART
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Movement Type'.
+  WA_FIELDCAT-SELTEXT_L ='Movement Type'.
+  WA_FIELDCAT-COL_POS   = 6.
+  WA_FIELDCAT-OUTPUTLEN = '20'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME = 'ERFMG'."'TOT_ERFMG'. "commented on 22.04.2020
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Actual qty'.
+  WA_FIELDCAT-SELTEXT_L ='Actual consumption qty'.
+  WA_FIELDCAT-COL_POS   = 7.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+**  WA_FIELDCAT-FIELDNAME = 'ERFMG'. "AUFM-ERFMG
+**  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+**  WA_FIELDCAT-SELTEXT_S ='Actual qty'.
+**  WA_FIELDCAT-SELTEXT_L ='Actual consumption qty'.
+****  WA_FIELDCAT-DO_SUM    ='X'.
+**  WA_SORT-UP = 'X'.
+**  WA_SORT-SUBTOT    ='X'.
+**  WA_SORT-GROUP = 'X'.
+**  WA_FIELDCAT-COL_POS   = 6.
+**  WA_FIELDCAT-OUTPUTLEN = '20'.
+****  WA_SORT-EXPA      = 'X'. "This hides the item details
+**
+**  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+**  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='DMBTR'."  'TOT_DMBTR'."'DMBTR'. "AUFM-DMBTR "commented on 22.04.2020
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Actual value '.
+  WA_FIELDCAT-SELTEXT_L ='Actual value '.
+  WA_FIELDCAT-COL_POS   = 8.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='RAT_UNIT'. "WA_FINAL-RAT_UNIT
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Rate Per Unit'.
+  WA_FIELDCAT-SELTEXT_L ='Rate Per Unit'.
+  WA_FIELDCAT-COL_POS   = 9.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='WAERS'. "AUFM-WAERS
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='currency '.
+  WA_FIELDCAT-SELTEXT_L ='currency '.
+  WA_FIELDCAT-COL_POS   = 10.
+  WA_FIELDCAT-OUTPUTLEN = '5'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='CHARG'. "AUFM-CHARG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Batch No'.
+  WA_FIELDCAT-SELTEXT_L ='Batch No'.
+  WA_FIELDCAT-COL_POS   = 11.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+**  WA_FIELDCAT-FIELDNAME ='PSMNG'. "AFPO-PSMNG
+**  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+**  WA_FIELDCAT-SELTEXT_S ='Order QTY'.
+**  WA_FIELDCAT-SELTEXT_L ='Order QTY'.
+**  WA_FIELDCAT-COL_POS   = 11.
+**  WA_FIELDCAT-OUTPUTLEN = '20'.
+**
+**  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+**  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='GAMNG'. "AFKO-GAMNG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Target Qty'.
+  WA_FIELDCAT-SELTEXT_L ='Target Qty'.
+  WA_FIELDCAT-COL_POS   = 12.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='IGMNG'. "AFKO-IGMNG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Confirm Qty'.
+  WA_FIELDCAT-SELTEXT_L ='Confirm Qty'.
+  WA_FIELDCAT-COL_POS   = 13.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='WEMNG'. "AFPO-WEMNG
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Delivery Qty'.
+  WA_FIELDCAT-SELTEXT_L ='Delivery Qty'.
+  WA_FIELDCAT-COL_POS   = 14.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+
+***  WA_FIELDCAT-FIELDNAME ='WEMNG'. "AFKO-WEMNG
+***  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+***  WA_FIELDCAT-SELTEXT_S ='Delivery Qty'.
+***  WA_FIELDCAT-SELTEXT_L ='Delivery Qty'.
+***  WA_FIELDCAT-COL_POS   = 15.
+***  WA_FIELDCAT-OUTPUTLEN = '20'.
+***
+***  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+***  CLEAR WA_FIELDCAT.
+
+
+  WA_FIELDCAT-FIELDNAME ='TAR_VAL'. "Actual consumption qty * Actual value
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Target Value'.
+  WA_FIELDCAT-SELTEXT_L ='Target Value'.
+  WA_FIELDCAT-COL_POS   = 15.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='DEL_VAL'. " Delivey qty * T value
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Actual Value'.
+  WA_FIELDCAT-SELTEXT_L ='Actual Value'.
+  WA_FIELDCAT-COL_POS   = 16.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='KBETR'. "Rate per BOM konp-kbert
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='Rate Per BOM'.
+  WA_FIELDCAT-SELTEXT_L ='Rate Per BOM'.
+  WA_FIELDCAT-COL_POS   = 17.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='RAT_TAR_VAL'. "Rate Tar Qty konp-kbert (Konp-KBERT*AFKO-GAMNG)
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Target Value '.
+  WA_FIELDCAT-SELTEXT_L ='BOM Target Value'.
+  WA_FIELDCAT-COL_POS   = 18.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+  WA_FIELDCAT-FIELDNAME ='RAT_DEL_VAL'. "(Konp-KBERT*AFPO-WEMNG)
+  WA_FIELDCAT-TABNAME ='IT_FINAL'.
+  WA_FIELDCAT-SELTEXT_S ='BOM Delivery Value'.
+  WA_FIELDCAT-SELTEXT_L ='BOM Delivery Value'.
+  WA_FIELDCAT-COL_POS   = 19.
+  WA_FIELDCAT-OUTPUTLEN = '15'.
+
+  APPEND WA_FIELDCAT TO IT_FIELDCAT .
+  CLEAR WA_FIELDCAT.
+
+***********commented on 22.04.2020 starts
+  WA_SORT-SPOS = '1'.
+  WA_SORT-FIELDNAME = 'AUFNR'.
+  WA_SORT-UP = 'X'.
+
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+****
+****  WA_SORT-SPOS = '2'.
+****  WA_SORT-FIELDNAME = 'HR_MATNR'.
+****  WA_SORT-DOWN = 'X'.
+****
+****  APPEND WA_SORT TO IT_SORT.
+****  CLEAR WA_SORT.
+****
+****  WA_SORT-SPOS = '4'.
+****  WA_SORT-FIELDNAME = 'HR_MAKTG'.
+****  WA_SORT-DOWN = 'X'.
+****
+****  APPEND WA_SORT TO IT_SORT.
+****  CLEAR WA_SORT.
+****
+****  WA_SORT-SPOS = '5'.
+****  WA_SORT-FIELDNAME = 'SEM_MAKTG'.
+****  WA_SORT-DOWN = 'X'.
+****
+****  APPEND WA_SORT TO IT_SORT.
+****  CLEAR WA_SORT.
+****
+****  WA_SORT-SPOS = '3'.
+****  WA_SORT-FIELDNAME = 'SEM_MATNR'.
+****  WA_SORT-DOWN = 'X'.
+****
+****  APPEND WA_SORT TO IT_SORT.
+****  CLEAR WA_SORT.
+***********commented on 22.04.2020 ends
+
+
+ENDFORM.                    " FIELDCAT
+*&---------------------------------------------------------------------*
+*&      Form  LAYOUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM LAYOUT .
+
+  WA_LAYOUT-ZEBRA = 'X'.
+
+ENDFORM.                    "LAYOUT
+
+*&---------------------------------------------------------------------*
+*&      Form  DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM DISPLAY .
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+    EXPORTING
+*   I_INTERFACE_CHECK                 = ' '
+*   I_BYPASSING_BUFFER                = ' '
+*   I_BUFFER_ACTIVE                   = ' '
+      I_CALLBACK_PROGRAM                = IT_REPID
+*   I_CALLBACK_PF_STATUS_SET          = ' '
+*   I_CALLBACK_USER_COMMAND           = ' '
+*   I_CALLBACK_TOP_OF_PAGE            = ' '
+*   I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*   I_CALLBACK_HTML_END_OF_LIST       = ' '
+*   I_STRUCTURE_NAME                  =
+*   I_BACKGROUND_ID                   = ' '
+*   I_GRID_TITLE                      =
+*   I_GRID_SETTINGS                   =
+      IS_LAYOUT                         = WA_LAYOUT
+      IT_FIELDCAT                       = IT_FIELDCAT
+*   IT_EXCLUDING                      =
+*   IT_SPECIAL_GROUPS                 =
+   IT_SORT                           = IT_SORT
+*   IT_FILTER                         =
+*   IS_SEL_HIDE                       =
+*   I_DEFAULT                         = 'X'
+*   I_SAVE                            = ' '
+*   IS_VARIANT                        =
+*   IT_EVENTS                         =
+*   IT_EVENT_EXIT                     =
+*   IS_PRINT                          =
+*   IS_REPREP_ID                      =
+*   I_SCREEN_START_COLUMN             = 0
+*   I_SCREEN_START_LINE               = 0
+*   I_SCREEN_END_COLUMN               = 0
+*   I_SCREEN_END_LINE                 = 0
+*   I_HTML_HEIGHT_TOP                 = 0
+*   I_HTML_HEIGHT_END                 = 0
+*   IT_ALV_GRAPHICS                   =
+*   IT_HYPERLINK                      =
+*   IT_ADD_FIELDCAT                   =
+*   IT_EXCEPT_QINFO                   =
+*   IR_SALV_FULLSCREEN_ADAPTER        =
+* IMPORTING
+*   E_EXIT_CAUSED_BY_CALLER           =
+*   ES_EXIT_CAUSED_BY_USER            =
+     TABLES
+       T_OUTTAB                          = IT_FINAL
+* EXCEPTIONS
+*   PROGRAM_ERROR                     = 1
+*   OTHERS                            = 2
+             .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+
+ENDFORM.                    " LAYOUT
+*&---------------------------------------------------------------------*
+*&      Form  SORT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM SORT .
+
+  WA_SORT-SPOS = '1'.
+  WA_SORT-FIELDNAME = 'AUFNR'.
+  WA_SORT-UP = 'X'.
+
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+***
+***  WA_SORT-SPOS = '2'.
+***  WA_SORT-FIELDNAME = 'HR_MATNR'.
+***  WA_SORT-DOWN = 'X'.
+***
+***  APPEND WA_SORT TO IT_SORT.
+***  CLEAR WA_SORT.
+***
+***  WA_SORT-SPOS = '4'.
+***  WA_SORT-FIELDNAME = 'HR_MAKTG'.
+***  WA_SORT-DOWN = 'X'.
+***
+***  APPEND WA_SORT TO IT_SORT.
+***  CLEAR WA_SORT.
+***
+***  WA_SORT-SPOS = '5'.
+***  WA_SORT-FIELDNAME = 'SEM_MAKTG'.
+***  WA_SORT-DOWN = 'X'.
+***
+***  APPEND WA_SORT TO IT_SORT.
+***  CLEAR WA_SORT.
+***
+***  WA_SORT-SPOS = '3'.
+***  WA_SORT-FIELDNAME = 'SEM_MATNR'.
+***  WA_SORT-DOWN = 'X'.
+***
+***  APPEND WA_SORT TO IT_SORT.
+***  CLEAR WA_SORT.
+
+ENDFORM.                    " SORT

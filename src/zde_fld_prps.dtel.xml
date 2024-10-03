@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_FLD_PRPS</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>CHAR50</DOMNAME>
+    <HEADLEN>11</HEADLEN>
+    <SCRLEN1>07</SCRLEN1>
+    <SCRLEN2>07</SCRLEN2>
+    <SCRLEN3>07</SCRLEN3>
+    <DDTEXT>Field Mapping Purpose</DDTEXT>
+    <REPTEXT>Map Purpose</REPTEXT>
+    <SCRTEXT_S>Purpose</SCRTEXT_S>
+    <SCRTEXT_M>Purpose</SCRTEXT_M>
+    <SCRTEXT_L>Purpose</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

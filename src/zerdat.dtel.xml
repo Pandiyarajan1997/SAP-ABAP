@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZERDAT</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>DATUM</DOMNAME>
+    <HEADLEN>11</HEADLEN>
+    <SCRLEN1>05</SCRLEN1>
+    <SCRLEN2>13</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Date on which the record was Approved</DDTEXT>
+    <REPTEXT>Approved on</REPTEXT>
+    <SCRTEXT_S>On</SCRTEXT_S>
+    <SCRTEXT_M>Approved on</SCRTEXT_M>
+    <SCRTEXT_L>Approved on</SCRTEXT_L>
+    <APPLCLASS>SAP</APPLCLASS>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Datum, an dem der Satz hinzugefügt wurde</DDTEXT>
+     <REPTEXT>Angel.am</REPTEXT>
+     <SCRTEXT_S>Am</SCRTEXT_S>
+     <SCRTEXT_M>Angelegt am</SCRTEXT_M>
+     <SCRTEXT_L>Angelegt am</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

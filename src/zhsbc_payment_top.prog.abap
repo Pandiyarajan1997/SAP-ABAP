@@ -1,0 +1,717 @@
+*&---------------------------------------------------------------------*
+*& Include ZHSBC_PAYMENT_TOP                                 Module Pool      ZHSBC_PAYMENT
+*&
+*&---------------------------------------------------------------------*
+
+PROGRAM ZHSBC_PAYMENT.
+
+TABLES : BKPF , ZHSBC_ITEMS.
+
+CLASS LCL_APPLICATION DEFINITION DEFERRED.
+CLASS CL_GUI_CFW DEFINITION LOAD.
+
+* CAUTION: MTREEITM is the name of the item structure which must
+* be defined by the programmer. DO NOT USE MTREEITM!
+TYPES: ITEM_TABLE_TYPE LIKE STANDARD TABLE OF MTREEITM
+       WITH DEFAULT KEY.
+
+DATA: G_APPLICATION TYPE REF TO LCL_APPLICATION,
+      G_CUSTOM_CONTAINER TYPE REF TO CL_GUI_CUSTOM_CONTAINER,
+      G_TREE TYPE REF TO CL_GUI_LIST_TREE,
+      G_OK_CODE TYPE SY-UCOMM.
+
+* Fields on Dynpro 100
+DATA: G_EVENT(30),
+      G_NODE_KEY TYPE TV_NODEKEY,
+      G_ITEM_NAME TYPE TV_ITMNAME.
+
+
+CONSTANTS:
+  BEGIN OF C_NODEKEY,
+    ROOT   TYPE TV_NODEKEY VALUE 'Root',                    "#EC NOTEXT
+    CHILD1 TYPE TV_NODEKEY VALUE 'Child1',                  "#EC NOTEXT
+    ROOT1  TYPE TV_NODEKEY VALUE 'Root1',                   "#EC NOTEXT
+    CHILD2 TYPE TV_NODEKEY VALUE 'Child2',                  "#EC NOTEXT
+    root3   TYPE TV_NODEKEY VALUE 'Root3',                    "#EC NOTEXT
+    child3  TYPE TV_NODEKEY VALUE 'Child3',                    "#EC NOTEXT
+    NEW4   TYPE TV_NODEKEY VALUE 'New4',
+    mail   TYPE TV_NODEKEY VALUE 'Mail',
+    mail1   TYPE TV_NODEKEY VALUE 'Mail1',
+*    mail                    "#EC NOTEXT
+  END OF C_NODEKEY.
+
+
+SELECTION-SCREEN BEGIN OF SCREEN 200 AS SUBSCREEN.
+
+PARAMETERS : P_BUKRS      TYPE  T001-BUKRS OBLIGATORY ,
+             P_HBKID      TYPE  T012K-HBKID,
+             P_HKTID      TYPE  T012K-HKTID,
+             P_GJAHR      TYPE  BSAK-GJAHR OBLIGATORY.
+
+SELECT-OPTIONS: S_BELNR  FOR BKPF-BELNR,
+                 S_BUDAT  FOR BKPF-BUDAT OBLIGATORY DEFAULT SY-DATUM,
+                 s_hkont for ZHSBC_ITEMS-hkont NO-DISPLAY.
+
+SELECTION-SCREEN END OF SCREEN 200.
+
+
+
+DATA : BACK_SCREEN(3) TYPE N.
+
+
+TYPES: BEGIN OF TY_T001,
+        BUKRS TYPE T001-BUKRS,
+        ADRNR TYPE T001-ADRNR,
+      END OF TY_T001.
+
+
+DATA : WA_T001 TYPE TY_T001,
+       IT_T001 TYPE TABLE OF TY_T001.
+
+
+DATA : IT_HSBC_ITEMS TYPE TABLE OF ZHSBC_ITEMS,
+       WA_HSBC_ITEMS TYPE ZHSBC_ITEMS.
+
+
+TYPES: BEGIN OF TY_ADRC,
+        ADDRNUMBER TYPE ADRC-ADDRNUMBER,
+        NAME1      TYPE ADRC-NAME1,
+        CITY1      TYPE ADRC-CITY1,
+        POST_CODE1 TYPE ADRC-POST_CODE1,
+        STREET     TYPE ADRC-STREET,
+        HOUSE_NUM1 TYPE ADRC-HOUSE_NUM1,
+        STR_SUPPL2 TYPE ADRC-STR_SUPPL2,
+        STR_SUPPL3 TYPE ADRC-STR_SUPPL3,
+        COUNTRY    TYPE ADRC-COUNTRY,
+      END OF TY_ADRC.
+
+DATA : WA_ADRC TYPE TY_ADRC,
+       IT_ADRC TYPE TABLE OF TY_ADRC.
+
+TYPES: BEGIN OF TY_BKPF,
+        BUKRS TYPE BKPF-BUKRS,
+        BELNR TYPE BKPF-BELNR,
+        GJAHR TYPE BKPF-GJAHR,
+        BLART TYPE BKPF-BLART,
+        BLDAT TYPE BKPF-BLDAT,
+        BUDAT TYPE BKPF-BUDAT,
+        USNAM TYPE BKPF-USNAM,
+        TCODE TYPE BKPF-TCODE,
+      END OF TY_BKPF.
+
+DATA : WA_BKPF TYPE TY_BKPF,
+       IT_BKPF TYPE TABLE OF TY_BKPF.
+
+TYPES: BEGIN OF TY_BSEG,
+        BUKRS TYPE BSEG-BUKRS,
+        BELNR TYPE BSEG-BELNR,
+        GJAHR TYPE BSEG-GJAHR,
+        BUZEI TYPE BSEG-BUZEI,
+        BUZID TYPE BSEG-BUZID,
+        BSCHL TYPE bseg-BSCHL,
+        KOART TYPE BSEG-KOART,
+        SHKZG TYPE bseg-SHKZG,
+        PSWBT TYPE BSEG-PSWBT,
+        PSWSL TYPE bseg-PSWSL,
+        HKONT TYPE BSEG-HKONT,
+        LIFNR TYPE BSEG-LIFNR,
+        KTOSL TYPE bseg-KTOSL,
+      END OF TY_BSEG.
+
+DATA : WA_BSEG TYPE TY_BSEG,
+       IT_BSEG TYPE TABLE OF TY_BSEG.
+
+
+TYPES: BEGIN OF TY_T012K,
+        BUKRS TYPE T012K-BUKRS,
+        HBKID TYPE T012K-HBKID,
+        HKTID TYPE T012K-HKTID,
+        BANKN TYPE T012K-BANKN,
+        BKONT TYPE T012K-BKONT,
+        WAERS TYPE T012K-WAERS,
+        HKONT TYPE T012K-HKONT,
+      END OF TY_T012K.
+
+DATA : WA_T012K TYPE TY_T012K,
+       IT_T012K TYPE TABLE OF TY_T012K.
+
+
+TYPES: BEGIN OF TY_LFBK,
+        LIFNR TYPE LFBK-LIFNR,
+        BANKS TYPE LFBK-BANKS,
+        BANKL TYPE LFBK-BANKL,
+        BANKN TYPE LFBK-BANKN,
+        KOINH TYPE LFBK-KOINH,
+       END OF TY_LFBK.
+
+
+DATA : WA_LFBK TYPE TY_LFBK,
+       IT_LFBK TYPE TABLE OF TY_LFBK.
+
+TYPES: BEGIN OF TY_LFA1,
+        LIFNR TYPE LFA1-LIFNR,
+        NAME1 TYPE LFA1-NAME1,
+        ADRNR TYPE LFA1-ADRNR,
+      END OF TY_LFA1.
+
+DATA : WA_LFA1 TYPE TY_LFA1,
+       IT_LFA1 TYPE TABLE OF TY_LFA1.
+
+TYPES: BEGIN OF TY_ADR6,
+        ADDRNUMBER TYPE ADR6-ADDRNUMBER,
+        SMTP_ADDR TYPE ADR6-SMTP_ADDR,
+      END OF TY_ADR6.
+
+DATA : WA_ADR6 TYPE TY_ADR6,
+       IT_ADR6 TYPE TABLE OF TY_ADR6.
+
+
+TYPES: BEGIN OF TY_SELECT,
+         CHK,
+
+         BUKRS TYPE BSEG-BUKRS,
+         BELNR TYPE BSEG-BELNR,
+         BUZEI TYPE BSEG-BUZEI,
+         GJAHR TYPE BSEG-GJAHR,
+         HKONT TYPE BSEG-HKONT,
+         HBKID TYPE T012K-HBKID,
+         HKTID TYPE T012K-HKTID,
+         BANKN TYPE T012K-BANKN,
+         BKONT TYPE T012K-BKONT,
+
+
+         LIFNR TYPE BSEG-LIFNR,
+         hkont1 TYPE bseg-hkont,
+         VBANKL TYPE LFBK-BANKL,
+         VBANKN TYPE LFBK-BANKN,
+         VKOINH TYPE LFBK-KOINH,
+         PSWBT TYPE BSEG-PSWBT,
+         PSWSL TYPE bseg-PSWSL,
+         EMAIL TYPE ADR6-SMTP_ADDR,
+
+         TYPE TYPE CHAR4,
+         PPC TYPE CHAR30,
+
+         BLART TYPE BKPF-BLART,
+         BUDAT TYPE BKPF-BUDAT,
+         BLDAT TYPE BKPF-BLDAT,
+         USNAM TYPE BKPF-USNAM,
+         TCODE TYPE BKPF-TCODE,
+         REF(140),
+         REF_BKPF(140),
+         DROPDOWN TYPE N,
+         DROPDOWN1 TYPE N,
+         FIELD_STYLE  TYPE LVC_T_STYL,
+         TDS TYPE BSEG-PSWBT,
+       END OF TY_SELECT.
+
+
+DATA : WA_SELECT TYPE TY_SELECT,
+       IT_SELECT TYPE TABLE OF TY_SELECT.
+
+TYPES: BEGIN OF TY_ZHSBC_ITEMS,
+        BUKRS TYPE ZHSBC_ITEMS-BUKRS,
+        GJAHR TYPE ZHSBC_ITEMS-GJAHR,
+        BELNR TYPE ZHSBC_ITEMS-BELNR,
+      END OF TY_ZHSBC_ITEMS.
+
+DATA : WA_ZHSBC TYPE TY_ZHSBC_ITEMS,
+       IT_ZHSBC TYPE TABLE OF TY_ZHSBC_ITEMS.
+
+
+TYPES: BEGIN OF TY_FINAL,
+
+         BUKRS TYPE BSEG-BUKRS,
+         BELNR TYPE BSEG-BELNR,
+*         BUZEI TYPE BSEG-BUZEI,
+         GJAHR TYPE BSEG-GJAHR,
+         HKONT TYPE BSEG-HKONT,
+         HBKID TYPE T012K-HBKID,
+         HKTID TYPE T012K-HKTID,
+         BANKN TYPE T012K-BANKN,
+         BKONT TYPE T012K-BKONT,
+
+         LIFNR TYPE BSEG-LIFNR,
+         hkont1 TYPE bseg-hkont,
+         VBANKL TYPE LFBK-BANKL,
+         VBANKN TYPE LFBK-BANKN,
+         VKOINH TYPE LFBK-KOINH,
+         PSWBT TYPE BSEG-PSWBT,
+         PSWSL TYPE bseg-PSWSL,
+         EMAIL TYPE ADR6-SMTP_ADDR,
+
+         TYPE TYPE CHAR4,
+         PPC TYPE CHAR8,
+         TYPE_REF TYPE N,
+         BLART TYPE BKPF-BLART,
+         BUDAT TYPE BKPF-BUDAT,
+         BLDAT TYPE BKPF-BLDAT,
+         USNAM TYPE BKPF-USNAM,
+         TCODE TYPE BKPF-TCODE,
+         REF(140),
+         REF_BKPF(140),
+         DROPDOWN TYPE N,
+
+         TDS TYPE BSEG-PSWBT,
+
+       END OF TY_FINAL.
+
+
+DATA : WA_FINAL TYPE TY_FINAL,
+       IT_FINAL TYPE TABLE OF TY_FINAL.
+
+TYPES:BEGIN OF TY_BSE_CLR,
+  BUKRS_CLR type BSE_CLR-BUKRS_CLR,
+  BELNR_CLR type BSE_CLR-BELNR_CLR,
+  GJAHR_CLR type BSE_CLR-GJAHR_CLR,
+  BUKRS type BSE_CLR-BUKRS,
+  BELNR type BSE_CLR-BELNR,
+  GJAHR type BSE_CLR-GJAHR,
+  END OF TY_BSE_CLR.
+
+DATA:IT_BSE_CLR type TABLE OF TY_BSE_CLR,
+     WA_BSE_CLR type TY_BSE_CLR.
+
+ TYPES:BEGIN OF TY_BKPF_REF,
+      BUKRS type BKPF-BUKRS,
+      BELNR type BKPF-BELNR,
+      GJAHR type BKPF-GJAHR,
+      XBLNR type BKPF-XBLNR,
+  END OF TY_BKPF_REF.
+
+DATA:IT_BKPF_REF type TABLE OF TY_BKPF_REF,
+     WA_BKPF_REF type TY_BKPF_REF.
+
+
+
+DATA : ALV_SELECT_CONTAINER TYPE REF TO CL_GUI_CUSTOM_CONTAINER,
+       ALV_CONTAINER TYPE REF TO CL_GUI_CUSTOM_CONTAINER,
+       ALV_SELECT_GRID TYPE REF TO CL_GUI_ALV_GRID,
+       ALV_GRID TYPE REF TO CL_GUI_ALV_GRID.
+
+DATA : IT_FCAT_SELECT TYPE LVC_T_FCAT,
+       WA_FCAT_SELECT TYPE LVC_S_FCAT,
+       IT_FCAT TYPE LVC_T_FCAT,
+       WA_FCAT TYPE LVC_S_FCAT,
+       WA_LAYOUT TYPE LVC_S_LAYO,
+       WA_LAYOUT_SELECT TYPE LVC_S_LAYO,
+       IT_SORT      TYPE LVC_T_SORT,
+       WA_SORT      TYPE LVC_S_SORT.
+
+
+
+DATA: IT_XML TYPE TABLE OF ZHSBC_ITEMS,
+      WA_XML TYPE ZHSBC_ITEMS,
+
+      IT_IMPS TYPE TABLE OF ZHSBC_ITEMS,
+      WA_IMPS TYPE ZHSBC_ITEMS,
+
+      HEAD_XML TYPE ZHSBC_HEAD,
+      HEAD_IMPS TYPE ZHSBC_HEAD,
+      V TYPE N.
+
+
+
+
+
+DATA: XML_NO TYPE I,
+      XML_TOTAL TYPE BSEG-PSWBT,
+      IMPS_NO TYPE I,
+      IMPS_TOTAL TYPE BSEG-PSWBT.
+
+
+DATA: LO_IXML     TYPE REF TO IF_IXML,
+        LO_DOC      TYPE REF TO IF_IXML_DOCUMENT,
+        M_XMLDOC    TYPE REF TO CL_XML_DOCUMENT..
+
+DATA: LO_DOCUMENT          TYPE REF TO IF_IXML_ELEMENT,
+      LO_CSTMRCDTTRFINITN  TYPE REF TO IF_IXML_ELEMENT,
+      LO_GRPHDR            TYPE REF TO IF_IXML_ELEMENT,
+      LO_AUTHSTN           TYPE REF TO IF_IXML_ELEMENT,
+      LO_INITGPTY          TYPE REF TO IF_IXML_ELEMENT,
+      LO_ID                TYPE REF TO IF_IXML_ELEMENT,
+      LO_ORGID             TYPE REF TO IF_IXML_ELEMENT,
+      LO_OTHR              TYPE REF TO IF_IXML_ELEMENT,
+      LO_PMTINF            TYPE REF TO IF_IXML_ELEMENT,
+      LO_PMTTPINF          TYPE REF TO IF_IXML_ELEMENT,
+      LO_SVCLVL            TYPE REF TO IF_IXML_ELEMENT,
+      LO_DBTR              TYPE REF TO IF_IXML_ELEMENT,
+      LO_PSTLADR           TYPE REF TO IF_IXML_ELEMENT,
+      LO_DBTRACCT          TYPE REF TO IF_IXML_ELEMENT,
+      LO_DBTRAGT           TYPE REF TO IF_IXML_ELEMENT,
+      LO_FININSTNID        TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTTRFTXINF       TYPE REF TO IF_IXML_ELEMENT,
+      LO_PMTID             TYPE REF TO IF_IXML_ELEMENT,
+      LO_AMT               TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTRAGT           TYPE REF TO IF_IXML_ELEMENT,
+      LO_BIC               TYPE REF TO IF_IXML_ELEMENT,
+      LO_CLRSYSMMBID       TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTRACCT          TYPE REF TO IF_IXML_ELEMENT,
+      LO_RLTDRMTINF        TYPE REF TO IF_IXML_ELEMENT,
+      LO_RMTLCTNPSTLADR    TYPE REF TO IF_IXML_ELEMENT,
+      LO_ADR               TYPE REF TO IF_IXML_ELEMENT,
+      LO_INSTDAMT          TYPE REF TO IF_IXML_ELEMENT,
+      LO_RMTINF            TYPE REF TO IF_IXML_ELEMENT,
+      LO_RFRDDOCINF        TYPE REF TO IF_IXML_ELEMENT,
+      LO_RFRDDOCAMT        TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTRREFINF        TYPE REF TO IF_IXML_ELEMENT,
+      LO_TP                TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDORPRTRY         TYPE REF TO IF_IXML_ELEMENT,
+      LO_DUEPYBLAMT        TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTR              TYPE REF TO IF_IXML_ELEMENT,
+      LO_STRD              TYPE REF TO IF_IXML_ELEMENT.
+
+
+
+DATA: LO_IXML1     TYPE REF TO IF_IXML,
+      LO_DOC1      TYPE REF TO IF_IXML_DOCUMENT,
+      M_XMLDOC1    TYPE REF TO CL_XML_DOCUMENT..
+
+DATA: LO_DOCUMENT1          TYPE REF TO IF_IXML_ELEMENT,
+      LO_CSTMRCDTTRFINITN1  TYPE REF TO IF_IXML_ELEMENT,
+      LO_GRPHDR1            TYPE REF TO IF_IXML_ELEMENT,
+      LO_AUTHSTN1           TYPE REF TO IF_IXML_ELEMENT,
+      LO_INITGPTY1          TYPE REF TO IF_IXML_ELEMENT,
+      LO_ID1                TYPE REF TO IF_IXML_ELEMENT,
+      LO_ORGID1             TYPE REF TO IF_IXML_ELEMENT,
+      LO_OTHR1              TYPE REF TO IF_IXML_ELEMENT,
+      LO_PMTINF1            TYPE REF TO IF_IXML_ELEMENT,
+      LO_PMTTPINF1          TYPE REF TO IF_IXML_ELEMENT,
+      LO_SVCLVL1            TYPE REF TO IF_IXML_ELEMENT,
+      LO_DBTR1              TYPE REF TO IF_IXML_ELEMENT,
+      LO_PSTLADR1           TYPE REF TO IF_IXML_ELEMENT,
+      LO_DBTRACCT1          TYPE REF TO IF_IXML_ELEMENT,
+      LO_DBTRAGT1           TYPE REF TO IF_IXML_ELEMENT,
+      LO_FININSTNID1        TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTTRFTXINF1       TYPE REF TO IF_IXML_ELEMENT,
+      LO_PMTID1             TYPE REF TO IF_IXML_ELEMENT,
+      LO_AMT1               TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTRAGT1           TYPE REF TO IF_IXML_ELEMENT,
+      LO_BIC1               TYPE REF TO IF_IXML_ELEMENT,
+      LO_CLRSYSMMBID1       TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTRACCT1          TYPE REF TO IF_IXML_ELEMENT,
+      LO_RLTDRMTINF1        TYPE REF TO IF_IXML_ELEMENT,
+      LO_INSTDAMT1          TYPE REF TO IF_IXML_ELEMENT,
+      LO_RMTINF1            TYPE REF TO IF_IXML_ELEMENT,
+      LO_RFRDDOCINF1        TYPE REF TO IF_IXML_ELEMENT,
+      LO_RFRDDOCAMT1        TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTRREFINF1        TYPE REF TO IF_IXML_ELEMENT,
+      LO_TP1                TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDORPRTRY1         TYPE REF TO IF_IXML_ELEMENT,
+      LO_DUEPYBLAMT1        TYPE REF TO IF_IXML_ELEMENT,
+      LO_CDTR1              TYPE REF TO IF_IXML_ELEMENT,
+      LO_STRD1              TYPE REF TO IF_IXML_ELEMENT.
+
+DATA : FNAME TYPE LOCALFILE,
+     TEMP_ID  TYPE STRING.
+
+DATA : FNAME1 TYPE LOCALFILE VALUE  'D:\12344.xml',
+    TEMP_ID1  TYPE STRING.
+
+DATA : FILE_NAME_XML TYPE STRING,
+       FILE_NAME_IMPS TYPE STRING.
+
+
+DATA : BATCH(10) TYPE C,
+       ADD(10) TYPE N.
+
+
+DATA :IT_RETURN     TYPE TABLE OF DDSHRETVAL,
+     WA_RETURN     TYPE DDSHRETVAL,
+     IT_DYNPREAD   TYPE TABLE OF DYNPREAD,
+     WA_DYNPREAD   TYPE DYNPREAD,
+     G_TAB_T001          TYPE TABLE OF T001,
+     TEMP_STATUS_XML TYPE STRING,
+      TEMP_STATUS_IMPS TYPE STRING,
+      AMOUNT_EXCEED.
+
+
+DATA : IT_HOUSE TYPE TABLE OF ZHSBC_HOUSE_BANK,
+       WA_HOUSE TYPE ZHSBC_HOUSE_BANK.
+
+DATA LS_STYLEROW TYPE LVC_S_STYL .
+DATA LT_STYLETAB TYPE LVC_T_STYL .
+
+
+TYPES : T_OUTPUTREC TYPE STRING.
+
+DATA: WA_OUTPUT TYPE T_OUTPUTREC,
+      IT_OUTPUT TYPE TABLE OF T_OUTPUTREC.
+
+data: XFILE TYPE xstring,
+      sfile TYPE string.
+
+data : status_xml,
+       status_imps.
+
+data : wa_sftp TYPE zhsbc_sftp.
+
+data : cky TYPE bseg-pswsl.
+
+*&---------------------------------------------------------------------*
+*&       Class LCL_APPLICATION
+*&---------------------------------------------------------------------*
+*        Text
+*----------------------------------------------------------------------*
+CLASS LCL_APPLICATION DEFINITION.
+
+  PUBLIC SECTION.
+    METHODS:
+      HANDLE_NODE_DOUBLE_CLICK
+        FOR EVENT NODE_DOUBLE_CLICK
+        OF CL_GUI_LIST_TREE
+        IMPORTING NODE_KEY,
+      HANDLE_EXPAND_NO_CHILDREN
+        FOR EVENT EXPAND_NO_CHILDREN
+        OF CL_GUI_LIST_TREE
+        IMPORTING NODE_KEY,
+      HANDLE_ITEM_DOUBLE_CLICK
+        FOR EVENT ITEM_DOUBLE_CLICK
+        OF CL_GUI_LIST_TREE
+        IMPORTING NODE_KEY ITEM_NAME,
+      HANDLE_BUTTON_CLICK
+        FOR EVENT BUTTON_CLICK
+        OF CL_GUI_LIST_TREE
+        IMPORTING NODE_KEY ITEM_NAME,
+      HANDLE_LINK_CLICK
+        FOR EVENT LINK_CLICK
+        OF CL_GUI_LIST_TREE
+        IMPORTING NODE_KEY ITEM_NAME,
+      HANDLE_CHECKBOX_CHANGE
+        FOR EVENT CHECKBOX_CHANGE
+        OF CL_GUI_LIST_TREE
+        IMPORTING NODE_KEY ITEM_NAME CHECKED.
+
+ENDCLASS.               "LCL_APPLICATION
+*----------------------------------------------------------------------*
+*       CLASS LCL_APPLICATION IMPLEMENTATION
+*----------------------------------------------------------------------*
+*
+*----------------------------------------------------------------------*
+CLASS LCL_APPLICATION IMPLEMENTATION.
+
+  METHOD  HANDLE_NODE_DOUBLE_CLICK.
+    " this method handles the node double click event of the tree
+    " control instance
+
+    " show the key of the double clicked node in a dynpro field
+    G_EVENT = 'NODE_DOUBLE_CLICK'.
+    G_NODE_KEY = NODE_KEY.
+  ENDMETHOD.                    "HANDLE_NODE_DOUBLE_CLICK
+
+  METHOD  HANDLE_ITEM_DOUBLE_CLICK.
+    " this method handles the item double click event of the tree
+    " control instance
+
+    " show the key of the node and the name of the item
+    " of the double clicked item in a dynpro field
+    G_EVENT = 'ITEM_DOUBLE_CLICK'.
+    G_NODE_KEY = NODE_KEY.
+    G_ITEM_NAME = ITEM_NAME.
+
+
+    IF G_NODE_KEY = 'Child1'.
+
+      CALL TRANSACTION 'ZHSBC_HOUSE_BANK'.
+
+    ENDIF.
+
+
+    IF G_NODE_KEY = 'Child2'.
+
+      CALL TRANSACTION 'ZHSBC_PPC'.
+
+    ENDIF.
+
+IF G_NODE_KEY = 'Child3'.
+
+      CALL TRANSACTION 'ZHSBC_SFTP'.
+
+    ENDIF.
+
+IF G_NODE_KEY = 'Mail1'.
+
+      CALL TRANSACTION 'ZHSBC_MAIL'.
+
+    ENDIF.
+
+
+
+
+
+
+  ENDMETHOD.                    "HANDLE_ITEM_DOUBLE_CLICK
+
+  METHOD  HANDLE_LINK_CLICK.
+    " this method handles the link click event of the tree
+    " control instance
+
+    " show the key of the node and the name of the item
+    " of the clicked link in a dynpro field
+    G_EVENT = 'LINK_CLICK'.
+    G_NODE_KEY = NODE_KEY.
+    G_ITEM_NAME = ITEM_NAME.
+  ENDMETHOD.                    "HANDLE_LINK_CLICK
+
+  METHOD  HANDLE_BUTTON_CLICK.
+    " this method handles the button click event of the tree
+    " control instance
+
+    " show the key of the node and the name of the item
+    " of the clicked button in a dynpro field
+    G_EVENT = 'BUTTON_CLICK'.
+    G_NODE_KEY = NODE_KEY.
+    G_ITEM_NAME = ITEM_NAME.
+  ENDMETHOD.                    "HANDLE_BUTTON_CLICK
+
+  METHOD  HANDLE_CHECKBOX_CHANGE.
+    " this method handles the checkbox_change event of the tree
+    " control instance
+
+    " show the key of the node and the name of the item
+    " of the clicked checkbox in a dynpro field
+    G_EVENT = 'CHECKBOX_CHANGE'.
+    G_NODE_KEY = NODE_KEY.
+    G_ITEM_NAME = ITEM_NAME.
+  ENDMETHOD.                    "HANDLE_CHECKBOX_CHANGE
+
+
+  METHOD HANDLE_EXPAND_NO_CHILDREN.
+    DATA: NODE_TABLE TYPE TREEV_NTAB,
+          NODE TYPE TREEV_NODE,
+          ITEM_TABLE TYPE ITEM_TABLE_TYPE,
+          ITEM TYPE MTREEITM.
+
+** show the key of the expanded node in a dynpro field
+*    G_EVENT = 'EXPAND_NO_CHILDREN'.
+*    G_NODE_KEY = NODE_KEY.
+*
+*    IF NODE_KEY = C_NODEKEY-CHILD2.
+* add the children for node with key 'Child2'
+* Node with key 'New3'
+*      CLEAR NODE.
+*      NODE-NODE_KEY = C_NODEKEY-NEW3.
+*      NODE-RELATKEY = C_NODEKEY-CHILD2.
+*      NODE-RELATSHIP = CL_GUI_LIST_TREE=>RELAT_LAST_CHILD.
+*      APPEND NODE TO NODE_TABLE.
+*
+** Node with key 'New4'
+*      CLEAR NODE.
+*      NODE-NODE_KEY = C_NODEKEY-NEW4.
+*      NODE-RELATKEY = C_NODEKEY-CHILD2.
+*      NODE-RELATSHIP = CL_GUI_LIST_TREE=>RELAT_LAST_CHILD.
+*      APPEND NODE TO NODE_TABLE.
+*
+** Items of node with key 'New3'
+*      CLEAR ITEM.
+*      ITEM-NODE_KEY = C_NODEKEY-NEW3.
+*      ITEM-ITEM_NAME = '1'.
+*      ITEM-CLASS = CL_GUI_LIST_TREE=>ITEM_CLASS_TEXT.
+*      ITEM-LENGTH = 11.
+*      ITEM-USEBGCOLOR = 'X'. "
+*      ITEM-TEXT = 'SAPTROX1'.
+*      APPEND ITEM TO ITEM_TABLE.
+*
+*      CLEAR ITEM.
+*      ITEM-NODE_KEY = C_NODEKEY-NEW3.
+*      ITEM-ITEM_NAME = '2'.
+*      ITEM-CLASS = CL_GUI_LIST_TREE=>ITEM_CLASS_TEXT.
+*      ITEM-ALIGNMENT = CL_GUI_LIST_TREE=>ALIGN_AUTO.
+*      ITEM-FONT = CL_GUI_LIST_TREE=>ITEM_FONT_PROP.
+*      ITEM-TEXT = 'Kommentar zu SAPTROX1'(001).
+*      APPEND ITEM TO ITEM_TABLE.
+*
+** Items of node with key 'New4'
+*      CLEAR ITEM.
+*      ITEM-NODE_KEY = C_NODEKEY-NEW4.
+*      ITEM-ITEM_NAME = '1'.
+*      ITEM-CLASS = CL_GUI_LIST_TREE=>ITEM_CLASS_TEXT.
+*      ITEM-LENGTH = 11.
+*      ITEM-USEBGCOLOR = 'X'. "
+*      ITEM-TEXT = 'SAPTRIXTROX'.
+*      APPEND ITEM TO ITEM_TABLE.
+*
+*      CLEAR ITEM.
+*      ITEM-NODE_KEY = C_NODEKEY-NEW4.
+*      ITEM-ITEM_NAME = '2'.
+*      ITEM-CLASS = CL_GUI_LIST_TREE=>ITEM_CLASS_TEXT.
+*      ITEM-ALIGNMENT = CL_GUI_LIST_TREE=>ALIGN_AUTO.
+*      ITEM-FONT = CL_GUI_LIST_TREE=>ITEM_FONT_PROP.
+*      ITEM-TEXT = 'Kommentar zu SAPTRIXTROX'(002).
+*      APPEND ITEM TO ITEM_TABLE.
+*    ENDIF.
+*
+*    CALL METHOD G_TREE->ADD_NODES_AND_ITEMS
+*      EXPORTING
+*        NODE_TABLE = NODE_TABLE
+*        ITEM_TABLE = ITEM_TABLE
+*        ITEM_TABLE_STRUCTURE_NAME = 'MTREEITM'
+*      EXCEPTIONS
+*        FAILED = 1
+*        CNTL_SYSTEM_ERROR = 3
+*        ERROR_IN_TABLES = 4
+*        DP_ERROR = 5
+*        TABLE_STRUCTURE_NAME_NOT_FOUND = 6.
+*    IF SY-SUBRC <> 0.
+**      MESSAGE A000.
+*    ENDIF.
+  ENDMETHOD.                    "HANDLE_EXPAND_NO_CHILDREN
+
+ENDCLASS.                    "LCL_APPLICATION IMPLEMENTATION
+
+
+* CLASS lc_event_handler DEFINITION.
+*
+*   PUBLIC SECTION.
+*     data : it_mod_cell TYPE  LVC_T_MODI,
+*            wa_mod_cell TYPE  LVC_s_MODI,
+*            new TYPE i..
+*
+*     METHODS drop FOR EVENT data_changed
+*                                  OF cl_gui_alv_grid
+*                                  IMPORTING er_data_changed
+*                                            e_ucomm.
+*
+*  ENDCLASS.
+*
+*  class lc_event_handler IMPLEMENTATION.
+*
+*
+*
+*
+*    METHOD drop.
+*
+**   REFRESH : IT_MOD_CELL.
+**    clear WA_MOD_CELL.
+*
+*    it_mod_cell = ER_DATA_CHANGED->MT_MOD_CELLS.
+*
+*   clear WA_MOD_CELL.
+*   READ TABLE IT_MOD_CELL INTO WA_MOD_CELL INDEX 1.
+*
+*    IF wa_mod_cell-FIELDNAME = 'TYPE' and wa_mod_cell-VALUE = 'RTGS'.
+*
+*      clear wa_Select.
+*
+*      READ TABLE it_select INTO wa_select INDEX wa_mod_cell-ROW_ID.
+*
+*
+*
+*
+*       clear : LS_STYLEROW, wa_select-field_style.
+*
+*      ls_stylerow-fieldname = 'PPC' .
+*
+*      ls_stylerow-style = cl_gui_alv_grid=>MC_STYLE_ENABLED.
+*                                             "set field to disabled
+*      APPEND ls_stylerow  TO wa_select-field_style.
+*
+*      modify it_select from wa_select INDEX wa_mod_cell-ROW_ID.
+*
+*      ENDIF.
+*
+*      ALV_SELECT_GRID->REFRESH_TABLE_DISPLAY( ).
+*
+*    endmethod.
+*
+*  endclass.

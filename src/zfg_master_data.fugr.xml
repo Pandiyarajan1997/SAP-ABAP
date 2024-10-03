@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Master Data</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_MASTER_DATATOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_MASTER_DATA</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_PLANT_REGIONWISE</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Bapi for Plant regionwise</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>REGION</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/CAS_TT_REGIO_RANGE</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_PLANT_REG</PARAMETER>
+       <DBSTRUCT>ZSTR_REG_PLANT</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>REGION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Region (State, Province, County)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_PLANT_REG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Regionwise plant</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZCOMPANY_CODE_MASTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Functional Module to Get Company Code Master</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IN_BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/CMN_TT_BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_COMP_CODE</PARAMETER>
+       <DBSTRUCT>ZSTR_COMP_CODE</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>MAINTAIN_COUNTRY_VARIABLE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IN_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company codes</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Company Code details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MAINTAIN_COUNTRY_VARIABLE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Maintain STVARV Variable for Country</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZSALES_ORG_MASTER_DATA</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Function Module to get sales Org Master Data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IN_BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>/ACCGO/CMN_TT_BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_SALES_ORG</PARAMETER>
+       <DBSTRUCT>ZSTR_SALES_ORG</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IN_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company codes</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SALES_ORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Sales Organization</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

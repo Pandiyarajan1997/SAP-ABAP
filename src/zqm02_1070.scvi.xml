@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZQM02_1070</SCVARIANT>
+     <PROGNAME>SAPLIQS0</PROGNAME>
+     <DYNPRO>1070</DYNPRO>
+     <VERSION>13</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZQM02_1070</SCVARIANT>
+      <SCVTEXT>Change notification</SCVTEXT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZQM02_1070</SCVARIANT>
+      <FIELDNAME>ANWENDERSTATUS</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZQM02_1070</SCVARIANT>
+      <FIELDNAME>QMICON-LTMELD</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+      <ITYPE>C</ITYPE>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZQM02_1070</SCVARIANT>
+      <FIELDNAME>VIQMEL-QMTXT</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+      <ITYPE>C</ITYPE>
+     </SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZQM02_1070</SCVARIANT>
+      <FIELDNAME>VIQMEL-REFNUM</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <INPUT_OFF>X</INPUT_OFF>
+      <ITYPE>C</ITYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

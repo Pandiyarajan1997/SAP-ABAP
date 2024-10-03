@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for GL/Account and Costcenter</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZGL_ACCOUNT_COSTCENTERTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGL_ACCOUNT_COSTCENTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_GLACCOUNT_COSTCENTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>GL/Account and Costcenter Data</SHORT_TEXT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_GLACCOUNTS</PARAMETER>
+       <DBSTRUCT>ZSTR_ACCOUNTS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_COSTCENTER</PARAMETER>
+       <DBSTRUCT>ZSTR_COSTCENTER</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LT_GLACCOUNTS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for BAPI GL/accounts and Costcenter</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_COSTCENTER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for BAPI Costcenter data</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

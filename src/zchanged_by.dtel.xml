@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZCHANGED_BY</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>LAEDA</DOMNAME>
+    <HEADLEN>55</HEADLEN>
+    <DDTEXT>User who edit the object</DDTEXT>
+    <REPTEXT>CHANGED BY</REPTEXT>
+    <DTELMASTER>E</DTELMASTER>
+    <DATATYPE>REF</DATATYPE>
+    <REFKIND>R</REFKIND>
+    <REFTYPE>E</REFTYPE>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

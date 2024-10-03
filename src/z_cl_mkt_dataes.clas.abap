@@ -1,0 +1,88 @@
+class Z_CL_MKT_DATAES definition
+  public
+  final
+  create public .
+
+public section.
+
+  interfaces IF_BADI_INTERFACE .
+  interfaces IF_EX_CUSTOMER_ADD_DATA .
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS Z_CL_MKT_DATAES IMPLEMENTATION.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~BUILD_TEXT_FOR_CHANGE_DETAIL.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~CHECK_ACCOUNT_NUMBER.
+endmethod.
+
+
+METHOD IF_EX_CUSTOMER_ADD_DATA~CHECK_ADD_ON_ACTIVE.
+   IF SY-TCODE EQ 'XD02' OR SY-TCODE EQ 'XD03' .
+  DATA: L_FLG_ACTIVE TYPE BOOLE-BOOLE.
+
+    IF I_SCREEN_GROUP = 'MD'.
+
+      E_ADD_ON_ACTIVE = 'X'.
+
+    ENDIF.
+  ENDIF.
+ENDMETHOD.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~CHECK_ALL_DATA.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~CHECK_DATA_CHANGED.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~GET_CHANGEDOCS_FOR_OWN_TABLES.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~INITIALIZE_ADD_ON_DATA.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~MODIFY_ACCOUNT_NUMBER.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~PRESET_VALUES_CCODE.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~PRESET_VALUES_SAREA.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~READ_ADD_ON_DATA.
+  DATA : LV_KUNNR TYPE KNA1-KUNNR.
+  LV_KUNNR = I_KUNNR.
+  EXPORT I_KUNNR FROM I_KUNNR TO MEMORY ID 'ZCUST'.
+
+  "Export it_tab from it_tab to memory id 'ZTEST'.
+
+"Import it_tab to it_tab1 frommemoryid 'ZTEST'.
+
+
+  "export I_KUNNR to memory ID 'CUST_NO' .
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~SAVE_DATA.
+endmethod.
+
+
+method IF_EX_CUSTOMER_ADD_DATA~SET_USER_INPUTS.
+endmethod.
+ENDCLASS.

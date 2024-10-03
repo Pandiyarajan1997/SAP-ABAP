@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZSD</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>Select one of the payment term based scheme.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Payment Term Based Billing is applicable for JNPL only</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>JEXP Condition Type  Missing for Material &amp; Item &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>JEXP Condition Value Missing for Material &amp; Item &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Material &amp;: PO Open quantities is less than Invoice quantities</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Material &amp; No Open quantities found in PO&apos;s</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZSD</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>For Delivery No:: &amp; Picking is not happen</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

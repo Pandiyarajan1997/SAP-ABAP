@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Updating Sales Projection Details</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZFG_SKU_SALES_PROJECTION</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_SKU_SALES_PROJECTION</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Update Invoices to SAP</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_CANCELLED</PARAMETER>
+       <DEFAULT>SPACE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_PRICE_CHECK</PARAMETER>
+       <DEFAULT>SPACE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_DFLAG</PARAMETER>
+       <DEFAULT>SPACE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>FLAG</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>GT_VBRK</PARAMETER>
+       <DBSTRUCT>ZSKU_VBRK</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>GT_VBRP</PARAMETER>
+       <DBSTRUCT>ZSKU_VBRP</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>GT_VBATCH</PARAMETER>
+       <DBSTRUCT>ZSKU_VBATCH</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>GT_VDISC</PARAMETER>
+       <DBSTRUCT>ZSKU_VDISC</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>GT_VTAX</PARAMETER>
+       <DBSTRUCT>ZSKU_VTAX</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>GT_SALES</PARAMETER>
+       <DBSTRUCT>ZSALES_PRO</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>RETURN_COMPARE</PARAMETER>
+       <DBSTRUCT>BAPIRET2</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_CANCELLED</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>indicates to mark &quot;cancelled&quot; in given invoice</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_PRICE_CHECK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>to decide where or not to perform price check</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_DFLAG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>delete given invoices from sap ztable</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_VBRK</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Salespro Blling Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_VBRP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>SalesPro - Billing Document: Item Data</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_VBATCH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Salespro Invoice Batch details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_VDISC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Salespro billing document discount details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_VTAX</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Salespro Billing Document Tax Details</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_SALES</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>SalesPro For Sales Projection</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>RETURN_COMPARE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Parameter</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

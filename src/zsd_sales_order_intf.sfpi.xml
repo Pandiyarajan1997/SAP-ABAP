@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SFPI" serializer_version="v1.0.0">
+ <asx:abap version="1.0" xmlns:asx="http://www.sap.com/abapxml">
+  <asx:values>
+   <VERSION>1</VERSION>
+   <TYPE/>
+   <INTERFACE href="#o1"/>
+   <INTERFACET>
+    <FPINTERFACET>
+     <NAME/>
+     <STATE/>
+     <LANGUAGE>E</LANGUAGE>
+     <ID/>
+     <TEXT>Sales Order Interface</TEXT>
+    </FPINTERFACET>
+   </INTERFACET>
+  </asx:values>
+  <asx:heap xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:abap="http://www.sap.com/abapxml/types/built-in" xmlns:cls="http://www.sap.com/abapxml/classes/global" xmlns:dic="http://www.sap.com/abapxml/types/dictionary">
+   <cls:CL_FP_INTERFACE_DATA id="o1">
+    <CL_FP_INTERFACE_DATA classVersion="1">
+     <CODING href="#o5"/>
+     <PARAMETERS href="#o4"/>
+     <GLOBAL_DEFINITIONS href="#o3"/>
+     <REFERENCE_FIELDS href="#o2"/>
+     <XSD_DEFINITIONS/>
+    </CL_FP_INTERFACE_DATA>
+   </cls:CL_FP_INTERFACE_DATA>
+   <cls:CL_FP_REFERENCE_FIELDS id="o2">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_REFERENCE_FIELDS classVersion="1">
+     <REFERENCE_FIELDS/>
+    </CL_FP_REFERENCE_FIELDS>
+   </cls:CL_FP_REFERENCE_FIELDS>
+   <cls:CL_FP_GLOBAL_DEFINITIONS id="o3">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_GLOBAL_DEFINITIONS classVersion="1">
+     <GLOBAL_DATA>
+      <SFPGDATA>
+       <NAME>GV_LOGO</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>XSTRING</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LS_VBAK</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_SALES_HDR_ADB</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LT_VBAP</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_SALES_ITM_ADB_TT</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LS_VBAP</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>ZSD_SALES_ITM_ADB</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GT_FINAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>G_FINAL</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOT_TAX</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>MWSBP</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_GROSS_WEIGHT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BRGEW_AP</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_NET_WEIGHT</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>BRGEW_AP</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOT_NET</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>NETWR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOTAL</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>NETWR</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LT_SOP</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>G_SOP</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>LT_STP</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>G_STP</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+      <SFPGDATA>
+       <NAME>GV_TOTAL_WORDS</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>TEXT250</TYPENAME>
+       <DEFAULTVAL/>
+       <CONSTANT/>
+      </SFPGDATA>
+     </GLOBAL_DATA>
+     <TYPES>
+      <FPCLINE>TYPES: BEGIN OF ty_final,</FPCLINE>
+      <FPCLINE>         posnr   TYPE posnr,</FPCLINE>
+      <FPCLINE>         arktx(70)   TYPE c,</FPCLINE>
+      <FPCLINE>         kwmeng  TYPE kwmeng,</FPCLINE>
+      <FPCLINE>         meins   TYPE meins,</FPCLINE>
+      <FPCLINE>         netwr   TYPE netwr,</FPCLINE>
+      <FPCLINE>         tax     TYPE mwsbp,</FPCLINE>
+      <FPCLINE>         total   TYPE netwr,</FPCLINE>
+      <FPCLINE>         gross_w TYPE brgew_ap,</FPCLINE>
+      <FPCLINE>         net_w   TYPE brgew_ap,</FPCLINE>
+      <FPCLINE>       END OF ty_final.</FPCLINE>
+      <FPCLINE> TYPES: g_final TYPE STANDARD TABLE OF ty_final.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE> TYPES: BEGIN OF ty_sop,</FPCLINE>
+      <FPCLINE>        kunnr TYPE kunnr,</FPCLINE>
+      <FPCLINE>        name1 TYPE name1_gp,</FPCLINE>
+      <FPCLINE>        stras TYPE stras,</FPCLINE>
+      <FPCLINE>        ort01 TYPE ort01_gp,</FPCLINE>
+      <FPCLINE>        pstlz TYPE pstlz,</FPCLINE>
+      <FPCLINE>        regio TYPE regio,</FPCLINE>
+      <FPCLINE>        land1 TYPE land1_gp,</FPCLINE>
+      <FPCLINE>        stcd3 TYPE stcd3,</FPCLINE>
+      <FPCLINE>        END OF ty_sop.</FPCLINE>
+      <FPCLINE>TYPES: g_sop TYPE STANDARD TABLE OF ty_sop.</FPCLINE>
+      <FPCLINE> TYPES: BEGIN OF ty_stp,</FPCLINE>
+      <FPCLINE>        kunnr TYPE kunnr,</FPCLINE>
+      <FPCLINE>        name1 TYPE name1_gp,</FPCLINE>
+      <FPCLINE>        stras TYPE stras,</FPCLINE>
+      <FPCLINE>        ort01 TYPE ort01_gp,</FPCLINE>
+      <FPCLINE>        pstlz TYPE pstlz,</FPCLINE>
+      <FPCLINE>        regio TYPE regio,</FPCLINE>
+      <FPCLINE>        land1 TYPE land1_gp,</FPCLINE>
+      <FPCLINE>        stcd3 TYPE stcd3,</FPCLINE>
+      <FPCLINE>        END OF ty_stp.</FPCLINE>
+      <FPCLINE>TYPES: g_stp TYPE STANDARD TABLE OF ty_stp.</FPCLINE>
+     </TYPES>
+     <FIELDSYMBOLS/>
+    </CL_FP_GLOBAL_DEFINITIONS>
+   </cls:CL_FP_GLOBAL_DEFINITIONS>
+   <cls:CL_FP_PARAMETERS id="o4">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_PARAMETERS classVersion="1">
+     <IMPORT_PARAMETERS>
+      <SFPIOPAR>
+       <NAME>IM_VBELN</NAME>
+       <TYPING>TYPE</TYPING>
+       <TYPENAME>VBELN_VA</TYPENAME>
+       <OPTIONAL/>
+       <BYVALUE/>
+       <DEFAULTVAL/>
+       <STANDARD/>
+       <CONSTANT/>
+      </SFPIOPAR>
+     </IMPORT_PARAMETERS>
+     <EXPORT_PARAMETERS/>
+     <TABLE_PARAMETERS/>
+     <EXCEPTIONS/>
+    </CL_FP_PARAMETERS>
+   </cls:CL_FP_PARAMETERS>
+   <cls:CL_FP_CODING id="o5">
+    <CL_FP_INTERFACE_DATA_CHANGED classVersion="1">
+     <INTERFACE_DATA href="#o1"/>
+    </CL_FP_INTERFACE_DATA_CHANGED>
+    <CL_FP_CODING classVersion="1">
+     <INPUT_PARAMETERS>
+      <FPPARAMETER>IM_VBELN</FPPARAMETER>
+     </INPUT_PARAMETERS>
+     <OUTPUT_PARAMETERS>
+      <FPPARAMETER>LS_VBAK</FPPARAMETER>
+      <FPPARAMETER>LT_VBAP</FPPARAMETER>
+      <FPPARAMETER>LS_VBAP</FPPARAMETER>
+      <FPPARAMETER>LS_SOP</FPPARAMETER>
+      <FPPARAMETER>LS_STP</FPPARAMETER>
+      <FPPARAMETER>GV_TOT_TAX</FPPARAMETER>
+      <FPPARAMETER>GV_TOT_NET</FPPARAMETER>
+      <FPPARAMETER>GV_GROSS_WEIGHT</FPPARAMETER>
+      <FPPARAMETER>GV_NET_WEIGHT</FPPARAMETER>
+      <FPPARAMETER>GV_TOTAL</FPPARAMETER>
+      <FPPARAMETER>GV_TOTAL_WORDS</FPPARAMETER>
+     </OUTPUT_PARAMETERS>
+     <INITIALIZATION>
+      <FPCLINE>CLEAR: ls_vbap,lt_vbap,ls_vbap,lt_sop,lt_stp.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>SELECT SINGLE * FROM vbak</FPCLINE>
+      <FPCLINE>  INTO CORRESPONDING FIELDS OF ls_vbak</FPCLINE>
+      <FPCLINE>  WHERE vbeln = im_vbeln.</FPCLINE>
+      <FPCLINE>IF sy-subrc EQ 0.</FPCLINE>
+      <FPCLINE>  SELECT * FROM vbap</FPCLINE>
+      <FPCLINE>    INTO CORRESPONDING FIELDS OF TABLE lt_vbap</FPCLINE>
+      <FPCLINE>    WHERE vbeln = im_vbeln.</FPCLINE>
+      <FPCLINE>  IF sy-subrc = 0.</FPCLINE>
+      <FPCLINE>    SORT lt_vbap[] BY posnr.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>*Sold to Party</FPCLINE>
+      <FPCLINE>  SELECT * FROM kna1</FPCLINE>
+      <FPCLINE>    INTO CORRESPONDING FIELDS OF TABLE lt_sop</FPCLINE>
+      <FPCLINE>    WHERE kunnr = ls_vbak-kunnr.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  DATA(lv_stp) = |{ VALUE #( lt_vbap[ 1 ]-kunwe_ana OPTIONAL ) ALPHA = IN }|.</FPCLINE>
+      <FPCLINE>*ship to Party</FPCLINE>
+      <FPCLINE>  SELECT * FROM kna1</FPCLINE>
+      <FPCLINE>    INTO CORRESPONDING FIELDS OF TABLE lt_stp</FPCLINE>
+      <FPCLINE>    WHERE kunnr = lv_stp.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  REFRESH gt_final.</FPCLINE>
+      <FPCLINE>  LOOP AT lt_vbap INTO DATA(lw_vbap).</FPCLINE>
+      <FPCLINE>*    SHIFT lw_vbap-posnr LEFT DELETING LEADING &apos;0&apos;.</FPCLINE>
+      <FPCLINE>    APPEND VALUE #( posnr   = lw_vbap-posnr</FPCLINE>
+      <FPCLINE>                    arktx   = lw_vbap-arktx</FPCLINE>
+      <FPCLINE>                    kwmeng  = lw_vbap-kwmeng</FPCLINE>
+      <FPCLINE>                    meins   = lw_vbap-meins</FPCLINE>
+      <FPCLINE>                    netwr   = lw_vbap-netwr</FPCLINE>
+      <FPCLINE>                    tax     = lw_vbap-mwsbp</FPCLINE>
+      <FPCLINE>                    gross_w = lw_vbap-brgew</FPCLINE>
+      <FPCLINE>                    net_w   = lw_vbap-ntgew</FPCLINE>
+      <FPCLINE>                    total   = ( lw_vbap-netwr + lw_vbap-mwsbp ) ) TO gt_final.</FPCLINE>
+      <FPCLINE>  ENDLOOP.</FPCLINE>
+      <FPCLINE>  CLEAR: gv_tot_tax,gv_tot_net,gv_gross_weight,gv_net_weight,</FPCLINE>
+      <FPCLINE>         gv_total.</FPCLINE>
+      <FPCLINE>  LOOP AT gt_final INTO DATA(gs_final).</FPCLINE>
+      <FPCLINE>    gv_tot_tax      = gv_tot_tax      + gs_final-tax.</FPCLINE>
+      <FPCLINE>    gv_tot_net      = gv_tot_net      + gs_final-netwr.</FPCLINE>
+      <FPCLINE>    gv_gross_weight = gv_gross_weight + gs_final-gross_w.</FPCLINE>
+      <FPCLINE>    gv_net_weight   = gv_net_weight   + gs_final-net_w.</FPCLINE>
+      <FPCLINE>    gv_total        = gv_total        + gs_final-total.</FPCLINE>
+      <FPCLINE>  ENDLOOP.</FPCLINE>
+      <FPCLINE/>
+      <FPCLINE>  CLEAR gv_total_words.</FPCLINE>
+      <FPCLINE>  DATA(gv_tot_amnt) = CONV maxbt( gv_total ).</FPCLINE>
+      <FPCLINE>  CALL FUNCTION &apos;HR_IN_CHG_INR_WRDS&apos;</FPCLINE>
+      <FPCLINE>    EXPORTING</FPCLINE>
+      <FPCLINE>      amt_in_num         = gv_tot_amnt</FPCLINE>
+      <FPCLINE>    IMPORTING</FPCLINE>
+      <FPCLINE>      amt_in_words       = gv_total_words</FPCLINE>
+      <FPCLINE>    EXCEPTIONS</FPCLINE>
+      <FPCLINE>      data_type_mismatch = 1</FPCLINE>
+      <FPCLINE>      OTHERS             = 2.</FPCLINE>
+      <FPCLINE>  IF sy-subrc = 0.</FPCLINE>
+      <FPCLINE>    TRANSLATE gv_total_words TO UPPER CASE.</FPCLINE>
+      <FPCLINE>  ENDIF.</FPCLINE>
+      <FPCLINE>ENDIF.</FPCLINE>
+     </INITIALIZATION>
+     <FORMS/>
+    </CL_FP_CODING>
+   </cls:CL_FP_CODING>
+  </asx:heap>
+ </asx:abap>
+</abapGit>

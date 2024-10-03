@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SXCI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SXCI>
+    <IMPLEMENTATION_DATA>
+     <IMP_NAME>ZFI_NEW_DUEDATE</IMP_NAME>
+     <TEXT>New Due Date for Holidays</TEXT>
+     <IMP_CLASS>ZCL_IM_FI_NEW_DUEDATE</IMP_CLASS>
+     <EXIT_NAME>FI_ITEMS_CH_DATA</EXIT_NAME>
+     <INTER_NAME>IF_EX_FI_ITEMS_CH_DATA</INTER_NAME>
+     <ACTIVE>X</ACTIVE>
+    </IMPLEMENTATION_DATA>
+   </SXCI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

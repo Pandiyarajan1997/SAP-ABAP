@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>C_STUE_WR3</OBJCT>
+    <FIEL1>ACTVT</FIEL1>
+    <FIEL2>CSWRK</FIEL2>
+    <FIEL3>TCD</FIEL3>
+    <OCLSS>PP</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>C_STUE_WR3</OBJECT>
+    <TTEXT>Authorization Object Test 2</TTEXT>
+   </TOBJT>
+   <TACTZ>
+    <TACTZ>
+     <BROBJ>C_STUE_WR3</BROBJ>
+     <ACTVT>01</ACTVT>
+    </TACTZ>
+    <TACTZ>
+     <BROBJ>C_STUE_WR3</BROBJ>
+     <ACTVT>02</ACTVT>
+    </TACTZ>
+    <TACTZ>
+     <BROBJ>C_STUE_WR3</BROBJ>
+     <ACTVT>03</ACTVT>
+    </TACTZ>
+   </TACTZ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

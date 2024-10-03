@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZWEKS</OBJCT>
+    <FIEL1>ZWERKS</FIEL1>
+    <FIEL2>ACTVT</FIEL2>
+    <OCLSS>ZAUT</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZWEKS</OBJECT>
+    <TTEXT>Plant Wise Auothrization Object Display</TTEXT>
+   </TOBJT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

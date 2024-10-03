@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_API_PO_CREATE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>API - DMS Purchasing order return Process</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>GV_PLANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Plant</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GV_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GW_BDCMSG</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Collecting messages in the SAP System</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>PO_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchasing Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_PURCHASE_ORDER</CMPNAME>
+     <SCONAME>TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message type: S Success, E Error, W Warning, I Info, A Abort</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TOBJ" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <OBJH>
+    <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+    <OBJECTTYPE>C</OBJECTTYPE>
+    <CLIDEP>X</CLIDEP>
+    <OBJCATEG>APPL</OBJCATEG>
+    <OBJTRANSP>2</OBJTRANSP>
+    <IMPORTABLE>3</IMPORTABLE>
+   </OBJH>
+   <OBJT>
+    <LANGUAGE>E</LANGUAGE>
+    <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+    <OBJECTTYPE>C</OBJECTTYPE>
+    <DDTEXT>Cluster view for check Api and Common list table</DDTEXT>
+   </OBJT>
+   <OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZVCUSTTYPE_EXTNS</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZV_API_CHK_TABLE</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZV_API_COMM_LIST</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZV_BP_SOFFICE</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+    <OBJS>
+     <OBJECTNAME>ZCV_API_LIST</OBJECTNAME>
+     <OBJECTTYPE>C</OBJECTTYPE>
+     <TABNAME>ZV_MAP_TABLE_BP</TABNAME>
+     <DDIC>X</DDIC>
+    </OBJS>
+   </OBJS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

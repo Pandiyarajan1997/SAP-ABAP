@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>material master data</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZMM_MAT_MASTERTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZMM_MAT_MASTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZGET_DATA_FOR_APP1</FUNCNAME>
+     <SHORT_TEXT>material unit conversion bapi</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MARM</PARAMETER>
+       <DBSTRUCT>MARM</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MARM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Units of Measure for Material</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZMM_MATERIAL_MASTER_DATA1</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI For Material Master data to MIS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MATERIAL</PARAMETER>
+       <DBSTRUCT>ZSTR_MATERIAL_MASTER</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>LT_MATNR</PARAMETER>
+       <DBSTRUCT>RANGE_S_MATNR</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Company Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MATERIAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>General Material Data</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Line of Range Table for Data Element MATNR</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

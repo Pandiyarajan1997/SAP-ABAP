@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>STICKER PRINTER</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBAPI_STICKER_PRINTERTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBAPI_STICKER_PRINTER</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_STICKER_PRINTER</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>STICKER PRINTER</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IN_MATNR</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IN_VKORG</PARAMETER>
+       <TYP>VKORG</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_STICKER</PARAMETER>
+       <DBSTRUCT>ZSTR_STICKER_PRINTER</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IN_MATNR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IN_VKORG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Sales Organization</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_STICKER</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>STICKER PRINTER</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

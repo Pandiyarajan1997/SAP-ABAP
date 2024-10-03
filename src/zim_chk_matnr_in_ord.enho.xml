@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>Check for Material Number in Particular order type</SHORTTEXT>
+   <SPOT_NAME>ME_PROCESS_PO_CUST</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>ME_PROCESS_PO_CUST</SPOT_NAME>
+     <BADI_NAME>ME_PROCESS_PO_CUST</BADI_NAME>
+     <IMPL_NAME>ZIM_CHK_MATNR_IN_ORD</IMPL_NAME>
+     <IMPL_CLASS>ZCL_IM_IM_CHK_MATNR_IN_ORD</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>Check for Material Number in Particular order type</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>19DBE41940651EEE978A4C488CC883ED</IMPL_SHORTTEXT_ID>
+     <MIG_BADI_IMPL>ZIM_CHK_MATNR_IN_ORD</MIG_BADI_IMPL>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>19DBE41940651EEE978A176925F323ED</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>19DBE41940651EEE978A176925F323ED</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>255</LENGTH>
+       <TEXT>Check for Material Number in Particular order type</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+    <item>
+     <HEADER>
+      <CONCEPT>19DBE41940651EEE978A4C488CC883ED</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>19DBE41940651EEE978A4C488CC883ED</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>255</LENGTH>
+       <TEXT>Check for Material Number in Particular order type</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZIM_CHK_MATNR_IN_ORD</OBJ_NAME>
+     <CONCEPT>19DBE41940651EEE978A176925F323ED</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZIM_CHK_MATNR_IN_ORD</OBJ_NAME>
+     <CONCEPT>19DBE41940651EEE978A4C488CC883ED</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

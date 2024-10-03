@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CMOD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <MODACT>
+    <MODACT>
+     <NAME>ZME21N</NAME>
+    </MODACT>
+    <MODACT>
+     <NAME>ZME21N</NAME>
+     <MEMBER>MM06E001</MEMBER>
+    </MODACT>
+    <MODACT>
+     <NAME>ZME21N</NAME>
+     <MEMBER>MM06E005</MEMBER>
+    </MODACT>
+   </MODACT>
+   <MODTEXT>
+    <MODTEXT>
+     <SPRSL>E</SPRSL>
+     <NAME>ZME21N</NAME>
+     <MODTEXT>custom field added in ME21N screen</MODTEXT>
+    </MODTEXT>
+   </MODTEXT>
+   <MODATTR>
+    <MODATTR>
+     <NAME>ZME21N</NAME>
+     <STATUS>A</STATUS>
+    </MODATTR>
+   </MODATTR>
+  </asx:values>
+ </asx:abap>
+</abapGit>

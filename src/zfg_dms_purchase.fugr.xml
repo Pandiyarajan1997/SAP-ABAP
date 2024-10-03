@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for DMS Purchase Process</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_DMS_PURCHASETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_DMS_PURCHASE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZDISTRIBUTOR_STOCK_INWARD</FUNCNAME>
+     <SHORT_TEXT>Inward Stock of Distributor from MIS</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>DISTRIBUTOR_CODE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>KUNNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VBELN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>VBELN_VF</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>DISTRIBUTOR_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Customer Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Billing Document</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZDMS_INFORECORD_CREATION</FUNCNAME>
+     <SHORT_TEXT>Creation of Inforecord for DMS Purchase Process</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_INPUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZDMS_INFORECORD_ST</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>MSG_TYPE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BAPI_MTYPE</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>MSG</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_INPUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Inforecord Updation</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Message type: S Success, E Error, W Warning, I Info, A Abort</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZDMS_INFORECORD_UPDATION</FUNCNAME>
+     <SHORT_TEXT>Inforecord Updation for DMS purchase process</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IM_INPUT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZDMS_INFORECORD_ST</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>MSG_TYPE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BAPI_MTYPE</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>MSG</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IM_INPUT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for Inforecord Updation</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG_TYPE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Message type: S Success, E Error, W Warning, I Info, A Abort</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MSG</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

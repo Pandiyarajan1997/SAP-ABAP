@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>FG for Stock agwise Bapi</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_STK_AGEWSETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_STK_AGEWSE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBAPI_STOCK_AGEWISE</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>BAPI for Stock based on plant agewise</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <DEFAULT>1000</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>PLANT</PARAMETER>
+       <TYP>RANGE_S_WERKS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>MATERIAL</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>RANGE_S_MATNR</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>DOCUMENT_DATE</PARAMETER>
+       <DEFAULT>SY-DATUM</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>LT_STOCK_AGEWISE</PARAMETER>
+       <DBSTRUCT>ZSTR_STOCK_AGEWISE</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>COMP_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range of Bukrs</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>PLANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Plant</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MATERIAL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Material Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DOCUMENT_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LT_STOCK_AGEWISE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for stock agewise Bapi</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

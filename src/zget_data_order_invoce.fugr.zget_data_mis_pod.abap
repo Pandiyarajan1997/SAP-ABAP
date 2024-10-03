@@ -1,0 +1,35 @@
+FUNCTION ZGET_DATA_MIS_POD.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(DATE_FRM) TYPE  AEDAT
+*"     VALUE(DATE_TO) TYPE  AEDAT
+*"  TABLES
+*"      IT_POD STRUCTURE  ZSTR_POD_MIS
+*"----------------------------------------------------------------------
+  TYPES:BEGIN OF TY_POD,
+    VBELN TYPE VBRK-VBELN,
+    ERDAT TYPE VBRK-ERDAT,
+    DATE_OF_DELIVERY TYPE VBRK-DATE_OF_DELIVERY,
+    REMARKS TYPE VBRK-REMARKS,
+    END OF TY_POD.
+
+  DATA: IT_POD1 TYPE TABLE OF TY_POD,
+        WA_POD1 TYPE TY_POD,
+        WA_POD type ZSTR_POD_MIS.
+
+
+  SELECT VBELN ERDAT DATE_OF_DELIVERY REMARKS INTO TABLE IT_POD1 FROM VBRK WHERE FKDAT GE DATE_FRM AND FKDAT LE DATE_TO. "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+
+    LOOP AT IT_POD1 into WA_POD1.
+      MOVE-CORRESPONDING WA_POD1 to WA_POD.
+      APPEND WA_POD to IT_POD.
+      CLEAR :WA_POD,WA_POD1.
+
+    ENDLOOP.
+
+
+
+
+
+ENDFUNCTION.

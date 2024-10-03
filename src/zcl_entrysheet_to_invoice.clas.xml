@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_ENTRYSHEET_TO_INVOICE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Invoice/Accounting Document Attachements</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_ENTRYSHEET</CMPNAME>
+     <SCONAME>ENTRYSHEET</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entry Sheet Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_ENTRYSHEET</CMPNAME>
+     <SCONAME>PO_ITEMNO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Item Number of Purchasing Document</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_ENTRYSHEET</CMPNAME>
+     <SCONAME>PO_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchasing Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_ENTRYSHEET</CMPNAME>
+     <SCONAME>RETURN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return table</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_ENTRYSHEET</CMPNAME>
+     <SCONAME>VENDOR_INV</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Reference Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MIRO_INVOICE</CMPNAME>
+     <SCONAME>FISYEAR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fiscal Year</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MIRO_INVOICE</CMPNAME>
+     <SCONAME>INVOICE_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Accounting Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MIRO_INVOICE</CMPNAME>
+     <SCONAME>PO_ITEMNO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Item Number of Purchasing Document</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MIRO_INVOICE</CMPNAME>
+     <SCONAME>PO_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Purchasing Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MIRO_INVOICE</CMPNAME>
+     <SCONAME>RETURN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return table</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

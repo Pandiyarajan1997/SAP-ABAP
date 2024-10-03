@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Travel Eligibility</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZHR_TRAVEL_ELIGIBILITYTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZHR_TRAVEL_ELIGIBILITY</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZHR_TRAVEL_ELIGIBILITY</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Travel Eligibility</SHORT_TEXT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_ELIGIBILITY</PARAMETER>
+       <DBSTRUCT>ZTRAVEL_ELIGIBILITY</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_ELIGIBILITY</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Travel Eligibility Strucutre</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

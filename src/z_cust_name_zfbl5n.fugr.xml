@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Customer Name F.G For ZFBL5N Report</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZ_CUST_NAME_ZFBL5NTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZ_CUST_NAME_ZFBL5N</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>Y_SAMPLE_INTERFACE_00001650</FUNCNAME>
+     <SHORT_TEXT>Schnittstellenbeschreibung zum Event 00001650</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_POSTAB</PARAMETER>
+       <DBFIELD>RFPOS</DBFIELD>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>E_POSTAB</PARAMETER>
+       <DBFIELD>RFPOS</DBFIELD>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_POSTAB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Einzelposten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_POSTAB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Ergänzter Einzelposten</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+   <LONGTEXTS_Y_SAMPLE_INTERFACE_00001650>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Y_SAMPLE_INTERFACE_00001650</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0007</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00020</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Y_SAMPLE_INTERFACE_00001650</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00007</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Einzelpostenanzeige, Zusätzliche Daten anzeigen&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001650&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;INTERFACE&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>EVENT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Zeitpunkt wird in der Einzelpostenanzeige erreicht. Er ermöglicht,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>nach der Selektion der Daten und vor der Ausgabe der ersten Liste zu</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>jedem einzelnen Posten beliebige weitere Daten dazuzulesen und in der</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Struktur RFPOS wieder zurückzugeben.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>SCHNITTSTELLE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Es ist die Struktur RFPOS mit einem APPEND zu erweitern, welcher die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>neuen Felder enthält.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Die so definierten zusätzlichen Felder stehen in Zeilenaufbauvarianten</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>automatisch zur Verfügung und können für die Funktionen wie Suchen,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Sortieren, Summieren verwendet werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Beispielsweise ist es über diese Technik möglich, durch Aufruf des</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Standard-Bausteines &lt;ZH&gt;GET_GKONT&lt;/&gt; das Gegenkonto zu einer</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Belegposition zu ermitteln. Durch das Schreiben eines analogen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Bausteins können so auch weitere Daten aus der Gegenposition ermittelt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>und angezeigt werden.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Y_SAMPLE_INTERFACE_00001650</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0007</VERSION>
+      <TXTLINES>00019</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Y_SAMPLE_INTERFACE_00001650</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00007</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Line item display, display additional data&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001650&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;INTERFACE&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>EVENT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This Event is reached when displaying line items. Following selection</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>of data, and before the first list is output, it enables any amount of</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>additional data on each individual line item to be read and transferred</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>back to the RFPOS structure.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>INTERFACE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Structure RFPOS must be enhanced with an APPEND that contains the new</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>fields.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The additional fields so defined are automatically available in line</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>layout variants and can be used for functions like search, sort, and</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>total.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>By calling up the standard function module &lt;ZH&gt;GET_GKONT&lt;/&gt;, this Event</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>can for example enable you to determine the offsetting acccount for a</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>line item. By writing a similar function module, additional data from</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the offsetting item can also be determined and displayed.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_Y_SAMPLE_INTERFACE_00001650>
+  </asx:values>
+ </asx:abap>
+</abapGit>

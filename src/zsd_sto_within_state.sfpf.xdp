@@ -1,0 +1,2985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xfa generator="AdobeLiveCycleDesigner_V11.0.9.20201112.2.940716_SAP" APIVersion="3.6.20316.0"?><xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2024-05-23T09:28:26Z" uuid="2d32aa89-9bf2-426a-8c3b-168d394c5721">
+<template xmlns="http://www.xfa.org/schema/xfa-template/3.3/" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.1">
+   <?formServer defaultPDFRenderFormat acrobat10.0dynamic?>
+   <subform layout="tb" locale="en_IN" name="data" restoreState="auto">
+      <pageSet>
+         <pageArea id="Page1" name="Page1">
+            <contentArea h="269.875mm" name="ContentArea" w="190.5mm" x="9.525mm" y="6.35mm"/>
+            <medium long="297mm" short="210mm" stock="a4"/>
+            <subform h="47.625mm" name="Footer" presence="invisible" w="196.85mm" x="6.35mm" y="228.6mm">
+               <bind match="none"/>
+               <traversal>
+                  <traverse operation="first" ref="Text6[0]"/>
+               </traversal>
+               <draw h="42.628mm" name="Text6" w="66.675mm">
+                  <ui>
+                     <textEdit/>
+                  </ui>
+                  <value>
+                     <exData contentType="text/html" xliff:rid="8491F4D0-B9DC-477C-8820-ED27A6C65C41">
+                        <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="text-align:justify;text-decoration:none;letter-spacing:0in">I confirm that the items have been received in a suitable condition for sale and that I have noted the terms and conditions listed on the back.</p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in">Customer Seal &amp; Sign:</p></body>
+                     </exData>
+                  </value>
+                  <font baselineShift="0pt" typeface="Arial"/>
+                  <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                  <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+                  <border>
+                     <edge presence="hidden"/>
+                     <corner presence="hidden"/>
+                  </border>
+                  <traversal>
+                     <traverse ref="Text6[1]"/>
+                  </traversal>
+               </draw>
+               <field access="readOnly" h="9mm" id="floatingField000041" name="GV_FOR_TEXT" presence="hidden" w="62mm">
+                  <ui>
+                     <textEdit>
+                        <border>
+                           <edge stroke="lowered"/>
+                        </border>
+                        <margin/>
+                     </textEdit>
+                  </ui>
+                  <font typeface="Arial"/>
+                  <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                  <para vAlign="middle"/>
+                  <bind match="none"/>
+                  <caption>
+                     <value>
+                        <text xliff:rid="0063C2D5-CED2-46F9-8A15-16FBE8E77A1C">GV_FOR_TEXT</text>
+                     </value>
+                  </caption>
+               </field>
+               <border>
+                  <edge/>
+                  <corner/>
+               </border>
+               <event activity="initialize" name="event__initialize">
+                  <script>var curp = $layout.page ( ref ( $ ) )
+var totalp = $layout.pageCount()
+if ( curp ne totalp ) then
+$.presence = "hidden"
+endif
+
+</script>
+               </event>
+               <draw h="42.767mm" name="Text6" w="57.15mm" x="133.35mm">
+                  <ui>
+                     <textEdit/>
+                  </ui>
+                  <value>
+                     <exData contentType="text/html" xliff:rid="9513628F-BFE0-4CC7-8D92-8331FFE53DDE">
+                        <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField000041" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-tab-count:1">         </span>Authorised Signatory<span style="xfa-spacerun:yes"> </span></p></body>
+                     </exData>
+                  </value>
+                  <font baselineShift="0pt" typeface="Arial"/>
+                  <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                  <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+                  <border>
+                     <edge presence="hidden"/>
+                     <corner presence="hidden"/>
+                  </border>
+               </draw>
+               <field access="readOnly" h="34.925mm" name="QRCodeBarcode1" w="34.925mm" x="79.375mm">
+                  <ui>
+                     <barcode dataLength="10" errorCorrectionLevel="1" moduleHeight="0.0090in" moduleWidth="0.0090in" type="QRCode"/>
+                  </ui>
+                  <value>
+                     <text xliff:rid="7C21C400-3EB3-419E-BA0D-642291F28D55">1234567890</text>
+                  </value>
+                  <bind match="none"/>
+                  <event activity="initialize" name="event__initialize">
+                     <script>$.rawValue = $record.GV_QRCODE;
+
+//$.rawValue = concat($record.LV_QRCODE, 
+//					$record.LV_QRCODE1, 
+//					$record.LV_QRCODE2, 
+//					$record.LV_QRCODE3, 
+//					$record.LV_QRCODE4, 
+//					$record.LV_QRCODE5, 
+//					$record.LV_QRCODE6);
+//
+</script>
+                  </event>
+                  <border>
+                     <edge presence="hidden" thickness="0.1905mm"/>
+                     <corner presence="hidden" thickness="0.191mm"/>
+                     <edge presence="hidden"/>
+                     <edge presence="hidden"/>
+                     <edge presence="hidden"/>
+                     <corner presence="hidden"/>
+                     <corner presence="hidden"/>
+                     <corner presence="hidden"/>
+                  </border>
+               </field>
+               <field h="9.525mm" name="GV_IRN" w="66.675mm" x="66.675mm" y="34.925mm">
+                  <ui>
+                     <textEdit multiLine="1">
+                        <border presence="hidden"/>
+                        <margin/>
+                     </textEdit>
+                  </ui>
+                  <font size="8pt" typeface="Arial"/>
+                  <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                  <para vAlign="middle"/>
+                  <caption reserve="6.8669mm">
+                     <para vAlign="middle"/>
+                     <value>
+                        <text xliff:rid="84305F4C-A62B-43AC-A3FD-5C292EA30465">IRN</text>
+                     </value>
+                  </caption>
+                  <bind match="dataRef" ref="$.GV_IRN"/>
+                  <value>
+                     <text maxChars="64"/>
+                  </value>
+                  <desc>
+                     <text name="Schema Annotation">Invoice Reference Number</text>
+                  </desc>
+               </field>
+               <?templateDesigner expand 1?></subform>
+            <?templateDesigner expand 1?></pageArea>
+         <?templateDesigner expand 1?></pageSet>
+      <subform layout="tb" minH="166.558mm" name="Page1" w="190.5mm">
+         <bind match="none"/>
+         <traversal>
+            <traverse operation="first" ref="Header[0]"/>
+         </traversal>
+         <subform h="47.663mm" name="Header" w="190.582mm">
+            <bind match="none"/>
+            <subform columnWidths="67.197mm 74.288mm 49.164mm" layout="table" name="Table1" y="3.175mm">
+               <border>
+                  <edge/>
+               </border>
+               <subform layout="row" name="Row3">
+                  <assist role="TR"/>
+                  <draw h="6.228mm" w="2.645556in">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <exData contentType="text/html" xliff:rid="4B96D9C3-B85F-4169-A237-246AFFC3EF91">
+                           <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in">BILL NO:<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField023281" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in">From GST INV-1(See Rule 7 of Section 31)<span style="xfa-spacerun:yes"> </span></p></body>
+                        </exData>
+                     </value>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+                     <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                  </draw>
+                  <field access="readOnly" h="9mm" id="floatingField023281" name="INV_NO" presence="hidden" w="62mm" x="0mm" y="0mm">
+                     <ui>
+                        <textEdit>
+                           <border>
+                              <edge stroke="lowered"/>
+                           </border>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <font typeface="Arial"/>
+                     <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                     <para vAlign="middle"/>
+                     <value>
+                        <text maxChars="10"/>
+                     </value>
+                     <bind match="dataRef" ref="$record.INV_NO"/>
+                     <caption>
+                        <value>
+                           <text xliff:rid="4E2D124F-70B5-42CE-8AA8-218B9D452F5D">Document</text>
+                        </value>
+                     </caption>
+                     <desc>
+                        <text name="Schema Annotation">Billing Document</text>
+                     </desc>
+                  </field>
+                  <draw h="6.228mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="75E34F8C-7F21-4EE9-BD95-FFF99E1DAFC7">RETURN INVOICE</text>
+                     </value>
+                     <font baselineShift="0pt" size="8pt" typeface="Arial" weight="bold"/>
+                     <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                  </draw>
+                  <field access="readOnly" h="9mm" id="floatingField016827" name="INV_DATE" presence="hidden" w="62mm" x="0mm" y="0mm">
+                     <ui>
+                        <dateTimeEdit>
+                           <border>
+                              <edge stroke="lowered"/>
+                           </border>
+                           <margin/>
+                        </dateTimeEdit>
+                     </ui>
+                     <font typeface="Arial"/>
+                     <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                     <para vAlign="middle"/>
+                     <value>
+                        <date/>
+                     </value>
+                     <caption>
+                        <value>
+                           <text xliff:rid="6DB5C77B-80D6-4569-BB42-5EEF01C75734">Deliv.dt</text>
+                        </value>
+                     </caption>
+                     <desc>
+                        <text name="Schema Annotation">Billing Date</text>
+                     </desc>
+                     <validate nullTest="error"/>
+                     <bind match="dataRef" ref="$record.INV_DATE">
+                        <picture>date{YYYY-MM-DD}</picture>
+                     </bind>
+                     <format>
+                        <picture>date{DD-MM-YYYY}</picture>
+                     </format>
+                  </field>
+                  <draw h="6.228mm">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <exData contentType="text/html" xliff:rid="159F5B9F-AE66-4BB0-8640-CE3AF4C29140">
+                           <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span>DATE:<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField016827" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                        </exData>
+                     </value>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+                     <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                  </draw>
+                  <traversal>
+                     <traverse operation="first" ref="#draw[0]"/>
+                  </traversal>
+                  <?templateDesigner expand 0?></subform>
+               <keep intact="contentArea"/>
+               <bind match="none"/>
+               <?templateDesigner rowpattern first:1, next:1, firstcolor:f0f0f0, nextcolor:ffffff, apply:0?>
+               <traversal>
+                  <traverse operation="first" ref="Row3[0]"/>
+               </traversal>
+               <?templateDesigner expand 0?></subform>
+            <field access="readOnly" h="9mm" id="floatingField001842" name="STREET" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="120"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.STREET"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="CDD9E771-B740-4FC0-BEF3-F7146745A098">Street</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Street</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField000288" name="HOUSE_NUM1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="20"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.HOUSE_NUM1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="49D0DAD1-F230-4356-A4FF-0207F52FC1CA">House No.</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">House Number</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField030106" name="STR_SUPPL1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="80"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.STR_SUPPL1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="0874112D-34B5-474A-BCFB-BDD0D39D87A6">Street 2</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Street 2</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField009040" name="STATE" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="80"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.STATE"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="04F31DC3-4FB3-4211-A5D2-633E1A807940">Data line</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Extension (only for data conversion) (e.g. data line)</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField008942" name="REGION" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="6"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.REGION"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="5D62FB48-005C-4979-A66C-FC2116A565BD">Rg</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Region (State, Province, County)</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField019264" name="TEL_NUMBER" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="60"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.TEL_NUMBER"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="B532B5F5-C04B-41C8-80B8-943A0D0E482F">Telephone</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">First telephone no.: dialling code+number</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField022648" name="POST_CODE1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="20"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.POST_CODE1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="12AC62DF-FAE0-4D82-9DEE-D903DD886FF5">Postl Code</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">City postal code</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField023805" name="CITY1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="80"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.CITY1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="E24C71AB-28A4-49A5-890F-A02B810C66B5">City</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">City</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField015890" name="CITY2" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="80"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_BADRC.CITY2"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="E2529AD0-FA71-4AAE-B200-7C0CFBA80396">District</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">District</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField006729" name="LV_CUST_GSTIN" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="18"/>
+               </value>
+               <bind match="dataRef" ref="$.LV_CUST_GSTIN"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="7C6C9418-ABB3-42BB-B3DE-155D5A08B003">Tax Number 3</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Tax Number 3</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField004966" name="NAME1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <bind match="dataRef" ref="$.GS_BADRC.NAME1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="D9458E9E-8343-447E-B86D-295B3F1819F7">Name</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="80"/>
+               </value>
+               <desc>
+                  <text name="Schema Annotation">Name 1</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField024370" name="GSTIN" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="36"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.BUYERDTLS.GSTIN"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="A0169AD0-2655-4CDE-88D4-8F6C86FBE425">Tax Number 3</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField015350" name="LGLNM" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="70"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.BUYERDTLS.LGLNM"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="AC6B5003-2D93-41AF-86C3-EEC5B674FB16">Name 1</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField015006" name="ADDR1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="120"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.BUYERDTLS.ADDR1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="22E16E3C-E6ED-4742-B989-9D25D06EB413">Street</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField031101" name="ADDR2" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="20"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.BUYERDTLS.ADDR2"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="5EE5AFC3-36C6-46D7-9A60-EFBB0341306C">House No.</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField024393" name="STRAS" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="70"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_KNA1.STRAS"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="EDC657CA-A75D-419D-8E9F-08B24A0AAC63">Street 2</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Street and House Number</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField003548" name="ORT01" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="70"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_KNA1.ORT01"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="74A82CF0-9D55-4B8D-A29F-B75A533CBD6E">City</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">City</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField019629" name="LOC" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="70"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.BUYERDTLS.LOC"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="DDDB48CC-B9E3-4EE4-A04E-6FC208612CEB">District</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField012623" name="PIN" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="20"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.BUYERDTLS.PIN"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="52B684A2-A898-4822-9A21-1865484E8A37">PostalCode</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField024084" name="STATE" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="80"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_SADRC.STATE"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="F3520738-9F0D-416B-87FB-8D47693D761B">Data line</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Extension (only for data conversion) (e.g. data line)</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField019954" name="REGIO" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="6"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_KNA1.REGIO"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="D1C72DBD-2462-4123-A565-F1EEB11F8641">Rg</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">Region (State, Province, County)</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField018756" name="TELF1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="32"/>
+               </value>
+               <bind match="dataRef" ref="$.GS_KNA1.TELF1"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="75AB6E64-54A8-46C7-B2FA-75C1356BBCB2">Telephone 1</text>
+                  </value>
+               </caption>
+               <desc>
+                  <text name="Schema Annotation">First telephone number</text>
+               </desc>
+            </field>
+            <traversal>
+               <traverse ref="HSN[0]"/>
+               <traverse operation="first" ref="Table1[0]"/>
+            </traversal>
+            <keep intact="none"/>
+            <field access="readOnly" h="9mm" id="floatingField031115" name="PO_NUMBER" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="10"/>
+               </value>
+               <bind match="dataRef" ref="$.PO_NUMBER"/>
+               <desc>
+                  <text name="Schema Annotation">Purchasing Document Number</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField009961" name="SELLER_INVOICENO" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="10"/>
+               </value>
+               <bind match="dataRef" ref="$.SELLER_INVOICENO"/>
+               <desc>
+                  <text name="Schema Annotation">Billing Document</text>
+               </desc>
+            </field>
+            <draw h="31.75mm" name="Cell2" w="41.275mm" x="149.225mm" y="9.525mm">
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden" thickness="0.1778mm"/>
+                  <edge/>
+                  <edge/>
+                  <edge/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+               </border>
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="3406FB47-EB2C-4146-A621-265B2421ACE3">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in">Ref. Inv<span style="xfa-tab-count:1">         </span>:<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField009961" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes">  </span></p><p style="letter-spacing:0in">Po.reff<span style="xfa-tab-count:1">         </span>:<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField031115" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p></body>
+                  </exData>
+               </value>
+            </draw>
+            <field access="readOnly" h="9mm" id="floatingField024626" name="LGLNM" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="40"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.LGLNM"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField005537" name="STREET" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="60"/>
+               </value>
+               <bind match="dataRef" ref="$.WA_ADRC_HEAD.STREET"/>
+               <desc>
+                  <text name="Schema Annotation">Street</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField021538" name="ADDR2" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="40"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.ADDR2"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField016118" name="LOC" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="40"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.LOC"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField002082" name="PIN" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="10"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.PIN"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField022929" name="GSTIN" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="18"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.GSTIN"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField016541" name="PH" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="30"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.PH"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <field access="readOnly" h="9mm" id="floatingField004833" name="ADDR1" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="10"/>
+               </value>
+               <bind match="dataRef" ref="$.IS_BIL_INVOICE.SELLERDTLS.ADDR1"/>
+               <desc>
+                  <text name="Schema Annotation">Field Value</text>
+               </desc>
+            </field>
+            <draw h="31.75mm" name="Cell3" w="53.975mm" x="95.25mm" y="9.525mm">
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden" thickness="0.1778mm"/>
+                  <edge/>
+                  <edge/>
+                  <edge/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+               </border>
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="75CBE2CF-1062-4A7E-BDC0-E197B55BCF56">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="font-weight:normal;letter-spacing:0in">Shipping Details:<span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span xfa:embed="#floatingField015350" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in"><span xfa:embed="#floatingField015006" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span xfa:embed="#floatingField031101" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField024393" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes">   </span></p><p style="letter-spacing:0in"><span xfa:embed="#floatingField003548" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField019629" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes">  </span>-<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField012623" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in"><span xfa:embed="#floatingField024084" xfa:embedMode="raw" xfa:embedType="uri"/>-<span xfa:embed="#floatingField019954" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in">Tel.No:<span xfa:embed="#floatingField018756" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in">GSTIN:<span xfa:embed="#floatingField024370" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p></body>
+                  </exData>
+               </value>
+               <traversal>
+                  <traverse ref="HSN[0]"/>
+               </traversal>
+            </draw>
+            <draw h="31.75mm" name="Cell1" w="53.975mm" x="41.275mm" y="9.525mm">
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden" thickness="0.1778mm"/>
+                  <edge/>
+                  <edge/>
+                  <edge/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+               </border>
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="A65DBE6E-0125-4CE9-AB73-0C2D34FA8D64">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="font-weight:normal;text-decoration:none;letter-spacing:0in">Billing Details:</p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField004966" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField001842" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField000288" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField030106" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField023805" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField015890" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes">  </span>-<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField022648" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField009040" xfa:embedMode="raw" xfa:embedType="uri"/>-<span xfa:embed="#floatingField008942" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="text-decoration:none;letter-spacing:0in">Tel.No:<span xfa:embed="#floatingField019264" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField006729" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span></p><p style="text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p></body>
+                  </exData>
+               </value>
+            </draw>
+            <field access="readOnly" h="9mm" id="floatingField019169" name="IRN" presence="hidden" w="62mm" x="0mm" y="0mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <text maxChars="64"/>
+               </value>
+               <bind match="dataRef" ref="$.IRN"/>
+               <desc>
+                  <text name="Schema Annotation">Invoice Reference Number</text>
+               </desc>
+            </field>
+            <draw h="6.35mm" name="Cell1" w="190.5mm" y="41.275mm">
+               <border>
+                  <edge/>
+                  <corner thickness="0.1778mm"/>
+               </border>
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="3DF21D69-1DA2-4137-AF8B-0D4FE1985192">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in">IRN No:<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField019169" xfa:embedMode="raw" xfa:embedType="uri"/><span style="letter-spacing:0em"><span style="xfa-spacerun:yes">    </span></span></p></body>
+                  </exData>
+               </value>
+            </draw>
+            <?templateDesigner expand 0?>
+            <draw h="31.75mm" name="Cell1" w="41.275mm" y="9.525mm">
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden" thickness="0.1778mm"/>
+                  <edge/>
+                  <edge/>
+                  <edge/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+                  <corner thickness="0.1778mm"/>
+               </border>
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+               <value>
+                  <exData contentType="text/html" xliff:rid="6AA3DC28-A34D-4B5E-AD20-A860EB41CA88">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="font-weight:bold;text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField024626" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-weight:bold;text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField004833" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField005537" xfa:embedMode="raw" xfa:embedType="uri"/><span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField021538" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="font-weight:bold;text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField016118" xfa:embedMode="raw" xfa:embedType="uri"/>-<span xfa:embed="#floatingField002082" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="font-weight:bold;text-decoration:none;letter-spacing:0in"><span xfa:embed="#floatingField016541" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="font-weight:bold;text-decoration:none;letter-spacing:0in"><span style="xfa-spacerun:yes">  </span></p><p style="font-weight:bold;text-decoration:none;letter-spacing:0in">GSTIN :<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField022929" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                  </exData>
+               </value>
+            </draw>
+         </subform>
+         <subform layout="lr-tb" name="Body" w="190.5mm">
+            <bind match="none"/>
+            <traversal>
+               <traverse operation="first" ref="GT_ITEM[0]"/>
+               <traverse ref="Text9[0]"/>
+            </traversal>
+            <draw h="4.528mm" name="Textlbl" w="187.325mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <font typeface="Arial"/>
+               <?renderCache.bounds 528166 10001 0 0 1417 1417 0 0?></draw>
+            <subform columnWidths="6.412mm 80.855mm 18.859mm 13.582mm 11.822mm 28.122mm 29.722mm" layout="table" name="GT_ITEM">
+               <border>
+                  <edge/>
+               </border>
+               <subform id="HeaderRow_ID" layout="row" name="HeaderRow">
+                  <assist role="TH"/>
+                  <draw h="0.281306in" name="Cell1">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="D9FB1226-75D7-4060-9131-FA22D1CAD8C4">S. No		</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                  </draw>
+                  <draw h="0.281306in">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <value>
+                        <text xliff:rid="D42E7374-B10E-4433-A971-1DDFD3F816E7">Product Name</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                  </draw>
+                  <draw h="0.281306in" name="Cell3">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="0ADB5AE5-60E3-4E0A-93B5-7409449D495D">HSN Code</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                  </draw>
+                  <draw h="0.281306in" name="Cell5">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="4FF89D33-2296-4DEC-A1B4-063E7AF746A1">Qty	</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                  </draw>
+                  <draw h="0.281306in" name="Cell6">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="9EB76D47-47D0-43CC-8FC6-30C4ED53FBFF">UOM</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                  </draw>
+                  <draw h="0.281306in" name="Cell7">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="796D939B-105B-48EE-B364-4B1F997FF6FE">Price</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                  </draw>
+                  <draw h="0.281306in" name="Cell13">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="B3BE4ABC-47D0-4223-B5DD-E333A539F69E">Total Value</text>
+                     </value>
+                     <font size="7pt" typeface="Arial" weight="bold"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                  </draw>
+                  <border>
+                     <edge presence="hidden"/>
+                  </border>
+                  <occur max="-1"/>
+                  <bind match="none"/>
+                  <traversal>
+                     <traverse operation="first" ref="Cell1[0]"/>
+                  </traversal>
+                  <?templateDesigner expand 0?></subform>
+               <subform layout="row" name="Row1">
+                  <assist role="TR"/>
+                  <field h="4mm" name="SLNO">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font size="7pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <bind match="dataRef" ref="$.SLNO"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                     <format>
+                        <picture>num{z,zz,zz9}</picture>
+                     </format>
+                  </field>
+                  <field h="4mm" name="PRDDESC">
+                     <ui>
+                        <textEdit>
+                           <margin/>
+                        </textEdit>
+                     </ui>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <value>
+                        <text maxChars="150"/>
+                     </value>
+                     <bind match="dataRef" ref="$.PRDDESC"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                  </field>
+                  <field h="4mm" name="HSNCD">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <value>
+                        <text maxChars="16"/>
+                     </value>
+                     <bind match="dataRef" ref="$.HSNCD"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                  </field>
+                  <field h="4mm" name="QTY">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <bind match="dataRef" ref="$.QTY"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                     <validate nullTest="error"/>
+                  </field>
+                  <field h="4mm" name="UNIT">
+                     <font size="7pt" typeface="Arial"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <value>
+                        <text maxChars="3"/>
+                     </value>
+                     <bind match="dataRef" ref="$.UNIT"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                  </field>
+                  <field h="4mm" name="UNITPRICE">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <bind match="dataRef" ref="$.UNITPRICE"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                     <format>
+                        <picture>null{}|zero{}|num{z,zz,zz9.99}</picture>
+                     </format>
+                     <validate nullTest="error"/>
+                  </field>
+                  <field h="4mm" name="TOTAMT">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <bind match="dataRef" ref="$.TOTAMT"/>
+                     <desc>
+                        <text name="Schema Annotation">Field Value</text>
+                     </desc>
+                     <format>
+                        <picture>null{}|zero{}|num{z,zz,zz9.99}</picture>
+                     </format>
+                     <validate nullTest="error"/>
+                  </field>
+                  <border>
+                     <edge presence="hidden"/>
+                  </border>
+                  <bind match="dataRef" ref="$.DATA[*]"/>
+                  <keep intact="none"/>
+                  <occur max="-1"/>
+                  <?templateDesigner expand 1?></subform>
+               <bind match="dataRef" ref="$.GT_ITEM"/>
+               <?templateDesigner rowpattern first:1, next:1, firstcolor:f0f0f0, nextcolor:ffffff, apply:0?>
+               <traversal>
+                  <traverse operation="first" ref="HeaderRow[0]"/>
+               </traversal>
+               <occur max="-1"/>
+               <overflow leader="HeaderRow"/>
+               <?templateDesigner expand 1?></subform>
+            <draw h="4.528mm" name="Text7" w="180.975mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <traversal>
+                  <traverse ref="HSN[0]"/>
+               </traversal>
+               <?renderCache.bounds 510166 10001 0 0 1417 1417 0 0?></draw>
+            <subform layout="lr-tb" name="HSN" w="190.5mm">
+               <bind match="none"/>
+               <subform columnWidths="7.7228mm 31.481mm 19.493mm 29.405mm 26.046mm" layout="table" name="GT_HSN">
+                  <border>
+                     <edge presence="hidden"/>
+                     <corner presence="hidden"/>
+                  </border>
+                  <subform id="HeaderRow_ID_copy1" layout="row" name="HeaderRow" y="0.021mm">
+                     <assist role="TH"/>
+                     <draw h="6.441mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="7EAC6AE3-B736-41BE-8F41-1D2D6B9BCF32">S. No</text>
+                        </value>
+                        <font size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <keep intact="none"/>
+                     </draw>
+                     <draw h="6.441mm" name="Cell3">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="97FB99B0-2CB6-44F9-BABD-5378EFCBFACE">HSN Code</text>
+                        </value>
+                        <font size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <keep intact="none"/>
+                     </draw>
+                     <draw h="6.441mm" name="Cell5">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="D06AD96E-C347-419E-B387-BB4183EB538B">Quantity</text>
+                        </value>
+                        <font size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <keep intact="none"/>
+                     </draw>
+                     <draw h="6.441mm" name="Cell6">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="D066DA12-FBDF-4EAA-ADE0-DDEB326114F8">UOM</text>
+                        </value>
+                        <font size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <keep intact="none"/>
+                     </draw>
+                     <draw h="6.441mm" name="Cell7">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="7BAA7F5E-9F75-43B1-BFE0-12E96C68C52E">Taxable Value</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <keep intact="none"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <occur max="-1"/>
+                     <bind match="none"/>
+                     <traversal>
+                        <traverse operation="first" ref="Cell1[0]"/>
+                     </traversal>
+                     <keep intact="none"/>
+                     <?templateDesigner expand 0?></subform>
+                  <subform layout="row" name="Row1" y="0.021mm">
+                     <assist role="TR"/>
+                     <field h="4mm" name="SLNO" y="0mm">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <bind match="dataRef" ref="$.SLNO"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <validate nullTest="error">
+                           <script contentType="application/x-javascript">//this.isNull || (this.rawValue &gt;= -2147483648 &amp;&amp; this.rawValue &lt;= 2147483647);
+
+</script>
+                        </validate>
+                        <format>
+                           <picture>num{z,zz,zz9}</picture>
+                        </format>
+                     </field>
+                     <field h="4.255mm" name="HSNCD" y="0mm">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <bind match="dataRef" ref="$.HSNCD"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                     </field>
+                     <field h="4mm" name="QTY" y="0mm">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <bind match="dataRef" ref="$.QTY"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <validate nullTest="error"/>
+                     </field>
+                     <field h="4mm" name="UNIT" y="0mm">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="center" vAlign="middle"/>
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <value>
+                           <text maxChars="3"/>
+                        </value>
+                        <bind match="dataRef" ref="$.UNIT"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                     </field>
+                     <field h="4mm" name="ASSAMT" y="0mm">
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <bind match="dataRef" ref="$.ASSAMT"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>null{}|zero{}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="dataRef" ref="$.DATA[*]"/>
+                     <occur max="-1"/>
+                     <?templateDesigner expand 1?></subform>
+                  <bind match="dataRef" ref="$.GT_HSN"/>
+                  <?templateDesigner rowpattern first:1, next:1, firstcolor:f0f0f0, nextcolor:ffffff, apply:0?>
+                  <traversal>
+                     <traverse operation="first" ref="HeaderRow[0]"/>
+                  </traversal>
+                  <occur max="-1"/>
+                  <subform layout="row" name="FooterRow" y="0.021mm">
+                     <assist role="TF"/>
+                     <field access="readOnly" h="9mm" id="floatingField006334" name="GV_TOT_STR" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <value>
+                           <text maxChars="1024"/>
+                        </value>
+                        <bind match="dataRef" ref="$record.GV_TOT_STR"/>
+                        <desc>
+                           <text name="Schema Annotation">Character 1024</text>
+                        </desc>
+                     </field>
+                     <draw colSpan="-1" h="16.941mm">
+                        <ui>
+                           <textEdit>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html" xliff:rid="D1BCE892-03DC-4FD6-A86E-C05110F38C9F">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in">Total Invoice Value(In Words):-<span style="xfa-spacerun:yes"> </span><span xfa:embed="#floatingField006334" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font baselineShift="0pt" size="8pt" typeface="Arial"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                           <edge presence="hidden"/>
+                           <edge presence="hidden"/>
+                           <edge presence="hidden"/>
+                           <corner presence="hidden" thickness="0.1778mm"/>
+                           <corner presence="hidden" thickness="0.1778mm"/>
+                           <corner presence="hidden" thickness="0.1778mm"/>
+                        </border>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <?templateDesigner expand 1?></subform>
+                  <?templateDesigner expand 1?></subform>
+               <traversal>
+                  <traverse operation="first" ref="GT_HSN[0]"/>
+               </traversal>
+               <draw h="4.669mm" name="Text7" w="28.727mm">
+                  <ui>
+                     <textEdit/>
+                  </ui>
+                  <font typeface="Arial"/>
+                  <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                  <?renderCache.bounds 78597 10401 0 0 1417 1417 0 0?></draw>
+               <subform columnWidths="22.052mm 18.534mm" layout="table" name="Table2">
+                  <border>
+                     <edge/>
+                  </border>
+                  <subform layout="row" name="Row5" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="707304B3-F7DC-487D-A10E-9E78EC01D470"> Total Amount</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField018716" name="ASSVAL" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.ASSVAL"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p><span xfa:embed="#floatingField018716" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <subform layout="row" name="Row6" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="398F5B11-D024-42E7-8AAD-CEE09BB19336"> SGST</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField012382" name="SGSTVAL" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.SGSTVAL"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p><span xfa:embed="#floatingField012382" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <subform layout="row" name="Row7" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="8641F38C-3EA6-42E6-AFE1-5987DF0CDF7E"> CGST</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField000292" name="CGSTVAL" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.CGSTVAL"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p><span xfa:embed="#floatingField000292" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <subform layout="row" name="Row8" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="78B05209-475B-471A-9197-6A5C5CB30978"> IGST</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField000153" name="IGSTVAL" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.IGSTVAL"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p><span xfa:embed="#floatingField000153" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <subform layout="row" name="Row9" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="96034AA0-38AB-4200-97F5-21ACDC864969"> Others</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField003902" name="OTHCHRG" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.OTHCHRG"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p><span xfa:embed="#floatingField003902" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <subform layout="row" name="Row10" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="8ED5FC51-AAB2-4140-A53B-75B3DD21B73C"> Rounding Off</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField005436" name="RNDOFFAMT" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.RNDOFFAMT"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p><span xfa:embed="#floatingField005436" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font size="7pt" typeface="Arial"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <subform layout="row" name="Row11" y="0mm">
+                     <assist role="TR"/>
+                     <draw h="4mm" name="Cell1">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <text xliff:rid="074A0A3F-4AD7-465A-96AC-8708E9A19018"> INVOICE VALUE</text>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <field access="readOnly" h="9mm" id="floatingField024464" name="TOTINVVAL" presence="hidden" w="62mm" x="0mm" y="0mm">
+                        <ui>
+                           <textEdit>
+                              <border>
+                                 <edge stroke="lowered"/>
+                              </border>
+                              <margin/>
+                           </textEdit>
+                        </ui>
+                        <font typeface="Arial"/>
+                        <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+                        <para vAlign="middle"/>
+                        <bind match="dataRef" ref="$.IS_BIL_INVOICE.VALDTLS.TOTINVVAL"/>
+                        <desc>
+                           <text name="Schema Annotation">Field Value</text>
+                        </desc>
+                        <format>
+                           <picture>zero{0.00}|num{z,zz,zz9.99}</picture>
+                        </format>
+                        <validate nullTest="error"/>
+                     </field>
+                     <draw h="4mm" name="Cell2">
+                        <border>
+                           <edge/>
+                           <corner thickness="0.1778mm"/>
+                        </border>
+                        <ui>
+                           <textEdit/>
+                        </ui>
+                        <value>
+                           <exData contentType="text/html">
+                              <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="letter-spacing:0in"><span xfa:embed="#floatingField024464" xfa:embedMode="raw" xfa:embedType="uri"/></p></body>
+                           </exData>
+                        </value>
+                        <font baselineShift="0pt" size="7pt" typeface="Arial" weight="bold"/>
+                        <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                        <para hAlign="right" marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                     </draw>
+                     <border>
+                        <edge presence="hidden"/>
+                     </border>
+                     <bind match="none"/>
+                     <?templateDesigner expand 1?></subform>
+                  <bind match="none"/>
+                  <?templateDesigner rowpattern first:1, next:1, firstcolor:f0f0f0, nextcolor:ffffff, apply:0?>
+                  <?templateDesigner expand 0?></subform>
+               <?templateDesigner expand 1?></subform>
+            <?templateDesigner expand 1?></subform>
+         <draw h="3.253mm" name="Text9" w="171.45mm">
+            <ui>
+               <textEdit/>
+            </ui>
+            <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+            <font baselineShift="0pt" size="6pt" typeface="Arial"/>
+            <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+            <traversal>
+               <traverse ref="Footer[0]"/>
+            </traversal>
+            <?renderCache.bounds 483166 6387 0 0 1417 1417 0 0?></draw>
+         <subform layout="lr-tb" name="Footer" w="190.5mm">
+            <bind match="none"/>
+            <traversal>
+               <traverse ref="Header[0].QRCodeBarcode1[0]"/>
+               <traverse operation="first" ref="Text6[0]"/>
+            </traversal>
+            <draw h="42.628mm" name="Text6" w="66.675mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <value>
+                  <exData contentType="text/html" xliff:rid="F721C5D0-4A77-4CBA-B5F2-A2DAB22683DE">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="text-align:justify;letter-spacing:0in">Sheenlac Paints Ltd</p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="letter-spacing:0in">Seal &amp; Sign:</p></body>
+                  </exData>
+               </value>
+               <font baselineShift="0pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden"/>
+               </border>
+               <traversal>
+                  <traverse ref="Text6[3]"/>
+               </traversal>
+            </draw>
+            <field access="readOnly" h="9mm" id="floatingField023811" name="GV_FOR_TEXT" presence="hidden" w="62mm">
+               <ui>
+                  <textEdit>
+                     <border>
+                        <edge stroke="lowered"/>
+                     </border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <bind match="dataRef" ref="$.GV_FOR_TEXT"/>
+               <caption>
+                  <value>
+                     <text xliff:rid="FBA0157F-B7AA-42AC-BA4E-AE5C5135E5FC">GV_FOR_TEXT</text>
+                  </value>
+               </caption>
+            </field>
+            <draw h="5.656mm" name="Text6" w="9.525mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="6pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden"/>
+               </border>
+               <?renderCache.bounds 24166 13199 0 0 1417 1417 0 0?></draw>
+            <field access="readOnly" h="34.925mm" name="QRCodeBarcode1" w="34.925mm">
+               <ui>
+                  <barcode dataLength="10" errorCorrectionLevel="1" moduleHeight="0.0090in" moduleWidth="0.0090in" type="QRCode"/>
+               </ui>
+               <value>
+                  <text xliff:rid="1B07C414-7B88-45A6-8F7D-2116A0334716">1234567890</text>
+               </value>
+               <bind match="none"/>
+               <event activity="initialize" name="event__initialize">
+                  <script>$.rawValue = $record.GV_QRCODE;
+//$.rawValue = concat($record.LV_QRCODE, 
+//					$record.LV_QRCODE1, 
+//					$record.LV_QRCODE2, 
+//					$record.LV_QRCODE3, 
+//					$record.LV_QRCODE4, 
+//					$record.LV_QRCODE5, 
+//					$record.LV_QRCODE6);
+//
+</script>
+               </event>
+               <border>
+                  <edge presence="hidden" thickness="0.1905mm"/>
+                  <corner presence="hidden" thickness="0.191mm"/>
+                  <edge presence="hidden"/>
+                  <edge presence="hidden"/>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden"/>
+                  <corner presence="hidden"/>
+                  <corner presence="hidden"/>
+               </border>
+            </field>
+            <draw h="5.656mm" name="Text6" w="19.008mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <font baselineShift="0pt" size="6pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden"/>
+               </border>
+               <?renderCache.bounds 51047 13199 0 0 1417 1417 0 0?></draw>
+            <draw h="42.767mm" name="Text6" w="57.15mm">
+               <ui>
+                  <textEdit/>
+               </ui>
+               <value>
+                  <exData contentType="text/html" xliff:rid="AA0F5422-4EC7-4FF0-9DCF-96B236648114">
+                     <body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/"><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span xfa:embed="#floatingField023811" xfa:embedMode="raw" xfa:embedType="uri"/></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes"> </span></p><p style="font-family:'Myriad Pro';font-weight:bold;letter-spacing:0in"><span style="xfa-spacerun:yes">        </span>Authorised Signatory<span style="xfa-spacerun:yes"> </span></p></body>
+                  </exData>
+               </value>
+               <font baselineShift="0pt" typeface="Arial"/>
+               <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+               <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt"/>
+               <border>
+                  <edge presence="hidden"/>
+                  <corner presence="hidden"/>
+               </border>
+               <traversal>
+                  <traverse ref="Text6[1]"/>
+               </traversal>
+            </draw>
+            <keep intact="contentArea"/>
+            <?templateDesigner expand 0?>
+            <border>
+               <edge/>
+               <corner/>
+            </border>
+         </subform>
+         <?templateDesigner expand 1?></subform>
+      <desc>
+         <text name="version">11.0.9.20201112.2.940716.934558</text>
+      </desc>
+      <?templateDesigner expand 1?>
+      <?renderCache.subset "Arial" 0 0 ISO-8859-1 4 224 56 00030009000B000C00100011001400150016001D002400250026002700280029002A002B002C002F003000310032003300350036003700380039003A003B0042004400450046004700480049004A004B004C004E004F005000510052005300550056005700580059005B005C005E0060 &()-.123:ABCDEFGHILMNOPRSTUVWX_abcdefghiklmnoprstuvxy{}?>
+      <?renderCache.subset "Arial" 1 0 ISO-8859-1 4 204 51 0003000B000C001000110013001400150016001A001D002400250026002700280029002A002B002C002F0030003100320033003400350036003700380039003C0042004400450046004700480049004C004F005000510052005500570058005B005C005E0060 ()-.01237:ABCDEFGHILMNOPQRSTUVY_abcdefilmnortuxy{}?>
+      <?renderCache.subset "Myriad Pro" 1 0 ISO-8859-1 4 108 27 00010022002600270028003000330034003500370039004000420045004600480049004A004F00500053005400550056005A005C005E AEFGORSTVX_adeghinorstuy{}?></subform>
+   <?templateDesigner DefaultPreviewDynamic 1?>
+   <?templateDesigner DefaultRunAt client?>
+   <?templateDesigner WidowOrphanControl 0?>
+   <?templateDesigner DefaultCaptionFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultValueFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultLanguage JavaScript?>
+   <?acrobat JavaScript strictScoping?>
+   <?templateDesigner SaveTaggedPDF 1?>
+   <?templateDesigner SavePDFWithEmbeddedFonts 1?>
+   <?templateDesigner Grid show:1, snap:1, units:0, color:ff8080, origin:(0,0), interval:(125000,125000), objsnap:0, guidesnap:0, pagecentersnap:0?>
+   <?templateDesigner FormTargetVersion 33?>
+   <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
+   <?templateDesigner Zoom 132?></template>
+<config xmlns="http://www.xfa.org/schema/xci/3.0/">
+   <agent name="designer">
+      <!--  [0..n]  -->
+      <destination>pdf</destination>
+      <pdf>
+         <!--  [0..n]  -->
+         <fontInfo/>
+      </pdf>
+      <common>
+         <template>
+            <base>http://DEVQASAPP:8011/sap/bc/fp/form/layout/</base>
+         </template>
+      </common>
+   </agent>
+   <present>
+      <!--  [0..n]  -->
+      <pdf>
+         <!--  [0..n]  -->
+         <version>1.7</version>
+         <adobeExtensionLevel>8</adobeExtensionLevel>
+      </pdf>
+      <common>
+         <data>
+            <xsl>
+               <uri/>
+            </xsl>
+            <outputXSL>
+               <uri/>
+            </outputXSL>
+         </data>
+      </common>
+      <xdp>
+         <packets>*</packets>
+      </xdp>
+   </present>
+</config>
+<connectionSet xmlns="http://www.xfa.org/schema/xfa-connection-set/2.8/">
+   <xsdConnection dataDescription="data" name="ZSD_IRN_QR_EINVOICE_RETURN">
+      <uri/>
+      <rootElement>data</rootElement>
+   </xsdConnection>
+</connectionSet>
+<xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
+   <xfa:data xfa:dataNode="dataGroup"/>
+   <dd:dataDescription xmlns:dd="http://ns.adobe.com/data-description/" dd:name="data">
+      <data>
+         <GT_ITEM dd:minOccur="0">
+            <DATA dd:maxOccur="-1">
+               <SLNO/>
+               <PRDDESC/>
+               <ISSERVC/>
+               <HSNCD/>
+               <QTY/>
+               <FREEQTY/>
+               <UNIT/>
+               <UNITPRICE/>
+               <TOTAMT/>
+               <DISCOUNT/>
+               <PRETAXVAL/>
+               <ASSAMT/>
+               <GSTRT/>
+               <IGSTAMT/>
+               <CGSTAMT/>
+               <SGSTAMT/>
+               <CESAMT/>
+               <CESRT/>
+               <CESNONADVLAMT/>
+               <STATECESRT/>
+               <STATECESAMT/>
+               <STATECESNONADVLAMT/>
+               <OTHCHRG/>
+               <TOTITEMVAL/>
+            </DATA>
+         </GT_ITEM>
+         <WA_ADRC_HEAD>
+            <CLIENT/>
+            <ADDRNUMBER/>
+            <DATE_FROM/>
+            <NATION/>
+            <DATE_TO/>
+            <TITLE/>
+            <NAME1/>
+            <NAME2/>
+            <NAME3/>
+            <NAME4/>
+            <NAME_TEXT/>
+            <NAME_CO/>
+            <CITY1/>
+            <CITY2/>
+            <CITY_CODE/>
+            <CITYP_CODE/>
+            <HOME_CITY/>
+            <CITYH_CODE/>
+            <CHCKSTATUS/>
+            <REGIOGROUP/>
+            <POST_CODE1/>
+            <POST_CODE2/>
+            <POST_CODE3/>
+            <PCODE1_EXT/>
+            <PCODE2_EXT/>
+            <PCODE3_EXT/>
+            <PO_BOX/>
+            <DONT_USE_P/>
+            <PO_BOX_NUM/>
+            <PO_BOX_LOC/>
+            <CITY_CODE2/>
+            <PO_BOX_REG/>
+            <PO_BOX_CTY/>
+            <POSTALAREA/>
+            <TRANSPZONE/>
+            <STREET/>
+            <DONT_USE_S/>
+            <STREETCODE/>
+            <STREETABBR/>
+            <HOUSE_NUM1/>
+            <HOUSE_NUM2/>
+            <HOUSE_NUM3/>
+            <STR_SUPPL1/>
+            <STR_SUPPL2/>
+            <STR_SUPPL3/>
+            <LOCATION/>
+            <BUILDING/>
+            <FLOOR/>
+            <ROOMNUMBER/>
+            <COUNTRY/>
+            <LANGU/>
+            <REGION/>
+            <ADDR_GROUP/>
+            <FLAGGROUPS/>
+            <PERS_ADDR/>
+            <SORT1/>
+            <SORT2/>
+            <SORT_PHN/>
+            <DEFLT_COMM/>
+            <TEL_NUMBER/>
+            <TEL_EXTENS/>
+            <FAX_NUMBER/>
+            <FAX_EXTENS/>
+            <FLAGCOMM2/>
+            <FLAGCOMM3/>
+            <FLAGCOMM4/>
+            <FLAGCOMM5/>
+            <FLAGCOMM6/>
+            <FLAGCOMM7/>
+            <FLAGCOMM8/>
+            <FLAGCOMM9/>
+            <FLAGCOMM10/>
+            <FLAGCOMM11/>
+            <FLAGCOMM12/>
+            <FLAGCOMM13/>
+            <ADDRORIGIN/>
+            <MC_NAME1/>
+            <MC_CITY1/>
+            <MC_STREET/>
+            <EXTENSION1/>
+            <EXTENSION2/>
+            <TIME_ZONE/>
+            <TAXJURCODE/>
+            <ADDRESS_ID/>
+            <LANGU_CREA/>
+            <ADRC_UUID/>
+            <UUID_BELATED/>
+            <ID_CATEGORY/>
+            <ADRC_ERR_STATUS/>
+            <PO_BOX_LOBBY/>
+            <DELI_SERV_TYPE/>
+            <DELI_SERV_NUMBER/>
+            <COUNTY_CODE/>
+            <COUNTY/>
+            <TOWNSHIP_CODE/>
+            <TOWNSHIP/>
+            <MC_COUNTY/>
+            <MC_TOWNSHIP/>
+            <XPCPT/>
+            <X_DATAAGING/>
+            <DUNS/>
+            <DUNSP4/>
+         </WA_ADRC_HEAD>
+         <GT_HSN dd:minOccur="0">
+            <DATA dd:maxOccur="-1">
+               <SLNO/>
+               <PRDDESC/>
+               <ISSERVC/>
+               <HSNCD/>
+               <QTY/>
+               <FREEQTY/>
+               <UNIT/>
+               <UNITPRICE/>
+               <TOTAMT/>
+               <DISCOUNT/>
+               <PRETAXVAL/>
+               <ASSAMT/>
+               <GSTRT/>
+               <IGSTAMT/>
+               <CGSTAMT/>
+               <SGSTAMT/>
+               <CESAMT/>
+               <CESRT/>
+               <CESNONADVLAMT/>
+               <STATECESRT/>
+               <STATECESAMT/>
+               <STATECESNONADVLAMT/>
+               <OTHCHRG/>
+               <TOTITEMVAL/>
+            </DATA>
+         </GT_HSN>
+         <GS_TOTAL>
+            <TAX_VAL/>
+            <TOTAL/>
+            <CGST/>
+            <SGST/>
+            <IGST/>
+            <TCSV/>
+            <FKIMG/>
+            <DISCOUNT/>
+            <R1/>
+            <R2/>
+            <R4/>
+            <VOLUM1/>
+         </GS_TOTAL>
+         <LV_TTOT_QTY/>
+         <GV_QRCODE/>
+         <GV_IRN/>
+         <GS_TRANSDTLS>
+            <MANDT/>
+            <BUKRS/>
+            <DOCTYP/>
+            <DOCNO/>
+            <GJAHR/>
+            <EBILLNO/>
+            <VEHNO/>
+            <TRANSID/>
+            <TRANSNAME/>
+            <VEHTYP/>
+            <TRANSMODE/>
+            <DISTANCE/>
+            <TRANSDOC/>
+            <TRANSDT/>
+            <STATUS/>
+            <ERNAM/>
+            <ERDAT/>
+            <ERZET/>
+            <AEDAT/>
+            <AENAM/>
+            <AEZET/>
+         </GS_TRANSDTLS>
+         <GV_EWB_EXPDATE/>
+         <GV_EWBNO/>
+         <GV_EWBDAT/>
+         <GV_TOT_STR/>
+         <GS_TOTAL1>
+            <TAX_VAL/>
+            <TOTAL/>
+            <CGST/>
+            <SGST/>
+            <IGST/>
+            <TCSV/>
+            <FKIMG/>
+            <DISCOUNT/>
+            <R1/>
+            <R2/>
+            <R4/>
+            <VOLUM1/>
+         </GS_TOTAL1>
+         <GV_ROUND_OFF/>
+         <GV_TOT_INV/>
+         <LV_DISC/>
+         <LV_TCSPRC/>
+         <GV_HEADERTXT/>
+         <GV_FOR_TEXT/>
+         <GV_REG_ADD1/>
+         <GV_REG_ADD2/>
+         <GV_REG_ADD3/>
+         <WA_ADRC>
+            <CLIENT/>
+            <ADDRNUMBER/>
+            <DATE_FROM/>
+            <NATION/>
+            <DATE_TO/>
+            <TITLE/>
+            <NAME1/>
+            <NAME2/>
+            <NAME3/>
+            <NAME4/>
+            <NAME_TEXT/>
+            <NAME_CO/>
+            <CITY1/>
+            <CITY2/>
+            <CITY_CODE/>
+            <CITYP_CODE/>
+            <HOME_CITY/>
+            <CITYH_CODE/>
+            <CHCKSTATUS/>
+            <REGIOGROUP/>
+            <POST_CODE1/>
+            <POST_CODE2/>
+            <POST_CODE3/>
+            <PCODE1_EXT/>
+            <PCODE2_EXT/>
+            <PCODE3_EXT/>
+            <PO_BOX/>
+            <DONT_USE_P/>
+            <PO_BOX_NUM/>
+            <PO_BOX_LOC/>
+            <CITY_CODE2/>
+            <PO_BOX_REG/>
+            <PO_BOX_CTY/>
+            <POSTALAREA/>
+            <TRANSPZONE/>
+            <STREET/>
+            <DONT_USE_S/>
+            <STREETCODE/>
+            <STREETABBR/>
+            <HOUSE_NUM1/>
+            <HOUSE_NUM2/>
+            <HOUSE_NUM3/>
+            <STR_SUPPL1/>
+            <STR_SUPPL2/>
+            <STR_SUPPL3/>
+            <LOCATION/>
+            <BUILDING/>
+            <FLOOR/>
+            <ROOMNUMBER/>
+            <COUNTRY/>
+            <LANGU/>
+            <REGION/>
+            <ADDR_GROUP/>
+            <FLAGGROUPS/>
+            <PERS_ADDR/>
+            <SORT1/>
+            <SORT2/>
+            <SORT_PHN/>
+            <DEFLT_COMM/>
+            <TEL_NUMBER/>
+            <TEL_EXTENS/>
+            <FAX_NUMBER/>
+            <FAX_EXTENS/>
+            <FLAGCOMM2/>
+            <FLAGCOMM3/>
+            <FLAGCOMM4/>
+            <FLAGCOMM5/>
+            <FLAGCOMM6/>
+            <FLAGCOMM7/>
+            <FLAGCOMM8/>
+            <FLAGCOMM9/>
+            <FLAGCOMM10/>
+            <FLAGCOMM11/>
+            <FLAGCOMM12/>
+            <FLAGCOMM13/>
+            <ADDRORIGIN/>
+            <MC_NAME1/>
+            <MC_CITY1/>
+            <MC_STREET/>
+            <EXTENSION1/>
+            <EXTENSION2/>
+            <TIME_ZONE/>
+            <TAXJURCODE/>
+            <ADDRESS_ID/>
+            <LANGU_CREA/>
+            <ADRC_UUID/>
+            <UUID_BELATED/>
+            <ID_CATEGORY/>
+            <ADRC_ERR_STATUS/>
+            <PO_BOX_LOBBY/>
+            <DELI_SERV_TYPE/>
+            <DELI_SERV_NUMBER/>
+            <COUNTY_CODE/>
+            <COUNTY/>
+            <TOWNSHIP_CODE/>
+            <TOWNSHIP/>
+            <MC_COUNTY/>
+            <MC_TOWNSHIP/>
+            <XPCPT/>
+            <X_DATAAGING/>
+            <DUNS/>
+            <DUNSP4/>
+         </WA_ADRC>
+         <LV_PLANT_GSTIN/>
+         <LV_CUST_GSTIN/>
+         <GS_BADRC>
+            <ADDRNUMBER/>
+            <NAME1/>
+            <CITY1/>
+            <CITY2/>
+            <POST_CODE1/>
+            <STREET/>
+            <HOUSE_NUM1/>
+            <STR_SUPPL1/>
+            <COUNTRY/>
+            <REGION/>
+            <TEL_NUMBER/>
+            <STATE/>
+         </GS_BADRC>
+         <GS_SADRC>
+            <ADDRNUMBER/>
+            <NAME1/>
+            <POST_CODE1/>
+            <STREET/>
+            <HOUSE_NUM1/>
+            <STR_SUPPL1/>
+            <REGION/>
+            <TEL_NUMBER/>
+            <MC_CITY1/>
+            <STATE/>
+         </GS_SADRC>
+         <GS_BILL_TO>
+            <NAME1/>
+            <NAME2/>
+            <STREET/>
+            <CITY1/>
+            <POST_CODE1/>
+            <REGION/>
+            <COUNTRY/>
+            <STATE/>
+            <STATE_CODE/>
+            <STATE_DESC/>
+            <GSTIN/>
+         </GS_BILL_TO>
+         <GS_SH_TO>
+            <NAME1/>
+            <NAME2/>
+            <STREET/>
+            <CITY1/>
+            <POST_CODE1/>
+            <REGION/>
+            <COUNTRY/>
+            <STATE/>
+            <STATE_CODE/>
+            <STATE_DESC/>
+            <GSTIN/>
+         </GS_SH_TO>
+         <GS_KNA1>
+            <KUNNR/>
+            <NAME1/>
+            <ORT01/>
+            <PSTLZ/>
+            <REGIO/>
+            <STRAS/>
+            <TELF1/>
+            <ORT02/>
+            <STCD3/>
+         </GS_KNA1>
+         <LV_HEADING/>
+         <LV_BIL_NUM_HEADING/>
+         <LV_BIL_ADDR_TITLE1/>
+         <LV_BIL_ADDR_TITLE2/>
+         <GV_BILL_DATE/>
+         <GV_TOTAL_WEIGHT/>
+         <IS_BIL_INVOICE>
+            <DISTRIBUTOR/>
+            <BODY>
+               <IRN/>
+               <VERSION/>
+               <TRANDTLS>
+                  <TAXSCH/>
+                  <SUPTYP/>
+                  <REGREV/>
+               </TRANDTLS>
+            </BODY>
+            <DOCDTLS>
+               <TYP/>
+               <NO/>
+               <DT/>
+            </DOCDTLS>
+            <SELLERDTLS>
+               <GSTIN/>
+               <LGLNM/>
+               <TRDNM/>
+               <ADDR1/>
+               <ADDR2/>
+               <LOC/>
+               <PIN/>
+               <STCD/>
+               <PH/>
+               <EM/>
+            </SELLERDTLS>
+            <BUYERDTLS>
+               <GSTIN/>
+               <LGLNM/>
+               <TRDNM/>
+               <POS/>
+               <ADDR1/>
+               <ADDR2/>
+               <LOC/>
+               <PIN/>
+               <STCD/>
+            </BUYERDTLS>
+            <ITEMLIST dd:minOccur="0">
+               <DATA dd:maxOccur="-1">
+                  <SLNO/>
+                  <PRDDESC/>
+                  <ISSERVC/>
+                  <HSNCD/>
+                  <QTY/>
+                  <FREEQTY/>
+                  <UNIT/>
+                  <UNITPRICE/>
+                  <TOTAMT/>
+                  <DISCOUNT/>
+                  <PRETAXVAL/>
+                  <ASSAMT/>
+                  <GSTRT/>
+                  <IGSTAMT/>
+                  <CGSTAMT/>
+                  <SGSTAMT/>
+                  <CESAMT/>
+                  <CESRT/>
+                  <CESNONADVLAMT/>
+                  <STATECESRT/>
+                  <STATECESAMT/>
+                  <STATECESNONADVLAMT/>
+                  <OTHCHRG/>
+                  <TOTITEMVAL/>
+               </DATA>
+            </ITEMLIST>
+            <VALDTLS>
+               <ASSVAL/>
+               <CGSTVAL/>
+               <SGSTVAL/>
+               <IGSTVAL/>
+               <CESVAL/>
+               <STCESVAL/>
+               <DISCOUNT/>
+               <OTHCHRG/>
+               <RNDOFFAMT/>
+               <TOTINVVAL/>
+               <TOTINVVALFC/>
+            </VALDTLS>
+            <EWBDTLS>
+               <TRANSID/>
+               <TRANSNAME/>
+               <TRANSMODE/>
+               <DISTANCE/>
+               <TRANSDOCNO/>
+               <TRANSDOCDT/>
+               <VEHNO/>
+               <VEHTYPE/>
+            </EWBDTLS>
+         </IS_BIL_INVOICE>
+         <INV_NO/>
+         <INV_DATE/>
+         <IRN/>
+         <SIGNED_INV/>
+         <PO_NUMBER/>
+         <SELLER_INVOICENO/>
+      </data>
+   </dd:dataDescription>
+</xfa:datasets>
+<localeSet xmlns="http://www.xfa.org/schema/xfa-locale-set/2.7/">
+   <locale desc="English (India)" name="en_IN">
+      <calendarSymbols name="gregorian">
+         <monthNames>
+            <month>January</month>
+            <month>February</month>
+            <month>March</month>
+            <month>April</month>
+            <month>May</month>
+            <month>June</month>
+            <month>July</month>
+            <month>August</month>
+            <month>September</month>
+            <month>October</month>
+            <month>November</month>
+            <month>December</month>
+         </monthNames>
+         <monthNames abbr="1">
+            <month>Jan</month>
+            <month>Feb</month>
+            <month>Mar</month>
+            <month>Apr</month>
+            <month>May</month>
+            <month>Jun</month>
+            <month>Jul</month>
+            <month>Aug</month>
+            <month>Sep</month>
+            <month>Oct</month>
+            <month>Nov</month>
+            <month>Dec</month>
+         </monthNames>
+         <dayNames>
+            <day>Sunday</day>
+            <day>Monday</day>
+            <day>Tuesday</day>
+            <day>Wednesday</day>
+            <day>Thursday</day>
+            <day>Friday</day>
+            <day>Saturday</day>
+         </dayNames>
+         <dayNames abbr="1">
+            <day>Sun</day>
+            <day>Mon</day>
+            <day>Tue</day>
+            <day>Wed</day>
+            <day>Thu</day>
+            <day>Fri</day>
+            <day>Sat</day>
+         </dayNames>
+         <meridiemNames>
+            <meridiem>AM</meridiem>
+            <meridiem>PM</meridiem>
+         </meridiemNames>
+         <eraNames>
+            <era>BC</era>
+            <era>AD</era>
+         </eraNames>
+      </calendarSymbols>
+      <datePatterns>
+         <datePattern name="full">EEEE D MMMM YYYY</datePattern>
+         <datePattern name="long">D MMMM YYYY</datePattern>
+         <datePattern name="med">DD-MMM-YY</datePattern>
+         <datePattern name="short">DD/MM/YY</datePattern>
+      </datePatterns>
+      <timePatterns>
+         <timePattern name="full">h:MM:SS A Z</timePattern>
+         <timePattern name="long">h:MM:SS A Z</timePattern>
+         <timePattern name="med">h:MM:SS A</timePattern>
+         <timePattern name="short">h:MM A</timePattern>
+      </timePatterns>
+      <dateTimeSymbols>GyMdkHmsSEDFwWahKzZ</dateTimeSymbols>
+      <numberPatterns>
+         <numberPattern name="numeric">z,zz,zz9.zzz</numberPattern>
+         <numberPattern name="currency">$ z,zz,zz9.99</numberPattern>
+         <numberPattern name="percent">z,zz,zz9%</numberPattern>
+      </numberPatterns>
+      <numberSymbols>
+         <numberSymbol name="decimal">.</numberSymbol>
+         <numberSymbol name="grouping">,</numberSymbol>
+         <numberSymbol name="percent">%</numberSymbol>
+         <numberSymbol name="minus">-</numberSymbol>
+         <numberSymbol name="zero">0</numberSymbol>
+      </numberSymbols>
+      <currencySymbols>
+         <currencySymbol name="symbol">Rs.</currencySymbol>
+         <currencySymbol name="isoname">INR</currencySymbol>
+         <currencySymbol name="decimal">.</currencySymbol>
+      </currencySymbols>
+      <typefaces>
+         <typeface name="Myriad Pro"/>
+         <typeface name="Minion Pro"/>
+         <typeface name="Courier Std"/>
+         <typeface name="Adobe Pi Std"/>
+         <typeface name="Adobe Hebrew"/>
+         <typeface name="Adobe Arabic"/>
+         <typeface name="Adobe Thai"/>
+         <typeface name="Kozuka Gothic Pro-VI M"/>
+         <typeface name="Kozuka Mincho Pro-VI R"/>
+         <typeface name="Adobe Ming Std L"/>
+         <typeface name="Adobe Song Std L"/>
+         <typeface name="Adobe Myungjo Std M"/>
+         <typeface name="Adobe Devanagari"/>
+      </typefaces>
+   </locale>
+</localeSet>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c015 81.161580, 2017/12/01-01:38:21        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description xmlns:desc="http://ns.adobe.com/xfa/promoted-desc/" xmlns:pdf="http://ns.adobe.com/pdf/1.3/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
+         <xmp:MetadataDate>2024-04-24T05:03:19Z</xmp:MetadataDate>
+         <xmp:CreatorTool>Adobe LiveCycle Designer 11.0</xmp:CreatorTool>
+         <pdf:Producer>Adobe LiveCycle Designer 11.0</pdf:Producer>
+         <xmpMM:DocumentID>uuid:cff08329-8923-48f0-9d94-457a6b294f80</xmpMM:DocumentID>
+         <desc:version rdf:parseType="Resource">
+            <rdf:value>11.0.9.20201112.2.940716.934558</rdf:value>
+            <desc:ref>/template/subform[1]</desc:ref>
+         </desc:version>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta></xdp:xdp>

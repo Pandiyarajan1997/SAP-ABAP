@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SICF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <URL>/sap/ZAPI_SERVICE/</URL>
+   <ICFSERVICE>
+    <ICF_NAME>ZAPI_SERVICE</ICF_NAME>
+    <HTTPCDE500>2</HTTPCDE500>
+    <HTTPCDE401>2</HTTPCDE401>
+    <HTTPCDELPAG>2</HTTPCDELPAG>
+    <HTTPCDENFPAG>2</HTTPCDENFPAG>
+    <ORIG_NAME>ZAPI_SERVICE</ORIG_NAME>
+   </ICFSERVICE>
+   <ICFDOCU>
+    <ICF_NAME>ZAPI_SERVICE</ICF_NAME>
+    <ICF_LANGU>E</ICF_LANGU>
+    <ICF_DOCU>API Vendor Portal Service</ICF_DOCU>
+   </ICFDOCU>
+  </asx:values>
+ </asx:abap>
+</abapGit>

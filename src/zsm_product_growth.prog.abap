@@ -1,0 +1,1019 @@
+
+**&---------------------------------------------------------------------*
+**& Report  ZPO_PRICING_COND_DETAILS
+**&
+**&---------------------------------------------------------------------*
+*&Functional                   : Mr. Manikandan T                      *
+*& Developer                   : Mr. Manikandan T                      *
+*& Modified  On                :                                       *
+*& Company                     : Sheenlac Paints Pvt Ltd               *
+*& Verified By                 :                          *
+*& Title                       : SM Product Growth Report              *
+*& Report Name                 : SM Product Growth Report              *
+*& Development Id              : kpabap                                *
+*& Related Information         : SM Product Growth Report              *
+**&---------------------------------------------------------------------*
+*
+
+
+REPORT ZSM_PRODUCT_GROWTH.
+
+
+
+*pools decleration
+
+TYPE-POOLS:SLIS.
+
+
+*Tables decleration
+
+
+TABLES:VBRK,VBRP,KNVP,KNVV,T023,T023T,T001W,PA0001.
+
+
+*Structure  decleration
+
+
+TYPES: BEGIN OF STR_VBRK,
+        VBELN TYPE VBRK-VBELN,
+        FKART TYPE VBRK-FKART,
+        VKORG TYPE VBRK-VKORG,
+        VTWEG TYPE VBRK-VTWEG,
+        KNUMV TYPE VBRK-KNUMV,
+        FKDAT TYPE VBRK-FKDAT,
+        BELNR TYPE VBRK-BELNR,
+        GJAHR TYPE VBRK-GJAHR,
+        REGIO TYPE VBRK-REGIO,
+        BUKRS TYPE VBRK-BUKRS,
+        NETWR TYPE VBRK-NETWR,
+        ERNAM TYPE VBRK-ERNAM,
+        ERZET TYPE VBRK-ERZET,
+        ERDAT TYPE VBRK-ERDAT,
+        KUNRG TYPE VBRK-KUNRG,
+        KUNAG TYPE VBRK-KUNAG,
+        AEDAT TYPE VBRK-AEDAT,
+        SPART TYPE VBRK-SPART,
+        XBLNR TYPE VBRK-XBLNR,
+        MWSBK TYPE VBRK-MWSBK,
+      END OF STR_VBRK.
+
+
+
+
+TYPES: BEGIN OF STR_VBRP,
+        VBELN TYPE VBRP-VBELN,
+        POSNR TYPE VBRP-POSNR,
+        FKIMG TYPE VBRP-FKIMG,
+        VRKME TYPE VBRP-VRKME,
+        MEINS TYPE VBRP-MEINS,
+        SMENG TYPE VBRP-SMENG,
+        NTGEW TYPE VBRP-NTGEW,
+        BRGEW TYPE VBRP-BRGEW,
+        GEWEI TYPE VBRP-GEWEI,
+        VOLUM TYPE VBRP-VOLUM,
+        VOLEH TYPE VBRP-VOLEH,
+        NETWR TYPE VBRP-NETWR,
+        VGBEL TYPE VBRP-VGBEL,
+        AUBEL TYPE VBRP-AUBEL,
+        MATNR TYPE VBRP-MATNR,
+        MATKL TYPE VBRP-MATKL,
+        SPART TYPE VBRP-SPART,
+        WERKS TYPE VBRP-WERKS,
+        VKBUR TYPE VBRP-VKBUR,
+        AUFNR TYPE VBRP-AUFNR,
+      END OF STR_VBRP.
+
+
+TYPES: BEGIN OF STR_T023,
+        MATKL TYPE T023-MATKL,
+        SPART TYPE T023-SPART,
+
+      END OF STR_T023.
+
+
+
+TYPES: BEGIN OF STR_T023T,
+        SPRAS  TYPE T023T-SPRAS,
+        MATKL  TYPE T023T-MATKL,
+        WGBEZ  TYPE T023T-WGBEZ,
+        WGBEZ60 TYPE T023T-WGBEZ60,
+      END OF STR_T023T.
+
+
+
+TYPES: BEGIN OF STR_KNVP,
+        KUNNR TYPE KNVP-KUNNR,
+        VKORG TYPE KNVP-VKORG,
+        VTWEG TYPE KNVP-VTWEG,
+        SPART TYPE KNVP-SPART,
+        PARVW TYPE KNVP-PARVW,
+        PARZA TYPE KNVP-PARZA,
+        PERNR TYPE KNVP-PERNR,
+        PARNR TYPE KNVP-PARNR,
+      END OF STR_KNVP.
+
+
+TYPES: BEGIN OF STR_KNVV,
+        KUNNR TYPE KNVV-KUNNR,
+        VKORG TYPE KNVV-VKORG,
+        VTWEG TYPE KNVV-VTWEG,
+        SPART TYPE KNVV-SPART,
+        ERNAM TYPE KNVV-ERNAM,
+        ERDAT TYPE KNVV-ERDAT,
+        KDGRP TYPE KNVV-KDGRP,
+        VKBUR TYPE KNVV-VKBUR,
+      END OF STR_KNVV.
+
+
+
+TYPES: BEGIN OF STR_T001W,
+        WERKS TYPE T001W-WERKS,
+        NAME1 TYPE T001W-NAME1,
+
+        ORT01 TYPE T001W-ORT01,
+  REGIO TYPE T001W-REGIO,
+      END OF STR_T001W.
+
+
+
+TYPES: BEGIN OF STR_PA0001,
+        PERNR TYPE PA0001-PERNR,
+        ENAME TYPE PA0001-ENAME,
+      END OF STR_PA0001.
+
+
+TYPES:BEGIN OF STR_MARA,
+      MATNR TYPE MARA-MATNR,
+      MTART TYPE MARA-MTART,
+      MBRSH TYPE MARA-MBRSH,
+      MATKL TYPE MARA-MATKL,
+      VOLUM TYPE MARA-VOLUM,
+  END OF STR_MARA.
+
+
+
+TYPES:BEGIN OF STR_MVKE,
+      MATNR TYPE MVKE-MATNR,
+      MVGR1 TYPE MVKE-MVGR1,
+      END OF STR_MVKE.
+
+TYPES:BEGIN OF STR_TVM1T,
+  MVGR1 TYPE TVM1T-MVGR1,
+  BEZEI TYPE TVM1T-BEZEI ,
+  END OF STR_TVM1T.
+
+TYPES: BEGIN OF STR_ZSM_PRD,
+        COMPANY_CODE TYPE ZSM_PRD-COMPANY_CODE,
+        REGION TYPE ZSM_PRD-REGION,
+        PLANT TYPE ZSM_PRD-PLANT,
+        SALES_OFFICER TYPE ZSM_PRD-SALES_OFFICER,
+        MATERIAL_GROUP TYPE ZSM_PRD-MATERIAL_GROUP,
+        C_YEAR TYPE ZSM_PRD-C_YEAR,
+        MARKET_SHARE TYPE ZSM_PRD-MARKET_SHARE,
+        REGION_NAME TYPE ZSM_PRD-REGION_NAME,
+        PLANT_NAME TYPE ZSM_PRD-PLANT_NAME,
+        SALES_OFFICER_NAME TYPE ZSM_PRD-SALES_OFFICER_NAME,
+      END OF STR_ZSM_PRD.
+
+
+TYPES:BEGIN OF STR_FINAL,
+        PERNR TYPE KNVP-PERNR,
+        REGIO TYPE T001W-REGIO,
+        WERKS TYPE VBRP-WERKS,
+        MVGR1 TYPE MVKE-MVGR1,
+        MATKL TYPE T023-MATKL,
+        VBELN TYPE VBRK-VBELN,
+        FKART TYPE VBRK-FKART,
+        VKORG TYPE VBRK-VKORG,
+        VTWEG TYPE VBRK-VTWEG,
+        KNUMV TYPE VBRK-KNUMV,
+        FKDAT TYPE VBRK-FKDAT,
+        BELNR TYPE VBRK-BELNR,
+        GJAHR TYPE VBRK-GJAHR,
+        BUKRS TYPE VBRK-BUKRS,
+        NETWR TYPE VBRP-NETWR,
+        ERNAM TYPE VBRK-ERNAM,
+        ERZET TYPE VBRK-ERZET,
+        ERDAT TYPE VBRK-ERDAT,
+        KUNRG TYPE VBRK-KUNRG,
+        KUNAG TYPE VBRK-KUNAG,
+        AEDAT TYPE VBRK-AEDAT,
+        SPART TYPE VBRK-SPART,
+        XBLNR TYPE VBRK-XBLNR,
+        MWSBK TYPE VBRK-MWSBK,
+*        VBELN TYPE VBRP-VBELN,
+        POSNR TYPE VBRP-POSNR,
+        FKIMG TYPE VBRP-FKIMG,
+        VRKME TYPE VBRP-VRKME,
+        MEINS TYPE VBRP-MEINS,
+        SMENG TYPE VBRP-SMENG,
+        NTGEW TYPE VBRP-NTGEW,
+        BRGEW TYPE VBRP-BRGEW,
+        GEWEI TYPE VBRP-GEWEI,
+        VOLUM TYPE VBRP-VOLUM,
+        VOLEH TYPE VBRP-VOLEH,
+*        NETWR TYPE VBRP-NETWR,
+        VGBEL TYPE VBRP-VGBEL,
+        AUBEL TYPE VBRP-AUBEL,
+        MATNR TYPE VBRP-MATNR,
+        VKBUR TYPE VBRP-VKBUR,
+        AUFNR TYPE VBRP-AUFNR,
+        SPRAS TYPE T023T-SPRAS,
+        WGBEZ TYPE T023T-WGBEZ,
+        WGBEZ60 TYPE T023T-WGBEZ60,
+        KUNNR TYPE KNVP-KUNNR,
+        PARVW TYPE KNVP-PARVW,
+        PARZA TYPE KNVP-PARZA,
+        PARNR TYPE KNVP-PARNR,
+        KDGRP TYPE KNVV-KDGRP,
+        NAME1 TYPE T001W-NAME1,
+        ENAME TYPE PA0001-ENAME,
+        ORT01 TYPE T001W-ORT01,
+        NETWR1 TYPE VBRK-NETWR,
+        NETWRM TYPE VBRK-NETWR,
+        AMT0 TYPE FKIMG, "P DECIMALS 2,     " APR
+        AMT1 TYPE FKIMG, "P DECIMALS 2,        "MAY
+        AMT2 TYPE FKIMG, "P   DECIMALS 2,   " JUNE
+        AMT3 TYPE FKIMG, "P DECIMALS 2,  " JULY
+        AMT4 TYPE FKIMG, "P DECIMALS 2,     " AUG
+        AMT5 TYPE FKIMG, "P DECIMALS 2,        "SEP
+        AMT6 TYPE FKIMG, "P   DECIMALS 2,   " OCT
+        AMT7 TYPE FKIMG, "P DECIMALS 2,  " NOV
+        AMT8 TYPE FKIMG, "P DECIMALS 2,     " DEC
+        AMT9 TYPE FKIMG, "P DECIMALS 2,        "JAN
+        AMT10 TYPE FKIMG,  "P   DECIMALS 2,   " FEB
+        AMT11 TYPE FKIMG,  "P DECIMALS 2,  " MAR
+        COU1 TYPE I,
+        COU2 TYPE I,
+        COU3 TYPE I,
+        COU4 TYPE I,
+        FL TYPE I,
+*        MVGR1 TYPE MVKE-MVGR1,
+        BEZEI TYPE TVM1T-BEZEI ,
+          COMPANY_CODE TYPE ZSM_PRD-COMPANY_CODE,
+        REGION TYPE ZSM_PRD-REGION,
+        REGION_NAME TYPE ZSM_PRD-REGION_NAME,
+        PLANT TYPE ZSM_PRD-PLANT,
+        PLANT_NAME TYPE ZSM_PRD-PLANT_NAME,
+        SALES_OFFICER TYPE ZSM_PRD-SALES_OFFICER,
+        SALES_OFFICER_NAME TYPE ZSM_PRD-SALES_OFFICER_NAME,
+        MATERIAL_GROUP TYPE ZSM_PRD-MATERIAL_GROUP,
+        MARKET_SHARE TYPE ZSM_PRD-MARKET_SHARE,
+        ENTRY_DATE1 TYPE ZSM_PRD-C_YEAR,
+        Q_FKIMG TYPE FKIMG ,
+        Q_SHARE TYPE STRING ,
+        Q_YEAR TYPE  GJAHR ,
+
+  END OF STR_FINAL.
+
+* INTERNAL TABLE & WORK AREA DECLERATION
+
+DATA:WA_VBRK TYPE STR_VBRK,
+      IT_VBRK TYPE TABLE OF STR_VBRK,
+      WA_VBRP TYPE STR_VBRP,
+      IT_VBRP TYPE  TABLE OF STR_VBRP,
+      WA_KNVP TYPE STR_KNVP,
+      IT_KNVP TYPE TABLE OF STR_KNVP,
+      WA_KNVV TYPE STR_KNVV,
+      IT_KNVV TYPE TABLE OF STR_KNVV,
+      WA_T023 TYPE STR_T023,
+      IT_T023 TYPE TABLE OF STR_T023,
+      WA_T023T TYPE STR_T023T,
+      IT_T023T TYPE TABLE OF STR_T023T,
+      WA_T001W TYPE STR_T001W,
+      IT_T001W TYPE TABLE OF STR_T001W,
+      WA_PA0001 TYPE STR_PA0001,
+      IT_PA0001 TYPE TABLE OF STR_PA0001,
+      WA_FINAL TYPE STR_FINAL,
+
+      IT_FINAL TYPE TABLE OF STR_FINAL,
+      IT_FINAL1 TYPE TABLE OF STR_FINAL.
+
+DATA:WA_MVKE TYPE STR_MVKE,
+      IT_MVKE TYPE TABLE OF STR_MVKE,
+      WA_TVM1T TYPE STR_TVM1T,
+      IT_TVM1T TYPE TABLE OF STR_TVM1T.
+
+
+DATA:WA_ZSM_PRD TYPE STR_ZSM_PRD,
+      IT_ZSM_PRD TYPE TABLE OF STR_ZSM_PRD.
+
+DATA:WA_MARA TYPE STR_MARA,
+      IT_MARA TYPE TABLE OF STR_MARA.
+
+*  Local variable
+
+DATA:NETWR2 TYPE VBRP-FKIMG.
+DATA:MATKL1 TYPE VBRP-MATKL.
+DATA:AMT_N1 TYPE VBRP-FKIMG.
+DATA:AMT_N2 TYPE VBRP-FKIMG.
+DATA:AMT_N3 TYPE VBRP-FKIMG.
+DATA:AMT_N4 TYPE VBRP-FKIMG.
+DATA:AMT_N5 TYPE VBRP-FKIMG.
+DATA:AMT_N6 TYPE VBRP-FKIMG.
+DATA:AMT_N7 TYPE VBRP-FKIMG.
+DATA:AMT_N8 TYPE VBRP-FKIMG.
+DATA:AMT_N9 TYPE VBRP-FKIMG.
+DATA:AMT_N10 TYPE VBRP-FKIMG.
+DATA:AMT_N11 TYPE VBRP-FKIMG.
+DATA:AMT_N12 TYPE VBRP-FKIMG.
+*DATA:Q_FKIMG1 TYPE P DECIMALS 2 .
+DATA:Q_FKIMG1 TYPE FKIMG.
+DATA:Q_FKIMG2 TYPE STRING.
+
+DATA:COUNT1 TYPE I,
+      COUNT2 TYPE I.
+
+
+DATA:CHK TYPE I.
+
+DATA: NO_MONTH TYPE T009B-POPER,
+      D_YEAR  TYPE T009B-BDATJ.
+
+
+*  ALV Decleration
+
+
+DATA:WA_FCAT TYPE SLIS_FIELDCAT_ALV,
+      IT_FCAT TYPE SLIS_T_FIELDCAT_ALV,
+      WA_LAYOUT TYPE SLIS_LAYOUT_ALV,
+      WA_SORT TYPE SLIS_SORTINFO_ALV,
+      IT_SORT TYPE SLIS_T_SORTINFO_ALV.
+
+
+
+*  selection-screen decleration
+
+
+SELECTION-SCREEN BEGIN OF BLOCK A1 WITH FRAME TITLE TEXT-000.
+
+SELECT-OPTIONS: S_BUKRS FOR VBRK-BUKRS,
+                S_REGIO FOR VBRK-REGIO,
+                S_WERKS FOR VBRP-WERKS OBLIGATORY,
+                S_PERNR FOR KNVP-PERNR,
+                S_VBELN FOR VBRK-VBELN NO-DISPLAY,
+                S_FKDAT FOR VBRK-FKDAT DEFAULT SY-DATUM OBLIGATORY.
+SELECTION-SCREEN END OF BLOCK A1.
+
+
+
+*   Form Decleration
+
+
+PERFORM GET_DATA.
+PERFORM ALV_DIS.
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM GET_DATA .
+
+  IF S_PERNR IS NOT INITIAL .
+    SELECT  KUNNR
+            VKORG
+            VTWEG
+            SPART
+            PARVW
+            PARZA
+            PERNR
+            PARNR FROM KNVP
+            INTO TABLE IT_KNVP
+
+            WHERE  PERNR IN S_PERNR AND PARVW EQ 'L3'.
+
+
+    SELECT    VBELN "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+              FKART
+              VKORG
+              VTWEG
+              KNUMV
+              FKDAT
+              BELNR
+              GJAHR
+              REGIO
+              BUKRS
+              NETWR
+              ERNAM
+              ERZET
+              ERDAT
+              KUNRG
+              KUNAG
+              AEDAT
+              SPART
+              XBLNR
+              MWSBK FROM VBRK
+              INTO TABLE IT_VBRK
+              FOR ALL ENTRIES IN IT_KNVP
+              WHERE KUNRG = IT_KNVP-KUNNR  AND REGIO IN S_REGIO AND FKDAT IN S_FKDAT.
+
+  endif.
+
+  IF S_PERNR IS INITIAL .
+
+    SELECT    VBELN "#EC CI_DB_OPERATION_OK[2768887] " Added by <IT-CAR Tool> during Code Remediation
+              FKART
+              VKORG
+              VTWEG
+              KNUMV
+              FKDAT
+              BELNR
+              GJAHR
+              REGIO
+              BUKRS
+              NETWR
+              ERNAM
+              ERZET
+              ERDAT
+              KUNRG
+              KUNAG
+              AEDAT
+              SPART
+              XBLNR
+              MWSBK FROM VBRK
+              INTO TABLE IT_VBRK
+              WHERE VBELN IN S_VBELN  AND REGIO IN S_REGIO AND FKDAT IN S_FKDAT AND BUKRS IN S_BUKRS.
+
+
+
+    SELECT  KUNNR
+            VKORG
+            VTWEG
+            SPART
+            PARVW
+            PARZA
+            PERNR
+            PARNR FROM KNVP
+            INTO TABLE IT_KNVP
+            FOR ALL ENTRIES IN IT_VBRK
+*            WHERE KUNNR = IT_VBRK-KUNRG AND PERNR IN S_PERNR AND PARVW EQ 'L3'.
+            WHERE KUNNR = IT_VBRK-KUNRG AND  PARVW EQ 'L3'.
+
+
+
+  ENDIF.
+
+  IF IT_VBRK IS NOT INITIAL .
+
+    SELECT  VBELN
+            POSNR
+            FKIMG
+            VRKME
+            MEINS
+            SMENG
+            NTGEW
+            BRGEW
+            GEWEI
+            VOLUM
+            VOLEH
+            NETWR
+            VGBEL
+            AUBEL
+            MATNR
+            MATKL
+            SPART
+            WERKS
+            VKBUR
+            AUFNR FROM VBRP
+            INTO TABLE IT_VBRP
+            FOR ALL ENTRIES IN IT_VBRK
+            WHERE VBELN = IT_VBRK-VBELN AND WERKS IN S_WERKS.
+
+    SELECT MATKL SPART FROM T023 INTO TABLE IT_T023 FOR ALL ENTRIES IN IT_VBRP
+      WHERE MATKL = IT_VBRP-MATKL.
+
+
+    SELECT MATNR
+           MTART
+           MBRSH
+           MATKL
+           VOLUM FROM MARA INTO TABLE IT_MARA
+           FOR ALL ENTRIES IN IT_VBRP
+           WHERE MATNR = IT_VBRP-MATNR.
+
+
+    SELECT MATNR
+           MVGR1 FROM MVKE INTO TABLE IT_MVKE
+           FOR ALL ENTRIES IN IT_VBRP
+           WHERE MATNR = IT_VBRP-MATNR.
+
+    SELECT MVGR1
+           BEZEI FROM TVM1T INTO TABLE IT_TVM1T
+           FOR ALL ENTRIES IN IT_MVKE
+           WHERE MVGR1 = IT_MVKE-MVGR1.
+
+    SELECT SPRAS
+           MATKL
+           WGBEZ
+           WGBEZ60 FROM T023T
+           INTO TABLE IT_T023T
+           FOR ALL ENTRIES IN IT_VBRP
+           WHERE MATKL = IT_VBRP-MATKL AND SPRAS EQ 'EN'.
+
+    SELECT WERKS
+           NAME1
+           ORT01
+           REGIO FROM T001W
+           INTO TABLE IT_T001W
+           FOR ALL ENTRIES IN IT_VBRP
+           WHERE WERKS = IT_VBRP-WERKS.
+
+
+    SELECT PERNR
+           ENAME FROM PA0001
+           INTO TABLE IT_PA0001
+           FOR ALL ENTRIES IN IT_KNVP
+           WHERE PERNR = IT_KNVP-PERNR.
+
+  ENDIF.
+
+  SORT IT_VBRK BY VBELN.
+  SORT IT_VBRP BY VBELN.
+  SORT IT_KNVP BY KUNNR.
+  SORT IT_PA0001 BY PERNR.
+  SORT IT_MARA BY MATNR   .
+  SORT IT_T023 BY MATKL.
+  SORT IT_T023T BY MATKL.
+  SORT IT_T001W BY WERKS.
+  SORT IT_MVKE BY MATNR.
+  SORT IT_TVM1T BY MVGR1.
+
+
+  LOOP AT IT_VBRP INTO WA_VBRP.
+
+
+    WA_FINAL-VBELN = WA_VBRP-VBELN .
+    WA_FINAL-POSNR = WA_VBRP-POSNR .
+    WA_FINAL-FKIMG = WA_VBRP-FKIMG .
+    WA_FINAL-VRKME = WA_VBRP-VRKME .
+    WA_FINAL-MEINS = WA_VBRP-MEINS .
+    WA_FINAL-SMENG = WA_VBRP-SMENG .
+    WA_FINAL-NTGEW = WA_VBRP-NTGEW .
+    WA_FINAL-BRGEW = WA_VBRP-BRGEW .
+    WA_FINAL-GEWEI = WA_VBRP-GEWEI .
+    WA_FINAL-VOLUM = WA_VBRP-VOLUM .
+    WA_FINAL-VOLEH = WA_VBRP-VOLEH .
+    WA_FINAL-NETWR = WA_VBRP-NETWR .
+    WA_FINAL-VGBEL = WA_VBRP-VGBEL .
+    WA_FINAL-AUBEL = WA_VBRP-AUBEL .
+    WA_FINAL-MATNR = WA_VBRP-MATNR .
+    WA_FINAL-MATKL = WA_VBRP-MATKL .
+    WA_FINAL-SPART = WA_VBRP-SPART .
+    WA_FINAL-WERKS = WA_VBRP-WERKS .
+    WA_FINAL-VKBUR = WA_VBRP-VKBUR .
+
+
+
+    READ TABLE IT_VBRK INTO WA_VBRK
+    WITH KEY VBELN = WA_VBRP-VBELN BINARY SEARCH.
+    IF SY-SUBRC = 0.
+      WA_FINAL-VBELN = WA_VBRK-VBELN.
+      WA_FINAL-FKART = WA_VBRK-FKART.
+      WA_FINAL-VKORG = WA_VBRK-VKORG.
+      WA_FINAL-VTWEG = WA_VBRK-VTWEG.
+      WA_FINAL-KNUMV = WA_VBRK-KNUMV.
+      WA_FINAL-FKDAT = WA_VBRK-FKDAT.
+      WA_FINAL-BELNR = WA_VBRK-BELNR.
+      WA_FINAL-GJAHR = WA_VBRK-GJAHR.
+      WA_FINAL-REGIO = WA_VBRK-REGIO.
+      WA_FINAL-BUKRS = WA_VBRK-BUKRS.
+      WA_VBRK-NETWR = WA_VBRK-NETWR.
+      WA_FINAL-ERNAM = WA_VBRK-ERNAM.
+      WA_FINAL-ERZET = WA_VBRK-ERZET.
+      WA_FINAL-ERDAT = WA_VBRK-ERDAT.
+      WA_FINAL-KUNRG = WA_VBRK-KUNRG.
+      WA_FINAL-KUNAG = WA_VBRK-KUNAG.
+      WA_FINAL-AEDAT = WA_VBRK-AEDAT.
+      WA_FINAL-SPART = WA_VBRK-SPART.
+      WA_FINAL-XBLNR = WA_VBRK-XBLNR.
+      WA_FINAL-MWSBK = WA_VBRK-MWSBK.
+
+      WA_FINAL-Q_YEAR = WA_VBRK-FKDAT .
+    ENDIF.
+
+    READ TABLE IT_KNVP INTO WA_KNVP
+    WITH KEY KUNNR = WA_VBRK-KUNRG BINARY SEARCH.
+
+    IF SY-SUBRC = 0 .
+
+      WA_FINAL-KUNNR = WA_KNVP-KUNNR.
+      WA_FINAL-VKORG = WA_KNVP-VKORG.
+      WA_FINAL-VTWEG = WA_KNVP-VTWEG.
+      WA_FINAL-SPART = WA_KNVP-SPART.
+      WA_FINAL-PARVW = WA_KNVP-PARVW.
+      WA_FINAL-PARZA = WA_KNVP-PARZA.
+      WA_FINAL-PERNR = WA_KNVP-PERNR.
+      WA_FINAL-PARNR = WA_KNVP-PARNR.
+*    ENDIF.
+
+      READ TABLE IT_PA0001 INTO WA_PA0001
+      WITH KEY PERNR = WA_KNVP-PERNR BINARY SEARCH.
+*    IF SY-SUBRC = 0.
+      WA_FINAL-ENAME = WA_PA0001-ENAME.
+
+    ENDIF.
+
+    READ TABLE IT_MARA INTO WA_MARA
+    WITH KEY MATNR = WA_VBRP-MATNR BINARY SEARCH.
+    IF SY-SUBRC = 0.
+      WA_FINAL-VOLUM = WA_MARA-VOLUM .
+
+    ENDIF.
+
+
+    READ TABLE IT_MVKE INTO WA_MVKE
+    WITH KEY MATNR = WA_VBRP-MATNR BINARY SEARCH.
+    IF SY-SUBRC = 0.
+      WA_FINAL-MVGR1 = WA_MVKE-MVGR1.
+    ENDIF .
+
+    READ TABLE IT_TVM1T INTO WA_TVM1T
+    WITH KEY MVGR1 = WA_MVKE-MVGR1 BINARY SEARCH .
+
+    IF SY-SUBRC = 0 .
+
+      WA_FINAL-BEZEI = WA_TVM1T-BEZEI .
+
+    ENDIF.
+
+    READ TABLE IT_T023 INTO WA_T023
+    WITH KEY MATKL = WA_VBRP-MATKL BINARY SEARCH.
+    IF SY-SUBRC = 0.
+      WA_FINAL-MATKL =  WA_T023-MATKL.
+      WA_FINAL-SPART =    WA_T023-SPART.
+
+    ENDIF.
+
+    READ TABLE IT_T023T INTO WA_T023T
+    WITH KEY MATKL = WA_VBRP-MATKL BINARY SEARCH.
+    IF SY-SUBRC = 0.
+*    WA_FINAL-MATKL =  WA_T023T-MATKL.
+      WA_FINAL-WGBEZ =    WA_T023T-WGBEZ.
+      WA_FINAL-WGBEZ60 =  WA_T023T-WGBEZ60.
+
+    ENDIF.
+    READ TABLE IT_T001W INTO WA_T001W
+    WITH KEY WERKS = WA_VBRP-WERKS BINARY SEARCH.
+    IF SY-SUBRC = 0.
+      WA_FINAL-NAME1 = WA_T001W-NAME1.
+      WA_FINAL-ORT01 = WA_T001W-ORT01.
+    ENDIF.
+
+    CALL FUNCTION 'DATE_TO_PERIOD_CONVERT'
+      EXPORTING
+        I_DATE         = WA_VBRK-FKDAT
+        I_MONMIT       = 00
+        I_PERIV        = 'K4'
+      IMPORTING
+        E_BUPER        = NO_MONTH
+        E_GJAHR        = D_YEAR
+      EXCEPTIONS
+        INPUT_FALSE    = 1
+        T009_NOTFOUND  = 2
+        T009B_NOTFOUND = 3
+        OTHERS         = 4.
+*
+*
+*
+    IF NO_MONTH = '004' .
+
+      WA_FINAL-AMT0 =  WA_FINAL-AMT0 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT0 = WA_FINAL-VOLUM * WA_FINAL-AMT0 .
+    ELSEIF NO_MONTH = '005'.
+      WA_FINAL-AMT1 =  WA_FINAL-AMT1 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT1 = WA_FINAL-VOLUM * WA_FINAL-AMT1 .
+    ELSEIF NO_MONTH = '006'.
+      WA_FINAL-AMT2 =  WA_FINAL-AMT2 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT2 = WA_FINAL-VOLUM * WA_FINAL-AMT2 .
+    ELSEIF NO_MONTH = '007'.
+
+      WA_FINAL-AMT3 =  WA_FINAL-AMT3 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT3 =  WA_FINAL-VOLUM * WA_FINAL-AMT3.
+    ELSEIF NO_MONTH = '008'.
+
+      WA_FINAL-AMT4 =  WA_FINAL-AMT4 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT4 = WA_FINAL-VOLUM * WA_FINAL-AMT4 .
+
+    ELSEIF NO_MONTH = '009'.
+
+      WA_FINAL-AMT5 =  WA_FINAL-AMT5 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT5 = WA_FINAL-VOLUM * WA_FINAL-AMT5 .
+    ELSEIF NO_MONTH = '010'.
+
+      WA_FINAL-AMT6 =  WA_FINAL-AMT6 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT6  = WA_FINAL-VOLUM * WA_FINAL-AMT6 .
+
+    ELSEIF NO_MONTH = '011'.
+
+      WA_FINAL-AMT7 =  WA_FINAL-AMT7 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT7 = WA_FINAL-VOLUM * WA_FINAL-AMT7 .
+    ELSEIF NO_MONTH = '012'.
+
+      WA_FINAL-AMT8 =  WA_FINAL-AMT8 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT8 = WA_FINAL-VOLUM * WA_FINAL-AMT8 .
+    ELSEIF NO_MONTH = '001'.
+
+      WA_FINAL-AMT9 =  WA_FINAL-AMT9 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT9 = WA_FINAL-VOLUM * WA_FINAL-AMT9 .
+    ELSEIF NO_MONTH = '002'.
+
+      WA_FINAL-AMT10 =  WA_FINAL-AMT10 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT10 = WA_FINAL-VOLUM * WA_FINAL-AMT10 .
+    ELSEIF NO_MONTH = '003'.
+
+      WA_FINAL-AMT11 =  WA_FINAL-AMT11 + WA_VBRP-FKIMG.
+      WA_FINAL-AMT11 = WA_FINAL-VOLUM * WA_FINAL-AMT11 .
+
+    ENDIF.
+
+
+    APPEND WA_FINAL TO IT_FINAL.
+    CLEAR WA_FINAL.
+
+  ENDLOOP.
+
+  IF IT_FINAL IS INITIAL.
+    MESSAGE 'No Data Exists for the Input' TYPE 'S' DISPLAY LIKE 'E'.
+    STOP.
+  ENDIF.
+
+  SELECT  COMPANY_CODE
+          REGION
+          PLANT
+          SALES_OFFICER
+          MATERIAL_GROUP
+          C_YEAR
+          MARKET_SHARE
+          REGION_NAME
+          PLANT_NAME
+          SALES_OFFICER_NAME
+           FROM ZSM_PRD INTO TABLE IT_ZSM_PRD
+          FOR ALL ENTRIES IN  IT_FINAL
+          WHERE COMPANY_CODE = IT_FINAL-BUKRS AND REGION = IT_FINAL-REGIO
+          AND PLANT = IT_FINAL-WERKS AND SALES_OFFICER = IT_FINAL-PERNR
+          AND C_YEAR = IT_FINAL-Q_YEAR .
+
+  IF IT_ZSM_PRD IS NOT  INITIAL.
+
+    LOOP AT IT_FINAL INTO WA_FINAL.
+
+      READ TABLE IT_ZSM_PRD INTO WA_ZSM_PRD
+      WITH KEY COMPANY_CODE = WA_FINAL-BUKRS REGION = WA_FINAL-REGIO
+      PLANT = WA_FINAL-WERKS SALES_OFFICER = WA_FINAL-PERNR
+      MATERIAL_GROUP = WA_FINAL-BEZEI  C_YEAR = WA_FINAL-Q_YEAR  .
+
+      IF SY-SUBRC = 0.
+        WA_FINAL-MARKET_SHARE = WA_ZSM_PRD-MARKET_SHARE.
+        MODIFY IT_FINAL FROM WA_FINAL TRANSPORTING MARKET_SHARE .
+        CLEAR WA_FINAL.
+      ENDIF.
+    ENDLOOP.
+
+  ENDIF.
+
+
+  SORT IT_FINAL BY PERNR REGIO  WERKS  MVGR1  .
+
+
+  LOOP AT IT_FINAL INTO WA_FINAL.
+
+    NETWR2 = NETWR2 + WA_FINAL-FKIMG * WA_FINAL-VOLUM.
+    AMT_N1 = AMT_N1 + WA_FINAL-AMT0 .
+    AMT_N2 = AMT_N2 + WA_FINAL-AMT1 .
+    AMT_N3 = AMT_N3 + WA_FINAL-AMT2 .
+    AMT_N4 = AMT_N4 + WA_FINAL-AMT3 .
+    AMT_N5 = AMT_N5 + WA_FINAL-AMT4 .
+    AMT_N6 = AMT_N6 + WA_FINAL-AMT5 .
+    AMT_N7 = AMT_N7 + WA_FINAL-AMT6 .
+    AMT_N8 = AMT_N8 + WA_FINAL-AMT7 .
+    AMT_N9 = AMT_N9 + WA_FINAL-AMT8 .
+    AMT_N10 = AMT_N10 + WA_FINAL-AMT9 .
+    AMT_N11 = AMT_N11 + WA_FINAL-AMT10 .
+    AMT_N12 = AMT_N12 + WA_FINAL-AMT11 .
+
+
+    IF WA_FINAL-MARKET_SHARE IS NOT INITIAL.
+
+      Q_FKIMG1  = NETWR2 / WA_FINAL-MARKET_SHARE .
+
+      Q_FKIMG1 =  Q_FKIMG1 * 100 .
+
+      Q_FKIMG2 = Q_FKIMG1.
+
+      CONCATENATE Q_FKIMG2 '%' INTO Q_FKIMG2.
+
+    ENDIF.
+
+    AT END OF MVGR1.
+
+      WA_FINAL-NETWR1 = NETWR2 .
+      WA_FINAL-AMT0 = AMT_N1 .
+      WA_FINAL-AMT1 = AMT_N2 .
+      WA_FINAL-AMT2 = AMT_N3 .
+      WA_FINAL-AMT3 = AMT_N4 .
+      WA_FINAL-AMT4 = AMT_N5 .
+      WA_FINAL-AMT5 = AMT_N6 .
+      WA_FINAL-AMT6 = AMT_N7 .
+      WA_FINAL-AMT7 = AMT_N8 .
+      WA_FINAL-AMT8 = AMT_N9 .
+      WA_FINAL-AMT9 = AMT_N10 .
+      WA_FINAL-AMT10 = AMT_N11 .
+      WA_FINAL-AMT11 = AMT_N12 .
+      WA_FINAL-Q_FKIMG  = Q_FKIMG1 .
+      WA_FINAL-Q_SHARE  = Q_FKIMG2 .
+
+      MODIFY IT_FINAL FROM WA_FINAL TRANSPORTING NETWR1 AMT0 AMT1 AMT2 AMT3 AMT4 AMT5 AMT6 AMT7 AMT8 AMT9 AMT10 AMT11 Q_FKIMG Q_SHARE.
+
+      CLEAR : NETWR2, AMT_N1 , AMT_N2 , AMT_N3 , AMT_N4 , AMT_N5 , AMT_N6 , AMT_N7 , AMT_N8 , AMT_N9 ,
+              AMT_N10 , AMT_N11 , AMT_N12 , Q_FKIMG1, Q_FKIMG2 .
+
+    ENDAT.
+  ENDLOOP.
+
+  DELETE IT_FINAL WHERE NETWR1 = 0.
+
+ENDFORM.                    "GET_DATA
+
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_DIS
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM ALV_DIS.
+
+  PERFORM FCAT USING 'REGIO' 'Region' '1' '' '' ''.
+  PERFORM FCAT USING 'WERKS' 'Plant' '2' '' '' ''.
+  PERFORM FCAT USING 'NAME1' 'Location' '3' '' '' ''.
+
+
+  PERFORM FCAT USING 'PERNR' 'SM Number' '4' '' '' ''.
+
+
+  PERFORM FCAT USING 'ENAME' 'Sales Manager' '5' '' '' ''.
+
+*  PERFORM FCAT USING 'MATKL' 'Mat Group' '6' '' '' ''.
+  PERFORM FCAT USING 'MVGR1' 'Mat Group No' '7' '' '' ''.
+  PERFORM FCAT USING 'BEZEI' 'Mat Group Desc' '8' '' '' ''.
+  PERFORM FCAT USING 'MARKET_SHARE' 'Market Share' '9' '' 'X' ''.
+*  PERFORM FCAT USING 'NETWR' 'Net Value' '8' '' '' ''.
+
+  PERFORM FCAT USING 'AMT0' 'April Liters/KGS' '15' '' '' ''.
+  PERFORM FCAT USING 'AMT1' 'May Liters/KGS' '16' '' '' ''.
+  PERFORM FCAT USING 'AMT2' 'June Liters/KGS' '17' '' '' ''.
+  PERFORM FCAT USING 'AMT3' 'July Liters/KGS' '18' '' '' ''.
+  PERFORM FCAT USING 'AMT4' 'Aug Liters/KGS' '19' '' '' ''.
+  PERFORM FCAT USING 'AMT5' 'Sep Liters/KGS' '20' '' '' ''.
+  PERFORM FCAT USING 'AMT6' 'Oct Liters/KGS' '21' '' '' ''.
+  PERFORM FCAT USING 'AMT7' 'Nov Liters/KGS' '22' '' '' ''.
+  PERFORM FCAT USING 'AMT8' 'Dec Liters/KGS' '23' '' '' ''.
+  PERFORM FCAT USING 'AMT9' 'Jan Liters/KGS' '24' '' '' ''.
+  PERFORM FCAT USING 'AMT10' 'Feb Liters/KGS' '25' '' '' ''.
+  PERFORM FCAT USING 'AMT11' 'March Liters/KGS' '26' '' '' ''.
+  PERFORM FCAT USING 'NETWR1' 'Total Liters/KGS' '27' 'X' '' ''.
+  PERFORM FCAT USING 'Q_SHARE' '% of Share' '28' '' 'X' ''.
+
+
+
+
+  WA_LAYOUT-ZEBRA = 'X'.
+  WA_LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+
+
+  WA_SORT-FIELDNAME = 'PERNR'.
+  WA_SORT-TABNAME = 'IT_FINAL'.
+*wa_sort-SUBTOT = 'X'.
+  APPEND WA_SORT TO IT_SORT.
+  CLEAR WA_SORT.
+
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+   EXPORTING
+*   I_INTERFACE_CHECK                 = ' '
+*   I_BYPASSING_BUFFER                = ' '
+*   I_BUFFER_ACTIVE                   = ' '
+   I_CALLBACK_PROGRAM                = SY-REPID
+*   I_CALLBACK_PF_STATUS_SET          = ' '
+*   I_CALLBACK_USER_COMMAND           = ' '
+   I_CALLBACK_TOP_OF_PAGE            = 'TOP_OF_PAGE'
+*   I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*   I_CALLBACK_HTML_END_OF_LIST       = ' '
+*   I_STRUCTURE_NAME                  =
+*   I_BACKGROUND_ID                   = ' '
+*   I_GRID_TITLE                      =
+*   I_GRID_SETTINGS                   =
+   IS_LAYOUT                         = WA_LAYOUT
+     IT_FIELDCAT                       = IT_FCAT
+*   IT_EXCLUDING                      =
+*   IT_SPECIAL_GROUPS                 =
+*   IT_SORT                           = IT_SORT
+*   IT_FILTER                         =
+*   IS_SEL_HIDE                       =
+*   I_DEFAULT                         = 'X'
+*   I_SAVE                            = ' '
+*   IS_VARIANT                        =
+*   IT_EVENTS                         =
+*   IT_EVENT_EXIT                     =
+*   IS_PRINT                          =
+*   IS_REPREP_ID                      =
+*   I_SCREEN_START_COLUMN             = 0
+*   I_SCREEN_START_LINE               = 0
+*   I_SCREEN_END_COLUMN               = 0
+*   I_SCREEN_END_LINE                 = 0
+*   I_HTML_HEIGHT_TOP                 = 0
+*   I_HTML_HEIGHT_END                 = 0
+*   IT_ALV_GRAPHICS                   =
+*   IT_HYPERLINK                      =
+*   IT_ADD_FIELDCAT                   =
+*   IT_EXCEPT_QINFO                   =
+*   IR_SALV_FULLSCREEN_ADAPTER        =
+* IMPORTING
+*   E_EXIT_CAUSED_BY_CALLER           =
+*   ES_EXIT_CAUSED_BY_USER            =
+    TABLES
+      T_OUTTAB                          = IT_FINAL
+* EXCEPTIONS
+*   PROGRAM_ERROR                     = 1
+*   OTHERS                            = 2
+            .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+
+
+ENDFORM.                    "ALV_DIS
+
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  fcat
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->V1         text
+*      -->V2         text
+*      -->V3         text
+*      -->V4         text
+*      -->V5         text
+*      -->V6         text
+*----------------------------------------------------------------------*
+FORM FCAT USING V1 V2 V3 V4 V5 V6.
+
+  WA_FCAT-FIELDNAME = V1.
+  WA_FCAT-SELTEXT_M = V2.
+  WA_FCAT-COL_POS = V3.
+  WA_FCAT-DO_SUM = V4.
+  WA_FCAT-EMPHASIZE = V5.
+  WA_FCAT-ICON  = V6.
+*      wa_fcat-fieldname = V1.
+  APPEND WA_FCAT TO IT_FCAT.
+
+
+ENDFORM.                    "fcat
+
+
+
+
+*&---------------------------------------------------------------------*
+*&      Form  TOP_OF_PAGE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM TOP_OF_PAGE.
+
+  DATA:WA_HEAD TYPE SLIS_LISTHEADER,
+        IT_HEAD TYPE SLIS_T_LISTHEADER.
+
+
+  WA_HEAD-TYP = 'H'.
+  WA_HEAD-INFO = 'SM Product Growth Report'.
+  APPEND WA_HEAD TO IT_HEAD.
+  CLEAR WA_HEAD.
+
+
+  WA_HEAD-TYP = 'S'.
+  CONCATENATE 'Report Run Date:'
+               SY-DATUM+6(2) '-'
+               SY-DATUM+4(2) '-'
+               SY-DATUM+0(4) INTO WA_HEAD-INFO.
+  APPEND WA_HEAD TO IT_HEAD.
+  CLEAR WA_HEAD.
+
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = IT_HEAD
+      I_LOGO             = 'ZLOGO'.
+*   I_END_OF_LIST_GRID       =
+*   I_ALV_FORM               =
+  .
+
+
+
+
+
+ENDFORM.                    "TOP_OF_PAGE

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SXCI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SXCI>
+    <IMPLEMENTATION_DATA>
+     <IMP_NAME>ZME_USER_PO_POSTED</IMP_NAME>
+     <TEXT>user restriction</TEXT>
+     <IMP_CLASS>ZCL_IM_ME_USER_PO_POSTED</IMP_CLASS>
+     <EXIT_NAME>ME_PURCHDOC_POSTED</EXIT_NAME>
+     <INTER_NAME>IF_EX_ME_PURCHDOC_POSTED</INTER_NAME>
+     <ACTIVE>X</ACTIVE>
+    </IMPLEMENTATION_DATA>
+   </SXCI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

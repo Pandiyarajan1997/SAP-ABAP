@@ -1,0 +1,1546 @@
+*&---------------------------------------------------------------------*
+*& Report  ZRT_MAT_STOCK_AGE
+*&
+*&---------------------------------------------------------------------*
+*& Functional                   : Mr.Manikandan R & Gopinath (PP Consultant)                   *
+*& Developer                   : Mr.Ramachandran M                     *
+*& Modify  by                  : Mr.Ramachandran.M Without Batch wise        *
+*& Created On                  : 12 Aug 2014                           *
+*& Title                       : Material Stock Details                *
+*& Report Name                 : ZRT_MAT_STOCK_AGE                       *
+*& Development Id              : kpabap                                *
+*& Solman call No              :                                       *
+*& Transport Request           :                                       *
+*& Related Information         : Display The Stock Details By          *
+*                                Material Group                        *
+*&---------------------------------------------------------------------*
+
+REPORT  ZSTK_AGEWISE_BRANCH_REPORT.
+
+TYPE-POOLS: SLIS.
+
+*&---------------------------------------------------------------------*
+*&  Structure & Internal Table Decleration
+*&---------------------------------------------------------------------*
+
+
+TABLES:MCHB.
+
+TYPES : BEGIN OF GS_T001K,
+
+        BWKEY TYPE T001K-BWKEY,
+        BUKRS TYPE T001K-BUKRS,
+
+        END OF GS_T001K.
+
+DATA : GT_T001K TYPE TABLE OF GS_T001K,
+       WA_T001K TYPE GS_T001K.
+
+
+TYPES: BEGIN OF GS_MCHB,
+       MATNR TYPE MCHB-MATNR,              " Material Code
+       WERKS TYPE MCHB-WERKS,              " Valuation Area / Plant
+
+       LGORT TYPE MCHB-LGORT,              "Stor. Location    Added by savariar s as on 21/10/2014.
+
+       CHARG TYPE MCHB-CHARG,              " Batch
+       ERSDA TYPE MCHB-ERSDA,              " Created On
+       LAEDA TYPE MCHB-LAEDA,
+       CLABS TYPE MCHB-CLABS,               " Stock Qty
+       CINSM TYPE MCHB-CINSM,               "Quality Insp
+       CSPEM TYPE MCHB-CSPEM,               " Blocked
+       END OF GS_MCHB.
+
+DATA: GT_MCHB TYPE TABLE OF GS_MCHB,
+      WA_MCHB TYPE GS_MCHB.
+
+TYPES : BEGIN OF GS_MARD,
+
+        MATNR TYPE MARD-MATNR,
+        WERKS TYPE MARD-WERKS,
+        ERSDA TYPE MARD-ERSDA,
+        LABST TYPE MARD-LABST,
+
+      END OF GS_MARD.
+
+DATA : GT_MARD TYPE TABLE OF GS_MARD,
+        WA_MARD TYPE GS_MARD.
+
+TYPES : BEGIN OF GS_MBEW,                 "Changes on 03/09/2014
+        MATNR TYPE MBEW-MATNR,            "Material
+        BWKEY TYPE MBEW-BWKEY,            "Valuation Area / Plant
+        VPRSV TYPE MBEW-VPRSV,            " Price Control
+        VERPR TYPE MBEW-VERPR,            "Moving Price
+        STPRS TYPE MBEW-STPRS,            "Standard price
+        END OF GS_MBEW.
+
+DATA: GT_MBEW TYPE TABLE OF GS_MBEW,
+      WA_MBEW TYPE GS_MBEW.
+
+
+TYPES: BEGIN OF GS_MARA,
+       MATNR TYPE MARA-MATNR,              " Material Code
+       MTART TYPE MARA-MTART,              "CHANGES ON 20/09/2014
+       MATKL TYPE MARA-MATKL,              " Material Group
+       MEINS TYPE MARA-MEINS,              " UOM
+       SPART TYPE MARA-SPART,              " Division
+       VOLUM TYPE MARA-VOLUM,               " Volume
+
+       XCHPF TYPE MARA-XCHPF,              "cHANGES ON 20/09/2014
+
+       END OF GS_MARA.
+
+DATA: GT_MARA TYPE TABLE OF GS_MARA,
+      WA_MARA TYPE GS_MARA.
+
+
+TYPES: BEGIN OF GS_MAKT,
+       MATNR TYPE MAKT-MATNR,              " Material Number
+       MAKTX TYPE MAKT-MAKTX,              " Material Description
+       END OF GS_MAKT.
+
+DATA: GT_MAKT TYPE TABLE OF GS_MAKT,
+      WA_MAKT TYPE GS_MAKT.
+
+
+TYPES : BEGIN OF GS_T001W,
+        WERKS TYPE T001W-WERKS,
+        NAME1 TYPE T001W-NAME1,
+        END OF GS_T001W.
+
+DATA : GT_T001W TYPE TABLE OF GS_T001W,
+       WA_T001W TYPE GS_T001W.
+
+
+TYPES : BEGIN OF TY_MARC,
+        MATNR TYPE MARC-MATNR,
+        WERKS TYPE MARC-WERKS,
+        TRAME TYPE MARC-TRAME,
+        UMLMC TYPE MARC-UMLMC,
+        BWESB TYPE  MARC-BWESB,
+        END OF TY_MARC.
+
+DATA : GT_MARC TYPE STANDARD TABLE OF TY_MARC,
+      WA_MARC LIKE LINE OF GT_MARC.
+
+
+TYPES:BEGIN OF STR_MCHB,                     " Added by mani 13.02.2016
+  ERSDA4 TYPE MCHB-ERSDA,
+  END OF STR_MCHB.
+
+DATA:WA4 TYPE STR_MCHB.                      " Added by mani 13.02.2016
+
+
+
+TYPES: BEGIN OF GS_FINAL,
+       MATNR TYPE MCHB-MATNR,              " Material Number
+       WERKS TYPE MCHB-WERKS,              " Plant
+
+       LGORT TYPE MCHB-LGORT,              "Storage Location
+
+       SPART TYPE MARA-SPART,              " Division
+       MEINS TYPE MARA-MEINS,
+       MTART TYPE MARA-MTART,              " Material Type                                  "Added by Savariar S
+
+       NAME1 TYPE T001W-NAME1,             " Plant Descriprtion
+       BUKRS TYPE T001K-BUKRS,
+       MAKTX TYPE MAKT-MAKTX,              " Material Description
+       CHARG TYPE MCHB-CHARG,              " Batch No
+       ERSDA TYPE MCHB-ERSDA,              " Posting Date / Crated On
+       ERSDA7 TYPE MCHB-ERSDA,              " Posting Date / Crated On
+       LAEDA TYPE MCHB-LAEDA,
+*       ERSDA1 TYPE MCHB-ERSDA,              " Posting Date / Crated On                     " added by mani
+
+       CLABS TYPE P DECIMALS 3,              " Stock Qty  added by ram on 1/10/2015
+       TRAME TYPE P DECIMALS 2,
+       CINSM TYPE P DECIMALS 2,               "Quality Insp
+       CSPEM TYPE P DECIMALS 2,               " Blocked
+       LABST TYPE P DECIMALS 2,              " Stock Qty    "CHANGES ON 19/09/2014  BY SAVARIAR
+
+       VOLUM TYPE MARA-VOLUM,              " Volume
+       VCLABS TYPE MCHB-CLABS,             " Stock In Ltrs
+
+       MMATNR TYPE MARD-MATNR,            "CHANGES ON 20/09/2014 BY SAVARIAR
+       MWERKS TYPE MARD-WERKS,
+       MERSDA TYPE MARD-ERSDA,
+
+       MLABST TYPE MARD-LABST,            " Added by mani 13.02.2016
+
+*       VERPR TYPE MBEW-VERPR,              "Moving Price
+*       PRICE TYPE MBEW-STPRS,              "Standard price 03/09/2014
+       VPRSV TYPE MBEW-VPRSV,              " Price Control
+
+       ZAGE1 TYPE P DECIMALS 2,             " A1 < 30 Days
+       VZAGE1 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE2 TYPE P DECIMALS 2,             " A2 31-45 Days
+       VZAGE2 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE3 TYPE P DECIMALS 2,             " A3 46-60 Days
+       VZAGE3 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE4 TYPE P DECIMALS 2,             " A3 61-75 Days
+       VZAGE4 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE5 TYPE P DECIMALS 2,             " A3 76-90 Days
+       VZAGE5 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE6 TYPE P DECIMALS 2,             " A1 91-180 Days
+       VZAGE6 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE7 TYPE P DECIMALS 2,             " > 180 Days
+       VZAGE7 TYPE P DECIMALS 2,            " Stock In Ltrs
+
+       ZAGE8 TYPE P DECIMALS 2,             " A3 61-90 Days
+       VZAGE8 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE9 TYPE P DECIMALS 2,             " A3 91-180 Days
+       VZAGE9 TYPE P DECIMALS 2,            " Stock In Ltrs
+       ZAGE10 TYPE P DECIMALS 2,             " A5 Above 180 Days
+       VZAGE10 TYPE P DECIMALS 2,            " Stock In Ltrs
+
+       PRICE TYPE P DECIMALS 2,       " STOCKVALUE
+
+       STOCKVALUE TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE1 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE2 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE3 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE4 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE5 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE6 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE7 TYPE P DECIMALS 2,       " STOCKVALUE
+
+       STOCKVALUE8 TYPE P DECIMALS 2,       " STOCKVALUE
+       "Added By Govind On 27/11/2014
+       STOCKVALUE9 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE10 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKVALUE11 TYPE P DECIMALS 2,       " STOCKVALUE
+
+       STOCKCASE1 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE2 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE3 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE4 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE5 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE6 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE7 TYPE P DECIMALS 2,       " STOCKVALUE
+
+       STOCKCASE8 TYPE P DECIMALS 2,       " STOCKVALUE "Added By Govind On 27/11/2014
+       STOCKCASE9 TYPE P DECIMALS 2,       " STOCKVALUE
+       STOCKCASE10 TYPE P DECIMALS 2,       " STOCKVALUE
+
+
+
+       STOCK_QUALITY TYPE P DECIMALS 2,       " STOCKVALUE QUALITY             "Added By MANI On 12/10/2015
+       STOCK_TRANSIT TYPE P DECIMALS 2,       " STOCKVALUE TRANSIT              "Added By MANI On 12/10/2015
+
+       STOCK_BLOCKED TYPE P DECIMALS 2,
+
+       V_WERKCOUNT TYPE I,
+       V_MATCOUNT TYPE I,
+
+       V_COUNT TYPE I,
+       END OF GS_FINAL.
+
+
+
+DATA: GT_FINAL TYPE TABLE OF GS_FINAL,
+      WA_FINAL TYPE GS_FINAL.
+
+DATA: LV_WERKCOUNT TYPE SY-TABIX.
+DATA: LV_MATCOUNT TYPE SY-TABIX.
+
+DATA : LV_MAIL TYPE PA0105-USRID_LONG.  "ADDED BY RAM ON 24/11/2014
+
+DATA: LV_YEAR TYPE BKPF-GJAHR,
+      LV_MONTH TYPE BKPF-MONAT,
+      LV_SPART TYPE MARA-SPART,
+      T_DAYS TYPE I,
+      IT_ATTACHMENT TYPE STANDARD TABLE OF SOLISTI1,
+      IT_PACKLIST TYPE STANDARD TABLE OF SOPCKLSTI1,
+      IT_DOCDATA TYPE STANDARD TABLE OF SODOCCHGI1,      "ADDED BY RAM ON  24/11/2014
+      G_TAB_LINES   TYPE I,
+    IT_RECEIVERS TYPE STANDARD TABLE OF SOMLRECI1,
+      IT_BODY_MSG TYPE STANDARD TABLE OF SOLISTI1.
+" IT_BODY_MSG TYPE STANDARD TABLE OF SOLISTI1,
+.
+
+DATA: LV_COUNT TYPE SY-TABIX.
+
+
+*&---------------------------------------------------------------------*
+*&  ALV Structure & Internal Table
+*&---------------------------------------------------------------------*
+
+DATA: GT_FCAT TYPE SLIS_T_FIELDCAT_ALV,
+      WA_FCAT TYPE SLIS_FIELDCAT_ALV,
+      IT_LAYOUT TYPE SLIS_LAYOUT_ALV,
+      GT_EVENTS TYPE SLIS_T_EVENT,
+      WA_EVENTS TYPE SLIS_ALV_EVENT,
+      KEY TYPE SLIS_KEYINFO_ALV,
+       IT_SORT TYPE SLIS_T_SORTINFO_ALV,
+       WA_BODY_MSG LIKE LINE OF IT_BODY_MSG,
+         WA_PACKLIST LIKE LINE OF IT_PACKLIST,
+      WA_RECEIVERS LIKE LINE OF IT_RECEIVERS,
+      WA_DOCDATA LIKE LINE OF IT_DOCDATA,    "ADDED BY RAM ON 24/11/2014
+       WA_ATTACHMENT LIKE LINE OF IT_ATTACHMENT,
+       WA_SORT LIKE LINE OF IT_SORT.
+
+DATA: LS_VARIANT TYPE DISVARIANT.
+LS_VARIANT-REPORT = SY-REPID.
+
+
+DATA : LAYOUT TYPE SLIS_LAYOUT_ALV.
+
+DATA : LV_BUKRS TYPE T001K-BUKRS,
+       LV_WERKS TYPE T001W-WERKS,
+       LV_MATNR TYPE MARA-MATNR,
+       LV_MTART TYPE MARA-MTART,
+       LV_LGORT TYPE MCHB-LGORT.
+
+DATA : COUNT TYPE I VALUE '0',
+       TRANS_QTY TYPE P DECIMALS 2,
+      G_SENT_TO_ALL TYPE SONV-FLAG.
+
+
+
+DATA:CHECK1 TYPE CHAR10,
+      CHECK2 TYPE CHAR10.
+
+DATA:ERSDD TYPE MCHB-ERSDA.
+
+
+*&---------------------------------------------------------------------*
+*&  Selection Screen Fields
+*&---------------------------------------------------------------------*
+
+SELECTION-SCREEN: BEGIN OF BLOCK B1 WITH FRAME TITLE TEXT-101.
+SELECT-OPTIONS : SO_BUKRS FOR LV_BUKRS OBLIGATORY DEFAULT '1000',
+                 SO_WERKS FOR LV_WERKS,
+                 SO_MATNR FOR LV_MATNR,
+                 SO_MTART FOR LV_MTART,
+                 S_CHARG FOR MCHB-CHARG MODIF ID A,
+                 SO_LGORT FOR LV_LGORT MODIF ID B,
+                 SO_SPART FOR LV_SPART.
+
+PARAMETERS : P_DATE TYPE SY-DATUM DEFAULT SY-DATUM.
+SELECTION-SCREEN: END OF BLOCK B1.
+
+"Adding Radio Button.
+
+SELECTION-SCREEN: BEGIN OF BLOCK S1 WITH FRAME TITLE TEXT-001.       "Changes on 20/09/2014 by savariar
+PARAMETERS:WI_BATCH RADIOBUTTON GROUP G1 USER-COMMAND GH DEFAULT 'X',
+           WO_BATCH RADIOBUTTON GROUP G1.
+SELECTION-SCREEN:END OF BLOCK S1.
+
+
+AT SELECTION-SCREEN OUTPUT.
+
+  LOOP AT SCREEN.
+
+    IF WO_BATCH = 'X' AND SCREEN-GROUP1 = 'A'.                        " ADDED BY MANI 13.02.2016
+      SCREEN-INPUT = 0.
+      MODIFY SCREEN.
+    ENDIF.
+  ENDLOOP.
+
+
+
+
+START-OF-SELECTION.
+
+*&---------------------------------------------------------------------*
+*&  Main Logic
+*&---------------------------------------------------------------------*
+
+  IF WI_BATCH = 'X'.
+    SELECT
+      MATNR
+      MTART
+      MATKL
+      MEINS
+      SPART
+      VOLUM
+      XCHPF FROM MARA INTO TABLE GT_MARA
+      WHERE  MATNR IN SO_MATNR AND SPART IN SO_SPART AND XCHPF = 'X' AND MTART IN SO_MTART.
+  ENDIF.
+
+  IF WO_BATCH = 'X'.
+
+    SELECT
+      MATNR
+      MTART
+      MATKL
+      MEINS
+      SPART
+      VOLUM
+      XCHPF FROM MARA INTO TABLE GT_MARA
+      WHERE  MATNR IN SO_MATNR AND SPART IN SO_SPART  AND XCHPF = '' AND MTART IN SO_MTART.
+
+  ENDIF.
+
+  IF GT_MARA[] IS NOT INITIAL.
+    SELECT
+      MATNR
+      MAKTX FROM MAKT INTO TABLE GT_MAKT FOR ALL ENTRIES IN GT_MARA
+      WHERE MATNR = GT_MARA-MATNR .
+
+    IF WI_BATCH = 'X'.                                            "CHANGES ON 20/09/2014 BY SAVARIAR.
+
+      SELECT
+       MATNR
+         WERKS
+         LGORT
+         CHARG
+         ERSDA
+         LAEDA
+         CLABS
+        CINSM
+         CSPEM FROM MCHB INTO TABLE GT_MCHB FOR ALL ENTRIES IN GT_MARA
+        WHERE MATNR = GT_MARA-MATNR AND WERKS IN SO_WERKS AND LGORT IN SO_LGORT AND CHARG IN S_CHARG AND ERSDA LE P_DATE.    " S_CHARG Added by mani 13.02.2016
+
+      SELECT
+        BWKEY
+        BUKRS
+       FROM  T001K INTO TABLE GT_T001K FOR ALL ENTRIES IN GT_MCHB WHERE BWKEY = GT_MCHB-WERKS AND BUKRS IN SO_BUKRS.
+
+      SELECT MATNR
+                 WERKS
+                 TRAME
+                 UMLMC
+                 BWESB FROM MARC INTO TABLE GT_MARC FOR ALL ENTRIES IN GT_MARA  WHERE MATNR = GT_MARA-MATNR    . "Change on 27/10/2014.
+*              BWESB FROM MARC INTO TABLE GT_MCHB FOR ALL ENTRIES IN GT_MCHB  WHERE MATNR = GT_MCHB-MATNR AND WERKS = GT_MCHB-WERKS .
+
+
+    ENDIF.
+
+    IF WO_BATCH = 'X'.                                            "CHANGES ON 20/09/2014 BY SAVARIAR
+
+      SELECT
+        MATNR
+        WERKS
+        ERSDA
+        LABST FROM MARD INTO TABLE GT_MARD FOR ALL ENTRIES IN GT_MARA
+        WHERE MATNR = GT_MARA-MATNR AND WERKS IN SO_WERKS .
+
+      SELECT
+         BWKEY
+         BUKRS
+        FROM  T001K INTO TABLE GT_T001K FOR ALL ENTRIES IN GT_MARD WHERE BWKEY = GT_MARD-WERKS AND BUKRS IN SO_BUKRS.
+
+    ENDIF.
+
+*  IF GT_MCHB[] IS NOT INITIAL.                                    "changes on 22/09/014
+
+    SELECT
+         MATNR
+         BWKEY
+         VPRSV
+         VERPR
+         STPRS FROM MBEW INTO TABLE GT_MBEW FOR ALL ENTRIES IN GT_MCHB
+        WHERE MATNR = GT_MCHB-MATNR  AND BWKEY = GT_MCHB-WERKS AND ( VPRSV = 'S' OR VPRSV = 'V' )  .
+
+    IF GT_MBEW[] IS NOT INITIAL.
+
+      SELECT WERKS NAME1 FROM T001W INTO TABLE GT_T001W
+           FOR ALL ENTRIES IN GT_MCHB WHERE WERKS = GT_MCHB-WERKS.
+    ENDIF.
+
+*  ENDIF.                                                               "changes on 22/09/014
+
+  ENDIF.
+
+  DELETE GT_MARC WHERE TRAME = 0.
+
+*BREAK-POINT.
+  IF WI_BATCH = 'X'.
+
+
+    LOOP AT GT_T001K INTO WA_T001K.
+
+      WA_FINAL-BUKRS = WA_T001K-BUKRS.
+
+      LOOP AT  GT_MCHB INTO WA_MCHB WHERE WERKS  = WA_T001K-BWKEY .
+        WA_FINAL-MATNR = WA_MCHB-MATNR.
+        WA_FINAL-WERKS = WA_MCHB-WERKS.
+        WA_FINAL-LGORT = WA_MCHB-LGORT.
+        WA_FINAL-LAEDA = WA_MCHB-LAEDA .
+        WA_FINAL-CHARG = WA_MCHB-CHARG.
+       " WA_FINAL-ERSDA = WA_MCHB-ERSDA.
+        WA_FINAL-CLABS = WA_MCHB-CLABS.
+        WA_FINAL-CINSM = WA_MCHB-CINSM.
+        WA_FINAL-CSPEM = WA_MCHB-CSPEM.
+
+"          IF WA_FINAL-LAEDA EQ ' ' .
+          WA_FINAL-ERSDA = WA_MCHB-ERSDA .
+ "           ENDIF.
+
+  "       IF WA_FINAL-LAEDA NE ' '.
+       "   WA_FINAL-ERSDA = WA_FINAL-LAEDA .
+   "     ENDIF.
+
+
+     "   SELECT SINGLE MIN( ERSDA )  FROM MCHB INTO WA4 WHERE MATNR = WA_MCHB-MATNR  AND CHARG = WA_MCHB-CHARG.                      " Added by mani 13.02.2016
+*    READ TABLE GT_T001K INTO WA_T001K WITH KEY BWKEY = WA_MCHB-WERKS.
+*    WA_FINAL-BUKRS = WA_T001K-BUKRS.
+
+        READ TABLE GT_MARA INTO WA_MARA WITH KEY MATNR = WA_MCHB-MATNR .
+
+        WA_FINAL-MTART = WA_MARA-MTART.
+        WA_FINAL-SPART = WA_MARA-SPART.
+        WA_FINAL-VOLUM = WA_MARA-VOLUM.
+
+*    IF WA_FINAL-CLABS <> 0.
+        WA_FINAL-MEINS = WA_MARA-MEINS.
+*     ENDIF.
+
+        READ TABLE GT_MAKT INTO WA_MAKT WITH KEY MATNR = WA_MCHB-MATNR .
+
+        WA_FINAL-MAKTX = WA_MAKT-MAKTX.
+
+        READ TABLE GT_T001W INTO WA_T001W WITH KEY WERKS = WA_MCHB-WERKS .
+        WA_FINAL-NAME1 = WA_T001W-NAME1.
+
+        READ TABLE GT_MBEW INTO WA_MBEW WITH KEY MATNR = WA_MCHB-MATNR BWKEY = WA_MCHB-WERKS .
+
+        IF SY-SUBRC = 0.
+          WA_FINAL-VPRSV = WA_MBEW-VPRSV.
+          IF WA_MBEW-VPRSV = 'S'.
+            WA_FINAL-PRICE = WA_MBEW-STPRS.
+          ELSEIF WA_MBEW-VPRSV = 'V'.
+            WA_FINAL-PRICE = WA_MBEW-VERPR.
+          ENDIF.
+
+        ENDIF.
+
+
+
+       " WA_FINAL-ERSDA = WA4-ERSDA4.
+
+        CALL FUNCTION 'HR_99S_INTERVAL_BETWEEN_DATES'
+          EXPORTING
+         "  BEGDA = WA_MCHB-ERSDA                                                                        " hided by mani 13.02.2016
+           BEGDA = WA_FINAL-ERSDA                                                                       " Added by mani 13.02.2016
+            ENDDA = P_DATE
+          IMPORTING
+            DAYS  = T_DAYS.
+
+        IF T_DAYS <= 30.
+          WA_FINAL-ZAGE1 = WA_MCHB-CLABS.   "changes on 22/09/014 by savariar
+        ELSEIF T_DAYS BETWEEN 31 AND 45.
+          WA_FINAL-ZAGE2 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS BETWEEN 46 AND 60.
+          WA_FINAL-ZAGE3 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS BETWEEN 61 AND 75.
+          WA_FINAL-ZAGE4 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS BETWEEN 76 AND 90.
+          WA_FINAL-ZAGE5 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS BETWEEN 91 AND 120.
+          "Added By Govind On 27/11/2014
+          WA_FINAL-ZAGE6 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS BETWEEN  121 AND 150.
+          WA_FINAL-ZAGE7 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS BETWEEN  151 AND 180.
+          WA_FINAL-ZAGE8 = WA_MCHB-CLABS.
+        ELSEIF T_DAYS > 180.
+          WA_FINAL-ZAGE9 = WA_MCHB-CLABS.
+        ENDIF.
+****************************************  "Added By Govind On 27/11/2014
+        SHIFT WA_FINAL-MATNR LEFT DELETING LEADING '0'.
+
+        LOOP AT  GT_MARC INTO WA_MARC WHERE  MATNR = WA_MCHB-MATNR  AND WERKS = WA_MCHB-WERKS.
+          IF SY-SUBRC = 0.
+            WA_FINAL-TRAME =  WA_FINAL-TRAME + WA_MARC-TRAME.
+          ENDIF.
+        ENDLOOP.
+
+        ERSDD = WA_FINAL-ERSDA.
+
+        APPEND WA_FINAL TO GT_FINAL.
+        CLEAR: WA_FINAL.
+        CLEAR:CHECK1,CHECK2.
+      ENDLOOP.
+
+    ENDLOOP.
+
+    LOOP AT GT_FINAL INTO WA_FINAL.
+
+
+      WA_FINAL-VCLABS = WA_FINAL-CLABS *  WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE1 =  WA_FINAL-ZAGE1 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE2 =  WA_FINAL-ZAGE2 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE3 =  WA_FINAL-ZAGE3 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE4 =  WA_FINAL-ZAGE4 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE5 =  WA_FINAL-ZAGE5 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE6 =  WA_FINAL-ZAGE6 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE7 =  WA_FINAL-ZAGE7 * WA_FINAL-VOLUM.
+
+      "Added By Govind On 27/11/2014
+
+      WA_FINAL-VZAGE8 =  WA_FINAL-ZAGE8 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE9 =  WA_FINAL-ZAGE9 * WA_FINAL-VOLUM.
+*    WA_FINAL-VZAGE7 =  WA_FINAL-ZAGE7 * WA_FINAL-VOLUM.
+
+      WA_FINAL-STOCKVALUE = WA_FINAL-CLABS * WA_FINAL-PRICE.
+
+      IF WA_FINAL-VOLUM NE 0.
+        WA_FINAL-STOCKVALUE1 = WA_FINAL-PRICE / WA_FINAL-VOLUM.
+      ENDIF.
+
+      WA_FINAL-STOCKVALUE2 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE1 .   "changes on 24/09/014 by savariar
+      WA_FINAL-STOCKVALUE3 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE2 .
+      WA_FINAL-STOCKVALUE4 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE3 .
+      WA_FINAL-STOCKVALUE5 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE4 .
+      WA_FINAL-STOCKVALUE6 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE5 .
+      WA_FINAL-STOCKVALUE7 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE6 .
+      WA_FINAL-STOCKVALUE8 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE7 .
+      WA_FINAL-STOCKVALUE9 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE8.  "Added By Govind On 27/11/2014
+      WA_FINAL-STOCKVALUE10 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE9.
+
+      WA_FINAL-STOCKCASE1 = WA_FINAL-PRICE * WA_FINAL-ZAGE1 .
+      WA_FINAL-STOCKCASE2 = WA_FINAL-PRICE * WA_FINAL-ZAGE2 .
+      WA_FINAL-STOCKCASE3 = WA_FINAL-PRICE * WA_FINAL-ZAGE3 .
+      WA_FINAL-STOCKCASE4 = WA_FINAL-PRICE * WA_FINAL-ZAGE4 .
+      WA_FINAL-STOCKCASE5 = WA_FINAL-PRICE * WA_FINAL-ZAGE5 .
+      WA_FINAL-STOCKCASE6 = WA_FINAL-PRICE * WA_FINAL-ZAGE6 .
+      WA_FINAL-STOCKCASE7 = WA_FINAL-PRICE * WA_FINAL-ZAGE7 .
+      WA_FINAL-STOCKCASE8 = WA_FINAL-PRICE * WA_FINAL-ZAGE8 .      "Added By Govind On 27/11/2014
+      WA_FINAL-STOCKCASE9 = WA_FINAL-PRICE * WA_FINAL-ZAGE9 .
+
+
+      MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING  VCLABS VZAGE1 VZAGE2
+      VZAGE3 VZAGE4 VZAGE5 VZAGE6 VZAGE7 VZAGE8 VZAGE9 STOCKVALUE STOCKVALUE1 STOCKVALUE2 STOCKVALUE3
+      STOCKVALUE4 STOCKVALUE5 STOCKVALUE6 STOCKVALUE7 STOCKVALUE8 STOCKVALUE10 STOCKVALUE9 STOCKCASE1 STOCKCASE2 STOCKCASE3 STOCKCASE4 STOCKCASE5 STOCKCASE6 STOCKCASE7  STOCKCASE8 STOCKCASE9.
+      CLEAR WA_FINAL.
+    ENDLOOP.
+*  BREAK-POINT.
+
+    SORT GT_FINAL BY WERKS MATNR CHARG .
+    LOOP AT GT_FINAL INTO WA_FINAL .
+      LV_COUNT = LV_COUNT  + 1.
+
+      AT NEW MATNR.
+        WA_FINAL-V_COUNT = LV_COUNT.
+
+        MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING V_COUNT.
+        CLEAR WA_FINAL.
+      ENDAT.
+    ENDLOOP.
+
+    LOOP AT GT_FINAL INTO WA_FINAL.
+      IF WA_FINAL-V_COUNT = 0.
+        WA_FINAL-TRAME = ' '.
+        MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING TRAME.
+        CLEAR WA_FINAL.
+      ENDIF.
+    ENDLOOP.
+
+
+
+    LOOP AT GT_FINAL INTO WA_FINAL.                                                   "Added By MANI On 12/10/2015
+
+      WA_FINAL-STOCK_QUALITY  = WA_FINAL-CINSM  * WA_FINAL-PRICE.
+      WA_FINAL-STOCK_TRANSIT   = WA_FINAL-TRAME  * WA_FINAL-PRICE.
+
+      WA_FINAL-STOCK_BLOCKED = WA_FINAL-CSPEM * WA_FINAL-PRICE .
+
+      MODIFY GT_FINAL FROM WA_FINAL." TRANSPORTING TRAME.
+
+    ENDLOOP.
+
+
+
+  ENDIF.
+
+  DELETE GT_FINAL WHERE CLABS EQ 0 AND  TRAME  EQ 0 AND  CINSM EQ 0 AND CSPEM EQ 0 . " Added By Govind on 27-10-2014
+
+
+
+
+
+  IF WO_BATCH = 'X'.
+
+    LOOP AT GT_T001K INTO WA_T001K.
+
+      WA_FINAL-BUKRS = WA_T001K-BUKRS .
+
+      LOOP AT  GT_MARD INTO WA_MARD  WHERE WERKS = WA_T001K-BWKEY.
+        WA_FINAL-MMATNR = WA_MARD-MATNR.
+        WA_FINAL-MWERKS = WA_MARD-WERKS.
+        WA_FINAL-MERSDA = WA_MARD-ERSDA.
+        WA_FINAL-LABST = WA_MARD-LABST.
+
+        READ TABLE GT_MARA INTO WA_MARA WITH KEY MATNR = WA_MARD-MATNR.
+        WA_FINAL-MTART = WA_MARA-MTART.
+        WA_FINAL-SPART = WA_MARA-SPART.
+        WA_FINAL-VOLUM = WA_MARA-VOLUM.
+
+        WA_FINAL-MEINS = WA_MARA-MEINS.
+
+        READ TABLE GT_MAKT INTO WA_MAKT WITH KEY MATNR = WA_MARD-MATNR.
+
+        WA_FINAL-MAKTX = WA_MAKT-MAKTX.
+
+        READ TABLE GT_T001W INTO WA_T001W WITH KEY WERKS = WA_MARD-WERKS.
+        WA_FINAL-NAME1 = WA_T001W-NAME1.
+
+        READ TABLE GT_MBEW INTO WA_MBEW WITH KEY MATNR = WA_MARD-MATNR BWKEY = WA_MARD-WERKS .
+        IF SY-SUBRC = 0.
+
+          WA_FINAL-VPRSV = WA_MBEW-VPRSV.
+
+          IF WA_MBEW-VPRSV = 'S'.
+            WA_FINAL-PRICE = WA_MBEW-STPRS.
+          ELSEIF WA_MBEW-VPRSV = 'V'.
+            WA_FINAL-PRICE = WA_MBEW-VERPR.
+
+          ENDIF.
+        ENDIF.
+        CALL FUNCTION 'HR_99S_INTERVAL_BETWEEN_DATES'
+          EXPORTING
+            BEGDA = WA_MARD-ERSDA
+            ENDDA = P_DATE
+          IMPORTING
+            DAYS  = T_DAYS.
+*
+*  IF T_DAYS <= 30.
+*    WA_FINAL-ZAGE1 = WA_MARD-LABST.
+*  ELSEIF T_DAYS BETWEEN 31 AND 60.
+*    WA_FINAL-ZAGE2 = WA_MARD-LABST.
+*  ELSEIF T_DAYS BETWEEN 61 AND 90.
+*    WA_FINAL-ZAGE3 = WA_MARD-LABST.
+*  ELSEIF T_DAYS BETWEEN 91 AND 180.
+*    WA_FINAL-ZAGE4 = WA_MARD-LABST.
+*  ELSEIF T_DAYS > 180.
+*    WA_FINAL-ZAGE5 = WA_MARD-LABST.
+*  ENDIF.
+
+        IF T_DAYS <= 30.                                         "changes on 24/09/014 by savariar
+          WA_FINAL-ZAGE1 = WA_MARD-LABST.
+        ELSEIF T_DAYS BETWEEN 31 AND 45.
+          WA_FINAL-ZAGE2 = WA_MARD-LABST.
+        ELSEIF T_DAYS BETWEEN 46 AND 60.
+          WA_FINAL-ZAGE3 = WA_MARD-LABST.
+        ELSEIF T_DAYS BETWEEN 61 AND 75.
+          WA_FINAL-ZAGE4 = WA_MARD-LABST.
+        ELSEIF T_DAYS BETWEEN 76 AND 90.
+          WA_FINAL-ZAGE5 = WA_MARD-LABST.
+****************************************
+        ELSEIF T_DAYS BETWEEN 91 AND 120. "Added By Govind On 27/11/2014
+          WA_FINAL-ZAGE6 = WA_MARD-LABST.
+        ELSEIF T_DAYS BETWEEN 121 AND 150.
+          WA_FINAL-ZAGE7 = WA_MARD-LABST.
+        ELSEIF T_DAYS BETWEEN 151 AND 180.
+          WA_FINAL-ZAGE8 = WA_MARD-LABST.
+        ELSEIF T_DAYS > 180.
+          WA_FINAL-ZAGE9 = WA_MARD-LABST.
+        ENDIF.
+*************************************************
+
+        SHIFT WA_FINAL-MMATNR LEFT DELETING LEADING '0'.
+        APPEND WA_FINAL TO GT_FINAL.
+        CLEAR: WA_FINAL.
+
+        DELETE GT_FINAL WHERE LABST EQ 0.
+
+      ENDLOOP.
+
+    ENDLOOP.
+
+
+
+
+
+    LOOP AT GT_FINAL INTO WA_FINAL.
+
+      WA_FINAL-MLABST = WA_FINAL-LABST *  WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE1 =  WA_FINAL-ZAGE1 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE2 =  WA_FINAL-ZAGE2 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE3 =  WA_FINAL-ZAGE3 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE4 =  WA_FINAL-ZAGE4 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE5 =  WA_FINAL-ZAGE5 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE6 =  WA_FINAL-ZAGE6 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE7 =  WA_FINAL-ZAGE7 * WA_FINAL-VOLUM.
+      WA_FINAL-VZAGE8 =  WA_FINAL-ZAGE8 * WA_FINAL-VOLUM. "Added By Govind On 27/11/2014
+      WA_FINAL-VZAGE9 =  WA_FINAL-ZAGE9 * WA_FINAL-VOLUM.
+
+
+      WA_FINAL-STOCKVALUE = WA_FINAL-LABST * WA_FINAL-PRICE.
+
+      IF WA_FINAL-VOLUM NE 0.
+        WA_FINAL-STOCKVALUE1 = WA_FINAL-PRICE / WA_FINAL-VOLUM.
+      ENDIF.
+
+      WA_FINAL-STOCKVALUE2 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE1 .
+      WA_FINAL-STOCKVALUE3 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE2 .
+      WA_FINAL-STOCKVALUE4 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE3 .
+      WA_FINAL-STOCKVALUE5 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE4 .
+      WA_FINAL-STOCKVALUE6 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE5 .
+      WA_FINAL-STOCKVALUE7 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE6 .
+      WA_FINAL-STOCKVALUE8 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE7 .
+      WA_FINAL-STOCKVALUE9 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE8 . "Added By Govind On 27/11/2014
+      WA_FINAL-STOCKVALUE10 = WA_FINAL-STOCKVALUE1 * WA_FINAL-VZAGE9 .
+
+      WA_FINAL-STOCKCASE1 = WA_FINAL-PRICE * WA_FINAL-ZAGE1 .
+      WA_FINAL-STOCKCASE2 = WA_FINAL-PRICE * WA_FINAL-ZAGE2 .
+      WA_FINAL-STOCKCASE3 = WA_FINAL-PRICE * WA_FINAL-ZAGE3 .
+      WA_FINAL-STOCKCASE4 = WA_FINAL-PRICE * WA_FINAL-ZAGE4 .
+      WA_FINAL-STOCKCASE5 = WA_FINAL-PRICE * WA_FINAL-ZAGE5 .
+      WA_FINAL-STOCKCASE6 = WA_FINAL-PRICE * WA_FINAL-ZAGE6 .
+      WA_FINAL-STOCKCASE7 = WA_FINAL-PRICE * WA_FINAL-ZAGE7 .
+      WA_FINAL-STOCKCASE8 = WA_FINAL-PRICE * WA_FINAL-ZAGE8 ."Added By Govind On 27/11/2014
+      WA_FINAL-STOCKCASE9 = WA_FINAL-PRICE * WA_FINAL-ZAGE9 .
+
+      MODIFY GT_FINAL FROM WA_FINAL TRANSPORTING  MLABST VZAGE1 VZAGE2
+      VZAGE3 VZAGE4 VZAGE5 VZAGE6 VZAGE7 VZAGE8 VZAGE9 STOCKVALUE STOCKVALUE1 STOCKVALUE2 STOCKVALUE3
+      STOCKVALUE4 STOCKVALUE5 STOCKVALUE6 STOCKVALUE7 STOCKVALUE8 STOCKVALUE9 STOCKVALUE10 STOCKCASE1 STOCKCASE2 STOCKCASE3 STOCKCASE4 STOCKCASE5 STOCKCASE6 STOCKCASE7 STOCKCASE8 STOCKCASE9.
+      CLEAR WA_FINAL.
+    ENDLOOP.
+
+  ENDIF.
+
+*&---------------------------------------------------------------------*
+*&  ALV Layout
+*&---------------------------------------------------------------------*
+
+  IF WI_BATCH = 'X'.
+
+    PERFORM ALV_LAYOUT USING 1 'Plant Code' 'WERKS' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 2 'Plant Name' 'NAME1' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 3 'Division' 'SPART' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 4 'Material Code' 'MATNR' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 5 'Material Description' 'MAKTX' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 6 'Material Type' 'MTART' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 7 'Batch' 'CHARG' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 8 'Stor. Location' 'LGORT' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 9 'Material Received Date' 'ERSDA' 'GT_FINAL' '' '' ''.
+    PERFORM ALV_LAYOUT USING 11 'Volume' 'VOLUM' 'GT_FINAL' '' 'X' ''.
+    PERFORM ALV_LAYOUT USING 12  'Stock Qty' 'CLABS' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 13  'Base Unit' 'MEINS' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 14  'In Qual. Insp.' 'CINSM' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 16  'Stock In Transit' 'TRAME' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 17  'Blocked' 'CSPEM' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 19  'Price Ind.' 'VPRSV' 'GT_FINAL' '' 'X' ''.
+    PERFORM ALV_LAYOUT USING 20  'Unit Price' 'PRICE' 'GT_FINAL' '' 'X' ''.
+    PERFORM ALV_LAYOUT USING 21  'Stock Value Unrestricted' 'STOCKVALUE' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 22  'Stock Value Quality' 'STOCK_QUALITY' 'GT_FINAL' 'X' 'X' ''.                "Added By MANI On 12/10/2015
+    PERFORM ALV_LAYOUT USING 23  'Stock Value Transit' 'STOCK_TRANSIT' 'GT_FINAL' 'X' 'X' ''.                 "Added By MANI On 12/10/2015
+
+    PERFORM ALV_LAYOUT USING 24  'Stock Value Blocked' 'STOCK_BLOCKED' 'GT_FINAL' 'X' 'X' ''.                 "Added By MANI On 12/10/2015
+
+    PERFORM ALV_LAYOUT USING 25  'Stock Qty(Unrestricted) Ltrs' 'VCLABS' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 26  'Price in Ltrs' 'STOCKVALUE1' 'GT_FINAL' '' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 27 '< 30 Days(Case)' 'ZAGE1' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 28 '< 30 Days Stock Value' 'STOCKCASE1' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 29 '< 30 Stock Qty Ltrs' 'VZAGE1' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 27 '< 30 Stock Qty Value' 'STOCKVALUE2' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 30 '31-45 Days(Case)' 'ZAGE2' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 31 '31-45  Days Stock Value' 'STOCKCASE2' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 32 '31-45  Stock Qty Ltrs' 'VZAGE2' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 32 '31-45  Stock Qty Value' 'STOCKVALUE3' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 33 '46-60 Days(Case)' 'ZAGE3' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 34 '46-60 Days Stock Value' 'STOCKCASE3' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 35 '46-60 Stock Qty Ltrs' 'VZAGE3' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 36 '46-60 Stock Qty Value' 'STOCKVALUE4' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 36 '61-75 Days(Case)' 'ZAGE4' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 37 '61-75 Days Stock Value' 'STOCKCASE4' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 38 '61-75 Stock Qty Ltrs' 'VZAGE4' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 40 '61-75 Stock Qty Value' 'STOCKVALUE5' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 39 '76-90  Days(Case)' 'ZAGE5' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 40 '76-90 Days Stock Value' 'STOCKCASE5' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 41 '76-90 Stock Qty Ltrs' 'VZAGE5' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 44 '76-90 Stock Qty Value' 'STOCKVALUE6' 'GT_FINAL' 'X' 'X' 'X'.
+***************************  "Added By Govind On 27/11/2014
+    PERFORM ALV_LAYOUT USING 42 '91-120  Days(Case)' 'ZAGE6' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 43 '91-120 Days Stock Value' 'STOCKCASE6' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 44 '91-120 Stock Qty Ltrs' 'VZAGE6' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 48 '91-180 Stock Qty Value' 'STOCKVALUE7' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 45 '121-150  Days(Case)' 'ZAGE7' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 46 '121-150 Days Stock Value' 'STOCKCASE7' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 47 '121-150 Stock Qty Ltrs' 'VZAGE7' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 48 '91-120 Stock Qty Value' 'STOCKVALUE8' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 48 '151-180  Days(Case)' 'ZAGE8' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 49 '151-180 Days Stock Value' 'STOCKCASE8' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 50 '151-180 Stock Qty Ltrs' 'VZAGE8' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 51 '> 180  Days(Case)' 'ZAGE9' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 52 '> 180 Days Stock Value' 'STOCKCASE9' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 53 '> 180 Stock Qty Ltrs' 'VZAGE9' 'GT_FINAL' 'X' 'X' ''.
+****************************************  "Added By Govind On 27/11/2014
+
+*  PERFORM ALV_LAYOUT USING 52 '> 180 Stock Qty Value' 'STOCKVALUE8' 'GT_FINAL' 'X' 'X' 'X'.
+*  PERFORM ALV_LAYOUT USING 53 'Count' 'V_COUNT' 'GT_FINAL' '' '' ''.
+
+    WA_SORT-FIELDNAME = 'WERKS'.
+*  WA_SORT-SUBTOT = 'X'.
+    WA_SORT-UP = 'X'.
+*  WA_SORT-GROUP = 'X'.
+    APPEND WA_SORT TO IT_SORT.
+    CLEAR WA_SORT.
+
+*   WA_SORT-FIELDNAME = 'MATNR'.
+*  WA_SORT-UP = 'X'.
+*  WA_SORT-GROUP = 'X'.
+*  APPEND WA_SORT TO IT_SORT.
+*  CLEAR WA_SORT.
+*
+* WA_SORT-FIELDNAME = 'TRAME'.
+*  WA_SORT-UP = 'X'.
+*  WA_SORT-GROUP = 'X'.
+*  APPEND WA_SORT TO IT_SORT.
+*  CLEAR WA_SORT.
+
+  ENDIF.
+
+  IF WO_BATCH = 'X'.                                           "changes on 24/09/014 by savariar
+
+    PERFORM ALV_LAYOUT USING 1 'Plant Code' 'MWERKS' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 2 'Plant Name' 'NAME1' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 3 'Division' 'SPART' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 4 'Material Code' 'MMATNR' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 5 'Material Description' 'MAKTX' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 6 'Material Type' 'MTART' 'GT_FINAL' ' ' '' ''.
+    PERFORM ALV_LAYOUT USING 10 'Created On' 'MERSDA' 'GT_FINAL' '' '' ''.
+    PERFORM ALV_LAYOUT USING 12 'Volume' 'VOLUM' 'GT_FINAL' '' 'X' ''.
+    PERFORM ALV_LAYOUT USING 13  'Stock Qty' 'LABST' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 14  'Base Unit' 'MEINS' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 15  'Price Ind.' 'VPRSV' 'GT_FINAL' '' 'X' ''.
+    PERFORM ALV_LAYOUT USING 16  'Unit Price' 'PRICE' 'GT_FINAL' '' 'X' ''.
+    PERFORM ALV_LAYOUT USING 17  'Stock Value' 'STOCKVALUE' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 18  'Stock Qty Ltrs' 'MLABST' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 20  'Price in Ltrs' 'STOCKVALUE1' 'GT_FINAL' '' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 22 '< 30 Days(Case)' 'ZAGE1' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 23 '< 30 Days Stock Value' 'STOCKCASE1' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 24 '< 30 Stock Qty Ltrs' 'VZAGE1' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 25 '< 30 Stock Qty Value' 'STOCKVALUE2' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 26 '31-45 Days(Case)' 'ZAGE2' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 27 '31-45  Days Stock Value' 'STOCKCASE2' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 28 '31-45  Stock Qty Ltrs' 'VZAGE2' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 29 '31-45  Stock Qty Value' 'STOCKVALUE3' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 29 '46-60 Days(Case)' 'ZAGE3' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 30 '46-60 Days Stock Value' 'STOCKCASE3' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 31 '46-60 Stock Qty Ltrs' 'VZAGE3' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 33 '46-60 Stock Qty Value' 'STOCKVALUE4' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 32 '61-75 Days(Case)' 'ZAGE4' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 33 '61-75 Days Stock Value' 'STOCKCASE4' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 34 '61-75 Stock Qty Ltrs' 'VZAGE4' 'GT_FINAL' 'X' 'X' ''.
+*  PERFORM ALV_LAYOUT USING 37 '61-75 Stock Qty Value' 'STOCKVALUE5' 'GT_FINAL' 'X' 'X' 'X'.
+
+    PERFORM ALV_LAYOUT USING 35 '76-90  Days(Case)' 'ZAGE5' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 36 '76-90 Days Stock Value' 'STOCKCASE5' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 37 '76-90 Stock Qty Ltrs' 'VZAGE5' 'GT_FINAL' 'X' 'X' ''.
+
+
+***************************  "Added By Govind On 27/11/2014
+    PERFORM ALV_LAYOUT USING 38 '91-120  Days(Case)' 'ZAGE6' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 39 '91-120 Days Stock Value' 'STOCKCASE6' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 40 '91-120 Stock Qty Ltrs' 'VZAGE6' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 41 '121-150  Days(Case)' 'ZAGE7' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 42 '121-150 Days Stock Value' 'STOCKCASE7' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 43 '121-150 Stock Qty Ltrs' 'VZAGE7' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 44 '151-180  Days(Case)' 'ZAGE8' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 45 '151-180 Days Stock Value' 'STOCKCASE8' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 46 '151-180 Stock Qty Ltrs' 'VZAGE8' 'GT_FINAL' 'X' 'X' ''.
+
+    PERFORM ALV_LAYOUT USING 47 '> 180  Days(Case)' 'ZAGE9' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 48 '> 180 Days Stock Value' 'STOCKCASE9' 'GT_FINAL' 'X' 'X' ''.
+    PERFORM ALV_LAYOUT USING 49 '> 180 Stock Qty Ltrs' 'VZAGE9' 'GT_FINAL' 'X' 'X' ''.
+
+
+    WA_SORT-FIELDNAME = 'MWERKS'.
+*  WA_SORT-SUBTOT = 'X'.
+    WA_SORT-UP = 'X'.
+*  WA_SORT-GROUP = 'X'.
+    APPEND WA_SORT TO IT_SORT.
+    CLEAR WA_SORT.
+
+  ENDIF.
+
+*&---------------------------------------------------------------------*
+*&   ALV Hierarchical Display
+*&---------------------------------------------------------------------*
+
+  END-OF-SELECTION.
+
+  PERFORM ALV_GRID_DISPLAY.
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_LAYOUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P1  text
+*      -->P2  text
+*      -->P3  text
+*      -->P4  text
+*      -->P5  text
+*----------------------------------------------------------------------*
+FORM ALV_LAYOUT  USING  P1 P2 P3 P4 P5 P6 P7.
+  CLEAR WA_FCAT.
+  WA_FCAT-COL_POS = P1.
+  WA_FCAT-SELTEXT_L = P2.
+  WA_FCAT-FIELDNAME = P3.
+  WA_FCAT-TABNAME = P4.
+  WA_FCAT-DO_SUM = P5.
+  WA_FCAT-NO_ZERO = P6.
+  WA_FCAT-NO_OUT = P7.
+
+  APPEND WA_FCAT TO GT_FCAT.
+
+ENDFORM.                    " ALV_LAYOUT
+
+*&---------------------------------------------------------------------*
+*&      Form  ALV_GRID_DISPLAY
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM ALV_GRID_DISPLAY .
+
+  LAYOUT-COLWIDTH_OPTIMIZE = 'X'.
+  LAYOUT-ZEBRA = 'X'.
+
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+   EXPORTING
+*     I_INTERFACE_CHECK                 = ' '
+*     I_BYPASSING_BUFFER                = ' '
+*     I_BUFFER_ACTIVE                   = ' '
+     I_CALLBACK_PROGRAM                = SY-REPID
+*     I_CALLBACK_PF_STATUS_SET          = 'PF_STATUS_GET'  " ADDED BY RAM ON 24/11/2014
+     I_CALLBACK_USER_COMMAND           = 'MY_USER_COMMAND'
+     I_CALLBACK_TOP_OF_PAGE            = 'ALV_CATALOG_HEADER'
+*     I_CALLBACK_HTML_TOP_OF_PAGE       = ' '
+*     I_CALLBACK_HTML_END_OF_LIST       = ' '
+*     I_STRUCTURE_NAME                  =
+*     I_BACKGROUND_ID                   = ' '
+*     I_GRID_TITLE                      =
+*     I_GRID_SETTINGS                   =
+     IS_LAYOUT                          = LAYOUT
+     IT_FIELDCAT                       = GT_FCAT[]
+*     IT_EXCLUDING                      =
+*     IT_SPECIAL_GROUPS                 =
+     IT_SORT                           = IT_SORT[]
+*     IT_FILTER                         =
+*     IS_SEL_HIDE                       =
+*     I_DEFAULT                         = 'X'
+*     I_SAVE                            = ' '
+*     IS_VARIANT                        =
+*     IT_EVENTS                         =
+*     IT_EVENT_EXIT                     =
+*     IS_PRINT                          =
+*     IS_REPREP_ID                      =
+*     I_SCREEN_START_COLUMN             = 0
+*     I_SCREEN_START_LINE               = 0
+*     I_SCREEN_END_COLUMN               = 0
+*     I_SCREEN_END_LINE                 = 0
+*     I_HTML_HEIGHT_TOP                 = 0
+*     I_HTML_HEIGHT_END                 = 0
+*     IT_ALV_GRAPHICS                   =
+*     IT_HYPERLINK                      =
+*     IT_ADD_FIELDCAT                   =
+*     IT_EXCEPT_QINFO                   =
+*     IR_SALV_FULLSCREEN_ADAPTER        =
+*   IMPORTING
+*     E_EXIT_CAUSED_BY_CALLER           =
+*     ES_EXIT_CAUSED_BY_USER            =
+    TABLES
+      T_OUTTAB                          = GT_FINAL[]
+*   EXCEPTIONS
+*     PROGRAM_ERROR                     = 1
+*     OTHERS                            = 2
+            .
+  IF SY-SUBRC <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+ENDFORM.                    " ALV_GRID_DISPLAY
+
+**&---------------------------------------------------------------------*
+**&      Form  PF_STATUS_GET_DETAIL
+**&---------------------------------------------------------------------*
+**       text
+**----------------------------------------------------------------------*
+**      -->RT_EXTAB   text
+**----------------------------------------------------------------------*
+*FORM PF_STATUS_GET USING RT_EXTAB TYPE SLIS_T_EXTAB.              "ADDED BY RAM 24/11/2014
+*
+*  SET PF-STATUS 'MY_STATUS'.
+*
+*ENDFORM.                    "PF_STATUS_GET_DETAIL
+
+*&---------------------------------------------------------------------*  "ADDED BY RAM 24/11/2014
+*&      Form  MY_USER_COMMAND_DETAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->R_UCOMM      text
+*      -->RS_SELFIELD  text
+*----------------------------------------------------------------------*
+FORM MY_USER_COMMAND USING R_UCOMM LIKE SY-UCOMM RS_SELFIELD TYPE SLIS_SELFIELD.
+
+  CASE R_UCOMM.
+
+    WHEN 'ONLI'.
+      PERFORM BUILD_XLS_DATA_TABLE.
+      PERFORM SEND_MAIL.
+
+    WHEN '&GRH'.
+      PERFORM BUILD_GRAPH_DATA_TABLE_DETAIL.
+
+  ENDCASE.
+
+  IF RS_SELFIELD-FIELDNAME = 'VBELN'.
+
+    SET PARAMETER ID 'VF' FIELD RS_SELFIELD-VALUE.
+    CALL TRANSACTION 'VF03' AND SKIP FIRST SCREEN.
+  ENDIF.
+
+ENDFORM.                    "MY_USER_COMMAND_DETAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_XLS_DATA_TABLE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM BUILD_XLS_DATA_TABLE.           "ADDED BY RAM ON 24/11/2014
+
+  CLASS CL_ABAP_CHAR_UTILITIES DEFINITION LOAD.
+  CONSTANTS:
+  CON_TAB  TYPE C VALUE CL_ABAP_CHAR_UTILITIES=>HORIZONTAL_TAB,
+  CON_CRET TYPE C VALUE CL_ABAP_CHAR_UTILITIES=>CR_LF.
+
+  CONCATENATE 'Plant Code'
+               'Plant Name'
+               'Division'
+               'Material Code'
+               'Material Description'
+               'Material Type'
+               'Created On'
+               'Volume'
+               'Stock Qty'
+               'Base Unit'
+               'Price Ind.'
+               'Unit Price'
+               'Stock Value'
+               'Stock Qty Ltrs'
+               'Price in Ltrs'
+               '< 30 Days(Case)'
+               '< 30 Days Stock Value'
+               '< 30 Stock Qty Ltrs'
+               '< 30 Stock Qty Value'
+               '31-45 Days(Case)'
+               '31-45  Days Stock Value'
+               '31-45  Stock Qty Ltrs'
+               '31-45  Stock Qty Value'
+               '46-60 Days(Case)'
+               '46-60  Days Stock Value'
+               '46-60  Stock Qty Ltrs'
+               '46-60  Stock Qty Value'
+               '61-75 Days(Case)'
+               '61-75  Days Stock Value'
+               '61-75  Stock Qty Ltrs'
+               '61-75  Stock Qty Value'
+               '76-90  Days(Case)'
+               '76-90  Days Stock Value'
+               '76-90  Stock Qty Ltrs'
+               '76-90  Stock Qty Value'
+               '91-180  Days(Case)'
+               '91-180 Days Stock Value'
+               '91-180  Stock Qty Ltrs'
+               '91-180  Stock Qty Value'
+               '> 180  Days(Case)'
+               '> 180 Days Stock Value'
+               '> 180 Stock Qty Ltrs'
+               '> 180 Stock Qty Value'
+
+  INTO  WA_ATTACHMENT SEPARATED BY  CON_TAB.
+
+  CONCATENATE CON_CRET
+  WA_ATTACHMENT
+  INTO WA_ATTACHMENT.
+
+  APPEND WA_ATTACHMENT TO IT_ATTACHMENT.
+  CLEAR  WA_ATTACHMENT.
+
+  DATA: LV_STRING_VOLUM TYPE STRING,
+        LV_STRING_LABST TYPE STRING,
+        LV_STRING_PRICE TYPE STRING,
+        LV_STRING_STOCKVALUE TYPE STRING,
+        LV_STRING_MLABST TYPE STRING,
+        LV_STRING_STOCKVALUE1 TYPE STRING,
+        LV_STRING_ZAGE1 TYPE STRING,
+        LV_STRING_STOCKCASE1 TYPE STRING,
+        LV_STRING_VZAGE1 TYPE STRING,
+        LV_STRING_STOCKVALUE2 TYPE STRING,
+        LV_STRING_ZAGE2 TYPE STRING,
+        LV_STRING_STOCKCASE2 TYPE STRING,
+        LV_STRING_VZAGE2 TYPE STRING,
+        LV_STRING_STOCKVALUE3 TYPE STRING,
+        LV_STRING_ZAGE3 TYPE STRING,
+        LV_STRING_STOCKCASE3 TYPE STRING,
+        LV_STRING_VZAGE3 TYPE STRING,
+        LV_STRING_STOCKVALUE4 TYPE STRING,
+        LV_STRING_ZAGE4 TYPE STRING,
+        LV_STRING_STOCKCASE4 TYPE STRING,
+        LV_STRING_VZAGE4 TYPE STRING,
+        LV_STRING_STOCKVALUE5 TYPE STRING,
+        LV_STRING_ZAGE5 TYPE STRING,
+        LV_STRING_STOCKCASE5 TYPE STRING,
+        LV_STRING_VZAGE5 TYPE STRING,
+        LV_STRING_STOCKVALUE6 TYPE STRING,
+        LV_STRING_ZAGE6 TYPE STRING,
+        LV_STRING_STOCKCASE6 TYPE STRING,
+        LV_STRING_VZAGE6 TYPE STRING,
+        LV_STRING_STOCKVALUE7 TYPE STRING,
+        LV_STRING_ZAGE7 TYPE STRING,
+        LV_STRING_STOCKCASE7 TYPE STRING,
+        LV_STRING_VZAGE7 TYPE STRING,
+        LV_STRING_STOCKVALUE8 TYPE STRING.
+
+  LOOP AT GT_FINAL INTO WA_FINAL.
+
+    LV_STRING_VOLUM = WA_FINAL-VOLUM.
+    LV_STRING_LABST = WA_FINAL-LABST.
+    LV_STRING_PRICE = WA_FINAL-LABST.
+    LV_STRING_STOCKVALUE = WA_FINAL-STOCKVALUE.
+    LV_STRING_MLABST = WA_FINAL-MLABST.
+    LV_STRING_STOCKVALUE1 = WA_FINAL-STOCKVALUE1.
+    LV_STRING_ZAGE1 = WA_FINAL-ZAGE1.
+    LV_STRING_STOCKCASE1 = WA_FINAL-STOCKCASE1.
+    LV_STRING_VZAGE1 = WA_FINAL-VZAGE1.
+    LV_STRING_STOCKVALUE2 = WA_FINAL-STOCKVALUE2.
+    LV_STRING_ZAGE2 = WA_FINAL-ZAGE2.
+    LV_STRING_STOCKCASE2 = WA_FINAL-STOCKCASE2.
+    LV_STRING_VZAGE2 = WA_FINAL-VZAGE2.
+    LV_STRING_STOCKVALUE3 = WA_FINAL-STOCKVALUE3.
+    LV_STRING_ZAGE3 = WA_FINAL-ZAGE3.
+    LV_STRING_STOCKCASE3 = WA_FINAL-STOCKCASE3.
+    LV_STRING_VZAGE3 = WA_FINAL-VZAGE3.
+    LV_STRING_STOCKVALUE4 = WA_FINAL-STOCKVALUE4.
+    LV_STRING_ZAGE4 = WA_FINAL-ZAGE4.
+    LV_STRING_STOCKCASE4 = WA_FINAL-STOCKCASE4.
+    LV_STRING_VZAGE4 = WA_FINAL-VZAGE4.
+    LV_STRING_STOCKVALUE5 = WA_FINAL-STOCKVALUE5.
+    LV_STRING_ZAGE5 = WA_FINAL-ZAGE5.
+    LV_STRING_STOCKCASE5 = WA_FINAL-STOCKCASE5.
+    LV_STRING_VZAGE5 = WA_FINAL-VZAGE5.
+    LV_STRING_STOCKVALUE6 = WA_FINAL-STOCKVALUE6.
+    LV_STRING_ZAGE6 = WA_FINAL-ZAGE6.
+    LV_STRING_STOCKCASE6 = WA_FINAL-STOCKCASE6.
+    LV_STRING_VZAGE6 = WA_FINAL-VZAGE6.
+    LV_STRING_STOCKVALUE7 = WA_FINAL-STOCKVALUE7.
+    LV_STRING_ZAGE7 = WA_FINAL-ZAGE7.
+    LV_STRING_STOCKCASE7 = WA_FINAL-STOCKCASE7.
+    LV_STRING_VZAGE7 = WA_FINAL-VZAGE7.
+    LV_STRING_STOCKVALUE8 = WA_FINAL-STOCKVALUE8.
+
+    CONCATENATE  WA_FINAL-WERKS
+                 WA_FINAL-NAME1
+                 WA_FINAL-SPART
+                 WA_FINAL-MMATNR
+                 WA_FINAL-MAKTX
+                 WA_FINAL-MTART
+                 WA_FINAL-MERSDA
+                 LV_STRING_VOLUM
+                 LV_STRING_LABST
+                 WA_FINAL-MEINS
+                 WA_FINAL-VPRSV
+                 LV_STRING_PRICE
+                 LV_STRING_STOCKVALUE
+                 LV_STRING_MLABST
+                 LV_STRING_STOCKVALUE1
+                 LV_STRING_ZAGE1
+                 LV_STRING_STOCKCASE1
+                 LV_STRING_VZAGE1
+                 LV_STRING_STOCKVALUE2
+                 LV_STRING_ZAGE2
+                 LV_STRING_STOCKCASE2
+                 LV_STRING_VZAGE2
+                 LV_STRING_STOCKVALUE3
+                 LV_STRING_ZAGE3
+                 LV_STRING_STOCKCASE3
+                 LV_STRING_VZAGE3
+                 LV_STRING_STOCKVALUE4
+                 LV_STRING_ZAGE4
+                 LV_STRING_STOCKCASE4
+                 LV_STRING_VZAGE4
+                 LV_STRING_STOCKVALUE5
+                 LV_STRING_ZAGE5
+                 LV_STRING_STOCKCASE5
+                 LV_STRING_VZAGE5
+                 LV_STRING_STOCKVALUE6
+                 LV_STRING_ZAGE6
+                 LV_STRING_STOCKCASE6
+                 LV_STRING_VZAGE6
+                 LV_STRING_STOCKVALUE7
+                 LV_STRING_ZAGE7
+                 LV_STRING_STOCKCASE7
+                 LV_STRING_VZAGE7
+                 LV_STRING_STOCKVALUE8
+
+  INTO WA_ATTACHMENT SEPARATED BY CON_TAB.
+    " FINAL TABLE TYPE FOR DETAIL REPORT
+
+    CONCATENATE CON_CRET WA_ATTACHMENT
+    INTO WA_ATTACHMENT.
+    APPEND WA_ATTACHMENT TO IT_ATTACHMENT.
+    CLEAR WA_ATTACHMENT.
+  ENDLOOP.
+
+ENDFORM.                    "BUILD_XLS_DATA_TABLE_DETAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  SEND_MAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM SEND_MAIL .
+
+  DATA : IT_MAIL_001 TYPE P0001 OCCURS 0 WITH HEADER LINE,
+         WA_MAIL_001 TYPE P0001.
+
+  DATA : IT_MONTH TYPE TABLE OF T247,
+         WA_MONTH TYPE T247.
+*BREAK-POINT.
+  CLEAR : LV_MAIL.
+*    SELECT SINGLE USRID_LONG " Hidded By Govind
+*      FROM PA0105
+*      INTO LV_MAIL
+*      WHERE PERNR = WA_VBRK-ERNAM
+*      AND   SUBTY = '0010'
+*      AND   ENDDA = '99991231'.
+
+*    SELECT SINGLE VORNA
+*      FROM PA0002
+*      INTO LV_NAME
+*      WHERE PERNR = WA_MAIL_001-PERNR
+*      AND   ENDDA = '99991231'.
+
+  CALL FUNCTION 'MONTH_NAMES_GET'
+  EXPORTING
+    LANGUAGE                    = SY-LANGU
+*         IMPORTING
+*           RETURN_CODE                 =
+   TABLES
+     MONTH_NAMES                 = IT_MONTH
+*         EXCEPTIONS
+*           MONTH_NAMES_NOT_FOUND       = 1
+*           OTHERS                      = 2
+           .
+  IF SY-SUBRC <> 0.
+*         MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*                 WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  WA_DOCDATA-OBJ_NAME = 'MAIL WITH EXCEL ATTACHMENT'.
+  WA_DOCDATA-OBJ_DESCR = 'SAP Reports'.
+
+  PERFORM BODY_OF_MAIL USING: SPACE, 'Desr Sir/Madam',
+  'Please find the attached excel sheet'.
+
+  DESCRIBE TABLE IT_BODY_MSG LINES G_TAB_LINES.
+  WA_PACKLIST-HEAD_START = 1.
+  WA_PACKLIST-HEAD_NUM   = 0.
+  WA_PACKLIST-BODY_START = 1.
+  WA_PACKLIST-BODY_NUM   = G_TAB_LINES.
+  WA_PACKLIST-DOC_TYPE   = 'RAW'.
+
+  APPEND WA_PACKLIST TO IT_PACKLIST.
+  CLEAR  WA_PACKLIST.
+
+  "Write Packing List for Attachment
+  WA_PACKLIST-TRANSF_BIN = SPACE.
+  WA_PACKLIST-HEAD_START = 1.
+  WA_PACKLIST-HEAD_NUM   = 1.
+  WA_PACKLIST-BODY_START = G_TAB_LINES + 1.
+  DESCRIBE TABLE IT_ATTACHMENT LINES WA_PACKLIST-BODY_NUM.
+  WA_PACKLIST-DOC_TYPE   = 'XLS'.
+  WA_PACKLIST-OBJ_DESCR  = 'SAP Invoice Details'.
+  WA_PACKLIST-OBJ_NAME   = 'XLS_ATTACHMENT'.
+  WA_PACKLIST-DOC_SIZE   = WA_PACKLIST-BODY_NUM * 255.
+  APPEND WA_PACKLIST TO IT_PACKLIST.
+  CLEAR  WA_PACKLIST.
+
+  APPEND LINES OF IT_ATTACHMENT TO IT_BODY_MSG.
+  "Fill the document data and get size of attachment
+  WA_DOCDATA-OBJ_LANGU  = SY-LANGU.
+  READ TABLE IT_BODY_MSG INTO WA_BODY_MSG INDEX G_TAB_LINES.
+  WA_DOCDATA-DOC_SIZE = ( G_TAB_LINES - 1 ) * 255 + STRLEN( WA_BODY_MSG ).
+*BREAK-POINT.
+  "Receivers List.
+  WA_RECEIVERS-REC_TYPE   = 'U'.  "Internet address
+  WA_RECEIVERS-RECEIVER   = 'govindarajanm@sheenlac.in'. " "LV_MAIL. ".
+  WA_RECEIVERS-COM_TYPE   = 'INT'.
+  WA_RECEIVERS-NOTIF_DEL  = 'X'.
+  WA_RECEIVERS-NOTIF_NDEL = 'X'.
+  APPEND WA_RECEIVERS TO IT_RECEIVERS .
+  CLEAR:WA_RECEIVERS.
+
+*   WA_RECEIVERS-REC_TYPE   = 'U'.  "Internet address
+*  WA_RECEIVERS-RECEIVER   = 'govindarajanm@sheenlac.in'.
+*  WA_RECEIVERS-COM_TYPE   = 'INT'.
+*  WA_RECEIVERS-NOTIF_DEL  = 'X'.
+*  WA_RECEIVERS-NOTIF_NDEL = 'X'.
+*  APPEND WA_RECEIVERS TO IT_RECEIVERS .
+*  CLEAR:WA_RECEIVERS.
+
+  CALL FUNCTION 'SO_NEW_DOCUMENT_ATT_SEND_API1'                                 " FUNCTION MODULE FOR MAIL SENDING
+    EXPORTING
+      DOCUMENT_DATA                    = WA_DOCDATA
+      PUT_IN_OUTBOX                    = 'X'
+      COMMIT_WORK                      = 'X'
+   IMPORTING
+      SENT_TO_ALL                      = G_SENT_TO_ALL
+*   NEW_OBJECT_ID                    =
+    TABLES
+      PACKING_LIST                     = IT_PACKLIST
+*   OBJECT_HEADER                    =
+*   CONTENTS_BIN                     =
+     CONTENTS_TXT                     = IT_BODY_MSG
+*   CONTENTS_HEX                     =
+*   OBJECT_PARA                      =
+*   OBJECT_PARB                      =
+      RECEIVERS                        = IT_RECEIVERS
+  EXCEPTIONS
+     TOO_MANY_RECEIVERS               = 1
+     DOCUMENT_NOT_SENT                = 2
+     DOCUMENT_TYPE_NOT_EXIST          = 3
+     OPERATION_NO_AUTHORIZATION       = 4
+     PARAMETER_ERROR                  = 5
+     X_ERROR                          = 6
+     ENQUEUE_ERROR                    = 7
+     OTHERS                           = 8
+            .
+  IF SY-SUBRC <> 0.
+
+    WRITE: 'FAILURE'.
+
+  ELSE.
+
+    WAIT UP TO 2 SECONDS.
+
+    SUBMIT RSCONN01 WITH MODE = 'INT'
+        WITH OUTPUT = 'X'
+        AND RETURN.
+  ENDIF.
+ENDFORM.                    " SEND_MAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  BODY_OF_MAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->L_MESSAGE  text
+*----------------------------------------------------------------------*
+FORM BODY_OF_MAIL USING L_MESSAGE.
+
+  WA_BODY_MSG = L_MESSAGE.
+  APPEND WA_BODY_MSG TO IT_BODY_MSG.
+  CLEAR  WA_BODY_MSG.
+
+ENDFORM.                    " BODY_OF_MAIL
+
+*&---------------------------------------------------------------------*
+*&      Form  BUILD_GRAPH_DATA_TABLE_DETAIL
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM BUILD_GRAPH_DATA_TABLE_DETAIL .
+
+ENDFORM.                    " BUILD_GRAPH_DATA_TABLE_DETAIL
+
+*---------------------------------------------------
+*&      Form  ALV_CATALOG_HEADER
+*&-------------------------------------------------------------------
+*       text
+*--------------------------------------------------------------------
+*  -->  p1        text
+*  <--  p2        text
+*--------------------------------------------------------------------
+FORM ALV_CATALOG_HEADER.
+
+  DATA : LIT_HEADER TYPE  SLIS_T_LISTHEADER,
+       LS_LINE TYPE SLIS_LISTHEADER.
+
+  DATA : RV_WERKS(100) TYPE C,
+         RV_SPART(100) TYPE C,
+         LV_BEDAT(50) TYPE C.
+*         LV_BEDAT1 TYPE SY-DATUM.
+
+  CLEAR : RV_SPART,
+          RV_WERKS.
+  IF SO_WERKS-HIGH IS NOT INITIAL.
+    CONCATENATE 'Plant Code :' SO_WERKS-LOW 'To' SO_WERKS-HIGH INTO RV_WERKS SEPARATED BY SPACE.
+  ELSE.
+    CONCATENATE 'Plant Code:' SO_WERKS-LOW INTO RV_WERKS SEPARATED BY SPACE.
+  ENDIF.
+
+  IF SO_WERKS-HIGH IS NOT INITIAL.
+    CONCATENATE 'Division Code :' SO_SPART-LOW 'To' SO_SPART-HIGH INTO RV_SPART SEPARATED BY SPACE.
+  ELSE.
+    CONCATENATE 'Division Code :'  SO_SPART-LOW INTO RV_SPART SEPARATED BY SPACE.
+  ENDIF.
+
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'S'.
+  LS_LINE-KEY = ' '.
+  LS_LINE-INFO = RV_WERKS.
+  APPEND LS_LINE TO LIT_HEADER.
+
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'S'.
+  LS_LINE-KEY = ' '.
+  LS_LINE-INFO = RV_SPART.
+  APPEND LS_LINE TO LIT_HEADER.
+
+  CLEAR LS_LINE.
+  LS_LINE-TYP  = 'H'.
+  LS_LINE-KEY = ' '.
+  LS_LINE-INFO = 'Material Stock Transfer Age Wise Report' .
+  APPEND LS_LINE TO LIT_HEADER.
+
+*  CLEAR LS_LINE.
+
+*CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+*  EXPORTING
+**    IT_LIST_COMMENTARY       = LIT_HEADER
+**   I_LOGO                   = 'ZLOGO' .
+*   I_END_OF_LIST_GRID       =
+*   I_ALV_FORM               =
+*          .
+*
+  CALL FUNCTION 'REUSE_ALV_COMMENTARY_WRITE'
+    EXPORTING
+      IT_LIST_COMMENTARY = LIT_HEADER
+      I_LOGO             = 'ZLOGO'.
+
+  CALL FUNCTION 'CONVERSION_EXIT_SDATE_OUTPUT'
+    EXPORTING
+      INPUT  = LV_BEDAT
+    IMPORTING
+      OUTPUT = LV_BEDAT.
+
+**  CALL FUNCTION 'CONVERSION_EXIT_SDATE_OUTPUT'
+**
+**  EXPORTING
+**    INPUT         = LV_BEDAT.
+
+*      I_LOGO             = ' '.
+
+ENDFORM.                    "ALV_CATALOG_HEADER

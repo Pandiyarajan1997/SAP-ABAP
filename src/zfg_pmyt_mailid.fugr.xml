@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Vendor Mail ID for Payment Clearence</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_PMYT_MAILIDF01</SOBJ_NAME>
+    <SOBJ_NAME>LZFG_PMYT_MAILIDTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_PMYT_MAILID</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZSEND_PYMTCLEARENCE_MAILS</FUNCNAME>
+     <SHORT_TEXT>Sending Mail to Respective Mail ID</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>ORGINV</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BELNR_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>MESSAGE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>IT_MAILID</PARAMETER>
+       <TYP>/CFG/T_EMAIL</TYP>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>MAILID_MISSING</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>ORGINV</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Accounting Document Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MESSAGE</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_MAILID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Range type for email address</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>MAILID_MISSING</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Mail ID Input table Missing</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

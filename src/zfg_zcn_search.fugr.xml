@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for ZCN_SEARCH region</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>SAPLZFG_ZCN_SEARCH</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFM_ZCN_SEARCH</FUNCNAME>
+     <SHORT_TEXT>Function Module for Region</SHORT_TEXT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>P_</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>GT_T247</PARAMETER>
+       <DBSTRUCT>T247</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>GT_T247</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Month name and short text</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Material stocks based on batch'
+define service ZSD_Batch_Stock {
+  expose ZI_DMS_BATCH_STOCK as Batch_Stocks;
+}

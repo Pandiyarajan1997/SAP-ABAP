@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCVI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCVI>
+    <SHDSVCI>
+     <SCVARIANT>ZML81N_0420</SCVARIANT>
+     <PROGNAME>SAPLMLSR</PROGNAME>
+     <DYNPRO>0420</DYNPRO>
+     <VERSION>2</VERSION>
+    </SHDSVCI>
+    <SHDSVTXCI>
+     <SHDSVTXCI>
+      <LANGU>E</LANGU>
+      <SCVARIANT>ZML81N_0420</SCVARIANT>
+     </SHDSVTXCI>
+    </SHDSVTXCI>
+    <SHDSVFVCI>
+     <SHDSVFVCI>
+      <SCVARIANT>ZML81N_0420</SCVARIANT>
+      <FIELDNAME>ESSR-BKTXT</FIELDNAME>
+      <ACTIVE>X</ACTIVE>
+      <OBLIGATORY>X</OBLIGATORY>
+      <ITYPE>C</ITYPE>
+     </SHDSVFVCI>
+    </SHDSVFVCI>
+   </SCVI>
+  </asx:values>
+ </asx:abap>
+</abapGit>
